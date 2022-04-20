@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import GlobalStyles from '../theme/GlobalStyles'
+import PrismicProvider from '../components/PrismicProvider'
+
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <PrismicProvider>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </PrismicProvider>
+  )
 }
 
-export default MyApp
+export default App

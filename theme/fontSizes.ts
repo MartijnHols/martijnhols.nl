@@ -1,0 +1,11 @@
+export const smallestText = 10 // TODO rename
+export const tertiaryText = 12
+export const secondaryText = 14
+export const mainText = 15
+export const input = 16
+export const h6 = 17
+export const h5 = 17
+export const h4 = 18
+export const h3 = 20
+export const h2 = 24
+export const h1 = 34
