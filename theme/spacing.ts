@@ -1,0 +1,10 @@
+export const x1 = 7
+export const x2 = 14
+export const x3 = 21
+export const x4 = 28
+export const x5 = 35
+export const x6 = 42
+export const x7 = 49
+export const x8 = 56
+export const x9 = 63
+export const x10 = 70
