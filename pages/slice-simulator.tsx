@@ -6,7 +6,13 @@ import { components } from "../slices";
 
 const SliceSimulatorPage = () => (
   <SliceSimulator
-    sliceZone={(props) => <SliceZone {...props} components={components} />}
+    sliceZone={(props) => (
+      <SliceZone
+        {...props}
+        // Typing this is hard, any it doesn't really matter so long as the SliceZone in [slug].tsx is valid
+        components={components as any}
+      />
+    )}
     state={state}
   />
 );
