@@ -1,0 +1,9 @@
+Dockerfile
+.dockerignore
+# node_modules TODO: output standalone https://nextjs.org/docs/advanced-features/output-file-tracing
+npm-debug.log
+README.md
+.github
+.lighthouseci
+.storybook
+.vscode
