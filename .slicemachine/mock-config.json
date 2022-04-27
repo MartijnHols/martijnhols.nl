@@ -1,6 +1,7 @@
 {
   "_cts": {
-    "page": {}
+    "page": {},
+    "project": {}
   },
   "slices": {
     "Hero": {
@@ -52,7 +53,8 @@
     },
     "ProjectsSlice": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     }
   }
