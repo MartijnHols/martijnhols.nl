@@ -78,7 +78,7 @@ jobs:
       # Not only does this share the artifact with other jobs, this also improves build performance by reusing next cache
       - name: Check "build" in cache
         id: cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: martijnhols/actions-cache/restore@ca403a5335c2c1bdf446727135ea06b27976cbfa
         with:
           path: .next
           key: build-${{ github.run_number }}
@@ -229,30 +229,7 @@ jobs:
           name: lighthouse-desktop
           path: lighthouse
 
-  storybook:
-    needs: [install]
-    name: Storybook
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - name: Restore "node_modules" from cache
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/restore@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
-      - name: Build storybook
-        run: yarn build-storybook
-      # TODO: Host somewhere
-      - name: Upload results
-        uses: actions/upload-artifact@v2
-        with:
-          name: storybook
-          path: storybook-static
+  # TODO: Storybook
 
   deploy:
     needs: [
