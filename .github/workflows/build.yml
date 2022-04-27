@@ -1,0 +1,296 @@
+name: 'Build'
+
+on: [push, pull_request]
+
+env:
+  CI: true
+  DOCKER_BUILD_TAG: build-${{ github.run_number }}
+
+jobs:
+  install:
+    name: 'Install'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        uses: martijnhols/actions-cache/restore@v3
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}
+      - name: Get yarn cache directory path
+        if: steps.cache.outputs.cache-hit != 'true'
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      # Use week number for automatically purging the cache every week. This is
+      # useful because caching yarn-cache would otherwise lead it to grow
+      # indefinitely since old dependencies are never purged.
+      - name: Get week number
+        if: steps.cache.outputs.cache-hit != 'true'
+        id: week-number
+        run: echo "::set-output name=value::$(date +%W)"
+      - name: Cache "yarn-cache"
+        uses: martijnhols/cache@read-only
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-${{ steps.week-number.outputs.value }}-root-yarn-cache-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-${{ steps.week-number.outputs.value }}-root-yarn-cache-
+      - run: yarn --frozen-lockfile --prefer-offline
+        if: steps.cache.outputs.cache-hit != 'true'
+      - name: Save "node_modules" to cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/save@v3
+        with:
+          path: node_modules
+          key: ${{ steps.cache.outputs.primary-key }}
+  typecheck:
+    needs: [install]
+    name: 'Typecheck'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - run: yarn typecheck
+  # TODO: Linting
+  build:
+    needs: [install]
+    name: 'Build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      # Not only does this share the artifact with other jobs, this also improves build performance by reusing next cache
+      - name: Check "build" in cache
+        id: cache
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: .next
+          key: build-${{ github.run_number }}
+          restore-keys: build
+          required: false
+      - name: Restore "node_modules" from cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - name: Load tags
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: git fetch --prune --unshallow --tags
+      - run: |
+          echo "ENVIRONMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV
+        if: steps.cache.outputs.cache-hit != 'true'
+      - name: 'Build martijnhols.nl@${{env.VERSION}} for ${{env.ENVIRONMENT_NAME}}'
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn build
+      - name: Save "build" in cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/save@v3
+        with:
+          path: .next
+          key: ${{ steps.cache.outputs.primary-key }}
+
+  # TODO: Sentry release
+
+  docker-image:
+    needs: [build]
+    name: 'Build Pipeline Docker image'
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Restore "build" from cache
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: .next
+          key: build-${{ github.run_number }}
+          required: true
+      - name: Restore "node_modules" from cache
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      # Docker build / push
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: 'Build martijnhols/martijnhols.nl:${{env.DOCKER_BUILD_TAG}}'
+        uses: docker/build-push-action@v2
+        with:
+          context: . # otherwise the action does weird things with the git context (see docs)
+          tags: 'martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}'
+          outputs: type=docker,dest=/tmp/dockerimage.tar
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dockerimage
+          path: /tmp/dockerimage.tar
+
+  # TODO: Cypress
+
+  lhci-mobile:
+    needs: [install, docker-image]
+    name: Lighthouse Mobile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dockerimage
+          path: /tmp
+      - name: Load Docker image
+        run: docker load --input /tmp/dockerimage.tar
+      - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
+      - uses: nev7n/wait_for_response@v1
+        with:
+          url: 'http://localhost:3000/'
+      - name: Collect results
+        run: yarn lhci collect
+      - name: Assert results
+        run: yarn lhci assert
+      - name: Store results
+        if: always()
+        run: yarn lhci upload
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-mobile
+          path: lighthouse
+  lhci-desktop:
+    needs: [install, docker-image]
+    name: Lighthouse Desktop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dockerimage
+          path: /tmp
+      - name: Load Docker image
+        run: docker load --input /tmp/dockerimage.tar
+      - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
+      - uses: nev7n/wait_for_response@v1
+        with:
+          url: 'http://localhost:3000/'
+      - name: Collect results
+        run: yarn lhci collect --settings.chromeFlags="--no-sandbox" --puppeteerLaunchOptions.args="--no-sandbox" --puppeteerLaunchOptions.args="" --settings.preset="desktop"
+      - name: Assert results
+        run: yarn lhci assert
+      - name: Store results
+        if: always()
+        run: yarn lhci upload
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: lighthouse-desktop
+          path: lighthouse
+
+  storybook:
+    needs: [install]
+    name: Storybook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - name: Build storybook
+        run: yarn build-storybook
+      # TODO: Host somewhere
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: storybook
+          path: storybook-static
+
+  deploy:
+    needs: [
+        # cypress-typecheck,
+        # cypress-lint,
+        # cypress-generated-types,
+        typecheck,
+        # lint,
+        build,
+        docker-image,
+        # cypress-run,
+      ]
+    name: 'Publish Docker image'
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: martijnhols/martijnhols.nl
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dockerimage
+          path: /tmp
+      - name: Load Docker image
+        run: docker load --input /tmp/dockerimage.tar
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+      - run: docker tag martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }} ${{ steps.docker_meta.outputs.tags }}
+      - run: docker push ${{ steps.docker_meta.outputs.tags }}
