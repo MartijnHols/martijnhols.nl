@@ -74,7 +74,7 @@ const ContentSlice = ({ slice }: Props) => {
             </ImageContainer>
           )}
 
-          <Content>
+          <Content className="inverted">
             <PrismicRichText field={slice.primary.content} multiline />
           </Content>
         </StyledContainer>
