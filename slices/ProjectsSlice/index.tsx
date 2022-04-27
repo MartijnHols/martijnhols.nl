@@ -45,6 +45,14 @@ const TechItem = styled.div`
   padding: 4px 6px;
   margin-right: 2px;
   margin-bottom: 2px;
+
+  // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
+  &[data-value="React"], &[data-value="React.js"] {
+    color: #61dafb;
+  }
+  &[data-value="Open Source"] {
+    color: #fff;
+  }
 `;
 
 export type PrismicProjectsSlice = Slice<
@@ -96,7 +104,7 @@ const ProjectsSlice = ({ slice }: Props) => (
                 ?.split(",")
                 .map((item) => item.trim())
                 .map((item) => (
-                  <TechItem key={item}>{item}</TechItem>
+                  <TechItem key={item} data-value={item}>{item}</TechItem>
                 ))}
             </Explanation>
           </Project>
