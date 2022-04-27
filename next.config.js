@@ -23,7 +23,9 @@ const nextConfig = {
     domains: [
       "images.prismic.io",
       `${getRepositoryName(prismicConfig.apiEndpoint)}.cdn.prismic.io`,
-    ],
+      // Used by Prismic Slice Machine mock data
+      process.env.NODE_ENV === 'development' ? 'images.unsplash.com' : undefined
+    ].filter(Boolean),
     deviceSizes: [640, 750, 828, 1080, 1280, 1440, 1920, 2048, 2560, 3840],
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
