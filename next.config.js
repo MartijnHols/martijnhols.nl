@@ -2,6 +2,13 @@ const { getRepositoryName } = require("@prismicio/client");
 
 const prismicConfig = require("./sm.json");
 
+const getEnvironmentVariable = (name) => {
+  if (!process.env[name]) {
+    throw new Error(`Missing environment variable: ${name}`)
+  }
+  return process.env[name]
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -18,6 +25,12 @@ const nextConfig = {
   i18n: {
     locales: ["nl-nl"],
     defaultLocale: "nl-nl",
+  },
+  serverRuntimeConfig: {
+    pageRevalidateInterval:
+      getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL') === 'false'
+        ? undefined
+        : Number(getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL')),
   },
   images: {
     domains: [
