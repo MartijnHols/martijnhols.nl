@@ -65,7 +65,12 @@ const ContentSlice = ({ slice }: Props) => {
         <StyledContainer>
           {image && (
             <ImageContainer>
-              <Image src={image.src} alt={image.alt} />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={500}
+                height={(500 / image.width) * image.height}
+              />
             </ImageContainer>
           )}
 
