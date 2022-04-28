@@ -44,11 +44,7 @@ export type PrismicPageSlice = PrismicHeroSlice | PrismicContentSlice;
 export type PrismicPage = PrismicDocument<
   {
     headTitle: KeyTextField;
-    opengraph_title: KeyTextField;
-    opengraph_image: ImageField;
-    meta_description: KeyTextField;
-    opengraph_description: KeyTextField;
-    opengraph_type: KeyTextField;
+    description: KeyTextField;
     slices: SliceZoneType<PrismicPageSlice, "filled">;
   },
   "page"
@@ -102,18 +98,19 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const Home = ({ page }: StaticProps) => {
-  return (
-    <PageWrapper>
-      <Head>
-        <title>{page.data.headTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-      </Head>
+const Home = ({ page }: StaticProps) => (
+  <PageWrapper>
+    <Head>
+      <title>{page.data.headTitle}</title>
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      {page.data.description && (
+        <meta name="description" content={page.data.description} />
+      )}
+    </Head>
 
-      <SliceZone slices={page.data.slices} components={components} />
-    </PageWrapper>
-  );
-};
+    <SliceZone slices={page.data.slices} components={components} />
+  </PageWrapper>
+);
 
 export default Home;
