@@ -1,3 +1,5 @@
+// Why is this snake-case? TODO: camelCase
+
 // min-width
 export const MOBILE = 0
 export const TABLET = 768

@@ -6,27 +6,22 @@ import Container from "../../components/Container";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 import { breakpoints, colors, spacing } from "../../theme";
 import PrismicRichText from "../../components/PrismicRichText";
+import Angle, { inverse } from "../../components/Angle";
+import { css } from "@emotion/react";
 
 const Section = styled.section`
   background: ${colors.complementary};
   color: ${colors.dominant};
 `;
-const Angle = styled.div`
-  width: 100%;
-  height: 40px;
-  // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
-  margin-top: -0.5px;
-  margin-bottom: -0.5px;
-  backface-visibility: hidden;
-`;
 const AngleBefore = styled(Angle)`
   background: ${colors.dominant};
-  clip-path: polygon(0 0, 100% 0, 0 100%);
 `;
-const AngleAfter = styled(Angle)`
-  background: ${colors.dominant};
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-`;
+const AngleAfter = styled(Angle)([
+  inverse,
+  css`
+    background: ${colors.dominant};
+  `,
+]);
 const StyledContainer = styled(Container)`
   padding-top: 100px;
   padding-bottom: 100px;

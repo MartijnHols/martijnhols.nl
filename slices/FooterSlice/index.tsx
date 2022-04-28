@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
 import { KeyTextField, LinkField, Slice } from "@prismicio/types";
 
+import Angle from "../../components/Angle";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
-import PrismicTitle from "../../components/PrismicTitle";
 import { colors, spacing } from "../../theme";
 
 const Section = styled.div`
@@ -12,17 +12,8 @@ const Section = styled.div`
   color: ${colors.dominant};
   padding: 150px 0;
 `;
-const Angle = styled.div`
-  width: 100%;
-  height: 40px;
-  // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
-  margin-top: -0.5px;
-  margin-bottom: -0.5px;
-  backface-visibility: hidden;
-`;
 const AngleBefore = styled(Angle)`
   background: ${colors.dominant};
-  clip-path: polygon(0 0, 100% 0, 0 100%);
 `;
 const Row = styled.div`
   margin: ${spacing.x5}px 0;

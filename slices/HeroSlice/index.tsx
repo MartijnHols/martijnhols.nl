@@ -4,6 +4,7 @@ import { asText } from "@prismicio/helpers";
 import { RichTextField, Slice } from "@prismicio/types";
 import { ReactElement } from "react";
 
+import Angle from "../../components/Angle";
 import Container from "../../components/Container";
 import PrismicRichText from "../../components/PrismicRichText";
 import { breakpoints, colors, spacing } from "../../theme";
@@ -14,23 +15,8 @@ const Wrapper = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
 `;
-const Angle = styled.div`
-  width: 100%;
+const AngleBefore = styled(Angle)`
   background: ${colors.complementary};
-  height: 40px;
-
-  @media (max-width: ${breakpoints.DESKTOP_MAX}px) {
-    height: 50px;
-  }
-  @media (max-width: ${breakpoints.TABLET_MAX}px) {
-    height: 40px;
-  }
-  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
-    height: 30px;
-  }
-`;
-const AngleAfter = styled(Angle)`
-  clip-path: polygon(0 0, 100% 0, 0 100%);
   // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
   margin-top: -0.5px;
   margin-bottom: -0.5px;
@@ -45,7 +31,7 @@ const StyledContainer = styled(Container)`
   padding-top: 150px;
   padding-bottom: 150px;
   // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
-  transform: rotate(-1.2deg);
+  transform: rotate(-2deg);
 
   @media (max-width: ${breakpoints.TABLET_MAX}px) {
     padding-top: 100px;
@@ -148,7 +134,7 @@ interface Props {
 
 const HeroSlice = ({ slice }: Props) => (
   <Wrapper>
-    <AngleAfter />
+    <AngleBefore />
     <Section>
       <StyledContainer>
         <Intro>
