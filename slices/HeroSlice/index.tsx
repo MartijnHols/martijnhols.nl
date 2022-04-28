@@ -46,6 +46,11 @@ const StyledContainer = styled(Container)`
   padding-bottom: 150px;
   // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
   transform: rotate(-1.2deg);
+
+  @media (max-width: ${breakpoints.TABLET_MAX}px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 `;
 const ReactLogoAnimation = keyframes`
   from {
