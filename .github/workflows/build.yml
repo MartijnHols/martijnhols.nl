@@ -172,9 +172,7 @@ jobs:
       - name: Load Docker image
         run: docker load --input /tmp/dockerimage.tar
       - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
-      - uses: nev7n/wait_for_response@v1
-        with:
-          url: 'http://localhost:3000/'
+      - run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 1; done' || false
       - name: Collect results
         run: yarn lhci collect
       - name: Assert results
@@ -212,9 +210,7 @@ jobs:
       - name: Load Docker image
         run: docker load --input /tmp/dockerimage.tar
       - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
-      - uses: nev7n/wait_for_response@v1
-        with:
-          url: 'http://localhost:3000/'
+      - run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 1; done' || false
       - name: Collect results
         run: yarn lhci collect --settings.chromeFlags="--no-sandbox" --puppeteerLaunchOptions.args="--no-sandbox" --puppeteerLaunchOptions.args="" --settings.preset="desktop"
       - name: Assert results
