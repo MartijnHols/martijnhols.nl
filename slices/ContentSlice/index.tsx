@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import Container from "../../components/Container";
 import convertPrismicImage from "../../utils/convertPrismicImage";
-import { colors, spacing } from "../../theme";
+import { breakpoints, colors, spacing } from "../../theme";
 import PrismicRichText from "../../components/PrismicRichText";
 
 const Section = styled.section`
@@ -32,15 +32,31 @@ const StyledContainer = styled(Container)`
   padding-bottom: 100px;
   display: flex;
   gap: ${spacing.x10}px;
-  flex-wrap: wrap;
+
+  @media (max-width: ${breakpoints.DESKTOP_MAX}px) {
+    gap: ${spacing.x6}px;
+  }
+  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
+    flex-flow: column;
+    gap: ${spacing.x2}px;
+  }
 `;
 const ImageContainer = styled.div`
   flex: 0 0 auto;
-  padding: 14px 0;
+  width: 100%;
+  max-width: 500px;
+
+  @media (max-width: ${breakpoints.DESKTOP_MAX}px) {
+    max-width: 400px;
+  }
+  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
+    max-width: none;
+  }
 `;
 const Content = styled.div`
   flex: 1 1 0;
-  min-width: 400px;
+  // Cancels out p-margins
+  margin: -${spacing.x2}px 0;
 `;
 
 export type PrismicContentSlice = Slice<
@@ -68,8 +84,8 @@ const ContentSlice = ({ slice }: Props) => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={500}
-                height={(500 / image.width) * image.height}
+                layout="responsive"
+                sizes={`(max-width: ${breakpoints.MOBILE_MAX}px) 100vw, (max-width: ${breakpoints.DESKTOP_MAX}px) 400px, 500px`}
               />
             </ImageContainer>
           )}

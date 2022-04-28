@@ -12,7 +12,7 @@ import Image from "next/image";
 import Container from "../../components/Container";
 import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
-import { colors, spacing } from "../../theme";
+import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 
 const Section = styled.div`
@@ -25,12 +25,19 @@ const Project = styled.div`
   gap: ${spacing.x6}px;
   padding: ${spacing.x2}px 0;
 
+  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
+    flex-flow: column;
+    gap: ${spacing.x2}px;
+  }
+
   :not(:first-of-type) {
     border-top: 3px solid ${colors.complementary};
   }
 `;
 const ProjectImage = styled.div`
   flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
 `;
 const Explanation = styled.div`
   flex: 1 1 auto;
@@ -47,7 +54,8 @@ const TechItem = styled.div`
   margin-bottom: 2px;
 
   // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
-  &[data-value="React"], &[data-value="React.js"] {
+  &[data-value="React"],
+  &[data-value="React.js"] {
     color: #61dafb;
   }
   &[data-value="Open Source"] {
@@ -104,7 +112,9 @@ const ProjectsSlice = ({ slice }: Props) => (
                 ?.split(",")
                 .map((item) => item.trim())
                 .map((item) => (
-                  <TechItem key={item} data-value={item}>{item}</TechItem>
+                  <TechItem key={item} data-value={item}>
+                    {item}
+                  </TechItem>
                 ))}
             </Explanation>
           </Project>
