@@ -51,17 +51,27 @@
             "primary": {
               "image": {
                 "dimensions": {
-                  "width": 900,
-                  "height": 500
+                  "width": 3000,
+                  "height": 4499
                 },
                 "alt": "Placeholder image",
                 "copyright": null,
-                "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
+                "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
               },
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Aliquip sit officia velit excepteur occaecat voluptate ipsum cillum ullamco minim. In magna culpa voluptate est. Eu do cupidatat anim irure.",
+                  "text": "Deserunt tempor nisi officia reprehenderit irure incididunt in pariatur commodo est. Cupidatat ex aliquip eu nostrud non non ut fugiat in mollit sunt elit. Id deserunt fugiat aliquip ea ipsum exercitation cupidatat laboris officia laborum enim consequat.",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Ullamco in dolore mollit fugiat velit magna exercitation consequat cillum id irure. Aute est esse anim ex nulla laborum magna ullamco. Labore proident incididunt Lorem magna ut aute id cillum proident culpa nostrud quis labore adipisicing ex.",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Voluptate anim deserunt ullamco sint veniam non cillum. Non commodo eu est nulla ad pariatur aliquip reprehenderit nulla commodo dolore reprehenderit commodo. Laborum laboris exercitation magna sint nisi anim reprehenderit ipsum sint labore culpa magna do.",
                   "spans": []
                 }
               ]
@@ -72,7 +82,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/default/preview.png",
+            "width": 800,
+            "height": 982
+          }
+        }
       },
       "hero_slice": {
         "library": "slices",
@@ -98,7 +114,7 @@
                     "label": "Intro",
                     "placeholder": "",
                     "allowTargetBlank": true,
-                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                    "single": "strong,em,hyperlink,image"
                   }
                 },
                 "title": {
@@ -135,21 +151,21 @@
               "intro": [
                 {
                   "type": "paragraph",
-                  "text": "Mollit ipsum nulla sint consectetur. Laborum eiusmod reprehenderit anim sint anim laboris aliquip fugiat adipisicing sit qui reprehenderit eiusmod ut. Consequat consectetur ex culpa exercitation reprehenderit esse elit sunt cillum id esse tempor officia eiusmod.",
+                  "text": "Incididunt enim sit magna elit ipsum officia cillum in minim voluptate dolore",
                   "spans": []
                 }
               ],
               "title": [
                 {
                   "type": "heading1",
-                  "text": "Aggregate end-to-end bandwidth",
+                  "text": "Monetize cross-platform e-business",
                   "spans": []
                 }
               ],
               "subText": [
                 {
                   "type": "paragraph",
-                  "text": "Aute ut est enim ullamco laborum amet officia.",
+                  "text": "Non irure amet et incididunt deserunt.",
                   "spans": []
                 }
               ]
@@ -160,7 +176,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/HeroSlice/default/preview.png",
+            "width": 800,
+            "height": 747
+          }
+        }
       },
       "projects_slice": {
         "library": "slices",
@@ -241,39 +263,16 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=900&h=500&fit=crop"
                 },
                 "about": [
                   {
                     "type": "paragraph",
-                    "text": "In cupidatat mollit mollit aliquip quis qui enim tempor aliquip laboris minim proident enim. Nulla ad ex fugiat Lorem in aliqua veniam. Id tempor cupidatat do ipsum deserunt cupidatat commodo commodo ad fugiat eu dolore et.",
+                    "text": "Ullamco aliquip dolore irure. Duis cupidatat ad exercitation ullamco aliquip aliqua excepteur velit veniam qui magna culpa exercitation.",
                     "spans": []
                   }
                 ],
-                "tech": "syndicate turn-key methodologies",
-                "url": {
-                  "link_type": "Web",
-                  "url": "https://prismic.io"
-                }
-              },
-              {
-                "image": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
-                },
-                "about": [
-                  {
-                    "type": "paragraph",
-                    "text": "Tempor nisi officia officia. Adipisicing quis sit cillum laborum.",
-                    "spans": []
-                  }
-                ],
-                "tech": "reinvent cutting-edge ROI",
+                "tech": "syndicate viral action-items",
                 "url": {
                   "link_type": "Web",
                   "url": "http://google.com"
@@ -287,16 +286,39 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
                 },
                 "about": [
                   {
                     "type": "paragraph",
-                    "text": "Labore laborum excepteur esse commodo occaecat pariatur proident esse adipisicing cupidatat aute excepteur do. Laborum magna deserunt laboris fugiat ipsum aliqua nisi dolore officia magna cillum sint pariatur.",
+                    "text": "Non minim non laborum magna consectetur laborum cupidatat eiusmod amet do sunt exercitation officia minim aute.",
                     "spans": []
                   }
                 ],
-                "tech": "drive world-class solutions",
+                "tech": "iterate strategic platforms",
+                "url": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
+                }
+              },
+              {
+                "image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+                },
+                "about": [
+                  {
+                    "type": "paragraph",
+                    "text": "Aliqua elit reprehenderit labore nostrud eiusmod elit laboris eiusmod fugiat elit mollit Lorem. Elit sunt exercitation aute amet nisi amet.",
+                    "spans": []
+                  }
+                ],
+                "tech": "strategize value-added communities",
                 "url": {
                   "link_type": "Web",
                   "url": "http://google.com"
@@ -307,7 +329,7 @@
               "title": [
                 {
                   "type": "heading1",
-                  "text": "Monetize best-of-breed supply-chains",
+                  "text": "Deploy transparent eyeballs",
                   "spans": []
                 }
               ]
@@ -318,7 +340,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ProjectsSlice/default/preview.png",
+            "width": 800,
+            "height": 1198
+          }
+        }
       }
     }
   }

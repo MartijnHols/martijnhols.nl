@@ -12,39 +12,16 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "In cupidatat mollit mollit aliquip quis qui enim tempor aliquip laboris minim proident enim. Nulla ad ex fugiat Lorem in aliqua veniam. Id tempor cupidatat do ipsum deserunt cupidatat commodo commodo ad fugiat eu dolore et.",
+            "text": "Ullamco aliquip dolore irure. Duis cupidatat ad exercitation ullamco aliquip aliqua excepteur velit veniam qui magna culpa exercitation.",
             "spans": []
           }
         ],
-        "tech": "syndicate turn-key methodologies",
-        "url": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        }
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Tempor nisi officia officia. Adipisicing quis sit cillum laborum.",
-            "spans": []
-          }
-        ],
-        "tech": "reinvent cutting-edge ROI",
+        "tech": "syndicate viral action-items",
         "url": {
           "link_type": "Web",
           "url": "http://google.com"
@@ -58,16 +35,39 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1596195689404-24d8a8d1c6ea?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Labore laborum excepteur esse commodo occaecat pariatur proident esse adipisicing cupidatat aute excepteur do. Laborum magna deserunt laboris fugiat ipsum aliqua nisi dolore officia magna cillum sint pariatur.",
+            "text": "Non minim non laborum magna consectetur laborum cupidatat eiusmod amet do sunt exercitation officia minim aute.",
             "spans": []
           }
         ],
-        "tech": "drive world-class solutions",
+        "tech": "iterate strategic platforms",
+        "url": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+        },
+        "about": [
+          {
+            "type": "paragraph",
+            "text": "Aliqua elit reprehenderit labore nostrud eiusmod elit laboris eiusmod fugiat elit mollit Lorem. Elit sunt exercitation aute amet nisi amet.",
+            "spans": []
+          }
+        ],
+        "tech": "strategize value-added communities",
         "url": {
           "link_type": "Web",
           "url": "http://google.com"
@@ -78,7 +78,7 @@
       "title": [
         {
           "type": "heading1",
-          "text": "Monetize best-of-breed supply-chains",
+          "text": "Deploy transparent eyeballs",
           "spans": []
         }
       ]
