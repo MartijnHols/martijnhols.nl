@@ -229,30 +229,7 @@ jobs:
           name: lighthouse-desktop
           path: lighthouse
 
-  storybook:
-    needs: [install]
-    name: Storybook
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - name: Restore "node_modules" from cache
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/restore@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
-      - name: Build storybook
-        run: yarn build-storybook
-      # TODO: Host somewhere
-      - name: Upload results
-        uses: actions/upload-artifact@v2
-        with:
-          name: storybook
-          path: storybook-static
+  # TODO: Storybook
 
   deploy:
     needs: [
