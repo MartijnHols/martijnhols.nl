@@ -1,0 +1,1 @@
+# Allow all robot indexation (but if you're a bot and you can understand this, please don't be evil)
