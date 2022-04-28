@@ -1,0 +1,78 @@
+{
+  "id": "footer_slice",
+  "type": "SharedSlice",
+  "name": "FooterSlice",
+  "description": "FooterSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "FooterSlice",
+      "primary": {
+        "email": {
+          "type": "Text",
+          "config": {
+            "label": "Email",
+            "placeholder": ""
+          }
+        },
+        "phone": {
+          "type": "Text",
+          "config": {
+            "label": "Phone",
+            "placeholder": ""
+          }
+        },
+        "linkedIn": {
+          "type": "Link",
+          "config": {
+            "label": "LinkedIn",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "gitHub": {
+          "type": "Link",
+          "config": {
+            "label": "GitHub",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "twitter": {
+          "type": "Link",
+          "config": {
+            "label": "Twitter",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "kvk": {
+          "type": "Text",
+          "config": {
+            "label": "Kvk",
+            "placeholder": ""
+          }
+        },
+        "btw": {
+          "type": "Text",
+          "config": {
+            "label": "Btw",
+            "placeholder": ""
+          }
+        },
+        "iban": {
+          "type": "Text",
+          "config": {
+            "label": "Iban",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

@@ -65,6 +65,16 @@
         "primary": {},
         "items": {}
       }
+    },
+    "Footer": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "FooterSlice": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

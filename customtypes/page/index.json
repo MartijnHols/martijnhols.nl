@@ -39,6 +39,9 @@
             },
             "projects_slice": {
               "type": "SharedSlice"
+            },
+            "footer_slice": {
+              "type": "SharedSlice"
             }
           }
         }
