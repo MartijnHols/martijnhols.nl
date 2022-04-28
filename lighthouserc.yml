@@ -1,0 +1,16 @@
+ci:
+  collect:
+    numberOfRuns: 1
+    url:
+      - http://localhost:3000/
+    puppeteerScript: warm-cache.js
+  assert:
+    preset: lighthouse:no-pwa
+    assertions:
+      csp-xss: 'warn'
+      # While it may have an effect, LH doesn't consider this assertion crticial so long as the LCP is within a reasonable amount of time
+      uses-responsive-images: 'off'
+  upload:
+    target: filesystem
+    outputDir: lighthouse
+    reportFilenamePattern: martijnhols.nl-%%PATHNAME%%-%%DATETIME%%.report.%%EXTENSION%%
