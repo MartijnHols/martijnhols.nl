@@ -99,6 +99,7 @@ const ProjectsSlice = ({ slice }: Props) => (
               <Image
                 src={image}
                 alt={image.alt}
+                layout="fixed"
                 width={200}
                 height={200}
                 objectFit="contain"
