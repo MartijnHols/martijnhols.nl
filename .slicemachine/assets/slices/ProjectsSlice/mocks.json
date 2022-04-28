@@ -12,17 +12,48 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Ullamco aliquip dolore irure. Duis cupidatat ad exercitation ullamco aliquip aliqua excepteur velit veniam qui magna culpa exercitation.",
+            "text": "Consectetur aute et dolor in mollit qui magna quis id magna enim velit ipsum. Officia non amet culpa excepteur dolore cillum consequat sunt ex aute dolor laborum.",
             "spans": []
           }
         ],
-        "tech": "syndicate viral action-items",
+        "tech": "orchestrate seamless e-business",
         "url": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "gitHub": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
+        },
+        "about": [
+          {
+            "type": "paragraph",
+            "text": "Incididunt laborum incididunt reprehenderit labore ad laboris. Anim elit tempor veniam eu ut excepteur exercitation laborum. Irure pariatur est et proident voluptate proident quis ea laborum nulla.",
+            "spans": []
+          }
+        ],
+        "tech": "evolve open-source infrastructures",
+        "url": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "gitHub": {
           "link_type": "Web",
           "url": "http://google.com"
         }
@@ -35,17 +66,21 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Non minim non laborum magna consectetur laborum cupidatat eiusmod amet do sunt exercitation officia minim aute.",
+            "text": "Ad in Lorem dolore sunt non dolore ipsum dolore aute sit officia amet deserunt commodo elit. Qui sit aute sit culpa nostrud exercitation magna anim dolore in. Pariatur esse veniam irure pariatur anim mollit pariatur ullamco occaecat aute nisi do nostrud id nisi.",
             "spans": []
           }
         ],
-        "tech": "iterate strategic platforms",
+        "tech": "aggregate 24/365 mindshare",
         "url": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "gitHub": {
           "link_type": "Web",
           "url": "https://slicemachine.dev"
         }
@@ -58,19 +93,77 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Aliqua elit reprehenderit labore nostrud eiusmod elit laboris eiusmod fugiat elit mollit Lorem. Elit sunt exercitation aute amet nisi amet.",
+            "text": "Aliqua ad minim non eiusmod labore ullamco adipisicing magna consequat id minim.",
             "spans": []
           }
         ],
-        "tech": "strategize value-added communities",
+        "tech": "drive synergistic ROI",
         "url": {
           "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        },
+        "gitHub": {
+          "link_type": "Web",
           "url": "http://google.com"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+        },
+        "about": [
+          {
+            "type": "paragraph",
+            "text": "Sint reprehenderit qui elit consectetur. Incididunt aliquip aute sint occaecat ut.",
+            "spans": []
+          }
+        ],
+        "tech": "utilize out-of-the-box supply-chains",
+        "url": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "gitHub": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
+        },
+        "about": [
+          {
+            "type": "paragraph",
+            "text": "Lorem magna duis sit laboris ad consectetur.",
+            "spans": []
+          }
+        ],
+        "tech": "optimize distributed vortals",
+        "url": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        },
+        "gitHub": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
         }
       }
     ],
@@ -78,7 +171,14 @@
       "title": [
         {
           "type": "heading1",
-          "text": "Deploy transparent eyeballs",
+          "text": "Brand compelling ROI",
+          "spans": []
+        }
+      ],
+      "explanation": [
+        {
+          "type": "paragraph",
+          "text": "Nisi sunt incididunt consequat anim ut magna laboris irure officia fugiat do. Aute nostrud officia occaecat sunt pariatur irure.",
           "spans": []
         }
       ]

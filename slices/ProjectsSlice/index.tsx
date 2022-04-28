@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { asLink } from "@prismicio/helpers";
 import {
   ImageField,
   KeyTextField,
@@ -10,6 +11,7 @@ import {
 import Image from "next/image";
 
 import Container from "../../components/Container";
+import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
 import { breakpoints, colors, spacing } from "../../theme";
@@ -19,6 +21,9 @@ const Section = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
   padding: 150px 0;
+`;
+const Explanation = styled.div`
+  margin-bottom: ${spacing.x6}px;
 `;
 const Project = styled.div`
   display: flex;
@@ -39,10 +44,13 @@ const ProjectImage = styled.div`
   display: flex;
   justify-content: center;
 `;
-const Explanation = styled.div`
+const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `;
 const ProjectAbout = styled.div`
+  margin-bottom: ${spacing.x2}px;
+`;
+const Tech = styled.div`
   margin-bottom: ${spacing.x2}px;
 `;
 const TechItem = styled.div`
@@ -67,10 +75,12 @@ export type PrismicProjectsSlice = Slice<
   "projects_slice",
   {
     title: TitleField;
+    explanation: RichTextField;
   },
   {
     image: ImageField;
     url: LinkField;
+    gitHub: LinkField;
     about: RichTextField;
     tech: KeyTextField;
   }
@@ -86,12 +96,18 @@ const ProjectsSlice = ({ slice }: Props) => (
       <h2>
         <PrismicTitle field={slice.primary.title} />
       </h2>
+      <Explanation>
+        <PrismicRichText field={slice.primary.explanation} />
+      </Explanation>
 
       {slice.items.map((project, index) => {
         const image = convertPrismicImage(project.image);
         if (!image) {
           return null;
         }
+
+        const url = asLink(project.url);
+        const gitHub = asLink(project.gitHub);
 
         return (
           <Project key={index}>
@@ -105,19 +121,27 @@ const ProjectsSlice = ({ slice }: Props) => (
                 objectFit="contain"
               />
             </ProjectImage>
-            <Explanation>
+            <ProjectExplanation>
               <ProjectAbout>
                 <PrismicRichText field={project.about} />
               </ProjectAbout>
-              {project.tech
-                ?.split(",")
-                .map((item) => item.trim())
-                .map((item) => (
-                  <TechItem key={item} data-value={item}>
-                    {item}
-                  </TechItem>
-                ))}
-            </Explanation>
+              <Tech>
+                {project.tech
+                  ?.split(",")
+                  .map((item) => item.trim())
+                  .map((item) => (
+                    <TechItem key={item} data-value={item}>
+                      {item}
+                    </TechItem>
+                  ))}
+              </Tech>
+              <div>
+                {/* TODO: I18n */}
+                {url && <Link href={url}>Bezoeken</Link>}
+                {url && gitHub && " | "}
+                {gitHub && <Link href={gitHub}>Broncode</Link>}
+              </div>
+            </ProjectExplanation>
           </Project>
         );
       })}

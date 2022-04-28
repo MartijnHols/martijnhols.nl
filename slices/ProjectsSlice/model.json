@@ -18,6 +18,15 @@
             "label": "Title",
             "placeholder": "This is where it all begins..."
           }
+        },
+        "explanation": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Explanation",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
         }
       },
       "items": {
@@ -49,6 +58,14 @@
           "type": "Link",
           "config": {
             "label": "Url",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "gitHub": {
+          "type": "Link",
+          "config": {
+            "label": "GitHub (sourcecode)",
             "placeholder": "",
             "select": null
           }
