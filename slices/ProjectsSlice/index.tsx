@@ -97,7 +97,7 @@ const ProjectsSlice = ({ slice }: Props) => (
           <Project key={index}>
             <ProjectImage>
               <Image
-                src={image.src}
+                src={image}
                 alt={image.alt}
                 width={200}
                 height={200}

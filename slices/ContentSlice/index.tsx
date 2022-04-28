@@ -82,7 +82,7 @@ const ContentSlice = ({ slice }: Props) => {
           {image && (
             <ImageContainer>
               <Image
-                src={image.src}
+                src={image}
                 alt={image.alt}
                 layout="responsive"
                 sizes={`(max-width: ${breakpoints.MOBILE_MAX}px) 100vw, (max-width: ${breakpoints.DESKTOP_MAX}px) 400px, 500px`}

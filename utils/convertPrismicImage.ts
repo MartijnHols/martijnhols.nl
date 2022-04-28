@@ -3,11 +3,8 @@ import { StaticImageData } from "next/image";
 
 import disablePrismicImageOptimizations from "./disablePrismicImageOptimizations";
 
-interface ImageInfo {
-  src: StaticImageData;
+interface ImageInfo extends StaticImageData {
   alt?: string;
-  width: number
-  height: number
 }
 
 function convertPrismicImage(image: FilledImageFieldImage): ImageInfo;
@@ -18,11 +15,7 @@ function convertPrismicImage(image: ImageField): ImageInfo | undefined {
   }
 
   return {
-    src: {
-      src: disablePrismicImageOptimizations(image.url),
-      width: image.dimensions.width,
-      height: image.dimensions.height,
-    },
+    src: disablePrismicImageOptimizations(image.url),
     alt: image.alt ?? undefined,
     width: image.dimensions.width,
     height: image.dimensions.height,
