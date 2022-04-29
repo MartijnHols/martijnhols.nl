@@ -56,3 +56,4 @@ There are several things I am considering improving for this app, such as:
 - English version: support should already be in place, just need to figure out how to visually make the toggle and then go through the trouble of translating everything
 - Translate static buttons (e.g. Visit/Sourcecode buttons in projects): probably through a Config single Prismic custom type as that allows all localization to happen in Prismic.
 - Prismic Preview toolbar
+- OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing, and for future article images
