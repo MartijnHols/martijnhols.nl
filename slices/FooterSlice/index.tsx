@@ -10,13 +10,21 @@ import { colors, spacing } from "../../theme";
 const Section = styled.div`
   background: ${colors.complementary};
   color: ${colors.dominant};
-  padding: 150px 0;
+  padding: ${spacing.x5}px 0;
 `;
 const AngleBefore = styled(Angle)`
   background: ${colors.dominant};
 `;
 const Row = styled.div`
-  margin: ${spacing.x5}px 0;
+  margin: ${spacing.x2}px 0;
+  display: flex;
+  gap: ${spacing.x2}px ${spacing.x4}px;
+`;
+const Label = styled.div`
+  min-width: 100px;
+  text-align: right;
+`;
+const Values = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${spacing.x4}px;
@@ -24,10 +32,7 @@ const Row = styled.div`
 const ContactRow = styled(Row)``;
 const SocialRow = styled(Row)``;
 const BusinessRow = styled(Row)``;
-const Item = styled.div`
-  flex: 1 1 auto;
-  text-align: center;
-`;
+const Item = styled.div``;
 
 export type PrismicFooterSlice = Slice<
   "footer_slice",
@@ -57,47 +62,53 @@ const FooterSlice = ({ slice }: Props) => {
       <Section className="inverted">
         <Container>
           <ContactRow>
-            {slice.primary.email && (
-              <Item>
-                <a href={`mailto:${slice.primary.email}`}>
-                  {slice.primary.email}
-                </a>
-              </Item>
-            )}
-            {slice.primary.phone && (
-              <Item>
-                <a href={`tel:${slice.primary.phone}`}>{slice.primary.phone}</a>
-              </Item>
-            )}
+            <Label>Contact</Label>
+            <Values>
+              {slice.primary.email && (
+                <Item>
+                  <a href={`mailto:${slice.primary.email}`}>
+                    {slice.primary.email}
+                  </a>
+                </Item>
+              )}
+              {slice.primary.phone && (
+                <Item>
+                  <a href={`tel:${slice.primary.phone}`}>
+                    {slice.primary.phone}
+                  </a>
+                </Item>
+              )}
+            </Values>
           </ContactRow>
           <SocialRow>
-            {linkedIn && (
-              <Item>
-                <Link href={linkedIn}>LinkedIn</Link>
-              </Item>
-            )}
-            {gitHub && (
-              <Item>
-                <Link href={gitHub}>GitHub</Link>
-              </Item>
-            )}
+            <Label>Social</Label>
+            <Values>
+              {linkedIn && (
+                <Item>
+                  <Link href={linkedIn}>LinkedIn</Link>
+                </Item>
+              )}
+              {gitHub && (
+                <Item>
+                  <Link href={gitHub}>GitHub</Link>
+                </Item>
+              )}
+            </Values>
           </SocialRow>
           <BusinessRow>
-            {slice.primary.kvk && (
-              <Item>
-                <strong>KVK:</strong> {slice.primary.kvk}
-              </Item>
-            )}
-            {slice.primary.btw && (
-              <Item>
-                <strong>BTW:</strong> {slice.primary.btw}
-              </Item>
-            )}
-            {slice.primary.iban && (
-              <Item>
-                <strong>IBAN:</strong> {slice.primary.iban}
-              </Item>
-            )}
+            <Label>Company</Label>
+            <Values>
+              {slice.primary.kvk && (
+                <Item>
+                  <strong>KVK:</strong> {slice.primary.kvk}
+                </Item>
+              )}
+              {slice.primary.btw && (
+                <Item>
+                  <strong>BTW:</strong> {slice.primary.btw}
+                </Item>
+              )}
+            </Values>
           </BusinessRow>
         </Container>
       </Section>
