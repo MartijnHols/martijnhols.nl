@@ -8,7 +8,8 @@
     "start": "next dev",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "start-all": "concurrently \"yarn start\" \"yarn slicemachine\" --names \"next,slicemachine\" --prefix-colors gray,magenta"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -19,6 +20,7 @@
     "@prismicio/next": "^0.1.2",
     "@prismicio/react": "^2.3.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
+    "concurrently": "^7.1.0",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",

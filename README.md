@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# martijnhols.nl
+
+This is the source code of https://martijnhols.nl, the website for my personal company from which I do freelance work (among other things).
+
+## Installation
+
+Clone the repository and run `yarn` in the root to install the dependencies.
 
 ## Getting Started
 
-First, run the development server:
+To develop, you need to start both the Next and SliceMachine servers either by calling `yarn start` and `yarn slicemachine` in two separate CLIs, or `yarn start-all` to run them in a single CLI. This launches the Next app at http://localhost:3000 and the Prismic SliceMachine at http://localhost:9999.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The SliceMachine allows you to configure the Prismic CMS. In short Custom Types are page-level entities, while slices are parts of Custom Type. See https://prismic.io for more info about Prismic.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Next app is the rendered site as a user would see it.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To edit content, go to https://prismic.io/dashboard and login. If you don't have a repository yet, create one and update the `apiEndpoint` in `sm.json` (replace `martijnhols` with your new repository name).
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Prismic previews
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This site supports Prismic previews. To enable it, go to the settings of your repository and add a preview with the following:
 
-## Learn More
+**Site Name**: `localhost`
+**Domain for your application**: `http://localhost:3000`
+**Link Resolver**: `/api/preview`
 
-To learn more about Next.js, take a look at the following resources:
+To test it, change something on your page, save it and hit the preview button next to the save button.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Note that the Prismic toolbar is not enabled.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Folder structure
 
-## Deploy on Vercel
+Since this is a small project, the folder structure is minimal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `components` This folder contains the different components that we may use multiple times in other components, slices or pages. Each file should generally only contain a single component.
+- `pages` This is a special Next.js folder ([docs](https://nextjs.org/docs/basic-features/pages)). Any components added here will automatically be available as routes. Only use for pages.
+- `public` Static content that is served from the root (/).
+- `slices` The Prismic slice components and models. This structure is forced by Prismic.
+- `theme` This folder contains theming constants for the app.
+- `types` Custom TypeScript type definitions.
+- `utils` Utility functions that may be used across the app. Each file should generally only have a single purpose.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Considerations
+
+There are several things I am considering improving for this app, such as:
+
+- Adding a minimal blog using Prismic as CMS and GitHub comments as comments. I'm thinking it wouldn't even really be a blog, just a place to post static articles to share with people and for SEO. I have a dozen article ideas already lined up.
+- With legacy Prismic setups I always kept the Prismic components separate from the slice components, so all the Prismic mess and real components aren't mixed. In other words, I am consdering adding the slices to the components folder but with the Prismic bridging code exclusively in the current slices folder. Theoretically this makes it easier to switch CMS, but that would probably never happen. More importantly code separation and components become cleaner and shorter.
+- Cypress. I am a big fan of Cypress E2E testing. While it would be overkill for this site, it would be a good opportunity to show off my usual implementation.
+- Case Studies for my projects. Explain how things were solved, why, lessons learned, regrets, etc. A lot of work, and not sure how useful this would be.
+- Clean up `[slug].tsx`: move all the Prismic fetching to a separate file. I am a fan of code co-location to a certain point, and this exceeds the threshold where it's cleaner.
+- Sitemap. This isn't very useful with just a homepage, but would be neat when I add more pages. I think I have a solution that I would like to share.
+- ESLint
+- Prettier
+- Husky
+- Open Graph meta tags
+- English version: support should already be in place, just need to figure out how to visually make the toggle and then go through the trouble of translating everything
+- Translate static buttons (e.g. Visit/Sourcecode buttons in projects): probably through a Config single Prismic custom type as that allows all localization to happen in Prismic.
+- Prismic Preview toolbar
