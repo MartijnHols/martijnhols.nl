@@ -53,7 +53,6 @@ There are several things I am considering improving for this app, such as:
 - ESLint
 - Prettier
 - Husky
-- Open Graph meta tags
 - English version: support should already be in place, just need to figure out how to visually make the toggle and then go through the trouble of translating everything
 - Translate static buttons (e.g. Visit/Sourcecode buttons in projects): probably through a Config single Prismic custom type as that allows all localization to happen in Prismic.
 - Prismic Preview toolbar

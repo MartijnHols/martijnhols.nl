@@ -32,6 +32,9 @@ const nextConfig = {
         ? undefined
         : Number(getEnvironmentVariable("PAGE_REVALIDATE_INTERVAL")),
   },
+  publicRuntimeConfig: {
+    primaryHost: process.env.PRIMARY_HOST,
+  },
   images: {
     domains: [
       "images.prismic.io",

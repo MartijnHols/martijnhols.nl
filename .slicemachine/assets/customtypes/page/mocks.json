@@ -1,9 +1,18 @@
 {
-  "id": "78b9df2d-be0c-4d29-92e3-98c37a769564",
-  "uid": "veniam-iure-deleniti",
+  "id": "ef86d92d-9d50-470a-81b1-de931edc2581",
+  "uid": "id-quisquam-sequi",
   "type": "page",
   "data": {
-    "headTitle": "optimize out-of-the-box initiatives",
-    "description": "envisioneer bricks-and-clicks convergence"
+    "headTitle": "incubate intuitive interfaces",
+    "description": "syndicate open-source synergies",
+    "ogImage": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
+    }
   }
 }

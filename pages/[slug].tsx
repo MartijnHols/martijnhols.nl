@@ -15,6 +15,9 @@ import { createClient } from "../utils/prismic";
 import { components } from "../slices";
 import { PrismicHeroSlice } from "../slices/HeroSlice";
 import { PrismicContentSlice } from "../slices/ContentSlice";
+import { colors } from "../theme";
+import prismicLinkResolver from "../utils/prismicLinkResolver";
+import absoluteUrl from "../utils/absoluteUrl";
 
 export const getPages = async (
   client: Client,
@@ -45,6 +48,7 @@ export type PrismicPage = PrismicDocument<
   {
     headTitle: KeyTextField;
     description: KeyTextField;
+    ogImage: ImageField;
     slices: SliceZoneType<PrismicPageSlice, "filled">;
   },
   "page"
@@ -98,19 +102,44 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const Home = ({ page }: StaticProps) => (
-  <PageWrapper>
-    <Head>
-      <title>{page.data.headTitle}</title>
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" href="/favicon.png" />
-      {page.data.description && (
-        <meta name="description" content={page.data.description} />
-      )}
-    </Head>
+const Home = ({ page }: StaticProps) => {
+  const title = page.data.headTitle || "Martijn Hols";
 
-    <SliceZone slices={page.data.slices} components={components} />
-  </PageWrapper>
-);
+  return (
+    <PageWrapper>
+      <Head>
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        {page.data.description && (
+          <meta name="description" content={page.data.description} />
+        )}
+        <meta name="theme-color" content={colors.complementary} />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        {page.data.description && (
+          <meta property="og:description" content={page.data.description} />
+        )}
+        <meta
+          property="og:url"
+          content={absoluteUrl(prismicLinkResolver(page))}
+        />
+        {page.data.ogImage.url && (
+          <meta
+            property="og:image"
+            // itemProp is required for WhatsApp: https://stackoverflow.com/a/45890205/684353
+            itemProp="image"
+            content={page.data.ogImage.url}
+          />
+        )}
+        {page.data.ogImage.alt && (
+          <meta property="og:image:alt" content={page.data.ogImage.alt} />
+        )}
+      </Head>
+
+      <SliceZone slices={page.data.slices} components={components} />
+    </PageWrapper>
+  );
+};
 
 export default Home;

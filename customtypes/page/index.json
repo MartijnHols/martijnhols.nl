@@ -26,6 +26,14 @@
           "placeholder": ""
         }
       },
+      "ogImage": {
+        "type": "Image",
+        "config": {
+          "label": "OpenGraph Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
