@@ -9,6 +9,8 @@ const getEnvironmentVariable = (name) => {
   return process.env[name];
 };
 
+const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -34,11 +36,12 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     primaryHost: process.env.PRIMARY_HOST,
+    prismicRepositoryName,
   },
   images: {
     domains: [
       "images.prismic.io",
-      `${getRepositoryName(prismicConfig.apiEndpoint)}.cdn.prismic.io`,
+      `${prismicRepositoryName}.cdn.prismic.io`,
       // Used by Prismic Slice Machine mock data
       process.env.NODE_ENV === "development"
         ? "images.unsplash.com"

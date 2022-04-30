@@ -1,0 +1,24 @@
+{
+  "id": "config",
+  "label": "Config",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "visit": {
+        "type": "Text",
+        "config": {
+          "label": "Visit",
+          "placeholder": ""
+        }
+      },
+      "sourceCode": {
+        "type": "Text",
+        "config": {
+          "label": "Source Code",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

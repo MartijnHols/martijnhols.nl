@@ -1,7 +1,8 @@
 {
   "_cts": {
     "page": {},
-    "project": {}
+    "project": {},
+    "config": {}
   },
   "slices": {
     "Hero": {

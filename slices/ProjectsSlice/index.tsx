@@ -16,6 +16,7 @@ import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
 import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
+import { usePrismicConfig } from "../../utils/prismicConfig";
 
 const Section = styled.div`
   background: ${colors.dominant};
@@ -90,63 +91,67 @@ interface Props {
   slice: PrismicProjectsSlice;
 }
 
-const ProjectsSlice = ({ slice }: Props) => (
-  <Section>
-    <Container>
-      <h2>
-        <PrismicTitle field={slice.primary.title} />
-      </h2>
-      <Explanation>
-        <PrismicRichText field={slice.primary.explanation} />
-      </Explanation>
+const ProjectsSlice = ({ slice }: Props) => {
+  const config = usePrismicConfig();
 
-      {slice.items.map((project, index) => {
-        const image = convertPrismicImage(project.image);
-        if (!image) {
-          return null;
-        }
+  return (
+    <Section>
+      <Container>
+        <h2>
+          <PrismicTitle field={slice.primary.title} />
+        </h2>
+        <Explanation>
+          <PrismicRichText field={slice.primary.explanation} />
+        </Explanation>
 
-        const url = asLink(project.url);
-        const gitHub = asLink(project.gitHub);
+        {slice.items.map((project, index) => {
+          const image = convertPrismicImage(project.image);
+          if (!image) {
+            return null;
+          }
 
-        return (
-          <Project key={index}>
-            <ProjectImage>
-              <Image
-                src={image}
-                alt={image.alt}
-                layout="fixed"
-                width={200}
-                height={200}
-                objectFit="contain"
-              />
-            </ProjectImage>
-            <ProjectExplanation>
-              <ProjectAbout>
-                <PrismicRichText field={project.about} />
-              </ProjectAbout>
-              <Tech>
-                {project.tech
-                  ?.split(",")
-                  .map((item) => item.trim())
-                  .map((item) => (
-                    <TechItem key={item} data-value={item}>
-                      {item}
-                    </TechItem>
-                  ))}
-              </Tech>
-              <div>
-                {/* TODO: I18n */}
-                {url && <Link href={url}>Bezoeken</Link>}
-                {url && gitHub && " | "}
-                {gitHub && <Link href={gitHub}>Broncode</Link>}
-              </div>
-            </ProjectExplanation>
-          </Project>
-        );
-      })}
-    </Container>
-  </Section>
-);
+          const url = asLink(project.url);
+          const gitHub = asLink(project.gitHub);
+
+          return (
+            <Project key={index}>
+              <ProjectImage>
+                <Image
+                  src={image}
+                  alt={image.alt}
+                  layout="fixed"
+                  width={200}
+                  height={200}
+                  objectFit="contain"
+                />
+              </ProjectImage>
+              <ProjectExplanation>
+                <ProjectAbout>
+                  <PrismicRichText field={project.about} />
+                </ProjectAbout>
+                <Tech>
+                  {project.tech
+                    ?.split(",")
+                    .map((item) => item.trim())
+                    .map((item) => (
+                      <TechItem key={item} data-value={item}>
+                        {item}
+                      </TechItem>
+                    ))}
+                </Tech>
+                <div>
+                  {/* TODO: I18n */}
+                  {url && <Link href={url}>{config?.visit}</Link>}
+                  {url && gitHub && " | "}
+                  {gitHub && <Link href={gitHub}>{config?.sourceCode}</Link>}
+                </div>
+              </ProjectExplanation>
+            </Project>
+          );
+        })}
+      </Container>
+    </Section>
+  );
+};
 
 export default ProjectsSlice;

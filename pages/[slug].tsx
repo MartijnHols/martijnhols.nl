@@ -11,13 +11,18 @@ import getConfig from "next/config";
 import Head from "next/head";
 
 import PageWrapper from "../components/PageWrapper";
-import { createClient } from "../utils/prismic";
+import { createClient, getByUid } from "../utils/prismic";
 import { components } from "../slices";
 import { PrismicHeroSlice } from "../slices/HeroSlice";
 import { PrismicContentSlice } from "../slices/ContentSlice";
 import { colors } from "../theme";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 import absoluteUrl from "../utils/absoluteUrl";
+import {
+  getPrismicConfig,
+  PrismicConfig,
+  PrismicConfigProvider,
+} from "../utils/prismicConfig";
 
 export const getPages = async (
   client: Client,
@@ -54,40 +59,28 @@ export type PrismicPage = PrismicDocument<
   "page"
 >;
 
-interface StaticProps {
-  page: PrismicPage;
-}
-
-export const getByUid = async <T extends PrismicDocument>(
-  client: Client,
-  documentType: string,
-  uid: string,
-  locale: string
-) => {
-  try {
-    return await client.getByUID<T>(documentType, uid, {
-      lang: locale,
-    });
-  } catch (err) {
-    if ((err as Error).message === "No documents were returned") {
-      return undefined;
-    }
-    throw err;
-  }
-};
 export const getCmsPage = (client: Client, slug: string, locale: string) =>
   getByUid<PrismicPage>(client, "page", slug, locale);
 
 const { serverRuntimeConfig } = getConfig();
 
+interface StaticProps {
+  config: PrismicConfig['data'];
+  page: PrismicPage;
+  isPreview?: boolean;
+}
+
 export const getStaticProps: GetStaticProps<
   StaticProps,
   { slug: string }
-> = async (ctx) => {
-  const client = createClient({ previewData: ctx.previewData });
+> = async ({ previewData, params, locale, preview }) => {
+  const client = createClient({ previewData });
 
-  const page = await getCmsPage(client, ctx.params!.slug, ctx.locale!);
-  if (!page) {
+  const [config, page] = await Promise.all([
+    getPrismicConfig(client, locale!),
+    getCmsPage(client, params!.slug, locale!),
+  ]);
+  if (!config || !page) {
     return {
       notFound: true,
       revalidate: serverRuntimeConfig.pageRevalidateInterval,
@@ -96,13 +89,15 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
+      config: config.data,
       page,
+      isPreview: preview || false,
     },
     revalidate: serverRuntimeConfig.pageRevalidateInterval,
   };
 };
 
-const Home = ({ page }: StaticProps) => {
+const Home = ({ config, page }: StaticProps) => {
   const title = page.data.headTitle || "Martijn Hols";
 
   return (
@@ -137,7 +132,9 @@ const Home = ({ page }: StaticProps) => {
         )}
       </Head>
 
-      <SliceZone slices={page.data.slices} components={components} />
+      <PrismicConfigProvider value={config}>
+        <SliceZone slices={page.data.slices} components={components} />
+      </PrismicConfigProvider>
     </PageWrapper>
   );
 };

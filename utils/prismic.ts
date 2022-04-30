@@ -1,15 +1,16 @@
-import {
-  getRepositoryName,
-  createClient as createPrismicClient,
-} from "@prismicio/client";
+import { Client, createClient as createPrismicClient } from "@prismicio/client";
 import { CreateClientConfig, enableAutoPreviews } from "@prismicio/next";
+import { PrismicDocument } from "@prismicio/types";
+import getConfig from "next/config";
 
 import sm from "../sm.json";
+
+const { publicRuntimeConfig } = getConfig();
 
 /**
  * The project's Prismic repository name.
  */
-export const repositoryName = getRepositoryName(sm.apiEndpoint);
+export const repositoryName = publicRuntimeConfig.prismicRepositoryName;
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
@@ -25,4 +26,22 @@ export const createClient = (config: CreateClientConfig = {}) => {
   });
 
   return client;
+};
+
+export const getByUid = async <T extends PrismicDocument>(
+  client: Client,
+  documentType: string,
+  uid: string,
+  locale: string
+) => {
+  try {
+    return await client.getByUID<T>(documentType, uid, {
+      lang: locale,
+    });
+  } catch (err) {
+    if ((err as Error).message === "No documents were returned") {
+      return undefined;
+    }
+    throw err;
+  }
 };
