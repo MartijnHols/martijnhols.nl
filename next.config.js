@@ -25,8 +25,8 @@ const nextConfig = {
     };
   },
   i18n: {
-    locales: ["nl-nl"],
-    defaultLocale: "nl-nl",
+    locales: process.env.ACTIVE_LOCALES.split(","),
+    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
   },
   serverRuntimeConfig: {
     pageRevalidateInterval:
