@@ -1,7 +1,8 @@
 import { FilledLinkToDocumentField, PrismicDocument } from "@prismicio/types";
+import getConfig from "next/config";
+import { toPrismicLocale, toUserLocale } from "./locales";
 
 export const HOMEPAGE_SLUG = "homepage";
-const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE;
 
 const slugResolver = (
   doc:
@@ -15,6 +16,8 @@ const slugResolver = (
   return "/";
 };
 
+const { publicRuntimeConfig } = getConfig();
+
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 const prismicLinkResolver = (
@@ -24,11 +27,13 @@ const prismicLinkResolver = (
 ) => {
   const slug = slugResolver(doc);
 
-  if (doc.lang === defaultLocale) {
+  const userLocale = toUserLocale(doc.lang);
+
+  if (publicRuntimeConfig.defaultUserLocale === userLocale) {
     return slug;
   }
 
-  return `/${doc.lang}${slug}`;
+  return `/${userLocale}${slug}`;
 };
 
 export default prismicLinkResolver;

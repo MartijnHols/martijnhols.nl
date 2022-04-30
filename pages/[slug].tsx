@@ -23,6 +23,7 @@ import {
   PrismicConfig,
   PrismicConfigProvider,
 } from "../utils/prismicConfig";
+import { toPrismicLocale, toUserLocale } from "../utils/locales";
 
 export const getPages = async (
   client: Client,
@@ -42,7 +43,7 @@ export const getStaticPaths = async () => {
   return {
     paths: pages.map((page) => ({
       params: { slug: page.uid! },
-      locale: page.lang,
+      locale: toUserLocale(page.lang),
     })),
     fallback: "blocking",
   };
@@ -65,7 +66,7 @@ export const getCmsPage = (client: Client, slug: string, locale: string) =>
 const { serverRuntimeConfig } = getConfig();
 
 interface StaticProps {
-  config: PrismicConfig['data'];
+  config: PrismicConfig["data"];
   page: PrismicPage;
   isPreview?: boolean;
 }
@@ -75,10 +76,11 @@ export const getStaticProps: GetStaticProps<
   { slug: string }
 > = async ({ previewData, params, locale, preview }) => {
   const client = createClient({ previewData });
+  const prismicLocale = toPrismicLocale(locale!);
 
   const [config, page] = await Promise.all([
-    getPrismicConfig(client, locale!),
-    getCmsPage(client, params!.slug, locale!),
+    getPrismicConfig(client, prismicLocale),
+    getCmsPage(client, params!.slug, prismicLocale),
   ]);
   if (!config || !page) {
     return {

@@ -10,6 +10,16 @@ const getEnvironmentVariable = (name) => {
 };
 
 const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint);
+/**
+ * All supported locales.
+ * Prismic locale => user-facing locale
+ */
+const prismicLocaleMap = {
+  "nl-nl": "nl",
+  "en-us": "en",
+};
+/** The default locale is special, as it's omited from the URL. */
+const defaultUserLocale = "nl";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -25,8 +35,10 @@ const nextConfig = {
     };
   },
   i18n: {
-    locales: process.env.ACTIVE_LOCALES.split(","),
-    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
+    locales: Object.keys(prismicLocaleMap).map(
+      (locale) => prismicLocaleMap[locale] || locale
+    ),
+    defaultLocale: defaultUserLocale,
   },
   serverRuntimeConfig: {
     pageRevalidateInterval:
@@ -37,6 +49,8 @@ const nextConfig = {
   publicRuntimeConfig: {
     primaryHost: process.env.PRIMARY_HOST,
     prismicRepositoryName,
+    prismicLocaleMap,
+    defaultUserLocale,
   },
   images: {
     domains: [
