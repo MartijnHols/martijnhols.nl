@@ -1,5 +1,7 @@
 import Head from "next/head";
+
 import { PrismicPage } from "../pages/[slug]";
+import absoluteUrl from "../utils/absoluteUrl";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 
 const defaultHrefLang = "en";
@@ -26,7 +28,7 @@ const HrefLangHead = ({ page }: { page: PrismicPage }) => (
           key={`alternate-${alternate.lang}`}
           rel="alternate"
           hrefLang={hrefLang}
-          href={prismicLinkResolver(alternate)}
+          href={absoluteUrl(prismicLinkResolver(alternate))}
         />
       );
     })}
