@@ -6,6 +6,7 @@ import Angle from "../../components/Angle";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import { colors, spacing } from "../../theme";
+import prismicLinkResolver from "../../utils/prismicLinkResolver";
 
 const Section = styled.div`
   background: ${colors.complementary};
@@ -53,8 +54,8 @@ interface Props {
 }
 
 const FooterSlice = ({ slice }: Props) => {
-  const linkedIn = asLink(slice.primary.linkedIn);
-  const gitHub = asLink(slice.primary.gitHub);
+  const linkedIn = asLink(slice.primary.linkedIn, prismicLinkResolver);
+  const gitHub = asLink(slice.primary.gitHub, prismicLinkResolver);
 
   return (
     <>

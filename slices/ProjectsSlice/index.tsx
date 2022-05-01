@@ -17,6 +17,7 @@ import PrismicTitle from "../../components/PrismicTitle";
 import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 import { usePrismicConfig } from "../../utils/prismicConfig";
+import prismicLinkResolver from "../../utils/prismicLinkResolver";
 
 const Section = styled.div`
   background: ${colors.dominant};
@@ -110,8 +111,8 @@ const ProjectsSlice = ({ slice }: Props) => {
             return null;
           }
 
-          const url = asLink(project.url);
-          const gitHub = asLink(project.gitHub);
+          const url = asLink(project.url, prismicLinkResolver);
+          const gitHub = asLink(project.gitHub, prismicLinkResolver);
 
           return (
             <Project key={index}>
