@@ -24,6 +24,7 @@ import {
   PrismicConfigProvider,
 } from "../utils/prismicConfig";
 import { toPrismicLocale, toUserLocale } from "../utils/locales";
+import HrefLangHead from "../components/HrefLangHead";
 
 export const getPages = async (
   client: Client,
@@ -133,6 +134,7 @@ const Home = ({ config, page }: StaticProps) => {
           <meta property="og:image:alt" content={page.data.ogImage.alt} />
         )}
       </Head>
+      <HrefLangHead page={page} />
 
       <PrismicConfigProvider value={config}>
         <SliceZone slices={page.data.slices} components={components} />
