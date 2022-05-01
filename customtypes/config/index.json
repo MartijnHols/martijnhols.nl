@@ -18,6 +18,13 @@
           "label": "Source Code",
           "placeholder": ""
         }
+      },
+      "languageToggle": {
+        "type": "Text",
+        "config": {
+          "label": "Language Toggle",
+          "placeholder": "Toggle between Dutch and English"
+        }
       }
     }
   }

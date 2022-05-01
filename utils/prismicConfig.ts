@@ -3,7 +3,7 @@ import { KeyTextField, PrismicDocument } from "@prismicio/types";
 import { createContext, useContext } from "react";
 
 /**
- * Config is a Single type in Prismic where non-content strings can be placed 
+ * Config is a Single type in Prismic where non-content strings can be placed
  * for translation. This keeps all languages in a single system (Prismic).
  */
 
@@ -11,6 +11,7 @@ export type PrismicConfig = PrismicDocument<
   {
     visit: KeyTextField;
     sourceCode: KeyTextField;
+    languageToggle: KeyTextField;
   },
   "config"
 >;

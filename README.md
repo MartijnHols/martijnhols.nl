@@ -1,6 +1,6 @@
 # martijnhols.nl
 
-This is the source code of https://martijnhols.nl, the website for my personal company from which I do freelance work (among other things).
+This is the source code of https://martijnhols.nl, the website for my personal company from which I do freelance work (among other things). This site is greatly over-engineered for the fun of it.
 
 ## Installation
 
@@ -15,6 +15,16 @@ The SliceMachine allows you to configure the Prismic CMS. In short Custom Types 
 The Next app is the rendered site as a user would see it.
 
 To edit content, go to https://prismic.io/dashboard and login. If you don't have a repository yet, create one and update the `apiEndpoint` in `sm.json` (replace `martijnhols` with your new repository name).
+
+## Production build
+
+Sometimes you to start a production build to test things properly (e.g. Lighthouse). You can make one and start it with the following one-liner:
+
+```bash
+yarn build && yarn next start
+```
+
+This will launch a server at http://localhost:3000.
 
 ## Prismic previews
 
