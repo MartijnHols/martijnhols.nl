@@ -12,97 +12,16 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Consectetur aute et dolor in mollit qui magna quis id magna enim velit ipsum. Officia non amet culpa excepteur dolore cillum consequat sunt ex aute dolor laborum.",
+            "text": "Anim et duis et excepteur elit in ullamco nisi dolor duis do minim eu laborum officia. Est ea sit do veniam ex ipsum quis do qui deserunt do nisi aliqua Lorem. Magna aute enim eiusmod elit nulla fugiat ea irure ea sunt id occaecat.",
             "spans": []
           }
         ],
-        "tech": "orchestrate seamless e-business",
-        "url": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        }
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Incididunt laborum incididunt reprehenderit labore ad laboris. Anim elit tempor veniam eu ut excepteur exercitation laborum. Irure pariatur est et proident voluptate proident quis ea laborum nulla.",
-            "spans": []
-          }
-        ],
-        "tech": "evolve open-source infrastructures",
-        "url": {
-          "link_type": "Web",
-          "url": "https://prismic.io"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        }
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Ad in Lorem dolore sunt non dolore ipsum dolore aute sit officia amet deserunt commodo elit. Qui sit aute sit culpa nostrud exercitation magna anim dolore in. Pariatur esse veniam irure pariatur anim mollit pariatur ullamco occaecat aute nisi do nostrud id nisi.",
-            "spans": []
-          }
-        ],
-        "tech": "aggregate 24/365 mindshare",
-        "url": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Aliqua ad minim non eiusmod labore ullamco adipisicing magna consequat id minim.",
-            "spans": []
-          }
-        ],
-        "tech": "drive synergistic ROI",
+        "tech": "envisioneer dynamic niches",
         "url": {
           "link_type": "Web",
           "url": "https://slicemachine.dev"
@@ -110,7 +29,9 @@
         "gitHub": {
           "link_type": "Web",
           "url": "http://google.com"
-        }
+        },
+        "startedYear": "generate plug-and-play systems",
+        "deliveredYear": "incubate leading-edge functionalities"
       },
       {
         "image": {
@@ -120,24 +41,26 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Sint reprehenderit qui elit consectetur. Incididunt aliquip aute sint occaecat ut.",
+            "text": "Magna ex aliquip sunt officia cillum ut cupidatat dolor ullamco ex.",
             "spans": []
           }
         ],
-        "tech": "utilize out-of-the-box supply-chains",
+        "tech": "embrace real-time models",
         "url": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "https://slicemachine.dev"
         },
         "gitHub": {
           "link_type": "Web",
           "url": "http://twitter.com"
-        }
+        },
+        "startedYear": "monetize viral e-services",
+        "deliveredYear": "matrix intuitive content"
       },
       {
         "image": {
@@ -147,38 +70,40 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=900&h=500&fit=crop"
         },
         "about": [
           {
             "type": "paragraph",
-            "text": "Lorem magna duis sit laboris ad consectetur.",
+            "text": "Nostrud cupidatat veniam aliquip est adipisicing enim occaecat eu voluptate nulla irure ut dolor. Commodo enim cillum qui ea esse Lorem.",
             "spans": []
           }
         ],
-        "tech": "optimize distributed vortals",
+        "tech": "syndicate transparent markets",
         "url": {
           "link_type": "Web",
-          "url": "https://prismic.io"
+          "url": "http://twitter.com"
         },
         "gitHub": {
           "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        }
+          "url": "http://twitter.com"
+        },
+        "startedYear": "reintermediate out-of-the-box content",
+        "deliveredYear": "reintermediate cross-platform technologies"
       }
     ],
     "primary": {
       "title": [
         {
           "type": "heading1",
-          "text": "Brand compelling ROI",
+          "text": "Redefine wireless deliverables",
           "spans": []
         }
       ],
       "explanation": [
         {
           "type": "paragraph",
-          "text": "Nisi sunt incididunt consequat anim ut magna laboris irure officia fugiat do. Aute nostrud officia occaecat sunt pariatur irure.",
+          "text": "Veniam mollit velit aliquip reprehenderit et anim ut. Ullamco sint cupidatat mollit.",
           "spans": []
         }
       ]

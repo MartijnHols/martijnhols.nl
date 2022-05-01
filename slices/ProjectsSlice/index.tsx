@@ -9,6 +9,7 @@ import {
   TitleField,
 } from "@prismicio/types";
 import Image from "next/image";
+import { Fragment } from "react";
 
 import Container from "../../components/Container";
 import Link from "../../components/Link";
@@ -65,6 +66,7 @@ const ProjectAbout = styled.div`
 `;
 const Tech = styled.div`
   margin-bottom: ${spacing.x2}px;
+  font-size: 16px;
 `;
 const TechItem = styled.div`
   display: inline-block;
@@ -83,6 +85,9 @@ const TechItem = styled.div`
     color: #fff;
   }
 `;
+const InvisibleText = styled.span`
+  font-size: 0;
+`;
 
 export type PrismicProjectsSlice = Slice<
   "projects_slice",
@@ -91,11 +96,14 @@ export type PrismicProjectsSlice = Slice<
     explanation: RichTextField;
   },
   {
+    // TODO: Turn into a repeatable type
     image: ImageField;
     url: LinkField;
     gitHub: LinkField;
     about: RichTextField;
     tech: KeyTextField;
+    startedYear: KeyTextField;
+    deliveredYear: KeyTextField;
   }
 >;
 
@@ -139,6 +147,7 @@ const ProjectsSlice = ({ slice }: Props) => {
               </ProjectImage>
               <ProjectExplanation>
                 <ProjectAbout>
+                  {project.deliveredYear && `${project.deliveredYear} - `}
                   <PrismicRichText field={project.about} />
                 </ProjectAbout>
                 <Tech>
@@ -146,9 +155,11 @@ const ProjectsSlice = ({ slice }: Props) => {
                     ?.split(",")
                     .map((item) => item.trim())
                     .map((item) => (
-                      <TechItem key={item} data-value={item}>
-                        {item}
-                      </TechItem>
+                      <Fragment key={item}>
+                        <TechItem data-value={item}>{item}</TechItem>
+                        {/* Add hidden text to make copy-pasting more convenient */}
+                        <InvisibleText>, </InvisibleText>
+                      </Fragment>
                     ))}
                 </Tech>
                 <div>
