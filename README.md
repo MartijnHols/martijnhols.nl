@@ -56,12 +56,13 @@ There are several things I am considering improving for this app, such as:
 
 - Adding a minimal blog using Prismic as CMS and GitHub comments as comments. I'm thinking it wouldn't even really be a blog, just a place to post static articles to share with people and for SEO. I have a dozen article ideas already lined up.
 - With legacy Prismic setups I always kept the Prismic components separate from the slice components, so all the Prismic mess and real components aren't mixed. In other words, I am consdering adding the slices to the components folder but with the Prismic bridging code exclusively in the current slices folder. Theoretically this makes it easier to switch CMS, but that would probably never happen. More importantly code separation and components become cleaner and shorter.
-- Cypress. I am a big fan of Cypress E2E testing. While it would be overkill for this site, it would be a good opportunity to show off my usual implementation.
+- Cypress. I am a big fan of Cypress E2E testing. While it would be overkill for this site, it would be a good opportunity to show off and polish my usual implementation.
 - Case Studies for my projects. Explain how things were solved, why, lessons learned, regrets, etc. A lot of work, and not sure how useful this would be.
-- Clean up `[slug].tsx`: move all the Prismic fetching to a separate file. I am a fan of code co-location to a certain point, and this exceeds the threshold where it's cleaner.
+- Clean up `[slug].tsx`: consider separating the backend code from the frontend code. I am a fan of code co-location to a certain point, and this exceeds the threshold where it's cleaner.
 - Sitemap. This isn't very useful with just a homepage, but would be neat when I add more pages. I think I have a solution that I would like to share.
 - ESLint
 - Prettier
 - Husky
 - English version: support should already be in place, just need to figure out how to visually make the toggle and then go through the trouble of translating everything
 - OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing, and for future article images
+- Canonical / alternate / hreflang meta tags
