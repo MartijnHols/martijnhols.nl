@@ -56,6 +56,13 @@ const Link = ({
       href = href.substring(`/${hrefLocale}`.length);
       locale = hrefLocale;
     }
+
+    if (href === "") {
+      // If the href only included the primary host (and optionally just a
+      // locale), we might have ended up with an empty href that is supposed to
+      // link to the homepage.
+      href = "/";
+    }
   }
 
   return (
@@ -66,7 +73,7 @@ const Link = ({
       scroll={scroll}
       shallow={shallow}
       prefetch={prefetch}
-      locale={locale  }
+      locale={locale}
       passHref
     >
       <a {...others}>{children}</a>
