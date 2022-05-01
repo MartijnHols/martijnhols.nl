@@ -163,7 +163,6 @@ const ProjectsSlice = ({ slice }: Props) => {
                     ))}
                 </Tech>
                 <div>
-                  {/* TODO: I18n */}
                   {url && <Link href={url}>{config?.visit}</Link>}
                   {url && gitHub && " | "}
                   {gitHub && <Link href={gitHub}>{config?.sourceCode}</Link>}

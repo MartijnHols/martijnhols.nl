@@ -65,18 +65,10 @@
         }
       },
       "tech": {
-        "type": "Group",
+        "type": "Text",
         "config": {
           "label": "Tech",
-          "fields": {
-            "name": {
-              "type": "Text",
-              "config": {
-                "label": "Name",
-                "placeholder": ""
-              }
-            }
-          }
+          "placeholder": ""
         }
       }
     }
