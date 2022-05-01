@@ -1,7 +1,14 @@
 {
   "_cts": {
     "page": {},
-    "project": {},
+    "project": {
+      "brief": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "config": {}
   },
   "slices": {

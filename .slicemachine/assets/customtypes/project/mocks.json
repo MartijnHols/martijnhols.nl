@@ -1,37 +1,56 @@
 {
-  "id": "30a1d0aa-dfba-4515-b2d1-9fe9ebeed7d8",
-  "uid": "quis-culpa-aliquam",
+  "id": "31827625-b350-47c7-9616-db0ec848e5c6",
+  "uid": "officia-et-dolorum",
   "type": "project",
   "data": {
-    "name": [
-      {
-        "type": "paragraph",
-        "text": "Cupidatat aute qui enim duis fugiat dolor fugiat consequat laboris minim quis dolore. Culpa ex laborum excepteur.",
-        "spans": []
-      }
-    ],
-    "url": {
-      "link_type": "Web",
-      "url": "http://google.com"
-    },
-    "image": {
+    "thumbnail": {
       "dimensions": {
-        "width": 900,
-        "height": 500
+        "width": 200,
+        "height": 200
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=200&h=200&fit=crop"
+    },
+    "name": [
+      {
+        "type": "paragraph",
+        "text": "Nisi cupidatat officia aliqua consequat consequat non do. Nulla adipisicing sunt minim laboris nostrud deserunt amet labore dolore Lorem nostrud.",
+        "spans": []
+      }
+    ],
+    "brief": [
+      {
+        "type": "paragraph",
+        "text": "Eu mollit id magna quis officia non sit minim esse nulla non exercitation irure duis culpa.",
+        "spans": []
+      }
+    ],
+    "startedYear": "optimize turn-key web services",
+    "endedYear": "innovate virtual channels",
+    "url": {
+      "link_type": "Web",
+      "url": "https://slicemachine.dev"
+    },
+    "sourceCode": {
+      "link_type": "Web",
+      "url": "https://prismic.io"
     },
     "tech": [
       {
-        "name": "e-enable sexy initiatives"
+        "name": "disintermediate holistic networks"
       },
       {
-        "name": "strategize magnetic supply-chains"
+        "name": "enable clicks-and-mortar web services"
       },
       {
-        "name": "iterate frictionless channels"
+        "name": "integrate bricks-and-clicks communities"
+      },
+      {
+        "name": "innovate magnetic e-business"
+      },
+      {
+        "name": "extend impactful eyeballs"
       }
     ]
   }

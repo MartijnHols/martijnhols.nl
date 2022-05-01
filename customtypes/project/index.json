@@ -5,6 +5,17 @@
   "status": true,
   "json": {
     "Main": {
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "Thumbnail",
+          "constraint": {
+            "width": 200,
+            "height": 200
+          },
+          "thumbnails": []
+        }
+      },
       "name": {
         "type": "StructuredText",
         "config": {
@@ -12,6 +23,29 @@
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "brief": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Brief",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "startedYear": {
+        "type": "Text",
+        "config": {
+          "label": "Started Year",
+          "placeholder": ""
+        }
+      },
+      "endedYear": {
+        "type": "Text",
+        "config": {
+          "label": "Ended Year",
+          "placeholder": "Last contribution year"
         }
       },
       "url": {
@@ -22,12 +56,12 @@
           "select": null
         }
       },
-      "image": {
-        "type": "Image",
+      "sourceCode": {
+        "type": "Link",
         "config": {
-          "label": "Image",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Source Code",
+          "placeholder": "",
+          "select": null
         }
       },
       "tech": {
