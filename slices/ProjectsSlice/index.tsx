@@ -30,15 +30,26 @@ const Explanation = styled.div`
 const Project = styled.div`
   display: flex;
   gap: ${spacing.x6}px;
-  padding: ${spacing.x2}px 0;
+  padding: ${spacing.x4}px 0;
+  position: relative;
 
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     flex-flow: column;
     gap: ${spacing.x2}px;
   }
 
-  :not(:first-of-type) {
-    border-top: 3px solid ${colors.complementary};
+  :not(:first-of-type):not(:last-of-type) {
+    ::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: ${colors.complementary};
+      height: 2px;
+      width: 100px;
+      max-width: 100%;
+    }
   }
 `;
 const ProjectImage = styled.div`
