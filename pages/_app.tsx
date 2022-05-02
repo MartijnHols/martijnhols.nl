@@ -1,13 +1,8 @@
 import { AppProps } from "next/app";
-import { useState } from "react";
-import {
-  QueryClient,
-  QueryClientProvider,
-  Hydrate,
-  DehydratedState,
-} from "react-query";
+import { DehydratedState } from "react-query";
 
 import PrismicProvider from "../components/PrismicProvider";
+import ReactQueryProvider from "../components/ReactQueryProvider";
 import GlobalStyles from "../theme/GlobalStyles";
 
 type MyAppProps = AppProps<{
@@ -15,30 +10,13 @@ type MyAppProps = AppProps<{
   dehydratedState: DehydratedState;
 }>;
 
-const App = ({ Component, pageProps }: MyAppProps) => {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // We're using a CMS, so we want data to be atomic so updating
-            // subqueries shouldn't fetch newer data than its parent
-            staleTime: Infinity,
-          },
-        },
-      })
-  );
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <PrismicProvider isPreview={pageProps?.isPreview}>
-          <GlobalStyles />
-          <Component {...pageProps} />
-        </PrismicProvider>
-      </Hydrate>
-    </QueryClientProvider>
-  );
-};
+const App = ({ Component, pageProps }: MyAppProps) => (
+  <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
+    <PrismicProvider isPreview={pageProps?.isPreview}>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </PrismicProvider>
+  </ReactQueryProvider>
+);
 
 export default App;

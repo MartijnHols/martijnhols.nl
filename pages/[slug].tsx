@@ -9,6 +9,7 @@ import {
 import { GetStaticProps, PreviewData } from "next";
 import getConfig from "next/config";
 import Head from "next/head";
+import { createContext, useContext } from "react";
 import { dehydrate, QueryClient, DehydratedState } from "react-query";
 
 import PageWrapper from "../components/PageWrapper";
@@ -26,8 +27,8 @@ import {
 } from "../utils/prismicConfig";
 import { toPrismicLocale, toUserLocale } from "../utils/locales";
 import HrefLangHead from "../components/HrefLangHead";
-import { createContext, useContext } from "react";
 import stripUndefined from "../utils/stripUndefined";
+import prefetchSliceSubQueries from "../utils/prefetchSliceSubQueries";
 
 export const getPages = async (
   client: PrismicClient,
@@ -64,12 +65,6 @@ export type PrismicPage = PrismicDocument<
   "page"
 >;
 
-export interface PrefetchContext {
-  prismicClient: PrismicClient;
-  queryClient: QueryClient;
-  locale: string;
-}
-
 const getCmsPage = async (
   prismicClient: PrismicClient,
   slug: string,
@@ -81,37 +76,13 @@ const getCmsPage = async (
     return;
   }
 
-  /**
-   * We need to prefetch data needed by slices. We need to do this in
-   * `getStaticProps` in order for this data to be present during SSG. We use
-   * react-query to achieve this relatively cleanly.
-   * Each slice component can have an optional `prefetch` prop that preloads
-   * the data as required by that component. The component itself can use a
-   * normal (react-query) hook to load data. This way it works both when
-   * prehydrated as well as lazily.
-   */
-
-  const prefetchContext: PrefetchContext = {
+  await prefetchSliceSubQueries({
     prismicClient,
-    queryClient,
     locale,
-  };
-  type PrefetchableSliceComponent = unknown & {
-    prefetch?: (context: PrefetchContext) => Promise<void>;
-  };
-  // We don't need to store any return data as it's put in the QueryClient's cache
-  await Promise.all(
-    page.data.slices
-      .map(
-        (slice) =>
-          // I am sure there's a cleaner way to do this type, but I couldn't
-          // think of it and the 15 minutes it may take to find it Googling
-          // isn't worth it
-          components[slice.slice_type] as unknown as PrefetchableSliceComponent
-      )
-      .filter((component) => "prefetch" in component)
-      .map((component) => component.prefetch!(prefetchContext))
-  );
+    queryClient,
+    slices: page.data.slices,
+    components,
+  });
 
   return page;
 };

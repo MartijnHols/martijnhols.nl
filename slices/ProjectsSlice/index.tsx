@@ -9,6 +9,7 @@ import {
   TitleField,
 } from "@prismicio/types";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 import { useQuery } from "react-query";
 
@@ -120,6 +121,8 @@ const ProjectsSlice = ({ slice }: Props) => {
   const info = useQuery("projects", () => getProjects(prismicClient, locale));
   const config = usePrismicConfig();
 
+  // TODO: Use projects subquery data
+
   return (
     <Section>
       <Container>
@@ -129,9 +132,6 @@ const ProjectsSlice = ({ slice }: Props) => {
         <Explanation>
           <PrismicRichText field={slice.primary.explanation} />
         </Explanation>
-
-        Length: {info.data?.length}
-
 
         {slice.items.map((project, index) => {
           const image = convertPrismicImage(project.image);
