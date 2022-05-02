@@ -29,62 +29,7 @@
           }
         }
       },
-      "items": {
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "about": {
-          "type": "StructuredText",
-          "config": {
-            "label": "About",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "tech": {
-          "type": "Text",
-          "config": {
-            "label": "Tech",
-            "placeholder": "Comma separated"
-          }
-        },
-        "url": {
-          "type": "Link",
-          "config": {
-            "label": "Url",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "gitHub": {
-          "type": "Link",
-          "config": {
-            "label": "GitHub (sourcecode)",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "startedYear": {
-          "type": "Text",
-          "config": {
-            "label": "Started Year",
-            "placeholder": ""
-          }
-        },
-        "deliveredYear": {
-          "type": "Text",
-          "config": {
-            "label": "Delivered Year",
-            "placeholder": ""
-          }
-        }
-      },
+      "items": {},
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]

@@ -3,107 +3,19 @@
     "variation": "default",
     "name": "Default",
     "slice_type": "projects_slice",
-    "items": [
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Anim et duis et excepteur elit in ullamco nisi dolor duis do minim eu laborum officia. Est ea sit do veniam ex ipsum quis do qui deserunt do nisi aliqua Lorem. Magna aute enim eiusmod elit nulla fugiat ea irure ea sunt id occaecat.",
-            "spans": []
-          }
-        ],
-        "tech": "envisioneer dynamic niches",
-        "url": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "http://google.com"
-        },
-        "startedYear": "generate plug-and-play systems",
-        "deliveredYear": "incubate leading-edge functionalities"
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Magna ex aliquip sunt officia cillum ut cupidatat dolor ullamco ex.",
-            "spans": []
-          }
-        ],
-        "tech": "embrace real-time models",
-        "url": {
-          "link_type": "Web",
-          "url": "https://slicemachine.dev"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "startedYear": "monetize viral e-services",
-        "deliveredYear": "matrix intuitive content"
-      },
-      {
-        "image": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=900&h=500&fit=crop"
-        },
-        "about": [
-          {
-            "type": "paragraph",
-            "text": "Nostrud cupidatat veniam aliquip est adipisicing enim occaecat eu voluptate nulla irure ut dolor. Commodo enim cillum qui ea esse Lorem.",
-            "spans": []
-          }
-        ],
-        "tech": "syndicate transparent markets",
-        "url": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "gitHub": {
-          "link_type": "Web",
-          "url": "http://twitter.com"
-        },
-        "startedYear": "reintermediate out-of-the-box content",
-        "deliveredYear": "reintermediate cross-platform technologies"
-      }
-    ],
+    "items": [],
     "primary": {
       "title": [
         {
           "type": "heading1",
-          "text": "Redefine wireless deliverables",
+          "text": "Cultivate sexy convergence",
           "spans": []
         }
       ],
       "explanation": [
         {
           "type": "paragraph",
-          "text": "Veniam mollit velit aliquip reprehenderit et anim ut. Ullamco sint cupidatat mollit.",
+          "text": "Elit qui anim non Lorem non fugiat. Ipsum et sit do proident reprehenderit amet sunt culpa in ex pariatur aliqua ut.",
           "spans": []
         }
       ]

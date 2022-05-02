@@ -100,16 +100,6 @@ export type PrismicProjectsSlice = Slice<
   {
     title: TitleField;
     explanation: RichTextField;
-  },
-  {
-    // TODO: Turn into a repeatable type
-    image: ImageField;
-    url: LinkField;
-    gitHub: LinkField;
-    about: RichTextField;
-    tech: KeyTextField;
-    startedYear: KeyTextField;
-    deliveredYear: KeyTextField;
   }
 >;
 
@@ -121,12 +111,10 @@ const ProjectsSlice = ({ slice }: Props) => {
   const { locale } = useRouter();
   const previewData = usePreviewData();
   const [prismicClient] = useState(() => createClient({ previewData }));
-  const info = useQuery("projects", () =>
+  const { data } = useQuery("projects", () =>
     getProjects(prismicClient, toPrismicLocale(locale!))
   );
   const config = usePrismicConfig();
-
-  // TODO: Use projects subquery data
 
   return (
     <Section>
@@ -138,53 +126,56 @@ const ProjectsSlice = ({ slice }: Props) => {
           <PrismicRichText field={slice.primary.explanation} />
         </Explanation>
 
-        {slice.items.map((project, index) => {
-          const image = convertPrismicImage(project.image);
-          if (!image) {
-            return null;
-          }
+        {data
+          ?.map((item) => item.data)
+          .sort((a, b) => (b.endedYear || "").localeCompare(a.endedYear || ""))
+          .map((project, index) => {
+            const thumbnail = convertPrismicImage(project.thumbnail);
+            if (!thumbnail) {
+              return null;
+            }
 
-          const url = asLink(project.url, prismicLinkResolver);
-          const gitHub = asLink(project.gitHub, prismicLinkResolver);
+            const url = asLink(project.url, prismicLinkResolver);
+            const gitHub = asLink(project.sourceCode, prismicLinkResolver);
 
-          return (
-            <Project key={index}>
-              <ProjectImage>
-                <Image
-                  src={image}
-                  alt={image.alt}
-                  layout="fixed"
-                  width={200}
-                  height={200}
-                  objectFit="contain"
-                />
-              </ProjectImage>
-              <ProjectExplanation>
-                <ProjectAbout>
-                  {project.deliveredYear && `${project.deliveredYear} - `}
-                  <PrismicRichText field={project.about} />
-                </ProjectAbout>
-                <Tech>
-                  {project.tech
-                    ?.split(",")
-                    .map((item) => item.trim())
-                    .map((item) => (
-                      <Fragment key={item}>
-                        <TechItem data-value={item}>{item}</TechItem>
-                        {/* Add hidden text to make copy-pasting more convenient */}
-                        <InvisibleText>, </InvisibleText>
-                      </Fragment>
-                    ))}
-                </Tech>
-                <div>
-                  {url && <Link href={url}>{config?.visit}</Link>}
-                  {url && gitHub && " | "}
-                  {gitHub && <Link href={gitHub}>{config?.sourceCode}</Link>}
-                </div>
-              </ProjectExplanation>
-            </Project>
-          );
-        })}
+            return (
+              <Project key={index}>
+                <ProjectImage>
+                  <Image
+                    src={thumbnail}
+                    alt={thumbnail.alt}
+                    layout="fixed"
+                    width={200}
+                    height={200}
+                    objectFit="contain"
+                  />
+                </ProjectImage>
+                <ProjectExplanation>
+                  <ProjectAbout>
+                    {project.endedYear && `${project.endedYear} - `}
+                    <PrismicRichText field={project.brief} />
+                  </ProjectAbout>
+                  <Tech>
+                    {project.tech
+                      ?.split(",")
+                      .map((item) => item.trim())
+                      .map((item) => (
+                        <Fragment key={item}>
+                          <TechItem data-value={item}>{item}</TechItem>
+                          {/* Add hidden text to make copy-pasting more convenient */}
+                          <InvisibleText>, </InvisibleText>
+                        </Fragment>
+                      ))}
+                  </Tech>
+                  <div>
+                    {url && <Link href={url}>{config?.visit}</Link>}
+                    {url && gitHub && " | "}
+                    {gitHub && <Link href={gitHub}>{config?.sourceCode}</Link>}
+                  </div>
+                </ProjectExplanation>
+              </Project>
+            );
+          })}
       </Container>
     </Section>
   );

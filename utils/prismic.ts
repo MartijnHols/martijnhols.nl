@@ -1,6 +1,12 @@
 import { Client, createClient as createPrismicClient } from "@prismicio/client";
 import { CreateClientConfig, enableAutoPreviews } from "@prismicio/next";
-import { PrismicDocument } from "@prismicio/types";
+import {
+  ImageField,
+  KeyTextField,
+  LinkField,
+  PrismicDocument,
+  RichTextField,
+} from "@prismicio/types";
 import getConfig from "next/config";
 
 import sm from "../sm.json";
@@ -46,7 +52,21 @@ export const getByUid = async <T extends PrismicDocument>(
   }
 };
 
+export type PrismicProject = PrismicDocument<
+  {
+    thumbnail: ImageField;
+    name: KeyTextField;
+    brief: RichTextField;
+    startedYear: KeyTextField;
+    endedYear: KeyTextField;
+    url: LinkField;
+    sourceCode: LinkField;
+    tech: KeyTextField;
+  },
+  "page"
+>;
+
 export const getProjects = (client: Client, locale: string) =>
-  client.getAllByType("project", {
+  client.getAllByType<PrismicProject>("project", {
     lang: locale,
   });

@@ -67,4 +67,3 @@ There are several things I am considering improving for this app, such as:
 - English version: support should already be in place, just need to figure out how to visually make the toggle and then go through the trouble of translating everything
 - OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing, and for future article images
 - Canonical / alternate / hreflang meta tags
-- Projects as repeatable custom type: easier field setup, translations, direct links, allow for case studies without repeating content, filtering by tag, paging, etc.. If we're going to continue developing the projects slice, we should really migrate first to avoid additional migration work.
