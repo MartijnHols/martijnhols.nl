@@ -33,7 +33,7 @@ const HeaderContent = styled.div`
   padding: calc(5px + 100vw / 2000 * 6) 7px 0 calc(7px + 100vw / 2000 * 7);
   font-size: calc(10px + 100vw / 2000 * 12);
   font-weight: 500;
-  transform: rotate(-1deg);
+  transform: rotate(-1.15deg);
   transform-origin: left;
 `;
 const AngleBefore = styled(Angle)`
