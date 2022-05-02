@@ -134,11 +134,8 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-interface PageContext {
-  previewData: PreviewData;
-}
-const pageContext = createContext<PageContext | undefined>(undefined);
-export const usePageContext = () => useContext(pageContext)!;
+const PreviewDataContext = createContext<PreviewData | undefined>(undefined);
+export const usePreviewData = () => useContext(PreviewDataContext)!;
 
 const Home = ({ config, page, previewData }: StaticProps) => {
   const title = page.data.headTitle || "Martijn Hols";
@@ -177,13 +174,9 @@ const Home = ({ config, page, previewData }: StaticProps) => {
       <HrefLangHead page={page} />
 
       <PrismicConfigProvider value={config}>
-        <pageContext.Provider
-          value={{
-            previewData,
-          }}
-        >
+        <PreviewDataContext.Provider value={previewData}>
           <SliceZone slices={page.data.slices} components={components} />
-        </pageContext.Provider>
+        </PreviewDataContext.Provider>
       </PrismicConfigProvider>
     </PageWrapper>
   );

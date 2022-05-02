@@ -17,10 +17,11 @@ import Container from "../../components/Container";
 import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
-import { PrefetchContext, usePageContext } from "../../pages/[slug]";
+import { usePreviewData } from "../../pages/[slug]";
 import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 import { toPrismicLocale } from "../../utils/locales";
+import { PrefetchContext } from "../../utils/prefetchSliceSubQueries";
 import { createClient, getProjects } from "../../utils/prismic";
 import { usePrismicConfig } from "../../utils/prismicConfig";
 import prismicLinkResolver from "../../utils/prismicLinkResolver";
@@ -118,7 +119,7 @@ interface Props {
 
 const ProjectsSlice = ({ slice }: Props) => {
   const { locale } = useRouter();
-  const { previewData } = usePageContext();
+  const previewData = usePreviewData();
   const [prismicClient] = useState(() => createClient({ previewData }));
   const info = useQuery("projects", () =>
     getProjects(prismicClient, toPrismicLocale(locale!))
