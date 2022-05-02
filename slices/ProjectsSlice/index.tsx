@@ -9,14 +9,17 @@ import {
   TitleField,
 } from "@prismicio/types";
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { useQuery } from "react-query";
 
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
+import { PrefetchContext, usePageContext } from "../../pages/[slug]";
 import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
+import { createClient, getProjects } from "../../utils/prismic";
 import { usePrismicConfig } from "../../utils/prismicConfig";
 import prismicLinkResolver from "../../utils/prismicLinkResolver";
 
@@ -112,6 +115,9 @@ interface Props {
 }
 
 const ProjectsSlice = ({ slice }: Props) => {
+  const { previewData, locale } = usePageContext();
+  const [prismicClient] = useState(() => createClient({ previewData }));
+  const info = useQuery("projects", () => getProjects(prismicClient, locale));
   const config = usePrismicConfig();
 
   return (
@@ -123,6 +129,9 @@ const ProjectsSlice = ({ slice }: Props) => {
         <Explanation>
           <PrismicRichText field={slice.primary.explanation} />
         </Explanation>
+
+        Length: {info.data?.length}
+
 
         {slice.items.map((project, index) => {
           const image = convertPrismicImage(project.image);
@@ -173,6 +182,15 @@ const ProjectsSlice = ({ slice }: Props) => {
         })}
       </Container>
     </Section>
+  );
+};
+ProjectsSlice.prefetch = async ({
+  prismicClient,
+  queryClient,
+  locale,
+}: PrefetchContext) => {
+  await queryClient.prefetchQuery("projects", () =>
+    getProjects(prismicClient, locale)
   );
 };
 

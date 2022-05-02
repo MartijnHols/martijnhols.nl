@@ -45,3 +45,8 @@ export const getByUid = async <T extends PrismicDocument>(
     throw err;
   }
 };
+
+export const getProjects = (client: Client, locale: string) =>
+  client.getAllByType("project", {
+    lang: locale,
+  });
