@@ -92,9 +92,7 @@ const { serverRuntimeConfig } = getConfig();
 interface StaticProps {
   config: PrismicConfig["data"];
   page: PrismicPage;
-  isPreview?: boolean;
   previewData: PreviewData;
-  locale: string;
   dehydratedState: DehydratedState;
 }
 
@@ -129,9 +127,7 @@ export const getStaticProps: GetStaticProps<
     props: stripUndefined({
       config: config.data,
       page,
-      isPreview: preview,
       previewData,
-      locale: prismicLocale,
       dehydratedState: dehydrate(queryClient),
     }),
     revalidate: serverRuntimeConfig.pageRevalidateInterval,
@@ -139,20 +135,12 @@ export const getStaticProps: GetStaticProps<
 };
 
 interface PageContext {
-  isPreview?: boolean;
   previewData: PreviewData;
-  locale: string;
 }
 const pageContext = createContext<PageContext | undefined>(undefined);
 export const usePageContext = () => useContext(pageContext)!;
 
-const Home = ({
-  config,
-  page,
-  isPreview,
-  previewData,
-  locale,
-}: StaticProps) => {
+const Home = ({ config, page, previewData }: StaticProps) => {
   const title = page.data.headTitle || "Martijn Hols";
 
   return (
@@ -191,9 +179,7 @@ const Home = ({
       <PrismicConfigProvider value={config}>
         <pageContext.Provider
           value={{
-            isPreview,
             previewData,
-            locale,
           }}
         >
           <SliceZone slices={page.data.slices} components={components} />

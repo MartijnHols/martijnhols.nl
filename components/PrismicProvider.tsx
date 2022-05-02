@@ -4,6 +4,7 @@ import {
   PrismicProvider as OriginalPrismicProvider,
 } from "@prismicio/react";
 import getConfig from "next/config";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 import prismicLinkResolver from "../utils/prismicLinkResolver";
@@ -17,30 +18,33 @@ const PrismicLink = ({ children, ...others }: LinkProps) => (
 
 interface Props {
   children: ReactNode;
-  isPreview?: boolean;
 }
 
-const PrismicProvider = ({ children, isPreview }: Props) => (
-  <OriginalPrismicProvider
-    linkResolver={prismicLinkResolver}
-    internalLinkComponent={PrismicLink}
-    externalLinkComponent={PrismicLink}
-  >
-    {isPreview ? (
-      // Only load when previewing to avoid loading the Prismic toolbar JS in
-      // for all users. This saves us quite a lot of KBs, but breaks Prismic's
-      // shareable links feature.
-      <PrismicPreview
-        repositoryName={publicRuntimeConfig.prismicRepositoryName}
-        updatePreviewURL="/api/preview"
-        exitPreviewURL="/api/preview-exit"
-      >
-        {children}
-      </PrismicPreview>
-    ) : (
-      children
-    )}
-  </OriginalPrismicProvider>
-);
+const PrismicProvider = ({ children }: Props) => {
+  const { isPreview } = useRouter();
+
+  return (
+    <OriginalPrismicProvider
+      linkResolver={prismicLinkResolver}
+      internalLinkComponent={PrismicLink}
+      externalLinkComponent={PrismicLink}
+    >
+      {isPreview ? (
+        // Only load when previewing to avoid loading the Prismic toolbar JS in
+        // for all users. This saves us quite a lot of KBs, but breaks Prismic's
+        // shareable links feature.
+        <PrismicPreview
+          repositoryName={publicRuntimeConfig.prismicRepositoryName}
+          updatePreviewURL="/api/preview"
+          exitPreviewURL="/api/preview-exit"
+        >
+          {children}
+        </PrismicPreview>
+      ) : (
+        children
+      )}
+    </OriginalPrismicProvider>
+  );
+};
 
 export default PrismicProvider;

@@ -20,6 +20,7 @@ import PrismicTitle from "../../components/PrismicTitle";
 import { PrefetchContext, usePageContext } from "../../pages/[slug]";
 import { breakpoints, colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
+import { toPrismicLocale } from "../../utils/locales";
 import { createClient, getProjects } from "../../utils/prismic";
 import { usePrismicConfig } from "../../utils/prismicConfig";
 import prismicLinkResolver from "../../utils/prismicLinkResolver";
@@ -116,9 +117,12 @@ interface Props {
 }
 
 const ProjectsSlice = ({ slice }: Props) => {
-  const { previewData, locale } = usePageContext();
+  const { locale } = useRouter();
+  const { previewData } = usePageContext();
   const [prismicClient] = useState(() => createClient({ previewData }));
-  const info = useQuery("projects", () => getProjects(prismicClient, locale));
+  const info = useQuery("projects", () =>
+    getProjects(prismicClient, toPrismicLocale(locale!))
+  );
   const config = usePrismicConfig();
 
   // TODO: Use projects subquery data

@@ -6,13 +6,12 @@ import ReactQueryProvider from "../components/ReactQueryProvider";
 import GlobalStyles from "../theme/GlobalStyles";
 
 type MyAppProps = AppProps<{
-  isPreview?: boolean;
   dehydratedState: DehydratedState;
 }>;
 
 const App = ({ Component, pageProps }: MyAppProps) => (
   <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
-    <PrismicProvider isPreview={pageProps?.isPreview}>
+    <PrismicProvider>
       <GlobalStyles />
       <Component {...pageProps} />
     </PrismicProvider>
