@@ -12,6 +12,10 @@ export const globalStyles = css`
     z-index: 1;
     --transition-duration: 120ms;
     transition: all var(--transition-duration) ease-out;
+    // This is a bummer, but it's the easiest way to workaround broken 
+    // transition for wrapping links. Let's not make long links.
+    white-space: nowrap;
+
     ::after {
       content: "";
       position: absolute;
