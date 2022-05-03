@@ -137,6 +137,9 @@ const ProjectsSlice = ({ slice }: Props) => {
 
             const url = asLink(project.url, prismicLinkResolver);
             const gitHub = asLink(project.sourceCode, prismicLinkResolver);
+            // Since ended year is used for sorting, it may be suffixed with a /
+            // number to affect sort position
+            const endedYear = project.endedYear?.split("/")[0];
 
             return (
               <Project key={index}>
@@ -152,7 +155,7 @@ const ProjectsSlice = ({ slice }: Props) => {
                 </ProjectImage>
                 <ProjectExplanation>
                   <ProjectAbout>
-                    {project.endedYear && `${project.endedYear} - `}
+                    {endedYear && `${endedYear} - `}
                     <PrismicRichText field={project.brief} />
                   </ProjectAbout>
                   <Tech>
