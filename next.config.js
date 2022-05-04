@@ -1,4 +1,7 @@
 const { getRepositoryName } = require("@prismicio/client");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const prismicConfig = require("./sm.json");
 
@@ -22,7 +25,7 @@ const prismicLocaleMap = {
 const defaultUserLocale = "nl";
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withBundleAnalyzer({
   reactStrictMode: true,
   i18n: {
     locales: Object.keys(prismicLocaleMap).map(
@@ -75,6 +78,6 @@ const nextConfig = {
 
     return config;
   },
-};
+});
 
 module.exports = nextConfig;
