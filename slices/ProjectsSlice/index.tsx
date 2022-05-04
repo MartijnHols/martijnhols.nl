@@ -1,18 +1,14 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
-import {
-  ImageField,
-  KeyTextField,
-  LinkField,
-  RichTextField,
-  Slice,
-  TitleField,
-} from "@prismicio/types";
+import { RichTextField, Slice, TitleField } from "@prismicio/types";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 import { useQuery } from "react-query";
 
+import Angle, { inverse } from "../../components/Angle";
+import ContactButton from "../../components/ContactButton";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
@@ -26,6 +22,15 @@ import { createClient, getProjects } from "../../utils/prismic";
 import { usePrismicConfig } from "../../utils/prismicConfig";
 import prismicLinkResolver from "../../utils/prismicLinkResolver";
 
+const ContactButtonClipper = styled.div`
+  clip-path: inset(0 0 0 0);
+`;
+const AngleBefore = styled(Angle)([
+  inverse,
+  css`
+    background: ${colors.dominant};
+  `,
+]);
 const Section = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
@@ -119,74 +124,81 @@ const ProjectsSlice = ({ slice }: Props) => {
   const config = usePrismicConfig();
 
   return (
-    <Section>
-      <Container>
-        <h2>
-          <PrismicTitle field={slice.primary.title} />
-        </h2>
-        <Explanation>
-          <PrismicRichText field={slice.primary.explanation} />
-        </Explanation>
+    <ContactButtonClipper>
+      <AngleBefore />
+      <Section>
+        <Container>
+          <h2>
+            <PrismicTitle field={slice.primary.title} />
+          </h2>
+          <Explanation>
+            <PrismicRichText field={slice.primary.explanation} />
+          </Explanation>
 
-        {data
-          ?.map((item) => item.data)
-          .sort((a, b) => (b.endedYear || "").localeCompare(a.endedYear || ""))
-          .map((project, index) => {
-            const thumbnail = convertPrismicImage(project.thumbnail);
-            if (!thumbnail) {
-              return null;
-            }
+          {data
+            ?.map((item) => item.data)
+            .sort((a, b) =>
+              (b.endedYear || "").localeCompare(a.endedYear || "")
+            )
+            .map((project, index) => {
+              const thumbnail = convertPrismicImage(project.thumbnail);
+              if (!thumbnail) {
+                return null;
+              }
 
-            const url = asLink(project.url, prismicLinkResolver);
-            const gitHub = asLink(project.sourceCode, prismicLinkResolver);
-            // Since ended year is used for sorting, it may be suffixed with a /
-            // number to affect sort position
-            const endedYear = project.endedYear?.split("/")[0];
+              const url = asLink(project.url, prismicLinkResolver);
+              const gitHub = asLink(project.sourceCode, prismicLinkResolver);
+              // Since ended year is used for sorting, it may be suffixed with a /
+              // number to affect sort position
+              const endedYear = project.endedYear?.split("/")[0];
 
-            return (
-              <Project key={index}>
-                <ProjectImage>
-                  <Image
-                    src={thumbnail}
-                    alt={thumbnail.alt}
-                    layout="fixed"
-                    width={200}
-                    height={200}
-                    objectFit="contain"
-                  />
-                </ProjectImage>
-                <ProjectExplanation>
-                  <ProjectAbout>
-                    {endedYear && `${endedYear} - `}
-                    <PrismicRichText field={project.brief} />
-                  </ProjectAbout>
-                  <Tech>
-                    {project.tech
-                      ?.split(",")
-                      .map((item) => item.trim())
-                      .map((item) => (
-                        <Fragment key={item}>
-                          <TechItem data-value={item}>{item}</TechItem>
-                          {/* Add hidden text to make copy-pasting more convenient */}
-                          <InvisibleText>, </InvisibleText>
-                        </Fragment>
-                      ))}
-                  </Tech>
-                  {(url || gitHub) && (
-                    <ContactLinks>
-                      {url && <Link href={url}>{config?.visit}</Link>}
-                      {url && gitHub && " | "}
-                      {gitHub && (
-                        <Link href={gitHub}>{config?.sourceCode}</Link>
-                      )}
-                    </ContactLinks>
-                  )}
-                </ProjectExplanation>
-              </Project>
-            );
-          })}
-      </Container>
-    </Section>
+              return (
+                <Project key={index}>
+                  <ProjectImage>
+                    <Image
+                      src={thumbnail}
+                      alt={thumbnail.alt}
+                      layout="fixed"
+                      width={200}
+                      height={200}
+                      objectFit="contain"
+                    />
+                  </ProjectImage>
+                  <ProjectExplanation>
+                    <ProjectAbout>
+                      {endedYear && `${endedYear} - `}
+                      <PrismicRichText field={project.brief} />
+                    </ProjectAbout>
+                    <Tech>
+                      {project.tech
+                        ?.split(",")
+                        .map((item) => item.trim())
+                        .map((item) => (
+                          <Fragment key={item}>
+                            <TechItem data-value={item}>{item}</TechItem>
+                            {/* Add hidden text to make copy-pasting more convenient */}
+                            <InvisibleText>, </InvisibleText>
+                          </Fragment>
+                        ))}
+                    </Tech>
+                    {(url || gitHub) && (
+                      <ContactLinks>
+                        {url && <Link href={url}>{config?.visit}</Link>}
+                        {url && gitHub && " | "}
+                        {gitHub && (
+                          <Link href={gitHub}>{config?.sourceCode}</Link>
+                        )}
+                      </ContactLinks>
+                    )}
+                  </ProjectExplanation>
+                </Project>
+              );
+            })}
+        </Container>
+      </Section>
+
+      <ContactButton aria-hidden />
+    </ContactButtonClipper>
   );
 };
 ProjectsSlice.prefetch = async ({

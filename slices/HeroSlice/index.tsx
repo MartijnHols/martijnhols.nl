@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { ReactElement } from "react";
 
 import Angle from "../../components/Angle";
+import ContactButton from "../../components/ContactButton";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
@@ -17,6 +18,7 @@ import ReactLogo from "./ReactLogo.svg";
 const Wrapper = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
+  clip-path: inset(0 0 0 0);
 `;
 const Header = styled.div`
   background: ${colors.complementary};
@@ -188,6 +190,8 @@ const HeroSlice = ({ slice }: Props) => {
           </SubText>
         </StyledContainer>
       </Section>
+
+      <ContactButton />
     </Wrapper>
   );
 };

@@ -12,6 +12,7 @@ export type PrismicConfig = PrismicDocument<
     visit: KeyTextField;
     sourceCode: KeyTextField;
     languageToggle: KeyTextField;
+    contact: KeyTextField;
   },
   "config"
 >;
@@ -26,4 +27,11 @@ const PrismicConfigContext = createContext<PrismicConfig["data"] | undefined>(
   undefined
 );
 export const PrismicConfigProvider = PrismicConfigContext.Provider;
-export const usePrismicConfig = () => useContext(PrismicConfigContext);
+export const usePrismicConfig = () => {
+  const config = useContext(PrismicConfigContext);
+  if (!config) {
+    throw new Error("Config is not available outside a PrismicConfigProvider");
+  }
+
+  return config;
+};

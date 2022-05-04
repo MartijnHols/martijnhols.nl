@@ -60,7 +60,7 @@ const FooterSlice = ({ slice }: Props) => {
   return (
     <>
       <AngleBefore />
-      <Section className="inverted">
+      <Section className="inverted" id="footer">
         <Container>
           <ContactRow>
             <Label>Contact</Label>

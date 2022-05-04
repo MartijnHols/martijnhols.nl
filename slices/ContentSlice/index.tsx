@@ -7,8 +7,11 @@ import convertPrismicImage from "../../utils/convertPrismicImage";
 import { breakpoints, colors, spacing } from "../../theme";
 import PrismicRichText from "../../components/PrismicRichText";
 import Angle, { inverse } from "../../components/Angle";
-import { css } from "@emotion/react";
+import ContactButton from "../../components/ContactButton";
 
+const ContactButtonClipper = styled.div`
+  clip-path: inset(0 0 0 0);
+`;
 const Section = styled.section`
   background: ${colors.complementary};
   color: ${colors.dominant};
@@ -16,12 +19,6 @@ const Section = styled.section`
 const AngleBefore = styled(Angle)`
   background: ${colors.dominant};
 `;
-const AngleAfter = styled(Angle)([
-  inverse,
-  css`
-    background: ${colors.dominant};
-  `,
-]);
 const StyledContainer = styled(Container)`
   padding-top: 100px;
   padding-bottom: 100px;
@@ -70,7 +67,7 @@ const ContentSlice = ({ slice }: Props) => {
   const image = convertPrismicImage(slice.primary.image);
 
   return (
-    <>
+    <ContactButtonClipper>
       <AngleBefore />
       <Section>
         <StyledContainer>
@@ -90,8 +87,9 @@ const ContentSlice = ({ slice }: Props) => {
           </Content>
         </StyledContainer>
       </Section>
-      <AngleAfter />
-    </>
+
+      <ContactButton inverse aria-hidden />
+    </ContactButtonClipper>
   );
 };
 
