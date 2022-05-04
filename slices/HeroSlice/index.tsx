@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { asText } from "@prismicio/helpers";
 import { RichTextField, Slice } from "@prismicio/types";
 import { useRouter } from "next/router";
-import { ReactElement } from "react";
 
 import Angle from "../../components/Angle";
 import ContactButton from "../../components/ContactButton";
@@ -13,6 +12,7 @@ import PrismicRichText from "../../components/PrismicRichText";
 import { breakpoints, colors, spacing } from "../../theme";
 import { h3, h5 } from "../../theme/headings";
 import { usePrismicConfig } from "../../utils/prismicConfig";
+import reactStringReplace from "../../utils/reactStringReplace";
 import ReactLogo from "./ReactLogo.svg";
 
 const Wrapper = styled.div`
@@ -88,14 +88,33 @@ const IntroSubText = styled.span`
   margin-bottom: ${spacing.x1}px;
 `;
 const IntroTitle = styled.span`
-  ${StyledReactLogo} path {
-    transform: scale(0);
-    transition: transform 300ms ease-in-out;
-    transform-origin: center center;
+  ${StyledReactLogo} {
+    // It hides the element *after* the scale transition is done, so this should
+    // do a good job of informing browsers the element and animation are
+    // inactive without affecting the user
+    visibility: hidden;
+    transition: visibility 600ms ease-out;
+
+    path {
+      transform: scale(0);
+      transition: transform 300ms ease-in-out;
+      transform-origin: center center;
+    }
   }
+
   :hover {
-    ${StyledReactLogo} path {
-      transform: scale(1);
+    ${StyledReactLogo} {
+      visibility: visible;
+
+      path {
+        transform: scale(1);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    ${StyledReactLogo} {
+      display: none;
     }
   }
 `;
@@ -112,28 +131,6 @@ export type PrismicHeroSlice = Slice<
     subText: RichTextField;
   }
 >;
-
-const reactStringReplace = (
-  string: string,
-  searchValue: string,
-  replaceValue: ReactElement
-) => {
-  const reactIndex = string.indexOf(searchValue);
-  if (reactIndex === -1) {
-    return string;
-  }
-
-  const before = string.substring(0, reactIndex);
-  const after = string.substring(reactIndex + searchValue.length);
-
-  return (
-    <>
-      {before}
-      {replaceValue}
-      {after}
-    </>
-  );
-};
 
 const reactifyTitle = (title: string) =>
   reactStringReplace(
