@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
-import { KeyTextField, LinkField, NumberField, Slice } from "@prismicio/types";
+import {
+  GeoPointField,
+  KeyTextField,
+  LinkField,
+  NumberField,
+  Slice,
+} from "@prismicio/types";
 
 import Container from "../../components/Container";
 import Link from "../../components/Link";
@@ -34,15 +40,21 @@ const Item = styled.div``;
 export type PrismicFooterSlice = Slice<
   "footer_slice",
   {
+    contactLabel: KeyTextField;
     email: KeyTextField;
     phone: KeyTextField;
     whatsApp: NumberField;
+    socialLabel: KeyTextField;
     linkedIn: LinkField;
     gitHub: LinkField;
     twitter: LinkField;
+    companyLabel: KeyTextField;
     kvk: KeyTextField;
     btw: KeyTextField;
     iban: KeyTextField;
+    locationLabel: KeyTextField;
+    city: KeyTextField;
+    location: GeoPointField;
   }
 >;
 
@@ -59,7 +71,7 @@ const FooterSlice = ({ slice }: Props) => {
     <Section className="inverted" id="footer">
       <Container>
         <ContactRow>
-          <Label>Contact</Label>
+          <Label>{slice.primary.contactLabel}</Label>
           <Values>
             {slice.primary.email && (
               <Item>
@@ -84,8 +96,16 @@ const FooterSlice = ({ slice }: Props) => {
             )}
           </Values>
         </ContactRow>
+        {slice.primary.city && (
+          <Row>
+            <Label>{slice.primary.locationLabel}</Label>
+            <Values>
+              <Item>{slice.primary.city}</Item>
+            </Values>
+          </Row>
+        )}
         <SocialRow>
-          <Label>Social</Label>
+          <Label>{slice.primary.socialLabel}</Label>
           <Values>
             {linkedIn && (
               <Item>
@@ -105,7 +125,7 @@ const FooterSlice = ({ slice }: Props) => {
           </Values>
         </SocialRow>
         <BusinessRow>
-          <Label>Company</Label>
+          <Label>{slice.primary.companyLabel}</Label>
           <Values>
             {slice.primary.kvk && (
               <Item>

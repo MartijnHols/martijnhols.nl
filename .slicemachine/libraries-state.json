@@ -241,6 +241,13 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "FooterSlice",
               "primary": {
+                "contactLabel": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Contact Label",
+                    "placeholder": ""
+                  }
+                },
                 "email": {
                   "type": "Text",
                   "config": {
@@ -259,6 +266,13 @@
                   "type": "Number",
                   "config": {
                     "label": "Whats App",
+                    "placeholder": ""
+                  }
+                },
+                "socialLabel": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Social Label",
                     "placeholder": ""
                   }
                 },
@@ -286,6 +300,13 @@
                     "select": null
                   }
                 },
+                "companyLabel": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Company Label",
+                    "placeholder": ""
+                  }
+                },
                 "kvk": {
                   "type": "Text",
                   "config": {
@@ -306,6 +327,26 @@
                     "label": "Iban",
                     "placeholder": ""
                   }
+                },
+                "locationLabel": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Location Label",
+                    "placeholder": ""
+                  }
+                },
+                "city": {
+                  "type": "Text",
+                  "config": {
+                    "label": "City",
+                    "placeholder": ""
+                  }
+                },
+                "location": {
+                  "type": "GeoPoint",
+                  "config": {
+                    "label": "Location"
+                  }
                 }
               },
               "items": {},
@@ -320,24 +361,33 @@
             "slice_type": "footer_slice",
             "items": [],
             "primary": {
-              "email": "mesh cutting-edge e-services",
-              "phone": "productize wireless blockchains",
-              "whatsApp": 5159,
+              "contactLabel": "reintermediate dynamic experiences",
+              "email": "transition plug-and-play blockchains",
+              "phone": "brand plug-and-play e-business",
+              "whatsApp": 7316,
+              "socialLabel": "incubate robust architectures",
               "linkedIn": {
                 "link_type": "Web",
-                "url": "https://slicemachine.dev"
+                "url": "http://google.com"
               },
               "gitHub": {
                 "link_type": "Web",
-                "url": "https://prismic.io"
+                "url": "https://slicemachine.dev"
               },
               "twitter": {
                 "link_type": "Web",
-                "url": "https://slicemachine.dev"
+                "url": "https://prismic.io"
               },
-              "kvk": "mesh open-source experiences",
-              "btw": "transform seamless infrastructures",
-              "iban": "mesh bleeding-edge vortals"
+              "companyLabel": "enable holistic eyeballs",
+              "kvk": "transform intuitive markets",
+              "btw": "orchestrate proactive action-items",
+              "iban": "morph 24/365 portals",
+              "locationLabel": "extend e-business deliverables",
+              "city": "engineer compelling applications",
+              "location": {
+                "latitude": 48.8606111,
+                "longitude": 2.337644
+              }
             }
           }
         },
@@ -349,7 +399,7 @@
           "default": {
             "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/FooterSlice/default/preview.png",
             "width": 800,
-            "height": 289
+            "height": 330
           }
         }
       },

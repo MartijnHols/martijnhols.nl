@@ -11,6 +11,13 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "FooterSlice",
       "primary": {
+        "contactLabel": {
+          "type": "Text",
+          "config": {
+            "label": "Contact Label",
+            "placeholder": ""
+          }
+        },
         "email": {
           "type": "Text",
           "config": {
@@ -29,6 +36,13 @@
           "type": "Number",
           "config": {
             "label": "Whats App",
+            "placeholder": ""
+          }
+        },
+        "socialLabel": {
+          "type": "Text",
+          "config": {
+            "label": "Social Label",
             "placeholder": ""
           }
         },
@@ -56,6 +70,13 @@
             "select": null
           }
         },
+        "companyLabel": {
+          "type": "Text",
+          "config": {
+            "label": "Company Label",
+            "placeholder": ""
+          }
+        },
         "kvk": {
           "type": "Text",
           "config": {
@@ -75,6 +96,26 @@
           "config": {
             "label": "Iban",
             "placeholder": ""
+          }
+        },
+        "locationLabel": {
+          "type": "Text",
+          "config": {
+            "label": "Location Label",
+            "placeholder": ""
+          }
+        },
+        "city": {
+          "type": "Text",
+          "config": {
+            "label": "City",
+            "placeholder": ""
+          }
+        },
+        "location": {
+          "type": "GeoPoint",
+          "config": {
+            "label": "Location"
           }
         }
       },
