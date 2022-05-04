@@ -57,6 +57,7 @@ interface Props {
 const FooterSlice = ({ slice }: Props) => {
   const linkedIn = asLink(slice.primary.linkedIn, prismicLinkResolver);
   const gitHub = asLink(slice.primary.gitHub, prismicLinkResolver);
+  const twitter = asLink(slice.primary.twitter, prismicLinkResolver);
 
   return (
     <>
@@ -102,6 +103,11 @@ const FooterSlice = ({ slice }: Props) => {
               {gitHub && (
                 <Item>
                   <Link href={gitHub}>GitHub</Link>
+                </Item>
+              )}
+              {twitter && (
+                <Item>
+                  <Link href={twitter}>Twitter</Link>
                 </Item>
               )}
             </Values>
