@@ -1,6 +1,11 @@
 import getConfig from "next/config";
 import NextLink from "next/link";
-import { AnchorHTMLAttributes, ComponentProps, ReactNode } from "react";
+import {
+  AnchorHTMLAttributes,
+  ComponentProps,
+  MouseEvent,
+  ReactNode,
+} from "react";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -28,6 +33,7 @@ const Link = ({
   shallow,
   prefetch,
   locale,
+  onClick,
   ...others
 }: Props) => {
   const isAbsolute = href.startsWith(publicRuntimeConfig.primaryHost);
@@ -68,6 +74,24 @@ const Link = ({
   if (href.startsWith(hashLink)) {
     href = href.substring(hashLink.length - 1);
   }
+  if (!onClick && href.startsWith("#")) {
+    onClick = (e: MouseEvent) => {
+      const elem = document.querySelector(href);
+      if (!elem) {
+        return;
+      }
+      e.preventDefault(); // it not updating the URL is a feature
+      // While I generally hate scroll hijacking, for anchor links this provides
+      // users with context so they can keep their orientation. This is
+      // especially important for #footer links, as it may otherwise not be
+      // obvious they need to look at the bottom part of the page after
+      // navigating.
+      // ps technically it isn't even scroll hijacking
+      elem.scrollIntoView({
+        behavior: "smooth",
+      });
+    };
+  }
 
   return (
     <NextLink
@@ -80,7 +104,9 @@ const Link = ({
       locale={locale}
       passHref
     >
-      <a {...others}>{children}</a>
+      <a onClick={onClick} {...others}>
+        {children}
+      </a>
     </NextLink>
   );
 };

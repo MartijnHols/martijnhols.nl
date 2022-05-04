@@ -62,20 +62,8 @@ interface Props extends ComponentProps<typeof Container> {
 const ContactButton = ({ inverse, ...others }: Props) => {
   const config = usePrismicConfig();
 
-  const contactElemId = "footer";
-  const handleClick = (e: MouseEvent) => {
-    const elem = document.getElementById(contactElemId);
-    if (!elem) {
-      return;
-    }
-    e.preventDefault(); // it not updating the URL is a feature
-    elem.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <Link className="plain" href={`#${contactElemId}`} onClick={handleClick}>
+    <Link className="plain" href="#footer">
       <Container inverse={inverse} {...others}>
         <ChatIconContainer>
           <StyledChatIcon aria-label="" />
