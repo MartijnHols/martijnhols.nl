@@ -24,16 +24,6 @@ const defaultUserLocale = "nl";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: "/",
-          destination: "/homepage",
-        },
-      ],
-    };
-  },
   i18n: {
     locales: Object.keys(prismicLocaleMap).map(
       (locale) => prismicLocaleMap[locale] || locale
