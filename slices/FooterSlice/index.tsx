@@ -28,7 +28,7 @@ const Label = styled.div`
 const Values = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: ${spacing.x4}px;
+  gap: ${spacing.x2}px ${spacing.x4}px;
 `;
 const ContactRow = styled(Row)``;
 const SocialRow = styled(Row)``;
