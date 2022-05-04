@@ -55,7 +55,8 @@ const Divider = styled.div`
   background: currentColor;
 `;
 
-interface Props extends ComponentProps<typeof Container> {
+interface Props
+  extends Omit<ComponentProps<typeof Link>, "href" | "className" | "children"> {
   inverse?: boolean;
 }
 
@@ -63,8 +64,8 @@ const ContactButton = ({ inverse, ...others }: Props) => {
   const config = usePrismicConfig();
 
   return (
-    <Link className="plain" href="#footer">
-      <Container inverse={inverse} {...others}>
+    <Link className="plain" href="#footer" {...others}>
+      <Container inverse={inverse}>
         <ChatIconContainer>
           <StyledChatIcon aria-label="" />
         </ChatIconContainer>
