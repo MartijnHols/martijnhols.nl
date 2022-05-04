@@ -71,8 +71,10 @@ const ProjectAbout = styled.div`
   margin-bottom: ${spacing.x2}px;
 `;
 const Tech = styled.div`
-  margin-bottom: ${spacing.x2}px;
   font-size: 16px;
+`;
+const ContactLinks = styled.div`
+  margin-top: ${spacing.x2}px;
 `;
 const TechItem = styled.div`
   display: inline-block;
@@ -170,11 +172,15 @@ const ProjectsSlice = ({ slice }: Props) => {
                         </Fragment>
                       ))}
                   </Tech>
-                  <div>
-                    {url && <Link href={url}>{config?.visit}</Link>}
-                    {url && gitHub && " | "}
-                    {gitHub && <Link href={gitHub}>{config?.sourceCode}</Link>}
-                  </div>
+                  {(url || gitHub) && (
+                    <ContactLinks>
+                      {url && <Link href={url}>{config?.visit}</Link>}
+                      {url && gitHub && " | "}
+                      {gitHub && (
+                        <Link href={gitHub}>{config?.sourceCode}</Link>
+                      )}
+                    </ContactLinks>
+                  )}
                 </ProjectExplanation>
               </Project>
             );
