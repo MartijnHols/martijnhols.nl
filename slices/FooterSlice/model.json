@@ -25,6 +25,13 @@
             "placeholder": ""
           }
         },
+        "whatsApp": {
+          "type": "Number",
+          "config": {
+            "label": "Whats App",
+            "placeholder": ""
+          }
+        },
         "linkedIn": {
           "type": "Link",
           "config": {

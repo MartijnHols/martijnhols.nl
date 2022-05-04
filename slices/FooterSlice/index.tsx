@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
-import { KeyTextField, LinkField, Slice } from "@prismicio/types";
+import { KeyTextField, LinkField, NumberField, Slice } from "@prismicio/types";
 
 import Angle from "../../components/Angle";
 import Container from "../../components/Container";
@@ -40,6 +40,7 @@ export type PrismicFooterSlice = Slice<
   {
     email: KeyTextField;
     phone: KeyTextField;
+    whatsApp: NumberField;
     linkedIn: LinkField;
     gitHub: LinkField;
     twitter: LinkField;
@@ -69,6 +70,15 @@ const FooterSlice = ({ slice }: Props) => {
                 <Item>
                   <a href={`mailto:${slice.primary.email}`}>
                     {slice.primary.email}
+                  </a>
+                </Item>
+              )}
+              {slice.primary.whatsApp && (
+                <Item>
+                  <a
+                    href={`https://api.whatsapp.com/send?phone=${slice.primary.whatsApp}`}
+                  >
+                    WhatsApp
                   </a>
                 </Item>
               )}
