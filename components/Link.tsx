@@ -64,6 +64,10 @@ const Link = ({
       href = "/";
     }
   }
+  const hashLink = "https://#";
+  if (href.startsWith(hashLink)) {
+    href = href.substring(hashLink.length - 1);
+  }
 
   return (
     <NextLink
