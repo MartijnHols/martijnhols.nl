@@ -88,7 +88,7 @@ const ContentSlice = ({ slice }: Props) => {
         </StyledContainer>
       </Section>
 
-      <ContactButton inverse aria-hidden />
+      <ContactButton inverse />
     </ContactButtonClipper>
   );
 };

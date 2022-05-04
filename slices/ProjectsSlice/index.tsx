@@ -197,7 +197,7 @@ const ProjectsSlice = ({ slice }: Props) => {
         </Container>
       </Section>
 
-      <ContactButton aria-hidden />
+      <ContactButton />
     </ContactButtonClipper>
   );
 };
