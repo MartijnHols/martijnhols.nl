@@ -66,6 +66,19 @@
             "content": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
           }
         }
+      },
+      "inverted": {
+        "primary": {
+          "image": {
+            "content": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+          },
+          "content": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 3
+            }
+          }
+        }
       }
     },
     "ProjectsSlice": {
@@ -80,6 +93,11 @@
       }
     },
     "FooterSlice": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "AngleSlice": {
       "default": {
         "primary": {}
       }

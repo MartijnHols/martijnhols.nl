@@ -7,7 +7,7 @@ import { usePrismicConfig } from "../utils/prismicConfig";
 import ChatIcon from "./icons/chat.svg";
 import Link from "./Link";
 
-const Container = styled.div<{ inverse?: boolean }>([
+const Container = styled.div<{ inverted?: boolean }>([
   css`
     position: fixed;
     z-index: 10;
@@ -38,7 +38,7 @@ const Container = styled.div<{ inverse?: boolean }>([
     }
   `,
   (props) =>
-    props.inverse &&
+    props.inverted &&
     css`
       background: ${colors.dominant};
       color: ${colors.complementary};
@@ -57,15 +57,15 @@ const Divider = styled.div`
 
 interface Props
   extends Omit<ComponentProps<typeof Link>, "href" | "className" | "children"> {
-  inverse?: boolean;
+  inverted?: boolean;
 }
 
-const ContactButton = ({ inverse, ...others }: Props) => {
+const ContactButton = ({ inverted, ...others }: Props) => {
   const config = usePrismicConfig();
 
   return (
     <Link className="plain" href="#footer" {...others}>
-      <Container inverse={inverse}>
+      <Container inverted={inverted}>
         <ChatIconContainer>
           <StyledChatIcon aria-label="" />
         </ChatIconContainer>

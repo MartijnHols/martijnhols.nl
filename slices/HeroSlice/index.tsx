@@ -10,7 +10,7 @@ import ContactButton from "../../components/ContactButton";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import PrismicRichText from "../../components/PrismicRichText";
-import { breakpoints, colors, fontSizes, spacing } from "../../theme";
+import { breakpoints, colors, spacing } from "../../theme";
 import { h3, h5 } from "../../theme/headings";
 import { usePrismicConfig } from "../../utils/prismicConfig";
 import ReactLogo from "./ReactLogo.svg";
@@ -37,13 +37,6 @@ const HeaderContent = styled.div`
   font-weight: 500;
   transform: rotate(-1.15deg);
   transform-origin: left;
-`;
-const AngleBefore = styled(Angle)`
-  background: ${colors.complementary};
-  // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
-  margin-top: -0.5px;
-  margin-bottom: -0.5px;
-  backface-visibility: hidden;
 `;
 const Section = styled.section`
   position: relative;
@@ -168,7 +161,7 @@ const HeroSlice = ({ slice }: Props) => {
           </Link>
         </HeaderContent>
       </Header>
-      <AngleBefore />
+      <Angle />
       <Section>
         <StyledContainer>
           <Intro>

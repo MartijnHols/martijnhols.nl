@@ -1,6 +1,72 @@
 {
   "slices": {
     "components": {
+      "angle_slice": {
+        "library": "slices",
+        "id": "angle_slice",
+        "name": "AngleSlice",
+        "description": "AngleSlice",
+        "model": {
+          "id": "angle_slice",
+          "type": "SharedSlice",
+          "name": "AngleSlice",
+          "description": "AngleSlice",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "AngleSlice",
+              "primary": {},
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "inverted",
+              "name": "Inverted",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "AngleSlice",
+              "primary": {},
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "angle_slice",
+            "items": [],
+            "primary": {}
+          },
+          "inverted": {
+            "variation": "inverted",
+            "name": "Inverted",
+            "slice_type": "angle_slice",
+            "items": [],
+            "primary": {}
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/AngleSlice/default/preview.png",
+            "width": 800,
+            "height": 22
+          },
+          "inverted": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/AngleSlice/inverted/preview.png",
+            "width": 800,
+            "height": 22
+          }
+        }
+      },
       "content_slice": {
         "library": "slices",
         "id": "content_slice",
@@ -39,6 +105,34 @@
               },
               "items": {},
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "inverted",
+              "name": "Inverted",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ContentSlice",
+              "primary": {
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                },
+                "content": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Content",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
@@ -51,27 +145,61 @@
             "primary": {
               "image": {
                 "dimensions": {
-                  "width": 3000,
-                  "height": 4499
+                  "width": 900,
+                  "height": 500
                 },
                 "alt": "Placeholder image",
                 "copyright": null,
-                "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&h=500&fit=crop"
               },
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Deserunt tempor nisi officia reprehenderit irure incididunt in pariatur commodo est. Cupidatat ex aliquip eu nostrud non non ut fugiat in mollit sunt elit. Id deserunt fugiat aliquip ea ipsum exercitation cupidatat laboris officia laborum enim consequat.",
+                  "text": "Aute incididunt proident elit ex Lorem labore consequat.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Ullamco in dolore mollit fugiat velit magna exercitation consequat cillum id irure. Aute est esse anim ex nulla laborum magna ullamco. Labore proident incididunt Lorem magna ut aute id cillum proident culpa nostrud quis labore adipisicing ex.",
+                  "text": "Velit veniam ex ut officia in Lorem commodo ipsum tempor consequat officia. Officia id voluptate elit nostrud incididunt id irure. Aliqua culpa minim magna elit elit occaecat.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Voluptate anim deserunt ullamco sint veniam non cillum. Non commodo eu est nulla ad pariatur aliquip reprehenderit nulla commodo dolore reprehenderit commodo. Laborum laboris exercitation magna sint nisi anim reprehenderit ipsum sint labore culpa magna do.",
+                  "text": "Velit aliqua aliquip commodo dolore mollit dolor est sit nostrud minim ex aliqua proident ipsum.",
+                  "spans": []
+                }
+              ]
+            }
+          },
+          "inverted": {
+            "variation": "inverted",
+            "name": "Inverted",
+            "slice_type": "content_slice",
+            "items": [],
+            "primary": {
+              "image": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": "Placeholder image",
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&h=500&fit=crop"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "Do irure Lorem ipsum in cillum. Aute ullamco eiusmod reprehenderit ut minim voluptate. Excepteur consequat culpa anim reprehenderit excepteur proident elit aliqua nostrud deserunt excepteur eiusmod.",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Velit in anim amet. Ea ipsum ad excepteur proident reprehenderit anim irure velit duis adipisicing esse nulla commodo id quis. Anim dolor laboris nisi ea id consectetur amet eu laborum ut in adipisicing.",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Elit tempor ad occaecat exercitation voluptate est eiusmod labore ea nulla.",
                   "spans": []
                 }
               ]
@@ -86,7 +214,12 @@
           "default": {
             "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/default/preview.png",
             "width": 800,
-            "height": 982
+            "height": 525
+          },
+          "inverted": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/inverted/preview.png",
+            "width": 800,
+            "height": 687
           }
         }
       },
@@ -212,7 +345,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/FooterSlice/default/preview.png",
+            "width": 800,
+            "height": 289
+          }
+        }
       },
       "hero_slice": {
         "library": "slices",
@@ -381,7 +520,7 @@
           "default": {
             "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ProjectsSlice/default/preview.png",
             "width": 800,
-            "height": 1345
+            "height": 604
           }
         }
       }

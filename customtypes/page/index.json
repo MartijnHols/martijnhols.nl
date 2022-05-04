@@ -50,6 +50,9 @@
             },
             "footer_slice": {
               "type": "SharedSlice"
+            },
+            "angle_slice": {
+              "type": "SharedSlice"
             }
           }
         }

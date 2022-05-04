@@ -1,0 +1,16 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "angle_slice",
+    "items": [],
+    "primary": {}
+  },
+  {
+    "variation": "inverted",
+    "name": "Inverted",
+    "slice_type": "angle_slice",
+    "items": [],
+    "primary": {}
+  }
+]

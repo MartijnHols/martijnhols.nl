@@ -1,24 +1,23 @@
 import styled from "@emotion/styled";
-import { ImageField, RichTextField, Slice } from "@prismicio/types";
+import {
+  ImageField,
+  RichTextField,
+  SharedSlice,
+  SharedSliceVariation,
+  Slice,
+} from "@prismicio/types";
 import Image from "next/image";
 
 import Container from "../../components/Container";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 import { breakpoints, colors, spacing } from "../../theme";
 import PrismicRichText from "../../components/PrismicRichText";
-import Angle, { inverse } from "../../components/Angle";
 import ContactButton from "../../components/ContactButton";
 
 const ContactButtonClipper = styled.div`
   clip-path: inset(0 0 0 0);
 `;
-const Section = styled.section`
-  background: ${colors.complementary};
-  color: ${colors.dominant};
-`;
-const AngleBefore = styled(Angle)`
-  background: ${colors.dominant};
-`;
+const Section = styled.section``;
 const StyledContainer = styled(Container)`
   padding-top: 100px;
   padding-bottom: 100px;
@@ -51,12 +50,22 @@ const Content = styled.div`
   margin: -${spacing.x2}px 0;
 `;
 
-export type PrismicContentSlice = Slice<
+export type PrismicContentSlice = SharedSlice<
   "content_slice",
-  {
-    image: ImageField;
-    content: RichTextField;
-  }
+  | SharedSliceVariation<
+      "default",
+      {
+        image: ImageField;
+        content: RichTextField;
+      }
+    >
+  | SharedSliceVariation<
+      "inverted",
+      {
+        image: ImageField;
+        content: RichTextField;
+      }
+    >
 >;
 
 interface Props {
@@ -66,10 +75,16 @@ interface Props {
 const ContentSlice = ({ slice }: Props) => {
   const image = convertPrismicImage(slice.primary.image);
 
+  const inverted = slice.variation === "inverted";
+
   return (
     <ContactButtonClipper>
-      <AngleBefore />
-      <Section>
+      <Section
+        style={{
+          background: inverted ? colors.complementary : colors.dominant,
+          color: inverted ? colors.dominant : colors.complementary,
+        }}
+      >
         <StyledContainer>
           {image && (
             <ImageContainer>
@@ -82,13 +97,13 @@ const ContentSlice = ({ slice }: Props) => {
             </ImageContainer>
           )}
 
-          <Content className="inverted">
+          <Content className={inverted ? "inverted" : undefined}>
             <PrismicRichText field={slice.primary.content} multiline />
           </Content>
         </StyledContainer>
       </Section>
 
-      <ContactButton inverse />
+      <ContactButton inverted={inverted} />
     </ContactButtonClipper>
   );
 };

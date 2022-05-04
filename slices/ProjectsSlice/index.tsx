@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 import { useQuery } from "react-query";
 
-import Angle, { inverse } from "../../components/Angle";
 import ContactButton from "../../components/ContactButton";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
@@ -25,12 +24,6 @@ import prismicLinkResolver from "../../utils/prismicLinkResolver";
 const ContactButtonClipper = styled.div`
   clip-path: inset(0 0 0 0);
 `;
-const AngleBefore = styled(Angle)([
-  inverse,
-  css`
-    background: ${colors.dominant};
-  `,
-]);
 const Section = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
@@ -125,7 +118,6 @@ const ProjectsSlice = ({ slice }: Props) => {
 
   return (
     <ContactButtonClipper>
-      <AngleBefore />
       <Section>
         <Container>
           <h2>
