@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 
 import disablePrismicImageOptimizations from "./disablePrismicImageOptimizations";
 
-interface ImageInfo extends StaticImageData {
+export interface ImageInfo extends StaticImageData {
   alt?: string;
 }
 

@@ -1,6 +1,6 @@
 {
-  "id": "f301fdc3-15bb-4b12-98bd-71374223e4fb",
-  "uid": "voluptatibus-quasi-enim",
+  "id": "b2d9bf5f-9a99-404b-b183-af2b0ad99fc0",
+  "uid": "qui-iste-impedit",
   "type": "project",
   "data": {
     "thumbnail": {
@@ -10,32 +10,26 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=200&h=200&fit=crop"
+      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=200&h=200&fit=crop"
     },
-    "name": [
-      {
-        "type": "paragraph",
-        "text": "Esse proident pariatur consequat consequat elit quis consequat. Aliquip tempor nisi consectetur qui in cupidatat quis adipisicing proident. Voluptate magna aute incididunt enim culpa Lorem in ex qui.",
-        "spans": []
-      }
-    ],
+    "name": "deploy impactful communities",
     "brief": [
       {
         "type": "paragraph",
-        "text": "Est esse cillum ex anim ipsum cillum minim sit reprehenderit cillum aliqua veniam laborum. Qui adipisicing ad aliqua cillum nisi ex nostrud ut et nulla esse velit nisi. Nisi incididunt ullamco aliquip magna excepteur esse veniam ad.",
+        "text": "Ea esse cillum nisi enim est elit. Aliqua est veniam reprehenderit et ullamco ex minim. Irure velit incididunt ex ullamco laborum eu nisi dolore ex consectetur enim minim excepteur sit.",
         "spans": []
       }
     ],
-    "startedYear": "optimize strategic functionalities",
-    "endedYear": "productize back-end action-items",
+    "startedYear": "maximize efficient infomediaries",
+    "endedYear": "deploy turn-key mindshare",
     "url": {
       "link_type": "Web",
-      "url": "https://prismic.io"
+      "url": "https://slicemachine.dev"
     },
     "sourceCode": {
       "link_type": "Web",
       "url": "http://google.com"
     },
-    "tech": "leverage best-of-breed mindshare"
+    "tech": "integrate killer channels"
   }
 }
