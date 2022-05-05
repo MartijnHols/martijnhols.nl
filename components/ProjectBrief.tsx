@@ -18,7 +18,7 @@ const Container = styled.article`
     gap: ${spacing.x2}px;
   }
 
-  :not(:first-of-type):not(:last-of-type) {
+  :not(:last-of-type) {
     ::after {
       content: "";
       position: absolute;
@@ -123,7 +123,7 @@ const ProjectBrief = ({
   return (
     <Container>
       <Thumbnail>
-        <Name>{name}</Name>
+        <Name title={name}>{name}</Name>
         <Period>{formatPeriod(started, ended)}</Period>
         <Image
           src={thumbnail}
@@ -137,11 +137,11 @@ const ProjectBrief = ({
       <ProjectExplanation>
         <ProjectAbout>{about}</ProjectAbout>
         <Tech>
-          {tech.map((item) => (
+          {tech.map((item, index) => (
             <Fragment key={item}>
               <TechItem data-value={item}>{item}</TechItem>
               {/* Add hidden text to make copy-pasting more convenient */}
-              <InvisibleText>, </InvisibleText>
+              {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
             </Fragment>
           ))}
         </Tech>
