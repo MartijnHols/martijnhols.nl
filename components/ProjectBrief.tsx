@@ -33,8 +33,12 @@ const Container = styled.article`
   }
 `;
 const Thumbnail = styled.div`
-  flex: 0 0 200px;
+  flex: 0 0 auto;
   overflow: hidden;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    max-width: 200px;
+  }
 `;
 const Name = styled.div`
   font-weight: bold;
