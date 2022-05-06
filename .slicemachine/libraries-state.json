@@ -196,7 +196,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ArticleContentSlice/default/preview.png",
+            "width": 800,
+            "height": 336
+          }
+        }
       },
       "article_slice": {
         "library": "slices",

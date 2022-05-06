@@ -1,9 +1,9 @@
 import { Client as PrismicClient } from "@prismicio/client";
-import { Slice } from "@prismicio/types";
+import { SharedSlice } from "@prismicio/types";
 import { FunctionComponent } from "react";
 import { QueryClient } from "react-query";
 
-export interface PrefetchContext<TSlice = Slice> {
+export interface PrefetchContext<TSlice = SharedSlice<any, any>> {
   prismicClient: PrismicClient;
   queryClient: QueryClient;
   locale: string;
@@ -33,7 +33,7 @@ const prefetchSliceSubQueries = async ({
   prismicClient: PrismicClient;
   locale: string;
   queryClient: QueryClient;
-  slices: Slice[];
+  slices: SharedSlice[];
   components: Record<string, PrefetchableSliceComponent>;
 }) => {
   // We don't need to store any return data as it's put in the QueryClient's
