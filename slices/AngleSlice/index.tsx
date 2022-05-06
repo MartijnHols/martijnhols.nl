@@ -7,7 +7,7 @@ import {
 import Angle from "../../components/Angle";
 
 export type PrismicAngleSlice = SharedSlice<
-  "footer_slice",
+  "angle_slice",
   SharedSliceVariation<"default"> | SharedSliceVariation<"inverted">
 >;
 

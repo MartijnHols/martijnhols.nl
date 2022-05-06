@@ -6,8 +6,11 @@ import {
   LinkField,
   PrismicDocument,
   RichTextField,
+  SliceZone as SliceZoneType,
 } from "@prismicio/types";
 import getConfig from "next/config";
+import { PrismicArticleCodeSnippetSlice } from "../slices/ArticleCodeSnippetSlice";
+import { PrismicArticleContentSlice } from "../slices/ArticleContentSlice";
 
 import sm from "../sm.json";
 
@@ -63,10 +66,24 @@ export type PrismicProject = PrismicDocument<
     sourceCode: LinkField;
     tech: KeyTextField;
   },
-  "page"
+  "project"
 >;
 
 export const getProjects = (client: Client, locale: string) =>
   client.getAllByType<PrismicProject>("project", {
     lang: locale,
   });
+
+export type PrismicPageSlice =
+  | PrismicArticleContentSlice
+  | PrismicArticleCodeSnippetSlice;
+export type PrismicArticle = PrismicDocument<
+  {
+    name: KeyTextField;
+    slices: SliceZoneType<PrismicPageSlice, "filled">;
+  },
+  "article"
+>;
+
+export const getArticle = (client: Client, id: string) =>
+  client.getByID<PrismicArticle>(id);

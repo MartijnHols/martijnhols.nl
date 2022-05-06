@@ -3,10 +3,11 @@ import { Slice } from "@prismicio/types";
 import { FunctionComponent } from "react";
 import { QueryClient } from "react-query";
 
-export interface PrefetchContext {
+export interface PrefetchContext<TSlice = Slice> {
   prismicClient: PrismicClient;
   queryClient: QueryClient;
   locale: string;
+  slice: TSlice;
 }
 
 type PrefetchableSliceComponent = FunctionComponent<any> & {
@@ -35,18 +36,22 @@ const prefetchSliceSubQueries = async ({
   slices: Slice[];
   components: Record<string, PrefetchableSliceComponent>;
 }) => {
-  const prefetchContext: PrefetchContext = {
-    prismicClient,
-    queryClient,
-    locale,
-  };
   // We don't need to store any return data as it's put in the QueryClient's
   // cache.
   await Promise.all(
-    slices
-      .map((slice) => components[slice.slice_type])
-      .filter((component) => "prefetch" in component)
-      .map((component) => component.prefetch!(prefetchContext))
+    slices.map(async (slice) => {
+      const component = components[slice.slice_type];
+      if (!("prefetch" in component)) {
+        return;
+      }
+
+      await component.prefetch!({
+        prismicClient,
+        queryClient,
+        locale,
+        slice,
+      });
+    })
   );
 };
 

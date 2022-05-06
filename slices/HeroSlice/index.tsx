@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { asText } from "@prismicio/helpers";
-import { RichTextField, Slice } from "@prismicio/types";
+import { RichTextField, SharedSlice, SharedSliceVariation, Slice } from "@prismicio/types";
 import { useRouter } from "next/router";
 
 import Angle from "../../components/Angle";
@@ -123,13 +123,16 @@ const SubText = styled.div`
   ${h5}
 `;
 
-export type PrismicHeroSlice = Slice<
+export type PrismicHeroSlice = SharedSlice<
   "hero_slice",
-  {
-    intro: RichTextField;
-    title: RichTextField;
-    subText: RichTextField;
-  }
+  SharedSliceVariation<
+    "default",
+    {
+      intro: RichTextField;
+      title: RichTextField;
+      subText: RichTextField;
+    }
+  >
 >;
 
 const reactifyTitle = (title: string) =>

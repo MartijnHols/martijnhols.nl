@@ -53,6 +53,9 @@
             },
             "angle_slice": {
               "type": "SharedSlice"
+            },
+            "article_slice": {
+              "type": "SharedSlice"
             }
           }
         }

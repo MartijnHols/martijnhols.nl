@@ -9,7 +9,8 @@
         }
       }
     },
-    "config": {}
+    "config": {},
+    "article": {}
   },
   "slices": {
     "Hero": {
@@ -98,6 +99,76 @@
       }
     },
     "AngleSlice": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "ArticleCodeSnippet": {
+      "default": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 5
+            }
+          },
+          "language": {
+            "content": "tsx"
+          }
+        }
+      }
+    },
+    "ArticleContent": {
+      "default": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "STORY",
+              "blocks": 1
+            }
+          }
+        }
+      },
+      "code": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "Article": {},
+    "ArticleCodeSnippetSlice": {
+      "default": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "language": {
+            "content": "tsx"
+          }
+        }
+      }
+    },
+    "ArticleContentSlice": {
+      "default": {
+        "primary": {
+          "content": {
+            "config": {
+              "patternType": "STORY",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "ArticleSlice": {
       "default": {
         "primary": {}
       }

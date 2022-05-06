@@ -1,0 +1,14 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "article_slice",
+    "items": [],
+    "primary": {
+      "article": {
+        "link_type": "Web",
+        "url": "http://google.com"
+      }
+    }
+  }
+]

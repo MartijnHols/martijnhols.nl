@@ -5,10 +5,11 @@ import {
   KeyTextField,
   LinkField,
   NumberField,
-  Slice,
+  SharedSlice,
+  SharedSliceVariation,
 } from "@prismicio/types";
-import ContactButton from "../../components/ContactButton";
 
+import ContactButton from "../../components/ContactButton";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 import { colors, spacing } from "../../theme";
@@ -41,25 +42,28 @@ const SocialRow = styled(Row)``;
 const BusinessRow = styled(Row)``;
 const Item = styled.div``;
 
-export type PrismicFooterSlice = Slice<
+export type PrismicFooterSlice = SharedSlice<
   "footer_slice",
-  {
-    contactLabel: KeyTextField;
-    email: KeyTextField;
-    phone: KeyTextField;
-    whatsApp: NumberField;
-    socialLabel: KeyTextField;
-    linkedIn: LinkField;
-    gitHub: LinkField;
-    twitter: LinkField;
-    companyLabel: KeyTextField;
-    kvk: KeyTextField;
-    btw: KeyTextField;
-    iban: KeyTextField;
-    locationLabel: KeyTextField;
-    city: KeyTextField;
-    location: GeoPointField;
-  }
+  SharedSliceVariation<
+    "default",
+    {
+      contactLabel: KeyTextField;
+      email: KeyTextField;
+      phone: KeyTextField;
+      whatsApp: NumberField;
+      socialLabel: KeyTextField;
+      linkedIn: LinkField;
+      gitHub: LinkField;
+      twitter: LinkField;
+      companyLabel: KeyTextField;
+      kvk: KeyTextField;
+      btw: KeyTextField;
+      iban: KeyTextField;
+      locationLabel: KeyTextField;
+      city: KeyTextField;
+      location: GeoPointField;
+    }
+  >
 >;
 
 interface Props {

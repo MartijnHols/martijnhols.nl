@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
-import { RichTextField, Slice, TitleField } from "@prismicio/types";
+import {
+  RichTextField,
+  SharedSlice,
+  SharedSliceVariation,
+  Slice,
+  TitleField,
+} from "@prismicio/types";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -30,12 +36,15 @@ const Explanation = styled.div`
   margin-bottom: ${spacing.x6}px;
 `;
 
-export type PrismicProjectsSlice = Slice<
+export type PrismicProjectsSlice = SharedSlice<
   "projects_slice",
-  {
-    title: TitleField;
-    explanation: RichTextField;
-  }
+  SharedSliceVariation<
+    "default",
+    {
+      title: TitleField;
+      explanation: RichTextField;
+    }
+  >
 >;
 
 interface Props {

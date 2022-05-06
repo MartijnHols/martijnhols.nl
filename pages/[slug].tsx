@@ -29,6 +29,9 @@ import { toPrismicLocale, toUserLocale } from "../utils/locales";
 import HrefLangHead from "../components/HrefLangHead";
 import stripUndefined from "../utils/stripUndefined";
 import prefetchSliceSubQueries from "../utils/prefetchSliceSubQueries";
+import { PrismicArticleSlice } from "../slices/ArticleSlice";
+import { PrismicFooterSlice } from "../slices/FooterSlice";
+import { PrismicProjectsSlice } from "../slices/ProjectsSlice";
 
 export const getPages = async (
   client: PrismicClient,
@@ -54,7 +57,12 @@ export const getStaticPaths = async () => {
   };
 };
 
-export type PrismicPageSlice = PrismicHeroSlice | PrismicContentSlice;
+export type PrismicPageSlice =
+  | PrismicHeroSlice
+  | PrismicContentSlice
+  | PrismicProjectsSlice
+  | PrismicFooterSlice
+  | PrismicArticleSlice;
 export type PrismicPage = PrismicDocument<
   {
     headTitle: KeyTextField;

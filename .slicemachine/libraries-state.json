@@ -67,6 +67,197 @@
           }
         }
       },
+      "article_code_snippet_slice": {
+        "library": "slices",
+        "id": "article_code_snippet_slice",
+        "name": "ArticleCodeSnippetSlice",
+        "description": "ArticleCodeSnippetSlice",
+        "model": {
+          "id": "article_code_snippet_slice",
+          "type": "SharedSlice",
+          "name": "ArticleCodeSnippetSlice",
+          "description": "ArticleCodeSnippetSlice",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ArticleCodeSnippetSlice",
+              "primary": {
+                "language": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Language",
+                    "placeholder": ""
+                  }
+                },
+                "content": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Content",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "preformatted"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "article_code_snippet_slice",
+            "items": [],
+            "primary": {
+              "language": "tsx",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "text": "In tempor pariatur excepteur cillum nostrud aliqua. Laboris eu officia commodo esse veniam proident magna consequat ea ad dolore.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ArticleCodeSnippetSlice/default/preview.png",
+            "width": 800,
+            "height": 35
+          }
+        }
+      },
+      "article_content_slice": {
+        "library": "slices",
+        "id": "article_content_slice",
+        "name": "ArticleContentSlice",
+        "description": "ArticleContentSlice",
+        "model": {
+          "id": "article_content_slice",
+          "type": "SharedSlice",
+          "name": "ArticleContentSlice",
+          "description": "ArticleContentSlice",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ArticleContentSlice",
+              "primary": {
+                "content": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Content",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "article_content_slice",
+            "items": [],
+            "primary": {
+              "content": [
+                {
+                  "type": "heading1",
+                  "text": "Aggregate web-enabled users",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Ipsum elit qui quis ex incididunt qui anim. Reprehenderit voluptate ullamco mollit. Et excepteur tempor anim reprehenderit esse fugiat deserunt excepteur sunt sunt.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {}
+      },
+      "article_slice": {
+        "library": "slices",
+        "id": "article_slice",
+        "name": "ArticleSlice",
+        "description": "ArticleSlice",
+        "model": {
+          "id": "article_slice",
+          "type": "SharedSlice",
+          "name": "ArticleSlice",
+          "description": "ArticleSlice",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ArticleSlice",
+              "primary": {
+                "article": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Article",
+                    "select": "document",
+                    "customtypes": [
+                      "article"
+                    ]
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "article_slice",
+            "items": [],
+            "primary": {
+              "article": {
+                "link_type": "Web",
+                "url": "http://google.com"
+              }
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ArticleSlice/default/preview.png",
+            "width": 800,
+            "height": 235
+          }
+        }
+      },
       "content_slice": {
         "library": "slices",
         "id": "content_slice",
@@ -155,17 +346,17 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Aute incididunt proident elit ex Lorem labore consequat.",
+                  "text": "Lorem est consectetur magna id duis cillum duis eiusmod in laborum.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Velit veniam ex ut officia in Lorem commodo ipsum tempor consequat officia. Officia id voluptate elit nostrud incididunt id irure. Aliqua culpa minim magna elit elit occaecat.",
+                  "text": "Laboris aute irure ad duis tempor culpa sint nisi proident occaecat incididunt enim elit mollit. Exercitation magna duis aliquip. Sunt aliquip magna commodo in velit sit esse id amet esse duis duis dolore.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Velit aliqua aliquip commodo dolore mollit dolor est sit nostrud minim ex aliqua proident ipsum.",
+                  "text": "Anim id occaecat adipisicing nulla eu id magna excepteur. Non ut ut deserunt ea esse mollit pariatur reprehenderit sint commodo qui dolore ea. Dolor deserunt do culpa.",
                   "spans": []
                 }
               ]
@@ -189,17 +380,17 @@
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Do irure Lorem ipsum in cillum. Aute ullamco eiusmod reprehenderit ut minim voluptate. Excepteur consequat culpa anim reprehenderit excepteur proident elit aliqua nostrud deserunt excepteur eiusmod.",
+                  "text": "Ullamco officia ipsum ipsum ut est est velit consequat sint voluptate culpa consequat nostrud. Lorem laboris amet ea eiusmod sunt aliqua. Ea laborum Lorem irure irure cupidatat aliquip eu consequat culpa ipsum proident ad mollit.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Velit in anim amet. Ea ipsum ad excepteur proident reprehenderit anim irure velit duis adipisicing esse nulla commodo id quis. Anim dolor laboris nisi ea id consectetur amet eu laborum ut in adipisicing.",
+                  "text": "Pariatur cillum est do irure eu mollit velit aliquip. Consequat pariatur fugiat mollit culpa pariatur ipsum sint commodo anim veniam. Ipsum irure do proident.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Elit tempor ad occaecat exercitation voluptate est eiusmod labore ea nulla.",
+                  "text": "Elit excepteur nulla duis ea. Ut aliquip qui ullamco fugiat proident duis do quis adipisicing.",
                   "spans": []
                 }
               ]
@@ -210,18 +401,7 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {
-          "default": {
-            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/default/preview.png",
-            "width": 800,
-            "height": 525
-          },
-          "inverted": {
-            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/inverted/preview.png",
-            "width": 800,
-            "height": 687
-          }
-        }
+        "screenshotPaths": {}
       },
       "footer_slice": {
         "library": "slices",
