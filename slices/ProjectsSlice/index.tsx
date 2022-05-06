@@ -46,7 +46,7 @@ const ProjectsSlice = ({ slice }: Props) => {
   const { locale } = useRouter();
   const previewData = usePreviewData();
   const [prismicClient] = useState(() => createClient({ previewData }));
-  const { data } = useQuery("projects", () =>
+  const { data } = useQuery(["projects", locale], () =>
     getProjects(prismicClient, toPrismicLocale(locale!))
   );
 
