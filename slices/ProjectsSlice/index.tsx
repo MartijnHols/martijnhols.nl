@@ -118,7 +118,7 @@ ProjectsSlice.prefetch = async ({
   queryClient,
   locale,
 }: PrefetchContext) => {
-  await queryClient.prefetchQuery("projects", () =>
+  await queryClient.prefetchQuery(["projects", locale], () =>
     getProjects(prismicClient, locale)
   );
 };
