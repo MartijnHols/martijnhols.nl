@@ -10,6 +10,7 @@ import { useQuery } from "react-query";
 
 import { components } from "..";
 import Container from "../../components/Container";
+import { headings } from "../../theme";
 import { PrefetchContext } from "../../utils/prefetchSliceSubQueries";
 import { getArticle, PrismicArticle } from "../../utils/prismic";
 
@@ -19,6 +20,10 @@ const StyledContainer = styled(Container)`
   padding-bottom: 100px;
   // TODO: Make h1 smaller
   /* max-width: 800px; */
+`;
+const Title = styled.h1`
+  line-height: 1.1;
+  font-size: 110px;
 `;
 
 export type PrismicArticleSlice = SharedSlice<
@@ -55,7 +60,7 @@ const ArticleSlice = ({ slice }: Props) => {
     <Article>
       <StyledContainer>
         <header>
-          <h1>{article.name}</h1>
+          <Title>{article.name}</Title>
         </header>
 
         <SliceZone slices={article.slices} components={components} />

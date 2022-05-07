@@ -1,22 +1,18 @@
 import { Client as PrismicClient } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
-import {
-  ImageField,
-  KeyTextField,
-  PrismicDocument,
-  SliceZone as SliceZoneType,
-} from "@prismicio/types";
 import { GetStaticProps, PreviewData } from "next";
 import getConfig from "next/config";
 import Head from "next/head";
-import { createContext, useContext } from "react";
 import { dehydrate, QueryClient, DehydratedState } from "react-query";
 
 import PageWrapper from "../components/PageWrapper";
-import { createClient, getByUid } from "../utils/prismic";
+import {
+  createClient,
+  getByUid,
+  getPages,
+  PrismicPage,
+} from "../utils/prismic";
 import { components } from "../slices";
-import { PrismicHeroSlice } from "../slices/HeroSlice";
-import { PrismicContentSlice } from "../slices/ContentSlice";
 import { colors } from "../theme";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 import absoluteUrl from "../utils/absoluteUrl";
@@ -29,21 +25,8 @@ import { toPrismicLocale, toUserLocale } from "../utils/locales";
 import HrefLangHead from "../components/HrefLangHead";
 import stripUndefined from "../utils/stripUndefined";
 import prefetchSliceSubQueries from "../utils/prefetchSliceSubQueries";
-import { PrismicArticleSlice } from "../slices/ArticleSlice";
-import { PrismicFooterSlice } from "../slices/FooterSlice";
-import { PrismicProjectsSlice } from "../slices/ProjectsSlice";
+import { PreviewDataContextProvider } from "../utils/previewData";
 
-export const getPages = async (
-  client: PrismicClient,
-  /**
-   * If lang is omitted it only returns the master locale.
-   */
-  locale: string = "*"
-) => {
-  return await client.getAllByType<PrismicPage>("page", {
-    lang: locale,
-  });
-};
 export const getStaticPaths = async () => {
   const client = createClient();
   const pages = await getPages(client);
@@ -56,22 +39,6 @@ export const getStaticPaths = async () => {
     fallback: "blocking",
   };
 };
-
-export type PrismicPageSlice =
-  | PrismicHeroSlice
-  | PrismicContentSlice
-  | PrismicProjectsSlice
-  | PrismicFooterSlice
-  | PrismicArticleSlice;
-export type PrismicPage = PrismicDocument<
-  {
-    headTitle: KeyTextField;
-    description: KeyTextField;
-    ogImage: ImageField;
-    slices: SliceZoneType<PrismicPageSlice, "filled">;
-  },
-  "page"
->;
 
 const getCmsPage = async (
   prismicClient: PrismicClient,
@@ -100,14 +67,14 @@ const { serverRuntimeConfig } = getConfig();
 interface StaticProps {
   config: PrismicConfig["data"];
   page: PrismicPage;
-  previewData: PreviewData;
+  previewData?: PreviewData;
   dehydratedState: DehydratedState;
 }
 
 export const getStaticProps: GetStaticProps<
   StaticProps,
   { slug: string }
-> = async ({ previewData, params, locale, preview }) => {
+> = async ({ previewData, params, locale }) => {
   const prismicClient = createClient({ previewData });
   const prismicLocale = toPrismicLocale(locale!);
 
@@ -142,10 +109,7 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const PreviewDataContext = createContext<PreviewData | undefined>(undefined);
-export const usePreviewData = () => useContext(PreviewDataContext)!;
-
-const Home = ({ config, page, previewData }: StaticProps) => {
+const Page = ({ config, page, previewData }: StaticProps) => {
   const title = page.data.headTitle || "Martijn Hols";
 
   return (
@@ -179,15 +143,16 @@ const Home = ({ config, page, previewData }: StaticProps) => {
           <meta property="og:image:alt" content={page.data.ogImage.alt} />
         )}
       </Head>
+      {/** TODO: Move to sitemap */}
       <HrefLangHead page={page} />
 
       <PrismicConfigProvider value={config}>
-        <PreviewDataContext.Provider value={previewData}>
+        <PreviewDataContextProvider value={previewData}>
           <SliceZone slices={page.data.slices} components={components} />
-        </PreviewDataContext.Provider>
+        </PreviewDataContextProvider>
       </PrismicConfigProvider>
     </PageWrapper>
   );
 };
 
-export default Home;
+export default Page;

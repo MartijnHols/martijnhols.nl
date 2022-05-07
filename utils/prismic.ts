@@ -11,6 +11,10 @@ import {
 import getConfig from "next/config";
 import { PrismicArticleCodeSnippetSlice } from "../slices/ArticleCodeSnippetSlice";
 import { PrismicArticleContentSlice } from "../slices/ArticleContentSlice";
+import { PrismicContentSlice } from "../slices/ContentSlice";
+import { PrismicFooterSlice } from "../slices/FooterSlice";
+import { PrismicHeroSlice } from "../slices/HeroSlice";
+import { PrismicProjectsSlice } from "../slices/ProjectsSlice";
 
 import sm from "../sm.json";
 
@@ -55,6 +59,45 @@ export const getByUid = async <T extends PrismicDocument>(
   }
 };
 
+export type PrismicPageSlice =
+  | PrismicHeroSlice
+  | PrismicContentSlice
+  | PrismicProjectsSlice
+  | PrismicFooterSlice
+  | PrismicArticleSlice;
+export type PrismicPage = PrismicDocument<
+  {
+    headTitle: KeyTextField;
+    description: KeyTextField;
+    ogImage: ImageField;
+    slices: SliceZoneType<PrismicPageSlice, "filled">;
+  },
+  "page"
+>;
+
+export const getPages = async (
+  client: Client,
+  /**
+   * If lang is omitted it only returns the master locale.
+   */
+  locale: string = "*"
+) => {
+  return await client.getAllByType<PrismicPage>("page", {
+    lang: locale,
+  });
+};
+export const getArticles = async (
+  client: Client,
+  /**
+   * If lang is omitted it only returns the master locale.
+   */
+  locale: string = "*"
+) => {
+  return await client.getAllByType<PrismicPage>("article", {
+    lang: locale,
+  });
+};
+
 export type PrismicProject = PrismicDocument<
   {
     thumbnail: ImageField;
@@ -74,13 +117,13 @@ export const getProjects = (client: Client, locale: string) =>
     lang: locale,
   });
 
-export type PrismicPageSlice =
+export type PrismicArticleSlice =
   | PrismicArticleContentSlice
   | PrismicArticleCodeSnippetSlice;
 export type PrismicArticle = PrismicDocument<
   {
     name: KeyTextField;
-    slices: SliceZoneType<PrismicPageSlice, "filled">;
+    slices: SliceZoneType<PrismicArticleSlice, "filled">;
   },
   "article"
 >;
