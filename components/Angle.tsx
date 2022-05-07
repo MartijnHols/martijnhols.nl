@@ -17,6 +17,7 @@ const TopAngle = styled.div`
   width: 100%;
   height: calc(10px + 100vw / 2000 * 30);
   clip-path: polygon(0 0, 100% 0, 0 100%);
+  ${clipPathBorderFix}
 `;
 const BottomAngle = styled.div`
   height: calc(10px + 100vw / 2000 * 30);
