@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { PrismicPage } from "../pages/[slug]";
+import { PrismicPage } from "../utils/prismic";
 import absoluteUrl from "../utils/absoluteUrl";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 

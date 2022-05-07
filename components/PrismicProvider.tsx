@@ -3,11 +3,11 @@ import {
   LinkProps,
   PrismicProvider as OriginalPrismicProvider,
 } from "@prismicio/react";
+import { PreviewData } from "next";
 import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { ReactNode, useState } from "react";
 
-import { usePreviewData } from "../pages/[slug]";
 import { createClient } from "../utils/prismic";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 import Link from "./Link";
@@ -20,11 +20,11 @@ const PrismicLink = ({ children, ...others }: LinkProps) => (
 
 interface Props {
   children: ReactNode;
+  previewData: PreviewData;
 }
 
-const PrismicProvider = ({ children }: Props) => {
+const PrismicProvider = ({ children, previewData }: Props) => {
   const { isPreview } = useRouter();
-  const previewData = usePreviewData();
   const [client] = useState(() => createClient({ previewData }));
 
   return (

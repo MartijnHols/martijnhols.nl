@@ -4,7 +4,7 @@ import { createContext, useContext } from "react";
 
 /**
  * Config is a Single type in Prismic where non-content strings can be placed
- * for translation. This keeps all languages in a single system (Prismic).
+ * for translation. This keeps all l10n in a single system (Prismic).
  */
 
 export type PrismicConfig = PrismicDocument<

@@ -2,7 +2,6 @@ import { Client as PrismicClient } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import { GetStaticProps, PreviewData } from "next";
 import getConfig from "next/config";
-import Head from "next/head";
 import { dehydrate, QueryClient, DehydratedState } from "react-query";
 
 import PageWrapper from "../components/PageWrapper";
@@ -13,7 +12,6 @@ import {
   PrismicPage,
 } from "../utils/prismic";
 import { components } from "../slices";
-import { colors } from "../theme";
 import prismicLinkResolver from "../utils/prismicLinkResolver";
 import absoluteUrl from "../utils/absoluteUrl";
 import {
@@ -25,7 +23,9 @@ import { toPrismicLocale, toUserLocale } from "../utils/locales";
 import HrefLangHead from "../components/HrefLangHead";
 import stripUndefined from "../utils/stripUndefined";
 import prefetchSliceSubQueries from "../utils/prefetchSliceSubQueries";
-import { PreviewDataContextProvider } from "../utils/previewData";
+import convertPrismicImage, { ImageInfo } from "../utils/convertPrismicImage";
+import BaseHead from "../components/BaseHead";
+import PrismicProvider from "../components/PrismicProvider";
 
 export const getStaticPaths = async () => {
   const client = createClient();
@@ -109,50 +109,23 @@ export const getStaticProps: GetStaticProps<
   };
 };
 
-const Page = ({ config, page, previewData }: StaticProps) => {
-  const title = page.data.headTitle || "Martijn Hols";
+const Page = ({ config, page, previewData }: StaticProps) => (
+  <PageWrapper>
+    <BaseHead
+      title={page.data.headTitle || "Martijn Hols"}
+      description={page.data.description || undefined}
+      absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
+      image={convertPrismicImage(page.data.ogImage)}
+    />
+    {/** TODO: Move to sitemap */}
+    <HrefLangHead page={page} />
 
-  return (
-    <PageWrapper>
-      <Head>
-        <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        {page.data.description && (
-          <meta name="description" content={page.data.description} />
-        )}
-        <meta name="theme-color" content={colors.complementary} />
-        <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
-        {page.data.description && (
-          <meta property="og:description" content={page.data.description} />
-        )}
-        <meta
-          property="og:url"
-          content={absoluteUrl(prismicLinkResolver(page))}
-        />
-        {page.data.ogImage.url && (
-          <meta
-            property="og:image"
-            // itemProp is required for WhatsApp: https://stackoverflow.com/a/45890205/684353
-            itemProp="image"
-            content={page.data.ogImage.url}
-          />
-        )}
-        {page.data.ogImage.alt && (
-          <meta property="og:image:alt" content={page.data.ogImage.alt} />
-        )}
-      </Head>
-      {/** TODO: Move to sitemap */}
-      <HrefLangHead page={page} />
-
+    <PrismicProvider previewData={previewData}>
       <PrismicConfigProvider value={config}>
-        <PreviewDataContextProvider value={previewData}>
-          <SliceZone slices={page.data.slices} components={components} />
-        </PreviewDataContextProvider>
+        <SliceZone slices={page.data.slices} components={components} />
       </PrismicConfigProvider>
-    </PageWrapper>
-  );
-};
+    </PrismicProvider>
+  </PageWrapper>
+);
 
 export default Page;
