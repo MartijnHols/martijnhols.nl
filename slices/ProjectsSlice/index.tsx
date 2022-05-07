@@ -1,14 +1,13 @@
 import styled from "@emotion/styled";
 import { asLink } from "@prismicio/helpers";
+import { usePrismicClient } from "@prismicio/react";
 import {
   RichTextField,
   SharedSlice,
   SharedSliceVariation,
-  Slice,
   TitleField,
 } from "@prismicio/types";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useQuery } from "react-query";
 
 import ContactButton from "../../components/ContactButton";
@@ -16,12 +15,11 @@ import Container from "../../components/Container";
 import PrismicRichText from "../../components/PrismicRichText";
 import PrismicTitle from "../../components/PrismicTitle";
 import ProjectBrief from "../../components/ProjectBrief";
-import { usePreviewData } from "../../pages/[slug]";
 import { colors, spacing } from "../../theme";
 import convertPrismicImage from "../../utils/convertPrismicImage";
 import { toPrismicLocale } from "../../utils/locales";
 import { PrefetchContext } from "../../utils/prefetchSliceSubQueries";
-import { createClient, getProjects } from "../../utils/prismic";
+import { getProjects } from "../../utils/prismic";
 import prismicLinkResolver from "../../utils/prismicLinkResolver";
 
 const ContactButtonClipper = styled.div`
@@ -47,17 +45,22 @@ export type PrismicProjectsSlice = SharedSlice<
   >
 >;
 
+const useProjects = () => {
+  const { locale } = useRouter();
+  const prismicLocale = toPrismicLocale(locale!);
+  const prismicClient = usePrismicClient();
+  const { data } = useQuery(["projects", prismicLocale], () =>
+    getProjects(prismicClient, prismicLocale)
+  );
+  return data?.map((item) => item.data);
+};
+
 interface Props {
   slice: PrismicProjectsSlice;
 }
 
 const ProjectsSlice = ({ slice }: Props) => {
-  const { locale } = useRouter();
-  const previewData = usePreviewData();
-  const [prismicClient] = useState(() => createClient({ previewData }));
-  const { data } = useQuery(["projects", locale], () =>
-    getProjects(prismicClient, toPrismicLocale(locale!))
-  );
+  const projects = useProjects();
 
   return (
     <ContactButtonClipper>
@@ -70,9 +73,8 @@ const ProjectsSlice = ({ slice }: Props) => {
             <PrismicRichText field={slice.primary.explanation} />
           </Explanation>
 
-          {data
-            ?.map((item) => item.data)
-            .sort((a, b) =>
+          {projects
+            ?.sort((a, b) =>
               (b.endedYear || "").localeCompare(a.endedYear || "")
             )
             .map((project) => {
@@ -116,10 +118,10 @@ const ProjectsSlice = ({ slice }: Props) => {
 ProjectsSlice.prefetch = async ({
   prismicClient,
   queryClient,
-  locale,
+  prismicLocale,
 }: PrefetchContext) => {
-  await queryClient.prefetchQuery(["projects", locale], () =>
-    getProjects(prismicClient, locale)
+  await queryClient.prefetchQuery(["projects", prismicLocale], () =>
+    getProjects(prismicClient, prismicLocale)
   );
 };
 

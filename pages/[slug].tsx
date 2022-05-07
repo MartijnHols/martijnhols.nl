@@ -86,7 +86,7 @@ const getCmsPage = async (
 
   await prefetchSliceSubQueries({
     prismicClient,
-    locale,
+    prismicLocale: locale,
     queryClient,
     slices: page.data.slices,
     components,

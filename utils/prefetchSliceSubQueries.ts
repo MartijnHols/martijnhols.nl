@@ -6,7 +6,7 @@ import { QueryClient } from "react-query";
 export interface PrefetchContext<TSlice = SharedSlice<any, any>> {
   prismicClient: PrismicClient;
   queryClient: QueryClient;
-  locale: string;
+  prismicLocale: string;
   slice: TSlice;
 }
 
@@ -25,13 +25,13 @@ type PrefetchableSliceComponent = FunctionComponent<any> & {
  */
 const prefetchSliceSubQueries = async ({
   prismicClient,
-  locale,
+  prismicLocale,
   queryClient,
   slices,
   components,
 }: {
   prismicClient: PrismicClient;
-  locale: string;
+  prismicLocale: string;
   queryClient: QueryClient;
   slices: SharedSlice[];
   components: Record<string, PrefetchableSliceComponent>;
@@ -48,7 +48,7 @@ const prefetchSliceSubQueries = async ({
       await component.prefetch!({
         prismicClient,
         queryClient,
-        locale,
+        prismicLocale,
         slice,
       });
     })

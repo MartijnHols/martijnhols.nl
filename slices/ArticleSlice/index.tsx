@@ -1,19 +1,17 @@
 import styled from "@emotion/styled";
-import { SliceZone } from "@prismicio/react";
+import { SliceZone, usePrismicClient } from "@prismicio/react";
 import {
   FilledLinkToDocumentField,
   RelationField,
   SharedSlice,
   SharedSliceVariation,
 } from "@prismicio/types";
-import { useState } from "react";
 import { useQuery } from "react-query";
 
 import { components } from "..";
 import Container from "../../components/Container";
-import { usePreviewData } from "../../pages/[slug]";
 import { PrefetchContext } from "../../utils/prefetchSliceSubQueries";
-import { createClient, getArticle, PrismicArticle } from "../../utils/prismic";
+import { getArticle, PrismicArticle } from "../../utils/prismic";
 
 const Article = styled.article``;
 const StyledContainer = styled(Container)`
@@ -33,18 +31,21 @@ export type PrismicArticleSlice = SharedSlice<
   >
 >;
 
+const useArticle = (articleId: string) => {
+  const prismicClient = usePrismicClient();
+  const { data } = useQuery<PrismicArticle>(["article", articleId], () =>
+    getArticle(prismicClient, articleId)
+  );
+  return data?.data;
+};
+
 interface Props {
   slice: PrismicArticleSlice;
 }
 
 const ArticleSlice = ({ slice }: Props) => {
-  const previewData = usePreviewData();
-  const [prismicClient] = useState(() => createClient({ previewData }));
   const articleId = (slice.primary.article as FilledLinkToDocumentField).id;
-  const { data } = useQuery<PrismicArticle>(["article", articleId], () =>
-    getArticle(prismicClient, articleId)
-  );
-  const article = data?.data;
+  const article = useArticle(articleId);
 
   if (!article) {
     return null;
