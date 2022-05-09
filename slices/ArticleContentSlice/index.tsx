@@ -21,7 +21,10 @@ interface Props {
 }
 
 const ArticleContentSlice = ({ slice }: Props) => (
-  <PrismicRichText field={slice.primary.content} multiline />
+  <PrismicRichText
+    field={slice.primary.content}
+    multiline
+  />
 );
 
 export default ArticleContentSlice;

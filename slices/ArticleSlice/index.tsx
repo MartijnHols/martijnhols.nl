@@ -58,7 +58,7 @@ const ArticleSlice = ({ slice }: Props) => {
 
   return (
     <Article>
-      <StyledContainer>
+      <StyledContainer className="inverted">
         <header>
           <Title>{article.name}</Title>
         </header>
