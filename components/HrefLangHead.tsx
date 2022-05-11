@@ -1,25 +1,25 @@
-import Head from "next/head";
+import Head from 'next/head'
 
-import { PrismicPage } from "../utils/prismic";
-import absoluteUrl from "../utils/absoluteUrl";
-import prismicLinkResolver from "../utils/prismicLinkResolver";
+import absoluteUrl from '../utils/absoluteUrl'
+import { PrismicPage } from '../utils/prismic'
+import prismicLinkResolver from '../utils/prismicLinkResolver'
 
-const defaultHrefLang = "en";
+const defaultHrefLang = 'en'
 const prismicLocaleToHrefLang = (prismicLocale: string) => {
   switch (prismicLocale) {
-    case "en-us":
-      return "en";
-    case "nl-nl":
-      return "nl";
+    case 'en-us':
+      return 'en'
+    case 'nl-nl':
+      return 'nl'
   }
-};
+}
 
 const HrefLangHead = ({ page }: { page: PrismicPage }) => (
   <Head>
     {[page, ...page.alternate_languages].map((alternate) => {
-      let hrefLang = prismicLocaleToHrefLang(alternate.lang);
+      let hrefLang = prismicLocaleToHrefLang(alternate.lang)
       if (hrefLang === defaultHrefLang) {
-        hrefLang = "x-default";
+        hrefLang = 'x-default'
       }
 
       return (
@@ -30,9 +30,9 @@ const HrefLangHead = ({ page }: { page: PrismicPage }) => (
           hrefLang={hrefLang}
           href={absoluteUrl(prismicLinkResolver(alternate))}
         />
-      );
+      )
     })}
   </Head>
-);
+)
 
-export default HrefLangHead;
+export default HrefLangHead

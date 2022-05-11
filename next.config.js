@@ -1,43 +1,43 @@
-const { getRepositoryName } = require("@prismicio/client");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+const { getRepositoryName } = require('@prismicio/client')
 
-const prismicConfig = require("./sm.json");
+const prismicConfig = require('./sm.json')
 
 const getEnvironmentVariable = (name) => {
   if (!process.env[name]) {
-    throw new Error(`Missing environment variable: ${name}`);
+    throw new Error(`Missing environment variable: ${name}`)
   }
-  return process.env[name];
-};
+  return process.env[name]
+}
 
-const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint);
+const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint)
 /**
  * All supported locales.
  * Prismic locale => user-facing locale
  */
 const prismicLocaleMap = {
-  "nl-nl": "nl",
-  "en-us": "en",
-};
+  'nl-nl': 'nl',
+  'en-us': 'en',
+}
 /** The default locale is special, as it's omited from the URL. */
-const defaultUserLocale = "nl";
+const defaultUserLocale = 'nl'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
   reactStrictMode: true,
   i18n: {
     locales: Object.keys(prismicLocaleMap).map(
-      (locale) => prismicLocaleMap[locale] || locale
+      (locale) => prismicLocaleMap[locale] || locale,
     ),
     defaultLocale: defaultUserLocale,
   },
   serverRuntimeConfig: {
     pageRevalidateInterval:
-      getEnvironmentVariable("PAGE_REVALIDATE_INTERVAL") === "false"
+      getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL') === 'false'
         ? undefined
-        : Number(getEnvironmentVariable("PAGE_REVALIDATE_INTERVAL")),
+        : Number(getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL')),
   },
   publicRuntimeConfig: {
     primaryHost: process.env.PRIMARY_HOST,
@@ -47,17 +47,17 @@ const nextConfig = withBundleAnalyzer({
   },
   images: {
     domains: [
-      "images.prismic.io",
+      'images.prismic.io',
       `${prismicRepositoryName}.cdn.prismic.io`,
       // Used by Prismic Slice Machine mock data
-      process.env.NODE_ENV === "development"
-        ? "images.unsplash.com"
+      process.env.NODE_ENV === 'development'
+        ? 'images.unsplash.com'
         : undefined,
     ].filter(Boolean),
     deviceSizes: [640, 750, 828, 1080, 1280, 1440, 1920, 2048, 2560, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config) => {
     config.module.rules = [
       ...config.module.rules,
       // Import SVG components as react components
@@ -66,7 +66,7 @@ const nextConfig = withBundleAnalyzer({
         issuer: /\.[jt]sx?$/,
         use: [
           {
-            loader: "@svgr/webpack",
+            loader: '@svgr/webpack',
             options: {
               typescript: true,
               dimensions: false,
@@ -74,10 +74,10 @@ const nextConfig = withBundleAnalyzer({
           },
         ],
       },
-    ];
+    ]
 
-    return config;
+    return config
   },
-});
+})
 
-module.exports = nextConfig;
+module.exports = nextConfig

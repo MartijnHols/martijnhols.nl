@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react'
 
 /**
  * Replaces a part of a string with a React element. Stops after 1 match.
@@ -6,15 +6,15 @@ import { ReactElement } from "react";
 const reactStringReplace = (
   string: string,
   searchValue: string,
-  replaceValue: ReactElement
+  replaceValue: ReactElement,
 ) => {
-  const reactIndex = string.indexOf(searchValue);
+  const reactIndex = string.indexOf(searchValue)
   if (reactIndex === -1) {
-    return string;
+    return string
   }
 
-  const before = string.substring(0, reactIndex);
-  const after = string.substring(reactIndex + searchValue.length);
+  const before = string.substring(0, reactIndex)
+  const after = string.substring(reactIndex + searchValue.length)
 
   return (
     <>
@@ -22,7 +22,7 @@ const reactStringReplace = (
       {replaceValue}
       {after}
     </>
-  );
-};
+  )
+}
 
 export default reactStringReplace

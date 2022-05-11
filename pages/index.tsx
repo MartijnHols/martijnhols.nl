@@ -1,7 +1,7 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps } from 'next'
 
-import { HOMEPAGE_SLUG } from "../utils/prismicLinkResolver";
-import Page, { getStaticProps as slugGetStaticProps } from "./[slug]";
+import { HOMEPAGE_SLUG } from '../utils/prismicLinkResolver'
+import Page, { getStaticProps as slugGetStaticProps } from './[slug]'
 
 export const getStaticProps: GetStaticProps = async (props) =>
   slugGetStaticProps({
@@ -9,6 +9,6 @@ export const getStaticProps: GetStaticProps = async (props) =>
     params: {
       slug: HOMEPAGE_SLUG,
     },
-  });
+  })
 
-export default Page;
+export default Page

@@ -1,17 +1,17 @@
-import { ImageField, FilledImageFieldImage } from "@prismicio/types";
-import { StaticImageData } from "next/image";
+import { ImageField, FilledImageFieldImage } from '@prismicio/types'
+import { StaticImageData } from 'next/image'
 
-import disablePrismicImageOptimizations from "./disablePrismicImageOptimizations";
+import disablePrismicImageOptimizations from './disablePrismicImageOptimizations'
 
 export interface ImageInfo extends StaticImageData {
-  alt?: string;
+  alt?: string
 }
 
-function convertPrismicImage(image: FilledImageFieldImage): ImageInfo;
-function convertPrismicImage(image: ImageField): ImageInfo | undefined;
+function convertPrismicImage(image: FilledImageFieldImage): ImageInfo
+function convertPrismicImage(image: ImageField): ImageInfo | undefined
 function convertPrismicImage(image: ImageField): ImageInfo | undefined {
   if (!image.url) {
-    return undefined;
+    return undefined
   }
 
   return {
@@ -19,7 +19,7 @@ function convertPrismicImage(image: ImageField): ImageInfo | undefined {
     alt: image.alt ?? undefined,
     width: image.dimensions.width,
     height: image.dimensions.height,
-  };
+  }
 }
 
-export default convertPrismicImage;
+export default convertPrismicImage

@@ -1,14 +1,14 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react'
 import {
   QueryClient,
   QueryClientProvider,
   Hydrate,
   DehydratedState,
-} from "react-query";
+} from 'react-query'
 
 interface Props {
-  dehydratedState: DehydratedState;
-  children: ReactNode;
+  dehydratedState: DehydratedState
+  children: ReactNode
 }
 
 const ReactQueryProvider = ({ dehydratedState, children }: Props) => {
@@ -22,14 +22,14 @@ const ReactQueryProvider = ({ dehydratedState, children }: Props) => {
             staleTime: Infinity,
           },
         },
-      })
-  );
+      }),
+  )
 
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={dehydratedState}>{children}</Hydrate>
     </QueryClientProvider>
-  );
-};
+  )
+}
 
-export default ReactQueryProvider;
+export default ReactQueryProvider

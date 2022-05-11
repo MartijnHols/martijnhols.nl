@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { asLink } from "@prismicio/helpers";
+import styled from '@emotion/styled'
+import { asLink } from '@prismicio/helpers'
 import {
   GeoPointField,
   KeyTextField,
@@ -7,73 +7,73 @@ import {
   NumberField,
   SharedSlice,
   SharedSliceVariation,
-} from "@prismicio/types";
+} from '@prismicio/types'
 
-import ContactButton from "../../components/ContactButton";
-import Container from "../../components/Container";
-import Link from "../../components/Link";
-import { colors, spacing } from "../../theme";
-import prismicLinkResolver from "../../utils/prismicLinkResolver";
+import ContactButton from '../../components/ContactButton'
+import Container from '../../components/Container'
+import Link from '../../components/Link'
+import { colors, spacing } from '../../theme'
+import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
 const ContactButtonClipper = styled.div`
   clip-path: inset(0 0 0 0);
-`;
+`
 const Section = styled.div`
   background: ${colors.complementary};
   color: ${colors.dominant};
   padding: ${spacing.x5}px 0;
-`;
+`
 const Row = styled.div`
   margin: ${spacing.x2}px 0;
   display: flex;
   gap: ${spacing.x2}px ${spacing.x4}px;
-`;
+`
 const Label = styled.div`
   min-width: 100px;
   text-align: right;
-`;
+`
 const Values = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${spacing.x2}px ${spacing.x4}px;
-`;
-const ContactRow = styled(Row)``;
-const SocialRow = styled(Row)``;
-const BusinessRow = styled(Row)``;
-const Item = styled.div``;
+`
+const ContactRow = styled(Row)``
+const SocialRow = styled(Row)``
+const BusinessRow = styled(Row)``
+const Item = styled.div``
 
 export type PrismicFooterSlice = SharedSlice<
-  "footer_slice",
+  'footer_slice',
   SharedSliceVariation<
-    "default",
+    'default',
     {
-      contactLabel: KeyTextField;
-      email: KeyTextField;
-      phone: KeyTextField;
-      whatsApp: NumberField;
-      socialLabel: KeyTextField;
-      linkedIn: LinkField;
-      gitHub: LinkField;
-      twitter: LinkField;
-      companyLabel: KeyTextField;
-      kvk: KeyTextField;
-      btw: KeyTextField;
-      iban: KeyTextField;
-      locationLabel: KeyTextField;
-      city: KeyTextField;
-      location: GeoPointField;
+      contactLabel: KeyTextField
+      email: KeyTextField
+      phone: KeyTextField
+      whatsApp: NumberField
+      socialLabel: KeyTextField
+      linkedIn: LinkField
+      gitHub: LinkField
+      twitter: LinkField
+      companyLabel: KeyTextField
+      kvk: KeyTextField
+      btw: KeyTextField
+      iban: KeyTextField
+      locationLabel: KeyTextField
+      city: KeyTextField
+      location: GeoPointField
     }
   >
->;
+>
 
 interface Props {
-  slice: PrismicFooterSlice;
+  slice: PrismicFooterSlice
 }
 
 const FooterSlice = ({ slice }: Props) => {
-  const linkedIn = asLink(slice.primary.linkedIn, prismicLinkResolver);
-  const gitHub = asLink(slice.primary.gitHub, prismicLinkResolver);
-  const twitter = asLink(slice.primary.twitter, prismicLinkResolver);
+  const linkedIn = asLink(slice.primary.linkedIn, prismicLinkResolver)
+  const gitHub = asLink(slice.primary.gitHub, prismicLinkResolver)
+  const twitter = asLink(slice.primary.twitter, prismicLinkResolver)
 
   return (
     <ContactButtonClipper>
@@ -155,7 +155,7 @@ const FooterSlice = ({ slice }: Props) => {
 
       <ContactButton inverted />
     </ContactButtonClipper>
-  );
-};
+  )
+}
 
-export default FooterSlice;
+export default FooterSlice

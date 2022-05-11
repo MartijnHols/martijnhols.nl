@@ -1,11 +1,11 @@
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { ComponentProps, MouseEvent } from "react";
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { ComponentProps } from 'react'
 
-import { breakpoints, colors, fontSizes } from "../theme";
-import { usePrismicConfig } from "../utils/prismicConfig";
-import ChatIcon from "./icons/chat.svg";
-import Link from "./Link";
+import { breakpoints, colors, fontSizes } from '../theme'
+import { usePrismicConfig } from '../utils/prismicConfig'
+import ChatIcon from './icons/chat.svg'
+import Link from './Link'
 
 const Container = styled.div<{ inverted?: boolean }>([
   css`
@@ -44,24 +44,24 @@ const Container = styled.div<{ inverted?: boolean }>([
       color: ${colors.complementary};
       --background-color: ${colors.dominant};
     `,
-]);
-const ChatIconContainer = styled.div``;
+])
+const ChatIconContainer = styled.div``
 const StyledChatIcon = styled(ChatIcon)`
   height: 1em;
-`;
+`
 const Divider = styled.div`
   margin: 0 10px;
   width: 2px;
   background: currentColor;
-`;
+`
 
 interface Props
-  extends Omit<ComponentProps<typeof Link>, "href" | "className" | "children"> {
-  inverted?: boolean;
+  extends Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'> {
+  inverted?: boolean
 }
 
 const ContactButton = ({ inverted, ...others }: Props) => {
-  const config = usePrismicConfig();
+  const config = usePrismicConfig()
 
   return (
     <Link className="plain" href="#footer" {...others}>
@@ -73,7 +73,7 @@ const ContactButton = ({ inverted, ...others }: Props) => {
         {config?.contact}
       </Container>
     </Link>
-  );
-};
+  )
+}
 
-export default ContactButton;
+export default ContactButton

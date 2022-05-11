@@ -1,13 +1,13 @@
-import { AppProps } from "next/app";
-import { DehydratedState } from "react-query";
-import LazyHydrate from "react-lazy-hydration";
+import { AppProps } from 'next/app'
+import LazyHydrate from 'react-lazy-hydration'
+import { DehydratedState } from 'react-query'
 
-import ReactQueryProvider from "../components/ReactQueryProvider";
-import GlobalStyles from "../theme/GlobalStyles";
+import ReactQueryProvider from '../components/ReactQueryProvider'
+import GlobalStyles from '../theme/GlobalStyles'
 
 type MyAppProps = AppProps<{
-  dehydratedState: DehydratedState;
-}>;
+  dehydratedState: DehydratedState
+}>
 
 const App = ({ Component, pageProps }: MyAppProps) => (
   <LazyHydrate whenIdle>
@@ -16,6 +16,6 @@ const App = ({ Component, pageProps }: MyAppProps) => (
       <Component {...pageProps} />
     </ReactQueryProvider>
   </LazyHydrate>
-);
+)
 
-export default App;
+export default App

@@ -1,54 +1,50 @@
-import { Client as PrismicClient } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
-import { GetStaticProps, PreviewData } from "next";
-import getConfig from "next/config";
-import { dehydrate, QueryClient, DehydratedState } from "react-query";
+import { Client as PrismicClient } from '@prismicio/client'
+import { SliceZone } from '@prismicio/react'
+import { GetStaticProps, PreviewData } from 'next'
+import getConfig from 'next/config'
+import { dehydrate, QueryClient, DehydratedState } from 'react-query'
 
-import PageWrapper from "../components/PageWrapper";
-import {
-  createClient,
-  getByUid,
-  getPages,
-  PrismicPage,
-} from "../utils/prismic";
-import { components } from "../slices";
-import prismicLinkResolver from "../utils/prismicLinkResolver";
-import absoluteUrl from "../utils/absoluteUrl";
+import BaseHead from '../components/BaseHead'
+import HrefLangHead from '../components/HrefLangHead'
+import PageWrapper from '../components/PageWrapper'
+import PrismicProvider from '../components/PrismicProvider'
+import { components } from '../slices'
+import absoluteUrl from '../utils/absoluteUrl'
+import convertPrismicImage from '../utils/convertPrismicImage'
+import { toPrismicLocale, toUserLocale } from '../utils/locales'
+import prefetchSliceSubQueries from '../utils/prefetchSliceSubQueries'
+import { createClient, getByUid, getPages, PrismicPage } from '../utils/prismic'
 import {
   getPrismicConfig,
   PrismicConfig,
   PrismicConfigProvider,
-} from "../utils/prismicConfig";
-import { toPrismicLocale, toUserLocale } from "../utils/locales";
-import HrefLangHead from "../components/HrefLangHead";
-import stripUndefined from "../utils/stripUndefined";
-import prefetchSliceSubQueries from "../utils/prefetchSliceSubQueries";
-import convertPrismicImage, { ImageInfo } from "../utils/convertPrismicImage";
-import BaseHead from "../components/BaseHead";
-import PrismicProvider from "../components/PrismicProvider";
+} from '../utils/prismicConfig'
+import prismicLinkResolver from '../utils/prismicLinkResolver'
+import stripUndefined from '../utils/stripUndefined'
 
 export const getStaticPaths = async () => {
-  const client = createClient();
-  const pages = await getPages(client);
+  const client = createClient()
+  const pages = await getPages(client)
 
   return {
     paths: pages.map((page) => ({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       params: { slug: page.uid! },
       locale: toUserLocale(page.lang),
     })),
-    fallback: "blocking",
-  };
-};
+    fallback: 'blocking',
+  }
+}
 
 const getCmsPage = async (
   prismicClient: PrismicClient,
   slug: string,
   locale: string,
-  queryClient: QueryClient
+  queryClient: QueryClient,
 ) => {
-  const page = await getByUid<PrismicPage>(prismicClient, "page", slug, locale);
+  const page = await getByUid<PrismicPage>(prismicClient, 'page', slug, locale)
   if (!page) {
-    return;
+    return
   }
 
   await prefetchSliceSubQueries({
@@ -57,26 +53,27 @@ const getCmsPage = async (
     queryClient,
     slices: page.data.slices,
     components,
-  });
+  })
 
-  return page;
-};
+  return page
+}
 
-const { serverRuntimeConfig } = getConfig();
+const { serverRuntimeConfig } = getConfig()
 
 interface StaticProps {
-  config: PrismicConfig["data"];
-  page: PrismicPage;
-  previewData?: PreviewData;
-  dehydratedState: DehydratedState;
+  config: PrismicConfig['data']
+  page: PrismicPage
+  previewData?: PreviewData
+  dehydratedState: DehydratedState
 }
 
 export const getStaticProps: GetStaticProps<
   StaticProps,
   { slug: string }
 > = async ({ previewData, params, locale }) => {
-  const prismicClient = createClient({ previewData });
-  const prismicLocale = toPrismicLocale(locale!);
+  const prismicClient = createClient({ previewData })
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const prismicLocale = toPrismicLocale(locale!)
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -84,18 +81,19 @@ export const getStaticProps: GetStaticProps<
         staleTime: Infinity,
       },
     },
-  });
+  })
 
   const [config, page] = await Promise.all([
     getPrismicConfig(prismicClient, prismicLocale),
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     getCmsPage(prismicClient, params!.slug, prismicLocale, queryClient),
-  ]);
+  ])
 
   if (!config || !page) {
     return {
       notFound: true,
       revalidate: serverRuntimeConfig.pageRevalidateInterval,
-    };
+    }
   }
 
   return {
@@ -106,13 +104,13 @@ export const getStaticProps: GetStaticProps<
       dehydratedState: dehydrate(queryClient),
     }),
     revalidate: serverRuntimeConfig.pageRevalidateInterval,
-  };
-};
+  }
+}
 
 const Page = ({ config, page, previewData }: StaticProps) => (
   <PageWrapper>
     <BaseHead
-      title={page.data.headTitle || "Martijn Hols"}
+      title={page.data.headTitle || 'Martijn Hols'}
       description={page.data.description || undefined}
       absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
       image={convertPrismicImage(page.data.ogImage)}
@@ -126,6 +124,6 @@ const Page = ({ config, page, previewData }: StaticProps) => (
       </PrismicConfigProvider>
     </PrismicProvider>
   </PageWrapper>
-);
+)
 
-export default Page;
+export default Page

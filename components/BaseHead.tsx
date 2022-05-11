@@ -1,7 +1,7 @@
-import Head from "next/head";
+import Head from 'next/head'
 
-import { colors } from "../theme";
-import { ImageInfo } from "../utils/convertPrismicImage";
+import { colors } from '../theme'
+import { ImageInfo } from '../utils/convertPrismicImage'
 
 /**
  * Head config that should be on every page.
@@ -12,10 +12,10 @@ const BaseHead = ({
   absoluteUrl,
   image,
 }: {
-  title: string;
-  description?: string;
-  absoluteUrl: string;
-  image?: ImageInfo;
+  title: string
+  description?: string
+  absoluteUrl: string
+  image?: ImageInfo
 }) => (
   <Head>
     <title>{title}</title>
@@ -37,6 +37,6 @@ const BaseHead = ({
     )}
     {image?.alt && <meta property="og:image:alt" content={image.alt} />}
   </Head>
-);
+)
 
-export default BaseHead;
+export default BaseHead

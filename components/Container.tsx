@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import { breakpoints, spacing } from "../theme";
+import { breakpoints, spacing } from '../theme'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -17,6 +17,6 @@ const Container = styled.div`
     padding-left: ${spacing.x10}px;
     padding-right: ${spacing.x10}px;
   }
-`;
+`
 
-export default Container;
+export default Container

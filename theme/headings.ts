@@ -1,6 +1,6 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react'
 
-import { breakpoints, fontSizes, spacing } from ".";
+import { breakpoints, spacing } from '.'
 
 export const h1 = css`
   font-size: 120px;
@@ -14,14 +14,14 @@ export const h1 = css`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 60px;
   }
-`;
+`
 export const h2 = css`
   font-size: 60px;
 
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 45px;
   }
-`;
+`
 export const h3 = css`
   font-size: 40px;
 
@@ -31,7 +31,7 @@ export const h3 = css`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 30px;
   }
-`;
+`
 export const h4 = css`
   font-size: 30px;
 
@@ -41,7 +41,7 @@ export const h4 = css`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 20px;
   }
-`;
+`
 export const h5 = css`
   font-size: 24px;
 
@@ -51,7 +51,7 @@ export const h5 = css`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 18px;
   }
-`;
+`
 
 export const globalStyles = css`
   h1,
@@ -82,4 +82,4 @@ export const globalStyles = css`
     margin-bottom: ${spacing.x1}px;
     ${h5}
   }
-`;
+`

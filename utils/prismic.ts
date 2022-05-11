@@ -1,5 +1,5 @@
-import { Client, createClient as createPrismicClient } from "@prismicio/client";
-import { CreateClientConfig, enableAutoPreviews } from "@prismicio/next";
+import { Client, createClient as createPrismicClient } from '@prismicio/client'
+import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
 import {
   ImageField,
   KeyTextField,
@@ -7,126 +7,124 @@ import {
   PrismicDocument,
   RichTextField,
   SliceZone as SliceZoneType,
-} from "@prismicio/types";
-import getConfig from "next/config";
-import { PrismicArticleCodeSnippetSlice } from "../slices/ArticleCodeSnippetSlice";
-import { PrismicArticleContentSlice } from "../slices/ArticleContentSlice";
-import { PrismicContentSlice } from "../slices/ContentSlice";
-import { PrismicFooterSlice } from "../slices/FooterSlice";
-import { PrismicHeroSlice } from "../slices/HeroSlice";
-import { PrismicProjectsSlice } from "../slices/ProjectsSlice";
+} from '@prismicio/types'
+import getConfig from 'next/config'
 
-import sm from "../sm.json";
+import { PrismicArticleCodeSnippetSlice } from '../slices/ArticleCodeSnippetSlice'
+import { PrismicArticleContentSlice } from '../slices/ArticleContentSlice'
+import { PrismicContentSlice } from '../slices/ContentSlice'
+import { PrismicFooterSlice } from '../slices/FooterSlice'
+import { PrismicHeroSlice } from '../slices/HeroSlice'
+import { PrismicProjectsSlice } from '../slices/ProjectsSlice'
+import sm from '../sm.json'
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
 /**
  * The project's Prismic repository name.
  */
-export const repositoryName = publicRuntimeConfig.prismicRepositoryName;
+export const repositoryName = publicRuntimeConfig.prismicRepositoryName
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
  * query content from the Prismic API.
  */
 export const createClient = (config: CreateClientConfig = {}) => {
-  const client = createPrismicClient(sm.apiEndpoint);
+  const client = createPrismicClient(sm.apiEndpoint)
 
   enableAutoPreviews({
     client,
     previewData: config.previewData,
     req: config.req,
-  });
+  })
 
-  return client;
-};
+  return client
+}
 
 export const getByUid = async <T extends PrismicDocument>(
   client: Client,
   documentType: string,
   uid: string,
-  locale: string
+  locale: string,
 ) => {
   try {
     return await client.getByUID<T>(documentType, uid, {
       lang: locale,
-    });
+    })
   } catch (err) {
-    if ((err as Error).message === "No documents were returned") {
-      return undefined;
+    if ((err as Error).message === 'No documents were returned') {
+      return undefined
     }
-    throw err;
+    throw err
   }
-};
+}
 
 export type PrismicPageSlice =
   | PrismicHeroSlice
   | PrismicContentSlice
   | PrismicProjectsSlice
   | PrismicFooterSlice
-  | PrismicArticleSlice;
+  | PrismicArticleSlice
 export type PrismicPage = PrismicDocument<
   {
-    headTitle: KeyTextField;
-    description: KeyTextField;
-    ogImage: ImageField;
-    slices: SliceZoneType<PrismicPageSlice, "filled">;
+    headTitle: KeyTextField
+    description: KeyTextField
+    ogImage: ImageField
+    slices: SliceZoneType<PrismicPageSlice, 'filled'>
   },
-  "page"
->;
+  'page'
+>
 
 export const getPages = async (
   client: Client,
   /**
    * If lang is omitted it only returns the master locale.
    */
-  locale: string = "*"
-) => {
-  return await client.getAllByType<PrismicPage>("page", {
+  locale: string = '*',
+) =>
+  await client.getAllByType<PrismicPage>('page', {
     lang: locale,
-  });
-};
+  })
 export const getArticles = async (
   client: Client,
   /**
    * If lang is omitted it only returns the master locale.
    */
-  locale: string = "*"
-) => {
-  return await client.getAllByType<PrismicPage>("article", {
+  locale: string = '*',
+) =>
+  await client.getAllByType<PrismicPage>('article', {
     lang: locale,
-  });
-};
+  })
 
 export type PrismicProject = PrismicDocument<
   {
-    thumbnail: ImageField;
-    name: KeyTextField;
-    brief: RichTextField;
-    startedYear: KeyTextField;
-    endedYear: KeyTextField;
-    url: LinkField;
-    sourceCode: LinkField;
-    tech: KeyTextField;
+    thumbnail: ImageField
+    name: KeyTextField
+    brief: RichTextField
+    startedYear: KeyTextField
+    endedYear: KeyTextField
+    url: LinkField
+    sourceCode: LinkField
+    tech: KeyTextField
   },
-  "project"
->;
+  'project'
+>
 
 export const getProjects = (client: Client, locale: string) =>
-  client.getAllByType<PrismicProject>("project", {
+  client.getAllByType<PrismicProject>('project', {
     lang: locale,
-  });
+  })
 
 export type PrismicArticleSlice =
   | PrismicArticleContentSlice
-  | PrismicArticleCodeSnippetSlice;
+  | PrismicArticleCodeSnippetSlice
 export type PrismicArticle = PrismicDocument<
   {
-    name: KeyTextField;
-    slices: SliceZoneType<PrismicArticleSlice, "filled">;
+    name: KeyTextField
+    slices: SliceZoneType<PrismicArticleSlice, 'filled'>
   },
-  "article"
->;
+  'article'
+>
 
 export const getArticle = (client: Client, id: string) =>
-  client.getByID<PrismicArticle>(id);
+  client.getByID<PrismicArticle>(id)

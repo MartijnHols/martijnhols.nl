@@ -1,31 +1,31 @@
-import { PrismicPreview } from "@prismicio/next";
+import { PrismicPreview } from '@prismicio/next'
 import {
   LinkProps,
   PrismicProvider as OriginalPrismicProvider,
-} from "@prismicio/react";
-import { PreviewData } from "next";
-import getConfig from "next/config";
-import { useRouter } from "next/router";
-import { ReactNode, useState } from "react";
+} from '@prismicio/react'
+import { PreviewData } from 'next'
+import getConfig from 'next/config'
+import { useRouter } from 'next/router'
+import { ReactNode, useState } from 'react'
 
-import { createClient } from "../utils/prismic";
-import prismicLinkResolver from "../utils/prismicLinkResolver";
-import Link from "./Link";
+import { createClient } from '../utils/prismic'
+import prismicLinkResolver from '../utils/prismicLinkResolver'
+import Link from './Link'
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
 const PrismicLink = ({ children, ...others }: LinkProps) => (
   <Link {...others}>{children}</Link>
-);
+)
 
 interface Props {
-  children: ReactNode;
-  previewData: PreviewData;
+  children: ReactNode
+  previewData: PreviewData
 }
 
 const PrismicProvider = ({ children, previewData }: Props) => {
-  const { isPreview } = useRouter();
-  const [client] = useState(() => createClient({ previewData }));
+  const { isPreview } = useRouter()
+  const [client] = useState(() => createClient({ previewData }))
 
   return (
     <OriginalPrismicProvider
@@ -49,7 +49,7 @@ const PrismicProvider = ({ children, previewData }: Props) => {
         children
       )}
     </OriginalPrismicProvider>
-  );
-};
+  )
+}
 
-export default PrismicProvider;
+export default PrismicProvider

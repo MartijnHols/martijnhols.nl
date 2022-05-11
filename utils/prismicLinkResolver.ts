@@ -1,39 +1,40 @@
-import { FilledLinkToDocumentField, PrismicDocument } from "@prismicio/types";
-import getConfig from "next/config";
-import { toPrismicLocale, toUserLocale } from "./locales";
+import { FilledLinkToDocumentField, PrismicDocument } from '@prismicio/types'
+import getConfig from 'next/config'
 
-export const HOMEPAGE_SLUG = "homepage";
+import { toUserLocale } from './locales'
+
+export const HOMEPAGE_SLUG = 'homepage'
 
 const slugResolver = (
   doc:
-    | Pick<FilledLinkToDocumentField, "type" | "uid" | "lang">
-    | Pick<PrismicDocument, "type" | "uid" | "lang">
+    | Pick<FilledLinkToDocumentField, 'type' | 'uid' | 'lang'>
+    | Pick<PrismicDocument, 'type' | 'uid' | 'lang'>,
 ) => {
-  if (doc.type === "page" && doc.uid !== HOMEPAGE_SLUG) {
-    return `/${doc.uid}`;
+  if (doc.type === 'page' && doc.uid !== HOMEPAGE_SLUG) {
+    return `/${doc.uid}`
   }
 
-  return "/";
-};
+  return '/'
+}
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 const prismicLinkResolver = (
   doc:
-    | Pick<FilledLinkToDocumentField, "type" | "uid" | "lang">
-    | Pick<PrismicDocument, "type" | "uid" | "lang">
+    | Pick<FilledLinkToDocumentField, 'type' | 'uid' | 'lang'>
+    | Pick<PrismicDocument, 'type' | 'uid' | 'lang'>,
 ) => {
-  const slug = slugResolver(doc);
+  const slug = slugResolver(doc)
 
-  const userLocale = toUserLocale(doc.lang);
+  const userLocale = toUserLocale(doc.lang)
 
   if (publicRuntimeConfig.defaultUserLocale === userLocale) {
-    return slug;
+    return slug
   }
 
-  return `/${userLocale}${slug}`;
-};
+  return `/${userLocale}${slug}`
+}
 
-export default prismicLinkResolver;
+export default prismicLinkResolver

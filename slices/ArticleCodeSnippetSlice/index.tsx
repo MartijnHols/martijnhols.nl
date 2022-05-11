@@ -1,30 +1,30 @@
-import styled from "@emotion/styled";
-import { asText } from "@prismicio/helpers";
+import styled from '@emotion/styled'
+import { asText } from '@prismicio/helpers'
 import {
   KeyTextField,
   RichTextField,
   SharedSlice,
   SharedSliceVariation,
-} from "@prismicio/types";
+} from '@prismicio/types'
 
-import { colors, spacing } from "../../theme";
+import { colors, spacing } from '../../theme'
 
 export type PrismicArticleCodeSnippetSlice = SharedSlice<
-  "article_code_snippet_slice",
+  'article_code_snippet_slice',
   SharedSliceVariation<
-    "default",
+    'default',
     {
-      language: KeyTextField;
-      content: RichTextField;
+      language: KeyTextField
+      content: RichTextField
     }
   >
->;
+>
 
 const Pre = styled.pre`
   font-size: 14px;
   background: ${colors.complementary};
   padding: ${spacing.x1}px;
-`;
+`
 
 interface Props {
   slice: PrismicArticleCodeSnippetSlice
@@ -35,6 +35,6 @@ const ArticleCodeSnippetSlice = ({ slice }: Props) => (
   <Pre data-language={slice.primary.language || undefined}>
     {asText(slice.primary.content)}
   </Pre>
-);
+)
 
-export default ArticleCodeSnippetSlice;
+export default ArticleCodeSnippetSlice

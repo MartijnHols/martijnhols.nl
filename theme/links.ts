@@ -1,6 +1,6 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react'
 
-import { colors } from ".";
+import { colors } from '.'
 
 export const globalStyles = css`
   a:not(.plain) {
@@ -17,7 +17,7 @@ export const globalStyles = css`
     white-space: nowrap;
 
     ::after {
-      content: "";
+      content: '';
       position: absolute;
       left: -2px;
       right: -2px;
@@ -53,4 +53,4 @@ export const globalStyles = css`
       }
     }
   }
-`;
+`

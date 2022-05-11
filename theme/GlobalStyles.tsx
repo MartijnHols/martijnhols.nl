@@ -1,18 +1,18 @@
-import { css, Global } from "@emotion/react";
-import "sanitize.css";
-import "sanitize.css/forms.css";
-import "sanitize.css/typography.css";
+import { css, Global } from '@emotion/react'
+import 'sanitize.css'
+import 'sanitize.css/forms.css'
+import 'sanitize.css/typography.css'
 
-import { colors, fontSizes, links, headings, spacing } from ".";
+import { colors, fontSizes, links, headings, spacing } from '.'
 
 const GlobalStyles = () => (
   <Global
     styles={[
       css`
         body {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-            "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-            "Helvetica Neue", sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+            'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           background: ${colors.complementary};
@@ -20,7 +20,7 @@ const GlobalStyles = () => (
           font-size: ${fontSizes.mainText}px;
         }
         code {
-          font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
             monospace;
         }
 
@@ -47,6 +47,6 @@ const GlobalStyles = () => (
       headings.globalStyles,
     ]}
   />
-);
+)
 
-export default GlobalStyles;
+export default GlobalStyles

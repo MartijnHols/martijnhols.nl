@@ -2,29 +2,26 @@ import {
   RichTextField,
   SharedSlice,
   SharedSliceVariation,
-} from "@prismicio/types";
+} from '@prismicio/types'
 
-import PrismicRichText from "../../components/PrismicRichText";
+import PrismicRichText from '../../components/PrismicRichText'
 
 export type PrismicArticleContentSlice = SharedSlice<
-  "article_content_slice",
+  'article_content_slice',
   SharedSliceVariation<
-    "default",
+    'default',
     {
-      content: RichTextField;
+      content: RichTextField
     }
   >
->;
+>
 
 interface Props {
-  slice: PrismicArticleContentSlice;
+  slice: PrismicArticleContentSlice
 }
 
 const ArticleContentSlice = ({ slice }: Props) => (
-  <PrismicRichText
-    field={slice.primary.content}
-    multiline
-  />
-);
+  <PrismicRichText field={slice.primary.content} multiline />
+)
 
-export default ArticleContentSlice;
+export default ArticleContentSlice

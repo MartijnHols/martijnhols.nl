@@ -1,23 +1,22 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 import {
   ImageField,
   RichTextField,
   SharedSlice,
   SharedSliceVariation,
-  Slice,
-} from "@prismicio/types";
-import Image from "next/image";
+} from '@prismicio/types'
+import Image from 'next/image'
 
-import Container from "../../components/Container";
-import convertPrismicImage from "../../utils/convertPrismicImage";
-import { breakpoints, colors, spacing } from "../../theme";
-import PrismicRichText from "../../components/PrismicRichText";
-import ContactButton from "../../components/ContactButton";
+import ContactButton from '../../components/ContactButton'
+import Container from '../../components/Container'
+import PrismicRichText from '../../components/PrismicRichText'
+import { breakpoints, colors, spacing } from '../../theme'
+import convertPrismicImage from '../../utils/convertPrismicImage'
 
 const ContactButtonClipper = styled.div`
   clip-path: inset(0 0 0 0);
-`;
-const Section = styled.section``;
+`
+const Section = styled.section``
 const StyledContainer = styled(Container)`
   padding-top: 100px;
   padding-bottom: 100px;
@@ -31,7 +30,7 @@ const StyledContainer = styled(Container)`
     flex-flow: column;
     gap: ${spacing.x2}px;
   }
-`;
+`
 const ImageContainer = styled.div`
   flex: 0 0 auto;
   width: 100%;
@@ -43,39 +42,39 @@ const ImageContainer = styled.div`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     max-width: none;
   }
-`;
+`
 const Content = styled.div`
   flex: 1 1 0;
   // Cancels out p-margins
   margin: -${spacing.x2}px 0;
-`;
+`
 
 export type PrismicContentSlice = SharedSlice<
-  "content_slice",
+  'content_slice',
   | SharedSliceVariation<
-      "default",
+      'default',
       {
-        image: ImageField;
-        content: RichTextField;
+        image: ImageField
+        content: RichTextField
       }
     >
   | SharedSliceVariation<
-      "inverted",
+      'inverted',
       {
-        image: ImageField;
-        content: RichTextField;
+        image: ImageField
+        content: RichTextField
       }
     >
->;
+>
 
 interface Props {
-  slice: PrismicContentSlice;
+  slice: PrismicContentSlice
 }
 
 const ContentSlice = ({ slice }: Props) => {
-  const image = convertPrismicImage(slice.primary.image);
+  const image = convertPrismicImage(slice.primary.image)
 
-  const inverted = slice.variation === "inverted";
+  const inverted = slice.variation === 'inverted'
 
   return (
     <ContactButtonClipper>
@@ -97,7 +96,7 @@ const ContentSlice = ({ slice }: Props) => {
             </ImageContainer>
           )}
 
-          <Content className={inverted ? "inverted" : undefined}>
+          <Content className={inverted ? 'inverted' : undefined}>
             <PrismicRichText field={slice.primary.content} multiline />
           </Content>
         </StyledContainer>
@@ -105,7 +104,7 @@ const ContentSlice = ({ slice }: Props) => {
 
       <ContactButton inverted={inverted} />
     </ContactButtonClipper>
-  );
-};
+  )
+}
 
-export default ContentSlice;
+export default ContentSlice

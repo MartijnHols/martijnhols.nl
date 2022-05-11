@@ -1,9 +1,9 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react'
 
-import { colors } from ".";
+import { colors } from '.'
 
-const background = colors.complementary;
-const text = colors.dominant;
+const background = colors.complementary
+const text = colors.dominant
 
 export const buttonCss = css`
   display: inline-block;
@@ -21,7 +21,7 @@ export const buttonCss = css`
   transition: all 400ms ease-out;
 
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -42,7 +42,7 @@ export const buttonCss = css`
       height: 0;
     }
   }
-`;
+`
 export const buttonInvertedCss = css`
   background: transparent;
   border: 2px solid ${background};
@@ -59,7 +59,7 @@ export const buttonInvertedCss = css`
       height: 300%;
     }
   }
-`;
+`
 // TODO export const buttonOutlineGrayCss = css`
 //   background: transparent;
 //   color: ${colors.neutral800};

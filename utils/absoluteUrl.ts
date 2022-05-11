@@ -1,8 +1,8 @@
-import getConfig from "next/config";
+import getConfig from 'next/config'
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
-const absoluteUrl = (path: string = "/") =>
-  `${publicRuntimeConfig.primaryHost}${path}`;
+const absoluteUrl = (path: string = '/') =>
+  `${publicRuntimeConfig.primaryHost}${path}`
 
-export default absoluteUrl;
+export default absoluteUrl

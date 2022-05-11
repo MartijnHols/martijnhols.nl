@@ -16,9 +16,7 @@
           "config": {
             "label": "Article",
             "select": "document",
-            "customtypes": [
-              "article"
-            ]
+            "customtypes": ["article"]
           }
         }
       },

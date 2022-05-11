@@ -6,7 +6,15 @@
     "dev": "yarn start",
     "build": "next build",
     "start": "next dev",
-    "lint": "next lint",
+    "lint": "yarn --silent lint:code && yarn --silent lint:rest",
+    "lint:code": "yarn --silent lint:code:specific '**/*.{js,jsx,ts,tsx}'",
+    "lint:code:specific": "CODE_STYLE=true eslint --format stylish --max-warnings 0",
+    "lint:code:specific:fix": "yarn lint:code:specific --fix",
+    "lint:rest": "yarn --silent lint:rest:specific '**/*.{json,md,css,graphql,yml}'",
+    "lint:rest:specific": "prettier --check",
+    "lint:rest:specific:fix": "prettier --write",
+    "lint:fix": "yarn --silent lint:code --fix && prettier --write '**/*.{json,md,css,graphql,yml}'",
+    "fix-all": "yarn && yarn lint:fix && yarn typecheck && yarn test",
     "typecheck": "tsc --noEmit",
     "slicemachine": "start-slicemachine",
     "start-all": "concurrently \"yarn start\" \"yarn slicemachine\" --names \"next,slicemachine\" --prefix-colors gray,magenta"
@@ -20,6 +28,7 @@
     "@prismicio/helpers": "^2.3.0",
     "@prismicio/next": "^0.1.2",
     "@prismicio/react": "^2.3.0",
+    "@prismicio/richtext": "^2.1.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "concurrently": "^7.1.0",
     "next": "^12.1.5",
@@ -33,6 +42,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",
+    "@martijnhols/eslint-config": "^5.1.0",
     "@prismicio/types": "^0.1.27",
     "@svgr/webpack": "^6.2.1",
     "@types/node": "^16.0.0",
@@ -40,6 +50,17 @@
     "@types/react-dom": "^18.0.1",
     "eslint": "^8.13.0",
     "eslint-config-next": "^12.1.5",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
     "typescript": "^4.6.3"
+  },
+  "lint-staged": {
+    "!(*\\.generated)\\.{ts,tsx,js,jsx}": [
+      "yarn --silent lint:code:specific:fix"
+    ],
+    "*.{json,md,css,scss,graphql,yml}": [
+      "yarn --silent lint:rest:specific:fix"
+    ]
   }
 }

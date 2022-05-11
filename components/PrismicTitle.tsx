@@ -1,7 +1,7 @@
-import { PrismicRichText as OriginalPrismicRichText } from "@prismicio/react";
-import { ComponentProps } from "react";
+import { PrismicRichText as OriginalPrismicRichText } from '@prismicio/react'
+import { ComponentProps } from 'react'
 
-import { fragmentSerializer } from "./PrismicRichText";
+import { fragmentSerializer } from './PrismicRichText'
 
 /**
  * Renders a PrismicTitleField. Removes the wrapper heading tag so we can
@@ -21,6 +21,6 @@ const PrismicTitle = ({
     }}
     {...others}
   />
-);
+)
 
-export default PrismicTitle;
+export default PrismicTitle

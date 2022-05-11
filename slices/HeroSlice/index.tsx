@@ -1,29 +1,33 @@
-import { keyframes } from "@emotion/react";
-import styled from "@emotion/styled";
-import { asText } from "@prismicio/helpers";
-import { RichTextField, SharedSlice, SharedSliceVariation, Slice } from "@prismicio/types";
-import { useRouter } from "next/router";
+import { keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
+import { asText } from '@prismicio/helpers'
+import {
+  RichTextField,
+  SharedSlice,
+  SharedSliceVariation,
+} from '@prismicio/types'
+import { useRouter } from 'next/router'
 
-import Angle from "../../components/Angle";
-import ContactButton from "../../components/ContactButton";
-import Container from "../../components/Container";
-import Link from "../../components/Link";
-import PrismicRichText from "../../components/PrismicRichText";
-import { breakpoints, colors, spacing } from "../../theme";
-import { h3, h5 } from "../../theme/headings";
-import { usePrismicConfig } from "../../utils/prismicConfig";
-import reactStringReplace from "../../utils/reactStringReplace";
-import ReactLogo from "./ReactLogo.svg";
+import Angle from '../../components/Angle'
+import ContactButton from '../../components/ContactButton'
+import Container from '../../components/Container'
+import Link from '../../components/Link'
+import PrismicRichText from '../../components/PrismicRichText'
+import { breakpoints, colors, spacing } from '../../theme'
+import { h3, h5 } from '../../theme/headings'
+import { usePrismicConfig } from '../../utils/prismicConfig'
+import reactStringReplace from '../../utils/reactStringReplace'
+import ReactLogo from './ReactLogo.svg'
 
 const Wrapper = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
   clip-path: inset(0 0 0 0);
-`;
+`
 const Header = styled.div`
   background: ${colors.complementary};
   height: 1em;
-`;
+`
 const HeaderContent = styled.div`
   position: relative;
   z-index: 1;
@@ -37,12 +41,12 @@ const HeaderContent = styled.div`
   font-weight: 500;
   transform: rotate(-1.15deg);
   transform-origin: left;
-`;
+`
 const Section = styled.section`
   position: relative;
   overflow: hidden; // fixes rotation overflow increasing body width
   background: ${colors.dominant};
-`;
+`
 const StyledContainer = styled(Container)`
   padding-top: 150px;
   padding-bottom: 150px;
@@ -53,7 +57,7 @@ const StyledContainer = styled(Container)`
     padding-top: 100px;
     padding-bottom: 100px;
   }
-`;
+`
 const ReactLogoAnimation = keyframes`
   from {
     transform: rotate(0deg);
@@ -61,10 +65,10 @@ const ReactLogoAnimation = keyframes`
   to {
     transform: rotate(360deg);
   }
-`;
+`
 const React = styled.span`
   white-space: nowrap;
-`;
+`
 const StyledReactLogo = styled(ReactLogo)`
   height: 1em;
   /* color: #61DAFB; */
@@ -72,7 +76,7 @@ const StyledReactLogo = styled(ReactLogo)`
   @media (prefers-reduced-motion: no-preference) {
     animation: ${ReactLogoAnimation} infinite 20s linear;
   }
-`;
+`
 const Intro = styled.h1`
   line-height: 1.1;
   font-weight: 800;
@@ -81,12 +85,12 @@ const Intro = styled.h1`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     margin-bottom: ${spacing.x2}px;
   }
-`;
+`
 const IntroSubText = styled.span`
   display: block;
   ${h3}
   margin-bottom: ${spacing.x1}px;
-`;
+`
 const IntroTitle = styled.span`
   ${StyledReactLogo} {
     // It hides the element *after* the scale transition is done, so this should
@@ -117,46 +121,46 @@ const IntroTitle = styled.span`
       display: none;
     }
   }
-`;
+`
 const SubText = styled.div`
   font-weight: 500;
   ${h5}
-`;
+`
 
 export type PrismicHeroSlice = SharedSlice<
-  "hero_slice",
+  'hero_slice',
   SharedSliceVariation<
-    "default",
+    'default',
     {
-      intro: RichTextField;
-      title: RichTextField;
-      subText: RichTextField;
+      intro: RichTextField
+      title: RichTextField
+      subText: RichTextField
     }
   >
->;
+>
 
 const reactifyTitle = (title: string) =>
   reactStringReplace(
     title,
-    "React",
+    'React',
     <React>
       React <StyledReactLogo aria-label="" />
-    </React>
-  );
+    </React>,
+  )
 
 interface Props {
-  slice: PrismicHeroSlice;
+  slice: PrismicHeroSlice
 }
 
 const HeroSlice = ({ slice }: Props) => {
-  const { locale } = useRouter();
-  const config = usePrismicConfig();
+  const { locale } = useRouter()
+  const config = usePrismicConfig()
 
   return (
     <Wrapper>
       <Header>
         <HeaderContent className="inverted">
-          <Link href="/" locale={locale === "nl" ? "en" : "nl"}>
+          <Link href="/" locale={locale === 'nl' ? 'en' : 'nl'}>
             {config?.languageToggle}
           </Link>
         </HeaderContent>
@@ -186,7 +190,7 @@ const HeroSlice = ({ slice }: Props) => {
 
       <ContactButton />
     </Wrapper>
-  );
-};
+  )
+}
 
-export default HeroSlice;
+export default HeroSlice

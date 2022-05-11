@@ -1,13 +1,13 @@
-import getConfig from "next/config";
-import NextLink from "next/link";
+import getConfig from 'next/config'
+import NextLink from 'next/link'
 import {
   AnchorHTMLAttributes,
   ComponentProps,
   MouseEvent,
   ReactNode,
-} from "react";
+} from 'react'
 
-const { publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig()
 
 /**
  * This component simplifies next/link by adding an anchor element always. We
@@ -18,11 +18,11 @@ const { publicRuntimeConfig } = getConfig();
  * on-click tracking at a later time.
  */
 
-type NextLinkProps = Omit<ComponentProps<typeof NextLink>, "passHref">;
+type NextLinkProps = Omit<ComponentProps<typeof NextLink>, 'passHref'>
 type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  children: ReactNode;
-};
-type Props = NextLinkProps & AnchorProps;
+  children: ReactNode
+}
+type Props = NextLinkProps & AnchorProps
 
 const Link = ({
   children,
@@ -36,12 +36,12 @@ const Link = ({
   onClick,
   ...others
 }: Props) => {
-  const isAbsolute = href.startsWith(publicRuntimeConfig.primaryHost);
+  const isAbsolute = href.startsWith(publicRuntimeConfig.primaryHost)
   // Make absolute URLs relative to benefit from preloading, and make the URLs
   // work on any domain.
   // This is necessary because in Prismic we can only enter absolute URLs.
   if (isAbsolute) {
-    href = href.substring(publicRuntimeConfig.primaryHost.length);
+    href = href.substring(publicRuntimeConfig.primaryHost.length)
 
     // Automatically detect the locale from absolute URLs as Next otherwise will
     // treat them as a regular page.
@@ -52,35 +52,35 @@ const Link = ({
       !locale &&
       Object.values(
         publicRuntimeConfig.prismicLocaleMap as {
-          [prismicLocale: string]: string;
-        }
+          [prismicLocale: string]: string
+        },
       ).find(
         (userLocale) =>
-          href.startsWith(`/${userLocale}/`) || href === `/${userLocale}`
-      );
+          href.startsWith(`/${userLocale}/`) || href === `/${userLocale}`,
+      )
     if (hrefLocale) {
-      href = href.substring(`/${hrefLocale}`.length);
-      locale = hrefLocale;
+      href = href.substring(`/${hrefLocale}`.length)
+      locale = hrefLocale
     }
 
-    if (href === "") {
+    if (href === '') {
       // If the href only included the primary host (and optionally just a
       // locale), we might have ended up with an empty href that is supposed to
       // link to the homepage.
-      href = "/";
+      href = '/'
     }
   }
-  const hashLink = "https://#";
+  const hashLink = 'https://#'
   if (href.startsWith(hashLink)) {
-    href = href.substring(hashLink.length - 1);
+    href = href.substring(hashLink.length - 1)
   }
-  if (!onClick && href.startsWith("#")) {
+  if (!onClick && href.startsWith('#')) {
     onClick = (e: MouseEvent) => {
-      const elem = document.querySelector(href);
+      const elem = document.querySelector(href)
       if (!elem) {
-        return;
+        return
       }
-      e.preventDefault(); // it not updating the URL is a feature
+      e.preventDefault() // it not updating the URL is a feature
       // While I generally hate scroll hijacking, for anchor links this provides
       // users with context so they can keep their orientation. This is
       // especially important for #footer links, as it may otherwise not be
@@ -88,9 +88,9 @@ const Link = ({
       // navigating.
       // ps technically it isn't even scroll hijacking
       elem.scrollIntoView({
-        behavior: "smooth",
-      });
-    };
+        behavior: 'smooth',
+      })
+    }
   }
 
   return (
@@ -108,7 +108,7 @@ const Link = ({
         {children}
       </a>
     </NextLink>
-  );
-};
+  )
+}
 
-export default Link;
+export default Link
