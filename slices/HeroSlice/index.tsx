@@ -48,14 +48,14 @@ const Section = styled.section`
   background: ${colors.dominant};
 `
 const StyledContainer = styled(Container)`
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
   transform: rotate(-2deg);
 
-  @media (max-width: ${breakpoints.TABLET_MAX}px) {
-    padding-top: 100px;
-    padding-bottom: 100px;
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    padding-top: 150px;
+    padding-bottom: 150px;
   }
 `
 const ReactLogoAnimation = keyframes`
@@ -80,10 +80,10 @@ const StyledReactLogo = styled(ReactLogo)`
 const Intro = styled.h1`
   line-height: 1.1;
   font-weight: 800;
-  margin-bottom: ${spacing.x4}px;
+  margin-bottom: ${spacing.x2}px;
 
-  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
-    margin-bottom: ${spacing.x2}px;
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin-bottom: ${spacing.x4}px;
   }
 `
 const IntroSubText = styled.span`
