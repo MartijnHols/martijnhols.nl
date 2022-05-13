@@ -1,5 +1,6 @@
 ci:
   collect:
+    # We warm the cache, so doing multiple runs only serves to slow down the process
     numberOfRuns: 1
     url:
       - http://localhost:3000/

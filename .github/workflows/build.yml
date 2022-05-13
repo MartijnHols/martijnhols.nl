@@ -58,14 +58,28 @@ jobs:
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
-        if: steps.cache.outputs.cache-hit != 'true'
         uses: martijnhols/actions-cache/restore@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
           required: true
       - run: yarn typecheck
-  # TODO: Linting
+  lint:
+    needs: [install]
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Restore "node_modules" from cache
+        uses: martijnhols/actions-cache/restore@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          required: true
+      - run: yarn lint
   build:
     needs: [install]
     name: 'Build'
@@ -233,7 +247,7 @@ jobs:
         # cypress-lint,
         # cypress-generated-types,
         typecheck,
-        # lint,
+        lint,
         build,
         docker-image,
         # cypress-run,
