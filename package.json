@@ -17,7 +17,8 @@
     "fix-all": "yarn && yarn lint:fix && yarn typecheck && yarn test",
     "typecheck": "tsc --noEmit",
     "slicemachine": "start-slicemachine",
-    "start-all": "concurrently \"yarn start\" \"yarn slicemachine\" --names \"next,slicemachine\" --prefix-colors gray,magenta"
+    "start-all": "concurrently \"yarn start\" \"yarn slicemachine\" --names \"next,slicemachine\" --prefix-colors gray,magenta",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
