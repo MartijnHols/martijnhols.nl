@@ -56,7 +56,7 @@
     "typescript": "^4.6.3"
   },
   "lint-staged": {
-    "!(*\\.generated)\\.{ts,tsx,js,jsx}": [
+    "!(*\\.generated|.slicemachine\\/**)\\.{ts,tsx,js,jsx}": [
       "yarn --silent lint:code:specific:fix"
     ],
     "*.{json,md,css,scss,graphql,yml}": [
