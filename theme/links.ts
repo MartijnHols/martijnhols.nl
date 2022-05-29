@@ -39,6 +39,9 @@ export const globalStyles = css`
       }
     }
   }
+  a.plain {
+    text-decoration: none;
+  }
 
   .inverted {
     a {

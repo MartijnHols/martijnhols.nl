@@ -7,12 +7,24 @@ import { usePrismicConfig } from '../utils/prismicConfig'
 import ChatIcon from './icons/chat.svg'
 import Link from './Link'
 
+const Positioner = styled.div`
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  right: 30px;
+
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    bottom: auto;
+    // We can't use transform since the rotation messes that up. It doesn't need
+    // to be perfectly centered anyway.
+    top: 30%;
+    right: 0;
+    transform: rotate(-90deg);
+    transform-origin: right bottom;
+  }
+`
 const Container = styled.div<{ inverted?: boolean }>([
   css`
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
-    right: 30px;
     display: flex;
     padding: 7px 14px;
     background: ${colors.complementary};
@@ -27,13 +39,6 @@ const Container = styled.div<{ inverted?: boolean }>([
     font-size: ${fontSizes.tertiaryText}px;
 
     @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
-      bottom: auto;
-      // We can't use transform since the rotation messes that up. It doesn't need
-      // to be perfectly centered anyway.
-      top: 30%;
-      right: 0;
-      transform: rotate(-90deg);
-      transform-origin: right bottom;
       font-size: ${fontSizes.mainText}px;
     }
   `,
@@ -58,21 +63,24 @@ const Divider = styled.div`
 interface Props
   extends Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'> {
   inverted?: boolean
+  annotation?: string
 }
 
-const ContactButton = ({ inverted, ...others }: Props) => {
+const ContactButton = ({ inverted, annotation, ...others }: Props) => {
   const config = usePrismicConfig()
 
   return (
-    <Link className="plain" href="#footer" {...others}>
-      <Container inverted={inverted}>
-        <ChatIconContainer>
-          <StyledChatIcon aria-label="" />
-        </ChatIconContainer>
-        <Divider />
-        {config?.contact}
-      </Container>
-    </Link>
+    <Positioner>
+      <Link className="plain" href="#footer" {...others}>
+        <Container inverted={inverted}>
+          <ChatIconContainer>
+            <StyledChatIcon aria-label="" />
+          </ChatIconContainer>
+          <Divider />
+          {config?.contact}
+        </Container>
+      </Link>
+    </Positioner>
   )
 }
 
