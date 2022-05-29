@@ -5,6 +5,7 @@ import {
   KeyTextField,
   LinkField,
   NumberField,
+  RichTextField,
   SharedSlice,
   SharedSliceVariation,
 } from '@prismicio/types'
@@ -12,6 +13,7 @@ import {
 import ContactButton from '../../components/ContactButton'
 import Container from '../../components/Container'
 import Link from '../../components/Link'
+import PrismicRichText from '../../components/PrismicRichText'
 import { colors, spacing } from '../../theme'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
@@ -48,6 +50,7 @@ export type PrismicFooterSlice = SharedSlice<
     'default',
     {
       contactLabel: KeyTextField
+      contactAnnotation: RichTextField
       email: KeyTextField
       phone: KeyTextField
       whatsApp: NumberField
@@ -107,6 +110,14 @@ const FooterSlice = ({ slice }: Props) => {
               )}
             </Values>
           </ContactRow>
+          {slice.primary.contactAnnotation.length > 0 && (
+            <Row>
+              <Label />
+              <Values>
+                <PrismicRichText field={slice.primary.contactAnnotation} />
+              </Values>
+            </Row>
+          )}
           {slice.primary.city && (
             <Row>
               <Label>{slice.primary.locationLabel}</Label>
