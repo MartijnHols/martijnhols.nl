@@ -28,7 +28,7 @@ const StyledContainer = styled(Container)`
   }
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     flex-flow: column;
-    gap: ${spacing.x2}px;
+    gap: ${spacing.x6}px;
   }
 `
 const ImageContainer = styled.div`
@@ -42,6 +42,9 @@ const ImageContainer = styled.div`
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     max-width: none;
   }
+`
+const SideImage = styled(Image)`
+  clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
 `
 const Content = styled.div`
   flex: 1 1 0;
@@ -87,7 +90,7 @@ const ContentSlice = ({ slice }: Props) => {
         <StyledContainer>
           {image && (
             <ImageContainer>
-              <Image
+              <SideImage
                 src={image}
                 alt={image.alt}
                 layout="responsive"
