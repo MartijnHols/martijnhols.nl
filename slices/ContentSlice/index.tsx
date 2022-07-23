@@ -51,6 +51,14 @@ const Content = styled.div`
   // Cancels out p-margins
   margin: -${spacing.x2}px 0;
 `
+const Title = styled.h2`
+  text-transform: uppercase;
+  font-weight: 800;
+  transform: rotate(-2deg);
+  border-top: 16px solid currentColor;
+  display: inline-block;
+  margin: 0;
+`
 
 export type PrismicContentSlice = SharedSlice<
   'content_slice',
@@ -100,7 +108,15 @@ const ContentSlice = ({ slice }: Props) => {
           )}
 
           <Content className={inverted ? 'inverted' : undefined}>
-            <PrismicRichText field={slice.primary.content} multiline />
+            <PrismicRichText
+              field={slice.primary.content}
+              multiline
+              components={{
+                heading1: ({ key, children }) => (
+                  <Title key={key}>{children}</Title>
+                ),
+              }}
+            />
           </Content>
         </StyledContainer>
       </Section>

@@ -30,8 +30,24 @@ const Section = styled.div`
   color: ${colors.complementary};
   padding: 150px 0;
 `
-const Explanation = styled.div`
+const Title = styled.h2`
+  text-transform: uppercase;
+  font-weight: 800;
+  transform: rotate(-2deg);
+  border-top: 16px solid currentColor;
+  display: inline-block;
+  margin-bottom: 0;
+`
+const SubTitle = styled.h3`
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 24px;
+  // The translation puts it at the same position as a border-bottom should be,
+  // which should be nice for visual consistency.
+  transform: rotate(-2deg) translateY(-50%);
   margin-bottom: ${spacing.x6}px;
+  letter-spacing: 3px;
+  margin-left: 5px;
 `
 
 export type PrismicProjectsSlice = SharedSlice<
@@ -67,12 +83,12 @@ const ProjectsSlice = ({ slice }: Props) => {
     <ContactButtonClipper>
       <Section>
         <Container>
-          <h2>
+          <Title>
             <PrismicTitle field={slice.primary.title} />
-          </h2>
-          <Explanation>
+          </Title>
+          <SubTitle>
             <PrismicRichText field={slice.primary.explanation} />
-          </Explanation>
+          </SubTitle>
 
           {projects
             ?.sort((a, b) =>
