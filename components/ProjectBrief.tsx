@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
@@ -7,31 +8,50 @@ import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
 
-const Container = styled.article`
-  display: flex;
-  gap: ${spacing.x6}px;
-  padding: ${spacing.x4}px 0;
-  position: relative;
+const Container = styled('article', {
+  shouldForwardProp: (prop) => prop !== 'highlighted',
+})<{ highlighted?: boolean }>(({ highlighted }) => [
+  css`
+    display: flex;
+    gap: ${spacing.x6}px;
+    padding: ${spacing.x4}px 0;
+    position: relative;
 
-  @media (max-width: ${breakpoints.MOBILE_MAX}px) {
-    flex-flow: column;
-    gap: ${spacing.x2}px;
-  }
-
-  :not(:last-of-type) {
-    ::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: ${colors.complementary};
-      height: 2px;
-      width: 100px;
-      max-width: 100%;
+    @media (max-width: ${breakpoints.MOBILE_MAX}px) {
+      flex-flow: column;
+      gap: ${spacing.x2}px;
     }
-  }
-`
+
+    :not(:last-of-type) {
+      ::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: ${colors.complementary};
+        height: 2px;
+        width: 100px;
+        max-width: 100%;
+      }
+    }
+  `,
+  highlighted &&
+    css`
+      transform: rotate(-1deg) scale(1.1);
+      border: ${spacing.x2}px solid #000;
+      padding: 0;
+      margin: ${spacing.x2}px -${spacing.x2}px;
+      padding: ${spacing.x2}px;
+
+      :not(:last-of-type) {
+        ::after {
+          display: none;
+        }
+      }
+    `,
+])
+
 const Thumbnail = styled.div`
   flex: 0 0 auto;
   overflow: hidden;
@@ -100,6 +120,7 @@ interface Props {
   sourceCode?: string
   about: ReactNode
   tech: string[]
+  highlighted?: boolean
 }
 
 const ProjectBrief = ({
@@ -111,6 +132,7 @@ const ProjectBrief = ({
   sourceCode,
   about,
   tech,
+  highlighted,
 }: Props) => {
   const config = usePrismicConfig()
 
@@ -131,7 +153,7 @@ const ProjectBrief = ({
   }
 
   return (
-    <Container>
+    <Container highlighted={highlighted}>
       <Thumbnail>
         <Name title={name}>{name}</Name>
         <Period>{formatPeriod(started, ended)}</Period>

@@ -68,6 +68,15 @@
           "label": "Tech",
           "placeholder": ""
         }
+      },
+      "highlighted": {
+        "type": "Boolean",
+        "config": {
+          "label": "Highlighted",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
       }
     }
   }

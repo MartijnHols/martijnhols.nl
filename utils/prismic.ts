@@ -1,6 +1,7 @@
 import { Client, createClient as createPrismicClient } from '@prismicio/client'
 import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
 import {
+  BooleanField,
   ImageField,
   KeyTextField,
   LinkField,
@@ -106,6 +107,7 @@ export type PrismicProject = PrismicDocument<
     url: LinkField
     sourceCode: LinkField
     tech: KeyTextField
+    highlighted: BooleanField
   },
   'project'
 >

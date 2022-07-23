@@ -1,6 +1,6 @@
 {
-  "id": "b2d9bf5f-9a99-404b-b183-af2b0ad99fc0",
-  "uid": "qui-iste-impedit",
+  "id": "ff5b9846-b4a1-43d6-ba0b-e427d01f504c",
+  "uid": "accusamus-similique-eum",
   "type": "project",
   "data": {
     "thumbnail": {
@@ -10,26 +10,27 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=200&h=200&fit=crop"
+      "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=200&h=200&fit=crop"
     },
-    "name": "deploy impactful communities",
+    "name": "facilitate clicks-and-mortar niches",
     "brief": [
       {
         "type": "paragraph",
-        "text": "Ea esse cillum nisi enim est elit. Aliqua est veniam reprehenderit et ullamco ex minim. Irure velit incididunt ex ullamco laborum eu nisi dolore ex consectetur enim minim excepteur sit.",
+        "text": "Aute sit proident reprehenderit cillum esse consectetur voluptate proident anim incididunt minim et commodo.",
         "spans": []
       }
     ],
-    "startedYear": "maximize efficient infomediaries",
-    "endedYear": "deploy turn-key mindshare",
+    "startedYear": "disintermediate front-end e-markets",
+    "endedYear": "harness real-time convergence",
     "url": {
       "link_type": "Web",
-      "url": "https://slicemachine.dev"
+      "url": "http://twitter.com"
     },
     "sourceCode": {
       "link_type": "Web",
-      "url": "http://google.com"
+      "url": "https://prismic.io"
     },
-    "tech": "integrate killer channels"
+    "tech": "leverage out-of-the-box content",
+    "highlighted": false
   }
 }

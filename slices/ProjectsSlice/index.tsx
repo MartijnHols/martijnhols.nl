@@ -119,6 +119,7 @@ const ProjectsSlice = ({ slice }: Props) => {
                   tech={
                     project.tech?.split(',').map((item) => item.trim()) || []
                   }
+                  highlighted={project.highlighted}
                 />
               )
             })}
