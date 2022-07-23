@@ -86,7 +86,7 @@ const InvisibleText = styled.span`
 `
 
 interface Props {
-  thumbnail: ImageInfo
+  thumbnail?: ImageInfo
   name: string
   started?: string
   ended?: string
@@ -129,14 +129,16 @@ const ProjectBrief = ({
       <Thumbnail>
         <Name title={name}>{name}</Name>
         <Period>{formatPeriod(started, ended)}</Period>
-        <Image
-          src={thumbnail}
-          alt={thumbnail.alt}
-          layout="fixed"
-          width={200}
-          height={200}
-          objectFit="contain"
-        />
+        {thumbnail && (
+          <Image
+            src={thumbnail}
+            alt={thumbnail.alt}
+            layout="fixed"
+            width={200}
+            height={200}
+            objectFit="contain"
+          />
+        )}
       </Thumbnail>
       <ProjectExplanation>
         <ProjectAbout>{about}</ProjectAbout>

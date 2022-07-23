@@ -96,7 +96,7 @@ const ProjectsSlice = ({ slice }: Props) => {
             )
             .map((project) => {
               const thumbnail = convertPrismicImage(project.thumbnail)
-              if (!thumbnail || !project.name) {
+              if (!project.name) {
                 return null
               }
 
