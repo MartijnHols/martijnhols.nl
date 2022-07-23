@@ -12,22 +12,25 @@ const Container = styled('article', {
   shouldForwardProp: (prop) => prop !== 'highlighted',
 })<{ highlighted?: boolean }>(({ highlighted }) => [
   css`
-    transform: rotate(-1deg);
+    transform: rotate(-0.85deg);
     border: ${spacing.x2}px solid #000;
     margin: ${spacing.x6}px -${spacing.x2}px;
     padding: ${spacing.x3}px;
 
-    @media (max-width: ${breakpoints.MOBILE_MAX}px) {
-      flex-flow: column;
-      gap: ${spacing.x2}px;
+    @media (min-width: ${breakpoints.TABLET}px) {
+      transform: rotate(-1deg);
     }
   `,
   highlighted &&
     css`
-      transform: rotate(-1deg) scale(1.1);
+      @media (min-width: ${breakpoints.TABLET}px) {
+        margin-top: ${spacing.x1 * 10}px;
+        margin-bottom: ${spacing.x1 * 10}px;
+        transform: rotate(-1deg) scale(1.1);
 
-      & + & {
-        margin-top: ${spacing.x10}px;
+        & + & {
+          margin-top: ${spacing.x1 * 14}px;
+        }
       }
     `,
 ])
@@ -39,7 +42,13 @@ const Header = styled.h3`
 `
 const Main = styled.div`
   display: flex;
-  gap: ${spacing.x6}px;
+  flex-flow: column;
+  gap: ${spacing.x2}px;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-flow: row;
+    gap: ${spacing.x6}px;
+  }
 `
 const Thumbnail = styled.div`
   flex: 0 0 auto;
@@ -49,11 +58,7 @@ const Thumbnail = styled.div`
     max-width: 200px;
   }
 `
-const Name = styled.span`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`
+const Name = styled.span``
 const Period = styled.span``
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;

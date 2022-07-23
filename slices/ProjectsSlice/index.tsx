@@ -15,7 +15,7 @@ import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import PrismicTitle from '../../components/PrismicTitle'
 import ProjectBrief from '../../components/ProjectBrief'
-import { colors, spacing } from '../../theme'
+import { breakpoints, colors, spacing } from '../../theme'
 import convertPrismicImage from '../../utils/convertPrismicImage'
 import { toPrismicLocale } from '../../utils/locales'
 import { PrefetchContext } from '../../utils/prefetchSliceSubQueries'
@@ -29,6 +29,7 @@ const Section = styled.div`
   background: ${colors.dominant};
   color: ${colors.complementary};
   padding: 150px 0;
+  overflow: hidden;
 `
 const Title = styled.h2`
   text-transform: uppercase;
@@ -42,12 +43,16 @@ const SubTitle = styled.h3`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 24px;
-  // The translation puts it at the same position as a border-bottom should be,
-  // which should be nice for visual consistency.
-  transform: rotate(-2deg) translateY(-50%);
+  transform: rotate(-2deg);
   margin-bottom: ${spacing.x6}px;
   letter-spacing: 3px;
   margin-left: 5px;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    // The translation puts it at the same position as a border-bottom should be,
+    // which should be nice for visual consistency.
+    transform: rotate(-2deg) translateY(-50%);
+  }
 `
 
 export type PrismicProjectsSlice = SharedSlice<
