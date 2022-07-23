@@ -55,7 +55,7 @@ const Title = styled.h2`
   text-transform: uppercase;
   font-weight: 800;
   transform: rotate(-2deg);
-  border-top: 16px solid currentColor;
+  border-top: ${spacing.x2}px solid currentColor;
   display: inline-block;
   margin: 0;
 `

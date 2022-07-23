@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 
-import { breakpoints, colors, fontSizes, spacing } from '../theme'
+import { breakpoints, colors, spacing } from '../theme'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
@@ -12,46 +12,35 @@ const Container = styled('article', {
   shouldForwardProp: (prop) => prop !== 'highlighted',
 })<{ highlighted?: boolean }>(({ highlighted }) => [
   css`
-    display: flex;
-    gap: ${spacing.x6}px;
-    padding: ${spacing.x4}px 0;
-    position: relative;
+    transform: rotate(-1deg);
+    border: ${spacing.x2}px solid #000;
+    margin: ${spacing.x6}px -${spacing.x2}px;
+    padding: ${spacing.x3}px;
 
     @media (max-width: ${breakpoints.MOBILE_MAX}px) {
       flex-flow: column;
       gap: ${spacing.x2}px;
     }
-
-    :not(:last-of-type) {
-      ::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: ${colors.complementary};
-        height: 2px;
-        width: 100px;
-        max-width: 100%;
-      }
-    }
   `,
   highlighted &&
     css`
       transform: rotate(-1deg) scale(1.1);
-      border: ${spacing.x2}px solid #000;
-      padding: 0;
-      margin: ${spacing.x2}px -${spacing.x2}px;
-      padding: ${spacing.x2}px;
 
-      :not(:last-of-type) {
-        ::after {
-          display: none;
-        }
+      & + & {
+        margin-top: ${spacing.x10}px;
       }
     `,
 ])
-
+const Header = styled.h3`
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.3px;
+`
+const Main = styled.div`
+  display: flex;
+  gap: ${spacing.x6}px;
+`
 const Thumbnail = styled.div`
   flex: 0 0 auto;
   overflow: hidden;
@@ -60,16 +49,12 @@ const Thumbnail = styled.div`
     max-width: 200px;
   }
 `
-const Name = styled.div`
-  font-weight: bold;
+const Name = styled.span`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 `
-const Period = styled.small`
-  display: block;
-  font-size: ${fontSizes.smallestText}px;
-`
+const Period = styled.span``
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
@@ -104,7 +89,7 @@ const TechItem = styled.div`
 
   transition: transform 120ms ease-out;
   :hover {
-    transform: scale(1.4) rotate(-2deg);
+    transform: scale(1.4) rotate(-1deg);
   }
 `
 const InvisibleText = styled.span`
@@ -154,39 +139,45 @@ const ProjectBrief = ({
 
   return (
     <Container highlighted={highlighted}>
-      <Thumbnail>
-        <Name title={name}>{name}</Name>
-        <Period>{formatPeriod(started, ended)}</Period>
+      <Header>
+        <Name title={name}>{name}</Name> (
+        <Period>{formatPeriod(started, ended)}</Period>)
+      </Header>
+      <Main>
         {thumbnail && (
-          <Image
-            src={thumbnail}
-            alt={thumbnail.alt}
-            layout="fixed"
-            width={200}
-            height={200}
-            objectFit="contain"
-          />
+          <Thumbnail>
+            <Image
+              src={thumbnail}
+              alt={thumbnail.alt}
+              layout="fixed"
+              width={200}
+              height={200}
+              objectFit="contain"
+            />
+          </Thumbnail>
         )}
-      </Thumbnail>
-      <ProjectExplanation>
-        <ProjectAbout>{about}</ProjectAbout>
-        <Tech>
-          {tech.map((item, index) => (
-            <Fragment key={item}>
-              <TechItem data-value={item}>{item}</TechItem>
-              {/* Add hidden text to make copy-pasting more convenient */}
-              {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
-            </Fragment>
-          ))}
-        </Tech>
-        {(url || sourceCode) && (
-          <ContactLinks>
-            {url && <Link href={url}>{config?.visit}</Link>}
-            {url && sourceCode && ' | '}
-            {sourceCode && <Link href={sourceCode}>{config?.sourceCode}</Link>}
-          </ContactLinks>
-        )}
-      </ProjectExplanation>
+        <ProjectExplanation>
+          <ProjectAbout>{about}</ProjectAbout>
+          <Tech>
+            {tech.map((item, index) => (
+              <Fragment key={item}>
+                <TechItem data-value={item}>{item}</TechItem>
+                {/* Add hidden text to make copy-pasting more convenient */}
+                {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
+              </Fragment>
+            ))}
+          </Tech>
+          {(url || sourceCode) && (
+            <ContactLinks>
+              {url && <Link href={url}>{config?.visit}</Link>}
+              {url && sourceCode && ' | '}
+              {sourceCode && (
+                <Link href={sourceCode}>{config?.sourceCode}</Link>
+              )}
+            </ContactLinks>
+          )}
+        </ProjectExplanation>
+      </Main>
     </Container>
   )
 }
