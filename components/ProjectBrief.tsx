@@ -69,7 +69,8 @@ const TechItem = styled.div`
   background: ${colors.complementary};
   color: ${colors.dominant};
   padding: 4px 6px;
-  margin-right: 2px;
+  border: 2px solid ${colors.dominant};
+  margin-left: -2px;
   margin-bottom: 2px;
 
   // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
@@ -79,6 +80,11 @@ const TechItem = styled.div`
   }
   &[data-value='Open Source'] {
     color: #fff;
+  }
+
+  transition: transform 120ms ease-out;
+  :hover {
+    transform: scale(1.4) rotate(-2deg);
   }
 `
 const InvisibleText = styled.span`
