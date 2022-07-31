@@ -19,14 +19,14 @@ const Positioner = styled.div`
     // to be perfectly centered anyway.
     top: 30%;
     right: 0;
-    transform: rotate(-90deg);
-    transform-origin: right bottom;
+    transform: rotate(-90deg) translateY(-50%);
+    transform-origin: right;
   }
 `
 const Container = styled.div<{ inverted?: boolean }>([
   css`
     display: flex;
-    padding: 7px 14px;
+    padding: 7px 14px 17px;
     background: ${colors.complementary};
     color: ${colors.dominant};
     --background-color: ${colors.complementary};
@@ -37,6 +37,12 @@ const Container = styled.div<{ inverted?: boolean }>([
     text-transform: uppercase;
     font-weight: 600;
     font-size: ${fontSizes.tertiaryText}px;
+
+    transition: transform 120ms ease-out;
+    transform: translateY(10px);
+    :hover {
+      transform: translateY(1px);
+    }
 
     @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
       font-size: ${fontSizes.mainText}px;
