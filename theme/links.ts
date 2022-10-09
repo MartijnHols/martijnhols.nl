@@ -4,7 +4,7 @@ import { colors } from '.'
 
 export const globalStyles = css`
   a:not(.plain) {
-    color: ${colors.complementary};
+    color: ${colors.black};
     text-decoration: none;
     border-bottom: 3px solid currentColor;
 
@@ -24,14 +24,14 @@ export const globalStyles = css`
       top: -2px;
       bottom: -2px;
       z-index: -1;
-      background: ${colors.complementary};
+      background: ${colors.black};
       transform: scaleY(0);
       transition: transform var(--transition-duration) ease-out;
       transform-origin: bottom;
     }
 
     :hover {
-      color: ${colors.dominant};
+      color: ${colors.yellow};
       border-bottom-width: 0;
 
       ::after {
@@ -45,14 +45,14 @@ export const globalStyles = css`
 
   .inverted {
     a {
-      color: ${colors.dominant};
+      color: ${colors.yellow};
 
       ::after {
-        background: ${colors.dominant};
+        background: ${colors.yellow};
       }
 
       :hover {
-        color: ${colors.complementary};
+        color: ${colors.black};
       }
     }
   }

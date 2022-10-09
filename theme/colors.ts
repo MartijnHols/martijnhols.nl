@@ -10,6 +10,5 @@
 // #ffd818 - orange
 // #55ff9f - green
 // #de0c08 - red
-export const dominant = '#ffd818'
-export const complementary = '#000'
-export const accent = 'todo'
+export const yellow = '#ffd818'
+export const black = '#000'

@@ -29,9 +29,9 @@ const Container = styled('div', {
   css`
     display: flex;
     padding: 7px 14px 17px;
-    background: ${colors.complementary};
-    color: ${colors.dominant};
-    --background-color: ${colors.complementary};
+    background: ${colors.black};
+    color: ${colors.yellow};
+    --background-color: ${colors.black};
     border-radius: 3px 3px 0 0;
     text-transform: uppercase;
     font-weight: 600;
@@ -53,9 +53,9 @@ const Container = styled('div', {
     `,
   props.inverted &&
     css`
-      background: ${colors.dominant};
-      color: ${colors.complementary};
-      --background-color: ${colors.dominant};
+      background: ${colors.yellow};
+      color: ${colors.black};
+      --background-color: ${colors.yellow};
     `,
 ])
 const ChatIconContainer = styled.div``

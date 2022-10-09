@@ -15,8 +15,8 @@ const GlobalStyles = () => (
             'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          background: ${colors.dominant};
-          color: ${colors.complementary};
+          background: ${colors.yellow};
+          color: ${colors.black};
           font-size: ${fontSizes.mainText}px;
         }
         code {
@@ -40,7 +40,7 @@ const GlobalStyles = () => (
         }
 
         * {
-          outline-color: ${colors.complementary};
+          outline-color: ${colors.black};
         }
       `,
       links.globalStyles,

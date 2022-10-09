@@ -22,7 +22,7 @@ export type PrismicArticleCodeSnippetSlice = SharedSlice<
 
 const Pre = styled.pre`
   font-size: 14px;
-  background: ${colors.complementary};
+  background: ${colors.black};
   padding: ${spacing.x1}px;
 `
 

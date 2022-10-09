@@ -21,17 +21,17 @@ import ReactLogo from './ReactLogo.svg'
 
 const Section = styled.header`
   position: relative;
-  background: ${colors.dominant};
-  color: ${colors.complementary};
+  background: ${colors.yellow};
+  color: ${colors.black};
 `
 const TopBar = styled.div`
-  background: ${colors.complementary};
+  background: ${colors.black};
   height: 1em;
 `
 const LanguageToggle = styled.div`
   position: relative;
   z-index: 1;
-  color: ${colors.dominant};
+  color: ${colors.yellow};
   // Fallbacks
   padding: 6px 7px 0 8px;
   font-size: 14px;
@@ -45,7 +45,7 @@ const LanguageToggle = styled.div`
 const Content = styled.div`
   position: relative;
   overflow: hidden; // fixes rotation overflow increasing body width
-  background: ${colors.dominant};
+  background: ${colors.yellow};
 `
 const StyledContainer = styled(Container)`
   padding-top: 100px;

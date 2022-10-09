@@ -36,6 +36,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-query": "^3.38.0",
+    "react-transition-group": "^4.4.5",
     "sanitize.css": "^13.0.0",
     "sharp": "^0.30.4",
     "slice-machine-ui": "^0.5.0"
@@ -48,6 +49,7 @@
     "@types/node": "^16.0.0",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "@types/react-transition-group": "^4.4.5",
     "eslint": "^8.13.0",
     "eslint-config-next": "^12.1.5",
     "husky": "^8.0.1",

@@ -21,7 +21,7 @@ const TopAngle = styled('div', {
     width: 100%;
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(0 0, 100% 0, 0 100%);
-    background: ${inverted ? colors.dominant : colors.complementary};
+    background: ${inverted ? colors.yellow : colors.black};
     ${clipPathBorderFix}
   `,
 )
@@ -31,7 +31,7 @@ const BottomAngle = styled('div', {
   ({ inverted }) => css`
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    background: ${inverted ? colors.complementary : colors.dominant};
+    background: ${inverted ? colors.black : colors.yellow};
     ${clipPathBorderFix}
   `,
 )
@@ -40,8 +40,8 @@ interface Props {
   inverted?: boolean
 }
 
-const Angle = ({ inverted }: Props) => (
-  <Container>
+const Angle = ({ inverted, ...others }: Props) => (
+  <Container {...others}>
     <TopAngle inverted={inverted}>
       <ContactButtonGlobalHover
         inverted={!inverted}

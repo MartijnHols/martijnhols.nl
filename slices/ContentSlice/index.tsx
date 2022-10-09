@@ -89,8 +89,8 @@ const ContentSlice = ({ slice }: Props) => {
   return (
     <Section
       style={{
-        background: inverted ? colors.complementary : colors.dominant,
-        color: inverted ? colors.dominant : colors.complementary,
+        background: inverted ? colors.black : colors.yellow,
+        color: inverted ? colors.yellow : colors.black,
       }}
     >
       <StyledContainer>

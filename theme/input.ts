@@ -2,8 +2,8 @@ import { css } from '@emotion/react'
 
 import { colors } from '.'
 
-const background = colors.complementary
-const text = colors.dominant
+const background = colors.black
+const text = colors.yellow
 
 export const buttonCss = css`
   display: inline-block;

@@ -19,8 +19,8 @@ import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
 const Section = styled.footer`
   position: relative;
-  background: ${colors.complementary};
-  color: ${colors.dominant};
+  background: ${colors.black};
+  color: ${colors.yellow};
   padding: ${spacing.x5}px 0;
 `
 const Row = styled.div`

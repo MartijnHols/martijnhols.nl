@@ -76,10 +76,10 @@ const ContactLinks = styled.div`
 `
 const TechItem = styled.div`
   display: inline-block;
-  background: ${colors.complementary};
-  color: ${colors.dominant};
+  background: ${colors.black};
+  color: ${colors.yellow};
   padding: 4px 6px;
-  border: 2px solid ${colors.dominant};
+  border: 2px solid ${colors.yellow};
   margin-left: -2px;
   margin-bottom: 2px;
 
