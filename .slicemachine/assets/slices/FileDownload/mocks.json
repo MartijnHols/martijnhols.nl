@@ -1,0 +1,14 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "file_download",
+    "items": [],
+    "primary": {
+      "file": {
+        "link_type": "media",
+        "url": "https://source.unsplash.com/daily"
+      }
+    }
+  }
+]

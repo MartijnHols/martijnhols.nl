@@ -9,6 +9,7 @@ import HrefLangHead from '../components/HrefLangHead'
 import PageWrapper from '../components/PageWrapper'
 import PrismicProvider from '../components/PrismicProvider'
 import { components } from '../slices'
+import { PrismicFileDownloadSlice } from '../slices/FileDownload'
 import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
 import { toPrismicLocale, toUserLocale } from '../utils/locales'
@@ -92,6 +93,20 @@ export const getStaticProps: GetStaticProps<
   if (!config || !page) {
     return {
       notFound: true,
+      revalidate: serverRuntimeConfig.pageRevalidateInterval,
+    }
+  }
+
+  const fileDownloadSlice = page.data.slices.find(
+    (slice): slice is PrismicFileDownloadSlice =>
+      slice.slice_type === 'file_download',
+  )
+  if (fileDownloadSlice && 'url' in fileDownloadSlice.primary.file) {
+    return {
+      redirect: {
+        destination: fileDownloadSlice.primary.file.url,
+        permanent: false,
+      },
       revalidate: serverRuntimeConfig.pageRevalidateInterval,
     }
   }

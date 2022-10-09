@@ -14,6 +14,7 @@ import getConfig from 'next/config'
 import { PrismicArticleCodeSnippetSlice } from '../slices/ArticleCodeSnippetSlice'
 import { PrismicArticleContentSlice } from '../slices/ArticleContentSlice'
 import { PrismicContentSlice } from '../slices/ContentSlice'
+import { PrismicFileDownloadSlice } from '../slices/FileDownload'
 import { PrismicFooterSlice } from '../slices/FooterSlice'
 import { PrismicHeroSlice } from '../slices/HeroSlice'
 import { PrismicProjectsSlice } from '../slices/ProjectsSlice'
@@ -66,6 +67,7 @@ export type PrismicPageSlice =
   | PrismicProjectsSlice
   | PrismicFooterSlice
   | PrismicArticleSlice
+  | PrismicFileDownloadSlice
 export type PrismicPage = PrismicDocument<
   {
     headTitle: KeyTextField

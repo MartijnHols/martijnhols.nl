@@ -172,6 +172,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "FileDownload": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

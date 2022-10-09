@@ -409,6 +409,58 @@
         },
         "screenshotPaths": {}
       },
+      "file_download": {
+        "library": "slices",
+        "id": "file_download",
+        "name": "FileDownload",
+        "description": "FileDownload",
+        "model": {
+          "id": "file_download",
+          "type": "SharedSlice",
+          "name": "FileDownload",
+          "description": "FileDownload",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "FileDownload",
+              "primary": {
+                "file": {
+                  "type": "Link",
+                  "config": {
+                    "label": "File",
+                    "placeholder": "",
+                    "select": "media"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "file_download",
+            "items": [],
+            "primary": {
+              "file": {
+                "link_type": "media",
+                "url": "https://source.unsplash.com/daily"
+              }
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "footer_slice": {
         "library": "slices",
         "id": "footer_slice",

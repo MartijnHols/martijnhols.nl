@@ -56,6 +56,9 @@
             },
             "article_slice": {
               "type": "SharedSlice"
+            },
+            "file_download": {
+              "type": "SharedSlice"
             }
           }
         }

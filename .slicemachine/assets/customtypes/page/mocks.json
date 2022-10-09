@@ -1,18 +1,27 @@
 {
-  "id": "e0477db7-1f1e-46eb-ae72-c73ac1a16fb8",
-  "uid": "temporibus-odit-odio",
+  "id": "mock-doc-id",
+  "url": null,
   "type": "page",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
   "data": {
-    "headTitle": "architect distributed schemas",
-    "description": "seize cross-media convergence",
+    "headTitle": "sugar",
+    "description": "receive",
     "ogImage": {
       "dimensions": {
         "width": 900,
         "height": 500
       },
-      "alt": "Placeholder image",
+      "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
-    }
+      "url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117"
+    },
+    "slices": []
   }
 }

@@ -5,6 +5,7 @@ import ArticleCodeSnippetSlice from './ArticleCodeSnippetSlice'
 import ArticleContentSlice from './ArticleContentSlice'
 import ArticleSlice from './ArticleSlice'
 import ContentSlice from './ContentSlice'
+import FileDownload from './FileDownload'
 import FooterSlice from './FooterSlice'
 import HeroSlice from './HeroSlice'
 import ProjectsSlice from './ProjectsSlice'
@@ -15,6 +16,7 @@ export {
   ArticleContentSlice,
   ArticleSlice,
   ContentSlice,
+  FileDownload,
   FooterSlice,
   HeroSlice,
   ProjectsSlice,
@@ -26,6 +28,7 @@ export const components = {
   article_content_slice: ArticleContentSlice,
   article_slice: ArticleSlice,
   content_slice: ContentSlice,
+  file_download: FileDownload,
   footer_slice: FooterSlice,
   hero_slice: HeroSlice,
   projects_slice: ProjectsSlice,
