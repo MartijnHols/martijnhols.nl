@@ -28,11 +28,22 @@ export const getStaticPaths = async () => {
   const pages = await getPages(client)
 
   return {
-    paths: pages.map((page) => ({
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      params: { slug: page.uid! },
-      locale: toUserLocale(page.lang),
-    })),
+    paths: pages
+      .filter((page) => {
+        const fileDownloadSlice = page.data.slices.find(
+          (slice): slice is PrismicFileDownloadSlice =>
+            slice.slice_type === 'file_download',
+        )
+        const isFileDownload =
+          fileDownloadSlice && 'url' in fileDownloadSlice.primary.file
+
+        return !isFileDownload
+      })
+      .map((page) => ({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        params: { slug: page.uid! },
+        locale: toUserLocale(page.lang),
+      })),
     fallback: 'blocking',
   }
 }
