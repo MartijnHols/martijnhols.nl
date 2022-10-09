@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { colors } from '../theme'
-import ContactButton from './ContactButton'
+import ContactButtonGlobalHover from './ContactButtonGlobalHover'
 
 // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
 export const clipPathBorderFix = css`
@@ -43,10 +43,14 @@ interface Props {
 const Angle = ({ inverted }: Props) => (
   <Container>
     <TopAngle inverted={inverted}>
-      <ContactButton inverted={!inverted} aria-hidden tabIndex={-1} />
+      <ContactButtonGlobalHover
+        inverted={!inverted}
+        aria-hidden
+        tabIndex={-1}
+      />
     </TopAngle>
     <BottomAngle inverted={inverted}>
-      <ContactButton inverted={inverted} aria-hidden tabIndex={-1} />
+      <ContactButtonGlobalHover inverted={inverted} aria-hidden tabIndex={-1} />
     </BottomAngle>
   </Container>
 )

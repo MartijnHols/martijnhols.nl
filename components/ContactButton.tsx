@@ -23,7 +23,9 @@ const Positioner = styled.div`
     transform-origin: right;
   }
 `
-const Container = styled.div<{ inverted?: boolean }>([
+const Container = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'inverted',
+})<{ inverted?: boolean; hovering?: boolean }>((props) => [
   css`
     display: flex;
     padding: 7px 14px 17px;
@@ -31,9 +33,6 @@ const Container = styled.div<{ inverted?: boolean }>([
     color: ${colors.dominant};
     --background-color: ${colors.complementary};
     border-radius: 3px 3px 0 0;
-    /* box-shadow: 0px 0px 3px 0 ${colors.dominant};
-    border: 2px solid ${colors.dominant};
-    border-bottom: 0; */
     text-transform: uppercase;
     font-weight: 600;
     font-size: ${fontSizes.tertiaryText}px;
@@ -48,8 +47,11 @@ const Container = styled.div<{ inverted?: boolean }>([
       font-size: ${fontSizes.mainText}px;
     }
   `,
-  (props) =>
-    props.inverted &&
+  props.hovering &&
+    css`
+      transform: translateY(1px);
+    `,
+  props.inverted &&
     css`
       background: ${colors.dominant};
       color: ${colors.complementary};
@@ -69,16 +71,22 @@ const Divider = styled.div`
 interface Props
   extends Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'> {
   inverted?: boolean
+  hovering?: boolean
   annotation?: string
 }
 
-const ContactButton = ({ inverted, annotation, ...others }: Props) => {
+const ContactButton = ({
+  inverted,
+  annotation,
+  hovering,
+  ...others
+}: Props) => {
   const config = usePrismicConfig()
 
   return (
     <Positioner>
       <Link className="plain" href="#footer" {...others}>
-        <Container inverted={inverted}>
+        <Container inverted={inverted} hovering={hovering}>
           <ChatIconContainer>
             <StyledChatIcon aria-label="" />
           </ChatIconContainer>

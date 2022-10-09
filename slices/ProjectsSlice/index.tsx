@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
-import ContactButton from '../../components/ContactButton'
+import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import PrismicTitle from '../../components/PrismicTitle'
@@ -22,10 +22,8 @@ import { PrefetchContext } from '../../utils/prefetchSliceSubQueries'
 import { getProjects } from '../../utils/prismic'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
-const ContactButtonClipper = styled.div`
-  clip-path: inset(0 0 0 0);
-`
 const Section = styled.div`
+  position: relative;
   background: ${colors.dominant};
   color: ${colors.complementary};
   padding: 150px 0;
@@ -85,54 +83,48 @@ const ProjectsSlice = ({ slice }: Props) => {
   const projects = useProjects()
 
   return (
-    <ContactButtonClipper>
-      <Section>
-        <Container>
-          <Title>
-            <PrismicTitle field={slice.primary.title} />
-          </Title>
-          <SubTitle>
-            <PrismicRichText field={slice.primary.explanation} />
-          </SubTitle>
+    <Section>
+      <Container>
+        <Title>
+          <PrismicTitle field={slice.primary.title} />
+        </Title>
+        <SubTitle>
+          <PrismicRichText field={slice.primary.explanation} />
+        </SubTitle>
 
-          {projects
-            ?.sort((a, b) =>
-              (b.endedYear || '').localeCompare(a.endedYear || ''),
+        {projects
+          ?.sort((a, b) => (b.endedYear || '').localeCompare(a.endedYear || ''))
+          .map((project) => {
+            const thumbnail = convertPrismicImage(project.thumbnail)
+            if (!project.name) {
+              return null
+            }
+
+            const url = asLink(project.url, prismicLinkResolver)
+            const sourceCode = asLink(project.sourceCode, prismicLinkResolver)
+            // Since ended year is used for sorting, it may be suffixed with a /
+            // number to affect sort position
+            const endedYear = project.endedYear?.split('/')[0]
+
+            return (
+              <ProjectBrief
+                key={project.name}
+                name={project.name}
+                thumbnail={thumbnail}
+                url={url || undefined}
+                sourceCode={sourceCode || undefined}
+                started={project.startedYear || undefined}
+                ended={endedYear}
+                about={<PrismicRichText field={project.brief} multiline />}
+                tech={project.tech?.split(',').map((item) => item.trim()) || []}
+                highlighted={project.highlighted}
+              />
             )
-            .map((project) => {
-              const thumbnail = convertPrismicImage(project.thumbnail)
-              if (!project.name) {
-                return null
-              }
+          })}
+      </Container>
 
-              const url = asLink(project.url, prismicLinkResolver)
-              const sourceCode = asLink(project.sourceCode, prismicLinkResolver)
-              // Since ended year is used for sorting, it may be suffixed with a /
-              // number to affect sort position
-              const endedYear = project.endedYear?.split('/')[0]
-
-              return (
-                <ProjectBrief
-                  key={project.name}
-                  name={project.name}
-                  thumbnail={thumbnail}
-                  url={url || undefined}
-                  sourceCode={sourceCode || undefined}
-                  started={project.startedYear || undefined}
-                  ended={endedYear}
-                  about={<PrismicRichText field={project.brief} multiline />}
-                  tech={
-                    project.tech?.split(',').map((item) => item.trim()) || []
-                  }
-                  highlighted={project.highlighted}
-                />
-              )
-            })}
-        </Container>
-      </Section>
-
-      <ContactButton />
-    </ContactButtonClipper>
+      <ContactButtonClipped />
+    </Section>
   )
 }
 ProjectsSlice.prefetch = async ({

@@ -9,7 +9,7 @@ import {
 import { useRouter } from 'next/router'
 
 import Angle from '../../components/Angle'
-import ContactButton from '../../components/ContactButton'
+import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PrismicRichText from '../../components/PrismicRichText'
@@ -19,16 +19,16 @@ import { usePrismicConfig } from '../../utils/prismicConfig'
 import reactStringReplace from '../../utils/reactStringReplace'
 import ReactLogo from './ReactLogo.svg'
 
-const Wrapper = styled.div`
+const Section = styled.div`
+  position: relative;
   background: ${colors.dominant};
   color: ${colors.complementary};
-  clip-path: inset(0 0 0 0);
 `
-const Header = styled.div`
+const TopBar = styled.div`
   background: ${colors.complementary};
   height: 1em;
 `
-const HeaderContent = styled.div`
+const LanguageToggle = styled.div`
   position: relative;
   z-index: 1;
   color: ${colors.dominant};
@@ -42,7 +42,7 @@ const HeaderContent = styled.div`
   transform: rotate(-1.15deg);
   transform-origin: left;
 `
-const Section = styled.section`
+const Content = styled.section`
   position: relative;
   overflow: hidden; // fixes rotation overflow increasing body width
   background: ${colors.dominant};
@@ -162,9 +162,9 @@ const HeroSlice = ({ slice }: Props) => {
   }
 
   return (
-    <Wrapper>
-      <Header>
-        <HeaderContent className="inverted">
+    <Section>
+      <TopBar className="inverted">
+        <LanguageToggle>
           <Link
             href="/"
             locale={alternativeLocale}
@@ -172,10 +172,11 @@ const HeroSlice = ({ slice }: Props) => {
           >
             {config?.languageToggle}
           </Link>
-        </HeaderContent>
-      </Header>
+        </LanguageToggle>
+      </TopBar>
       <Angle />
-      <Section>
+
+      <Content>
         <StyledContainer>
           <Intro>
             <PrismicRichText
@@ -195,10 +196,10 @@ const HeroSlice = ({ slice }: Props) => {
             <PrismicRichText field={slice.primary.subText} />
           </SubText>
         </StyledContainer>
-      </Section>
+      </Content>
 
-      <ContactButton />
-    </Wrapper>
+      <ContactButtonClipped />
+    </Section>
   )
 }
 

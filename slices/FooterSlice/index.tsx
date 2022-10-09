@@ -10,17 +10,15 @@ import {
   SharedSliceVariation,
 } from '@prismicio/types'
 
-import ContactButton from '../../components/ContactButton'
+import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PrismicRichText from '../../components/PrismicRichText'
 import { colors, spacing } from '../../theme'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
-const ContactButtonClipper = styled.div`
-  clip-path: inset(0 0 0 0);
-`
-const Section = styled.div`
+const Section = styled.footer`
+  position: relative;
   background: ${colors.complementary};
   color: ${colors.dominant};
   padding: ${spacing.x5}px 0;
@@ -79,93 +77,89 @@ const FooterSlice = ({ slice }: Props) => {
   const twitter = asLink(slice.primary.twitter, prismicLinkResolver)
 
   return (
-    <ContactButtonClipper>
-      <Section className="inverted" id="footer">
-        <Container>
-          <ContactRow>
-            <Label>{slice.primary.contactLabel}</Label>
+    <Section className="inverted" id="footer">
+      <Container>
+        <ContactRow>
+          <Label>{slice.primary.contactLabel}</Label>
+          <Values>
+            {slice.primary.email && (
+              <Item>
+                <a href={`mailto:${slice.primary.email}`}>
+                  {slice.primary.email}
+                </a>
+              </Item>
+            )}
+            {slice.primary.whatsApp && (
+              <Item>
+                <a
+                  href={`https://api.whatsapp.com/send?phone=${slice.primary.whatsApp}`}
+                >
+                  WhatsApp
+                </a>
+              </Item>
+            )}
+            {slice.primary.phone && (
+              <Item>
+                <a href={`tel:${slice.primary.phone}`}>{slice.primary.phone}</a>
+              </Item>
+            )}
+          </Values>
+        </ContactRow>
+        {slice.primary.contactAnnotation.length > 0 && (
+          <Row>
+            <Label />
             <Values>
-              {slice.primary.email && (
-                <Item>
-                  <a href={`mailto:${slice.primary.email}`}>
-                    {slice.primary.email}
-                  </a>
-                </Item>
-              )}
-              {slice.primary.whatsApp && (
-                <Item>
-                  <a
-                    href={`https://api.whatsapp.com/send?phone=${slice.primary.whatsApp}`}
-                  >
-                    WhatsApp
-                  </a>
-                </Item>
-              )}
-              {slice.primary.phone && (
-                <Item>
-                  <a href={`tel:${slice.primary.phone}`}>
-                    {slice.primary.phone}
-                  </a>
-                </Item>
-              )}
+              <PrismicRichText field={slice.primary.contactAnnotation} />
             </Values>
-          </ContactRow>
-          {slice.primary.contactAnnotation.length > 0 && (
-            <Row>
-              <Label />
-              <Values>
-                <PrismicRichText field={slice.primary.contactAnnotation} />
-              </Values>
-            </Row>
-          )}
-          {slice.primary.city && (
-            <Row>
-              <Label>{slice.primary.locationLabel}</Label>
-              <Values>
-                <Item>{slice.primary.city}</Item>
-              </Values>
-            </Row>
-          )}
-          <SocialRow>
-            <Label>{slice.primary.socialLabel}</Label>
+          </Row>
+        )}
+        {slice.primary.city && (
+          <Row>
+            <Label>{slice.primary.locationLabel}</Label>
             <Values>
-              {linkedIn && (
-                <Item>
-                  <Link href={linkedIn}>LinkedIn</Link>
-                </Item>
-              )}
-              {gitHub && (
-                <Item>
-                  <Link href={gitHub}>GitHub</Link>
-                </Item>
-              )}
-              {twitter && (
-                <Item>
-                  <Link href={twitter}>Twitter</Link>
-                </Item>
-              )}
+              <Item>{slice.primary.city}</Item>
             </Values>
-          </SocialRow>
-          <BusinessRow>
-            <Label>{slice.primary.companyLabel}</Label>
-            <Values>
-              {slice.primary.kvk && (
-                <Item>
-                  <strong>KVK:</strong> {slice.primary.kvk}
-                </Item>
-              )}
-              {slice.primary.btw && (
-                <Item>
-                  <strong>BTW:</strong> {slice.primary.btw}
-                </Item>
-              )}
-            </Values>
-          </BusinessRow>
-        </Container>
-      </Section>
+          </Row>
+        )}
+        <SocialRow>
+          <Label>{slice.primary.socialLabel}</Label>
+          <Values>
+            {linkedIn && (
+              <Item>
+                <Link href={linkedIn}>LinkedIn</Link>
+              </Item>
+            )}
+            {gitHub && (
+              <Item>
+                <Link href={gitHub}>GitHub</Link>
+              </Item>
+            )}
+            {twitter && (
+              <Item>
+                <Link href={twitter}>Twitter</Link>
+              </Item>
+            )}
+          </Values>
+        </SocialRow>
+        <BusinessRow>
+          <Label>{slice.primary.companyLabel}</Label>
+          <Values>
+            {slice.primary.kvk && (
+              <Item>
+                <strong>KVK:</strong> {slice.primary.kvk}
+              </Item>
+            )}
+            {slice.primary.btw && (
+              <Item>
+                <strong>BTW:</strong> {slice.primary.btw}
+              </Item>
+            )}
+          </Values>
+        </BusinessRow>
+      </Container>
 
-      <ContactButton inverted />
-    </ContactButtonClipper>
+      <ContactButtonClipped inverted />
+    </Section>
   )
 }
 

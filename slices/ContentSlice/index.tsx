@@ -7,16 +7,15 @@ import {
 } from '@prismicio/types'
 import Image from 'next/image'
 
-import ContactButton from '../../components/ContactButton'
+import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import { breakpoints, colors, spacing } from '../../theme'
 import convertPrismicImage from '../../utils/convertPrismicImage'
 
-const ContactButtonClipper = styled.div`
-  clip-path: inset(0 0 0 0);
+const Section = styled.section`
+  position: relative;
 `
-const Section = styled.section``
 const StyledContainer = styled(Container)`
   padding-top: 100px;
   padding-bottom: 100px;
@@ -88,41 +87,39 @@ const ContentSlice = ({ slice }: Props) => {
   const inverted = slice.variation === 'inverted'
 
   return (
-    <ContactButtonClipper>
-      <Section
-        style={{
-          background: inverted ? colors.complementary : colors.dominant,
-          color: inverted ? colors.dominant : colors.complementary,
-        }}
-      >
-        <StyledContainer>
-          {image && (
-            <ImageContainer>
-              <SideImage
-                src={image}
-                alt={image.alt}
-                layout="responsive"
-                sizes={`(max-width: ${breakpoints.MOBILE_MAX}px) 100vw, (max-width: ${breakpoints.DESKTOP_MAX}px) 400px, 500px`}
-              />
-            </ImageContainer>
-          )}
-
-          <Content className={inverted ? 'inverted' : undefined}>
-            <PrismicRichText
-              field={slice.primary.content}
-              multiline
-              components={{
-                heading1: ({ key, children }) => (
-                  <Title key={key}>{children}</Title>
-                ),
-              }}
+    <Section
+      style={{
+        background: inverted ? colors.complementary : colors.dominant,
+        color: inverted ? colors.dominant : colors.complementary,
+      }}
+    >
+      <StyledContainer>
+        {image && (
+          <ImageContainer>
+            <SideImage
+              src={image}
+              alt={image.alt}
+              layout="responsive"
+              sizes={`(max-width: ${breakpoints.MOBILE_MAX}px) 100vw, (max-width: ${breakpoints.DESKTOP_MAX}px) 400px, 500px`}
             />
-          </Content>
-        </StyledContainer>
-      </Section>
+          </ImageContainer>
+        )}
 
-      <ContactButton inverted={inverted} />
-    </ContactButtonClipper>
+        <Content className={inverted ? 'inverted' : undefined}>
+          <PrismicRichText
+            field={slice.primary.content}
+            multiline
+            components={{
+              heading1: ({ key, children }) => (
+                <Title key={key}>{children}</Title>
+              ),
+            }}
+          />
+        </Content>
+      </StyledContainer>
+
+      <ContactButtonClipped inverted={inverted} />
+    </Section>
   )
 }
 
