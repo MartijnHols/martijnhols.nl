@@ -22,7 +22,7 @@ import { PrefetchContext } from '../../utils/prefetchSliceSubQueries'
 import { getProjects } from '../../utils/prismic'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
-const Section = styled.div`
+const Section = styled.section`
   position: relative;
   background: ${colors.dominant};
   color: ${colors.complementary};

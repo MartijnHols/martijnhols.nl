@@ -19,7 +19,7 @@ import { usePrismicConfig } from '../../utils/prismicConfig'
 import reactStringReplace from '../../utils/reactStringReplace'
 import ReactLogo from './ReactLogo.svg'
 
-const Section = styled.div`
+const Section = styled.header`
   position: relative;
   background: ${colors.dominant};
   color: ${colors.complementary};
@@ -42,7 +42,7 @@ const LanguageToggle = styled.div`
   transform: rotate(-1.15deg);
   transform-origin: left;
 `
-const Content = styled.section`
+const Content = styled.div`
   position: relative;
   overflow: hidden; // fixes rotation overflow increasing body width
   background: ${colors.dominant};
