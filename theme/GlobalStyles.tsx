@@ -15,8 +15,8 @@ const GlobalStyles = () => (
             'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          background: ${colors.complementary};
-          color: ${colors.dominant};
+          background: ${colors.dominant};
+          color: ${colors.complementary};
           font-size: ${fontSizes.mainText}px;
         }
         code {
