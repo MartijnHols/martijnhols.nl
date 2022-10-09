@@ -67,6 +67,8 @@ const ProjectAbout = styled.div`
   // Cancel out paragraph margin
   margin-top: -${spacing.x2}px;
   margin-bottom: ${spacing.x2}px;
+  hyphens: auto;
+  text-align: justify;
 `
 const Tech = styled.div`
   font-size: 16px;

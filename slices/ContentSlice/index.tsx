@@ -49,6 +49,8 @@ const Content = styled.div`
   flex: 1 1 0;
   // Cancels out p-margins
   margin: -${spacing.x2}px 0;
+  hyphens: auto;
+  text-align: justify;
 `
 const Title = styled.h2`
   text-transform: uppercase;
