@@ -95,7 +95,7 @@ export const getArticles = async (
    */
   locale: string = '*',
 ) =>
-  await client.getAllByType<PrismicPage>('article', {
+  await client.getAllByType<PrismicArticle>('article', {
     lang: locale,
   })
 

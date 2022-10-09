@@ -24,7 +24,7 @@ const Positioner = styled.div`
   }
 `
 const Container = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'inverted',
+  shouldForwardProp: (prop) => prop !== 'inverted' && prop !== 'hovering',
 })<{ inverted?: boolean; hovering?: boolean }>((props) => [
   css`
     display: flex;

@@ -407,7 +407,18 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/default/preview.png",
+            "width": 800,
+            "height": 660
+          },
+          "inverted": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/ContentSlice/inverted/preview.png",
+            "width": 800,
+            "height": 687
+          }
+        }
       },
       "file_download": {
         "library": "slices",
@@ -457,9 +468,15 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/FileDownload/default/preview.png",
+            "width": 800,
+            "height": 27
+          }
+        }
       },
       "footer_slice": {
         "library": "slices",
@@ -649,7 +666,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/martijnhols/Workspace/martijnhols.nl/.slicemachine/assets/slices/FooterSlice/default/preview.png",
+            "width": 800,
+            "height": 425
+          }
+        }
       },
       "hero_slice": {
         "library": "slices",
