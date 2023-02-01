@@ -1,8 +1,71 @@
 {
-  "id": "8ff59f2d-8c9b-4889-8b46-0b9bb80913c1",
-  "uid": "voluptatum-dolor-ea",
-  "type": "article",
-  "data": {
-    "name": "grow one-to-one initiatives"
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "nine",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "article_code_snippet_slice$38dc2ff4-02dd-4719-b487-b00e2069ef6a",
+        "name": "article_code_snippet_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "language": {
+              "__TYPE__": "FieldContent",
+              "value": "pictured",
+              "type": "Text"
+            },
+            "content": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Magna anim id eiusmod in velit velit ea dolor labore ut eiusmod esse. Occaecat eu elit dolor non laboris adipisicing."
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "article_content_slice$4446eef8-d169-4f1c-9d50-d301f6a0b58a",
+        "name": "article_content_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "content": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Dolor adipisicing ex et qui eiusmod amet. Cillum do tempor consequat velit incididunt ad ad dolor. Veniam magna qui cupidatat incididunt deserunt qui tempor in eiusmod proident fugiat consectetur dolore."
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
   }
 }

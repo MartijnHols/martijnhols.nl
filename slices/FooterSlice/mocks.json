@@ -1,0 +1,108 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "contactLabel": {
+        "__TYPE__": "FieldContent",
+        "value": "plain",
+        "type": "Text"
+      },
+      "contactAnnotation": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Incididunt ea aute ullamco excepteur elit nulla. Incididunt quis aliquip aute laboris ex occaecat sit occaecat Lorem id velit esse esse ad. Officia minim magna exercitation ut sunt velit Lorem."
+            }
+          }
+        ]
+      },
+      "email": {
+        "__TYPE__": "FieldContent",
+        "value": "when",
+        "type": "Text"
+      },
+      "phone": {
+        "__TYPE__": "FieldContent",
+        "value": "tried",
+        "type": "Text"
+      },
+      "whatsApp": {
+        "__TYPE__": "FieldContent",
+        "value": "26",
+        "type": "Number"
+      },
+      "socialLabel": {
+        "__TYPE__": "FieldContent",
+        "value": "than",
+        "type": "Text"
+      },
+      "linkedIn": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://google.com"
+        }
+      },
+      "gitHub": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://prismic.io"
+        }
+      },
+      "twitter": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://prismic.io"
+        }
+      },
+      "companyLabel": {
+        "__TYPE__": "FieldContent",
+        "value": "were",
+        "type": "Text"
+      },
+      "kvk": {
+        "__TYPE__": "FieldContent",
+        "value": "straw",
+        "type": "Text"
+      },
+      "btw": {
+        "__TYPE__": "FieldContent",
+        "value": "dig",
+        "type": "Text"
+      },
+      "iban": {
+        "__TYPE__": "FieldContent",
+        "value": "fine",
+        "type": "Text"
+      },
+      "locationLabel": {
+        "__TYPE__": "FieldContent",
+        "value": "plural",
+        "type": "Text"
+      },
+      "city": {
+        "__TYPE__": "FieldContent",
+        "value": "unless",
+        "type": "Text"
+      },
+      "location": {
+        "__TYPE__": "GeoPointContent",
+        "position": {
+          "lat": 48.8606111,
+          "lng": 2.337644
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

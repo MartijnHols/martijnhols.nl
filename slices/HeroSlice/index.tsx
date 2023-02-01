@@ -2,6 +2,7 @@ import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { asText } from '@prismicio/helpers'
 import {
+  BooleanField,
   RichTextField,
   SharedSlice,
   SharedSliceVariation,
@@ -131,6 +132,7 @@ export type PrismicHeroSlice = SharedSlice<
       intro: RichTextField
       title: RichTextField
       subText: RichTextField
+      reactifyTitle: BooleanField
     }
   >
 >
@@ -168,7 +170,11 @@ const HeroSlice = ({ slice }: Props) => (
             }}
             multiline
           />
-          <IntroTitle>{reactifyTitle(asText(slice.primary.title))}</IntroTitle>
+          <IntroTitle>
+            {slice.primary.reactifyTitle
+              ? reactifyTitle(asText(slice.primary.title))
+              : asText(slice.primary.title)}
+          </IntroTitle>
         </Intro>
         <SubText>
           <PrismicRichText field={slice.primary.subText} />

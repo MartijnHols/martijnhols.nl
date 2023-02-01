@@ -5,5 +5,5 @@ export default {
 }
 
 
-export const _Default = () => <MyComponent slice={{"variation":"default","name":"Default","slice_type":"hero_slice","items":[],"primary":{"intro":[{"type":"paragraph","text":"Incididunt enim sit magna elit ipsum officia cillum in minim voluptate dolore. Quis duis labore nulla ex esse Lorem incididunt commodo occaecat nostrud. Occaecat consectetur qui eiusmod reprehenderit adipisicing dolore enim cillum pariatur pariatur.","spans":[]}],"title":[{"type":"heading1","text":"Monetize cross-platform e-business","spans":[]}],"subText":[{"type":"paragraph","text":"Non irure amet et incididunt deserunt. Labore do ullamco labore ullamco ipsum occaecat ea ullamco. Id enim esse consectetur elit enim laboris nisi quis.","spans":[]}]},"id":"_Default"}} />
-_Default.storyName = 'Default'
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"intro":[{"type":"paragraph","text":"Lorem irure mollit dolor commodo amet aute adipisicing anim voluptate nulla.","spans":[]}],"title":[{"type":"heading1","text":"Willing","spans":[]}],"subText":[{"type":"paragraph","text":"Deserunt magna nostrud laboris. Excepteur anim mollit nostrud cillum. Deserunt ad incididunt enim Lorem ex ex.","spans":[]}],"reactifyTitle":true},"id":"_Default","slice_type":"hero_slice"}} />
+_Default.storyName = ''

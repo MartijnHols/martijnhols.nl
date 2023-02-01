@@ -1,11 +1,22 @@
 {
-  "id": "60209b6b-6be9-41df-bd3c-21b92ec5ecd4",
-  "uid": "placeat-ratione-quam",
-  "type": "config",
-  "data": {
-    "visit": "revolutionize cutting-edge vortals",
-    "sourceCode": "maximize granular web-readiness",
-    "languageToggle": "productize web-enabled communities",
-    "contact": "disintermediate ubiquitous e-tailers"
+  "visit": {
+    "__TYPE__": "FieldContent",
+    "value": "handle",
+    "type": "Text"
+  },
+  "sourceCode": {
+    "__TYPE__": "FieldContent",
+    "value": "protection",
+    "type": "Text"
+  },
+  "languageToggle": {
+    "__TYPE__": "FieldContent",
+    "value": "later",
+    "type": "Text"
+  },
+  "contact": {
+    "__TYPE__": "FieldContent",
+    "value": "flow",
+    "type": "Text"
   }
 }
