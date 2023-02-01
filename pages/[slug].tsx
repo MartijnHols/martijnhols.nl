@@ -136,7 +136,8 @@ export const getStaticProps: GetStaticProps<
 const Page = ({ config, page, previewData }: StaticProps) => (
   <PageWrapper>
     <BaseHead
-      title={page.data.headTitle || 'Martijn Hols'}
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      title={page.data.headTitle || process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK!}
       description={page.data.description || undefined}
       absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
       image={convertPrismicImage(page.data.ogImage)}
