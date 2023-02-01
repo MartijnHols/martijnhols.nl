@@ -6,16 +6,14 @@ import {
   SharedSlice,
   SharedSliceVariation,
 } from '@prismicio/types'
-import { useRouter } from 'next/router'
 
 import Angle from '../../components/Angle'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
-import Link from '../../components/Link'
+import LanguageSwitcher from '../../components/LanguageSwitcher'
 import PrismicRichText from '../../components/PrismicRichText'
 import { breakpoints, colors, spacing } from '../../theme'
 import { h3, h5 } from '../../theme/headings'
-import { usePrismicConfig } from '../../utils/prismicConfig'
 import reactStringReplace from '../../utils/reactStringReplace'
 import ReactLogo from './ReactLogo.svg'
 
@@ -27,20 +25,6 @@ const Section = styled.header`
 const TopBar = styled.div`
   background: ${colors.black};
   height: 1em;
-`
-const LanguageToggle = styled.div`
-  position: relative;
-  z-index: 1;
-  color: ${colors.yellow};
-  // Fallbacks
-  padding: 6px 7px 0 8px;
-  font-size: 14px;
-  // Resize at the same rate as Angle so it fits perfectly
-  padding: calc(5px + 100vw / 2000 * 6) 7px 0 calc(7px + 100vw / 2000 * 7);
-  font-size: calc(10px + 100vw / 2000 * 12);
-  font-weight: 500;
-  transform: rotate(-1.15deg);
-  transform-origin: left;
 `
 const Content = styled.div`
   position: relative;
@@ -152,55 +136,36 @@ interface Props {
   slice: PrismicHeroSlice
 }
 
-const HeroSlice = ({ slice }: Props) => {
-  const { locale } = useRouter()
-  const config = usePrismicConfig()
+const HeroSlice = ({ slice }: Props) => (
+  <Section>
+    <TopBar className="inverted">
+      <LanguageSwitcher />
+    </TopBar>
 
-  const alternativeLocale = locale === 'nl' ? 'en' : 'nl'
-  const handleSwitchLanguage = () => {
-    document.cookie = `NEXT_LOCALE=${alternativeLocale}; max-age=31536000; path=/`
-  }
+    <Angle />
 
-  return (
-    <Section>
-      <TopBar className="inverted">
-        <LanguageToggle>
-          <Link
-            href="/"
-            locale={alternativeLocale}
-            onClick={handleSwitchLanguage}
-          >
-            {config?.languageToggle}
-          </Link>
-        </LanguageToggle>
-      </TopBar>
-      <Angle />
+    <Content>
+      <StyledContainer>
+        <Intro>
+          <PrismicRichText
+            field={slice.primary.intro}
+            components={{
+              paragraph: ({ children, key }) => (
+                <IntroSubText key={key}>{children}</IntroSubText>
+              ),
+            }}
+            multiline
+          />
+          <IntroTitle>{reactifyTitle(asText(slice.primary.title))}</IntroTitle>
+        </Intro>
+        <SubText>
+          <PrismicRichText field={slice.primary.subText} />
+        </SubText>
+      </StyledContainer>
+    </Content>
 
-      <Content>
-        <StyledContainer>
-          <Intro>
-            <PrismicRichText
-              field={slice.primary.intro}
-              components={{
-                paragraph: ({ children, key }) => (
-                  <IntroSubText key={key}>{children}</IntroSubText>
-                ),
-              }}
-              multiline
-            />
-            <IntroTitle>
-              {reactifyTitle(asText(slice.primary.title))}
-            </IntroTitle>
-          </Intro>
-          <SubText>
-            <PrismicRichText field={slice.primary.subText} />
-          </SubText>
-        </StyledContainer>
-      </Content>
-
-      <ContactButtonClipped />
-    </Section>
-  )
-}
+    <ContactButtonClipped />
+  </Section>
+)
 
 export default HeroSlice
