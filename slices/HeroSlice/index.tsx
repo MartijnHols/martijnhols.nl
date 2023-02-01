@@ -1,4 +1,4 @@
-import { keyframes } from '@emotion/react'
+import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { asText } from '@prismicio/helpers'
 import {
@@ -12,36 +12,42 @@ import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 import PrismicRichText from '../../components/PrismicRichText'
-import { breakpoints, colors, spacing } from '../../theme'
-import { h3, h5 } from '../../theme/headings'
 import reactStringReplace from '../../utils/reactStringReplace'
 import ReactLogo from './ReactLogo.svg'
 
-const Section = styled.header`
-  position: relative;
-  background: ${colors.yellow};
-  color: ${colors.black};
-`
-const TopBar = styled.div`
-  background: ${colors.black};
-  height: 1em;
-`
-const Content = styled.div`
-  position: relative;
-  overflow: hidden; // fixes rotation overflow increasing body width
-  background: ${colors.yellow};
-`
-const StyledContainer = styled(Container)`
-  padding-top: 100px;
-  padding-bottom: 100px;
-  // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
-  transform: rotate(-2deg);
+const Section = styled.header(
+  ({ theme }) => css`
+    position: relative;
+    background: ${theme.colors.yellow};
+    color: ${theme.colors.black};
+  `,
+)
+const TopBar = styled.div(
+  ({ theme }) => css`
+    background: ${theme.colors.black};
+    height: 1em;
+  `,
+)
+const Content = styled.div(
+  ({ theme }) => css`
+    position: relative;
+    overflow: hidden; // fixes rotation overflow increasing body width
+    background: ${theme.colors.yellow};
+  `,
+)
+const StyledContainer = styled(Container)(
+  ({ theme }) => css`
+    padding-top: 100px;
+    padding-bottom: 100px;
+    // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
+    transform: rotate(-2deg);
 
-  @media (min-width: ${breakpoints.DESKTOP}px) {
-    padding-top: 150px;
-    padding-bottom: 150px;
-  }
-`
+    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+  `,
+)
 const ReactLogoAnimation = keyframes`
   from {
     transform: rotate(0deg);
@@ -61,20 +67,24 @@ const StyledReactLogo = styled(ReactLogo)`
     animation: ${ReactLogoAnimation} infinite 20s linear;
   }
 `
-const Intro = styled.h1`
-  line-height: 1.1;
-  font-weight: 800;
-  margin-bottom: ${spacing.x2}px;
+const Intro = styled.h1(
+  ({ theme }) => css`
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: ${theme.spacing.x2}px;
 
-  @media (min-width: ${breakpoints.TABLET}px) {
-    margin-bottom: ${spacing.x4}px;
-  }
-`
-const IntroSubText = styled.span`
-  display: block;
-  ${h3}
-  margin-bottom: ${spacing.x1}px;
-`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      margin-bottom: ${theme.spacing.x4}px;
+    }
+  `,
+)
+const IntroSubText = styled.span(
+  ({ theme }) => css`
+    display: block;
+    ${theme.headings.h3}
+    margin-bottom: ${theme.spacing.x1}px;
+  `,
+)
 const IntroTitle = styled.span`
   ${StyledReactLogo} {
     // It hides the element *after* the scale transition is done, so this should
@@ -106,10 +116,12 @@ const IntroTitle = styled.span`
     }
   }
 `
-const SubText = styled.div`
-  font-weight: 500;
-  ${h5}
-`
+const SubText = styled.div(
+  ({ theme }) => css`
+    font-weight: 500;
+    ${theme.headings.h5}
+  `,
+)
 
 export type PrismicHeroSlice = SharedSlice<
   'hero_slice',

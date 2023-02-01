@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { asLink } from '@prismicio/helpers'
 import { usePrismicClient } from '@prismicio/react'
@@ -15,43 +16,48 @@ import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import PrismicTitle from '../../components/PrismicTitle'
 import ProjectBrief from '../../components/ProjectBrief'
-import { breakpoints, colors, spacing } from '../../theme'
 import convertPrismicImage from '../../utils/convertPrismicImage'
 import { toPrismicLocale } from '../../utils/locales'
 import { PrefetchContext } from '../../utils/prefetchSliceSubQueries'
 import { getProjects } from '../../utils/prismic'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
-const Section = styled.section`
-  position: relative;
-  background: ${colors.yellow};
-  color: ${colors.black};
-  padding: 150px 0;
-  overflow: hidden;
-`
-const Title = styled.h2`
-  text-transform: uppercase;
-  font-weight: 800;
-  transform: rotate(-2deg);
-  border-top: ${spacing.x2}px solid currentColor;
-  display: inline-block;
-  margin-bottom: 0;
-`
-const SubTitle = styled.h3`
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 24px;
-  transform: rotate(-2deg);
-  margin-bottom: ${spacing.x6}px;
-  letter-spacing: 3px;
-  margin-left: 5px;
+const Section = styled.section(
+  ({ theme }) => css`
+    position: relative;
+    background: ${theme.colors.yellow};
+    color: ${theme.colors.black};
+    padding: 150px 0;
+    overflow: hidden;
+  `,
+)
+const Title = styled.h2(
+  ({ theme }) => css`
+    text-transform: uppercase;
+    font-weight: 800;
+    transform: rotate(-2deg);
+    border-top: ${theme.spacing.x2}px solid currentColor;
+    display: inline-block;
+    margin-bottom: 0;
+  `,
+)
+const SubTitle = styled.h3(
+  ({ theme }) => css`
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 24px;
+    transform: rotate(-2deg);
+    margin-bottom: ${theme.spacing.x6}px;
+    letter-spacing: 3px;
+    margin-left: 5px;
 
-  @media (min-width: ${breakpoints.TABLET}px) {
-    // The translation puts it at the same position as a border-bottom should be,
-    // which should be nice for visual consistency.
-    transform: rotate(-2deg) translateY(-50%);
-  }
-`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      // The translation puts it at the same position as a border-bottom should be,
+      // which should be nice for visual consistency.
+      transform: rotate(-2deg) translateY(-50%);
+    }
+  `,
+)
 
 export type PrismicProjectsSlice = SharedSlice<
   'projects_slice',

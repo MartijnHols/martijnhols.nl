@@ -1,22 +1,23 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { breakpoints, spacing } from '../theme'
+const Container = styled.div(
+  ({ theme }) => css`
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px;
+    padding-left: ${theme.spacing.x2}px;
+    padding-right: ${theme.spacing.x2}px;
 
-const Container = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1300px;
-  padding-left: ${spacing.x2}px;
-  padding-right: ${spacing.x2}px;
-
-  @media (min-width: ${breakpoints.TABLET}px) {
-    padding-left: ${spacing.x6}px;
-    padding-right: ${spacing.x6}px;
-  }
-  @media (min-width: ${breakpoints.DESKTOP}px) {
-    padding-left: ${spacing.x10}px;
-    padding-right: ${spacing.x10}px;
-  }
-`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      padding-left: ${theme.spacing.x6}px;
+      padding-right: ${theme.spacing.x6}px;
+    }
+    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
+      padding-left: ${theme.spacing.x10}px;
+      padding-right: ${theme.spacing.x10}px;
+    }
+  `,
+)
 
 export default Container

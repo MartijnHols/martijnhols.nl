@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { asLink } from '@prismicio/helpers'
 import {
@@ -14,29 +15,34 @@ import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PrismicRichText from '../../components/PrismicRichText'
-import { colors, spacing } from '../../theme'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
-const Section = styled.footer`
-  position: relative;
-  background: ${colors.black};
-  color: ${colors.yellow};
-  padding: ${spacing.x5}px 0;
-`
-const Row = styled.div`
-  margin: ${spacing.x2}px 0;
-  display: flex;
-  gap: ${spacing.x2}px ${spacing.x4}px;
-`
+const Section = styled.footer(
+  ({ theme }) => css`
+    position: relative;
+    background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
+    padding: ${theme.spacing.x5}px 0;
+  `,
+)
+const Row = styled.div(
+  ({ theme }) => css`
+    margin: ${theme.spacing.x2}px 0;
+    display: flex;
+    gap: ${theme.spacing.x2}px ${theme.spacing.x4}px;
+  `,
+)
 const Label = styled.div`
   min-width: 100px;
   text-align: right;
 `
-const Values = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${spacing.x2}px ${spacing.x4}px;
-`
+const Values = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    flex-wrap: wrap;
+    gap: ${theme.spacing.x2}px ${theme.spacing.x4}px;
+  `,
+)
 const ContactRow = styled(Row)``
 const SocialRow = styled(Row)``
 const BusinessRow = styled(Row)``

@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
   LinkToMediaField,
@@ -6,12 +7,13 @@ import {
 } from '@prismicio/types'
 
 import Link from '../../components/Link'
-import { spacing } from '../../theme'
 
-const Container = styled.div`
-  margin: ${spacing.x10}px ${spacing.x2}px;
-  text-align: center;
-`
+const Container = styled.div(
+  ({ theme }) => css`
+    margin: ${theme.spacing.x10}px ${theme.spacing.x2}px;
+    text-align: center;
+  `,
+)
 
 export type PrismicFileDownloadSlice = SharedSlice<
   'file_download',

@@ -3,11 +3,9 @@ import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'sanitize.css/typography.css'
 
-import { colors, fontSizes, links, headings, spacing } from '.'
-
 const GlobalStyles = () => (
   <Global
-    styles={[
+    styles={(theme) => [
       css`
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -15,9 +13,9 @@ const GlobalStyles = () => (
             'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          background: ${colors.yellow};
-          color: ${colors.black};
-          font-size: ${fontSizes.mainText}px;
+          background: ${theme.colors.yellow};
+          color: ${theme.colors.black};
+          font-size: ${theme.fontSizes.mainText}px;
         }
         code {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -36,15 +34,15 @@ const GlobalStyles = () => (
         }
 
         p {
-          margin: ${spacing.x2}px 0;
+          margin: ${theme.spacing.x2}px 0;
         }
 
         * {
-          outline-color: ${colors.black};
+          outline-color: ${theme.colors.black};
         }
       `,
-      links.globalStyles,
-      headings.globalStyles,
+      theme.links.globalStyles,
+      theme.headings.globalStyles,
     ]}
   />
 )

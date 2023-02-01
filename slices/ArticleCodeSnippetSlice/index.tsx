@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { asText } from '@prismicio/helpers'
 import {
@@ -6,8 +7,6 @@ import {
   SharedSlice,
   SharedSliceVariation,
 } from '@prismicio/types'
-
-import { colors, spacing } from '../../theme'
 
 export type PrismicArticleCodeSnippetSlice = SharedSlice<
   'article_code_snippet_slice',
@@ -20,11 +19,13 @@ export type PrismicArticleCodeSnippetSlice = SharedSlice<
   >
 >
 
-const Pre = styled.pre`
-  font-size: 14px;
-  background: ${colors.black};
-  padding: ${spacing.x1}px;
-`
+const Pre = styled.pre(
+  ({ theme }) => css`
+    font-size: 14px;
+    background: ${theme.colors.black};
+    padding: ${theme.spacing.x1}px;
+  `,
+)
 
 interface Props {
   slice: PrismicArticleCodeSnippetSlice

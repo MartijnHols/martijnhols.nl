@@ -3,33 +3,32 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 
-import { breakpoints, colors, spacing } from '../theme'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
 
 const Container = styled('article', {
   shouldForwardProp: (prop) => prop !== 'highlighted',
-})<{ highlighted?: boolean }>(({ highlighted }) => [
+})<{ highlighted?: boolean }>(({ theme, highlighted }) => [
   css`
     transform: rotate(-0.85deg);
-    border: ${spacing.x2}px solid #000;
-    margin: ${spacing.x6}px -${spacing.x2}px;
-    padding: ${spacing.x3}px;
+    border: ${theme.spacing.x2}px solid #000;
+    margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
+    padding: ${theme.spacing.x3}px;
 
-    @media (min-width: ${breakpoints.TABLET}px) {
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-1deg);
     }
   `,
   highlighted &&
     css`
-      @media (min-width: ${breakpoints.TABLET}px) {
-        margin-top: ${spacing.x1 * 10}px;
-        margin-bottom: ${spacing.x1 * 10}px;
+      @media (min-width: ${theme.breakpoints.TABLET}px) {
+        margin-top: ${theme.spacing.x1 * 10}px;
+        margin-bottom: ${theme.spacing.x1 * 10}px;
         transform: rotate(-1deg) scale(1.1);
 
         & + & {
-          margin-top: ${spacing.x1 * 14}px;
+          margin-top: ${theme.spacing.x1 * 14}px;
         }
       }
     `,
@@ -40,65 +39,75 @@ const Header = styled.h3`
   line-height: 1;
   letter-spacing: -0.3px;
 `
-const Main = styled.div`
-  display: flex;
-  flex-flow: column;
-  gap: ${spacing.x2}px;
+const Main = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    flex-flow: column;
+    gap: ${theme.spacing.x2}px;
 
-  @media (min-width: ${breakpoints.TABLET}px) {
-    flex-flow: row;
-    gap: ${spacing.x6}px;
-  }
-`
-const Thumbnail = styled.div`
-  flex: 0 0 auto;
-  overflow: hidden;
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      flex-flow: row;
+      gap: ${theme.spacing.x6}px;
+    }
+  `,
+)
+const Thumbnail = styled.div(
+  ({ theme }) => css`
+    flex: 0 0 auto;
+    overflow: hidden;
 
-  @media (min-width: ${breakpoints.TABLET}px) {
-    max-width: 200px;
-  }
-`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      max-width: 200px;
+    }
+  `,
+)
 const Name = styled.span``
 const Period = styled.span``
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
-const ProjectAbout = styled.div`
-  // Cancel out paragraph margin
-  margin-top: -${spacing.x2}px;
-  margin-bottom: ${spacing.x2}px;
-  hyphens: auto;
-  text-align: justify;
-`
+const ProjectAbout = styled.div(
+  ({ theme }) => css`
+    // Cancel out paragraph margin
+    margin-top: -${theme.spacing.x2}px;
+    margin-bottom: ${theme.spacing.x2}px;
+    hyphens: auto;
+    text-align: justify;
+  `,
+)
 const Tech = styled.div`
   font-size: 16px;
 `
-const ContactLinks = styled.div`
-  margin-top: ${spacing.x2}px;
-`
-const TechItem = styled.div`
-  display: inline-block;
-  background: ${colors.black};
-  color: ${colors.yellow};
-  padding: 4px 6px;
-  border: 2px solid ${colors.yellow};
-  margin-left: -2px;
-  margin-bottom: 2px;
+const ContactLinks = styled.div(
+  ({ theme }) => css`
+    margin-top: ${theme.spacing.x2}px;
+  `,
+)
+const TechItem = styled.div(
+  ({ theme }) => css`
+    display: inline-block;
+    background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
+    padding: 4px 6px;
+    border: 2px solid ${theme.colors.yellow};
+    margin-left: -2px;
+    margin-bottom: 2px;
 
-  // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
-  &[data-value='React'],
-  &[data-value='React.js'] {
-    color: #61dafb;
-  }
-  &[data-value='Open Source'] {
-    color: #fff;
-  }
+    // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
+    &[data-value='React'],
+    &[data-value='React.js'] {
+      color: #61dafb;
+    }
+    &[data-value='Open Source'] {
+      color: #fff;
+    }
 
-  transition: transform 120ms ease-out;
-  :hover {
-    transform: scale(1.4) rotate(-1deg);
-  }
-`
+    transition: transform 120ms ease-out;
+    :hover {
+      transform: scale(1.4) rotate(-1deg);
+    }
+  `,
+)
 const InvisibleText = styled.span`
   font-size: 0;
 `

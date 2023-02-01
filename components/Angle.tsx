@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { colors } from '../theme'
 import ContactButtonGlobalHover from './ContactButtonGlobalHover'
 
 // This fixes a rendering bug in Chrome where an invisible line appears when the content is scaled
@@ -16,22 +15,22 @@ const Container = styled.div`
 const TopAngle = styled('div', {
   shouldForwardProp: (prop) => prop !== 'inverted',
 })<{ inverted?: boolean }>(
-  ({ inverted }) => css`
+  ({ theme, inverted }) => css`
     position: absolute;
     width: 100%;
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(0 0, 100% 0, 0 100%);
-    background: ${inverted ? colors.yellow : colors.black};
+    background: ${inverted ? theme.colors.yellow : theme.colors.black};
     ${clipPathBorderFix}
   `,
 )
 const BottomAngle = styled('div', {
   shouldForwardProp: (prop) => prop !== 'inverted',
 })<{ inverted?: boolean }>(
-  ({ inverted }) => css`
+  ({ theme, inverted }) => css`
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    background: ${inverted ? colors.black : colors.yellow};
+    background: ${inverted ? theme.colors.black : theme.colors.yellow};
     ${clipPathBorderFix}
   `,
 )

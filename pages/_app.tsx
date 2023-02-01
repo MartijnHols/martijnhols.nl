@@ -1,7 +1,9 @@
+import { ThemeProvider } from '@emotion/react'
 import { AppProps } from 'next/app'
 import { DehydratedState } from 'react-query'
 
 import ReactQueryProvider from '../components/ReactQueryProvider'
+import * as theme from '../theme'
 import GlobalStyles from '../theme/GlobalStyles'
 
 type MyAppProps = AppProps<{
@@ -10,8 +12,10 @@ type MyAppProps = AppProps<{
 
 const App = ({ Component, pageProps }: MyAppProps) => (
   <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
-    <GlobalStyles />
-    <Component {...pageProps} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </ThemeProvider>
   </ReactQueryProvider>
 )
 
