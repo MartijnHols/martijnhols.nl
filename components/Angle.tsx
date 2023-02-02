@@ -20,7 +20,7 @@ const TopAngle = styled('div', {
     width: 100%;
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(0 0, 100% 0, 0 100%);
-    background: ${inverted ? theme.colors.yellow : theme.colors.black};
+    background: ${inverted ? 'transparent' : theme.colors.black};
     ${clipPathBorderFix}
   `,
 )
@@ -30,7 +30,7 @@ const BottomAngle = styled('div', {
   ({ theme, inverted }) => css`
     height: calc(10px + 100vw / 2000 * 30);
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    background: ${inverted ? theme.colors.black : theme.colors.yellow};
+    background: ${inverted ? theme.colors.black : 'transparent'};
     ${clipPathBorderFix}
   `,
 )
