@@ -26,6 +26,7 @@ const Section = styled.header(
 const TopBar = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
     height: 1em;
   `,
 )
@@ -146,17 +147,44 @@ const reactifyTitle = (title: string) =>
     </React>,
   )
 
+const Sticky = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+`
+const TopBarContent = styled.div(
+  ({ theme }) => css`
+    position: relative;
+    z-index: 1;
+    color: ${theme.colors.yellow};
+    // Fallbacks
+    padding: 6px 7px 0 8px;
+    font-size: 14px;
+    // Resize at the same rate as Angle so it fits perfectly
+    padding: calc(5px + 100vw / 2000 * 6) 7px 0 calc(7px + 100vw / 2000 * 7);
+    font-size: calc(10px + 100vw / 2000 * 12);
+    font-weight: 500;
+    transform: rotate(-1.15deg);
+    transform-origin: left;
+  `,
+)
+
 interface Props {
   slice: PrismicHeroSlice
 }
 
 const HeroSlice = ({ slice }: Props) => (
   <Section>
-    <TopBar className="inverted">
-      <LanguageSwitcher />
-    </TopBar>
+    <Sticky>
+      <TopBar className="inverted">
+        <TopBarContent>
+          <LanguageSwitcher />
+        </TopBarContent>
+      </TopBar>
 
-    <Angle />
+      <Angle />
+    </Sticky>
 
     <Content>
       <StyledContainer>
