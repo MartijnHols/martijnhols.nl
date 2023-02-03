@@ -12,6 +12,14 @@
           "placeholder": ""
         }
       },
+      "layout": {
+        "type": "Link",
+        "config": {
+          "label": "Layout",
+          "select": "document",
+          "customtypes": ["layout"]
+        }
+      },
       "headTitle": {
         "type": "Text",
         "config": {

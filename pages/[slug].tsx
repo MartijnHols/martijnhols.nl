@@ -2,6 +2,7 @@ import { Client as PrismicClient } from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
 import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
+import { useMemo } from 'react'
 import { dehydrate, QueryClient, DehydratedState } from 'react-query'
 
 import BaseHead from '../components/BaseHead'
@@ -54,7 +55,15 @@ const getCmsPage = async (
   locale: string,
   queryClient: QueryClient,
 ) => {
-  const page = await getByUid<PrismicPage>(prismicClient, 'page', slug, locale)
+  const page = await getByUid<PrismicPage<true>>(
+    prismicClient,
+    'page',
+    slug,
+    locale,
+    {
+      fetchLinks: 'layout.slices',
+    },
+  )
   if (!page) {
     return
   }
@@ -74,7 +83,7 @@ const { serverRuntimeConfig } = getConfig()
 
 interface StaticProps {
   config: PrismicConfig['data']
-  page: PrismicPage
+  page: PrismicPage<true>
   previewData?: PreviewData
   dehydratedState: DehydratedState
 }
@@ -133,24 +142,45 @@ export const getStaticProps: GetStaticProps<
   }
 }
 
-const Page = ({ config, page, previewData }: StaticProps) => (
-  <PageWrapper>
-    <BaseHead
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      title={page.data.headTitle || process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK!}
-      description={page.data.description || undefined}
-      absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
-      image={convertPrismicImage(page.data.ogImage)}
-    />
-    {/** TODO: Move to sitemap */}
-    <HrefLangHead page={page} />
+const Page = ({ config, page, previewData }: StaticProps) => {
+  const PageContentSlice = useMemo(
+    () =>
+      function PageContentDynamicComponent() {
+        return <SliceZone slices={page.data.slices} components={components} />
+      },
+    [page.data.slices],
+  )
 
-    <PrismicProvider previewData={previewData}>
-      <PrismicConfigProvider value={config}>
-        <SliceZone slices={page.data.slices} components={components} />
-      </PrismicConfigProvider>
-    </PrismicProvider>
-  </PageWrapper>
-)
+  return (
+    <PageWrapper>
+      <BaseHead
+        title={
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          page.data.headTitle || process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK!
+        }
+        description={page.data.description || undefined}
+        absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
+        image={convertPrismicImage(page.data.ogImage)}
+      />
+      <HrefLangHead page={page} />
+
+      <PrismicProvider previewData={previewData}>
+        <PrismicConfigProvider value={config}>
+          {page.data.layout.data?.slices ? (
+            <SliceZone
+              slices={page.data.layout.data.slices}
+              components={{
+                ...components,
+                page_content: PageContentSlice,
+              }}
+            />
+          ) : (
+            <PageContentSlice />
+          )}
+        </PrismicConfigProvider>
+      </PrismicProvider>
+    </PageWrapper>
+  )
+}
 
 export default Page

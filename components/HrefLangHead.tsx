@@ -14,7 +14,13 @@ const prismicLocaleToHrefLang = (prismicLocale: string) => {
   }
 }
 
-const HrefLangHead = ({ page }: { page: PrismicPage }) => (
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  page: PrismicPage<any>
+}
+
+// TODO: Move to sitemap
+const HrefLangHead = ({ page }: Props) => (
   <Head>
     {[page, ...page.alternate_languages].map((alternate) => {
       let hrefLang = prismicLocaleToHrefLang(alternate.lang)

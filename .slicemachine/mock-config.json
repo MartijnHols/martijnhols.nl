@@ -10,7 +10,8 @@
       }
     },
     "config": {},
-    "article": {}
+    "article": {},
+    "layout": {}
   },
   "slices": {
     "Hero": {
@@ -174,6 +175,16 @@
       }
     },
     "FileDownload": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "PageContent": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "PageContentSlice": {
       "default": {
         "primary": {}
       }

@@ -1,0 +1,24 @@
+{
+  "id": "layout",
+  "label": "Layout",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "page_content": {
+              "type": "SharedSlice"
+            },
+            "footer_slice": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

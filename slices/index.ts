@@ -8,6 +8,7 @@ import ContentSlice from './ContentSlice'
 import FileDownload from './FileDownload'
 import FooterSlice from './FooterSlice'
 import HeroSlice from './HeroSlice'
+import PageContentSlice from './PageContentSlice'
 import ProjectsSlice from './ProjectsSlice'
 
 export {
@@ -19,6 +20,7 @@ export {
   FileDownload,
   FooterSlice,
   HeroSlice,
+  PageContentSlice,
   ProjectsSlice,
 }
 
@@ -31,5 +33,6 @@ export const components = {
   file_download: FileDownload,
   footer_slice: FooterSlice,
   hero_slice: HeroSlice,
+  page_content: PageContentSlice,
   projects_slice: ProjectsSlice,
 }

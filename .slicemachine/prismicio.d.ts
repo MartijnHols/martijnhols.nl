@@ -103,8 +103,48 @@ interface ConfigDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ConfigDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ConfigDocumentData>, "config", Lang>;
+/** Content for Layout documents */
+interface LayoutDocumentData {
+    /**
+     * Slice Zone field in *Layout*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: layout.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<LayoutDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Layout → Slice Zone*
+ *
+ */
+type LayoutDocumentDataSlicesSlice = PageContentSlice | FooterSliceSlice;
+/**
+ * Layout document from Prismic
+ *
+ * - **API ID**: `layout`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LayoutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<LayoutDocumentData>, "layout", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
+    /**
+     * Layout field in *Page*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.layout
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    layout: prismicT.RelationField<"layout">;
     /**
      * Head Title field in *Page*
      *
@@ -278,7 +318,7 @@ interface ProjectDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = ArticleDocument | ConfigDocument | PageDocument | ProjectDocument;
+export type AllDocumentTypes = ArticleDocument | ConfigDocument | LayoutDocument | PageDocument | ProjectDocument;
 /**
  * Default variation for AngleSlice Slice
  *
@@ -821,6 +861,29 @@ type HeroSliceSliceVariation = HeroSliceSliceDefault;
  */
 export type HeroSliceSlice = prismicT.SharedSlice<"hero_slice", HeroSliceSliceVariation>;
 /**
+ * Default variation for PageContentSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `PageContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PageContentSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, never>;
+/**
+ * Slice variation for *PageContentSlice*
+ *
+ */
+type PageContentSliceVariation = PageContentSliceDefault;
+/**
+ * PageContentSlice Shared Slice
+ *
+ * - **API ID**: `page_content`
+ * - **Description**: `PageContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PageContentSlice = prismicT.SharedSlice<"page_content", PageContentSliceVariation>;
+/**
  * Primary content in ProjectsSlice → Primary
  *
  */
@@ -874,6 +937,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ArticleCodeSnippetSliceSliceDefaultPrimary, ArticleCodeSnippetSliceSliceDefault, ArticleCodeSnippetSliceSliceVariation, ArticleCodeSnippetSliceSlice, ArticleContentSliceSliceDefaultPrimary, ArticleContentSliceSliceDefault, ArticleContentSliceSliceVariation, ArticleContentSliceSlice, ArticleSliceSliceDefaultPrimary, ArticleSliceSliceDefault, ArticleSliceSliceVariation, ArticleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, LayoutDocumentData, LayoutDocumentDataSlicesSlice, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ArticleCodeSnippetSliceSliceDefaultPrimary, ArticleCodeSnippetSliceSliceDefault, ArticleCodeSnippetSliceSliceVariation, ArticleCodeSnippetSliceSlice, ArticleContentSliceSliceDefaultPrimary, ArticleContentSliceSliceDefault, ArticleContentSliceSliceVariation, ArticleContentSliceSlice, ArticleSliceSliceDefaultPrimary, ArticleSliceSliceDefault, ArticleSliceSliceVariation, ArticleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, PageContentSliceDefault, PageContentSliceVariation, PageContentSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
     }
 }

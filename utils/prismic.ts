@@ -1,7 +1,12 @@
-import { Client, createClient as createPrismicClient } from '@prismicio/client'
+import {
+  BuildQueryURLArgs,
+  Client,
+  createClient as createPrismicClient,
+} from '@prismicio/client'
 import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
 import {
   BooleanField,
+  FilledContentRelationshipField,
   ImageField,
   KeyTextField,
   LinkField,
@@ -17,6 +22,7 @@ import { PrismicContentSlice } from '../slices/ContentSlice'
 import { PrismicFileDownloadSlice } from '../slices/FileDownload'
 import { PrismicFooterSlice } from '../slices/FooterSlice'
 import { PrismicHeroSlice } from '../slices/HeroSlice'
+import { PrismicPageContentSlice } from '../slices/PageContentSlice'
 import { PrismicProjectsSlice } from '../slices/ProjectsSlice'
 import sm from '../sm.json'
 
@@ -48,10 +54,12 @@ export const getByUid = async <T extends PrismicDocument>(
   documentType: string,
   uid: string,
   locale: string,
+  params?: Partial<BuildQueryURLArgs>,
 ) => {
   try {
     return await client.getByUID<T>(documentType, uid, {
       lang: locale,
+      ...params,
     })
   } catch (err) {
     if ((err as Error).message === 'No documents were returned') {
@@ -61,6 +69,7 @@ export const getByUid = async <T extends PrismicDocument>(
   }
 }
 
+export type PrismicLayoutSlice = PrismicPageContentSlice | PrismicFooterSlice
 export type PrismicPageSlice =
   | PrismicHeroSlice
   | PrismicContentSlice
@@ -68,8 +77,17 @@ export type PrismicPageSlice =
   | PrismicFooterSlice
   | PrismicArticleSlice
   | PrismicFileDownloadSlice
-export type PrismicPage = PrismicDocument<
+export type PrismicPage<WithLayout extends boolean = false> = PrismicDocument<
   {
+    layout: FilledContentRelationshipField<
+      'layout',
+      string,
+      WithLayout extends true
+        ? {
+            slices: SliceZoneType<PrismicLayoutSlice, 'filled'>
+          }
+        : never
+    >
     headTitle: KeyTextField
     description: KeyTextField
     ogImage: ImageField

@@ -1,0 +1,132 @@
+{
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "page_content$a592d7d2-e5e2-4121-bfff-ad85cb984645",
+        "name": "page_content",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "footer_slice$b01e830f-de28-4dcf-b327-37456219eb11",
+        "name": "footer_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "contactLabel": {
+              "__TYPE__": "FieldContent",
+              "value": "check",
+              "type": "Text"
+            },
+            "contactAnnotation": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Consequat esse aute pariatur commodo ad sint commodo qui adipisicing elit eiusmod nostrud sit ex culpa."
+                  }
+                }
+              ]
+            },
+            "email": {
+              "__TYPE__": "FieldContent",
+              "value": "taught",
+              "type": "Text"
+            },
+            "phone": {
+              "__TYPE__": "FieldContent",
+              "value": "cover",
+              "type": "Text"
+            },
+            "whatsApp": {
+              "__TYPE__": "FieldContent",
+              "value": "9",
+              "type": "Number"
+            },
+            "socialLabel": {
+              "__TYPE__": "FieldContent",
+              "value": "this",
+              "type": "Text"
+            },
+            "linkedIn": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            },
+            "gitHub": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            },
+            "twitter": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            },
+            "companyLabel": {
+              "__TYPE__": "FieldContent",
+              "value": "aware",
+              "type": "Text"
+            },
+            "kvk": {
+              "__TYPE__": "FieldContent",
+              "value": "rise",
+              "type": "Text"
+            },
+            "btw": {
+              "__TYPE__": "FieldContent",
+              "value": "round",
+              "type": "Text"
+            },
+            "iban": {
+              "__TYPE__": "FieldContent",
+              "value": "development",
+              "type": "Text"
+            },
+            "locationLabel": {
+              "__TYPE__": "FieldContent",
+              "value": "magic",
+              "type": "Text"
+            },
+            "city": {
+              "__TYPE__": "FieldContent",
+              "value": "desert",
+              "type": "Text"
+            },
+            "location": {
+              "__TYPE__": "GeoPointContent",
+              "position": {
+                "lat": 48.8606111,
+                "lng": 2.337644
+              }
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
