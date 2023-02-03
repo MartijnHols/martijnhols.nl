@@ -1,12 +1,7 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Content } from '@prismicio/client'
 import { asText } from '@prismicio/helpers'
-import {
-  BooleanField,
-  RichTextField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
 
 import Angle from '../../components/Angle'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
@@ -30,7 +25,7 @@ const TopBar = styled.div(
     height: 1em;
   `,
 )
-const Content = styled.div(
+const Hero = styled.div(
   ({ theme }) => css`
     position: relative;
     overflow: hidden; // fixes rotation overflow increasing body width
@@ -124,29 +119,6 @@ const SubText = styled.div(
     ${theme.headings.h5}
   `,
 )
-
-export type PrismicHeroSlice = SharedSlice<
-  'hero_slice',
-  SharedSliceVariation<
-    'default',
-    {
-      intro: RichTextField
-      title: RichTextField
-      subText: RichTextField
-      reactifyTitle: BooleanField
-    }
-  >
->
-
-const reactifyTitle = (title: string) =>
-  reactStringReplace(
-    title,
-    'React',
-    <React>
-      React <StyledReactLogo aria-label="" />
-    </React>,
-  )
-
 const Sticky = styled.div`
   position: fixed;
   top: 0;
@@ -170,12 +142,22 @@ const TopBarContent = styled.div(
   `,
 )
 
+const reactifyTitle = (title: string) =>
+  reactStringReplace(
+    title,
+    'React',
+    <React>
+      React <StyledReactLogo aria-label="" />
+    </React>,
+  )
+
 interface Props {
-  slice: PrismicHeroSlice
+  slice: Content.HeroSliceSlice
 }
 
 const HeroSlice = ({ slice }: Props) => (
   <Section>
+    {/** TODO: Move to its own slice */}
     <Sticky>
       <TopBar className="inverted">
         <TopBarContent>
@@ -186,7 +168,7 @@ const HeroSlice = ({ slice }: Props) => (
       <Angle />
     </Sticky>
 
-    <Content>
+    <Hero>
       <StyledContainer>
         <Intro>
           <PrismicRichText
@@ -208,7 +190,7 @@ const HeroSlice = ({ slice }: Props) => (
           <PrismicRichText field={slice.primary.subText} />
         </SubText>
       </StyledContainer>
-    </Content>
+    </Hero>
 
     <ContactButtonClipped />
   </Section>

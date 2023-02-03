@@ -1,4 +1,4 @@
-import { Client as PrismicClient } from '@prismicio/client'
+import { Client as PrismicClient, Content } from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
 import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
@@ -10,7 +10,6 @@ import HrefLangHead from '../components/HrefLangHead'
 import PageWrapper from '../components/PageWrapper'
 import PrismicProvider from '../components/PrismicProvider'
 import { components } from '../slices'
-import { PrismicFileDownloadSlice } from '../slices/FileDownload'
 import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
 import { toPrismicLocale, toUserLocale } from '../utils/locales'
@@ -32,7 +31,7 @@ export const getStaticPaths = async () => {
     paths: pages
       .filter((page) => {
         const fileDownloadSlice = page.data.slices.find(
-          (slice): slice is PrismicFileDownloadSlice =>
+          (slice): slice is Content.FileDownloadSlice =>
             slice.slice_type === 'file_download',
         )
         const isFileDownload =
@@ -82,7 +81,7 @@ const getCmsPage = async (
 const { serverRuntimeConfig } = getConfig()
 
 interface StaticProps {
-  config: PrismicConfig['data']
+  config: PrismicConfig
   page: PrismicPage<true>
   previewData?: PreviewData
   dehydratedState: DehydratedState
@@ -118,7 +117,7 @@ export const getStaticProps: GetStaticProps<
   }
 
   const fileDownloadSlice = page.data.slices.find(
-    (slice): slice is PrismicFileDownloadSlice =>
+    (slice): slice is Content.FileDownloadSlice =>
       slice.slice_type === 'file_download',
   )
   if (fileDownloadSlice && 'url' in fileDownloadSlice.primary.file) {

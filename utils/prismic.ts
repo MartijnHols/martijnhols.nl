@@ -2,28 +2,16 @@ import {
   BuildQueryURLArgs,
   Client,
   createClient as createPrismicClient,
+  Content,
 } from '@prismicio/client'
 import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
 import {
-  BooleanField,
   FilledContentRelationshipField,
-  ImageField,
-  KeyTextField,
-  LinkField,
   PrismicDocument,
-  RichTextField,
   SliceZone as SliceZoneType,
 } from '@prismicio/types'
 import getConfig from 'next/config'
 
-import { PrismicArticleCodeSnippetSlice } from '../slices/ArticleCodeSnippetSlice'
-import { PrismicArticleContentSlice } from '../slices/ArticleContentSlice'
-import { PrismicContentSlice } from '../slices/ContentSlice'
-import { PrismicFileDownloadSlice } from '../slices/FileDownload'
-import { PrismicFooterSlice } from '../slices/FooterSlice'
-import { PrismicHeroSlice } from '../slices/HeroSlice'
-import { PrismicPageContentSlice } from '../slices/PageContentSlice'
-import { PrismicProjectsSlice } from '../slices/ProjectsSlice'
 import sm from '../sm.json'
 
 const { publicRuntimeConfig } = getConfig()
@@ -69,29 +57,22 @@ export const getByUid = async <T extends PrismicDocument>(
   }
 }
 
-export type PrismicLayoutSlice = PrismicPageContentSlice | PrismicFooterSlice
-export type PrismicPageSlice =
-  | PrismicHeroSlice
-  | PrismicContentSlice
-  | PrismicProjectsSlice
-  | PrismicFooterSlice
-  | PrismicArticleSlice
-  | PrismicFileDownloadSlice
 export type PrismicPage<WithLayout extends boolean = false> = PrismicDocument<
-  {
+  Content.PageDocument['data'] & {
     layout: FilledContentRelationshipField<
       'layout',
       string,
       WithLayout extends true
         ? {
-            slices: SliceZoneType<PrismicLayoutSlice, 'filled'>
+            slices: SliceZoneType<
+              Content.LayoutDocumentDataSlicesSlice,
+              'filled'
+            >
           }
         : never
     >
-    headTitle: KeyTextField
-    description: KeyTextField
-    ogImage: ImageField
-    slices: SliceZoneType<PrismicPageSlice, 'filled'>
+    // This is necessary because the generated types do not include "filled" which is very troublesome to work around
+    slices: SliceZoneType<Content.PageDocumentDataSlicesSlice, 'filled'>
   },
   'page'
 >
@@ -117,33 +98,17 @@ export const getArticles = async (
     lang: locale,
   })
 
-export type PrismicProject = PrismicDocument<
-  {
-    thumbnail: ImageField
-    name: KeyTextField
-    brief: RichTextField
-    startedYear: KeyTextField
-    endedYear: KeyTextField
-    url: LinkField
-    sourceCode: LinkField
-    tech: KeyTextField
-    highlighted: BooleanField
-  },
-  'project'
->
+export type PrismicProject = Content.ProjectDocument
 
 export const getProjects = (client: Client, locale: string) =>
   client.getAllByType<PrismicProject>('project', {
     lang: locale,
   })
 
-export type PrismicArticleSlice =
-  | PrismicArticleContentSlice
-  | PrismicArticleCodeSnippetSlice
 export type PrismicArticle = PrismicDocument<
-  {
-    name: KeyTextField
-    slices: SliceZoneType<PrismicArticleSlice, 'filled'>
+  Content.ArticleDocument['data'] & {
+    // This is necessary because the generated types do not include "filled" which is very troublesome to work around
+    slices: SliceZoneType<Content.ArticleDocumentDataSlicesSlice, 'filled'>
   },
   'article'
 >

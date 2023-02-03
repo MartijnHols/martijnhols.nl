@@ -70,7 +70,8 @@ const Link = ({
       href = '/'
     }
   }
-  // Older Prismic versions did not allow for hash links and would require prefixing with https://
+
+  // Prismic does not allow for real hash links and prefixes them with https://
   const hashLink = 'https://#'
   if (href.startsWith(hashLink)) {
     href = href.substring(hashLink.length - 1)

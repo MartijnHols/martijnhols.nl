@@ -1,11 +1,7 @@
 import styled from '@emotion/styled'
+import { Content } from '@prismicio/client'
 import { SliceZone, usePrismicClient } from '@prismicio/react'
-import {
-  FilledLinkToDocumentField,
-  RelationField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
+import { FilledLinkToDocumentField } from '@prismicio/types'
 import { useQuery } from 'react-query'
 
 import { components } from '..'
@@ -25,16 +21,6 @@ const Title = styled.h1`
   font-size: 110px;
 `
 
-export type PrismicArticleSlice = SharedSlice<
-  'article_slice',
-  SharedSliceVariation<
-    'default',
-    {
-      article: RelationField<'article'>
-    }
-  >
->
-
 const useArticle = (articleId: string) => {
   const prismicClient = usePrismicClient()
   const { data } = useQuery<PrismicArticle>(['article', articleId], () =>
@@ -44,9 +30,10 @@ const useArticle = (articleId: string) => {
 }
 
 interface Props {
-  slice: PrismicArticleSlice
+  slice: Content.ArticleSliceSlice
 }
 
+// TODO: Remove in favor of simply using pages
 const ArticleSlice = ({ slice }: Props) => {
   const articleId = (slice.primary.article as FilledLinkToDocumentField).id
   const article = useArticle(articleId)
@@ -71,7 +58,7 @@ ArticleSlice.prefetch = async ({
   prismicClient,
   queryClient,
   slice,
-}: PrefetchContext<PrismicArticleSlice>) => {
+}: PrefetchContext<Content.ArticleSliceSlice>) => {
   if (slice.primary.article.link_type !== 'Document') {
     return
   }

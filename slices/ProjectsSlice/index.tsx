@@ -1,13 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Content } from '@prismicio/client'
 import { asLink } from '@prismicio/helpers'
 import { usePrismicClient } from '@prismicio/react'
-import {
-  RichTextField,
-  SharedSlice,
-  SharedSliceVariation,
-  TitleField,
-} from '@prismicio/types'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
@@ -59,17 +54,6 @@ const SubTitle = styled.h3(
   `,
 )
 
-export type PrismicProjectsSlice = SharedSlice<
-  'projects_slice',
-  SharedSliceVariation<
-    'default',
-    {
-      title: TitleField
-      explanation: RichTextField
-    }
-  >
->
-
 const useProjects = () => {
   const { locale } = useRouter()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -82,7 +66,7 @@ const useProjects = () => {
 }
 
 interface Props {
-  slice: PrismicProjectsSlice
+  slice: Content.ProjectsSliceSlice
 }
 
 const ProjectsSlice = ({ slice }: Props) => {

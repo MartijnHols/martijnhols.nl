@@ -1,3 +1,4 @@
+import { Content } from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
 import { SliceSimulator } from '@prismicio/slice-simulator-react'
 import getConfig from 'next/config'
@@ -7,18 +8,14 @@ import state from '../.slicemachine/libraries-state.json'
 import { components } from '../slices'
 import { toPrismicLocale } from '../utils/locales'
 import { createClient } from '../utils/prismic'
-import {
-  getPrismicConfig,
-  PrismicConfig,
-  PrismicConfigProvider,
-} from '../utils/prismicConfig'
+import { getPrismicConfig, PrismicConfigProvider } from '../utils/prismicConfig'
 
 const { publicRuntimeConfig } = getConfig()
 
 const SliceSimulatorPage = () => {
-  const [config, setConfig] = useState<PrismicConfig['data'] | undefined>(
-    undefined,
-  )
+  const [config, setConfig] = useState<
+    Content.ConfigDocument['data'] | undefined
+  >(undefined)
   useEffect(() => {
     ;(async () => {
       const prismicClient = createClient()

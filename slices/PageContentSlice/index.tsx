@@ -1,14 +1,4 @@
-import { SharedSlice, SharedSliceVariation } from '@prismicio/types'
-
-export type PrismicPageContentSlice = SharedSlice<
-  'page_content',
-  SharedSliceVariation<'default', Record<string, never>>
->
-
-interface Props {
-  slice: PrismicPageContentSlice
-}
-
-const PageContentSlice = ({ slice }: Props) => null
+// Placeholder slice, [slug] customizes this
+const PageContentSlice = () => null
 
 export default PageContentSlice

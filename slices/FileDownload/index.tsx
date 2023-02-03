@@ -1,10 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import {
-  LinkToMediaField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
+import { Content } from '@prismicio/client'
 
 import Link from '../../components/Link'
 
@@ -15,18 +11,8 @@ const Container = styled.div(
   `,
 )
 
-export type PrismicFileDownloadSlice = SharedSlice<
-  'file_download',
-  SharedSliceVariation<
-    'default',
-    {
-      file: LinkToMediaField
-    }
-  >
->
-
 interface Props {
-  slice: PrismicFileDownloadSlice
+  slice: Content.FileDownloadSlice
 }
 
 const FileDownloadSlice = ({ slice }: Props) => {

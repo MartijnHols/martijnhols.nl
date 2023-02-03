@@ -16,6 +16,12 @@
     "jsxImportSource": "@emotion/react",
     "incremental": true
   },
-  "include": ["./types", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "./types",
+    ".slicemachine/prismicio.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

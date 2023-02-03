@@ -1,15 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Content } from '@prismicio/client'
 import { asLink } from '@prismicio/helpers'
-import {
-  GeoPointField,
-  KeyTextField,
-  LinkField,
-  NumberField,
-  RichTextField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
 
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
@@ -48,33 +40,8 @@ const SocialRow = styled(Row)``
 const BusinessRow = styled(Row)``
 const Item = styled.div``
 
-export type PrismicFooterSlice = SharedSlice<
-  'footer_slice',
-  SharedSliceVariation<
-    'default',
-    {
-      contactLabel: KeyTextField
-      contactAnnotation: RichTextField
-      email: KeyTextField
-      phone: KeyTextField
-      whatsApp: NumberField
-      socialLabel: KeyTextField
-      linkedIn: LinkField
-      gitHub: LinkField
-      twitter: LinkField
-      companyLabel: KeyTextField
-      kvk: KeyTextField
-      btw: KeyTextField
-      iban: KeyTextField
-      locationLabel: KeyTextField
-      city: KeyTextField
-      location: GeoPointField
-    }
-  >
->
-
 interface Props {
-  slice: PrismicFooterSlice
+  slice: Content.FooterSliceSlice
 }
 
 const FooterSlice = ({ slice }: Props) => {

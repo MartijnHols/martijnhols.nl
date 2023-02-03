@@ -1,11 +1,6 @@
 import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
-import {
-  ImageField,
-  RichTextField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
+import { Content } from '@prismicio/client'
 import Image from 'next/image'
 
 import ContactButtonClipped from '../../components/ContactButtonClipped'
@@ -49,7 +44,7 @@ const ImageContainer = styled.div(
 const SideImage = styled(Image)`
   clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
 `
-const Content = styled.div(
+const ContentContainer = styled.div(
   ({ theme }) => css`
     flex: 1 1 0;
     // Cancels out p-margins
@@ -69,26 +64,8 @@ const Title = styled.h2(
   `,
 )
 
-export type PrismicContentSlice = SharedSlice<
-  'content_slice',
-  | SharedSliceVariation<
-      'default',
-      {
-        image: ImageField
-        content: RichTextField
-      }
-    >
-  | SharedSliceVariation<
-      'inverted',
-      {
-        image: ImageField
-        content: RichTextField
-      }
-    >
->
-
 interface Props {
-  slice: PrismicContentSlice
+  slice: Content.ContentSliceSlice
 }
 
 const ContentSlice = ({ slice }: Props) => {
@@ -118,7 +95,7 @@ const ContentSlice = ({ slice }: Props) => {
           </ImageContainer>
         )}
 
-        <Content className={inverted ? 'inverted' : undefined}>
+        <ContentContainer className={inverted ? 'inverted' : undefined}>
           <PrismicRichText
             field={slice.primary.content}
             multiline
@@ -128,7 +105,7 @@ const ContentSlice = ({ slice }: Props) => {
               ),
             }}
           />
-        </Content>
+        </ContentContainer>
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />

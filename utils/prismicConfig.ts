@@ -1,5 +1,4 @@
-import { Client } from '@prismicio/client'
-import { KeyTextField, PrismicDocument } from '@prismicio/types'
+import { Client, Content } from '@prismicio/client'
 import { createContext, useContext } from 'react'
 
 /**
@@ -7,25 +6,16 @@ import { createContext, useContext } from 'react'
  * for translation. This keeps all l10n in a single system (Prismic).
  */
 
-export type PrismicConfig = PrismicDocument<
-  {
-    visit: KeyTextField
-    sourceCode: KeyTextField
-    languageToggle: KeyTextField
-    contact: KeyTextField
-  },
-  'config'
->
+export type PrismicConfig = Content.ConfigDocument['data']
+
 export const getPrismicConfig = async (client: Client, locale: string) =>
   (
-    await client.getByType<PrismicConfig>('config', {
+    await client.getByType<Content.ConfigDocument>('config', {
       lang: locale,
     })
   ).results[0]
 
-const PrismicConfigContext = createContext<PrismicConfig['data'] | undefined>(
-  undefined,
-)
+const PrismicConfigContext = createContext<PrismicConfig | undefined>(undefined)
 export const PrismicConfigProvider = PrismicConfigContext.Provider
 export const usePrismicConfig = () => {
   const config = useContext(PrismicConfigContext)

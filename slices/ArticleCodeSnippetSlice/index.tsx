@@ -1,23 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Content } from '@prismicio/client'
 import { asText } from '@prismicio/helpers'
-import {
-  KeyTextField,
-  RichTextField,
-  SharedSlice,
-  SharedSliceVariation,
-} from '@prismicio/types'
-
-export type PrismicArticleCodeSnippetSlice = SharedSlice<
-  'article_code_snippet_slice',
-  SharedSliceVariation<
-    'default',
-    {
-      language: KeyTextField
-      content: RichTextField
-    }
-  >
->
 
 const Pre = styled.pre(
   ({ theme }) => css`
@@ -28,7 +12,7 @@ const Pre = styled.pre(
 )
 
 interface Props {
-  slice: PrismicArticleCodeSnippetSlice
+  slice: Content.ArticleCodeSnippetSliceSlice
 }
 
 const ArticleCodeSnippetSlice = ({ slice }: Props) => (

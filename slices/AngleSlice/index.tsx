@@ -1,14 +1,9 @@
-import { SharedSlice, SharedSliceVariation } from '@prismicio/types'
+import { Content } from '@prismicio/client'
 
 import Angle from '../../components/Angle'
 
-export type PrismicAngleSlice = SharedSlice<
-  'angle_slice',
-  SharedSliceVariation<'default'> | SharedSliceVariation<'inverted'>
->
-
 interface Props {
-  slice: PrismicAngleSlice
+  slice: Content.AngleSliceSlice
 }
 
 const AngleSlice = ({ slice }: Props) => (
