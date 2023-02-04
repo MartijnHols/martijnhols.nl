@@ -119,11 +119,16 @@ const SubText = styled.div(
     ${theme.headings.h5}
   `,
 )
+const StyledAngle = styled(Angle)``
 const Sticky = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
+
+  ${StyledAngle} {
+    pointer-events: none;
+  }
 `
 const TopBarContent = styled.div(
   ({ theme }) => css`
@@ -165,7 +170,7 @@ const HeroSlice = ({ slice }: Props) => (
         </TopBarContent>
       </TopBar>
 
-      <Angle />
+      <StyledAngle />
     </Sticky>
 
     <Hero>
