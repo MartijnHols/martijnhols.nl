@@ -3,18 +3,18 @@
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-      "width": 3560,
-      "height": 5340
+      "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+      "width": 2747,
+      "height": 4120
     },
-    "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?rect=0%2C890%2C3560%2C3560&w=200&h=200",
+    "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?rect=0%2C687%2C2747%2C2747&w=200&h=200",
     "width": 200,
     "height": 200,
     "edit": {
       "zoom": 1,
       "crop": {
         "x": 0,
-        "y": 890
+        "y": 687
       },
       "background": "transparent"
     },
@@ -22,7 +22,7 @@
   },
   "name": {
     "__TYPE__": "FieldContent",
-    "value": "newspaper",
+    "value": "subject",
     "type": "Text"
   },
   "brief": {
@@ -31,42 +31,46 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Occaecat non Lorem mollit enim aliquip. Ut aliquip excepteur dolore."
+          "text": "Officia laborum minim reprehenderit minim laborum est nisi et laboris laborum elit dolor elit. Id sit consectetur in consectetur irure sit laboris sit ut officia pariatur nulla aute in qui."
         }
       }
     ]
   },
   "startedYear": {
     "__TYPE__": "FieldContent",
-    "value": "movie",
+    "value": "race",
     "type": "Text"
   },
   "endedYear": {
     "__TYPE__": "FieldContent",
-    "value": "sudden",
+    "value": "someone",
     "type": "Text"
   },
   "url": {
     "__TYPE__": "LinkContent",
     "value": {
       "__TYPE__": "ExternalLink",
-      "url": "http://google.com"
+      "url": "https://slicemachine.dev"
     }
   },
   "sourceCode": {
     "__TYPE__": "LinkContent",
     "value": {
       "__TYPE__": "ExternalLink",
-      "url": "https://slicemachine.dev"
+      "url": "http://google.com"
     }
   },
   "tech": {
     "__TYPE__": "FieldContent",
-    "value": "change",
+    "value": "basket",
     "type": "Text"
   },
   "highlighted": {
     "__TYPE__": "BooleanContent",
-    "value": false
+    "value": true
+  },
+  "placeholder": {
+    "__TYPE__": "BooleanContent",
+    "value": true
   }
 }

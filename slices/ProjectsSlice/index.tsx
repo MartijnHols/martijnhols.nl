@@ -109,6 +109,7 @@ const ProjectsSlice = ({ slice }: Props) => {
                 about={<PrismicRichText field={project.brief} multiline />}
                 tech={project.tech?.split(',').map((item) => item.trim()) || []}
                 highlighted={project.highlighted}
+                placeholder={project.placeholder}
               />
             )
           })}

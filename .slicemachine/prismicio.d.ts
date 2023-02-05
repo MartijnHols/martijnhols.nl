@@ -307,6 +307,18 @@ interface ProjectDocumentData {
      *
      */
     highlighted: prismicT.BooleanField;
+    /**
+     * Placeholder field in *Project*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: project.placeholder
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    placeholder: prismicT.BooleanField;
 }
 /**
  * Project document from Prismic

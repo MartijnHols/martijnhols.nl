@@ -8,8 +8,12 @@ import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
 
 const Container = styled('article', {
-  shouldForwardProp: (prop) => prop !== 'highlighted',
-})<{ highlighted?: boolean }>(({ theme, highlighted }) => [
+  shouldForwardProp: (prop) =>
+    prop !== 'highlighted' && prop !== 'isPlaceholder',
+})<{
+  highlighted?: boolean
+  isPlaceholder?: boolean
+}>(({ theme, highlighted, isPlaceholder }) => [
   css`
     transform: rotate(-0.85deg);
     border: ${theme.spacing.x2}px solid #000;
@@ -31,6 +35,13 @@ const Container = styled('article', {
           margin-top: ${theme.spacing.x1 * 14}px;
         }
       }
+    `,
+  isPlaceholder &&
+    css`
+      border-color: rgba(0, 0, 0, 0.3);
+      opacity: 0.6;
+      max-width: 750px;
+      margin: 0 auto;
     `,
 ])
 const Header = styled.h3`
@@ -122,6 +133,7 @@ interface Props {
   about: ReactNode
   tech: string[]
   highlighted?: boolean
+  placeholder?: boolean
 }
 
 const ProjectBrief = ({
@@ -134,6 +146,7 @@ const ProjectBrief = ({
   about,
   tech,
   highlighted,
+  placeholder,
 }: Props) => {
   const config = usePrismicConfig()
 
@@ -154,7 +167,7 @@ const ProjectBrief = ({
   }
 
   return (
-    <Container highlighted={highlighted}>
+    <Container highlighted={highlighted} isPlaceholder={placeholder}>
       <Header>
         <Name title={name}>{name}</Name> (
         <Period>{formatPeriod(started, ended)}</Period>)

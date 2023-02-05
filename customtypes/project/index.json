@@ -77,6 +77,15 @@
           "placeholder_true": "true",
           "placeholder_false": "false"
         }
+      },
+      "placeholder": {
+        "type": "Boolean",
+        "config": {
+          "label": "Placeholder",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
       }
     }
   }
