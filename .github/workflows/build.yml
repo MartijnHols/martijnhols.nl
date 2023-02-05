@@ -25,14 +25,14 @@ jobs:
       - name: Get yarn cache directory path
         if: steps.cache.outputs.cache-hit != 'true'
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
       # Use week number for automatically purging the cache every week. This is
       # useful because caching yarn-cache would otherwise lead it to grow
       # indefinitely since old dependencies are never purged.
       - name: Get week number
         if: steps.cache.outputs.cache-hit != 'true'
         id: week-number
-        run: echo "::set-output name=value::$(date +%W)"
+        run: echo "value=$(date +%W)" >> $GITHUB_OUTPUT
       - name: Cache "yarn-cache"
         uses: martijnhols/cache@read-only
         if: steps.cache.outputs.cache-hit != 'true'
