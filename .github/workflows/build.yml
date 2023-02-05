@@ -11,8 +11,8 @@ jobs:
     name: 'Install'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
@@ -53,8 +53,8 @@ jobs:
     name: 'Typecheck'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
@@ -69,8 +69,8 @@ jobs:
     name: 'Lint'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
@@ -85,8 +85,8 @@ jobs:
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       # Not only does this share the artifact with other jobs, this also improves build performance by reusing next cache
@@ -130,7 +130,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Restore "build" from cache
         uses: martijnhols/actions-cache/restore@v3
         with:
@@ -167,8 +167,8 @@ jobs:
     name: Lighthouse Mobile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
@@ -205,8 +205,8 @@ jobs:
     name: Lighthouse Desktop
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - name: Restore "node_modules" from cache
