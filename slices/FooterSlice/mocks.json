@@ -14,30 +14,27 @@
           {
             "type": "paragraph",
             "content": {
-              "text": "Incididunt ea aute ullamco excepteur elit nulla. Incididunt quis aliquip aute laboris ex occaecat sit occaecat Lorem id velit esse esse ad. Officia minim magna exercitation ut sunt velit Lorem."
-            }
+              "text": "(bij voorkeur via email)",
+              "spans": []
+            },
+            "direction": "ltr"
           }
         ]
       },
       "email": {
         "__TYPE__": "FieldContent",
-        "value": "when",
-        "type": "Text"
+        "type": "Text",
+        "value": "website@martijnhols.nl"
       },
       "phone": {
         "__TYPE__": "FieldContent",
-        "value": "tried",
-        "type": "Text"
+        "type": "Text",
+        "value": "0657946114"
       },
       "whatsApp": {
         "__TYPE__": "FieldContent",
         "value": "26",
         "type": "Number"
-      },
-      "socialLabel": {
-        "__TYPE__": "FieldContent",
-        "value": "than",
-        "type": "Text"
       },
       "linkedIn": {
         "__TYPE__": "LinkContent",
@@ -62,40 +59,45 @@
       },
       "companyLabel": {
         "__TYPE__": "FieldContent",
-        "value": "were",
-        "type": "Text"
+        "type": "Text",
+        "value": "Company"
       },
       "kvk": {
         "__TYPE__": "FieldContent",
-        "value": "straw",
-        "type": "Text"
+        "type": "Text",
+        "value": "01232134"
       },
       "btw": {
         "__TYPE__": "FieldContent",
-        "value": "dig",
-        "type": "Text"
+        "type": "Text",
+        "value": "NL010203040B01"
       },
       "iban": {
         "__TYPE__": "FieldContent",
-        "value": "fine",
-        "type": "Text"
+        "type": "Text",
+        "value": "NL10ABNA012345678"
       },
       "locationLabel": {
         "__TYPE__": "FieldContent",
-        "value": "plural",
-        "type": "Text"
+        "type": "Text",
+        "value": "Location"
       },
       "city": {
         "__TYPE__": "FieldContent",
-        "value": "unless",
-        "type": "Text"
+        "type": "Text",
+        "value": "Barneveld, the Netherland"
       },
       "location": {
-        "__TYPE__": "GeoPointContent",
         "position": {
           "lat": 48.8606111,
           "lng": 2.337644
-        }
+        },
+        "__TYPE__": "GeoPointContent"
+      },
+      "socialLabel": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Social"
       }
     },
     "items": [

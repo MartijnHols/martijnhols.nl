@@ -194,7 +194,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSliceSlice | ContentSliceSlice | ProjectsSliceSlice | FooterSliceSlice | AngleSliceSlice | ArticleSliceSlice | FileDownloadSlice;
+type PageDocumentDataSlicesSlice = HeroSliceSlice | ContentSliceSlice | ProjectsSliceSlice | FooterSliceSlice | AngleSliceSlice | FileDownloadSlice;
 /**
  * Page document from Prismic
  *

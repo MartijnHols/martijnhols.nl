@@ -1,7 +1,7 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "boat"
+    "value": "throat"
   },
   "layout": {
     "__TYPE__": "LinkContent",
@@ -12,25 +12,25 @@
   },
   "headTitle": {
     "__TYPE__": "FieldContent",
-    "value": "spent",
+    "value": "sugar",
     "type": "Text"
   },
   "description": {
     "__TYPE__": "FieldContent",
-    "value": "knife",
+    "value": "talk",
     "type": "Text"
   },
   "ogImage": {
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
-      "width": 3199,
-      "height": 3199
+      "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+      "width": 6000,
+      "height": 4000
     },
-    "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
-    "width": 3199,
-    "height": 3199,
+    "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
+    "width": 6000,
+    "height": 4000,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -45,7 +45,7 @@
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "hero_slice$26580fca-a8b2-4400-b739-755d2999a33d",
+        "key": "hero_slice$39508a04-310f-4874-9c15-b52654e059ac",
         "name": "hero_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -57,7 +57,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Do laboris Lorem reprehenderit veniam proident ullamco sint irure in. Sunt ut mollit amet. Reprehenderit excepteur exercitation dolore dolor cupidatat."
+                    "text": "Ad cupidatat incididunt exercitation officia laboris exercitation. Sint ex sint proident officia."
                   }
                 }
               ]
@@ -68,7 +68,7 @@
                 {
                   "type": "heading1",
                   "content": {
-                    "text": "Fierce"
+                    "text": "Problem"
                   }
                 }
               ]
@@ -79,14 +79,14 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Ea proident dolor ullamco sunt."
+                    "text": "Lorem enim excepteur Lorem ipsum voluptate elit culpa. Ut consectetur non laboris occaecat. Reprehenderit aliquip mollit aliqua labore sint laborum labore sint velit cupidatat quis culpa elit."
                   }
                 }
               ]
             },
             "reactifyTitle": {
               "__TYPE__": "BooleanContent",
-              "value": true
+              "value": false
             }
           },
           "items": [
@@ -98,40 +98,19 @@
         }
       },
       {
-        "key": "content_slice$1531eb21-f34e-42b9-ad37-b3b4e8212470",
+        "key": "content_slice$c37d1aae-0394-4e81-94e5-5ed82d46a5f5",
         "name": "content_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "image": {
-              "__TYPE__": "ImageContent",
-              "origin": {
-                "id": "main",
-                "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
-                "width": 4000,
-                "height": 4000
-              },
-              "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
-              "width": 4000,
-              "height": 4000,
-              "edit": {
-                "zoom": 1,
-                "crop": {
-                  "x": 0,
-                  "y": 0
-                },
-                "background": "transparent"
-              },
-              "thumbnails": {}
-            },
             "content": {
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Nulla pariatur anim aliqua sit adipisicing aliquip sint cupidatat est cillum nisi. Aute pariatur ea irure. Nostrud sit duis consequat dolore dolor nostrud deserunt."
+                    "text": "Duis qui commodo ex voluptate cillum ad esse elit ut ut irure nisi."
                   }
                 }
               ]
@@ -146,7 +125,7 @@
         }
       },
       {
-        "key": "projects_slice$9b6e94c6-b189-4eb0-8beb-a34e7fbae69e",
+        "key": "projects_slice$582bd462-6bdf-45b2-97aa-63ca9eed4434",
         "name": "projects_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -158,7 +137,7 @@
                 {
                   "type": "heading1",
                   "content": {
-                    "text": "Weather"
+                    "text": "Drink"
                   }
                 }
               ]
@@ -169,7 +148,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Aliqua duis proident amet elit irure sint in dolor proident ipsum adipisicing. Anim minim nisi id et est irure tempor elit reprehenderit nostrud proident ea."
+                    "text": "Nostrud dolore et do in amet. Qui eu esse veniam ex id cillum deserunt sunt do. Ipsum adipisicing deserunt commodo voluptate."
                   }
                 }
               ]
@@ -184,7 +163,7 @@
         }
       },
       {
-        "key": "footer_slice$ad986d50-64e1-4237-90f0-efda96f2bdd5",
+        "key": "footer_slice$ec46d8d5-ec34-41da-b384-6f54fa7c9068",
         "name": "footer_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -192,7 +171,7 @@
           "primary": {
             "contactLabel": {
               "__TYPE__": "FieldContent",
-              "value": "listen",
+              "value": "discussion",
               "type": "Text"
             },
             "contactAnnotation": {
@@ -201,80 +180,80 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Exercitation mollit commodo eiusmod fugiat ipsum id id est exercitation amet eiusmod fugiat proident sint."
+                    "text": "Incididunt mollit ullamco do minim veniam esse. Consequat sit occaecat aute cillum ut commodo Lorem."
                   }
                 }
               ]
             },
             "email": {
               "__TYPE__": "FieldContent",
-              "value": "house",
+              "value": "kept",
               "type": "Text"
             },
             "phone": {
               "__TYPE__": "FieldContent",
-              "value": "want",
+              "value": "rock",
               "type": "Text"
             },
             "whatsApp": {
               "__TYPE__": "FieldContent",
-              "value": "99",
+              "value": "90",
               "type": "Number"
             },
             "socialLabel": {
               "__TYPE__": "FieldContent",
-              "value": "electricity",
+              "value": "forest",
               "type": "Text"
             },
             "linkedIn": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://prismic.io"
+                "url": "https://slicemachine.dev"
               }
             },
             "gitHub": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "http://twitter.com"
+                "url": "https://slicemachine.dev"
               }
             },
             "twitter": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "http://twitter.com"
+                "url": "https://prismic.io"
               }
             },
             "companyLabel": {
               "__TYPE__": "FieldContent",
-              "value": "ought",
+              "value": "trace",
               "type": "Text"
             },
             "kvk": {
               "__TYPE__": "FieldContent",
-              "value": "parts",
+              "value": "band",
               "type": "Text"
             },
             "btw": {
               "__TYPE__": "FieldContent",
-              "value": "mathematics",
+              "value": "start",
               "type": "Text"
             },
             "iban": {
               "__TYPE__": "FieldContent",
-              "value": "evening",
+              "value": "something",
               "type": "Text"
             },
             "locationLabel": {
               "__TYPE__": "FieldContent",
-              "value": "oxygen",
+              "value": "older",
               "type": "Text"
             },
             "city": {
               "__TYPE__": "FieldContent",
-              "value": "many",
+              "value": "blank",
               "type": "Text"
             },
             "location": {
@@ -294,7 +273,7 @@
         }
       },
       {
-        "key": "angle_slice$121bc6a5-a13e-4d6c-9a22-050b0e3fe77b",
+        "key": "angle_slice$0cc0a6b4-8cda-4e26-8c02-3f6d1464b039",
         "name": "angle_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -309,30 +288,7 @@
         }
       },
       {
-        "key": "article_slice$52ec2abd-88c8-4a5a-96b2-329ffb8c599e",
-        "name": "article_slice",
-        "widget": {
-          "__TYPE__": "SharedSliceContent",
-          "variation": "default",
-          "primary": {
-            "article": {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "__TYPE__": "DocumentLink",
-                "id": "mock_document_id"
-              }
-            }
-          },
-          "items": [
-            {
-              "__TYPE__": "GroupItemContent",
-              "value": []
-            }
-          ]
-        }
-      },
-      {
-        "key": "file_download$7e123259-eb16-4fed-844c-2acf874ced50",
+        "key": "file_download$e8e1c422-e7a6-4f91-bb9a-c6ac8c739414",
         "name": "file_download",
         "widget": {
           "__TYPE__": "SharedSliceContent",
