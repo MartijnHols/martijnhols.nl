@@ -19,3 +19,6 @@ _TwoColumnsText.storyName = ''
 
 export const _TwoColumnsTextInverted = () => <MyComponent slice={{"variation":"twoColumnsTextInverted","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"Veniam sunt quis officia cupidatat ad proident laboris laborum irure est cupidatat amet irure.","spans":[]}]},"id":"_TwoColumnsTextInverted","slice_type":"content_slice"}} />
 _TwoColumnsTextInverted.storyName = ''
+
+export const _Inverted = () => <MyComponent slice={{"variation":"inverted","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"image":{"dimensions":{"width":2545,"height":2545},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1600861194802-a2b11076bc51"},"content":[{"type":"paragraph","text":"Qui labore velit pariatur minim ad qui.","spans":[]},{"type":"paragraph","text":"Minim est eu ea in.","spans":[]},{"type":"paragraph","text":"Sunt dolore veniam anim ea Lorem pariatur tempor veniam exercitation dolore excepteur dolore qui.","spans":[]}]},"id":"_Inverted","slice_type":"content_slice"}} />
+_Inverted.storyName = ''
