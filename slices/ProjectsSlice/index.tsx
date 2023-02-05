@@ -34,6 +34,7 @@ const Title = styled.h2(
     border-top: ${theme.spacing.x2}px solid currentColor;
     display: inline-block;
     margin-bottom: 0;
+    margin-top: 0;
   `,
 )
 const SubTitle = styled.h3(
