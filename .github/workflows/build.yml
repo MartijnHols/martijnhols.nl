@@ -34,7 +34,7 @@ jobs:
         id: week-number
         run: echo "value=$(date +%W)" >> $GITHUB_OUTPUT
       - name: Cache "yarn-cache"
-        uses: martijnhols/cache@read-only
+        uses: martijnhols/actions-cache/restore@v3
         if: steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
