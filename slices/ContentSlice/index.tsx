@@ -44,15 +44,25 @@ const ImageContainer = styled.div(
 const SideImage = styled(Image)`
   clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
 `
-const ContentContainer = styled.div(
-  ({ theme }) => css`
+const ContentContainer = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'twoColumnsText',
+})<{ twoColumnsText?: boolean }>(({ theme, twoColumnsText }) => [
+  css`
     flex: 1 1 0;
     // Cancels out p-margins
     margin: -${theme.spacing.x2}px 0;
     hyphens: auto;
     text-align: justify;
   `,
-)
+  twoColumnsText &&
+    css`
+      column-count: 2;
+      column-gap: ${theme.spacing.x5}px;
+      line-height: 1.6;
+      hyphens: manual;
+      text-align: left;
+    `,
+])
 const Title = styled.h2(
   ({ theme }) => css`
     text-transform: uppercase;
@@ -69,9 +79,14 @@ interface Props {
 }
 
 const ContentSlice = ({ slice }: Props) => {
-  const image = convertPrismicImage(slice.primary.image)
+  const image =
+    (slice.variation === 'imageLeft' ||
+      slice.variation === 'imageLeftInverted') &&
+    convertPrismicImage(slice.primary.image)
 
-  const inverted = slice.variation === 'inverted'
+  const inverted =
+    slice.variation === 'imageLeftInverted' ||
+    slice.variation === 'twoColumnsTextInverted'
 
   const theme = useTheme()
 
@@ -95,7 +110,13 @@ const ContentSlice = ({ slice }: Props) => {
           </ImageContainer>
         )}
 
-        <ContentContainer className={inverted ? 'inverted' : undefined}>
+        <ContentContainer
+          className={inverted ? 'inverted' : undefined}
+          twoColumnsText={
+            slice.variation === 'twoColumnsText' ||
+            slice.variation === 'twoColumnsTextInverted'
+          }
+        >
           <PrismicRichText
             field={slice.primary.content}
             multiline

@@ -17,6 +17,8 @@ export const h1 = css`
 `
 export const h2 = css`
   font-size: 60px;
+  line-height: 1.3;
+  font-weight: 800;
 
   @media (max-width: ${breakpoints.MOBILE_MAX}px) {
     font-size: 45px;
@@ -67,6 +69,7 @@ export const globalStyles = css`
     ${h1}
   }
   h2 {
+    margin-top: ${spacing.x8}px;
     margin-bottom: ${spacing.x4}px;
     ${h2}
   }

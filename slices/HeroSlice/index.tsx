@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
-import { asText } from '@prismicio/helpers'
+import { asText, isFilled } from '@prismicio/helpers'
 
 import Angle from '../../components/Angle'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
@@ -64,17 +64,11 @@ const StyledReactLogo = styled(ReactLogo)`
     animation: ${ReactLogoAnimation} infinite 20s linear;
   }
 `
-const Intro = styled.h1(
-  ({ theme }) => css`
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: ${theme.spacing.x2}px;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-bottom: ${theme.spacing.x4}px;
-    }
-  `,
-)
+const Intro = styled.h1`
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 0;
+`
 const IntroSubText = styled.span(
   ({ theme }) => css`
     display: block;
@@ -117,6 +111,11 @@ const SubText = styled.div(
   ({ theme }) => css`
     font-weight: 500;
     ${theme.headings.h5}
+    margin-top: ${theme.spacing.x2}px;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      margin-top: ${theme.spacing.x4}px;
+    }
   `,
 )
 const StyledAngle = styled(Angle)``
@@ -191,9 +190,11 @@ const HeroSlice = ({ slice }: Props) => (
               : asText(slice.primary.title)}
           </IntroTitle>
         </Intro>
-        <SubText>
-          <PrismicRichText field={slice.primary.subText} />
-        </SubText>
+        {isFilled.richText(slice.primary.subText) && (
+          <SubText>
+            <PrismicRichText field={slice.primary.subText} />
+          </SubText>
+        )}
       </StyledContainer>
     </Hero>
 

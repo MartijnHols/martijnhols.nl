@@ -5,8 +5,17 @@ export default {
 }
 
 
-export const _Default = () => <MyComponent slice={{"variation":"default","name":"Default","slice_type":"content_slice","items":[],"primary":{"image":{"dimensions":{"width":900,"height":500},"alt":"Placeholder image","copyright":null,"url":"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&h=500&fit=crop"},"content":[{"type":"paragraph","text":"Lorem est consectetur magna id duis cillum duis eiusmod in laborum.","spans":[]},{"type":"paragraph","text":"Laboris aute irure ad duis tempor culpa sint nisi proident occaecat incididunt enim elit mollit. Exercitation magna duis aliquip. Sunt aliquip magna commodo in velit sit esse id amet esse duis duis dolore.","spans":[]},{"type":"paragraph","text":"Anim id occaecat adipisicing nulla eu id magna excepteur. Non ut ut deserunt ea esse mollit pariatur reprehenderit sint commodo qui dolore ea. Dolor deserunt do culpa.","spans":[]}]},"id":"_Default"}} />
-_Default.storyName = 'Default'
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"In deserunt eu aute velit incididunt adipisicing quis Lorem ea deserunt.","spans":[]}]},"id":"_Default","slice_type":"content_slice"}} />
+_Default.storyName = ''
 
-export const _Inverted = () => <MyComponent slice={{"variation":"inverted","name":"Inverted","slice_type":"content_slice","items":[],"primary":{"image":{"dimensions":{"width":900,"height":500},"alt":"Placeholder image","copyright":null,"url":"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&h=500&fit=crop"},"content":[{"type":"paragraph","text":"Ullamco officia ipsum ipsum ut est est velit consequat sint voluptate culpa consequat nostrud. Lorem laboris amet ea eiusmod sunt aliqua. Ea laborum Lorem irure irure cupidatat aliquip eu consequat culpa ipsum proident ad mollit.","spans":[]},{"type":"paragraph","text":"Pariatur cillum est do irure eu mollit velit aliquip. Consequat pariatur fugiat mollit culpa pariatur ipsum sint commodo anim veniam. Ipsum irure do proident.","spans":[]},{"type":"paragraph","text":"Elit excepteur nulla duis ea. Ut aliquip qui ullamco fugiat proident duis do quis adipisicing.","spans":[]}]},"id":"_Inverted"}} />
-_Inverted.storyName = 'Inverted'
+export const _ImageLeft = () => <MyComponent slice={{"variation":"imageLeft","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"image":{"dimensions":{"width":5616,"height":3744},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"},"content":[{"type":"paragraph","text":"Cillum aute sint quis velit.","spans":[]}]},"id":"_ImageLeft","slice_type":"content_slice"}} />
+_ImageLeft.storyName = ''
+
+export const _ImageLeftInverted = () => <MyComponent slice={{"variation":"imageLeftInverted","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"image":{"dimensions":{"width":4000,"height":6000},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1491975474562-1f4e30bc9468"},"content":[{"type":"paragraph","text":"Magna sint duis quis tempor fugiat aliqua anim amet reprehenderit eiusmod mollit reprehenderit quis.","spans":[]}]},"id":"_ImageLeftInverted","slice_type":"content_slice"}} />
+_ImageLeftInverted.storyName = ''
+
+export const _TwoColumnsText = () => <MyComponent slice={{"variation":"twoColumnsText","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"Ex qui irure magna.","spans":[]}]},"id":"_TwoColumnsText","slice_type":"content_slice"}} />
+_TwoColumnsText.storyName = ''
+
+export const _TwoColumnsTextInverted = () => <MyComponent slice={{"variation":"twoColumnsTextInverted","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"Veniam sunt quis officia cupidatat ad proident laboris laborum irure est cupidatat amet irure.","spans":[]}]},"id":"_TwoColumnsTextInverted","slice_type":"content_slice"}} />
+_TwoColumnsTextInverted.storyName = ''

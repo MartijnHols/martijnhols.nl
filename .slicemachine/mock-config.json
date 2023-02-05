@@ -57,17 +57,7 @@
     },
     "ContentSlice": {
       "default": {
-        "primary": {
-          "content": {
-            "config": {
-              "patternType": "PARAGRAPH",
-              "blocks": 3
-            }
-          },
-          "image": {
-            "content": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-          }
-        }
+        "primary": {}
       },
       "inverted": {
         "primary": {
@@ -81,6 +71,12 @@
             }
           }
         }
+      },
+      "twoColumnsText": {
+        "primary": {}
+      },
+      "imageLeftInverted": {
+        "primary": {}
       }
     },
     "ProjectsSlice": {
