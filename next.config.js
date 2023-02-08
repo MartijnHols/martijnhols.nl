@@ -49,6 +49,7 @@ const nextConfig = withBundleAnalyzer({
     domains: [
       'images.prismic.io',
       `${prismicRepositoryName}.cdn.prismic.io`,
+      'prismic-io.s3.amazonaws.com',
       // Used by Prismic Slice Machine mock data
       process.env.NODE_ENV === 'development'
         ? 'images.unsplash.com'
