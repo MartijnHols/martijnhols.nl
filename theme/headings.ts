@@ -16,7 +16,7 @@ export const h1 = css`
   }
 `
 export const h2 = css`
-  font-size: 60px;
+  font-size: 54px;
   line-height: 1.3;
   font-weight: 800;
 
@@ -63,14 +63,15 @@ export const globalStyles = css`
   h5,
   h6 {
     margin: 0;
+    break-after: avoid;
   }
   h1 {
     margin-bottom: ${spacing.x6}px;
     ${h1}
   }
   h2 {
-    margin-top: ${spacing.x8}px;
-    margin-bottom: ${spacing.x4}px;
+    margin-top: ${spacing.x6}px;
+    margin-bottom: ${spacing.x2}px;
     ${h2}
   }
   h3 {
