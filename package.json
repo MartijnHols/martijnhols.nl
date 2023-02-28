@@ -27,8 +27,8 @@
     "@next/bundle-analyzer": "^12.3.1",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.5",
-    "@prismicio/next": "^1.0.2",
-    "@prismicio/react": "^2.5.0",
+    "@prismicio/next": "^1.0.3",
+    "@prismicio/react": "^2.5.2",
     "@prismicio/richtext": "^2.1.1",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "concurrently": "^7.1.0",
@@ -39,7 +39,7 @@
     "react-transition-group": "^4.4.5",
     "sanitize.css": "^13.0.0",
     "sharp": "^0.30.4",
-    "slice-machine-ui": "^0.6.1"
+    "slice-machine-ui": "^0.7.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",
