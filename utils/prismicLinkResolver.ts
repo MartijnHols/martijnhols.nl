@@ -12,6 +12,9 @@ const slugResolver = (
   if (doc.type === 'page' && doc.uid !== HOMEPAGE_SLUG) {
     return `/${doc.uid}`
   }
+  if (doc.type === 'article' && doc.uid !== HOMEPAGE_SLUG) {
+    return `/${doc.uid}`
+  }
 
   return '/'
 }

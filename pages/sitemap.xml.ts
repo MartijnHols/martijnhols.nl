@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 
 import absoluteUrl from '../utils/absoluteUrl'
-import { createClient, getPages } from '../utils/prismic'
+import { createClient, getArticles, getPages } from '../utils/prismic'
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 
 interface SiteMapUrl {
@@ -26,16 +26,22 @@ const createSiteMapXml = (urls: SiteMapUrl[]) =>
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const client = createClient()
   const pages = await getPages(client)
+  const articles = await getArticles(client)
 
-  const sitemap = createSiteMapXml(
-    pages
+  const sitemap = createSiteMapXml([
+    ...pages
       .filter((page) => page.data.sitemap !== false)
       .map((page) => ({
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         loc: absoluteUrl(prismicLinkResolver(page)),
         // TODO: lastmod
       })),
-  )
+    ...articles.map((article) => ({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      loc: absoluteUrl(prismicLinkResolver(article)),
+      // TODO: lastmod
+    })),
+  ])
 
   res.setHeader('Content-Type', 'text/xml')
   res.setHeader(
