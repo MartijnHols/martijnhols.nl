@@ -42,6 +42,15 @@
           "thumbnails": []
         }
       },
+      "sitemap": {
+        "type": "Boolean",
+        "config": {
+          "label": "Include in sitemap",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

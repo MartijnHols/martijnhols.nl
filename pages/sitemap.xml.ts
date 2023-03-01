@@ -3,7 +3,6 @@ import { GetServerSideProps } from 'next'
 import absoluteUrl from '../utils/absoluteUrl'
 import { createClient, getPages } from '../utils/prismic'
 import prismicLinkResolver from '../utils/prismicLinkResolver'
-import { isFileDownloadPage } from './[slug]'
 
 interface SiteMapUrl {
   loc: string
@@ -29,11 +28,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const pages = await getPages(client)
 
   const sitemap = createSiteMapXml(
-    pages.filter(isFileDownloadPage).map((page) => ({
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      loc: absoluteUrl(prismicLinkResolver(page)),
-      // TODO: lastmod
-    })),
+    pages
+      .filter((page) => page.data.sitemap !== false)
+      .map((page) => ({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        loc: absoluteUrl(prismicLinkResolver(page)),
+        // TODO: lastmod
+      })),
   )
 
   res.setHeader('Content-Type', 'text/xml')

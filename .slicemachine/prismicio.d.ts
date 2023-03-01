@@ -179,6 +179,18 @@ interface PageDocumentData {
      */
     ogImage: prismicT.ImageField<never>;
     /**
+     * Include in sitemap field in *Page*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: page.sitemap
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    sitemap: prismicT.BooleanField;
+    /**
      * Slice Zone field in *Page*
      *
      * - **Field Type**: Slice Zone

@@ -23,7 +23,7 @@ import {
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 import stripUndefined from '../utils/stripUndefined'
 
-export const isFileDownloadPage = (page: PrismicPage<false>) => {
+const isFileDownloadPage = (page: PrismicPage<false>) => {
   const fileDownloadSlice = page.data.slices.find(
     (slice): slice is Content.FileDownloadSlice =>
       slice.slice_type === 'file_download',
