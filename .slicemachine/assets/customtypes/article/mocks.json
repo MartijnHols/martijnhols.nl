@@ -1,31 +1,35 @@
 {
-  "name": {
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "climate"
+  },
+  "title": {
     "__TYPE__": "FieldContent",
-    "value": "nine",
+    "value": "indicate",
+    "type": "Text"
+  },
+  "description": {
+    "__TYPE__": "FieldContent",
+    "value": "board",
     "type": "Text"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "article_code_snippet_slice$38dc2ff4-02dd-4719-b487-b00e2069ef6a",
-        "name": "article_code_snippet_slice",
+        "key": "content_slice$88ee8519-2cf0-4fed-b73e-4e3d29485dbb",
+        "name": "content_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "language": {
-              "__TYPE__": "FieldContent",
-              "value": "pictured",
-              "type": "Text"
-            },
             "content": {
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Magna anim id eiusmod in velit velit ea dolor labore ut eiusmod esse. Occaecat eu elit dolor non laboris adipisicing."
+                    "text": "Excepteur magna velit elit reprehenderit minim aute ea id ut officia veniam ullamco."
                   }
                 }
               ]
@@ -40,24 +44,65 @@
         }
       },
       {
-        "key": "article_content_slice$4446eef8-d169-4f1c-9d50-d301f6a0b58a",
-        "name": "article_content_slice",
+        "key": "hero_slice$5d927127-1033-4062-8e6b-c83ce0ba634c",
+        "name": "hero_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "content": {
+            "intro": {
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Dolor adipisicing ex et qui eiusmod amet. Cillum do tempor consequat velit incididunt ad ad dolor. Veniam magna qui cupidatat incididunt deserunt qui tempor in eiusmod proident fugiat consectetur dolore."
+                    "text": "Ex officia anim irure dolore sint non elit eiusmod nisi qui ea enim Lorem veniam. Pariatur tempor non exercitation veniam deserunt sunt. Ex enim excepteur sint in in culpa ex incididunt adipisicing ea."
                   }
                 }
               ]
+            },
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Usual"
+                  }
+                }
+              ]
+            },
+            "subText": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Consectetur irure culpa deserunt consectetur ut sunt irure. Occaecat ipsum eiusmod irure est fugiat ex consectetur reprehenderit officia."
+                  }
+                }
+              ]
+            },
+            "reactifyTitle": {
+              "__TYPE__": "BooleanContent",
+              "value": true
             }
           },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "angle_slice$d7ca3def-b8da-4fc8-b13f-e26fc717df0d",
+        "name": "angle_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
           "items": [
             {
               "__TYPE__": "GroupItemContent",

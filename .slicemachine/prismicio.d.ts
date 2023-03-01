@@ -9,16 +9,27 @@ type Simplify<T> = {
 /** Content for Article documents */
 interface ArticleDocumentData {
     /**
-     * Name field in *Article*
+     * Title field in *Article*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: article.name
+     * - **API ID Path**: article.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    name: prismicT.KeyTextField;
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
     /**
      * Slice Zone field in *Article*
      *
@@ -35,7 +46,7 @@ interface ArticleDocumentData {
  * Slice for *Article → Slice Zone*
  *
  */
-type ArticleDocumentDataSlicesSlice = ArticleCodeSnippetSliceSlice | ArticleContentSliceSlice;
+type ArticleDocumentDataSlicesSlice = ContentSliceSlice | HeroSliceSlice | AngleSliceSlice;
 /**
  * Article document from Prismic
  *
@@ -45,7 +56,7 @@ type ArticleDocumentDataSlicesSlice = ArticleCodeSnippetSliceSlice | ArticleCont
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type ArticleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<ArticleDocumentData>, "article", Lang>;
+export type ArticleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArticleDocumentData>, "article", Lang>;
 /** Content for Config documents */
 interface ConfigDocumentData {
     /**
@@ -375,133 +386,6 @@ type AngleSliceSliceVariation = AngleSliceSliceDefault | AngleSliceSliceInverted
  *
  */
 export type AngleSliceSlice = prismicT.SharedSlice<"angle_slice", AngleSliceSliceVariation>;
-/**
- * Primary content in ArticleCodeSnippetSlice → Primary
- *
- */
-interface ArticleCodeSnippetSliceSliceDefaultPrimary {
-    /**
-     * Language field in *ArticleCodeSnippetSlice → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: article_code_snippet_slice.primary.language
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    language: prismicT.KeyTextField;
-    /**
-     * Content field in *ArticleCodeSnippetSlice → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: article_code_snippet_slice.primary.content
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    content: prismicT.RichTextField;
-}
-/**
- * Default variation for ArticleCodeSnippetSlice Slice
- *
- * - **API ID**: `default`
- * - **Description**: `ArticleCodeSnippetSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleCodeSnippetSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ArticleCodeSnippetSliceSliceDefaultPrimary>, never>;
-/**
- * Slice variation for *ArticleCodeSnippetSlice*
- *
- */
-type ArticleCodeSnippetSliceSliceVariation = ArticleCodeSnippetSliceSliceDefault;
-/**
- * ArticleCodeSnippetSlice Shared Slice
- *
- * - **API ID**: `article_code_snippet_slice`
- * - **Description**: `ArticleCodeSnippetSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleCodeSnippetSliceSlice = prismicT.SharedSlice<"article_code_snippet_slice", ArticleCodeSnippetSliceSliceVariation>;
-/**
- * Primary content in ArticleContentSlice → Primary
- *
- */
-interface ArticleContentSliceSliceDefaultPrimary {
-    /**
-     * Content field in *ArticleContentSlice → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: article_content_slice.primary.content
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    content: prismicT.RichTextField;
-}
-/**
- * Default variation for ArticleContentSlice Slice
- *
- * - **API ID**: `default`
- * - **Description**: `ArticleContentSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleContentSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ArticleContentSliceSliceDefaultPrimary>, never>;
-/**
- * Slice variation for *ArticleContentSlice*
- *
- */
-type ArticleContentSliceSliceVariation = ArticleContentSliceSliceDefault;
-/**
- * ArticleContentSlice Shared Slice
- *
- * - **API ID**: `article_content_slice`
- * - **Description**: `ArticleContentSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleContentSliceSlice = prismicT.SharedSlice<"article_content_slice", ArticleContentSliceSliceVariation>;
-/**
- * Primary content in ArticleSlice → Primary
- *
- */
-interface ArticleSliceSliceDefaultPrimary {
-    /**
-     * Article field in *ArticleSlice → Primary*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: article_slice.primary.article
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    article: prismicT.RelationField<"article">;
-}
-/**
- * Default variation for ArticleSlice Slice
- *
- * - **API ID**: `default`
- * - **Description**: `ArticleSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ArticleSliceSliceDefaultPrimary>, never>;
-/**
- * Slice variation for *ArticleSlice*
- *
- */
-type ArticleSliceSliceVariation = ArticleSliceSliceDefault;
-/**
- * ArticleSlice Shared Slice
- *
- * - **API ID**: `article_slice`
- * - **Description**: `ArticleSlice`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleSliceSlice = prismicT.SharedSlice<"article_slice", ArticleSliceSliceVariation>;
 /**
  * Primary content in ContentSlice → Primary
  *
@@ -1071,6 +955,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, LayoutDocumentData, LayoutDocumentDataSlicesSlice, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ArticleCodeSnippetSliceSliceDefaultPrimary, ArticleCodeSnippetSliceSliceDefault, ArticleCodeSnippetSliceSliceVariation, ArticleCodeSnippetSliceSlice, ArticleContentSliceSliceDefaultPrimary, ArticleContentSliceSliceDefault, ArticleContentSliceSliceVariation, ArticleContentSliceSlice, ArticleSliceSliceDefaultPrimary, ArticleSliceSliceDefault, ArticleSliceSliceVariation, ArticleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceImageLeftPrimary, ContentSliceSliceImageLeft, ContentSliceSliceImageLeftInvertedPrimary, ContentSliceSliceImageLeftInverted, ContentSliceSliceTwoColumnsTextPrimary, ContentSliceSliceTwoColumnsText, ContentSliceSliceTwoColumnsTextInvertedPrimary, ContentSliceSliceTwoColumnsTextInverted, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, PageContentSliceDefault, PageContentSliceVariation, PageContentSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, LayoutDocumentData, LayoutDocumentDataSlicesSlice, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceImageLeftPrimary, ContentSliceSliceImageLeft, ContentSliceSliceImageLeftInvertedPrimary, ContentSliceSliceImageLeftInverted, ContentSliceSliceTwoColumnsTextPrimary, ContentSliceSliceTwoColumnsText, ContentSliceSliceTwoColumnsTextInvertedPrimary, ContentSliceSliceTwoColumnsTextInverted, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, PageContentSliceDefault, PageContentSliceVariation, PageContentSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
     }
 }

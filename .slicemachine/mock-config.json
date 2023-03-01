@@ -138,38 +138,6 @@
       }
     },
     "Article": {},
-    "ArticleCodeSnippetSlice": {
-      "default": {
-        "primary": {
-          "content": {
-            "config": {
-              "patternType": "PARAGRAPH",
-              "blocks": 1
-            }
-          },
-          "language": {
-            "content": "tsx"
-          }
-        }
-      }
-    },
-    "ArticleContentSlice": {
-      "default": {
-        "primary": {
-          "content": {
-            "config": {
-              "patternType": "STORY",
-              "blocks": 1
-            }
-          }
-        }
-      }
-    },
-    "ArticleSlice": {
-      "default": {
-        "primary": {}
-      }
-    },
     "FileDownload": {
       "default": {
         "primary": {}
