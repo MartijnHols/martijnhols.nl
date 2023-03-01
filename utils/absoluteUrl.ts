@@ -1,8 +1,4 @@
-import getConfig from 'next/config'
-
-const { publicRuntimeConfig } = getConfig()
-
-const absoluteUrl = (path: string = '/') =>
-  `${publicRuntimeConfig.primaryHost}${path}`
+const absoluteUrl = (path: string) =>
+  `${process.env.NEXT_PUBLIC_PRIMARY_HOST}${path}`
 
 export default absoluteUrl

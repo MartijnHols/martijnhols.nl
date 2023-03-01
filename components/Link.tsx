@@ -36,12 +36,12 @@ const Link = ({
   onClick,
   ...others
 }: Props) => {
-  const isAbsolute = href.startsWith(publicRuntimeConfig.primaryHost)
+  const isAbsolute = href.startsWith(process.env.NEXT_PUBLIC_PRIMARY_HOST)
   // Make absolute URLs relative to benefit from preloading, and make the URLs
   // work on any domain.
   // This is necessary because in Prismic we can only enter absolute URLs.
   if (isAbsolute) {
-    href = href.substring(publicRuntimeConfig.primaryHost.length)
+    href = href.substring(process.env.NEXT_PUBLIC_PRIMARY_HOST.length)
 
     // Automatically detect the locale from absolute URLs as Next otherwise will
     // treat them as a regular page.

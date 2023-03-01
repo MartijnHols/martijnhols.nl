@@ -23,27 +23,27 @@ import {
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 import stripUndefined from '../utils/stripUndefined'
 
+export const isFileDownloadPage = (page: PrismicPage<false>) => {
+  const fileDownloadSlice = page.data.slices.find(
+    (slice): slice is Content.FileDownloadSlice =>
+      slice.slice_type === 'file_download',
+  )
+  const isFileDownload =
+    fileDownloadSlice && 'url' in fileDownloadSlice.primary.file
+
+  return !isFileDownload
+}
+
 export const getStaticPaths = async () => {
   const client = createClient()
   const pages = await getPages(client)
 
   return {
-    paths: pages
-      .filter((page) => {
-        const fileDownloadSlice = page.data.slices.find(
-          (slice): slice is Content.FileDownloadSlice =>
-            slice.slice_type === 'file_download',
-        )
-        const isFileDownload =
-          fileDownloadSlice && 'url' in fileDownloadSlice.primary.file
-
-        return !isFileDownload
-      })
-      .map((page) => ({
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        params: { slug: page.uid! },
-        locale: toUserLocale(page.lang),
-      })),
+    paths: pages.filter(isFileDownloadPage).map((page) => ({
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      params: { slug: page.uid! },
+      locale: toUserLocale(page.lang),
+    })),
     fallback: 'blocking',
   }
 }

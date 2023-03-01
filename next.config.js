@@ -5,13 +5,6 @@ const { getRepositoryName } = require('@prismicio/client')
 
 const prismicConfig = require('./sm.json')
 
-const getEnvironmentVariable = (name) => {
-  if (!process.env[name]) {
-    throw new Error(`Missing environment variable: ${name}`)
-  }
-  return process.env[name]
-}
-
 const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint)
 /**
  * All supported locales.
@@ -21,8 +14,16 @@ const prismicLocaleMap = {
   'nl-nl': 'nl',
   'en-us': 'en',
 }
-/** The default locale is special, as it's omited from the URL. */
-const defaultUserLocale = 'nl'
+
+if (!process.env.PRIMARY_HOST) {
+  throw new Error('Missing required env var: PRIMARY_HOST')
+}
+if (!process.env.DEFAULT_LOCALE) {
+  throw new Error('Missing required env var: DEFAULT_LOCALE')
+}
+if (!process.env.PAGE_REVALIDATE_INTERVAL) {
+  throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
@@ -31,19 +32,23 @@ const nextConfig = withBundleAnalyzer({
     locales: Object.keys(prismicLocaleMap).map(
       (locale) => prismicLocaleMap[locale] || locale,
     ),
-    defaultLocale: defaultUserLocale,
+    defaultLocale: process.env.DEFAULT_LOCALE,
   },
+  // Values that can not be different between builds. Most values apply, as most
+  // values affect the generated pages in one way or another. e.g. the default
+  // locale affects the generated URLs.
+  env: {
+    PRISMIC_REPOSITORY_NAME: prismicRepositoryName,
+  },
+  // Values that can be different per instance of the server
   serverRuntimeConfig: {
     pageRevalidateInterval:
-      getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL') === 'false'
+      process.env.PAGE_REVALIDATE_INTERVAL === 'false'
         ? undefined
-        : Number(getEnvironmentVariable('PAGE_REVALIDATE_INTERVAL')),
+        : Number(process.env.PAGE_REVALIDATE_INTERVAL),
   },
   publicRuntimeConfig: {
-    primaryHost: process.env.PRIMARY_HOST,
-    prismicRepositoryName,
     prismicLocaleMap,
-    defaultUserLocale,
   },
   images: {
     domains: [

@@ -10,16 +10,8 @@ import {
   PrismicDocument,
   SliceZone as SliceZoneType,
 } from '@prismicio/types'
-import getConfig from 'next/config'
 
 import sm from '../sm.json'
-
-const { publicRuntimeConfig } = getConfig()
-
-/**
- * The project's Prismic repository name.
- */
-export const repositoryName = publicRuntimeConfig.prismicRepositoryName
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to

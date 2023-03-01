@@ -4,15 +4,12 @@ import {
   PrismicProvider as OriginalPrismicProvider,
 } from '@prismicio/react'
 import { PreviewData } from 'next'
-import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import { ReactNode, useState } from 'react'
 
 import { createClient } from '../utils/prismic'
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 import Link from './Link'
-
-const { publicRuntimeConfig } = getConfig()
 
 const PrismicLink = ({ children, ...others }: LinkProps) => (
   <Link {...others}>{children}</Link>
@@ -39,7 +36,7 @@ const PrismicProvider = ({ children, previewData }: Props) => {
         // for all users. This saves us quite a lot of KBs, but breaks Prismic's
         // shareable links feature.
         <PrismicPreview
-          repositoryName={publicRuntimeConfig.prismicRepositoryName}
+          repositoryName={process.env.PRISMIC_REPOSITORY_NAME}
           updatePreviewURL="/api/preview"
           exitPreviewURL="/api/preview-exit"
         >

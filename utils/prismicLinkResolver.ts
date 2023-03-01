@@ -1,5 +1,4 @@
 import { FilledLinkToDocumentField, PrismicDocument } from '@prismicio/types'
-import getConfig from 'next/config'
 
 import { toUserLocale } from './locales'
 
@@ -17,8 +16,6 @@ const slugResolver = (
   return '/'
 }
 
-const { publicRuntimeConfig } = getConfig()
-
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 const prismicLinkResolver = (
@@ -30,7 +27,7 @@ const prismicLinkResolver = (
 
   const userLocale = toUserLocale(doc.lang)
 
-  if (publicRuntimeConfig.defaultUserLocale === userLocale) {
+  if (process.env.DEFAULT_LOCALE === userLocale) {
     return slug
   }
 
