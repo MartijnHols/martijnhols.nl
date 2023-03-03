@@ -103,6 +103,28 @@ interface ConfigDocumentData {
      *
      */
     contact: prismicT.KeyTextField;
+    /**
+     * Default layout field in *Config*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: config.defaultLayout
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    defaultLayout: prismicT.RelationField<"layout">;
+    /**
+     * Articles layout field in *Config*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: config.articlesLayout
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    articlesLayout: prismicT.RelationField<"layout">;
 }
 /**
  * Config document from Prismic

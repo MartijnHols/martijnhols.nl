@@ -9,11 +9,9 @@ import { createContext, useContext } from 'react'
 export type PrismicConfig = Content.ConfigDocument['data']
 
 export const getPrismicConfig = async (client: Client, locale: string) =>
-  (
-    await client.getByType<Content.ConfigDocument>('config', {
-      lang: locale,
-    })
-  ).results[0]
+  await client.getSingle<Content.ConfigDocument>('config', {
+    lang: locale,
+  })
 
 const PrismicConfigContext = createContext<PrismicConfig | undefined>(undefined)
 export const PrismicConfigProvider = PrismicConfigContext.Provider

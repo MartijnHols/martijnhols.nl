@@ -32,6 +32,22 @@
           "label": "Contact",
           "placeholder": ""
         }
+      },
+      "defaultLayout": {
+        "type": "Link",
+        "config": {
+          "label": "Default layout",
+          "select": "document",
+          "customtypes": ["layout"]
+        }
+      },
+      "articlesLayout": {
+        "type": "Link",
+        "config": {
+          "label": "Articles layout",
+          "select": "document",
+          "customtypes": ["layout"]
+        }
       }
     }
   }

@@ -7,5 +7,6 @@ declare namespace NodeJS {
     PAGE_REVALIDATE_INTERVAL: 'false' | `${number}`
     PRISMIC_REPOSITORY_NAME: string
     NEXT_PUBLIC_PRIMARY_HOST: string
+    NEXT_PUBLIC_SITE_NAME_FALLBACK: string
   }
 }

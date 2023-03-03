@@ -105,5 +105,25 @@ export type PrismicArticle = PrismicDocument<
   'article'
 >
 
-export const getArticle = (client: Client, id: string) =>
-  client.getByID<PrismicArticle>(id)
+export const getArticle = async (
+  prismicClient: Client,
+  slug: string,
+  locale: string,
+) => await getByUid<PrismicArticle>(prismicClient, 'article', slug, locale)
+
+export type PrismicLayout = PrismicDocument<
+  Content.LayoutDocument['data'] & {
+    // This is necessary because the generated types do not include "filled" which is very troublesome to work around
+    slices: SliceZoneType<Content.LayoutDocumentDataSlicesSlice, 'filled'>
+  },
+  'layout'
+>
+
+export const getLayoutById = async (
+  prismicClient: Client,
+  id: string,
+  locale: string,
+) =>
+  await prismicClient.getByID<PrismicLayout>(id, {
+    lang: locale,
+  })

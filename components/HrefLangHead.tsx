@@ -1,7 +1,7 @@
+import { PrismicDocument } from '@prismicio/types'
 import Head from 'next/head'
 
 import absoluteUrl from '../utils/absoluteUrl'
-import { PrismicPage } from '../utils/prismic'
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 
 const defaultHrefLang = 'en'
@@ -15,11 +15,9 @@ const prismicLocaleToHrefLang = (prismicLocale: string) => {
 }
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  page: PrismicPage<any>
+  page: PrismicDocument
 }
 
-// TODO: Move to sitemap
 const HrefLangHead = ({ page }: Props) => (
   <Head>
     {[page, ...page.alternate_languages].map((alternate) => {

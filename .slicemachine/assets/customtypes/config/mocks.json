@@ -1,22 +1,36 @@
 {
   "visit": {
     "__TYPE__": "FieldContent",
-    "value": "handle",
+    "value": "past",
     "type": "Text"
   },
   "sourceCode": {
     "__TYPE__": "FieldContent",
-    "value": "protection",
+    "value": "further",
     "type": "Text"
   },
   "languageToggle": {
     "__TYPE__": "FieldContent",
-    "value": "later",
+    "value": "lamp",
     "type": "Text"
   },
   "contact": {
     "__TYPE__": "FieldContent",
-    "value": "flow",
+    "value": "your",
     "type": "Text"
+  },
+  "defaultLayout": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  },
+  "articlesLayout": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Client as PrismicClient, Content } from '@prismicio/client'
+import { isFilled } from '@prismicio/helpers'
 import { SliceZone } from '@prismicio/react'
 import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
@@ -14,13 +15,20 @@ import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
 import { toPrismicLocale, toUserLocale } from '../utils/locales'
 import prefetchSliceSubQueries from '../utils/prefetchSliceSubQueries'
-import { createClient, getByUid, getPages, PrismicPage } from '../utils/prismic'
+import {
+  createClient,
+  getByUid,
+  getLayoutById,
+  getPages,
+  PrismicLayout,
+  PrismicPage,
+} from '../utils/prismic'
 import {
   getPrismicConfig,
   PrismicConfig,
   PrismicConfigProvider,
 } from '../utils/prismicConfig'
-import prismicLinkResolver from '../utils/prismicLinkResolver'
+import prismicLinkResolver, { slugResolver } from '../utils/prismicLinkResolver'
 import stripUndefined from '../utils/stripUndefined'
 
 const isFileDownloadPage = (page: PrismicPage<false>) => {
@@ -40,8 +48,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: pages.filter(isFileDownloadPage).map((page) => ({
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      params: { slug: page.uid! },
+      params: { slug: slugResolver(page) },
       locale: toUserLocale(page.lang),
     })),
     fallback: 'blocking',
@@ -60,7 +67,7 @@ const getCmsPage = async (
     slug,
     locale,
     {
-      fetchLinks: 'layout.slices',
+      fetchLinks: ['layout.slices'],
     },
   )
   if (!page) {
@@ -83,6 +90,7 @@ const { serverRuntimeConfig } = getConfig()
 interface StaticProps {
   config: PrismicConfig
   page: PrismicPage<true>
+  layout: PrismicLayout
   previewData?: PreviewData
   dehydratedState: DehydratedState
 }
@@ -107,7 +115,20 @@ export const getStaticProps: GetStaticProps<
     getPrismicConfig(prismicClient, prismicLocale),
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     getCmsPage(prismicClient, params!.slug, prismicLocale, queryClient),
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   ])
+
+  const layoutRef = isFilled.contentRelationship(page?.data.layout)
+    ? page?.data.layout
+    : isFilled.contentRelationship(config.data.defaultLayout)
+    ? config.data.defaultLayout
+    : undefined
+  if (!layoutRef) {
+    throw new Error(
+      'Page layout not set and config is missing the default layout',
+    )
+  }
+  const layout = await getLayoutById(prismicClient, layoutRef.id, prismicLocale)
 
   if (!config || !page) {
     return {
@@ -134,6 +155,7 @@ export const getStaticProps: GetStaticProps<
     props: stripUndefined({
       config: config.data,
       page,
+      layout,
       previewData,
       dehydratedState: dehydrate(queryClient),
     }),
@@ -141,7 +163,7 @@ export const getStaticProps: GetStaticProps<
   }
 }
 
-const Page = ({ config, page, previewData }: StaticProps) => {
+const Page = ({ config, page, layout, previewData }: StaticProps) => {
   const PageContentSlice = useMemo(
     () =>
       function PageContentDynamicComponent() {
@@ -154,8 +176,7 @@ const Page = ({ config, page, previewData }: StaticProps) => {
     <PageWrapper>
       <BaseHead
         title={
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          page.data.headTitle || process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK!
+          page.data.headTitle || process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK
         }
         description={page.data.description || undefined}
         absoluteUrl={absoluteUrl(prismicLinkResolver(page))}
@@ -165,9 +186,9 @@ const Page = ({ config, page, previewData }: StaticProps) => {
 
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
-          {page.data.layout.data?.slices ? (
+          {layout.data?.slices ? (
             <SliceZone
-              slices={page.data.layout.data.slices}
+              slices={layout.data.slices}
               components={{
                 ...components,
                 page_content: PageContentSlice,

@@ -4,7 +4,7 @@ import { toUserLocale } from './locales'
 
 export const HOMEPAGE_SLUG = 'homepage'
 
-const slugResolver = (
+export const slugResolver = (
   doc:
     | Pick<FilledLinkToDocumentField, 'type' | 'uid' | 'lang'>
     | Pick<PrismicDocument, 'type' | 'uid' | 'lang'>,
