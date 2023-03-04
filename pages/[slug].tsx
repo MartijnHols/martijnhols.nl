@@ -66,9 +66,6 @@ const getCmsPage = async (
     'page',
     slug,
     locale,
-    {
-      fetchLinks: ['layout.slices'],
-    },
   )
   if (!page) {
     return
@@ -186,17 +183,13 @@ const Page = ({ config, page, layout, previewData }: StaticProps) => {
 
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
-          {layout.data?.slices ? (
-            <SliceZone
-              slices={layout.data.slices}
-              components={{
-                ...components,
-                page_content: PageContentSlice,
-              }}
-            />
-          ) : (
-            <PageContentSlice />
-          )}
+          <SliceZone
+            slices={layout.data.slices}
+            components={{
+              ...components,
+              page_content: PageContentSlice,
+            }}
+          />
         </PrismicConfigProvider>
       </PrismicProvider>
     </PageWrapper>
