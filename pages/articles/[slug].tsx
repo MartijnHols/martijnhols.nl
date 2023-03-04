@@ -28,6 +28,7 @@ import {
 import prismicLinkResolver, {
   slugResolver,
 } from '../../utils/prismicLinkResolver'
+import SliceContext from '../../utils/SliceContext'
 import stripUndefined from '../../utils/stripUndefined'
 
 export const getStaticPaths = async () => {
@@ -108,7 +109,13 @@ const Page = ({ config, article, layout, previewData }: StaticProps) => {
     () =>
       function PageContentDynamicComponent() {
         return (
-          <SliceZone slices={article.data.slices} components={components} />
+          <SliceZone
+            slices={article.data.slices}
+            components={components}
+            context={{
+              isArticle: true,
+            }}
+          />
         )
       },
     [article.data.slices],
@@ -129,7 +136,7 @@ const Page = ({ config, article, layout, previewData }: StaticProps) => {
 
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
-          <SliceZone
+          <SliceZone<SliceContext>
             slices={layout.data.slices}
             components={{
               ...components,

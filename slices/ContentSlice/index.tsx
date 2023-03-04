@@ -9,6 +9,7 @@ import Link from '../../components/Link'
 import PrismicRichText from '../../components/PrismicRichText'
 import mePhoto from '../../static/metemp.png'
 import convertPrismicImage from '../../utils/convertPrismicImage'
+import SliceContext from '../../utils/SliceContext'
 
 const Section = styled.section`
   position: relative;
@@ -111,9 +112,10 @@ const Links = styled.div(
 
 interface Props {
   slice: Content.ContentSliceSlice
+  context: SliceContext
 }
 
-const ContentSlice = ({ slice }: Props) => {
+const ContentSlice = ({ slice, context }: Props) => {
   const image =
     (slice.variation === 'imageLeft' ||
       slice.variation === 'imageLeftInverted') &&
@@ -164,36 +166,38 @@ const ContentSlice = ({ slice }: Props) => {
           />
         </ContentContainer>
 
-        <Aside>
-          <StickyContainer>
-            <PhotoContainer>
-              <Photo
-                src={mePhoto}
-                alt="Martijn Hols"
-                width={120}
-                height={(120 / mePhoto.width) * mePhoto.height}
-                layout="intrinsic"
-              />
-            </PhotoContainer>
+        {context.isArticle && (
+          <Aside>
+            <StickyContainer>
+              <PhotoContainer>
+                <Photo
+                  src={mePhoto}
+                  alt="Martijn Hols"
+                  width={120}
+                  height={(120 / mePhoto.width) * mePhoto.height}
+                  layout="intrinsic"
+                />
+              </PhotoContainer>
 
-            <Name>Martijn Hols</Name>
+              <Name>Martijn Hols</Name>
 
-            <About>
-              I'm a freelance React Tech Lead juggling React components for over
-              7 years
-            </About>
+              <About>
+                I'm a freelance React Tech Lead juggling React components for
+                over 7 years
+              </About>
 
-            <Links>
-              <Link href="/">About me</Link> /{' '}
-              <Link href="#footer">Contact</Link>
-            </Links>
+              <Links>
+                <Link href="/">About me</Link> /{' '}
+                <Link href="#footer">Contact</Link>
+              </Links>
 
-            <div>More articles</div>
-            <div>[other article 1]</div>
-            <div>[other article 2]</div>
-            <div>[other article 3]</div>
-          </StickyContainer>
-        </Aside>
+              <div>More articles</div>
+              <div>[other article 1]</div>
+              <div>[other article 2]</div>
+              <div>[other article 3]</div>
+            </StickyContainer>
+          </Aside>
+        )}
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />
