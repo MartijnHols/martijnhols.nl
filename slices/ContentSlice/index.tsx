@@ -5,11 +5,10 @@ import Image from 'next/image'
 
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
-import Link from '../../components/Link'
 import PrismicRichText from '../../components/PrismicRichText'
-import mePhoto from '../../static/metemp.png'
 import convertPrismicImage from '../../utils/convertPrismicImage'
 import SliceContext from '../../utils/SliceContext'
+import ArticleAside from './ArticleAside'
 
 const Section = styled.section`
   position: relative;
@@ -66,16 +65,6 @@ const ContentContainer = styled('div', {
       text-align: left;
     `,
 ])
-const Aside = styled.aside`
-  flex: 0 0 auto;
-  width: 330px;
-`
-const StickyContainer = styled.div(
-  ({ theme }) => css`
-    position: sticky;
-    top: ${theme.spacing.x5}px;
-  `,
-)
 const Title = styled.h2(
   ({ theme }) => css`
     text-transform: uppercase;
@@ -84,29 +73,6 @@ const Title = styled.h2(
     border-top: ${theme.spacing.x2}px solid currentColor;
     display: inline-block;
     margin: 0;
-  `,
-)
-const PhotoContainer = styled.div(
-  ({ theme }) => css`
-    width: 120px;
-    margin-bottom: ${theme.spacing.x2}px;
-  `,
-)
-const Photo = styled(Image)`
-  clip-path: polygon(100% 0%, 100% calc(100% - 12px), 0% 100%, 0% 12px);
-`
-const Name = styled.div`
-  font-weight: bold;
-`
-const About = styled.div(
-  ({ theme }) => css`
-    opacity: 0.8;
-    margin: ${theme.spacing.x2}px 0;
-  `,
-)
-const Links = styled.div(
-  ({ theme }) => css`
-    margin-bottom: ${theme.spacing.x2}px;
   `,
 )
 
@@ -150,10 +116,10 @@ const ContentSlice = ({ slice, context }: Props) => {
 
         <ContentContainer
           className={inverted ? 'inverted' : undefined}
-          // TODO twoColumnsText={
-          //   slice.variation === 'twoColumnsText' ||
-          //   slice.variation === 'twoColumnsTextInverted'
-          // }
+          twoColumnsText={
+            slice.variation === 'twoColumnsText' ||
+            slice.variation === 'twoColumnsTextInverted'
+          }
         >
           <PrismicRichText
             field={slice.primary.content}
@@ -166,38 +132,7 @@ const ContentSlice = ({ slice, context }: Props) => {
           />
         </ContentContainer>
 
-        {context.isArticle && (
-          <Aside>
-            <StickyContainer>
-              <PhotoContainer>
-                <Photo
-                  src={mePhoto}
-                  alt="Martijn Hols"
-                  width={120}
-                  height={(120 / mePhoto.width) * mePhoto.height}
-                  layout="intrinsic"
-                />
-              </PhotoContainer>
-
-              <Name>Martijn Hols</Name>
-
-              <About>
-                I'm a freelance React Tech Lead juggling React components for
-                over 7 years
-              </About>
-
-              <Links>
-                <Link href="/">About me</Link> /{' '}
-                <Link href="#footer">Contact</Link>
-              </Links>
-
-              <div>More articles</div>
-              <div>[other article 1]</div>
-              <div>[other article 2]</div>
-              <div>[other article 3]</div>
-            </StickyContainer>
-          </Aside>
-        )}
+        {context.isArticle && <ArticleAside />}
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />
