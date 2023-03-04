@@ -15,8 +15,8 @@ const prismicLocaleMap = {
   'en-us': 'en',
 }
 
-if (!process.env.PRIMARY_HOST) {
-  throw new Error('Missing required env var: PRIMARY_HOST')
+if (!process.env.NEXT_PUBLIC_PRIMARY_HOST) {
+  throw new Error('Missing required env var: NEXT_PUBLIC_PRIMARY_HOST')
 }
 if (!process.env.DEFAULT_LOCALE) {
   throw new Error('Missing required env var: DEFAULT_LOCALE')
