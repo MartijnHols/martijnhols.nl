@@ -1,48 +1,21 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
-import { asText, isFilled } from '@prismicio/helpers'
+import { isFilled } from '@prismicio/helpers'
+import { asText } from '@prismicio/richtext'
 
 import Angle from '../../components/Angle'
-import ContactButtonClipped from '../../components/ContactButtonClipped'
-import Container from '../../components/Container'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 import PrismicRichText from '../../components/PrismicRichText'
 import reactStringReplace from '../../utils/reactStringReplace'
+import Hero, { IntroTitle } from './Hero'
 import ReactLogo from './ReactLogo.svg'
 
-const Section = styled.header(
-  ({ theme }) => css`
-    position: relative;
-    background: ${theme.colors.yellow};
-    color: ${theme.colors.black};
-  `,
-)
 const TopBar = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
     color: ${theme.colors.yellow};
     height: 1em;
-  `,
-)
-const Hero = styled.div(
-  ({ theme }) => css`
-    position: relative;
-    overflow: hidden; // fixes rotation overflow increasing body width
-    background: ${theme.colors.yellow};
-  `,
-)
-const StyledContainer = styled(Container)(
-  ({ theme }) => css`
-    padding-top: 100px;
-    padding-bottom: 100px;
-    // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
-    transform: rotate(-2deg);
-
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      padding-top: 150px;
-      padding-bottom: 150px;
-    }
   `,
 )
 const ReactLogoAnimation = keyframes`
@@ -63,21 +36,8 @@ const StyledReactLogo = styled(ReactLogo)`
   @media (prefers-reduced-motion: no-preference) {
     animation: ${ReactLogoAnimation} infinite 20s linear;
   }
-`
-const Intro = styled.h1`
-  line-height: 1.1;
-  font-weight: 800;
-  margin-bottom: 0;
-`
-const IntroSubText = styled.span(
-  ({ theme }) => css`
-    display: block;
-    ${theme.headings.h3}
-    margin-bottom: ${theme.spacing.x1}px;
-  `,
-)
-const IntroTitle = styled.span`
-  ${StyledReactLogo} {
+
+  ${IntroTitle} & {
     // It hides the element *after* the scale transition is done, so this should
     // do a good job of informing browsers the element and animation are
     // inactive without affecting the user
@@ -91,33 +51,18 @@ const IntroTitle = styled.span`
     }
   }
 
-  :hover {
-    ${StyledReactLogo} {
-      visibility: visible;
+  ${IntroTitle}:hover & {
+    visibility: visible;
 
-      path {
-        transform: scale(1);
-      }
+    path {
+      transform: scale(1);
     }
   }
 
   @media (prefers-reduced-motion) {
-    ${StyledReactLogo} {
-      display: none;
-    }
+    display: none;
   }
 `
-const SubText = styled.div(
-  ({ theme }) => css`
-    font-weight: 500;
-    ${theme.headings.h5}
-    margin-top: ${theme.spacing.x2}px;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: ${theme.spacing.x4}px;
-    }
-  `,
-)
 const StyledAngle = styled(Angle)``
 const Sticky = styled.div`
   position: fixed;
@@ -160,7 +105,7 @@ interface Props {
 }
 
 const HeroSlice = ({ slice }: Props) => (
-  <Section>
+  <>
     {/** TODO: Move to its own slice */}
     <Sticky>
       <TopBar className="inverted">
@@ -172,34 +117,24 @@ const HeroSlice = ({ slice }: Props) => (
       <StyledAngle />
     </Sticky>
 
-    <Hero>
-      <StyledContainer>
-        <Intro>
-          <PrismicRichText
-            field={slice.primary.intro}
-            components={{
-              paragraph: ({ children, key }) => (
-                <IntroSubText key={key}>{children}</IntroSubText>
-              ),
-            }}
-            multiline
-          />
-          <IntroTitle>
-            {slice.primary.reactifyTitle
-              ? reactifyTitle(asText(slice.primary.title))
-              : asText(slice.primary.title)}
-          </IntroTitle>
-        </Intro>
-        {isFilled.richText(slice.primary.subText) && (
-          <SubText>
-            <PrismicRichText field={slice.primary.subText} />
-          </SubText>
-        )}
-      </StyledContainer>
-    </Hero>
-
-    <ContactButtonClipped />
-  </Section>
+    <Hero
+      intro={
+        isFilled.richText(slice.primary.intro) && (
+          <PrismicRichText field={slice.primary.intro} multiline />
+        )
+      }
+      title={
+        slice.primary.reactifyTitle
+          ? reactifyTitle(asText(slice.primary.title))
+          : asText(slice.primary.title)
+      }
+      subText={
+        isFilled.richText(slice.primary.subText) && (
+          <PrismicRichText field={slice.primary.subText} />
+        )
+      }
+    />
+  </>
 )
 
 export default HeroSlice
