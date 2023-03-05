@@ -127,14 +127,6 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "ContentSlice",
       "primary": {
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "content": {
           "type": "StructuredText",
           "config": {

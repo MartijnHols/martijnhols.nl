@@ -88,6 +88,7 @@ const ContentSlice = ({ slice, context }: Props) => {
     convertPrismicImage(slice.primary.image)
 
   const inverted =
+    slice.variation === 'inverted' ||
     slice.variation === 'imageLeftInverted' ||
     slice.variation === 'twoColumnsTextInverted'
 

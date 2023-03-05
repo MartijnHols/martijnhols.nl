@@ -5,6 +5,7 @@ import getConfig from 'next/config'
 import { useMemo } from 'react'
 import { dehydrate, QueryClient, DehydratedState } from 'react-query'
 
+import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import HrefLangHead from '../../components/HrefLangHead'
 import PageWrapper from '../../components/PageWrapper'
@@ -140,7 +141,9 @@ const Page = ({ config, article, layout, previewData }: StaticProps) => {
         <PrismicConfigProvider value={config}>
           <TopBar />
           <Hero title={article.data.title} />
+          <Angle inverted />
           <SliceZone<SliceContext>
+            // Reminder: this slice zone is only for the layout slices, the content SliceZone is above
             slices={layout.data.slices}
             components={{
               ...components,

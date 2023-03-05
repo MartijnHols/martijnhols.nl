@@ -154,7 +154,7 @@ interface LayoutDocumentData {
  * Slice for *Layout → Slice Zone*
  *
  */
-type LayoutDocumentDataSlicesSlice = PageContentSlice | FooterSliceSlice;
+type LayoutDocumentDataSlicesSlice = PageContentSlice | FooterSliceSlice | AngleSliceSlice | ContentSliceSlice;
 /**
  * Layout document from Prismic
  *
@@ -558,16 +558,6 @@ export type ContentSliceSliceTwoColumnsTextInverted = prismicT.SharedSliceVariat
  *
  */
 interface ContentSliceSliceInvertedPrimary {
-    /**
-     * Image field in *ContentSlice → Primary*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: content_slice.primary.image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
     /**
      * Content field in *ContentSlice → Primary*
      *

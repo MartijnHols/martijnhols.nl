@@ -61,9 +61,6 @@
       },
       "inverted": {
         "primary": {
-          "image": {
-            "content": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-          },
           "content": {
             "config": {
               "patternType": "PARAGRAPH",

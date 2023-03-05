@@ -15,6 +15,12 @@
             },
             "footer_slice": {
               "type": "SharedSlice"
+            },
+            "angle_slice": {
+              "type": "SharedSlice"
+            },
+            "content_slice": {
+              "type": "SharedSlice"
             }
           }
         }

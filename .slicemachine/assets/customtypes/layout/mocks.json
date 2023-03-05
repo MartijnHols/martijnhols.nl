@@ -3,7 +3,7 @@
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "page_content$a592d7d2-e5e2-4121-bfff-ad85cb984645",
+        "key": "page_content$12073334-0d80-4776-89db-34ab0dfb0fdd",
         "name": "page_content",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -18,7 +18,7 @@
         }
       },
       {
-        "key": "footer_slice$b01e830f-de28-4dcf-b327-37456219eb11",
+        "key": "footer_slice$5131d15b-09c6-4692-8f66-205d0498917e",
         "name": "footer_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -26,7 +26,7 @@
           "primary": {
             "contactLabel": {
               "__TYPE__": "FieldContent",
-              "value": "check",
+              "value": "fifty",
               "type": "Text"
             },
             "contactAnnotation": {
@@ -35,88 +35,130 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Consequat esse aute pariatur commodo ad sint commodo qui adipisicing elit eiusmod nostrud sit ex culpa."
+                    "text": "Sit culpa nostrud pariatur eiusmod aliqua cillum anim qui amet ullamco aute."
                   }
                 }
               ]
             },
             "email": {
               "__TYPE__": "FieldContent",
-              "value": "taught",
+              "value": "dollar",
               "type": "Text"
             },
             "phone": {
               "__TYPE__": "FieldContent",
-              "value": "cover",
+              "value": "divide",
               "type": "Text"
             },
             "whatsApp": {
               "__TYPE__": "FieldContent",
-              "value": "9",
+              "value": "0",
               "type": "Number"
             },
             "socialLabel": {
               "__TYPE__": "FieldContent",
-              "value": "this",
+              "value": "valuable",
               "type": "Text"
             },
             "linkedIn": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "url": "https://prismic.io"
               }
             },
             "gitHub": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "url": "http://google.com"
               }
             },
             "twitter": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "url": "https://prismic.io"
               }
             },
             "companyLabel": {
               "__TYPE__": "FieldContent",
-              "value": "aware",
+              "value": "make",
               "type": "Text"
             },
             "kvk": {
               "__TYPE__": "FieldContent",
-              "value": "rise",
+              "value": "prevent",
               "type": "Text"
             },
             "btw": {
               "__TYPE__": "FieldContent",
-              "value": "round",
+              "value": "grow",
               "type": "Text"
             },
             "iban": {
               "__TYPE__": "FieldContent",
-              "value": "development",
+              "value": "adjective",
               "type": "Text"
             },
             "locationLabel": {
               "__TYPE__": "FieldContent",
-              "value": "magic",
+              "value": "known",
               "type": "Text"
             },
             "city": {
               "__TYPE__": "FieldContent",
-              "value": "desert",
+              "value": "by",
               "type": "Text"
             },
             "location": {
               "__TYPE__": "GeoPointContent",
               "position": {
-                "lat": 48.8606111,
-                "lng": 2.337644
+                "lat": 48.8583736,
+                "lng": 2.2922926
               }
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "angle_slice$9122c0b5-52ee-479f-862c-fe2c9f4e09a4",
+        "name": "angle_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "content_slice$fed7d111-9d0b-4409-9e35-a875f47e1043",
+        "name": "content_slice",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "content": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Deserunt commodo laborum reprehenderit quis culpa ipsum ullamco tempor cupidatat."
+                  }
+                }
+              ]
             }
           },
           "items": [
