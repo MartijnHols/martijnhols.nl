@@ -10,6 +10,8 @@ import HrefLangHead from '../../components/HrefLangHead'
 import PageWrapper from '../../components/PageWrapper'
 import PrismicProvider from '../../components/PrismicProvider'
 import { components } from '../../slices'
+import Hero from '../../slices/HeroSlice/Hero'
+import TopBar from '../../slices/HeroSlice/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
 import { toPrismicLocale, toUserLocale } from '../../utils/locales'
 import {
@@ -136,6 +138,8 @@ const Page = ({ config, article, layout, previewData }: StaticProps) => {
 
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
+          <TopBar />
+          <Hero title={article.data.title} />
           <SliceZone<SliceContext>
             slices={layout.data.slices}
             components={{

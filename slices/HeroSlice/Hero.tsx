@@ -51,9 +51,9 @@ const SubText = styled.div(
 )
 
 interface Props {
-  intro: ReactNode
+  intro?: ReactNode
   title: ReactNode
-  subText: ReactNode
+  subText?: ReactNode
 }
 
 const Hero = ({ intro, title, subText }: Props) => (
