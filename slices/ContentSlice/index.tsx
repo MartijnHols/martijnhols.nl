@@ -81,7 +81,10 @@ interface Props {
   context: SliceContext
 }
 
-const ContentSlice = ({ slice, context }: Props) => {
+const ContentSlice = ({
+  slice,
+  context: { isArticle, recentArticles },
+}: Props) => {
   const image =
     (slice.variation === 'imageLeft' ||
       slice.variation === 'imageLeftInverted') &&
@@ -133,7 +136,7 @@ const ContentSlice = ({ slice, context }: Props) => {
           />
         </ContentContainer>
 
-        {context.isArticle && <ArticleAside />}
+        {isArticle && <ArticleAside recentArticles={recentArticles} />}
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />

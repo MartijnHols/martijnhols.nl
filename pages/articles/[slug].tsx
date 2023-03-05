@@ -52,6 +52,7 @@ const { serverRuntimeConfig } = getConfig()
 interface StaticProps {
   config: PrismicConfig
   article: PrismicArticle
+  recentArticles: PrismicArticle[]
   layout: PrismicLayout
   previewData?: PreviewData
   dehydratedState: DehydratedState
@@ -95,10 +96,17 @@ export const getStaticProps: GetStaticProps<
     }
   }
 
+  const recentArticles = await prismicClient.getAllByType('article', {
+    lang: prismicLocale,
+    limit: 3,
+    predicates: [`[not(document.id, "${article.id}")]`],
+  })
+
   return {
     props: stripUndefined({
       config: config.data,
       article,
+      recentArticles,
       layout,
       previewData,
       dehydratedState: dehydrate(queryClient),
@@ -107,7 +115,13 @@ export const getStaticProps: GetStaticProps<
   }
 }
 
-const Page = ({ config, article, layout, previewData }: StaticProps) => {
+const Page = ({
+  config,
+  article,
+  layout,
+  previewData,
+  recentArticles,
+}: StaticProps) => {
   const PageContentSlice = useMemo(
     () =>
       function PageContentDynamicComponent() {
@@ -117,11 +131,12 @@ const Page = ({ config, article, layout, previewData }: StaticProps) => {
             components={components}
             context={{
               isArticle: true,
+              recentArticles,
             }}
           />
         )
       },
-    [article.data.slices],
+    [article.data.slices, recentArticles],
   )
 
   return (

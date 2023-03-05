@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import mePhoto from '../../static/metemp.png'
+import { PrismicArticle } from '../../utils/prismic'
+import prismicLinkResolver from '../../utils/prismicLinkResolver'
 
 const Container = styled.aside`
   flex: 0 0 auto;
@@ -38,11 +40,21 @@ const Links = styled.div(
     margin-bottom: ${theme.spacing.x2}px;
   `,
 )
+const MoreArticles = styled.div(
+  ({ theme }) => css`
+    font-weight: bold;
+    margin-top: ${theme.spacing.x2}px;
+  `,
+)
 
 // TODO: Store photo in Prismic
 // TODO: Store data in Prismic
 
-const ArticleAside = () => (
+interface Props {
+  recentArticles: PrismicArticle[]
+}
+
+const ArticleAside = ({ recentArticles }: Props) => (
   <Container>
     <StickyContainer>
       <PhotoContainer>
@@ -66,10 +78,18 @@ const ArticleAside = () => (
         <Link href="/">About me</Link> / <Link href="#footer">Contact</Link>
       </Links>
 
-      <div>More articles</div>
-      <div>[other article 1]</div>
-      <div>[other article 2]</div>
-      <div>[other article 3]</div>
+      {recentArticles.length > 0 && (
+        <>
+          <MoreArticles>More articles</MoreArticles>
+          {recentArticles.map((article) => (
+            <div key={article.id}>
+              <Link href={prismicLinkResolver(article)}>
+                {article.data.title}
+              </Link>
+            </div>
+          ))}
+        </>
+      )}
     </StickyContainer>
   </Container>
 )
