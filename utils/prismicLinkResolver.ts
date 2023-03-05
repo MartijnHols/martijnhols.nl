@@ -13,7 +13,7 @@ export const slugResolver = (
     return `/${doc.uid}`
   }
   if (doc.type === 'article' && doc.uid !== HOMEPAGE_SLUG) {
-    return `/${doc.uid}`
+    return `/articles/${doc.uid}`
   }
 
   return '/'
