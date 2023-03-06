@@ -9,7 +9,7 @@ import Link from './Link'
 const Positioner = styled.div(
   ({ theme }) => css`
     position: fixed;
-    z-index: 10;
+    z-index: ${theme.zIndex.topBar};
     bottom: 0;
     right: 30px;
 

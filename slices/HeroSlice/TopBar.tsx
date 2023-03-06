@@ -12,16 +12,18 @@ const Container = styled.div(
   `,
 )
 const StyledAngle = styled(Angle)``
-const Sticky = styled.div`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+const Sticky = styled.div(
+  ({ theme }) => css`
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: ${theme.zIndex.topBar};
 
-  ${StyledAngle} {
-    pointer-events: none;
-  }
-`
+    ${StyledAngle} {
+      pointer-events: none;
+    }
+  `,
+)
 const Content = styled.div(
   ({ theme }) => css`
     position: relative;
