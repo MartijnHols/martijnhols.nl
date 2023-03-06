@@ -97,11 +97,11 @@ export const getStaticProps: GetStaticProps<
     }
   }
 
-  const recentArticles = await prismicClient.getAllByType('article', {
+  const recentArticles = (await prismicClient.getAllByType('article', {
     lang: prismicLocale,
     limit: 3,
     predicates: [`[not(document.id, "${article.id}")]`],
-  })
+  })) as PrismicArticle[]
 
   return {
     props: stripUndefined({
