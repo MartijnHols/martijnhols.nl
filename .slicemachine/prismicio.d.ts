@@ -20,7 +20,18 @@ interface ArticleDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
-     * Description field in *Article*
+     * Sub title field in *Article*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.subTitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    subTitle: prismicT.RichTextField;
+    /**
+     * Description (meta) field in *Article*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -579,10 +590,35 @@ interface ContentSliceSliceInvertedPrimary {
  */
 export type ContentSliceSliceInverted = prismicT.SharedSliceVariation<"inverted", Simplify<ContentSliceSliceInvertedPrimary>, never>;
 /**
+ * Primary content in ContentSlice → Primary
+ *
+ */
+interface ContentSliceSliceArticleMainPrimary {
+    /**
+     * Content field in *ContentSlice → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_slice.primary.content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
+}
+/**
+ * Article Main variation for ContentSlice Slice
+ *
+ * - **API ID**: `articleMain`
+ * - **Description**: `ContentSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContentSliceSliceArticleMain = prismicT.SharedSliceVariation<"articleMain", Simplify<ContentSliceSliceArticleMainPrimary>, never>;
+/**
  * Slice variation for *ContentSlice*
  *
  */
-type ContentSliceSliceVariation = ContentSliceSliceDefault | ContentSliceSliceImageLeft | ContentSliceSliceImageLeftInverted | ContentSliceSliceTwoColumnsText | ContentSliceSliceTwoColumnsTextInverted | ContentSliceSliceInverted;
+type ContentSliceSliceVariation = ContentSliceSliceDefault | ContentSliceSliceImageLeft | ContentSliceSliceImageLeftInverted | ContentSliceSliceTwoColumnsText | ContentSliceSliceTwoColumnsTextInverted | ContentSliceSliceInverted | ContentSliceSliceArticleMain;
 /**
  * ContentSlice Shared Slice
  *
@@ -967,6 +1003,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, LayoutDocumentData, LayoutDocumentDataSlicesSlice, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceImageLeftPrimary, ContentSliceSliceImageLeft, ContentSliceSliceImageLeftInvertedPrimary, ContentSliceSliceImageLeftInverted, ContentSliceSliceTwoColumnsTextPrimary, ContentSliceSliceTwoColumnsText, ContentSliceSliceTwoColumnsTextInvertedPrimary, ContentSliceSliceTwoColumnsTextInverted, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, PageContentSliceDefault, PageContentSliceVariation, PageContentSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, ConfigDocumentData, ConfigDocument, LayoutDocumentData, LayoutDocumentDataSlicesSlice, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectDocumentData, ProjectDocument, AllDocumentTypes, AngleSliceSliceDefault, AngleSliceSliceInverted, AngleSliceSliceVariation, AngleSliceSlice, ContentSliceSliceDefaultPrimary, ContentSliceSliceDefault, ContentSliceSliceImageLeftPrimary, ContentSliceSliceImageLeft, ContentSliceSliceImageLeftInvertedPrimary, ContentSliceSliceImageLeftInverted, ContentSliceSliceTwoColumnsTextPrimary, ContentSliceSliceTwoColumnsText, ContentSliceSliceTwoColumnsTextInvertedPrimary, ContentSliceSliceTwoColumnsTextInverted, ContentSliceSliceInvertedPrimary, ContentSliceSliceInverted, ContentSliceSliceArticleMainPrimary, ContentSliceSliceArticleMain, ContentSliceSliceVariation, ContentSliceSlice, FileDownloadSliceDefaultPrimary, FileDownloadSliceDefault, FileDownloadSliceVariation, FileDownloadSlice, FooterSliceSliceDefaultPrimary, FooterSliceSliceDefault, FooterSliceSliceVariation, FooterSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, PageContentSliceDefault, PageContentSliceVariation, PageContentSlice, ProjectsSliceSliceDefaultPrimary, ProjectsSliceSliceDefault, ProjectsSliceSliceVariation, ProjectsSliceSlice };
     }
 }

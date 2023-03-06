@@ -70,7 +70,7 @@ export const globalStyles = css`
     ${h1}
   }
   h2 {
-    margin-top: ${spacing.x6}px;
+    margin-top: ${spacing.x4}px;
     margin-bottom: ${spacing.x2}px;
     ${h2}
   }

@@ -75,6 +75,10 @@ const Title = styled.h2(
     margin: 0;
   `,
 )
+const ArticleAsideContainer = styled.div`
+  flex: 0 0 auto;
+  width: 330px;
+`
 
 interface Props {
   slice: Content.ContentSliceSlice
@@ -92,6 +96,7 @@ const ContentSlice = ({
 
   const inverted =
     slice.variation === 'inverted' ||
+    slice.variation === 'articleMain' ||
     slice.variation === 'imageLeftInverted' ||
     slice.variation === 'twoColumnsTextInverted'
 
@@ -117,7 +122,6 @@ const ContentSlice = ({
             />
           </ImageContainer>
         )}
-
         <ContentContainer
           className={inverted ? 'inverted' : undefined}
           twoColumnsText={
@@ -136,7 +140,13 @@ const ContentSlice = ({
           />
         </ContentContainer>
 
-        {isArticle && <ArticleAside recentArticles={recentArticles} />}
+        {isArticle && (
+          <ArticleAsideContainer>
+            {slice.variation === 'articleMain' && (
+              <ArticleAside recentArticles={recentArticles} />
+            )}
+          </ArticleAsideContainer>
+        )}
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />

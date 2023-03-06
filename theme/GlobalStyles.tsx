@@ -22,12 +22,6 @@ const GlobalStyles = () => (
             monospace;
         }
 
-        figure,
-        ul {
-          margin: 0;
-          padding: 0;
-        }
-
         svg {
           width: auto;
           height: auto;

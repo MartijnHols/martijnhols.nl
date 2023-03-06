@@ -10,6 +10,7 @@ import BaseHead from '../../components/BaseHead'
 import HrefLangHead from '../../components/HrefLangHead'
 import PageWrapper from '../../components/PageWrapper'
 import PrismicProvider from '../../components/PrismicProvider'
+import PrismicRichText from '../../components/PrismicRichText'
 import { components } from '../../slices'
 import Hero from '../../slices/HeroSlice/Hero'
 import TopBar from '../../slices/HeroSlice/TopBar'
@@ -155,7 +156,14 @@ const Page = ({
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
           <TopBar />
-          <Hero title={article.data.title} />
+          <Hero
+            title={article.data.title}
+            subText={
+              isFilled.richText(article.data.subTitle) && (
+                <PrismicRichText field={article.data.subTitle} />
+              )
+            }
+          />
           <Angle inverted />
           <SliceZone<SliceContext>
             // Reminder: this slice zone is only for the layout slices, the content SliceZone is above

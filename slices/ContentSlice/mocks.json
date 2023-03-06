@@ -27,7 +27,6 @@
     "variation": "imageLeft",
     "primary": {
       "image": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
           "url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
@@ -45,6 +44,9 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
       },
       "content": {
@@ -71,7 +73,6 @@
     "variation": "imageLeftInverted",
     "primary": {
       "image": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
           "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
@@ -89,6 +90,9 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
       },
       "content": {
@@ -180,6 +184,47 @@
             "content": {
               "text": "Veniam consectetur aute qui."
             }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "articleMain",
+    "primary": {
+      "content": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit, ex a molestie aliquet, elit risus tempus est, vitae hendrerit sem justo congue dolor. Aliquam mauris ipsum, dignissim vitae consequat vel, mollis sed ligula. Phasellus enim est, porta ac quam dictum, congue vulputate nulla. Curabitur pretium eleifend dui, in vestibulum quam vehicula id. Proin ut rutrum purus. Proin orci dui, tempus sed dolor et, bibendum euismod arcu. Fusce ex lorem, vehicula vitae ex non, vestibulum blandit risus. Donec sit amet posuere arcu. Ut eu arcu eget urna aliquam suscipit eget nec sapien. Curabitur facilisis erat ac ex efficitur, eu aliquam dolor pretium. Nunc sem nulla, pellentesque non accumsan vel, laoreet a ex.",
+              "spans": []
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Nullam egestas fringilla nulla, id pharetra risus tincidunt a. Cras interdum, diam ut tincidunt rhoncus, dui magna commodo libero, nec scelerisque ligula nibh eu libero. Aliquam luctus, libero a pretium ornare, sapien nisi viverra velit, in tempus erat ligula non ligula. Integer pulvinar ex non consectetur interdum. Sed tempus odio nisl, sed vulputate libero volutpat faucibus. Vestibulum eu orci dapibus, interdum neque a, dictum augue. Nulla facilisi. Nam tempus purus arcu, a vulputate elit aliquam euismod. Etiam congue justo nec libero facilisis dictum. Aliquam id rhoncus enim, sit amet elementum quam. Vestibulum vehicula metus id fringilla aliquet. Maecenas ipsum felis, lobortis eu turpis id, ultrices consectetur eros. Morbi tempus enim eu porttitor rutrum. Fusce nisi sapien, euismod nec odio in, malesuada iaculis sem. Ut dignissim, orci non blandit luctus, felis est pharetra erat, et sollicitudin neque odio in elit. Pellentesque mollis urna neque, eget gravida erat volutpat in.",
+              "spans": []
+            },
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Donec ultrices tristique sapien id finibus. Donec quis lacus neque. Duis placerat faucibus mauris, ut tristique quam tincidunt ac. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla egestas a eros nec consectetur. Donec accumsan metus vitae tortor iaculis ultricies. Sed rhoncus sagittis purus sit amet laoreet. Praesent interdum elit ac libero ullamcorper, at accumsan sapien luctus. Cras sollicitudin, urna non ornare tincidunt, turpis enim suscipit erat, sed consequat leo ipsum at velit. Fusce ac fringilla justo. Vivamus leo lorem, pellentesque vel sem id, malesuada iaculis justo. Mauris eu ligula vel ante aliquam condimentum.",
+              "spans": []
+            },
+            "direction": "ltr"
           }
         ]
       }

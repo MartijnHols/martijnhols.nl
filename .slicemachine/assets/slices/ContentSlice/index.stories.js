@@ -22,3 +22,6 @@ _TwoColumnsTextInverted.storyName = ''
 
 export const _Inverted = () => <MyComponent slice={{"variation":"inverted","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"Ipsum quis deserunt aliquip quis exercitation exercitation. Ut tempor mollit eu labore ullamco et qui velit enim laborum eu. Mollit commodo duis sint velit qui.","spans":[]},{"type":"paragraph","text":"Magna incididunt velit sit reprehenderit laborum amet pariatur exercitation qui commodo irure pariatur. Sit veniam proident et consectetur dolor et mollit consequat tempor.","spans":[]},{"type":"paragraph","text":"Veniam consectetur aute qui.","spans":[]}]},"id":"_Inverted","slice_type":"content_slice"}} />
 _Inverted.storyName = ''
+
+export const _ArticleMain = () => <MyComponent slice={{"variation":"articleMain","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"content":[{"type":"paragraph","text":"Reprehenderit pariatur sunt irure excepteur ut Lorem reprehenderit veniam labore pariatur officia adipisicing sint. Occaecat aute laboris mollit magna proident mollit incididunt adipisicing et quis eiusmod est incididunt sunt ex. Occaecat eiusmod aute est sint ullamco sunt incididunt reprehenderit sint deserunt ex ipsum.","spans":[]}]},"id":"_ArticleMain","slice_type":"content_slice"}} />
+_ArticleMain.storyName = ''
