@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
-import { asLink } from '@prismicio/helpers'
+import { asLink, isFilled } from '@prismicio/helpers'
 
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
@@ -78,7 +78,7 @@ const FooterSlice = ({ slice }: Props) => {
             )}
           </Values>
         </ContactRow>
-        {slice.primary.contactAnnotation.length > 0 && (
+        {isFilled.richText(slice.primary.contactAnnotation) && (
           <Row>
             <Label />
             <Values>
