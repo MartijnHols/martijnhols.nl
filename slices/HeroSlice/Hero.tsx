@@ -10,6 +10,7 @@ const Section = styled.header(
     position: relative;
     background: ${theme.colors.yellow};
     color: ${theme.colors.black};
+    overflow: hidden;
   `,
 )
 const StyledContainer = styled(Container)(

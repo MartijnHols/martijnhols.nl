@@ -4,13 +4,6 @@ import styled from '@emotion/styled'
 import Angle from '../../components/Angle'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 
-const Container = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
-    height: 1em;
-  `,
-)
 const StyledAngle = styled(Angle)``
 const Sticky = styled.div(
   ({ theme }) => css`
@@ -22,6 +15,13 @@ const Sticky = styled.div(
     ${StyledAngle} {
       pointer-events: none;
     }
+  `,
+)
+const Container = styled.div(
+  ({ theme }) => css`
+    background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
+    height: 1em;
   `,
 )
 const Content = styled.div(
