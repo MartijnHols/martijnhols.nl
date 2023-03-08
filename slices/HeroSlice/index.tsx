@@ -61,7 +61,7 @@ const reactifyTitle = (title: string) =>
     title,
     'React',
     <React>
-      React <StyledReactLogo aria-hidden />
+      React <StyledReactLogo aria-label="" aria-hidden />
     </React>,
   )
 
