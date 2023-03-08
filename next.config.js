@@ -63,6 +63,14 @@ const nextConfig = withBundleAnalyzer({
     deviceSizes: [640, 750, 828, 1080, 1280, 1440, 1920, 2048, 2560, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
+  redirects: async () => [
+    {
+      source: '/:path*',
+      has: [{ type: 'host', value: 'www.martijnhols.nl' }],
+      destination: 'https://martijnhols.nl/:path*',
+      permanent: true,
+    },
+  ],
   webpack: (config) => {
     config.module.rules = [
       ...config.module.rules,
