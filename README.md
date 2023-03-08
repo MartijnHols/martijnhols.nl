@@ -66,3 +66,4 @@ There are several things I am considering improving for this app, such as:
 - Husky
 - OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing, and for future article images
 - Canonical / alternate / hreflang meta tags
+- Add a page with local town names for Google indexing so I'm findable for "react developer amersfoort" etc (veenendaal, rhenen)

@@ -20,6 +20,7 @@ interface Props {
 
 const HrefLangHead = ({ page }: Props) => (
   <Head>
+    <link rel="canonical" href={absoluteUrl(prismicLinkResolver(page))} />
     {[page, ...page.alternate_languages].map((alternate) => {
       let hrefLang = prismicLocaleToHrefLang(alternate.lang)
       if (hrefLang === defaultHrefLang) {
