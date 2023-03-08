@@ -26,7 +26,7 @@ const StyledContainer = styled(Container)(
     }
   `,
 )
-const Intro = styled.h1`
+const Intro = styled.div`
   line-height: 1.1;
   font-weight: 800;
   margin-bottom: 0;
@@ -38,7 +38,10 @@ const IntroSubText = styled.span(
     margin-bottom: ${theme.spacing.x1}px;
   `,
 )
-export const IntroTitle = styled.span``
+export const IntroTitle = styled.h1`
+  font-weight: inherit;
+  margin: 0;
+`
 const SubText = styled.div(
   ({ theme }) => css`
     font-weight: 500;
