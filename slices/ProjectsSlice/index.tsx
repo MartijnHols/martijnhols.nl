@@ -37,7 +37,7 @@ const Title = styled.h2(
     margin-top: 0;
   `,
 )
-const SubTitle = styled.h3(
+const SubTitle = styled.div(
   ({ theme }) => css`
     text-transform: uppercase;
     font-weight: 600;
