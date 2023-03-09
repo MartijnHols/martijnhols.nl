@@ -20,17 +20,6 @@ interface ArticleDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
-     * Sub title field in *Article*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: article.subTitle
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    subTitle: prismicT.RichTextField;
-    /**
      * Description (meta) field in *Article*
      *
      * - **Field Type**: Text
@@ -41,6 +30,39 @@ interface ArticleDocumentData {
      *
      */
     description: prismicT.KeyTextField;
+    /**
+     * Pre-title field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.preTitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    preTitle: prismicT.KeyTextField;
+    /**
+     * Hero title field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Defaults to the title when empty
+     * - **API ID Path**: article.heroTitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heroTitle: prismicT.KeyTextField;
+    /**
+     * Sub title field in *Article*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.subTitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    subTitle: prismicT.RichTextField;
     /**
      * Slice Zone field in *Article*
      *

@@ -55,16 +55,16 @@ const SubText = styled.div(
 )
 
 interface Props {
-  intro?: ReactNode
+  preTitle?: ReactNode
   title: ReactNode
   subText?: ReactNode
 }
 
-const Hero = ({ intro, title, subText }: Props) => (
+const Hero = ({ preTitle, title, subText }: Props) => (
   <Section>
     <StyledContainer>
       <Intro>
-        {intro && <IntroSubText>{intro}</IntroSubText>}
+        {preTitle && <IntroSubText>{preTitle}</IntroSubText>}
         <IntroTitle>{title}</IntroTitle>
       </Intro>
       {subText && <SubText>{subText}</SubText>}

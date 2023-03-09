@@ -157,7 +157,8 @@ const Page = ({
         <PrismicConfigProvider value={config}>
           <TopBar />
           <Hero
-            title={article.data.title}
+            preTitle={article.data.preTitle}
+            title={article.data.heroTitle || article.data.title}
             subText={
               isFilled.richText(article.data.subTitle) && (
                 <PrismicRichText field={article.data.subTitle} />

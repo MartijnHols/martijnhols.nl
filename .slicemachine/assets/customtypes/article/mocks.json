@@ -1,11 +1,26 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "went"
+    "value": "related"
   },
   "title": {
     "__TYPE__": "FieldContent",
-    "value": "blood",
+    "value": "cover",
+    "type": "Text"
+  },
+  "description": {
+    "__TYPE__": "FieldContent",
+    "value": "against",
+    "type": "Text"
+  },
+  "preTitle": {
+    "__TYPE__": "FieldContent",
+    "value": "higher",
+    "type": "Text"
+  },
+  "heroTitle": {
+    "__TYPE__": "FieldContent",
+    "value": "through",
     "type": "Text"
   },
   "subTitle": {
@@ -14,21 +29,16 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Reprehenderit dolore non Lorem enim exercitation velit excepteur nulla tempor cillum occaecat. Cillum nisi do nostrud sint amet do sit eiusmod amet dolor non velit aliquip deserunt. Mollit culpa nostrud culpa ad ut cillum eu ipsum ad ea cupidatat occaecat."
+          "text": "Qui duis ipsum est cupidatat eu excepteur id cillum laborum culpa fugiat est. Enim dolor irure dolore. Est in officia proident sit nostrud."
         }
       }
     ]
-  },
-  "description": {
-    "__TYPE__": "FieldContent",
-    "value": "paragraph",
-    "type": "Text"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "content_slice$64cadeb4-0de2-4c4f-8507-cf83ea8f25f3",
+        "key": "content_slice$4eb54c99-2b6d-42dd-b811-06489f75980f",
         "name": "content_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -40,7 +50,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Irure dolore aliquip adipisicing sit aliqua ex enim esse commodo reprehenderit id esse consectetur voluptate. Cillum nisi ex officia incididunt. Nostrud veniam magna aliquip dolore id esse est aliqua nulla anim."
+                    "text": "Elit cupidatat excepteur minim et eiusmod ea dolore ut veniam qui. Proident in voluptate id velit nostrud laboris aute nisi ad esse quis in magna."
                   }
                 }
               ]
@@ -55,7 +65,7 @@
         }
       },
       {
-        "key": "hero_slice$eabb06ab-8926-4b89-89fc-c574ae12492e",
+        "key": "hero_slice$68392d4e-8828-4a2f-bd62-044865781ee4",
         "name": "hero_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -67,7 +77,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Do sint cupidatat proident non et non culpa duis cillum anim ad incididunt incididunt. Tempor excepteur ad laboris consectetur eiusmod. Cillum reprehenderit ea cillum ad occaecat irure dolore mollit qui deserunt id ut."
+                    "text": "Deserunt enim adipisicing Lorem irure excepteur id ea cupidatat aute ut veniam aute exercitation in."
                   }
                 }
               ]
@@ -78,7 +88,7 @@
                 {
                   "type": "heading1",
                   "content": {
-                    "text": "Language"
+                    "text": "Choice"
                   }
                 }
               ]
@@ -89,14 +99,14 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "In officia dolore commodo anim magna ea sint. Duis labore exercitation culpa veniam cupidatat esse laboris aliqua incididunt veniam mollit aliqua ea velit non."
+                    "text": "Esse eu dolore magna. Amet aliqua fugiat sit Lorem ex reprehenderit pariatur ipsum commodo fugiat occaecat dolor dolore eiusmod."
                   }
                 }
               ]
             },
             "reactifyTitle": {
               "__TYPE__": "BooleanContent",
-              "value": false
+              "value": true
             }
           },
           "items": [
@@ -108,7 +118,7 @@
         }
       },
       {
-        "key": "angle_slice$a92ed78f-7e78-4e48-9ea8-81d7fe9deddf",
+        "key": "angle_slice$b3ca518a-3641-468a-962c-16f18b98a53f",
         "name": "angle_slice",
         "widget": {
           "__TYPE__": "SharedSliceContent",

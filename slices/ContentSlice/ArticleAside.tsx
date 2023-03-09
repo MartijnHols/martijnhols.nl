@@ -84,8 +84,8 @@ const ArticleAside = ({ recentArticles, ...others }: Props) => (
         <Name>Martijn Hols</Name>
 
         <About>
-          I'm a freelance React Tech Lead juggling React components for over 7
-          years
+          I'm a freelance React Tech Lead/Developer juggling React components
+          for over 7 years
         </About>
 
         <Links>

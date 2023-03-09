@@ -19,6 +19,27 @@
           "placeholder": ""
         }
       },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description (meta)",
+          "placeholder": ""
+        }
+      },
+      "preTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Pre-title",
+          "placeholder": ""
+        }
+      },
+      "heroTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Hero title",
+          "placeholder": "Defaults to the title when empty"
+        }
+      },
       "subTitle": {
         "type": "StructuredText",
         "config": {
@@ -26,13 +47,6 @@
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-        }
-      },
-      "description": {
-        "type": "Text",
-        "config": {
-          "label": "Description (meta)",
-          "placeholder": ""
         }
       },
       "slices": {
