@@ -155,7 +155,7 @@ const Page = ({
 
       <PrismicProvider previewData={previewData}>
         <PrismicConfigProvider value={config}>
-          <TopBar />
+          <TopBar showLanguageSwitcher={false} />
           <Hero
             preTitle={article.data.preTitle}
             title={article.data.heroTitle || article.data.title}

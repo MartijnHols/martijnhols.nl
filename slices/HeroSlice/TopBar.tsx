@@ -41,12 +41,14 @@ const Content = styled.div(
   `,
 )
 
-const TopBar = () => (
+interface Props {
+  showLanguageSwitcher?: boolean
+}
+
+const TopBar = ({ showLanguageSwitcher = true }: Props) => (
   <Sticky>
     <Container className="inverted">
-      <Content>
-        <LanguageSwitcher />
-      </Content>
+      <Content>{showLanguageSwitcher && <LanguageSwitcher />}</Content>
     </Container>
 
     <StyledAngle />
