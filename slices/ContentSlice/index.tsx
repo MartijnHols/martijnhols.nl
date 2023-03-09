@@ -75,10 +75,14 @@ const Title = styled.h2(
     margin: 0;
   `,
 )
-const ArticleAsideContainer = styled.div`
-  flex: 0 0 auto;
-  width: 330px;
-`
+const ArticleAsideContainer = styled.div(
+  ({ theme }) => css`
+    flex: 0 0 auto;
+    @media screen and (min-width: ${theme.breakpoints.DESKTOP}px) {
+      width: 330px;
+    }
+  `,
+)
 
 interface Props {
   slice: Content.ContentSliceSlice
