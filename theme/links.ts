@@ -6,37 +6,21 @@ export const globalStyles = css`
   a:not(.plain) {
     color: ${colors.black};
     text-decoration: none;
-    border-bottom: 3px solid currentColor;
-
-    position: relative;
-    z-index: 1;
-    --transition-duration: 120ms;
-    transition: all var(--transition-duration) ease-out;
-    // This is a bummer, but it's the easiest way to workaround broken
-    // transition for wrapping links. Let's not make long links.
-    white-space: nowrap;
-
-    ::after {
-      content: '';
-      position: absolute;
-      left: -2px;
-      right: -2px;
-      top: -2px;
-      bottom: -2px;
-      z-index: -1;
-      background: ${colors.black};
-      transform: scaleY(0);
-      transition: transform var(--transition-duration) ease-out;
-      transform-origin: bottom;
-    }
+    border-bottom: 3px solid ${colors.black};
+    transition: all 120ms ease-out;
+    // It is not possible to animate a linear-gradient (yet), so we need to do
+    // some background-positioning trickery to get the effect we want.
+    background-image: linear-gradient(
+      0deg,
+      ${colors.black} 50%,
+      transparent 50%
+    );
+    background-size: 100% 200%;
+    background-position-y: 0px;
 
     :hover {
       color: ${colors.yellow};
-      border-bottom-width: 0;
-
-      ::after {
-        transform: scaleY(1);
-      }
+      background-position-y: 100%;
     }
   }
   a.plain {
@@ -46,10 +30,12 @@ export const globalStyles = css`
   .inverted {
     a {
       color: ${colors.yellow};
-
-      ::after {
-        background: ${colors.yellow};
-      }
+      border-bottom-color: ${colors.yellow};
+      background-image: linear-gradient(
+        0deg,
+        ${colors.yellow} 50%,
+        transparent 50%
+      );
 
       :hover {
         color: ${colors.black};
