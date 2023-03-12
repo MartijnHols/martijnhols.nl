@@ -11,9 +11,6 @@ export const h1 = css`
   @media (min-width: ${breakpoints.DESKTOP}px) {
     font-size: 100px;
   }
-  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
-    font-size: 120px;
-  }
 `
 export const h2 = css`
   font-size: 45px;
