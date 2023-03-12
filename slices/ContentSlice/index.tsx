@@ -18,14 +18,14 @@ const StyledContainer = styled(Container)(
     padding-top: 100px;
     padding-bottom: 100px;
     display: flex;
-    gap: ${theme.spacing.x10}px;
+    flex-flow: column;
+    gap: ${theme.spacing.x6}px;
 
-    @media (max-width: ${theme.breakpoints.DESKTOP_MAX}px) {
-      gap: ${theme.spacing.x6}px;
+    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
+      flex-flow: row;
     }
-    @media (max-width: ${theme.breakpoints.MOBILE_MAX}px) {
-      flex-flow: column;
-      gap: ${theme.spacing.x6}px;
+    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+      gap: ${theme.spacing.x10}px;
     }
   `,
 )
@@ -33,13 +33,13 @@ const ImageContainer = styled.div(
   ({ theme }) => css`
     flex: 0 0 auto;
     width: 100%;
-    max-width: 500px;
+    max-width: none;
 
-    @media (max-width: ${theme.breakpoints.DESKTOP_MAX}px) {
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 400px;
     }
-    @media (max-width: ${theme.breakpoints.MOBILE_MAX}px) {
-      max-width: none;
+    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+      max-width: 500px;
     }
   `,
 )
@@ -122,7 +122,7 @@ const ContentSlice = ({
               src={image}
               alt={image.alt}
               layout="responsive"
-              sizes={`(max-width: ${theme.breakpoints.MOBILE_MAX}px) 100vw, (max-width: ${theme.breakpoints.DESKTOP_MAX}px) 400px, 500px`}
+              sizes={`(min-width: ${theme.breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${theme.breakpoints.TABLET}px) 400px, 100vw`}
             />
           </ImageContainer>
         )}
