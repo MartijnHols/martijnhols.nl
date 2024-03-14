@@ -155,7 +155,7 @@ jobs:
           tags: 'martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}'
           outputs: type=docker,dest=/tmp/dockerimage.tar
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: dockerimage
           path: /tmp/dockerimage.tar
@@ -196,7 +196,7 @@ jobs:
         run: yarn lhci upload
       - name: Upload results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: lighthouse-mobile
           path: lighthouse
@@ -234,7 +234,7 @@ jobs:
         run: yarn lhci upload
       - name: Upload results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: lighthouse-desktop
           path: lighthouse
