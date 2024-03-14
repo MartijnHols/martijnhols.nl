@@ -3,8 +3,11 @@
  * @param {{url: string, options: LHCI.CollectCommand.Options}} context
  */
 module.exports = async (browser, context) => {
-  const page = await browser.newPage()
   const isDesktop = context.options.settings?.preset === 'desktop'
+
+  console.log(`Warming cache (${isDesktop ? 'desktop' : 'mobile'})...`)
+
+  const page = await browser.newPage()
   await page.setViewport(
     isDesktop
       ? {
@@ -18,7 +21,10 @@ module.exports = async (browser, context) => {
           deviceScaleFactor: 1,
         },
   )
-  await page.goto(context.url)
+  await page.goto(context.url, {
+    timeout: 90000,
+  })
   await page.close()
-  console.log(`Warmed cache (${isDesktop ? 'desktop' : 'mobile'})`)
+
+  console.log(`Cache is warm! 🌞`)
 }
