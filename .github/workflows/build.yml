@@ -179,7 +179,7 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
           required: true
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: dockerimage
           path: /tmp
@@ -217,7 +217,7 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
           required: true
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: dockerimage
           path: /tmp
@@ -268,7 +268,7 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: dockerimage
           path: /tmp
