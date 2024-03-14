@@ -33,6 +33,7 @@ const nextConfig = withBundleAnalyzer({
       (locale) => prismicLocaleMap[locale] || locale,
     ),
     defaultLocale: process.env.DEFAULT_LOCALE,
+    localeDetection: false,
   },
   // Values that can not be different between builds. Most values apply, as most
   // values affect the generated pages in one way or another. e.g. the default
