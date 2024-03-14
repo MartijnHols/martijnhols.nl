@@ -1,6 +1,6 @@
 # Based on: https://nextjs.org/docs/deployment
 
-FROM node:16-alpine
+FROM node:20-alpine
 WORKDIR /app
 
 ENV NODE_ENV production
