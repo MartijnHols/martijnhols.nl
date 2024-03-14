@@ -23,7 +23,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@lhci/cli": "^0.10.0",
+    "@lhci/cli": "^0.13.0",
     "@next/bundle-analyzer": "^12.3.1",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.5",
@@ -38,7 +38,7 @@
     "react-query": "^3.38.0",
     "react-transition-group": "^4.4.5",
     "sanitize.css": "^13.0.0",
-    "sharp": "^0.30.4",
+    "sharp": "^0.33.2",
     "slice-machine-ui": "^0.7.0"
   },
   "devDependencies": {
