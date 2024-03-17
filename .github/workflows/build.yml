@@ -226,7 +226,7 @@ jobs:
       - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
       - run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 1; done' || false
       - name: Collect results
-        run: yarn lhci collect --settings.chromeFlags="--no-sandbox" --puppeteerLaunchOptions.args="--no-sandbox" --puppeteerLaunchOptions.args="" --settings.preset="desktop"
+        run: yarn lhci collect --settings.preset="desktop"
       - name: Assert results
         run: yarn lhci assert
       - name: Store results
