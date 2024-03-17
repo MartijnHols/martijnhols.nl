@@ -29,7 +29,7 @@
     "@prismicio/helpers": "^2.3.5",
     "@prismicio/next": "^1.0.3",
     "@prismicio/react": "^2.5.2",
-    "@prismicio/richtext": "^2.1.1",
+    "@prismicio/richtext": "^2.1.5",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "concurrently": "^7.1.0",
     "next": "^12.3.1",
