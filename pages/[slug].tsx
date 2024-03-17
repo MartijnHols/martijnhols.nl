@@ -164,7 +164,11 @@ const Page = ({ config, page, layout, previewData }: StaticProps) => {
   const PageContentSlice = useMemo(
     () =>
       function PageContentDynamicComponent() {
-        return <SliceZone slices={page.data.slices} components={components} />
+        return (
+          <main role="main">
+            <SliceZone slices={page.data.slices} components={components} />
+          </main>
+        )
       },
     [page.data.slices],
   )

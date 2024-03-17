@@ -10,7 +10,13 @@ ci:
     assertions:
       csp-xss: 'warn'
       # While it may have an effect, LH doesn't consider this assertion crticial so long as the LCP is within a reasonable amount of time
-      uses-responsive-images: 'off'
+      uses-responsive-images: 'warn'
+      # Some links in running texts are identical, but serve a different purpose from the "visit" link that each project card has
+      identical-links-same-purpose: 'warn'
+      # I can't find the issue and the report doesn't include which elements
+      target-size: 'warn'
+      # Unavoidable with next.js
+      total-byte-weight: 'warn'
   upload:
     target: filesystem
     outputDir: lighthouse

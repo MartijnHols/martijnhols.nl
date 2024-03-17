@@ -50,7 +50,7 @@ const FooterSlice = ({ slice }: Props) => {
   const twitter = asLink(slice.primary.twitter, prismicLinkResolver)
 
   return (
-    <Section className="inverted" id="footer">
+    <Section className="inverted" id="footer" role="contentinfo">
       <Container>
         <ContactRow>
           <Label>{slice.primary.contactLabel}</Label>
