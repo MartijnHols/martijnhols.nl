@@ -12,7 +12,6 @@ const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint)
  */
 const prismicLocaleMap = {
   'nl-nl': 'nl',
-  'en-us': 'en',
 }
 
 if (!process.env.NEXT_PUBLIC_PRIMARY_HOST) {

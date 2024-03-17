@@ -45,7 +45,7 @@ interface Props {
   showLanguageSwitcher?: boolean
 }
 
-const TopBar = ({ showLanguageSwitcher = true }: Props) => (
+const TopBar = ({ showLanguageSwitcher = false }: Props) => (
   <Sticky>
     <Container className="inverted">
       <Content>{showLanguageSwitcher && <LanguageSwitcher />}</Content>
