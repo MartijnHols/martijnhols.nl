@@ -18,7 +18,7 @@ const SliceSimulatorPage = () => {
       const prismicClient = createClient()
       const config = await getPrismicConfig(
         prismicClient,
-        toPrismicLocale(process.env.DEFAULT_LOCALE),
+        toPrismicLocale(process.env.NEXT_PUBLIC_DEFAULT_LOCALE),
       )
 
       setConfig(config.data)

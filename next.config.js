@@ -17,8 +17,8 @@ const prismicLocaleMap = {
 if (!process.env.NEXT_PUBLIC_PRIMARY_HOST) {
   throw new Error('Missing required env var: NEXT_PUBLIC_PRIMARY_HOST')
 }
-if (!process.env.DEFAULT_LOCALE) {
-  throw new Error('Missing required env var: DEFAULT_LOCALE')
+if (!process.env.NEXT_PUBLIC_DEFAULT_LOCALE) {
+  throw new Error('Missing required env var: NEXT_PUBLIC_DEFAULT_LOCALE')
 }
 if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
@@ -31,7 +31,7 @@ const nextConfig = withBundleAnalyzer({
     locales: Object.keys(prismicLocaleMap).map(
       (locale) => prismicLocaleMap[locale] || locale,
     ),
-    defaultLocale: process.env.DEFAULT_LOCALE,
+    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
     localeDetection: false,
   },
   // Values that can not be different between builds. Most values apply, as most

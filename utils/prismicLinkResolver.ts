@@ -30,7 +30,7 @@ const prismicLinkResolver = (
 
   const userLocale = toUserLocale(doc.lang)
 
-  if (process.env.DEFAULT_LOCALE === userLocale) {
+  if (process.env.NEXT_PUBLIC_DEFAULT_LOCALE === userLocale) {
     return slug
   }
 
