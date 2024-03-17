@@ -30,7 +30,7 @@ const Title = styled.h2(
   ({ theme }) => css`
     text-transform: uppercase;
     font-weight: 800;
-    transform: rotate(-2deg);
+    transform: rotate(-1deg);
     border-top: ${theme.spacing.x2}px solid currentColor;
     display: inline-block;
     margin-bottom: 0;
@@ -42,7 +42,7 @@ const SubTitle = styled.div(
     text-transform: uppercase;
     font-weight: 600;
     font-size: 24px;
-    transform: rotate(-2deg);
+    transform: rotate(-1deg);
     margin-bottom: ${theme.spacing.x6}px;
     letter-spacing: 3px;
     margin-left: 5px;
@@ -50,7 +50,7 @@ const SubTitle = styled.div(
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       // The translation puts it at the same position as a border-bottom should be,
       // which should be nice for visual consistency.
-      transform: rotate(-2deg) translateY(-50%);
+      transform: rotate(-1deg) translateY(-40%);
     }
   `,
 )
