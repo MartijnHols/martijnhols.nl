@@ -54,8 +54,6 @@ Since this is a small project, the folder structure is minimal.
 
 There are several things I am considering improving for this app, such as:
 
-- Adding a minimal blog using Prismic as CMS and ~~GitHub comments as comments~~ Twitter thead as comments. I'm thinking it wouldn't even really be a blog, just a place to post static articles to share with people and for SEO. I have a dozen article ideas already lined up.
-- ~~Comments: https://giscus.app/~~
 - RSS
 - ~~With legacy Prismic setups I always kept the Prismic components separate from the slice components, so all the Prismic mess and real components aren't mixed. In other words, I am considering adding the slices to the components folder but with the Prismic bridging code exclusively in the current slices folder. Theoretically this makes it easier to switch CMS, but that would probably never happen. More importantly code separation and components become cleaner and shorter.~~ I tried entangling them, and this made it very hard to reuse the components for the articles pages. Splitting is the way to go.
 - Cypress. I am a big fan of Cypress E2E testing. While it would be overkill for this site, it would be a good opportunity to show off and polish my usual implementation.
@@ -64,6 +62,6 @@ There are several things I am considering improving for this app, such as:
 - ESLint
 - Prettier
 - Husky
-- OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing, and for future article images
+- OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing
 - Canonical / alternate / hreflang meta tags
 - Add a page with local town names for Google indexing so I'm findable for "react developer amersfoort" etc (veenendaal, rhenen)

@@ -79,16 +79,6 @@ export const getPages = async (
   await client.getAllByType<PrismicPage>('page', {
     lang: locale,
   })
-export const getArticles = async (
-  client: Client,
-  /**
-   * If lang is omitted it only returns the master locale.
-   */
-  locale: string = '*',
-) =>
-  await client.getAllByType<PrismicArticle>('article', {
-    lang: locale,
-  })
 
 export type PrismicProject = Content.ProjectDocument
 
@@ -96,20 +86,6 @@ export const getProjects = (client: Client, locale: string) =>
   client.getAllByType<PrismicProject>('project', {
     lang: locale,
   })
-
-export type PrismicArticle = PrismicDocument<
-  Content.ArticleDocument['data'] & {
-    // This is necessary because the generated types do not include "filled" which is very troublesome to work around
-    slices: SliceZoneType<Content.ArticleDocumentDataSlicesSlice, 'filled'>
-  },
-  'article'
->
-
-export const getArticle = async (
-  prismicClient: Client,
-  slug: string,
-  locale: string,
-) => await getByUid<PrismicArticle>(prismicClient, 'article', slug, locale)
 
 export type PrismicLayout = PrismicDocument<
   Content.LayoutDocument['data'] & {

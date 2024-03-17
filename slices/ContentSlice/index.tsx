@@ -7,8 +7,6 @@ import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import convertPrismicImage from '../../utils/convertPrismicImage'
-import SliceContext from '../../utils/SliceContext'
-import ArticleAside from './ArticleAside'
 
 const Section = styled.section`
   position: relative;
@@ -75,24 +73,12 @@ const Title = styled.h2(
     margin: 0;
   `,
 )
-const ArticleAsideContainer = styled.div(
-  ({ theme }) => css`
-    flex: 0 0 auto;
-    @media screen and (min-width: ${theme.breakpoints.DESKTOP}px) {
-      width: 330px;
-    }
-  `,
-)
 
 interface Props {
   slice: Content.ContentSliceSlice
-  context: SliceContext
 }
 
-const ContentSlice = ({
-  slice,
-  context: { isArticle, recentArticles },
-}: Props) => {
+const ContentSlice = ({ slice }: Props) => {
   const image =
     (slice.variation === 'imageLeft' ||
       slice.variation === 'imageLeftInverted') &&
@@ -143,14 +129,6 @@ const ContentSlice = ({
             }}
           />
         </ContentContainer>
-
-        {isArticle && (
-          <ArticleAsideContainer>
-            {slice.variation === 'articleMain' && (
-              <ArticleAside recentArticles={recentArticles} />
-            )}
-          </ArticleAsideContainer>
-        )}
       </StyledContainer>
 
       <ContactButtonClipped inverted={inverted} />
