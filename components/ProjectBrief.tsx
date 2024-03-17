@@ -22,6 +22,7 @@ const Container = styled('article', {
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-1deg);
+      padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
     }
   `,
   highlighted &&
@@ -58,7 +59,7 @@ const Main = styled.div(
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       flex-flow: row;
-      gap: ${theme.spacing.x6}px;
+      gap: ${theme.spacing.x4}px;
     }
   `,
 )
