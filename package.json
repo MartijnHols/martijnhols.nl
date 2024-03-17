@@ -31,7 +31,7 @@
     "@prismicio/react": "^2.5.2",
     "@prismicio/richtext": "^2.1.5",
     "@prismicio/slice-simulator-react": "^0.2.2",
-    "concurrently": "^7.1.0",
+    "concurrently": "^8.2.2",
     "next": "^12.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
