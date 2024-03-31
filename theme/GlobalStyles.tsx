@@ -16,6 +16,7 @@ const GlobalStyles = () => (
           background: ${theme.colors.yellow};
           color: ${theme.colors.black};
           font-size: ${theme.fontSizes.mainText}px;
+          line-height: 1.6;
         }
         code {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
