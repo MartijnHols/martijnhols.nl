@@ -39,6 +39,7 @@ const BaseHead = ({
         />
       )}
       {image?.alt && <meta property="og:image:alt" content={image.alt} />}
+      <link rel="canonical" href={absoluteUrl} />
     </Head>
   )
 }
