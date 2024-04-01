@@ -2,17 +2,31 @@ import { GetServerSideProps } from 'next'
 
 import absoluteUrl from '../utils/absoluteUrl'
 import { createClient, getPages } from '../utils/prismic'
-import prismicLinkResolver from '../utils/prismicLinkResolver'
+import prismicLinkResolver, {
+  HOMEPAGE_SLUG,
+} from '../utils/prismicLinkResolver'
+import { gists as gistsPromise } from './gists'
 
 interface SiteMapUrl {
   loc: string
   lastmod?: string
+  changefreq?:
+    | 'always'
+    | 'hourly'
+    | 'daily'
+    | 'weekly'
+    | 'monthly'
+    | 'yearly'
+    | 'never'
+  priority?: number
 }
 
 const createUrlXml = (url: SiteMapUrl) => `
   <url>
     <loc>${url.loc}</loc>
     ${url.lastmod ? `<lastmod>${url.lastmod}</lastmod>` : ''}
+    ${url.changefreq ? `<changefreq>${url.changefreq}</changefreq>` : ''}
+    ${url.priority ? `<priority>${url.priority}</priority>` : ''}
   </url>
 `
 const createSiteMapXml = (urls: SiteMapUrl[]) =>
@@ -27,14 +41,34 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const client = createClient()
   const pages = await getPages(client)
 
+  const gists = await Promise.all(gistsPromise)
+
   const sitemap = createSiteMapXml([
     ...pages
       .filter((page) => page.data.sitemap !== false)
       .map((page) => ({
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         loc: absoluteUrl(prismicLinkResolver(page)),
-        // TODO: lastmod
+        // Only include the date part so its format is equal to that of the gists
+        lastmod: page.last_publication_date.split('T')[0],
+        changefreq:
+          page.uid === HOMEPAGE_SLUG ? ('weekly' as const) : undefined,
+        priority: page.uid === HOMEPAGE_SLUG ? 1 : undefined,
       })),
+    {
+      loc: absoluteUrl('/gists'),
+      lastmod: gists.reduce((latest, gist) => {
+        const updatedAt = gist.meta.updatedAt ?? gist.meta.publishedAt
+        return updatedAt > latest ? updatedAt : latest
+      }, '2024-04-01'),
+      changefreq: 'weekly',
+      priority: 1,
+    },
+    ...(await Promise.all(gists)).map((gist) => ({
+      loc: absoluteUrl(`/gists/${gist.meta.slug}`),
+      lastmod: gist.meta.updatedAt ?? gist.meta.publishedAt,
+      priority: 0.4,
+    })),
   ])
 
   res.setHeader('Content-Type', 'text/xml')
