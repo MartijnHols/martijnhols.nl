@@ -8,6 +8,7 @@ import absoluteUrl from '../utils/absoluteUrl'
 import BaseHead from './BaseHead'
 import Container from './Container'
 import PageWrapper from './PageWrapper'
+import PublicationDateComponent from './PublicationDate'
 
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
@@ -94,8 +95,8 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
         <ArticleHeader>
           <Link href="/gists">← More gists</Link>
           <ArticleMetadata>
-            {/** TODO: Relative date ("Published today by Martijn Hols") */}
-            Published at {publishedAt} by <Link href="/">Martijn Hols</Link>
+            Published <PublicationDateComponent date={publishedAt} /> by{' '}
+            <Link href="/">Martijn Hols</Link>
           </ArticleMetadata>
         </ArticleHeader>
         <Title>{title}</Title>

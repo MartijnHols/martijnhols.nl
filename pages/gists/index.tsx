@@ -5,9 +5,10 @@ import { useRouter } from 'next/router'
 
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
-import { PublicationDate } from '../../components/Gist'
+import { PublicationDate as PublicationDateType } from '../../components/Gist'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
+import PublicationDate from '../../components/PublicationDate'
 import absoluteUrl from '../../utils/absoluteUrl'
 
 export const gists = [
@@ -28,8 +29,8 @@ export interface GistMeta {
   slug: string
   title: string
   description: string
-  publishedAt: PublicationDate
-  updatedAt?: PublicationDate
+  publishedAt: PublicationDateType
+  updatedAt?: PublicationDateType
   tags: string[] // I plan to use these later, and will probably change this type significantly. Still I think it's good to already start filling the data.
 }
 
@@ -100,6 +101,11 @@ const ArticleLink = styled(Link)(
     }
   `,
 )
+const ArticleMetadata = styled.div(
+  ({ theme }) => css`
+    opacity: 0.6;
+  `,
+)
 
 interface Props {
   gists: GistMeta[]
@@ -127,7 +133,9 @@ const GistsIndex = ({ gists }: Props) => {
                   <Article>
                     <ArticleTitle>{gist.title}</ArticleTitle>
                     <p>{gist.description}</p>
-                    <div>{gist.publishedAt}</div>
+                    <ArticleMetadata>
+                      Published <PublicationDate date={gist.publishedAt} />
+                    </ArticleMetadata>
                   </Article>
                 </ArticleLink>
               </li>
