@@ -9,6 +9,7 @@ export const meta: GistMeta = {
   title: 'The gist of my gists',
   description: 'An introduction to my gists.',
   publishedAt: '2024-04-01',
+  tags: ['meta'],
 }
 
 const Intro = () => (

@@ -10,7 +10,7 @@ export const meta: GistMeta = {
   description:
     'Exploring the various ways to conditionally render components in React.',
   publishedAt: '2024-03-31',
-  // TODO: updatedAt: '2024-03-31',
+  tags: ['react', 'basics'],
 }
 
 const ReactSwitchStatementRendering = () => (

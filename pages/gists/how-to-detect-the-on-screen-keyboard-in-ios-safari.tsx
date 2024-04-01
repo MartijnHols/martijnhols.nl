@@ -14,6 +14,7 @@ export const meta: GistMeta = {
   description:
     'A gist about detecting the on-screen keyboard in iOS Safari with an example React hook.',
   publishedAt: '2024-04-01',
+  tags: ['react', 'ios', 'safari'],
 }
 
 const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (

@@ -86,7 +86,6 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
       />
 
       <StyledContainer as="article">
-        {/** TODO: Link to gists overview */}
         <ArticleHeader>
           <Link href="/gists">← More gists</Link>
           <ArticleMetadata>

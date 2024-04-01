@@ -14,7 +14,7 @@ export const meta: GistMeta = {
   description:
     'In this gist I share a React hook to get an accurate document height that correctly accounts for the on-screen keyboard on iOS Safari.',
   publishedAt: '2024-04-01',
-  // TODO: updatedAt: '2024-03-31',
+  tags: ['react', 'ios', 'safari'],
 }
 
 const GistHowToGetDocumentHeightIosSafariOsk = () => (
