@@ -74,9 +74,14 @@ const ReactSwitchStatementRendering = () => (
 }`}
     </CodeSnippet>
     <p>
-      When using a switch statement like this, make sure that your
-      switch-statement cases handle all possible values. To be sure about this,
-      you could add a <Code>{`default:`}</Code> after the last case.
+      When using a switch statement like this,{' '}
+      <strong>
+        make sure that the cases in your switch-statement handle all possible
+        values
+      </strong>
+      . If you forget to handle a value (e.g. <Code>null</Code> or{' '}
+      <Code>undefined</Code> during loading), your component will unmount and
+      remount, making the switch behave differently from the other examples.
     </p>
     <p>
       ✅ You can also inline it with a{' '}
@@ -169,6 +174,14 @@ const ReactSwitchStatementRendering = () => (
       recommend avoiding it as it can be hard to follow. While this may seem
       like a smart way of conditionally rendering a component, often the
       simplest solution (the <a href="#ternary">ternary</a>) is the best.
+    </p>
+    <p>
+      This gist was inspired by the following question on Stack Overflow:{' '}
+      <a href="https://stackoverflow.com/q/78248678/684353">
+        The components are getting unmounted and mounted again if we use switch
+        case, Why?
+      </a>
+      .
     </p>
   </Gist>
 )

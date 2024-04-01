@@ -21,6 +21,11 @@ const StyledContainer = styled(Container)(
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 18px;
     }
+
+    // I kind of want to make this global, but I reckon "bolder" is safer
+    p strong {
+      font-weight: 800;
+    }
   `,
 )
 const Title = styled.h1(
