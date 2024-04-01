@@ -7,7 +7,8 @@ import Gist from '../../components/Gist'
 export const meta: GistMeta = {
   slug: 'intro',
   title: 'The gist of my gists',
-  description: 'An introduction to my gists.',
+  description:
+    'The gist of this, why this format, what motivates me, and what to expect.',
   publishedAt: '2024-04-01',
   tags: ['meta'],
 }

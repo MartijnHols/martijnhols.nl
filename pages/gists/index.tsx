@@ -12,6 +12,7 @@ import absoluteUrl from '../../utils/absoluteUrl'
 
 export const gists = [
   require('./intro'),
+  require('./license'),
   require('./react-switch-statement-rendering'),
   require('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
   require('./how-to-get-document-height-ios-safari-osk'),
