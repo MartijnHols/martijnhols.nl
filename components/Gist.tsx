@@ -93,7 +93,9 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
 
       <StyledContainer as="article">
         <ArticleHeader>
-          <Link href="/gists">← More gists</Link>
+          <div>
+            <Link href="/gists">← More gists</Link>
+          </div>
           <ArticleMetadata>
             Published <PublicationDateComponent date={publishedAt} /> by{' '}
             <Link href="/">Martijn Hols</Link>
