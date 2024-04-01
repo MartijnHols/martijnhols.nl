@@ -111,7 +111,7 @@ const GistsIndex = ({ gists }: Props) => {
     <PageWrapper>
       <BaseHead
         title={`Gists by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
-        description="A compilation of gists I have written over the years. These tend to be shorter, more focused pieces of content than articles would be."
+        description="Martijn Hols's gists are brief code snippets, opinions and answers to common questions and problems. Mostly about React and closely related things."
         absoluteUrl={absoluteUrl(pathname)}
       />
 
