@@ -27,13 +27,6 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
   reactStrictMode: true,
-  i18n: {
-    locales: Object.keys(prismicLocaleMap).map(
-      (locale) => prismicLocaleMap[locale] || locale,
-    ),
-    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE,
-    localeDetection: false,
-  },
   // Values that can not be different between builds. Most values apply, as most
   // values affect the generated pages in one way or another. e.g. the default
   // locale affects the generated URLs.

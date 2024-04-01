@@ -95,7 +95,7 @@ interface StaticProps {
 export const getStaticProps: GetStaticProps<
   StaticProps,
   { slug: string }
-> = async ({ previewData, params, locale }) => {
+> = async ({ previewData, params, locale = 'nl' }) => {
   const prismicClient = createClient({ previewData })
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const prismicLocale = toPrismicLocale(locale!)
