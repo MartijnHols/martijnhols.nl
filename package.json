@@ -47,7 +47,7 @@
     "@martijnhols/eslint-config": "^5.1.0",
     "@prismicio/types": "^0.2.8",
     "@svgr/webpack": "^6.2.1",
-    "@types/node": "^16.0.0",
+    "@types/node": "^20.12.3",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.0.1",
     "@types/react-transition-group": "^4.4.5",
