@@ -13,7 +13,7 @@ import PrismicProvider from '../components/PrismicProvider'
 import { components } from '../slices'
 import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
-import { toPrismicLocale, toUserLocale } from '../utils/locales'
+import { toPrismicLocale } from '../utils/locales'
 import prefetchSliceSubQueries from '../utils/prefetchSliceSubQueries'
 import {
   createClient,
@@ -49,7 +49,7 @@ export const getStaticPaths = async () => {
   return {
     paths: pages.filter(isFileDownloadPage).map((page) => ({
       params: { slug: slugResolver(page) },
-      locale: toUserLocale(page.lang),
+      // locale: toUserLocale(page.lang),
     })),
     fallback: 'blocking',
   }
