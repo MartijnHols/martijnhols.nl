@@ -127,7 +127,7 @@ const GistsIndex = ({ gists }: Props) => {
           <Title>Just the gists</Title>
 
           <ArticleList>
-            {gists.reverse().map((gist) => (
+            {[...gists].reverse().map((gist) => (
               <li key={gist.slug}>
                 <ArticleLink href={`/gists/${gist.slug}`} className="plain">
                   <Article>
