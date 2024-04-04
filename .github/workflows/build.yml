@@ -258,7 +258,7 @@ jobs:
     steps:
       - name: Docker meta
         id: docker_meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           images: martijnhols/martijnhols.nl
           tags: |
