@@ -13,8 +13,8 @@ export const meta: GistMeta = {
     'How to get the document height in iOS Safari when the on-screen keyboard is open',
   description:
     'In this gist I share a React hook to get an accurate document height that correctly accounts for the on-screen keyboard on iOS Safari.',
-  publishedAt: '2024-04-01',
-  tags: ['react', 'ios', 'safari'],
+  publishedAt: '2024-04-04',
+  tags: ['react', 'ios', 'safari', 'javascript'],
 }
 
 const GistHowToGetDocumentHeightIosSafariOsk = () => (
@@ -156,6 +156,13 @@ body {
     <p>
       Ping me at <a href="https://twitter.com/MartijnHols">Twitter</a> if you
       have any questions, or want to know more about this or something related.
+    </p>
+    <p>
+      <strong>Update 2024-04-04:</strong> After some testing I found that unlike
+      the <Code>window</Code> <Code>resize</Code> event,{' '}
+      <Code>window.visualViewport</Code>
+      's <Code>resize</Code> event is also triggered for the scrollbar appearing
+      and disappearing in regular browsers. That might come in handy.
     </p>
   </Gist>
 )
