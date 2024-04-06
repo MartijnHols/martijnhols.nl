@@ -24,16 +24,22 @@ const GistHowToGetDocumentHeightIosSafariOsk = () => (
       <Link href="./how-to-detect-the-on-screen-keyboard-in-ios-safari#ios-safari-behavior">
         behaves weirdly
       </Link>
-      . The normal ways of getting the screen size do not work as expected, as
-      the keyboard in Safari moves the viewport out of sight instead of resizing
-      it. This leads to getting the old values (i.e. the screen size), despite
-      the keyboard taking a large chunk of the screen.
+      . The normal ways of getting the screen size do not work as expected. When
+      the keyboard is opened in Safari, it moves part of the viewport out of
+      sight instead of simply resizing it. This leads to getting the old values
+      (i.e. the screen size), despite the keyboard taking a large chunk of the
+      screen.
     </p>
     <p>
-      Using the in 2019 introduced <Code>window.visualViewport</Code> property,
-      we can get a screen size that does account for the on-screen keyboard.
-      This allows us to make layouts which dynamically resize when the keyboard
-      opens or changes sizes as shown in the GIF below.
+      We can get the real viewport size using the in 2019 introduced{' '}
+      <Code>window.visualViewport</Code> property. This is the only value{' '}
+      <a href="./demo/document-height">I found</a> that accounts for the
+      on-screen keyboard.
+    </p>
+    <p>
+      This is an essential part that allows us to make layouts with a fixed
+      header and footer, even when the keyboard is open or changes sizes. An
+      example of this in one of my apps is shown in the GIF below.
     </p>
     <div style={{ textAlign: 'center' }}>
       <Image
@@ -44,7 +50,15 @@ const GistHowToGetDocumentHeightIosSafariOsk = () => (
         objectFit="contain"
       />
     </div>
-    <p>The code to achieve this is below.</p>
+    <p>
+      To achieve this, I set up a <Code>div</Code> with the height from the{' '}
+      <Code>useViewportSize</Code> hook below. I also needed to prevent Safari
+      from scrolling when the input is selected, for that I used a{' '}
+      <a href="https://gist.github.com/MartijnHols/e9f4f787efa9190885a708468f63c5bb#file-useonscreenkeyboardscrollfix-ts">
+        separate fix
+      </a>
+      .
+    </p>
     <CodeSnippet>{`import { useCallback, useEffect, useState, useLayoutEffect } from 'react'
 
 const useBrowserLayoutEffect =
@@ -137,25 +151,9 @@ export default useViewportSize
       Site Generation, it is not possible to get the size of a client's screen
       on the server-side. This will always return 0 on the server.
     </p>
-    <h2>Bonus: installing on the homescreen</h2>
     <p>
-      When your app will be installed on the homescreen, you will also need the
-      following snippet in order to account for the notch.{' '}
-    </p>
-    <CodeSnippet language="css">{`
-html,
-body {
-  // Necessary for iOS when installed on homescreen, otherwise useViewportSize 
-  // does not include the notch height.
-  // This must be vh not % due to a bug in iOS 15.1 where the address bar 
-  // sometimes minimizes after the OSK closes. When this happens, only 100vh 
-  // seems to have the correct value.
-  height: 100vh;
-}
-`}</CodeSnippet>
-    <p>
-      Ping me at <a href="https://twitter.com/MartijnHols">Twitter</a> if you
-      have any questions, or want to know more about this or something related.
+      I hope this helps. If you need help, let me know on{' '}
+      <a href="https://twitter.com/MartijnHols">Twitter</a>.
     </p>
     <p>
       <strong>Update 2024-04-04:</strong> After some testing I found that unlike
