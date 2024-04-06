@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
 import { PublicationDate as PublicationDateType } from '../../components/Gist'
@@ -123,6 +124,8 @@ const GistsIndex = ({ gists }: Props) => {
       />
 
       <main role="main">
+        <Angle />
+
         <StyledContainer>
           <Title>Just the gists</Title>
 
@@ -142,6 +145,8 @@ const GistsIndex = ({ gists }: Props) => {
             ))}
           </ArticleList>
         </StyledContainer>
+
+        <Angle inverted />
       </main>
 
       {/** TODO: Custom gist footer (don't want phone number in there) */}

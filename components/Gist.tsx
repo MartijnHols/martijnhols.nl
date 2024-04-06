@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
 import absoluteUrl from '../utils/absoluteUrl'
+import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
 import PageWrapper from './PageWrapper'
@@ -91,6 +92,8 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
         absoluteUrl={absoluteUrl(pathname)}
       />
 
+      <Angle />
+
       <StyledContainer as="article">
         <ArticleHeader>
           <div>
@@ -104,6 +107,8 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
         <Title>{title}</Title>
         {children}
       </StyledContainer>
+
+      <Angle inverted />
 
       {/** TODO: Custom gist footer (don't want phone number in there) */}
     </PageWrapper>

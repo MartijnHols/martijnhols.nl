@@ -1,10 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import Angle from '../../components/Angle'
+import AngleWithContaintButton from '../../components/AngleWithContaintButton'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 
-const StyledAngle = styled(Angle)``
+const StyledAngle = styled(AngleWithContaintButton)``
 const Sticky = styled.div(
   ({ theme }) => css`
     position: fixed;
