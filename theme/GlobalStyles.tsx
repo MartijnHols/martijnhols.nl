@@ -13,7 +13,7 @@ const GlobalStyles = () => (
             'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          background: ${theme.colors.yellow};
+          background: ${theme.colors.black};
           color: ${theme.colors.black};
           font-size: ${theme.fontSizes.mainText}px;
           line-height: 1.6;
