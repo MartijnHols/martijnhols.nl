@@ -6,7 +6,8 @@ import Gist from '../../components/Gist'
 
 export const meta: GistMeta = {
   slug: 'react-switch-statement-rendering',
-  title: 'Can I use a switch statement to render components in React?',
+  title:
+    'React basics: Can I use a switch statement to render components in React?',
   description:
     'Exploring the various ways to conditionally render components in React.',
   publishedAt: '2024-03-31',
