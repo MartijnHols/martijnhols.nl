@@ -10,6 +10,7 @@ import { PublicationDate as PublicationDateType } from '../../components/Gist'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import PublicationDate from '../../components/PublicationDate'
+import Tag from '../../components/Tag'
 import absoluteUrl from '../../utils/absoluteUrl'
 
 export const gists = [
@@ -102,8 +103,21 @@ const ArticleLink = styled(Link)(
   `,
 )
 const ArticleMetadata = styled.div(
+  ({ theme }) =>
+    css`
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: ${theme.spacing.x2}px;
+    `,
+)
+const PublishedAt = styled.div`
+  opacity: 0.6;
+`
+const Tags = styled.div(
   ({ theme }) => css`
-    opacity: 0.6;
+    display: flex;
+    gap: ${theme.spacing.x1}px;
   `,
 )
 
@@ -136,7 +150,14 @@ const GistsIndex = ({ gists }: Props) => {
                     <ArticleTitle>{gist.title}</ArticleTitle>
                     <p>{gist.description}</p>
                     <ArticleMetadata>
-                      Published <PublicationDate date={gist.publishedAt} />
+                      <PublishedAt>
+                        Published <PublicationDate date={gist.publishedAt} />
+                      </PublishedAt>
+                      <Tags>
+                        {gist.tags.map((tag) => (
+                          <Tag key={tag}>{tag}</Tag>
+                        ))}
+                      </Tags>
                     </ArticleMetadata>
                   </Article>
                 </ArticleLink>

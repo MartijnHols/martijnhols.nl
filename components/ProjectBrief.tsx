@@ -6,6 +6,7 @@ import { Fragment, ReactNode } from 'react'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
+import Tag from './Tag'
 
 const Container = styled('article', {
   shouldForwardProp: (prop) =>
@@ -95,31 +96,6 @@ const ContactLinks = styled.div(
     margin-top: ${theme.spacing.x2}px;
   `,
 )
-const TechItem = styled.div(
-  ({ theme }) => css`
-    display: inline-block;
-    background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
-    padding: 4px 6px;
-    border: 2px solid ${theme.colors.yellow};
-    margin-left: -2px;
-    margin-bottom: 2px;
-
-    // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
-    &[data-value='React'],
-    &[data-value='React.js'] {
-      color: #61dafb;
-    }
-    &[data-value='Open Source'] {
-      color: #fff;
-    }
-
-    transition: transform 120ms ease-out;
-    :hover {
-      transform: scale(1.4) rotate(-1deg);
-    }
-  `,
-)
 const InvisibleText = styled.span`
   font-size: 0;
 `
@@ -191,7 +167,7 @@ const ProjectBrief = ({
           <Tech>
             {tech.map((item, index) => (
               <Fragment key={item}>
-                <TechItem data-value={item}>{item}</TechItem>
+                <Tag data-value={item}>{item}</Tag>
                 {/* Add hidden text to make copy-pasting more convenient */}
                 {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
               </Fragment>
