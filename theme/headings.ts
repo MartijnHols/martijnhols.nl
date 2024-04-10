@@ -72,7 +72,7 @@ export const globalStyles = css`
     ${h2}
   }
   h3 {
-    margin-bottom: ${spacing.x3}px;
+    margin-bottom: ${spacing.x2}px;
     ${h3}
   }
   h4 {
