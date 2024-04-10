@@ -26,17 +26,10 @@ const Section = styled.section(
     overflow: hidden;
   `,
 )
-const Title = styled.h2(
-  ({ theme }) => css`
-    text-transform: uppercase;
-    font-weight: 800;
-    transform: rotate(-1deg);
-    border-top: ${theme.spacing.x2}px solid currentColor;
-    display: inline-block;
-    margin-bottom: 0;
-    margin-top: 0;
-  `,
-)
+const Title = styled.h2`
+  margin-bottom: 0;
+  margin-top: 0;
+`
 const SubTitle = styled.div(
   ({ theme }) => css`
     text-transform: uppercase;

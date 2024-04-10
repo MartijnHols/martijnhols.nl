@@ -41,11 +41,7 @@ const StyledContainer = styled(Container)(
     padding-bottom: 100px;
   `,
 )
-const Title = styled.h1(
-  ({ theme }) => css`
-    font-size: ${theme.headings.h1};
-  `,
-)
+const Title = styled.h1``
 const ArticleList = styled.ul(
   ({ theme }) => css`
     list-style: none;
@@ -71,7 +67,7 @@ const ArticleTitle = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.black};
     text-decoration: none;
-    border-bottom: 6px solid ${theme.colors.black};
+    border-bottom: ${theme.spacing.x2}px solid ${theme.colors.black};
     transition: all 120ms ease-out;
     // It is not possible to animate a linear-gradient (yet), so we need to do
     // some background-positioning trickery to get the effect we want.
@@ -83,12 +79,18 @@ const ArticleTitle = styled.h2(
     background-size: 100% 200%;
     background-position-y: 0px;
     margin-top: 0;
-    font-size: 32px;
+    border-top: 0;
+    transform: none;
+    // Add some extra space on top so the hover state background's top isn't too
+    // close to the text.
+    padding-top: ${theme.spacing.x1}px;
+    margin-top: -${theme.spacing.x1}px;
     hyphens: auto;
+    font-size: 32px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       hyphens: manual;
-      font-size: 45px;
+      font-size: 54px;
     }
   `,
 )
@@ -108,6 +110,7 @@ const ArticleMetadata = styled.div(
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       gap: ${theme.spacing.x2}px;
     `,
 )
@@ -118,6 +121,7 @@ const Tags = styled.div(
   ({ theme }) => css`
     display: flex;
     gap: ${theme.spacing.x1}px;
+    flex-wrap: wrap;
   `,
 )
 

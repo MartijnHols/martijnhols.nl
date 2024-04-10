@@ -63,16 +63,9 @@ const ContentContainer = styled('div', {
       text-align: left;
     `,
 ])
-const Title = styled.h2(
-  ({ theme }) => css`
-    text-transform: uppercase;
-    font-weight: 800;
-    transform: rotate(-2deg);
-    border-top: ${theme.spacing.x2}px solid currentColor;
-    display: inline-block;
-    margin: 0;
-  `,
-)
+const Title = styled.h2`
+  margin: 0;
+`
 
 interface Props {
   slice: Content.ContentSliceSlice

@@ -34,12 +34,11 @@ const Intro = styled.div`
 const IntroSubText = styled.span(
   ({ theme }) => css`
     display: block;
-    ${theme.headings.h3}
+    ${theme.headings.h4}
     margin-bottom: ${theme.spacing.x1}px;
   `,
 )
 export const IntroTitle = styled.h1`
-  font-weight: inherit;
   margin: 0;
 `
 const SubText = styled.div(

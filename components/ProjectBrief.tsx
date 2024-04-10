@@ -47,10 +47,7 @@ const Container = styled('article', {
     `,
 ])
 const Header = styled.h3`
-  text-transform: uppercase;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.3px;
+  margin-top: 0;
 `
 const Main = styled.div(
   ({ theme }) => css`
