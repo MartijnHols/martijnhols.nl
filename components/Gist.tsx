@@ -34,6 +34,7 @@ const Title = styled.h1(
   ({ theme }) => css`
     ${theme.headings.h1}
     font-size: 46px;
+    margin-bottom: ${theme.spacing.x2}px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 64px;
@@ -99,8 +100,7 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
             <Link href="/gists">← More gists</Link>
           </div>
           <ArticleMetadata>
-            Published <PublicationDateComponent date={publishedAt} /> by{' '}
-            <Link href="/">Martijn Hols</Link>
+            Published <PublicationDateComponent date={publishedAt} />
           </ArticleMetadata>
         </ArticleHeader>
         <Title>{title}</Title>

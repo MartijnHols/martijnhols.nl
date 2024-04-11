@@ -6,7 +6,7 @@ export const h1 = css`
   font-size: 56px;
   font-weight: 1000;
   text-transform: uppercase;
-  margin-bottom: ${spacing.x2}px;
+  margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
 
   @media (min-width: ${breakpoints.TABLET}px) {
