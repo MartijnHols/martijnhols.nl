@@ -14,6 +14,8 @@ export const meta: GistMeta = {
   tags: ['react', 'basics'],
 }
 
+// I forgot the <div>{{ [true]: <LightSwitchOn/>, [false]: <LightSwitchOff/>}[enabled]}</div> pattern
+
 const ReactSwitchStatementRendering = () => (
   <Gist {...meta}>
     <p>
