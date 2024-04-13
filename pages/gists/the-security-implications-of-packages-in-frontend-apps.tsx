@@ -24,9 +24,9 @@ const ObfuscatedPackageFigure = styled.figure(
 
 export const meta: GistMeta = {
   slug: 'the-security-implications-of-packages-in-frontend-apps',
-  title: 'The security implications of packages in frontend apps',
+  title: 'The security implications of packages in front-end apps',
   description:
-    'The gist of the security implications of using third-party packages in frontend projects.',
+    'The gist of the security implications of using third-party packages in front-end projects.',
   publishedAt: '2024-04-15',
   tags: ['security', 'packages', 'npm', 'frontend'],
 }
@@ -36,11 +36,11 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <p>
       Third-party packages are great. They provide a lot of functionality and
       save us a lot of time. But what exactly are the security implications of
-      using third-party packages in a frontend app (such as a React app)?
+      using third-party packages in a front-end app (such as a React app)?
     </p>
     <p>
-      There are many aspects that play a role in the security of using a
-      third-party package on the frontend;
+      Many aspects play a role in the security of using a third-party package on
+      the front-end;
     </p>
     <ul>
       <li>unintentional security vulnerabilities</li>
@@ -50,28 +50,28 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <li>package (maintainer) trustworthiness</li>
       <li>sub-dependencies</li>
     </ul>
-    <p>All of these also apply to frontend apps— to an extend.</p>
+    <p>All of these also apply to front-end apps— to an extent.</p>
     <p>Let's explore these aspects and their implications.</p>
     <h2 id="unintentional-security-vulnerabilities">
       Unintentional security vulnerabilities
     </h2>
     <p>
       Unintentional security vulnerabilities reported in security advisories are
-      the most obvious vulnerabilities. GitHub, Gitlab, npm, yarn and many other
-      tools provide automated scanning of security advisories. Most of those can
-      be resolved fairly easily by updating to the suggested version.
+      the most obvious vulnerabilities. GitHub, Gitlab, npm, yarn, and many
+      other tools provide automated scanning of security advisories. Most of
+      those can be resolved fairly easily by updating to the suggested version.
     </p>
 
     <p>
-      Monitoring and resolving these is the least you can do, but don't fall in
-      the trap of thinking this is enough.
+      Monitoring and resolving these is the least you can do, but don't fall
+      into the trap of thinking this is enough.
     </p>
 
     <figure style={{ textAlign: 'center' }}>
       <Link href={GithubSecurityAdvisories.src} className="plain">
         <Image
           src={GithubSecurityAdvisories}
-          alt="A list of security advisories for a frontend project of various levels ranging from Critical to High"
+          alt="A list of security advisories for a front-end project of various levels ranging from Critical to High"
           width={500}
           height={410}
           // TODO: sizes="(min-width: 768px) 500px, 100vw"
@@ -79,21 +79,21 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       </Link>
       <figcaption style={{ fontSize: 14 }}>
         <Link href={GithubSecurityAdvisories.src}>
-          Security advisories for a frontend project
+          Security advisories for a front-end project
         </Link>
       </figcaption>
     </figure>
 
     <Aside>
-      In my opinion the vast majority of frontend JavaScript security advisories
-      are boring (i.e. unimpactful). A large majority are in development
-      tooling, and unless they can be{' '}
+      In my opinion the vast majority of front-end JavaScript security
+      advisories are boring (i.e. unimpactful). A large majority are in
+      development tooling, and unless they can be{' '}
       <a href="https://github.com/advisories/GHSA-wr3j-pwj9-hqq6">
         exploited via the network
       </a>
-      , they have zero impact. The rest are usually either ReDoS, or only an
-      issue if the package is used in a server-context. There are very few
-      vulnerabilities that actually matter for the frontend.
+      , they have zero impact. The rest are usually either ReDoS or only an
+      issue if the package is used in a server context. There are very few
+      vulnerabilities that actually matter for the front end.
     </Aside>
 
     <h2 id="intentional-exploits">Intentional exploits</h2>
@@ -104,21 +104,21 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
         Trojan Horse
       </a>{' '}
       into their package. A Trojan Horse could do almost anything; from
-      hijacking your codebase and the data on your dev machine, to using the
+      hijacking your codebase and the data on your dev machine to using the
       server for DDOS or even hijacking all the data on it.
     </p>
     <p>
       <strong>
-        Pure frontend apps are (
+        Pure front-end apps are (
         <dfn title="It's not infeasible for someone to also find an exploit in a dev-server or linter that allows them to execute code on the host machine or during a build.">
           almost
         </dfn>
         ) immune to the worst of this
       </strong>
-      , as they don't execute any priviliged code on the host (your dev machine
+      , as they don't execute any privileged code on the host (your dev machine
       or server). There's still plenty to be careful of though, as a Trojan
-      could still inject code in your bundle to hijack user cookies, or keylog
-      login or creditcard credentials. Your cookies should be safe if you use{' '}
+      could still inject code into your bundle to hijack user cookies, or keylog
+      login and credit card credentials. Your cookies should be safe if you use{' '}
       <Link href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies">
         HTTP-only cookies
       </Link>
@@ -175,7 +175,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <p>
-      There's no reason to not be as wary, if not more wary, of package install
+      There's no reason not to be as wary, if not more wary, of package install
       scripts.
     </p>
 
@@ -183,14 +183,14 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href={CanIIgnore.src} className="plain">
         <Image
           src={CanIIgnore}
-          alt="Terminal output showing install scripts found in a frontend project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
+          alt="Terminal output showing install scripts found in a front-end project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
           width={500}
           height={317}
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
         <Link href={CanIIgnore.src}>
-          Some of the install scripts of a frontend project as reported by
+          Some of the install scripts of a front-end project as reported by
         </Link>{' '}
         <Link href="https://github.com/naugtur/can-i-ignore-scripts">
           Can I Ignore
@@ -222,33 +222,33 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </ObfuscatedPackageFigure>
 
     <p>
-      Nearly all packages go through a bundling and transpilation (e.g.
-      TypeScript to JavaScript) process before publication. This means that the
-      code you get when you install a package does not match the code that is
-      published on GitHub. It would be very easy for a bad actor to sneak
-      something extra in. These changes would be almost completely hidden, as
-      they won't appear in a commit message, a diff, a GitHub release, the
-      changelog, dependabot changes, or anywhere really.
+      Most packages undergo bundling and transpilation (e.g. TypeScript to
+      JavaScript) processes before publication. As a result, the code you get
+      when you install a package does not match the code that is visible on
+      GitHub. It would be very easy for a bad actor to sneak something extra in.
+      These changes would be almost completely hidden, as they won't appear in a
+      commit message, a diff, a GitHub release, the changelog, dependabot
+      changes, or anywhere really.
     </p>
     <p>
-      The only way to see the real changes is by looking into the (often hard to
-      read) code of the package as it was published.
+      The only way to see the real changes is by looking into the (often
+      hard-to-read) code of the package as it was published.
     </p>
 
     <h2 id="package-maintainer-trustworthiness">Package (maintainer) trust</h2>
 
     <p>
       For most developers, package (maintainer) trustworthiness plays a big role
-      in selecting what packages to use. If the package looks thrustworthy and a
+      in selecting what packages to use. If the package looks trustworthy and a
       lot of people use it, it's probably safe, right? Some go further and look
-      into issues, how the maintainers respond to them and other projects the
+      into issues, how the maintainers respond to them, and other projects the
       developer has worked on.
     </p>
     <p>
       A common rule of thumb I hear used is to only use packages with a certain
       amount of stars on GitHub. Unfortunately,{' '}
       <Link href="https://news.ycombinator.com/item?id=36151140">
-        starcount isn't all that reliable
+        star count isn't all that reliable
       </Link>
       .
     </p>
@@ -265,7 +265,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </Aside>
 
     <h2 id="sub-dependencies">Sub-dependencies</h2>
-    <p>Sub-dependencies, sub-dependencies and more sub-dependencies.</p>
+    <p>Sub-dependencies, sub-dependencies, and more sub-dependencies.</p>
     <p>
       Most packages come with dozens of sub-dependencies. All of the above
       applies to every single one of them. Even if you're going to review
@@ -278,7 +278,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <h2 id="in-conclusion">In conclusion</h2>
 
     <p>
-      Every single frontend package, like any other kind of package, brings
+      Every single front-end package, like any other kind of package, brings
       security risks. Some risks can be mitigated, such as through a{' '}
       <i>Content Security Policy</i> and disabling install scripts, other
       mitigations, such as analyzing maintainers and package code, would require
@@ -297,7 +297,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       .
     </p>
 
-    <p>For now I will be doing the following for my projects:</p>
+    <p>For now, I will be doing the following for my projects:</p>
     <ul>
       <li>Automatic security advisory monitoring</li>
       <li>Disabling install scripts</li>
@@ -305,10 +305,10 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <li>Use as few packages as possible</li>
       <ul>
         <li>Copy over adding a dependency</li>
-        <li>Removing small, abandoned and/or untrustworthy dependencies</li>
+        <li>Removing small, abandoned, and/or untrustworthy dependencies</li>
       </ul>
       <li>Avoid obfuscated packages</li>
-      <li>Increasing the barrier of adding new packages</li>
+      <li>Increasing the barrier to adding new packages</li>
       <li>Reducing dependency update frequency</li>
     </ul>
 
