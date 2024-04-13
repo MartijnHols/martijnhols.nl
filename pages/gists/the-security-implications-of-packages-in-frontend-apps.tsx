@@ -257,12 +257,11 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <Aside>
       Even if you were to check the trustworthiness of package managers when you
       first select a package, the maintainers of a package rarely stay the same
-      forever. After all,{' '}
+      forever. You would have to check again before every update. After all,{' '}
       <Link href="https://opensource.guide/best-practices/#share-the-workload">
         it's encouraged to share maintainer access
       </Link>{' '}
-      in Open Source projects. You would have to do it again before every
-      update.
+      in Open Source projects.
     </Aside>
 
     <h2 id="sub-dependencies">Sub-dependencies</h2>
