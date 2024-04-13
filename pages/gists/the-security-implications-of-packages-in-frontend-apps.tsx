@@ -28,7 +28,7 @@ export const meta: GistMeta = {
   description:
     'The gist of the security implications of using third-party packages in frontend projects.',
   publishedAt: '2024-04-15',
-  tags: ['security', 'frontend', 'packages', 'react', 'npm'],
+  tags: ['security', 'packages', 'npm', 'frontend'],
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (

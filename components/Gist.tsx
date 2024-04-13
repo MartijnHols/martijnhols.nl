@@ -10,11 +10,12 @@ import BaseHead from './BaseHead'
 import Container from './Container'
 import PageWrapper from './PageWrapper'
 import PublicationDateComponent from './PublicationDate'
+import Tag from './Tag'
 
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: ${theme.spacing.x10}px;
+    padding-bottom: ${theme.spacing.x10}px;
     // This width makes code snippet width match the column width I use in my
     // IDE perfectly
     max-width: 1010px;
@@ -22,6 +23,8 @@ const StyledContainer = styled(Container)(
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 18px;
+      padding-top: ${theme.spacing.x1 * 20}px;
+      padding-bottom: ${theme.spacing.x1 * 20}px;
     }
 
     // I kind of want to make this global, but I reckon "bolder" is safer
@@ -49,21 +52,21 @@ const ArticleHeader = styled.div(
   ({ theme }) => css`
     display: flex;
     gap: ${theme.spacing.x2}px;
-    flex-flow: column;
-    align-items: flex-start;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-flow: row;
-      align-items: flex-end;
-    }
+    align-items: flex-end;
   `,
 )
 const ArticleMetadata = styled.div(
   ({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-grow: 1;
-      text-align: right;
-    }
+    flex-grow: 1;
+    text-align: right;
+  `,
+)
+const Tags = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    gap: ${theme.spacing.x1}px;
+    flex-wrap: wrap;
+    margin-top: ${theme.spacing.x4}px;
   `,
 )
 
@@ -78,10 +81,11 @@ interface Props {
   title: string
   description: string
   publishedAt: PublicationDate
+  tags: string[]
   children: ReactNode
 }
 
-const Gist = ({ title, description, publishedAt, children }: Props) => {
+const Gist = ({ title, description, publishedAt, tags, children }: Props) => {
   const { pathname } = useRouter()
 
   return (
@@ -104,7 +108,14 @@ const Gist = ({ title, description, publishedAt, children }: Props) => {
           </ArticleMetadata>
         </ArticleHeader>
         <Title>{title}</Title>
+
         {children}
+
+        <Tags>
+          {tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </Tags>
       </StyledContainer>
 
       <Angle inverted />

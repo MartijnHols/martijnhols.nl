@@ -32,7 +32,7 @@ export interface GistMeta {
   description: string
   publishedAt: PublicationDateType
   updatedAt?: PublicationDateType
-  tags: string[] // I plan to use these later, and will probably change this type significantly. Still I think it's good to already start filling the data.
+  tags: string[]
 }
 
 const StyledContainer = styled(Container)(
