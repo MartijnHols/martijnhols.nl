@@ -318,9 +318,9 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <Aside label="ps">
-      Give the same thought to the actions you use in CI. GitHub Actions, for
-      example, automatically updates actions without a single review (by
-      default). They too can inject stuff into your project.
+      Give the same thought to the tools you use in CI. GitHub Actions, for
+      example, automatically uses new versions of actions by default. CI actions
+      can inject stuff into your project as well.
     </Aside>
   </Gist>
 )
