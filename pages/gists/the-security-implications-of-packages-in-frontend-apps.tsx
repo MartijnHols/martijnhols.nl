@@ -23,19 +23,24 @@ const ObfuscatedPackageFigure = styled.figure(
 )
 
 export const meta: GistMeta = {
-  slug: 'the-security-implications-of-packages-on-the-frontend',
-  title: 'The security implications of packages on the frontend',
+  slug: 'the-security-implications-of-packages-in-frontend-apps',
+  title: 'The security implications of packages in frontend apps',
   description:
-    'The gist of the security impli­cations of using third-party packages in frontend projects.',
-  publishedAt: '2024-04-12',
+    'The gist of the security implications of using third-party packages in frontend projects.',
+  publishedAt: '2024-04-15',
   tags: ['security', 'frontend', 'packages', 'react', 'npm'],
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
   <Gist {...meta}>
     <p>
-      Many aspects play a role in the security of using a third-party package on
-      the frontend;
+      Third-party packages are great. They provide a lot of functionality and
+      save us a lot of time. But what exactly are the security implications of
+      using third-party packages in a frontend app (such as a React app)?
+    </p>
+    <p>
+      There are many aspects that play a role in the security of using a
+      third-party package on the frontend;
     </p>
     <ul>
       <li>unintentional security vulnerabilities</li>
@@ -66,29 +71,29 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href={GithubSecurityAdvisories.src} className="plain">
         <Image
           src={GithubSecurityAdvisories}
-          alt="Above average list of security advisories for a frontend project"
+          alt="A list of security advisories for a frontend project of various levels ranging from Critical to High"
           width={500}
           height={410}
+          // TODO: sizes="(min-width: 768px) 500px, 100vw"
         />
       </Link>
-      <figcaption>
+      <figcaption style={{ fontSize: 14 }}>
         <Link href={GithubSecurityAdvisories.src}>
-          Above average list of security advisories for a frontend project
+          Security advisories for a frontend project
         </Link>
       </figcaption>
     </figure>
 
     <Aside>
-      In my opinion 99% of frontend JavaScript security advisories are boring
-      (i.e. unimpactful). A large majority are in development tooling, and
-      unless they can be{' '}
+      In my opinion the vast majority of frontend JavaScript security advisories
+      are boring (i.e. unimpactful). A large majority are in development
+      tooling, and unless they can be{' '}
       <a href="https://github.com/advisories/GHSA-wr3j-pwj9-hqq6">
         exploited via the network
       </a>
-      , they have zero impact. The rest are usually either ReDoS, prototype
-      pollution or only an issue if the package is used in a server-context.
-      There are very few unintentional vulnerabilities that actually matter for
-      the frontend.
+      , they have zero impact. The rest are usually either ReDoS, or only an
+      issue if the package is used in a server-context. There are very few
+      vulnerabilities that actually matter for the frontend.
     </Aside>
 
     <h2 id="intentional-exploits">Intentional exploits</h2>
@@ -178,7 +183,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href={CanIIgnore.src} className="plain">
         <Image
           src={CanIIgnore}
-          alt="Some of the install scripts of a frontend project as reported by Can I Ignore"
+          alt="Terminal output showing install scripts found in a frontend project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
           width={500}
           height={317}
         />
@@ -206,7 +211,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href={BundledPackageCode.src} className="plain">
         <Image
           src={BundledPackageCode}
-          alt="An obfuscated bundled package"
+          alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"
           width={300}
           height={187}
         />
@@ -295,13 +300,13 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
 
     <p>For now I will be doing the following for my projects:</p>
     <ul>
-      <li>Security advisory monitoring</li>
+      <li>Automatic security advisory monitoring</li>
       <li>Disabling install scripts</li>
       <li>Setup a Content Security Policy</li>
       <li>Use as few packages as possible</li>
       <ul>
         <li>Copy over adding a dependency</li>
-        <li>Removing small, abandoned and untrustworthy dependencies</li>
+        <li>Removing small, abandoned and/or untrustworthy dependencies</li>
       </ul>
       <li>Avoid obfuscated packages</li>
       <li>Increasing the barrier of adding new packages</li>
@@ -309,14 +314,14 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </ul>
 
     <p>
-      I reckon the only reason package security hasn't been a common issue is
-      because we're lucky most people online are still nice.
+      I reckon the only reason package security hasn't been a more common issue
+      is because we're lucky most people online are still nice.
     </p>
 
-    <Aside>
-      Have you given the same thought to the actions you use in CI? GitHub
-      Actions, for example, automatically updates actions without a single
-      review by default. And they too can inject stuff into your code.
+    <Aside label="ps">
+      Give the same thought to the actions you use in CI. GitHub Actions, for
+      example, automatically updates actions without a single review (by
+      default). They too can inject stuff into your project.
     </Aside>
   </Gist>
 )
