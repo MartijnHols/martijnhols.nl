@@ -37,12 +37,6 @@ const GlobalStyles = () => (
         * {
           outline-color: ${theme.colors.black};
         }
-
-        dfn {
-          font-style: italic;
-          border-bottom: 1px dashed ${theme.colors.black};
-          cursor: help;
-        }
       `,
       theme.links.globalStyles,
       theme.headings.globalStyles,

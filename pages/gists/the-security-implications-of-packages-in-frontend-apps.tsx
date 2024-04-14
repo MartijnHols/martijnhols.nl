@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
+import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import Gist from '../../components/Gist'
@@ -110,9 +111,9 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <p>
       <strong>
         Pure front-end apps are (
-        <dfn title="It's not infeasible for someone to also find an exploit in a dev-server or linter that allows them to execute code on the host machine or during a build.">
+        <Annotation annotation="It's not infeasible for someone to also find an exploit in a dev-server or linter that allows them to execute code on the host machine or during a build.">
           almost
-        </dfn>
+        </Annotation>
         ) immune to the worst of this
       </strong>
       , as they don't execute any privileged code on the host (your dev machine
@@ -126,14 +127,20 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">
         Content Security Policy (CSP)
       </Link>
-      , but it doesn't prevent other injected JavaScript (not even if you use
-      nonces).
+      , but it doesn't prevent JavaScript injection entirely (not even if you
+      use nonces).
     </p>
     <p>
       <strong>
-        It's a different story if you're using the package within your{' '}
-        <dfn title="Server-Side Rendering">SSR</dfn> or{' '}
-        <dfn title="Static Site Generation">SSG</dfn> code
+        It's a different story when you're using the package within your{' '}
+        <Annotation annotation="Server-Side Rendering" element="abbr">
+          SSR
+        </Annotation>{' '}
+        or{' '}
+        <Annotation annotation="Static Site Generation" element="abbr">
+          SSG
+        </Annotation>{' '}
+        code
       </strong>
       , as then the package gets the same access as your server. Assuming your
       SSR/SSG backend has a database connection, that would probably mean access
