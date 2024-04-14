@@ -28,7 +28,7 @@
     "@prismicio/client": "^6.9.0",
     "@prismicio/helpers": "^2.3.5",
     "@prismicio/next": "^1.0.3",
-    "@prismicio/react": "^2.5.2",
+    "@prismicio/react": "^2.7.4",
     "@prismicio/richtext": "^2.1.5",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "@tippyjs/react": "^4.2.6",
