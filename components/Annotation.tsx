@@ -1,9 +1,8 @@
-import { Global, css } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Tippy from '@tippyjs/react'
-import { ReactNode, useState } from 'react'
-import 'tippy.js/dist/tippy.css'
-import 'tippy.js/animations/shift-away.css'
+import { HTMLAttributes, ReactNode } from 'react'
+
+import Tooltip from './Tooltip'
 
 const Container = styled.span(
   ({ theme }) => css`
@@ -15,43 +14,15 @@ const Container = styled.span(
   `,
 )
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode
   annotation: string
-  element?: 'dfn' | 'abbr'
 }
 
-const Annotation = ({ children, annotation, element }: Props) => {
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false)
-  return (
-    <>
-      <Tippy
-        content={annotation}
-        animation="shift-away"
-        onMount={() => setIsTooltipOpen(true)}
-        onHide={() => setIsTooltipOpen(false)}
-      >
-        <Container as={element} tabIndex={0} aria-expanded={isTooltipOpen}>
-          {children}
-        </Container>
-      </Tippy>
-      <Global
-        styles={(theme) => css`
-          .tippy-box {
-            background: ${theme.colors.black};
-            color: ${theme.colors.yellow};
-            pointer-events: all;
-            text-align: center;
-            font-size: 16px;
-            padding: ${theme.spacing.x1}px;
-          }
-          .tippy-arrow {
-            color: ${theme.colors.black};
-          }
-        `}
-      />
-    </>
-  )
-}
+const Annotation = ({ children, annotation, ...others }: Props) => (
+  <Tooltip content={annotation}>
+    <Container {...others}>{children}</Container>
+  </Tooltip>
+)
 
 export default Annotation

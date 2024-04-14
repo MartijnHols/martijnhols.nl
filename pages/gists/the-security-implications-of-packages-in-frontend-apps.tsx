@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
+import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
@@ -133,13 +134,8 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <p>
       <strong>
         It's a different story when you're using the package within your{' '}
-        <Annotation annotation="Server-Side Rendering" element="abbr">
-          SSR
-        </Annotation>{' '}
-        or{' '}
-        <Annotation annotation="Static Site Generation" element="abbr">
-          SSG
-        </Annotation>{' '}
+        <Abbreviation annotation="Server-Side Rendering">SSR</Abbreviation> or{' '}
+        <Abbreviation annotation="Static Site Generation">SSG</Abbreviation>{' '}
         code
       </strong>
       , as then the package gets the same access as your server. Assuming your
