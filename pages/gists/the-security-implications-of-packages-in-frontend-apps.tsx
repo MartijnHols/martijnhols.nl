@@ -19,7 +19,6 @@ const ObfuscatedPackageFigure = styled.figure(
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       float: right;
-      margin-top: 7px;
     }
   `,
 )
@@ -74,9 +73,9 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
         <Image
           src={GithubSecurityAdvisories}
           alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
-          width={500}
-          height={301}
-          // TODO: sizes="(min-width: 768px) 500px, 100vw"
+          width={650}
+          height={391}
+          // TODO: sizes="(min-width: 768px) 650px, 100vw"
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
@@ -192,8 +191,8 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
         <Image
           src={CanIIgnore}
           alt="Terminal output showing install scripts found in a front-end project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
-          width={500}
-          height={317}
+          width={650}
+          height={412}
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
@@ -220,8 +219,8 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
         <Image
           src={BundledPackageCode}
           alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"
-          width={300}
-          height={187}
+          width={350}
+          height={218}
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
