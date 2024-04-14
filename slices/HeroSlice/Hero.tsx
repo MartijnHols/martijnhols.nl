@@ -21,7 +21,8 @@ const StyledContainer = styled(Container)(
     transform: rotate(-2deg);
 
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      padding-top: 150px;
+      transform: rotate(-1.3deg);
+      padding-top: 110px;
       padding-bottom: 150px;
     }
   `,

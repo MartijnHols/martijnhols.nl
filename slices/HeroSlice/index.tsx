@@ -5,10 +5,10 @@ import { isFilled } from '@prismicio/helpers'
 import { asText } from '@prismicio/richtext'
 
 import PrismicRichText from '../../components/PrismicRichText'
+import TopBar from '../../components/TopBar'
 import reactStringReplace from '../../utils/reactStringReplace'
 import Hero, { IntroTitle } from './Hero'
 import ReactLogo from './ReactLogo.svg'
-import TopBar from './TopBar'
 
 const React = styled.span`
   white-space: nowrap;
