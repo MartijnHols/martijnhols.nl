@@ -46,7 +46,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
     <ul>
       <li>unintentional security vulnerabilities</li>
-      <li>intentional exploits (e.g. backdoors)</li>
+      <li>deliberately introduced backdoors</li>
       <li>install scripts</li>
       <li>bundling and transpilation</li>
       <li>package (maintainer) trustworthiness</li>
@@ -98,16 +98,19 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       vulnerabilities that actually matter for the front end.
     </Aside>
 
-    <h2 id="intentional-exploits">Intentional exploits</h2>
+    <h2 id="deliberately-introduced-backdoors">
+      Deliberately introduced backdoors
+    </h2>
     <p>
-      Intentional exploits are the scariest vulnerabilities. This is where
-      people implant a{' '}
+      Deliberately introduced backdoors by lone hackers, hacking groups, or
+      state hackers are the scariest vulnerabilities. This is where someone
+      implants a{' '}
       <a href="https://owasp.org/www-community/attacks/Trojan_Horse">
         Trojan Horse
       </a>{' '}
-      into their package. A Trojan Horse could do almost anything; from
-      hijacking your codebase and the data on your dev machine to using the
-      server for DDOS or even hijacking all the data on it.
+      into a package. The right Trojan could do almost anything; from hijacking
+      your codebase and the data on your dev machine to installing ransomware or
+      even hijacking all the user data on your servers.
     </p>
     <p>
       <strong>
@@ -143,12 +146,12 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       to all your data.
     </p>
     <p>
-      You wouldn't detect a really good exploit without thoroughly inspecting
-      the code. Someone smart will obfuscate it, only run it in production mode,
-      only for every 100th request, and only after two weeks from now (or
-      something like that) so it's extremely hard to detect. Without inspecting
-      all of the code of the package, it will be impossible to detect until it's
-      been too late. For many companies, a security advisory would be too late.
+      You wouldn't detect a really good deliberately introduced backdoor without
+      thoroughly inspecting the code. Someone smart will obfuscate it, only run
+      it in production mode, only for every 100th request, and only after two
+      weeks from now (or something like that), making it extremely hard to
+      detect. By the time a security advisory has been published, it will have
+      been too late.
     </p>
 
     <Aside>
@@ -275,7 +278,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       package code or (like the rest of the world) do a quick scan of the
       package and its maintainers, you'll need to do it for every single
       dependency, and <strong>especially the sub-dependencies</strong>. There's
-      no better place to hide an exploit.
+      no better place to hide a backdoor.
     </p>
 
     <h2 id="in-conclusion">In conclusion</h2>
