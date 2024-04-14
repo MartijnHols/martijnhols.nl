@@ -325,9 +325,10 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <Aside label="ps">
-      Give the same thought to the tools you use in CI. GitHub Actions, for
-      example, automatically uses new versions of actions by default. CI actions
-      can inject stuff into your project as well.
+      Don't forget about your CI tooling. GitHub Actions, for example,
+      automatically uses the latest version of actions by default. These can
+      inject nasty stuff into your builds as well, and their code is even less
+      visible.
     </Aside>
   </Gist>
 )
