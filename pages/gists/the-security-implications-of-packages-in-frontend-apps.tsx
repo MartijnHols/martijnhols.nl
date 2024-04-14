@@ -73,15 +73,15 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       <Link href={GithubSecurityAdvisories.src} className="plain">
         <Image
           src={GithubSecurityAdvisories}
-          alt="A list of security advisories for a front-end project of various levels ranging from Critical to High"
+          alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
           width={500}
-          height={410}
+          height={301}
           // TODO: sizes="(min-width: 768px) 500px, 100vw"
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
         <Link href={GithubSecurityAdvisories.src}>
-          Security advisories for a front-end project
+          Average security advisories for a front-end project
         </Link>
       </figcaption>
     </figure>
