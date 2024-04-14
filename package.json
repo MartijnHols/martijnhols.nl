@@ -33,7 +33,7 @@
     "@prismicio/slice-simulator-react": "^0.2.2",
     "@tippyjs/react": "^4.2.6",
     "concurrently": "^8.2.2",
-    "next": "^12.3.1",
+    "next": "^13.5.0",
     "prism-react-renderer": "^2.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
