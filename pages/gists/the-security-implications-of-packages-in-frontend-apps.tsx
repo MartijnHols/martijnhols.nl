@@ -46,7 +46,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
     <ul>
       <li>unintentional security vulnerabilities</li>
-      <li>deliberately introduced backdoors</li>
+      <li>deliberately introduced malicious code</li>
       <li>install scripts</li>
       <li>bundling and transpilation</li>
       <li>package (maintainer) trustworthiness</li>
@@ -98,19 +98,19 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       vulnerabilities that actually matter for the front end.
     </Aside>
 
-    <h2 id="deliberately-introduced-backdoors">
-      Deliberately introduced backdoors
+    <h2 id="deliberately-introduced-malicious-code">
+      Deliberately introduced malicious code
     </h2>
     <p>
-      Deliberately introduced backdoors by lone hackers, hacking groups, or
-      state hackers are the scariest vulnerabilities. This is where someone
-      implants a{' '}
+      Deliberately introduced malicious code by a lone hacker, hacking group, or
+      state hackers is the scariest kind of vulnerability. This is where someone
+      adds malicious code to an otherwise useful package, turning it into a{' '}
       <a href="https://owasp.org/www-community/attacks/Trojan_Horse">
         Trojan Horse
-      </a>{' '}
-      into a package. The right Trojan could do almost anything; from hijacking
-      your codebase and the data on your dev machine to installing ransomware or
-      even hijacking all the user data on your servers.
+      </a>
+      . The right Trojan Horse could do almost anything; from hijacking your
+      codebase and the data on your dev machine to installing ransomware or even
+      hijacking all the user data on your servers.
     </p>
     <p>
       <strong>
@@ -122,7 +122,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       </strong>
       , as they don't execute any privileged code on the host (your dev machine
       or server). There's still plenty to be careful of though, as a Trojan
-      could still inject code into your bundle to hijack user cookies, or keylog
+      could still inject code into your bundle to hijack user cookies or keylog
       login and credit card credentials. Your cookies should be safe if you use{' '}
       <Link href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies">
         HTTP-only cookies
@@ -146,12 +146,14 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       to all your data.
     </p>
     <p>
-      You wouldn't detect a really good deliberately introduced backdoor without
-      thoroughly inspecting the code. Someone smart will obfuscate it, only run
-      it in production mode, only for every 100th request, and only after two
-      weeks from now (or something like that), making it extremely hard to
-      detect. By the time a security advisory has been published, it will have
-      been too late.
+      You wouldn't detect a really well-made Trojan Horse without thoroughly
+      inspecting the package code. Someone smart will hide and obfuscate the
+      malicious code, only run it in production mode, only for every 100th
+      request, and only after two weeks from now (or something like that).
+    </p>
+    <p>
+      With the impact a Trojan Horse could have, by the time a security advisory
+      has been published, it may have been too late.
     </p>
 
     <Aside>
@@ -278,7 +280,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       package code or (like the rest of the world) do a quick scan of the
       package and its maintainers, you'll need to do it for every single
       dependency, and <strong>especially the sub-dependencies</strong>. There's
-      no better place to hide a backdoor.
+      no better place to hide malicious code.
     </p>
 
     <h2 id="in-conclusion">In conclusion</h2>
