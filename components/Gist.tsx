@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
@@ -8,9 +7,11 @@ import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
+import Link from './Link'
 import PageWrapper from './PageWrapper'
 import PublicationDateComponent from './PublicationDate'
 import Tag from './Tag'
+import TopBar from './TopBar'
 
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
@@ -96,7 +97,9 @@ const Gist = ({ title, description, publishedAt, tags, children }: Props) => {
         absoluteUrl={absoluteUrl(pathname)}
       />
 
-      <Angle />
+      <TopBar>
+        <Link href="/gists">Gists</Link> by <Link href="/">Martijn Hols</Link>
+      </TopBar>
 
       <StyledContainer as="article">
         <ArticleHeader>

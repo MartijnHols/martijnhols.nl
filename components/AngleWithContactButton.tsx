@@ -19,7 +19,7 @@ interface Props {
   inverted?: boolean
 }
 
-const AngleWithContaintButton = ({ inverted, ...others }: Props) => (
+const AngleWithContactButton = ({ inverted, ...others }: Props) => (
   <Angle inverted={inverted} {...others}>
     <TopAngle>
       <ContactButtonGlobalHover
@@ -34,4 +34,4 @@ const AngleWithContaintButton = ({ inverted, ...others }: Props) => (
   </Angle>
 )
 
-export default AngleWithContaintButton
+export default AngleWithContactButton

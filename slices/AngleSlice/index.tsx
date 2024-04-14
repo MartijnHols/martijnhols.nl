@@ -1,13 +1,13 @@
 import { Content } from '@prismicio/client'
 
-import AngleWithContaintButton from '../../components/AngleWithContaintButton'
+import AngleWithContactButton from '../../components/AngleWithContactButton'
 
 interface Props {
   slice: Content.AngleSliceSlice
 }
 
 const AngleSlice = ({ slice }: Props) => (
-  <AngleWithContaintButton inverted={slice.variation === 'inverted'} />
+  <AngleWithContactButton inverted={slice.variation === 'inverted'} />
 )
 
 export default AngleSlice

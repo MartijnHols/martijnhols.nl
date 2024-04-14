@@ -6,7 +6,7 @@ const Angle = styled('div', {
 })<{ inverted?: boolean }>(
   ({ theme, inverted }) => css`
     position: relative;
-    height: calc(10px + 100vw / 2000 * 30);
+    height: var(--angle-height);
     background: linear-gradient(
       to bottom right,
       /* We need some margin to prevent a jagged edge */
