@@ -18,6 +18,7 @@ export const gists = [
   require('./license'),
   require('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
   require('./how-to-get-document-height-ios-safari-osk'),
+  require('./the-security-implications-of-packages-in-frontend-apps'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 export const getStaticProps: GetStaticProps<Props> = async () => ({
