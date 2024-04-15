@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
+import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 
 import Angle from '../../components/Angle'
@@ -31,6 +32,7 @@ export interface GistMeta {
   slug: string
   title: string
   description: string
+  image?: StaticImageData
   publishedAt: PublicationDateType
   updatedAt?: PublicationDateType
   tags: string[]

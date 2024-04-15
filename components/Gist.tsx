@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
@@ -81,12 +82,20 @@ export type PublicationDate =
 interface Props {
   title: string
   description: string
+  image?: StaticImageData
   publishedAt: PublicationDate
   tags: string[]
   children: ReactNode
 }
 
-const Gist = ({ title, description, publishedAt, tags, children }: Props) => {
+const Gist = ({
+  title,
+  description,
+  image,
+  publishedAt,
+  tags,
+  children,
+}: Props) => {
   const { pathname } = useRouter()
 
   return (
@@ -94,6 +103,7 @@ const Gist = ({ title, description, publishedAt, tags, children }: Props) => {
       <BaseHead
         title={`${title} by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
         description={description}
+        image={image}
         absoluteUrl={absoluteUrl(pathname)}
       />
 

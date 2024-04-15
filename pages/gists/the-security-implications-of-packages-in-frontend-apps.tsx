@@ -11,6 +11,7 @@ import Link from '../../components/Link'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
+import OgImage from './assets/ogimage-security-implications-of-packages.png'
 import { GistMeta } from './index'
 
 const ObfuscatedPackageFigure = styled.figure(
@@ -28,6 +29,7 @@ export const meta: GistMeta = {
   title: 'The security implications of packages in front-end apps',
   description:
     'The gist of the security implications of using third-party packages in front-end projects.',
+  image: OgImage,
   publishedAt: '2024-04-15',
   tags: ['security', 'packages', 'npm', 'frontend'],
 }

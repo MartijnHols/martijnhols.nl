@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react'
 import Head from 'next/head'
 
+import absoluteUrl from '../utils/absoluteUrl'
 import { ImageInfo } from '../utils/convertPrismicImage'
 
 /**
@@ -9,7 +10,7 @@ import { ImageInfo } from '../utils/convertPrismicImage'
 const BaseHead = ({
   title,
   description,
-  absoluteUrl,
+  absoluteUrl: absoluteUrlProp,
   image,
 }: {
   title: string
@@ -29,17 +30,19 @@ const BaseHead = ({
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       {description && <meta property="og:description" content={description} />}
-      <meta property="og:url" content={absoluteUrl} />
+      <meta property="og:url" content={absoluteUrlProp} />
       {image?.src && (
         <meta
           property="og:image"
           // itemProp is required for WhatsApp: https://stackoverflow.com/a/45890205/684353
           itemProp="image"
-          content={image.src}
+          content={
+            image.src.startsWith('http') ? image.src : absoluteUrl(image.src)
+          }
         />
       )}
       {image?.alt && <meta property="og:image:alt" content={image.alt} />}
-      <link rel="canonical" href={absoluteUrl} />
+      <link rel="canonical" href={absoluteUrlProp} />
     </Head>
   )
 }
