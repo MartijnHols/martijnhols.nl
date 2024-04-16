@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-import Link from 'next/link'
-
-import { GistMeta } from '.'
 import Gist from '../../components/Gist'
+import Link from '../../components/Link'
+import { GistMeta } from './index'
 
 export const meta: GistMeta = {
   slug: 'intro',
@@ -103,19 +101,19 @@ const Intro = () => (
       <li>Component props: primitives vs objects</li>
       <li>Why going to the office two days per week is important to me</li>
       <li>
-        <a href="https://gist.github.com/MartijnHols/709965559cbdb6b241c12e5866941e69">
+        <Link href="https://gist.github.com/MartijnHols/709965559cbdb6b241c12e5866941e69">
           iOS edge drag navigation monitor (gestures)
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="https://gist.github.com/MartijnHols/e9f4f787efa9190885a708468f63c5bb">
+        <Link href="https://gist.github.com/MartijnHols/e9f4f787efa9190885a708468f63c5bb">
           A hook that gets the viewport height, even when the iOS OSK is open
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="https://gist.github.com/MartijnHols/e9f4f787efa9190885a708468f63c5bb?permalink_comment_id=4755106#gistcomment-4755106">
+        <Link href="https://gist.github.com/MartijnHols/e9f4f787efa9190885a708468f63c5bb?permalink_comment_id=4755106#gistcomment-4755106">
           How to prevent overscrolling in iOS?
-        </a>
+        </Link>
       </li>
       <li>Libraries vs custom code</li>
       <li>React folder structure</li>

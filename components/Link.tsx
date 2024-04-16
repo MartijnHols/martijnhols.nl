@@ -105,10 +105,10 @@ const Link = ({
       prefetch={prefetch}
       locale={locale}
       passHref
+      onClick={onClick}
+      {...others}
     >
-      <a onClick={onClick} {...others}>
-        {children}
-      </a>
+      {children}
     </NextLink>
   )
 }

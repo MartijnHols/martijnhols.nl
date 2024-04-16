@@ -1,7 +1,7 @@
 import { PrismicRichText as OriginalPrismicRichText } from '@prismicio/react'
 import { RichTextMapSerializerFunction } from '@prismicio/richtext'
 import { RTImageNode } from '@prismicio/types'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { ComponentProps, Fragment, ReactElement } from 'react'
 
 interface Props extends ComponentProps<typeof OriginalPrismicRichText> {

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import { GistMeta } from '.'
 import Code from '../../components/Code'

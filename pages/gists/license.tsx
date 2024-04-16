@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-import Link from 'next/link'
-
-import { GistMeta } from '.'
 import Gist from '../../components/Gist'
+import Link from '../../components/Link'
+import { GistMeta } from './index'
 
 export const meta: GistMeta = {
   slug: 'license',

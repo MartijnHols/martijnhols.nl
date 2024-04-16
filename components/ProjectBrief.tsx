@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { Fragment, ReactNode } from 'react'
 
 import { ImageInfo } from '../utils/convertPrismicImage'

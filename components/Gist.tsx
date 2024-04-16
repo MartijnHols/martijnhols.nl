@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { StaticImageData } from 'next/image'
+import { StaticImageData } from 'next/legacy/image'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 

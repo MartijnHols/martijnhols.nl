@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
