@@ -33,7 +33,7 @@ export interface GistMeta {
   title: string
   description: string
   image?: StaticImageData
-  publishedAt: PublicationDateType
+  publishedAt?: PublicationDateType
   updatedAt?: PublicationDateType
   tags: string[]
 }
@@ -150,26 +150,34 @@ const GistsIndex = ({ gists }: Props) => {
           <Title>Just the gists</Title>
 
           <ArticleList>
-            {[...gists].reverse().map((gist) => (
-              <li key={gist.slug}>
-                <ArticleLink href={`/gists/${gist.slug}`} className="plain">
-                  <Article>
-                    <ArticleTitle>{gist.title}</ArticleTitle>
-                    <p>{gist.description}</p>
-                    <ArticleMetadata>
-                      <PublishedAt>
-                        Published <PublicationDate date={gist.publishedAt} />
-                      </PublishedAt>
-                      <Tags>
-                        {gist.tags.map((tag) => (
-                          <Tag key={tag}>{tag}</Tag>
-                        ))}
-                      </Tags>
-                    </ArticleMetadata>
-                  </Article>
-                </ArticleLink>
-              </li>
-            ))}
+            {gists
+              .filter(
+                (
+                  gist,
+                ): gist is typeof gist & { publishedAt: PublicationDateType } =>
+                  gist.publishedAt !== undefined,
+              )
+              .reverse()
+              .map((gist) => (
+                <li key={gist.slug}>
+                  <ArticleLink href={`/gists/${gist.slug}`} className="plain">
+                    <Article>
+                      <ArticleTitle>{gist.title}</ArticleTitle>
+                      <p>{gist.description}</p>
+                      <ArticleMetadata>
+                        <PublishedAt>
+                          Published <PublicationDate date={gist.publishedAt} />
+                        </PublishedAt>
+                        <Tags>
+                          {gist.tags.map((tag) => (
+                            <Tag key={tag}>{tag}</Tag>
+                          ))}
+                        </Tags>
+                      </ArticleMetadata>
+                    </Article>
+                  </ArticleLink>
+                </li>
+              ))}
           </ArticleList>
         </StyledContainer>
 

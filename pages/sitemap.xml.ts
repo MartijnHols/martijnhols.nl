@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 
+import { PublicationDate } from '../components/Gist'
 import absoluteUrl from '../utils/absoluteUrl'
 import { createClient, getPages, getProjects } from '../utils/prismic'
 import prismicLinkResolver, {
@@ -42,7 +43,12 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const pages = await getPages(client)
   const projects = await getProjects(client, '*')
 
-  const gists = await Promise.all(gistsPromise)
+  const gists = (await Promise.all(gistsPromise))
+    .map((file) => file.meta)
+    .filter(
+      (gist): gist is typeof gist & { publishedAt: PublicationDate } =>
+        gist.publishedAt !== undefined,
+    )
 
   const sitemap = createSiteMapXml([
     ...pages
@@ -70,15 +76,15 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     {
       loc: absoluteUrl('/gists'),
       lastmod: gists.reduce((latest, gist) => {
-        const updatedAt = gist.meta.updatedAt ?? gist.meta.publishedAt
+        const updatedAt = gist.updatedAt ?? gist.publishedAt
         return updatedAt > latest ? updatedAt : latest
       }, '2024-04-01'),
       changefreq: 'weekly',
       priority: 1,
     },
-    ...(await Promise.all(gists)).map((gist) => ({
-      loc: absoluteUrl(`/gists/${gist.meta.slug}`),
-      lastmod: gist.meta.updatedAt ?? gist.meta.publishedAt,
+    ...gists.map((gist) => ({
+      loc: absoluteUrl(`/gists/${gist.slug}`),
+      lastmod: gist.updatedAt ?? gist.publishedAt,
       priority: 0.4,
     })),
   ])

@@ -83,7 +83,7 @@ interface Props {
   title: string
   description: string
   image?: StaticImageData
-  publishedAt: PublicationDate
+  publishedAt?: PublicationDate
   tags: string[]
   children: ReactNode
 }
@@ -117,7 +117,12 @@ const Gist = ({
             <Link href="/gists">← More gists</Link>
           </div>
           <ArticleMetadata>
-            Published <PublicationDateComponent date={publishedAt} />
+            Published{' '}
+            {publishedAt ? (
+              <PublicationDateComponent date={publishedAt} />
+            ) : (
+              'N/A'
+            )}
           </ArticleMetadata>
         </ArticleHeader>
         <Title>{title}</Title>
