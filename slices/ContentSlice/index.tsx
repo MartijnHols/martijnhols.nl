@@ -1,7 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
@@ -30,8 +30,13 @@ const StyledContainer = styled(Container)(
 const ImageContainer = styled.div(
   ({ theme }) => css`
     flex: 0 0 auto;
+  `,
+)
+const SideImage = styled(Image)(
+  ({ theme }) => css`
+    clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
     width: 100%;
-    max-width: none;
+    height: auto;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 400px;
@@ -41,9 +46,6 @@ const ImageContainer = styled.div(
     }
   `,
 )
-const SideImage = styled(Image)`
-  clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
-`
 const ContentContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'twoColumnsText',
 })<{ twoColumnsText?: boolean }>(({ theme, twoColumnsText }) => [
@@ -99,8 +101,7 @@ const ContentSlice = ({ slice }: Props) => {
           <ImageContainer>
             <SideImage
               src={image}
-              alt={image.alt}
-              layout="responsive"
+              alt={image.alt ?? ''}
               sizes={`(min-width: ${theme.breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${theme.breakpoints.TABLET}px) 400px, 100vw`}
             />
           </ImageContainer>

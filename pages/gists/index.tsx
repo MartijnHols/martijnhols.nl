@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
-import { StaticImageData } from 'next/legacy/image'
+import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 
 import Angle from '../../components/Angle'

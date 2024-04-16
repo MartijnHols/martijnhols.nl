@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import { GistMeta } from '.'
 import Code from '../../components/Code'
@@ -42,13 +42,7 @@ const GistHowToGetDocumentHeightIosSafariOsk = () => (
       example of this in one of my apps is shown in the GIF below.
     </p>
     <div style={{ textAlign: 'center' }}>
-      <Image
-        src={iosSafariUseViewportSize}
-        alt=""
-        width={400}
-        height={700}
-        objectFit="contain"
-      />
+      <Image src={iosSafariUseViewportSize} alt="" width={400} />
     </div>
     <p>
       To achieve this, I set up a <Code>div</Code> with the height from the{' '}

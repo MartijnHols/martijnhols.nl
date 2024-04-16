@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { StaticImageData } from 'next/legacy/image'
+import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
@@ -32,6 +32,13 @@ const StyledContainer = styled(Container)(
     // I kind of want to make this global, but I reckon "bolder" is safer
     p strong {
       font-weight: 800;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    figure {
+      margin: ${theme.spacing.x2}px;
     }
   `,
 )

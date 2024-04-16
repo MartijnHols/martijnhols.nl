@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
@@ -77,7 +77,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
           alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
           width={650}
           height={391}
-          // TODO: sizes="(min-width: 768px) 650px, 100vw"
+          sizes="(min-width: 768px) 650px, 100vw"
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
@@ -195,6 +195,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
           alt="Terminal output showing install scripts found in a front-end project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
           width={650}
           height={412}
+          sizes="(min-width: 768px) 650px, 100vw"
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>
@@ -223,6 +224,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
           alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"
           width={350}
           height={218}
+          sizes="(min-width: 768px) 650px, 100vw"
         />
       </Link>
       <figcaption style={{ fontSize: 14 }}>

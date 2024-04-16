@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 
 import { ImageInfo } from '../utils/convertPrismicImage'
@@ -49,6 +49,8 @@ const Container = styled('article', {
 const Header = styled.h3`
   margin-top: 0;
 `
+const Name = styled.span``
+const Period = styled.span``
 const Main = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -64,15 +66,12 @@ const Main = styled.div(
 const Thumbnail = styled.div(
   ({ theme }) => css`
     flex: 0 0 auto;
-    overflow: hidden;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 200px;
     }
   `,
 )
-const Name = styled.span``
-const Period = styled.span``
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
@@ -151,11 +150,9 @@ const ProjectBrief = ({
           <Thumbnail>
             <Image
               src={thumbnail}
-              alt={thumbnail.alt}
-              layout="fixed"
+              alt={thumbnail.alt ?? name}
               width={200}
               height={200}
-              objectFit="contain"
             />
           </Thumbnail>
         )}
