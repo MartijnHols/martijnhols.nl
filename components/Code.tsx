@@ -16,7 +16,7 @@ interface Props {
 const Code = ({ children, language = 'tsx' }: Props) => (
   <Highlight theme={themes.oneDark} code={children} language={language}>
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <StyledCode className={className} style={style}>
+      <StyledCode className={className} style={style} translate="no">
         {tokens.map((line, i) => (
           <span key={i} {...getLineProps({ line })}>
             {line.map((token, key) => (
