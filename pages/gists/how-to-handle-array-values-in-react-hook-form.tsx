@@ -9,7 +9,7 @@ export const meta: GistMeta = {
   title: 'How to handle array values in react-hook-form',
   description:
     'A simple way to handle fields with basic array values in react-hook-form.',
-  tags: ['react', 'react-hook-form'],
+  tags: ['how-to', 'react', 'react-hook-form'],
 }
 
 const GistHowToHandleArrayValuesInReactHookForm = () => (

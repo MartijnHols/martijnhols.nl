@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-const Tag = styled.div(
+const Container = styled.div(
   ({ theme }) => css`
     display: inline-block;
     background: ${theme.colors.black};
@@ -11,13 +11,17 @@ const Tag = styled.div(
     margin-left: -2px;
     margin-bottom: 2px;
 
-    // I purposefully used both variations for SEO and since iirc it was more commonly called "React.js" long back
-    &[data-value='React'],
-    &[data-value='React.js'] {
+    // TODO: Remove usages of React.js
+    &[data-value='react'],
+    &[data-value='react.js'] {
       color: #61dafb;
     }
-    &[data-value='Open Source'] {
+    &[data-value='open source'] {
       color: #fff;
+    }
+    &[data-value='how-to'] {
+      background: darkorange;
+      color: ${theme.colors.black};
     }
 
     transition: transform 120ms ease-out;
@@ -25,6 +29,14 @@ const Tag = styled.div(
       transform: scale(1.4) rotate(-1deg);
     }
   `,
+)
+
+interface Props {
+  children: string
+}
+
+const Tag = ({ children }: Props) => (
+  <Container data-value={children.toLowerCase()}>{children}</Container>
 )
 
 export default Tag

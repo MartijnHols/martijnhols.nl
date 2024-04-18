@@ -161,7 +161,7 @@ const ProjectBrief = ({
           <Tech>
             {tech.map((item, index) => (
               <Fragment key={item}>
-                <Tag data-value={item}>{item}</Tag>
+                <Tag>{item}</Tag>
                 {/* Add hidden text to make copy-pasting more convenient */}
                 {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
               </Fragment>
