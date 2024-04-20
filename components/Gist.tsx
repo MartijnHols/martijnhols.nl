@@ -78,6 +78,14 @@ const Tags = styled.div(
     margin-top: ${theme.spacing.x4}px;
   `,
 )
+const Footer = styled.footer(
+  ({ theme }) => css`
+    background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
+    text-align: right;
+    padding-bottom: ${theme.spacing.x4}px;
+  `,
+)
 
 type PublishedAtYear = `20${number}${number}`
 type PublishedAtMonth = `${0 | 1}${number}`
@@ -132,6 +140,7 @@ const Gist = ({
             )}
           </ArticleMetadata>
         </ArticleHeader>
+
         <Title>{title}</Title>
 
         {children}
@@ -145,7 +154,14 @@ const Gist = ({
 
       <Angle inverted />
 
-      {/** TODO: Custom gist footer (don't want phone number in there) */}
+      <Footer>
+        <Container className="inverted">
+          Feedback:{' '}
+          <a href="https://twitter.com/MartijnHols">
+            https://twitter.com/MartijnHols
+          </a>
+        </Container>
+      </Footer>
     </PageWrapper>
   )
 }
