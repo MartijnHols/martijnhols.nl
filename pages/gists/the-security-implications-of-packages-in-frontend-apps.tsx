@@ -31,6 +31,7 @@ export const meta: GistMeta = {
     'The gist of the security implications of using third-party packages in front-end projects.',
   image: OgImage,
   publishedAt: '2024-04-15',
+  updatedAt: '2024-04-20',
   tags: ['security', 'packages', 'npm', 'frontend'],
 }
 
@@ -165,7 +166,26 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       </a>
       . From what it seems, it was sheer luck that the right person found it at
       all. Hackers will learn from this, and next time we'll probably not be so
-      lucky.
+      lucky. (
+      <a href="https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes/">
+        There's
+      </a>{' '}
+      <a href="https://www.zdnet.com/article/hacker-backdoors-popular-javascript-library-to-steal-bitcoin-funds/">
+        also
+      </a>{' '}
+      <a href="https://therecord.media/malware-found-in-npm-package-with-millions-of-weekly-downloads">
+        some
+      </a>{' '}
+      <a href="https://jfrog.com/blog/malicious-npm-packages-are-after-your-discord-tokens-17-new-packages-disclosed/">
+        older
+      </a>{' '}
+      <a href="https://duo.com/decipher/dozens-of-malicious-data-harvesting-npm-packages-found">
+        history
+      </a>{' '}
+      <a href="https://www.bleepingcomputer.com/news/security/ssh-keys-stolen-by-stream-of-malicious-pypi-and-npm-packages/">
+        in
+      </a>{' '}
+      <a href="https://www.bleepingcomputer.com/tag/npm/">the npm ecosystem</a>)
     </Aside>
     <h2 id="install-scripts">Install scripts</h2>
     <p>
