@@ -47,6 +47,7 @@ const Title = styled.h1(
     ${theme.headings.h1}
     font-size: 46px;
     margin-bottom: ${theme.spacing.x2}px;
+    transform: rotate(-1deg);
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 64px;
