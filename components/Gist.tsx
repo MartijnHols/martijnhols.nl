@@ -63,6 +63,7 @@ const ArticleHeader = styled.div(
     display: flex;
     gap: ${theme.spacing.x2}px;
     align-items: flex-end;
+    transform: rotate(-1deg);
   `,
 )
 const ArticleMetadata = styled.div(
