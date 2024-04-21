@@ -8,6 +8,7 @@ const Container = styled.div(
     color: ${theme.colors.yellow};
     padding: 4px 6px;
     border: 2px solid ${theme.colors.yellow};
+    box-shadow: 0 0 0px 0.5px ${theme.colors.black};
     margin-left: -2px;
     margin-bottom: 2px;
 
@@ -20,8 +21,9 @@ const Container = styled.div(
       color: #fff;
     }
     &[data-value='how-to'] {
-      background: darkorange;
+      background: ${theme.colors.yellow};
       color: ${theme.colors.black};
+      border-color: ${theme.colors.black};
     }
 
     transition: transform 120ms ease-out;
