@@ -37,6 +37,10 @@ const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
       attribute for changes. Proper machine translators will update its value to
       reflect the new language inside your page after translation is applied.
     </p>
+    <Aside label="Note">
+      Make sure your <Code>html</Code> element has the correct <Code>lang</Code>{' '}
+      attribute set initially. If it is omitted, the browser may not update it.
+    </Aside>
     <p>The code to detect all proper machine translators is below.</p>
     <CodeSnippet>{`
 const originalLanguge = document.documentElement.lang;
