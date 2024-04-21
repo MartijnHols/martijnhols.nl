@@ -1,8 +1,8 @@
-import { GistMeta } from '.'
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
+import { GistMeta } from './index'
 
 export const meta: GistMeta = {
   slug: 'how-to-detect-google-translate-and-other-machine-translation',
@@ -30,9 +30,12 @@ const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
     </p>
     <p>
       Most machine translators can be detected simply by monitoring the{' '}
-      <Code>html</Code> element's <Code>lang</Code> attribute for changes.
-      Proper machine translators will update its value to reflect the new
-      language inside your page after translation is applied.
+      <Code>html</Code> element's{' '}
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/lang">
+        lang
+      </a>{' '}
+      attribute for changes. Proper machine translators will update its value to
+      reflect the new language inside your page after translation is applied.
     </p>
     <p>The code to detect all proper machine translators is below.</p>
     <CodeSnippet>{`
