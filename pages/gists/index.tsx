@@ -52,21 +52,6 @@ const ArticleList = styled.ul(
     padding: 0;
   `,
 )
-const Article = styled.article(
-  ({ theme }) => css`
-    margin-bottom: ${theme.spacing.x8}px;
-    color: ${theme.colors.black};
-    border: ${theme.spacing.x2}px solid ${theme.colors.black};
-    padding: ${theme.spacing.x4}px;
-    font-size: 16px;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      transform: rotate(-0.85deg);
-      padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
-      font-size: 18px;
-    }
-  `,
-)
 const ArticleTitle = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.black};
@@ -98,6 +83,43 @@ const ArticleTitle = styled.h2(
     }
   `,
 )
+const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
+  css`
+    margin-top: ${theme.spacing.x8}px;
+    margin-bottom: ${theme.spacing.x8}px;
+    color: ${theme.colors.black};
+    border: ${theme.spacing.x2}px solid ${theme.colors.black};
+    padding: ${theme.spacing.x4}px;
+    font-size: 16px;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      transform: rotate(-0.85deg);
+      padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
+      font-size: 18px;
+    }
+  `,
+  howTo &&
+    css`
+      border: 10px solid ${theme.colors.black};
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      padding: ${theme.spacing.x2}px;
+      font-size: 14px;
+      margin-top: ${theme.spacing.x6}px;
+      margin-bottom: ${theme.spacing.x6}px;
+
+      @media (min-width: ${theme.breakpoints.TABLET}px) {
+        padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
+        font-size: 16px;
+
+        ${ArticleTitle} {
+          font-size: 32px;
+          border-bottom: ${theme.spacing.x1}px solid ${theme.colors.black};
+        }
+      }
+    `,
+])
 const ArticleLink = styled(Link)(
   ({ theme }) => css`
     :hover {
@@ -162,7 +184,7 @@ const GistsIndex = ({ gists }: Props) => {
               .map((gist) => (
                 <li key={gist.slug}>
                   <ArticleLink href={`/gists/${gist.slug}`} className="plain">
-                    <Article>
+                    <Article howTo={gist.tags.includes('how-to')}>
                       <ArticleTitle>{gist.title}</ArticleTitle>
                       <p>{gist.description}</p>
                       <ArticleMetadata>
