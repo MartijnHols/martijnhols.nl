@@ -21,6 +21,7 @@ export const gists = [
   require('./how-to-get-document-height-ios-safari-osk'),
   require('./the-security-implications-of-packages-in-frontend-apps'),
   require('./how-to-handle-array-values-in-react-hook-form'),
+  require('./how-to-detect-google-translate-and-other-machine-translation'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 export const getStaticProps: GetStaticProps<Props> = async () => ({
