@@ -8,6 +8,7 @@ export const meta: GistMeta = {
   description:
     'The gist of this, why this format, what motivates me, and what to expect.',
   publishedAt: '2024-04-01',
+  updatedAt: '2024-04-21',
   tags: ['meta'],
 }
 
@@ -15,19 +16,19 @@ const Intro = () => (
   <Gist {...meta}>
     <p>
       On April 1st of all days, I hereby launch my new gists section. This will
-      be brief snippets, opinions and answers to questions. Mostly about React
-      and closely related things, occasionally some other technologies like
-      Node.js, and maybe I'll throw in some gaming gists as well.
+      be brief articles, snippets, opinions and answers to questions. Mostly
+      about React and closely related things, occasionally some other
+      technologies like Node.js. Maybe I'll throw in some gaming gists as well
+      at some point.
     </p>
     <h2>Why gists?</h2>
     <p>
-      I have tried writing articles for a very long time, but the scope of
-      articles and my perfectionism is preventing me from ever finishing them.
-      Much like I do all the time in software development, I realized I had to
-      break down the work into smaller deliverables. Gists achieve that. I
-      realized I've been writing gists forever, like when I respond to questions
-      on Reddit or issues on GitHub. Writing those never took me anywhere nearly
-      as long as articles did.
+      I have tried writing articles for a very long time, but the scope of them
+      is preventing me from ever finishing them. Much like I do all the time in
+      software development, I realized I had to break down the work into smaller
+      deliverables. Gists are that. I've been writing gists forever, like when I
+      respond to discussions on Reddit or issues on GitHub. Writing those never
+      took me anywhere nearly as long as articles did.
     </p>
     <p>
       Most worthwhile topics already have lengthy articles dedicated to them. I
@@ -36,11 +37,13 @@ const Intro = () => (
     </p>
     <p>
       I also had the idea that these gists could end up becoming sort of like my
-      knowledge base. A collection of questions and answers from a Senior React
-      Developer with experience working on dozens of small to large React
-      projects. In a similar vein, I can hop on Stack Overflow, pick out
-      questions to answer and use those questions as inspiration to dive further
-      into topics (or tangents). As an example, the first gist I wrote is about{' '}
+      knowledge base. A collection of common discussions, questions and answers.
+      In a similar vein, I can hop on Stack Overflow, pick out questions to
+      answer and use those questions as inspiration to dive further into topics
+      (or tangents).
+    </p>
+    <p>
+      The first gist I wrote is about{' '}
       <a href="./react-switch-statement-rendering">
         using switch statements when rendering in React
       </a>{' '}
@@ -48,9 +51,11 @@ const Intro = () => (
       <a href="https://stackoverflow.com/a/78251113/684353">
         The components are getting unmounted and mounted again if we use switch
         case, Why?
-      </a>
-      . I'm sure more people new to React wonder how they can conditionally
-      render JSX. This approach will achieve at least two of my goals:
+      </a>{' '}
+      (update: that gist is now unlisted since this deviates far from what I now
+      envision for this section). I'm sure more people new to React wonder how
+      they can conditionally render JSX. This approach will achieve at least two
+      of my goals:
     </p>
     <p></p>
     <h2>Why write at all?</h2>
