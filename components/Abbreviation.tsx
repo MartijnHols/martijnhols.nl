@@ -7,10 +7,9 @@ import Tooltip from './Tooltip'
 const Container = styled.abbr(
   ({ theme }) => css`
     font-style: italic;
-    border-bottom: 1px dashed ${theme.colors.black};
+    text-decoration: underline wavy ${theme.colors.black};
+    text-decoration-skip-ink: none;
     cursor: help;
-    // cancel out attr default styling
-    text-decoration: none;
   `,
 )
 
