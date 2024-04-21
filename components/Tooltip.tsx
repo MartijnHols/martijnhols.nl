@@ -1,26 +1,44 @@
-import { Global, css } from '@emotion/react'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import Tippy from '@tippyjs/react'
-import { ReactElement, ReactNode, cloneElement, useState } from 'react'
+import { cloneElement, ReactElement, ReactNode, useState } from 'react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-away.css'
+
+const StyledTippy = styled(Tippy)(
+  ({ theme }) => css`
+    background: ${theme.colors.black};
+    color: ${theme.colors.yellow};
+    pointer-events: all;
+    text-align: center;
+    font-size: 16px;
+    padding: ${theme.spacing.x1}px;
+
+    .tippy-arrow {
+      color: ${theme.colors.black};
+    }
+  `,
+)
 
 interface Props {
   children:
     | ReactElement
     | ((props: { tabIndex: number; 'aria-expanded': boolean }) => ReactElement)
   content: ReactNode
+  className?: string
 }
 
-const Tooltip = ({ children, content }: Props) => {
+const Tooltip = ({ children, content, className }: Props) => {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false)
 
   return (
     <>
-      <Tippy
+      <StyledTippy
         content={content}
         animation="shift-away"
         onMount={() => setIsTooltipOpen(true)}
         onHide={() => setIsTooltipOpen(false)}
+        className={className}
       >
         {typeof children === 'function'
           ? children({
@@ -31,22 +49,7 @@ const Tooltip = ({ children, content }: Props) => {
               tabIndex: 0,
               'aria-expanded': isTooltipOpen,
             })}
-      </Tippy>
-      <Global
-        styles={(theme) => css`
-          .tippy-box {
-            background: ${theme.colors.black};
-            color: ${theme.colors.yellow};
-            pointer-events: all;
-            text-align: center;
-            font-size: 16px;
-            padding: ${theme.spacing.x1}px;
-          }
-          .tippy-arrow {
-            color: ${theme.colors.black};
-          }
-        `}
-      />
+      </StyledTippy>
     </>
   )
 }
