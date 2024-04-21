@@ -98,16 +98,17 @@ observer.observe(title, {
     <p>Hope that helps.</p>
     <Aside>
       Machine translators' DOM changes often interfere with tools like React,
-      which may lead to crashes. For React specifically, I plan to post a more
-      extensive gist about ways to mitigate this. Today I wouldn't fix this{' '}
+      which may lead to crashes. For React I plan to post a more extensive gist
+      about ways to mitigate this at some point. I wouldn't fix this the same
+      way today{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-350110297">
-        how I fixed it in 2017
+        as I fixed it in 2017
       </a>
-      . Unfortunately,{' '}
+      , but unfortunately,{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
         the monkey patch
       </a>{' '}
-      just makes things worse.
+      posted by gaearon just makes things worse.
     </Aside>
   </Gist>
 )
