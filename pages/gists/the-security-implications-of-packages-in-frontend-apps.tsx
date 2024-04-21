@@ -31,7 +31,7 @@ export const meta: GistMeta = {
     'The gist of the security implications of using third-party packages in front-end projects.',
   image: OgImage,
   publishedAt: '2024-04-15',
-  updatedAt: '2024-04-20',
+  updatedAt: '2024-04-21',
   tags: ['security', 'packages', 'npm', 'frontend'],
 }
 
@@ -296,14 +296,14 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </Aside>
 
     <h2 id="sub-dependencies">Sub-dependencies</h2>
-    <p>Sub-dependencies, sub-dependencies, and more sub-dependencies.</p>
     <p>
-      Most packages come with dozens of sub-dependencies. All of the above
-      applies to every single one of them. Even if you're going to review
-      package code or (like the rest of the world) do a quick scan of the
-      package and its maintainers, you'll need to do it for every single
-      dependency, and <strong>especially the sub-dependencies</strong>. There's
-      no better place to hide malicious code.
+      The majority of packages come with dozens of sub-dependencies, and the
+      security implications applies to every single one of them. Even if you're
+      going to review package code or (like the rest of the world) do a quick
+      scan of the package and its maintainers, you'll need to do it for every
+      single dependency in the chain, and{' '}
+      <strong>especially the sub-dependencies</strong>. There's no better place
+      to hide malicious code.
     </p>
 
     <h2 id="in-conclusion">In conclusion</h2>
