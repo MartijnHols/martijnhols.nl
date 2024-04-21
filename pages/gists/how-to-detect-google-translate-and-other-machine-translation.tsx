@@ -9,7 +9,7 @@ export const meta: GistMeta = {
   title: 'How to detect Google Translate and other machine translation',
   description:
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
-  // publishedAt: '2024-04-22',
+  publishedAt: '2024-04-21',
   tags: ['how-to', 'machine translation'],
 }
 
