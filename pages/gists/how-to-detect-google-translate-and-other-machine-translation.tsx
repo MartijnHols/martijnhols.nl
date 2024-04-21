@@ -39,7 +39,8 @@ const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
     </p>
     <Aside label="Note">
       Make sure your <Code>html</Code> element has the correct <Code>lang</Code>{' '}
-      attribute set initially. If it is omitted, the browser may not update it.
+      attribute set initially. If it is omitted, the machine translator may not
+      update it.
     </Aside>
     <p>The code to detect all proper machine translators is below.</p>
     <CodeSnippet>{`
