@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { GistMeta } from '.'
+import { GistMeta, GistTag } from '.'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
@@ -13,7 +13,7 @@ export const meta: GistMeta = {
   description:
     'A gist about detecting the on-screen keyboard in iOS Safari with an example React hook.',
   publishedAt: '2024-04-01',
-  tags: ['how-to', 'react', 'ios', 'safari'],
+  tags: [GistTag.HowTo, GistTag.Ios, GistTag.Safari, GistTag.React],
 }
 
 const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import { GistMeta } from '.'
+import { GistMeta, GistTag } from '.'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
@@ -11,7 +11,7 @@ export const meta: GistMeta = {
   description:
     'Exploring the various ways to conditionally render components in React.',
   publishedAt: '2024-03-31',
-  tags: ['react', 'basics'],
+  tags: [GistTag.React, GistTag.Basics],
 }
 
 // I forgot the <div>{{ [true]: <LightSwitchOn/>, [false]: <LightSwitchOff/>}[enabled]}</div> pattern

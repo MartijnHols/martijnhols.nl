@@ -12,7 +12,7 @@ import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
 import OgImage from './assets/ogimage-security-implications-of-packages.png'
-import { GistMeta } from './index'
+import { GistMeta, GistTag } from './index'
 
 const ObfuscatedPackageFigure = styled.figure(
   ({ theme }) => css`
@@ -32,7 +32,7 @@ export const meta: GistMeta = {
   image: OgImage,
   publishedAt: '2024-04-15',
   updatedAt: '2024-04-21',
-  tags: ['security', 'packages', 'npm', 'frontend'],
+  tags: [GistTag.Security, GistTag.Dependencies],
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (

@@ -1,6 +1,6 @@
 import Gist from '../../components/Gist'
 import Link from '../../components/Link'
-import { GistMeta } from './index'
+import { GistMeta, GistTag } from './index'
 
 export const meta: GistMeta = {
   slug: 'intro',
@@ -9,7 +9,7 @@ export const meta: GistMeta = {
     'The gist of this, why this format, what motivates me, and what to expect.',
   publishedAt: '2024-04-01',
   updatedAt: '2024-04-21',
-  tags: ['meta'],
+  tags: [GistTag.Meta],
 }
 
 const Intro = () => (

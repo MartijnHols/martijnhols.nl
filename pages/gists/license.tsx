@@ -1,6 +1,6 @@
 import Gist from '../../components/Gist'
 import Link from '../../components/Link'
-import { GistMeta } from './index'
+import { GistMeta, GistTag } from './index'
 
 export const meta: GistMeta = {
   slug: 'license',
@@ -9,7 +9,7 @@ export const meta: GistMeta = {
     'The license to content in my gists, on the rest of my website and the source code of it all.',
   publishedAt: '2024-04-01',
   updatedAt: '2024-04-14',
-  tags: ['meta'],
+  tags: [GistTag.Meta],
 }
 
 const LicenseGist = () => (

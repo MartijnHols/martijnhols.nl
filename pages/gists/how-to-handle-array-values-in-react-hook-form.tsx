@@ -1,4 +1,4 @@
-import { GistMeta } from '.'
+import { GistMeta, GistTag } from '.'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
@@ -10,7 +10,7 @@ export const meta: GistMeta = {
   description:
     'A simple way to handle fields with basic array values in react-hook-form.',
   // publishedAt: '2024-04-22',
-  tags: ['how-to', 'react', 'react-hook-form'],
+  tags: [GistTag.HowTo, GistTag.ReactHookForm, GistTag.React],
 }
 
 const GistHowToHandleArrayValuesInReactHookForm = () => (

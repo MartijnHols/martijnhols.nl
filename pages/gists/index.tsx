@@ -30,6 +30,22 @@ export const getStaticProps: GetStaticProps<Props> = async () => ({
   },
 })
 
+export const enum GistTag {
+  // Types:
+  Meta = 'meta',
+  HowTo = 'how to',
+  Basics = 'basics',
+  // Tags:
+  React = 'react',
+  ReactHookForm = 'react-hook-form',
+  Security = 'security',
+  Dependencies = 'dependencies',
+  MachineTranslation = 'machine translation',
+  Ios = 'ios',
+  Safari = 'safari',
+  Javascript = 'javascript',
+}
+
 export interface GistMeta {
   slug: string
   title: string
@@ -37,7 +53,7 @@ export interface GistMeta {
   image?: StaticImageData
   publishedAt?: PublicationDateType
   updatedAt?: PublicationDateType
-  tags: string[]
+  tags: GistTag[]
 }
 
 const StyledContainer = styled(Container)(
@@ -185,7 +201,7 @@ const GistsIndex = ({ gists }: Props) => {
               .map((gist) => (
                 <li key={gist.slug}>
                   <ArticleLink href={`/gists/${gist.slug}`} className="plain">
-                    <Article howTo={gist.tags.includes('how-to')}>
+                    <Article howTo={gist.tags.includes(GistTag.HowTo)}>
                       <ArticleTitle>{gist.title}</ArticleTitle>
                       <p>{gist.description}</p>
                       <ArticleMetadata>

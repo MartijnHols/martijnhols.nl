@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { GistMeta } from '.'
+import { GistMeta, GistTag } from '.'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
@@ -14,7 +14,7 @@ export const meta: GistMeta = {
   description:
     'In this gist I share a React hook to get an accurate document height that correctly accounts for the on-screen keyboard on iOS Safari.',
   publishedAt: '2024-04-04',
-  tags: ['how-to', 'react', 'ios', 'safari', 'javascript'],
+  tags: [GistTag.HowTo, GistTag.Ios, GistTag.Safari, GistTag.React],
 }
 
 const GistHowToGetDocumentHeightIosSafariOsk = () => (

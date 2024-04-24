@@ -2,7 +2,7 @@ import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
-import { GistMeta } from './index'
+import { GistMeta, GistTag } from './index'
 
 export const meta: GistMeta = {
   slug: 'how-to-detect-google-translate-and-other-machine-translation',
@@ -10,7 +10,7 @@ export const meta: GistMeta = {
   description:
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
   publishedAt: '2024-04-21',
-  tags: ['how-to', 'machine translation'],
+  tags: [GistTag.HowTo, GistTag.MachineTranslation],
 }
 
 const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
