@@ -1,6 +1,5 @@
-import Gist from '../../components/Gist'
+import Gist, { GistMeta, GistTag } from '../../components/Gist'
 import Link from '../../components/Link'
-import { GistMeta, GistTag } from './index'
 
 export const meta: GistMeta = {
   slug: 'license',

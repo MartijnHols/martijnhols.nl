@@ -6,13 +6,12 @@ import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
-import Gist from '../../components/Gist'
+import Gist, { GistMeta, GistTag } from '../../components/Gist'
 import Link from '../../components/Link'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
 import OgImage from './assets/ogimage-security-implications-of-packages.png'
-import { GistMeta, GistTag } from './index'
 
 const ObfuscatedPackageFigure = styled.figure(
   ({ theme }) => css`

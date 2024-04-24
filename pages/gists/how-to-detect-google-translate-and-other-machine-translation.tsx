@@ -1,8 +1,7 @@
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import { GistMeta, GistTag } from './index'
+import Gist, { GistMeta, GistTag } from '../../components/Gist'
 
 export const meta: GistMeta = {
   slug: 'how-to-detect-google-translate-and-other-machine-translation',

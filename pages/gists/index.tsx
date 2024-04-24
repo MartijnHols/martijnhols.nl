@@ -1,13 +1,16 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
-import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
-import { PublicationDate as PublicationDateType } from '../../components/Gist'
+import {
+  GistMeta,
+  GistTag,
+  PublicationDate as PublicationDateType,
+} from '../../components/Gist'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import PublicationDate from '../../components/PublicationDate'
@@ -29,32 +32,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => ({
     gists: (await Promise.all(gists)).map((gist) => gist.meta),
   },
 })
-
-export const enum GistTag {
-  // Types:
-  Meta = 'meta',
-  HowTo = 'how to',
-  Basics = 'basics',
-  // Tags:
-  React = 'react',
-  ReactHookForm = 'react-hook-form',
-  Security = 'security',
-  Dependencies = 'dependencies',
-  MachineTranslation = 'machine translation',
-  Ios = 'ios',
-  Safari = 'safari',
-  Javascript = 'javascript',
-}
-
-export interface GistMeta {
-  slug: string
-  title: string
-  description: string
-  image?: StaticImageData
-  publishedAt?: PublicationDateType
-  updatedAt?: PublicationDateType
-  tags: GistTag[]
-}
 
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
