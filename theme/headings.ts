@@ -8,6 +8,7 @@ export const h1 = css`
   text-transform: uppercase;
   margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
+  transform: rotate(-1deg);
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 80px;

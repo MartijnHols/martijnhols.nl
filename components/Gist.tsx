@@ -80,7 +80,6 @@ const Title = styled.h1(
     ${theme.headings.h1}
     font-size: 46px;
     margin-bottom: ${theme.spacing.x2}px;
-    transform: rotate(-1deg);
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 64px;
@@ -88,6 +87,9 @@ const Title = styled.h1(
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 80px;
       line-height: 1.2;
+      // Move the title a bit to the left so the bottom of the (rotated) text
+      // aligns with the first paragraph
+      margin-left: -4px;
     }
   `,
 )

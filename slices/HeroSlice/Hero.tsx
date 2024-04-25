@@ -17,7 +17,6 @@ const StyledContainer = styled(Container)(
   ({ theme }) => css`
     padding-top: 100px;
     padding-bottom: 100px;
-    // TODO: Math it out (we want to show we're precise and smart, so REALLY SHOW IT)
     transform: rotate(-2deg);
 
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
