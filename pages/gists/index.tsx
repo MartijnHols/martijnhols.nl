@@ -151,12 +151,25 @@ const Tags = styled.div(
   `,
 )
 
+const filterUnpublished = (
+  gist: GistMeta,
+): gist is typeof gist & { publishedAt: PublicationDateType } =>
+  gist.publishedAt !== undefined
+const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
+  tag === undefined || gist.tags.includes(tag)
+
 interface Props {
   gists: GistMeta[]
 }
 
 const GistsIndex = ({ gists }: Props) => {
-  const { pathname } = useRouter()
+  const { pathname, query } = useRouter()
+
+  const tagToFilter = query.tag as GistTag | undefined
+  const filteredGists = gists
+    .filter(filterUnpublished)
+    .filter(makeFilterByTag(tagToFilter))
+    .toReversed()
 
   return (
     <PageWrapper>
@@ -173,35 +186,35 @@ const GistsIndex = ({ gists }: Props) => {
           <Title>Just the gists</Title>
 
           <ArticleList>
-            {gists
-              .filter(
-                (
-                  gist,
-                ): gist is typeof gist & { publishedAt: PublicationDateType } =>
-                  gist.publishedAt !== undefined,
-              )
-              .reverse()
-              .map((gist) => (
-                <li key={gist.slug}>
-                  <ArticleLink href={`/gists/${gist.slug}`} className="plain">
-                    <Article howTo={gist.tags.includes(GistTag.HowTo)}>
-                      <ArticleTitle>{gist.title}</ArticleTitle>
-                      <p>{gist.description}</p>
-                      <ArticleMetadata>
-                        <PublishedAt>
-                          Published <PublicationDate date={gist.publishedAt} />
-                        </PublishedAt>
-                        <Tags>
-                          {gist.tags.map((tag) => (
-                            <Tag key={tag}>{tag}</Tag>
-                          ))}
-                        </Tags>
-                      </ArticleMetadata>
-                    </Article>
-                  </ArticleLink>
-                </li>
-              ))}
+            {filteredGists.map((gist) => (
+              <li key={gist.slug}>
+                <ArticleLink href={`/gists/${gist.slug}`} className="plain">
+                  <Article howTo={gist.tags.includes(GistTag.HowTo)}>
+                    <ArticleTitle>{gist.title}</ArticleTitle>
+                    <p>{gist.description}</p>
+                    <ArticleMetadata>
+                      <PublishedAt>
+                        Published <PublicationDate date={gist.publishedAt} />
+                      </PublishedAt>
+                      <Tags>
+                        {gist.tags.map((tag) => (
+                          <Tag key={tag}>{tag}</Tag>
+                        ))}
+                      </Tags>
+                    </ArticleMetadata>
+                  </Article>
+                </ArticleLink>
+              </li>
+            ))}
           </ArticleList>
+
+          {tagToFilter && (
+            <div>
+              {filteredGists.length}{' '}
+              {filteredGists.length === 1 ? 'result' : 'results'} for{' '}
+              <Tag>{tagToFilter}</Tag> (<Link href={pathname}>show all</Link>)
+            </div>
+          )}
         </StyledContainer>
 
         <Angle inverted />
