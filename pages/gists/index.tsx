@@ -33,8 +33,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => ({
   },
 })
 
+const Main = styled.main`
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+`
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
+    flex-grow: 1;
     padding-top: 100px;
     padding-bottom: 100px;
   `,
@@ -160,7 +166,7 @@ const GistsIndex = ({ gists }: Props) => {
         absoluteUrl={absoluteUrl(pathname)}
       />
 
-      <main role="main">
+      <Main role="main">
         <Angle />
 
         <StyledContainer>
@@ -199,7 +205,7 @@ const GistsIndex = ({ gists }: Props) => {
         </StyledContainer>
 
         <Angle inverted />
-      </main>
+      </Main>
 
       {/** TODO: Custom gist footer (don't want phone number in there) */}
     </PageWrapper>
