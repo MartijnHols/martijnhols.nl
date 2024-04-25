@@ -169,7 +169,7 @@ const GistsIndex = ({ gists }: Props) => {
   const filteredGists = gists
     .filter(filterUnpublished)
     .filter(makeFilterByTag(tagToFilter))
-    .toReversed()
+    .reverse()
 
   return (
     <PageWrapper>
