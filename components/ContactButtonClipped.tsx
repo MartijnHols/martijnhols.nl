@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-
 import ContactButton from './ContactButton'
 import ContactButtonGlobalHover from './ContactButtonGlobalHover'
 

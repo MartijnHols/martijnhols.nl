@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
 import { isFilled } from '@prismicio/helpers'
 import { asText } from '@prismicio/richtext'
-
 import PrismicRichText from '../../components/PrismicRichText'
 import TopBar from '../../components/TopBar'
 import reactStringReplace from '../../utils/reactStringReplace'

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
-
 import Link from '../../components/Link'
 
 const Container = styled.div(

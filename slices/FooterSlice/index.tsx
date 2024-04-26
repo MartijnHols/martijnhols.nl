@@ -2,7 +2,6 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
 import { asLink, isFilled } from '@prismicio/helpers'
-
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import Link from '../../components/Link'

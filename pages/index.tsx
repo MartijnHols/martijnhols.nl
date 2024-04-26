@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-
 import { HOMEPAGE_SLUG } from '../utils/prismicLinkResolver'
 import Page, { getStaticProps as slugGetStaticProps } from './[slug]'
 

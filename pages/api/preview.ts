@@ -1,6 +1,5 @@
 import { setPreviewData, redirectToPreviewURL } from '@prismicio/next'
 import { NextApiRequest, NextApiResponse } from 'next'
-
 import { createClient } from '../../utils/prismic'
 import prismicLinkResolver from '../../utils/prismicLinkResolver'
 

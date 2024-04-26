@@ -2,7 +2,6 @@ import { Content } from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
 import { SliceSimulator } from '@prismicio/slice-simulator-react'
 import { useEffect, useState } from 'react'
-
 import state from '../.slicemachine/libraries-state.json'
 import { components } from '../slices'
 import { toPrismicLocale } from '../utils/locales'

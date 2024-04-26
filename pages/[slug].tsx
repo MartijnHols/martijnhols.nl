@@ -5,7 +5,6 @@ import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
 import { useMemo } from 'react'
 import { dehydrate, QueryClient, DehydratedState } from 'react-query'
-
 import BaseHead from '../components/BaseHead'
 import HrefLangHead from '../components/HrefLangHead'
 import PageWrapper from '../components/PageWrapper'

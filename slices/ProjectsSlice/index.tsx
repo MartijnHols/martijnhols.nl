@@ -5,7 +5,6 @@ import { asLink } from '@prismicio/helpers'
 import { usePrismicClient } from '@prismicio/react'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
-
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'

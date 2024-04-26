@@ -2,7 +2,6 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
-
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'

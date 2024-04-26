@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-
 import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
@@ -101,12 +100,10 @@ const ArticleHeader = styled.div(
     transform: rotate(-1deg);
   `,
 )
-const ArticleMetadata = styled.div(
-  ({ theme }) => css`
-    flex-grow: 1;
-    text-align: right;
-  `,
-)
+const ArticleMetadata = styled.div`
+  flex-grow: 1;
+  text-align: right;
+`
 const Tags = styled.div(
   ({ theme }) => css`
     display: flex;

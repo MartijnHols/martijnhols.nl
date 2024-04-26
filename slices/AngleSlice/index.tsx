@@ -1,5 +1,4 @@
 import { Content } from '@prismicio/client'
-
 import AngleWithContactButton from '../../components/AngleWithContactButton'
 
 interface Props {

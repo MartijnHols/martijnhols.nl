@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { Highlight, themes } from 'prism-react-renderer'
-
 import { PrismLanguages } from './CodeSnippet'
 
 const StyledCode = styled.code`

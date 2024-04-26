@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import { PublicationDate as PublicationDateType } from './Gist'
 import Tooltip from './Tooltip'

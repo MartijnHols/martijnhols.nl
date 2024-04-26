@@ -1,8 +1,8 @@
+/* eslint-env node */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const { getRepositoryName } = require('@prismicio/client')
-
 const prismicConfig = require('./sm.json')
 
 const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint)

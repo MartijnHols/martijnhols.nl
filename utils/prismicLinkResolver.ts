@@ -1,5 +1,4 @@
 import { FilledLinkToDocumentField, PrismicDocument } from '@prismicio/types'
-
 import { toUserLocale } from './locales'
 
 export const HOMEPAGE_SLUG = 'homepage'

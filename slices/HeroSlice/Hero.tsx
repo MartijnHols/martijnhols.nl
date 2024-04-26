@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
-
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 

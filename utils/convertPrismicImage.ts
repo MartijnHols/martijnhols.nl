@@ -1,6 +1,5 @@
 import { ImageField, FilledImageFieldImage } from '@prismicio/types'
 import { StaticImageData } from 'next/image'
-
 import disablePrismicImageOptimizations from './disablePrismicImageOptimizations'
 
 export interface ImageInfo extends StaticImageData {

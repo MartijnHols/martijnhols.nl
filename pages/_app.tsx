@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@emotion/react'
 import { AppProps } from 'next/app'
 import { DehydratedState } from 'react-query'
-
 import ReactQueryProvider from '../components/ReactQueryProvider'
 import * as theme from '../theme'
 import GlobalStyles from '../theme/GlobalStyles'

@@ -6,7 +6,6 @@ import {
 import { PreviewData } from 'next'
 import { useRouter } from 'next/router'
 import { ReactNode, useState } from 'react'
-
 import { createClient } from '../utils/prismic'
 import prismicLinkResolver from '../utils/prismicLinkResolver'
 import Link from './Link'

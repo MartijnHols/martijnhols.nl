@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-
 import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
 

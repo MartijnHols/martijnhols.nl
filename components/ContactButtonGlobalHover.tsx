@@ -1,5 +1,4 @@
 import { ComponentProps } from 'react'
-
 import { makeVar, useReactiveVar } from '../utils/reactiveVar'
 import ContactButton from './ContactButton'
 

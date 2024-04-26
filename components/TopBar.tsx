@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
-
 import Angle from './Angle'
 const Sticky = styled.div(
   ({ theme }) => css`

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-
 import { usePrismicConfig } from '../utils/prismicConfig'
 import ChatIcon from './icons/chat.svg'
 import Link from './Link'
@@ -75,15 +74,9 @@ interface Props
   extends Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'> {
   inverted?: boolean
   hovering?: boolean
-  annotation?: string
 }
 
-const ContactButton = ({
-  inverted,
-  annotation,
-  hovering,
-  ...others
-}: Props) => {
+const ContactButton = ({ inverted, hovering, ...others }: Props) => {
   const config = usePrismicConfig()
 
   return (

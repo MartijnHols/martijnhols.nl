@@ -1,3 +1,4 @@
+/* eslint-env node */
 /**
  * @param {puppeteer.Browser} browser
  * @param {{url: string, options: LHCI.CollectCommand.Options}} context

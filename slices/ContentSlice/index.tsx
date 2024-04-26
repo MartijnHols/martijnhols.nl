@@ -2,7 +2,6 @@ import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
 import Image from 'next/image'
-
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
@@ -27,11 +26,9 @@ const StyledContainer = styled(Container)(
     }
   `,
 )
-const ImageContainer = styled.div(
-  ({ theme }) => css`
-    flex: 0 0 auto;
-  `,
-)
+const ImageContainer = styled.div`
+  flex: 0 0 auto;
+`
 const SideImage = styled(Image)(
   ({ theme }) => css`
     clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);

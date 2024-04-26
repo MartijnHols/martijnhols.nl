@@ -1,6 +1,5 @@
 import { PrismicRichText as OriginalPrismicRichText } from '@prismicio/react'
 import { ComponentProps } from 'react'
-
 import { fragmentSerializer } from './PrismicRichText'
 
 /**

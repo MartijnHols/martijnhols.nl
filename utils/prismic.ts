@@ -10,7 +10,6 @@ import {
   PrismicDocument,
   SliceZone as SliceZoneType,
 } from '@prismicio/types'
-
 import sm from '../sm.json'
 
 /**

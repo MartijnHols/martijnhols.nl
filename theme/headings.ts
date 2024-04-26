@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-
 import { breakpoints, spacing } from '.'
 
 export const h1 = css`

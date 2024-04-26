@@ -2,7 +2,6 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
@@ -38,20 +37,16 @@ const Main = styled.main`
   flex-flow: column;
   min-height: 100vh;
 `
-const StyledContainer = styled(Container)(
-  ({ theme }) => css`
-    flex-grow: 1;
-    padding-top: 100px;
-    padding-bottom: 100px;
-  `,
-)
+const StyledContainer = styled(Container)`
+  flex-grow: 1;
+  padding-top: 100px;
+  padding-bottom: 100px;
+`
 const Title = styled.h1``
-const ArticleList = styled.ul(
-  ({ theme }) => css`
-    list-style: none;
-    padding: 0;
-  `,
-)
+const ArticleList = styled.ul`
+  list-style: none;
+  padding: 0;
+`
 const ArticleTitle = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.black};
