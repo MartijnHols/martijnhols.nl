@@ -131,14 +131,13 @@ const ArticleLink = styled(Link)(
   `,
 )
 const ArticleMetadata = styled.div(
-  ({ theme }) =>
-    css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: ${theme.spacing.x2}px;
-    `,
+  ({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: ${theme.spacing.x2}px;
+  `,
 )
 const PublishedAt = styled.div`
   opacity: 0.6;

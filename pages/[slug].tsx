@@ -118,8 +118,8 @@ export const getStaticProps: GetStaticProps<
   const layoutRef = isFilled.contentRelationship(page?.data.layout)
     ? page?.data.layout
     : isFilled.contentRelationship(config.data.defaultLayout)
-    ? config.data.defaultLayout
-    : undefined
+      ? config.data.defaultLayout
+      : undefined
   if (!layoutRef) {
     throw new Error(
       'Page layout not set and config is missing the default layout',
