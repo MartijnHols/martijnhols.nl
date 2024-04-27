@@ -44,13 +44,25 @@ const nextConfig = withBundleAnalyzer({
     prismicLocaleMap,
   },
   images: {
-    domains: [
-      'images.prismic.io',
-      `${prismicRepositoryName}.cdn.prismic.io`,
-      'prismic-io.s3.amazonaws.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.prismic.io',
+      },
+      {
+        protocol: 'https',
+        hostname: `${prismicRepositoryName}.cdn.prismic.io`,
+      },
+      {
+        protocol: 'https',
+        hostname: 'prismic-io.s3.amazonaws.com',
+      },
       // Used by Prismic Slice Machine mock data
       process.env.NODE_ENV === 'development'
-        ? 'images.unsplash.com'
+        ? {
+            protocol: 'https',
+            hostname: 'images.unsplash.com',
+          }
         : undefined,
     ].filter(Boolean),
   },
