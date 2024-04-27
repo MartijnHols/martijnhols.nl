@@ -1,5 +1,9 @@
 {
-  "extends": "@martijnhols/eslint-config",
+  "extends": [
+    "@martijnhols/eslint-config",
+    "plugin:@next/next/recommended",
+    "plugin:@next/next/core-web-vitals"
+  ],
   "rules": {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

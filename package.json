@@ -47,6 +47,7 @@
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
     "@martijnhols/eslint-config": "^6.0.0",
+    "@next/eslint-plugin-next": "^14.2.3",
     "@slicemachine/adapter-next": "^0.3.38",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.12.3",
