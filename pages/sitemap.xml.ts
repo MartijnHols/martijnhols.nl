@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         const updatedAt = gist.updatedAt ?? gist.publishedAt
         return updatedAt > latest ? updatedAt : latest
       }, '2024-04-01'),
-      changefreq: 'weekly',
+      changefreq: 'daily',
       priority: 1,
     },
     ...gists.map((gist) => ({
