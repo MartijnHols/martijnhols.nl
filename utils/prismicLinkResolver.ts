@@ -1,11 +1,14 @@
-import { FilledLinkToDocumentField, PrismicDocument } from '@prismicio/types'
+import {
+  FilledContentRelationshipField,
+  PrismicDocument,
+} from '@prismicio/client'
 import { toUserLocale } from './locales'
 
 export const HOMEPAGE_SLUG = 'homepage'
 
 export const slugResolver = (
   doc:
-    | Pick<FilledLinkToDocumentField, 'type' | 'uid' | 'lang'>
+    | Pick<FilledContentRelationshipField, 'type' | 'uid' | 'lang'>
     | Pick<PrismicDocument, 'type' | 'uid' | 'lang'>,
 ) => {
   if (doc.type === 'page' && doc.uid !== HOMEPAGE_SLUG) {
@@ -22,7 +25,7 @@ export const slugResolver = (
 // Manages the url links to internal Prismic documents
 const prismicLinkResolver = (
   doc:
-    | Pick<FilledLinkToDocumentField, 'type' | 'uid' | 'lang'>
+    | Pick<FilledContentRelationshipField, 'type' | 'uid' | 'lang'>
     | Pick<PrismicDocument, 'type' | 'uid' | 'lang'>,
 ) => {
   const slug = slugResolver(doc)

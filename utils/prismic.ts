@@ -3,14 +3,12 @@ import {
   Client,
   createClient as createPrismicClient,
   Content,
-} from '@prismicio/client'
-import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
-import {
   FilledContentRelationshipField,
   PrismicDocument,
   SliceZone as SliceZoneType,
-} from '@prismicio/types'
-import sm from '../sm.json'
+} from '@prismicio/client'
+import { CreateClientConfig, enableAutoPreviews } from '@prismicio/next'
+import sm from '../slicemachine.config.json'
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to

@@ -1,12 +1,11 @@
 import { PrismicRichText as OriginalPrismicRichText } from '@prismicio/react'
 import { RichTextMapSerializerFunction } from '@prismicio/richtext'
+// @prismicio/types seems outdated and no longer maintained, but Prismic is
+// still using it in @prismicio/richtext and so we need it here.
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { RTImageNode } from '@prismicio/types'
 import Image from 'next/image'
 import { ComponentProps, Fragment, ReactElement } from 'react'
-
-interface Props extends ComponentProps<typeof OriginalPrismicRichText> {
-  multiline?: boolean
-}
 
 export const fragmentSerializer: RichTextMapSerializerFunction<
   ReactElement
@@ -24,6 +23,10 @@ const imageSerializer: RichTextMapSerializerFunction<
     alt={node.alt || ''}
   />
 )
+
+interface Props extends ComponentProps<typeof OriginalPrismicRichText> {
+  multiline?: boolean
+}
 
 /**
  * Renders PrismicRichText. Removes the wrapper from a non-multiline

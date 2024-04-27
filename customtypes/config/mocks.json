@@ -1,0 +1,38 @@
+[
+  {
+    "visit": {
+      "__TYPE__": "FieldContent",
+      "value": "burn",
+      "type": "Text"
+    },
+    "sourceCode": {
+      "__TYPE__": "FieldContent",
+      "value": "attached",
+      "type": "Text"
+    },
+    "languageToggle": {
+      "__TYPE__": "FieldContent",
+      "value": "pocket",
+      "type": "Text"
+    },
+    "contact": {
+      "__TYPE__": "FieldContent",
+      "value": "here",
+      "type": "Text"
+    },
+    "defaultLayout": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "articlesLayout": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    }
+  }
+]

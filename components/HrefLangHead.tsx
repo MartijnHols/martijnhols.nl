@@ -1,4 +1,4 @@
-import { PrismicDocument } from '@prismicio/types'
+import { PrismicDocument } from '@prismicio/client'
 import Head from 'next/head'
 import absoluteUrl from '../utils/absoluteUrl'
 import prismicLinkResolver from '../utils/prismicLinkResolver'

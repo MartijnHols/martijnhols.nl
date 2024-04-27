@@ -1,4 +1,4 @@
-import { ImageField, FilledImageFieldImage } from '@prismicio/types'
+import { ImageField, FilledImageFieldImage } from '@prismicio/client'
 import { StaticImageData } from 'next/image'
 import disablePrismicImageOptimizations from './disablePrismicImageOptimizations'
 

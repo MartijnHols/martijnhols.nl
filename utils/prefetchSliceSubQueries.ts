@@ -1,5 +1,4 @@
-import { Client as PrismicClient } from '@prismicio/client'
-import { SharedSlice } from '@prismicio/types'
+import { Client as PrismicClient, SharedSlice } from '@prismicio/client'
 import { FunctionComponent } from 'react'
 import { QueryClient } from 'react-query'
 
