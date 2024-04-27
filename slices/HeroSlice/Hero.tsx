@@ -39,6 +39,7 @@ const IntroSubText = styled.span(
 )
 export const IntroTitle = styled.h1`
   margin: 0;
+  transform: none;
 `
 const SubText = styled.div(
   ({ theme }) => css`
