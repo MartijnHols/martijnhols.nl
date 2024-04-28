@@ -87,8 +87,6 @@ interface Props {
   disabled?: boolean
 }
 
-// It looks like a lot, but that's mostly just table markup. The relevant logic
-// is just the articles.map and input element.
 const ArticleSelect = ({ value, name, onChange, onBlur, disabled }: Props) => (
   <table>
     <thead>
@@ -126,20 +124,13 @@ const ArticleSelect = ({ value, name, onChange, onBlur, disabled }: Props) => (
           )
 
         return (
-          <tr
-            key={article.id}
-            // Allow clicking anywhere in the row to toggle the checkbox
-            onClick={toggle}
-          >
+          <tr key={article.id}>
             <td>
               <input
                 type="checkbox"
-                name={\`\${name}-\${article.id}\`}
+                name={name}
                 checked={checked}
-                onChange={(e) => {
-                  e.stopPropagation()
-                  toggle()
-                }}
+                onChange={toggle}
                 onBlur={onBlur}
                 disabled={disabled}
               />
@@ -156,6 +147,26 @@ const ArticleSelect = ({ value, name, onChange, onBlur, disabled }: Props) => (
 
 export default ArticleSelect
 `}</CodeSnippet>
+    <p>
+      It looks like a lot, but that's mostly just table markup. The important
+      bits are the component's props, the <Code>articles.map</Code> and the
+      input elements.
+    </p>
+    <p>
+      The <Code>value</Code> and <Code>onChange</Code> props are the essentials
+      parts of the custom input component. The <Code>value</Code> prop is an
+      array of the currently selected article ids and the <Code>onChange</Code>{' '}
+      prop is an event handler that will be called with the new value whenever
+      the user selects or deselects an article.
+    </p>
+    <p>
+      The rest of the props are not strictly necessary; they are nice to have.
+    </p>
+    <p>
+      With <Code>articles.map</Code> we loop over the articles to create a
+      checkbox for each one. Each checkbox has an onChange handler that will
+      toggle the article's id in the value array.
+    </p>
     <p>
       With this <Code>ArticleSelect</Code> component ready to go, we can now use
       it in a react-hook-form form.
@@ -207,9 +218,7 @@ export default ArticleSelect
       's names to <Code>{`\`articles.\${articleId}.publishedAt\``}</Code> and{' '}
       <Code>{`\`articles.\${articleId}.updatedAt\``}</Code> respectively.
     </p>
-    <p>
-      Anything to avoid needing to use <Code>useFieldArray</Code>.
-    </p>
+    <p>I wonder how far this approach can go.</p>
   </Gist>
 )
 
