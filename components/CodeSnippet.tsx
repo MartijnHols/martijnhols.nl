@@ -1,6 +1,7 @@
 import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Highlight, themes } from 'prism-react-renderer'
+import CopyPasteOnly from './CopyPasteOnly'
 // Alternative: https://github.com/react-simple-code-editor/react-simple-code-editor
 
 const Code = styled.code<{ variant?: 'small' | 'regular' }>(
@@ -89,32 +90,43 @@ const CodeSnippet = ({
   const theme = useTheme()
 
   return (
-    <Code translate="no" variant={variant}>
-      <Highlight
-        theme={{
-          ...themes.oneDark,
-          plain: {
-            ...themes.oneDark.plain,
-            backgroundColor: theme.colors.black,
-            color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
-          },
-        }}
-        code={children.trim()}
-        language={language}
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <PreformattedContainer className={className} style={style}>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token })} />
-                ))}
-              </div>
-            ))}
-          </PreformattedContainer>
-        )}
-      </Highlight>
-    </Code>
+    <>
+      <CopyPasteOnly>
+        ```
+        <br />
+      </CopyPasteOnly>
+      <Code translate="no" variant={variant}>
+        <Highlight
+          theme={{
+            ...themes.oneDark,
+            plain: {
+              ...themes.oneDark.plain,
+              backgroundColor: theme.colors.black,
+              color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
+            },
+          }}
+          code={children.trim()}
+          language={language}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <PreformattedContainer className={className} style={style}>
+              {tokens.map((line, i) => (
+                <div key={i} {...getLineProps({ line })}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </div>
+              ))}
+            </PreformattedContainer>
+          )}
+        </Highlight>
+      </Code>
+      <CopyPasteOnly>
+        ```
+        <br />
+        <br />
+      </CopyPasteOnly>
+    </>
   )
 }
 

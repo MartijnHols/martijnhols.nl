@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import CopyPasteOnly from './CopyPasteOnly'
 
 const Container = styled.div(
   ({ theme }) => css`
@@ -34,6 +35,9 @@ const Label = styled.div<{ variant?: 'small' | 'regular' }>(
       text-orientation: mixed;
       font-weight: bold;
       align-self: stretch;
+      // This is typically bad form, but this improves the layout of text when
+      // it is copy-pasted, since I add this text back underneath
+      user-select: none;
     `,
     variant === 'regular' &&
       css`
@@ -46,7 +50,7 @@ const Label = styled.div<{ variant?: 'small' | 'regular' }>(
 )
 const Content = styled.div(
   ({ theme }) => css`
-    padding: ${theme.spacing.x2}px;
+    padding: 0 ${theme.spacing.x2}px;
   `,
 )
 
@@ -59,7 +63,12 @@ interface Props {
 const Aside = ({ children, label, variant = 'regular' }: Props) => (
   <Container>
     <Label variant={variant}>{label || 'Aside'}</Label>
-    <Content>{children}</Content>
+    <Content>
+      <p>
+        <CopyPasteOnly>&gt; {label || 'Aside'}:&nbsp;</CopyPasteOnly>
+        {children}
+      </p>
+    </Content>
   </Container>
 )
 

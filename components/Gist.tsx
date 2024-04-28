@@ -39,6 +39,8 @@ export type PublicationDate =
 export interface GistMeta {
   slug: string
   title: string
+  /** An optional alternative rendering of the title-string. */
+  titleReact?: ReactNode
   description: string
   image?: StaticImageData
   publishedAt?: PublicationDate
@@ -76,7 +78,6 @@ const StyledContainer = styled(Container)(
 )
 const Title = styled.h1(
   ({ theme }) => css`
-    ${theme.headings.h1}
     font-size: 46px;
     margin-bottom: ${theme.spacing.x2}px;
 
@@ -123,6 +124,7 @@ const Footer = styled.footer(
 
 interface Props {
   title: string
+  titleReact?: ReactNode
   description: string
   image?: StaticImageData
   publishedAt?: PublicationDate
@@ -132,6 +134,7 @@ interface Props {
 
 const Gist = ({
   title,
+  titleReact,
   description,
   image,
   publishedAt,
@@ -168,7 +171,7 @@ const Gist = ({
           </ArticleMetadata>
         </ArticleHeader>
 
-        <Title>{title}</Title>
+        <Title>{titleReact ?? title}</Title>
 
         {children}
 

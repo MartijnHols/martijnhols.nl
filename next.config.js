@@ -91,6 +91,11 @@ const nextConfig = withBundleAnalyzer({
           },
         ],
       },
+      // Download .ics files
+      {
+        test: /\.ics/,
+        type: 'asset/resource',
+      },
     ]
 
     return config
