@@ -37,7 +37,9 @@ const filterUnpublished = (
 const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
   tag === undefined || gist.tags.includes(tag)
 
-type SerializableGistMeta = Omit<GistMeta, 'titleReact'>
+type SerializableGistMeta = Omit<GistMeta, 'titleReact'> & {
+  publishedAt: PublicationDateType
+}
 
 export const getStaticProps: GetStaticProps<Props> = async () => ({
   props: {
