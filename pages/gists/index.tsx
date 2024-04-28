@@ -16,6 +16,7 @@ import PublicationDate from '../../components/PublicationDate'
 import Tag from '../../components/Tag'
 import absoluteUrl from '../../utils/absoluteUrl'
 
+// TODO: topLevelAwait
 export const gists = [
   require('./intro'),
   require('./license'),
@@ -27,16 +28,27 @@ export const gists = [
   require('./keeping-dependencies-up-to-date'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
+const filterUnpublished = (
+  gist: GistMeta,
+): gist is typeof gist & { publishedAt: PublicationDateType } =>
+  gist.publishedAt !== undefined
+// We do this client-side so we can avoid the hassle of having to generate new
+// pages. We'll do that when we get enough articles to warrant it.
+const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
+  tag === undefined || gist.tags.includes(tag)
+
 type SerializableGistMeta = Omit<GistMeta, 'titleReact'>
 
 export const getStaticProps: GetStaticProps<Props> = async () => ({
   props: {
-    gists: (await Promise.all(gists)).map((gist) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { titleReact, ...serializableGistMeta } = gist.meta
+    gists: (await Promise.all(gists))
+      .map((gist) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { titleReact, ...serializableGistMeta } = gist.meta
 
-      return serializableGistMeta
-    }),
+        return serializableGistMeta
+      })
+      .filter(filterUnpublished),
   },
 })
 
@@ -153,13 +165,6 @@ const Tags = styled.div(
   `,
 )
 
-const filterUnpublished = (
-  gist: GistMeta,
-): gist is typeof gist & { publishedAt: PublicationDateType } =>
-  gist.publishedAt !== undefined
-const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
-  tag === undefined || gist.tags.includes(tag)
-
 interface Props {
   gists: SerializableGistMeta[]
 }
@@ -168,10 +173,7 @@ const GistsIndex = ({ gists }: Props) => {
   const { pathname, query } = useRouter()
 
   const tagToFilter = query.tag as GistTag | undefined
-  const filteredGists = gists
-    .filter(filterUnpublished)
-    .filter(makeFilterByTag(tagToFilter))
-    .reverse()
+  const filteredGists = gists.filter(makeFilterByTag(tagToFilter)).reverse()
 
   return (
     <PageWrapper>
