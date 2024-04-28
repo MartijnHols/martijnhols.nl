@@ -257,7 +257,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <p>
-      You can start the dependency updating process right now;{' '}
+      Start the dependency updating process right now;{' '}
       <Link
         href={dependencyUpdatesIcal}
         download="Dependency updates appointment.ics"
