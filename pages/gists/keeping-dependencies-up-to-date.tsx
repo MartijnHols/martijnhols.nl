@@ -8,7 +8,7 @@ import dependabotImage from './assets/dependabot.png'
 import dependencyUpdatesScheduledImage from './assets/dependency-updates-scheduled.png'
 import dependencyUpdatesIcal from './assets/dependencyupdates.ics'
 import libyearsCartoonImage from './assets/libyears-cartoon.png'
-import OgImage from './assets/ogimage-security-implications-of-packages.png'
+import openGraphImage from './assets/ogimage-keeping-dependencies-up-to-date.png'
 
 export const meta: GistMeta = {
   slug: 'keeping-dependencies-up-to-date',
@@ -21,8 +21,8 @@ export const meta: GistMeta = {
     </>
   ),
   description:
-    'The gist of the security implications of using third-party packages in front-end projects.',
-  image: OgImage,
+    'The gist of keeping dependencies up-to-date. When to update, how to update, and what to update first.',
+  image: openGraphImage,
   publishedAt: '2024-04-28',
   tags: [GistTag.Dependencies, GistTag.Security],
 }
