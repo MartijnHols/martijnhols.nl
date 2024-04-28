@@ -102,9 +102,10 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <Aside>
-      I won't dive into <a href="https://semver.org/">semver</a> here. Just know
-      that it's completely optional for a library to use the versioning scheme.
-      Version numbers can't be blindly trusted.
+      The versioning scheme <a href="https://semver.org/">semver</a> is often
+      used to indicate the impact of an update. Just know that it's completely
+      optional for a library to use the versioning scheme. You can't blindly
+      trust version numbers.
     </Aside>
 
     <h2 id="manually-updating">Manually updating</h2>
