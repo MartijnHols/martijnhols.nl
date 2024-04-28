@@ -19,7 +19,6 @@ import prismicLinkResolver from '../../utils/prismicLinkResolver'
 const Section = styled.section(
   ({ theme }) => css`
     position: relative;
-    background: ${theme.colors.yellow};
     color: ${theme.colors.black};
     padding: 150px 0;
     overflow: hidden;

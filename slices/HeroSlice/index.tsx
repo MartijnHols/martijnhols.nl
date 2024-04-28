@@ -22,7 +22,6 @@ const ReactLogoAnimation = keyframes`
 `
 const StyledReactLogo = styled(ReactLogo)`
   height: 1em;
-  /* color: #61DAFB; */
 
   @media (prefers-reduced-motion: no-preference) {
     animation: ${ReactLogoAnimation} infinite 20s linear;

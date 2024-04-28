@@ -16,7 +16,7 @@ const Container = styled('article', {
 }>(({ theme, highlighted, isPlaceholder }) => [
   css`
     transform: rotate(-0.85deg);
-    border: ${theme.spacing.x2}px solid #000;
+    border: ${theme.spacing.x2}px solid ${theme.colors.black};
     margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
     padding: ${theme.spacing.x3}px;
 

@@ -7,7 +7,6 @@ import Container from '../../components/Container'
 const Section = styled.header(
   ({ theme }) => css`
     position: relative;
-    background: ${theme.colors.yellow};
     color: ${theme.colors.black};
     overflow: hidden;
   `,
