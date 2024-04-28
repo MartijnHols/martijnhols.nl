@@ -149,8 +149,8 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <Aside label="Tip">
-      Before updating a dependency, make sure the dependency isn't (almost)
-      unused. The best kind of dependency update is one where you can remove a
+      Before updating a dependency, make sure the dependency is still in use.
+      The best kind of dependency update is one where you can remove the
       dependency entirely.
     </Aside>
 
