@@ -177,7 +177,9 @@ const Gist = ({
 
         <Tags>
           {tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
+            <Link key={tag} href={`/gists?tag=${tag}`} className="plain">
+              <Tag>{tag}</Tag>
+            </Link>
           ))}
         </Tags>
       </StyledContainer>
