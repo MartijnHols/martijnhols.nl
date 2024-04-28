@@ -23,7 +23,7 @@ export const meta: GistMeta = {
   description:
     'The gist of the security implications of using third-party packages in front-end projects.',
   image: OgImage,
-  // publishedAt: '2024-04-28',
+  publishedAt: '2024-04-28',
   tags: [GistTag.Dependencies, GistTag.Security],
 }
 
