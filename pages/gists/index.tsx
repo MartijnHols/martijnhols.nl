@@ -24,11 +24,19 @@ export const gists = [
   require('./the-security-implications-of-packages-in-frontend-apps'),
   require('./how-to-handle-array-values-in-react-hook-form'),
   require('./how-to-detect-google-translate-and-other-machine-translation'),
+  require('./keeping-dependencies-up-to-date'),
 ] as Array<Promise<{ meta: GistMeta }>>
+
+type SerializableGistMeta = Omit<GistMeta, 'titleReact'>
 
 export const getStaticProps: GetStaticProps<Props> = async () => ({
   props: {
-    gists: (await Promise.all(gists)).map((gist) => gist.meta),
+    gists: (await Promise.all(gists)).map((gist) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { titleReact, ...serializableGistMeta } = gist.meta
+
+      return serializableGistMeta
+    }),
   },
 })
 
@@ -153,7 +161,7 @@ const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
   tag === undefined || gist.tags.includes(tag)
 
 interface Props {
-  gists: GistMeta[]
+  gists: SerializableGistMeta[]
 }
 
 const GistsIndex = ({ gists }: Props) => {
