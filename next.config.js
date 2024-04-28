@@ -91,9 +91,9 @@ const nextConfig = withBundleAnalyzer({
           },
         ],
       },
-      // Download .ics files
+      // Downloadable assets
       {
-        test: /\.ics/,
+        test: /\.(ics|otf|ttf)/,
         type: 'asset/resource',
       },
     ]

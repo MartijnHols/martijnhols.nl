@@ -40,7 +40,8 @@
     "react-query": "^3.38.0",
     "react-transition-group": "^4.4.5",
     "sanitize.css": "^13.0.0",
-    "sharp": "^0.33.2",
+    "satori": "^0.10.13",
+    "sharp": "^0.33.3",
     "slice-machine-ui": "^1.26.0",
     "tippy.js": "^6.3.7"
   },
