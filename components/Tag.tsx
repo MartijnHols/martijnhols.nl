@@ -5,30 +5,33 @@ const Container = styled.div(
   ({ theme }) => css`
     display: inline-block;
     background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
+    color: ${theme.colors.white};
     padding: 4px 6px;
-    border: 2px solid ${theme.colors.yellow};
-    box-shadow: 0 0 0px 0.5px ${theme.colors.black};
+    box-shadow: -4px 4px 0 0px ${theme.colors.yellow};
     margin-left: -2px;
     margin-bottom: 2px;
 
-    // TODO: Remove usages of React.js
-    &[data-value='react'],
-    &[data-value='react.js'] {
-      color: #61dafb;
-    }
     &[data-value='open source'] {
-      color: #fff;
+      background: #fff;
+      color: ${theme.colors.black};
+      box-shadow:
+        // Inner-border so the div doesn't get larger
+        inset 0 0 0 2px ${theme.colors.black},
+        -4px 4px 0 0px ${theme.colors.yellow};
     }
     &[data-value='how-to'] {
-      background: ${theme.colors.yellow};
+      background: ${theme.colors.white};
       color: ${theme.colors.black};
       border-color: ${theme.colors.black};
+      box-shadow:
+        // Inner-border so the div doesn't get larger
+        inset 0 0 0 2px ${theme.colors.black},
+        -4px 4px 0 0px ${theme.colors.yellow};
     }
 
     transition: transform 120ms ease-out;
     :hover {
-      transform: scale(1.4) rotate(-1deg);
+      transform: scale(1.2) rotate(-1deg);
     }
   `,
 )

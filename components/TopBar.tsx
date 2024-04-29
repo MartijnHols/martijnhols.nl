@@ -28,13 +28,16 @@ const Container = styled.div(
     --font-size: calc(12px + 100vw / 2000 * 11);
     --line-height: calc(var(--font-size) + 14px + 100vw / 2000 * 20);
     height: calc(var(--line-height) - var(--angle-height));
+
+    a {
+      --link-color: ${theme.colors.yellow};
+    }
   `,
 )
 const Content = styled.div(
   ({ theme }) => css`
     position: relative;
     z-index: 1;
-    color: ${theme.colors.yellow};
     // Fallbacks
     padding: 6px 7px 0 8px;
     font-size: 14px;

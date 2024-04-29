@@ -37,6 +37,10 @@ const GlobalStyles = () => (
         * {
           outline-color: ${theme.colors.black};
         }
+
+        ::selection {
+          background: ${theme.colors.yellow};
+        }
       `,
       theme.links.globalStyles,
       theme.headings.globalStyles,

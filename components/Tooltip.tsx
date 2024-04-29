@@ -8,7 +8,7 @@ import 'tippy.js/animations/shift-away.css'
 const StyledTippy = styled(Tippy)(
   ({ theme }) => css`
     background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
+    color: ${theme.colors.white};
     pointer-events: all;
     text-align: center;
     font-size: 16px;

@@ -31,7 +31,7 @@ const Container = styled('div', {
       display: flex;
       padding: 7px 14px 17px;
       background: ${theme.colors.black};
-      color: ${theme.colors.yellow};
+      color: ${theme.colors.white};
       --background-color: ${theme.colors.black};
       border-radius: 3px 3px 0 0;
       text-transform: uppercase;
@@ -54,9 +54,9 @@ const Container = styled('div', {
       `,
     inverted &&
       css`
-        background: ${theme.colors.yellow};
+        background: ${theme.colors.white};
         color: ${theme.colors.black};
-        --background-color: ${theme.colors.yellow};
+        --background-color: ${theme.colors.white};
       `,
   ],
 )

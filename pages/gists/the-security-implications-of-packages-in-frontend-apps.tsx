@@ -5,6 +5,7 @@ import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import Code from '../../components/Code'
+import Figure from '../../components/Figure'
 import Gist, { GistMeta, GistTag } from '../../components/Gist'
 import Link from '../../components/Link'
 import BundledPackageCode from './assets/bundled-package-code.png'
@@ -12,7 +13,7 @@ import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
 import OgImage from './assets/ogimage-security-implications-of-packages.png'
 
-const ObfuscatedPackageFigure = styled.figure(
+const ObfuscatedPackageFigure = styled(Figure)(
   ({ theme }) => css`
     text-align: center;
 
@@ -69,22 +70,18 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       into the trap of thinking this is enough.
     </p>
 
-    <figure style={{ textAlign: 'center' }}>
-      <Link href={GithubSecurityAdvisories.src} className="plain">
-        <Image
-          src={GithubSecurityAdvisories}
-          alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
-          width={650}
-          height={391}
-          sizes="(min-width: 768px) 650px, 100vw"
-        />
-      </Link>
-      <figcaption style={{ fontSize: 14 }}>
-        <Link href={GithubSecurityAdvisories.src}>
-          Average security advisories for a front-end project
-        </Link>
-      </figcaption>
-    </figure>
+    <Figure
+      caption="Average security advisories for a front-end project"
+      href={GithubSecurityAdvisories.src}
+    >
+      <Image
+        src={GithubSecurityAdvisories}
+        alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
+        width={650}
+        height={391}
+        sizes="(min-width: 768px) 650px, 100vw"
+      />
+    </Figure>
 
     <Aside>
       In my opinion the vast majority of front-end JavaScript security
@@ -206,25 +203,28 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       scripts.
     </p>
 
-    <figure style={{ textAlign: 'center' }}>
-      <Link href={CanIIgnore.src} className="plain">
-        <Image
-          src={CanIIgnore}
-          alt="Terminal output showing install scripts found in a front-end project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
-          width={650}
-          height={412}
-          sizes="(min-width: 768px) 650px, 100vw"
-        />
-      </Link>
-      <figcaption style={{ fontSize: 14 }}>
-        <Link href={CanIIgnore.src}>
-          Some of the install scripts of a front-end project as reported by
-        </Link>{' '}
-        <Link href="https://github.com/naugtur/can-i-ignore-scripts">
-          Can I Ignore
-        </Link>
-      </figcaption>
-    </figure>
+    <Figure
+      caption={
+        <>
+          <Link href={CanIIgnore.src}>
+            Some of the install scripts of a front-end project as reported by
+          </Link>{' '}
+          <Link href="https://github.com/naugtur/can-i-ignore-scripts">
+            Can I Ignore
+          </Link>
+        </>
+      }
+      captionLink={false}
+      href={CanIIgnore.src}
+    >
+      <Image
+        src={CanIIgnore}
+        alt="Terminal output showing install scripts found in a front-end project. There are some strange entries (ljharb-monorepo-symlink-test), and esbuild is shown."
+        width={650}
+        height={412}
+        sizes="(min-width: 768px) 650px, 100vw"
+      />
+    </Figure>
 
     <Aside label="Tip">
       You can disable script execution by adding{' '}
@@ -235,19 +235,17 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
 
     <h2 id="bundling-and-transpilation">Bundling and transpilation</h2>
 
-    <ObfuscatedPackageFigure>
-      <Link href={BundledPackageCode.src} className="plain">
-        <Image
-          src={BundledPackageCode}
-          alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"
-          width={350}
-          height={218}
-          sizes="(min-width: 768px) 650px, 100vw"
-        />
-      </Link>
-      <figcaption style={{ fontSize: 14 }}>
-        <Link href={BundledPackageCode.src}>An obfuscated bundled package</Link>
-      </figcaption>
+    <ObfuscatedPackageFigure
+      caption="An obfuscated bundled package"
+      href={BundledPackageCode.src}
+    >
+      <Image
+        src={BundledPackageCode}
+        alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"
+        width={350}
+        height={218}
+        sizes="(min-width: 768px) 650px, 100vw"
+      />
     </ObfuscatedPackageFigure>
 
     <p>

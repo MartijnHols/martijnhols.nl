@@ -4,15 +4,15 @@ import { Highlight, themes } from 'prism-react-renderer'
 import CopyPasteOnly from './CopyPasteOnly'
 // Alternative: https://github.com/react-simple-code-editor/react-simple-code-editor
 
-const Code = styled.code<{ variant?: 'small' | 'regular' }>(
-  ({ theme, variant = 'regular' }) => [
+const Code = styled.code<{ variant?: 'sm' | 'md' }>(
+  ({ theme, variant = 'md' }) => [
     css`
       display: block;
       // Top and bottom margins are not equal since the angle changes the visual
       // margin. I believe the left-most column is most important to appear
       // visually aligned.
       margin-top: ${theme.spacing.x3}px;
-      margin-bottom: ${theme.spacing.x4}px;
+      margin-bottom: ${theme.spacing.x5}px;
       // Offset the padding so the code text aligns with the rest of the text
       margin-left: -1em;
       margin-right: -1em;
@@ -20,8 +20,12 @@ const Code = styled.code<{ variant?: 'small' | 'regular' }>(
       background: ${theme.colors.black};
       position: relative;
 
-      ::before,
-      ::after {
+      --box-shadow-distance: 14px;
+
+      box-shadow: calc(var(--box-shadow-distance) * -1)
+        var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
+
+      ::before {
         content: '';
         position: absolute;
         display: block;
@@ -38,20 +42,12 @@ const Code = styled.code<{ variant?: 'small' | 'regular' }>(
           ${theme.colors.black} 50.5%
         );
       }
-      ::after {
-        top: auto;
-        background: linear-gradient(
-          to bottom right,
-          /* We need some margin to prevent a jagged edge */
-            ${theme.colors.black} 49.5%,
-          transparent 50.5%
-        );
-      }
     `,
-    variant === 'small' &&
+    variant === 'sm' &&
       css`
         padding-top: 9px;
         padding-bottom: 9px;
+        --box-shadow-distance: 9px;
 
         ::before,
         ::after {
@@ -60,10 +56,60 @@ const Code = styled.code<{ variant?: 'small' | 'regular' }>(
       `,
   ],
 )
+const BottomAngle = styled.div<{ variant?: 'sm' | 'md' }>(
+  ({ theme, variant = 'md' }) => [
+    css`
+      position: absolute;
+      display: block;
+      --size: ${theme.spacing.x2}px;
+      height: var(--box-shadow-distance);
+      inset: calc(var(--box-shadow-distance) * -1) 0;
+      left: calc(var(--box-shadow-distance) * -1);
+      width: 100%;
+      bottom: calc(var(--box-shadow-distance) * -1);
+      top: auto;
+      background: ${theme.colors.yellow};
+
+      ::before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: var(--size);
+        left: var(--box-shadow-distance);
+        width: 100%;
+        background: linear-gradient(
+          to bottom right,
+          /* We need some margin to prevent a jagged edge */
+            ${theme.colors.black} 49.5%,
+          transparent 50.5%
+        );
+      }
+      ::after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: var(--size);
+        width: 100%;
+        left: 0;
+        bottom: calc(var(--size) * -1);
+        background: linear-gradient(
+          to bottom right,
+          /* We need some margin to prevent a jagged edge */
+            ${theme.colors.yellow} 49.5%,
+          transparent 50.5%
+        );
+      }
+    `,
+    variant === 'sm' &&
+      css`
+        --size: ${theme.spacing.x1}px;
+      `,
+  ],
+)
 const PreformattedContainer = styled.pre(
   ({ theme }) => css`
     margin: 0;
-    scrollbar-color: ${theme.colors.yellow} ${theme.colors.black};
+    scrollbar-color: ${theme.colors.white} ${theme.colors.black};
   `,
 )
 
@@ -79,14 +125,10 @@ export type PrismLanguages =
 interface Props {
   children: string
   language?: PrismLanguages
-  variant?: 'small' | 'regular'
+  variant?: 'sm' | 'md'
 }
 
-const CodeSnippet = ({
-  children,
-  language = 'tsx',
-  variant = 'regular',
-}: Props) => {
+const CodeSnippet = ({ children, language = 'tsx', variant = 'md' }: Props) => {
   const theme = useTheme()
 
   return (
@@ -120,6 +162,7 @@ const CodeSnippet = ({
             </PreformattedContainer>
           )}
         </Highlight>
+        <BottomAngle variant={variant} />
       </Code>
       <CopyPasteOnly>
         ```

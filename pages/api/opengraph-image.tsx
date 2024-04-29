@@ -45,7 +45,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
   const png = await PNG(
     <div
       style={{
-        background: colors.yellow,
+        background: colors.white,
         color: colors.black,
         width: '100%',
         height: '100%',

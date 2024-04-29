@@ -101,7 +101,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       . It's safer to let new versions mature a bit before installing them.
     </p>
 
-    <Aside>
+    <Aside variant="sm">
       The versioning scheme <a href="https://semver.org/">semver</a> is often
       used to indicate the impact of an update. Just know that it's completely
       optional for a library to use the versioning scheme. You can't blindly
@@ -234,7 +234,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       Docker container) with:
     </p>
 
-    <CodeSnippet variant="small">
+    <CodeSnippet variant="sm">
       docker run -v "$PWD":/usr/src/app -w /usr/src/app node:20 npx libyear
     </CodeSnippet>
 

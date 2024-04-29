@@ -56,6 +56,7 @@ const StyledContainer = styled(Container)(
     // IDE perfectly
     max-width: 1010px;
     font-size: 16px;
+    overflow: hidden;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 18px;
@@ -63,9 +64,13 @@ const StyledContainer = styled(Container)(
       padding-bottom: ${theme.spacing.x1 * 20}px;
     }
 
-    // I kind of want to make this global, but I reckon "bolder" is safer
     p strong {
-      font-weight: 800;
+      background: ${theme.colors.yellow};
+      padding: 3px 2px;
+
+      &::selection {
+        background-color: #bea500;
+      }
     }
     img {
       max-width: 100%;
@@ -80,6 +85,9 @@ const Title = styled.h1(
   ({ theme }) => css`
     font-size: 46px;
     margin-bottom: ${theme.spacing.x2}px;
+    // Move the title a bit to the left so the bottom of the (rotated) text
+    // aligns with the first paragraph
+    margin-left: -3px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 64px;
@@ -87,8 +95,6 @@ const Title = styled.h1(
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 80px;
       line-height: 1.2;
-      // Move the title a bit to the left so the bottom of the (rotated) text
-      // aligns with the first paragraph
       margin-left: -4px;
     }
   `,
@@ -116,7 +122,7 @@ const Tags = styled.div(
 const Footer = styled.footer(
   ({ theme }) => css`
     background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
+    color: ${theme.colors.white};
     text-align: right;
     padding-bottom: ${theme.spacing.x4}px;
   `,

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { breakpoints, spacing } from '.'
+import { breakpoints, colors, spacing } from '.'
 
 export const h1 = css`
   font-size: 56px;
@@ -8,9 +8,25 @@ export const h1 = css`
   margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
   transform: rotate(-1deg);
+  text-shadow: -4px 4px ${colors.yellow};
+  text-shadow:
+    -1px 1px 0 ${colors.yellow},
+    -2px 2px 0 ${colors.yellow},
+    -3px 3px 0 ${colors.yellow},
+    -4px 4px 0 ${colors.yellow};
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 80px;
+    text-shadow: -7px 7px ${colors.yellow};
+    // It doesn't fit the theme, but stretching it makes the text more readable
+    text-shadow:
+      -1px 1px 0 ${colors.yellow},
+      -2px 2px 0 ${colors.yellow},
+      -3px 3px 0 ${colors.yellow},
+      -4px 4px 0 ${colors.yellow},
+      -5px 5px 0 ${colors.yellow},
+      -6px 6px 0 ${colors.yellow},
+      -7px 7px 0 ${colors.yellow};
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
     font-size: 100px;
@@ -27,6 +43,21 @@ export const h2 = css`
   margin-top: ${spacing.x5}px;
   margin-bottom: ${spacing.x1}px; // the rotation also adds some margin
   transform: rotate(-1deg);
+
+  /* border-top: none;
+  --distance: 4px;
+  text-shadow: calc(var(--distance) * -1) var(--distance) ${colors.yellow};
+  position: relative;
+  ::before {
+    content: '';
+    position: absolute;
+    top: -${spacing.x2}px;
+    left: 0;
+    width: 100%;
+    height: ${spacing.x2}px;
+    background: currentColor;
+    box-shadow: calc(var(--distance) * -1) var(--distance) 0 0 ${colors.yellow};
+  } */
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 54px;

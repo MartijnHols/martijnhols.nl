@@ -88,8 +88,8 @@ const ContentSlice = ({ slice }: Props) => {
     <Section
       style={{
         // TODO: Move this to the styled component
-        background: inverted ? theme.colors.black : theme.colors.yellow,
-        color: inverted ? theme.colors.yellow : theme.colors.black,
+        background: inverted ? theme.colors.black : theme.colors.white,
+        color: inverted ? theme.colors.white : theme.colors.black,
       }}
       className={inverted ? 'inverted' : undefined}
     >

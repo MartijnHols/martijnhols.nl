@@ -12,7 +12,7 @@ const Section = styled.footer(
   ({ theme }) => css`
     position: relative;
     background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
+    color: ${theme.colors.white};
     padding: ${theme.spacing.x5}px 0;
   `,
 )

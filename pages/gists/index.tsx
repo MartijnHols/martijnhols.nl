@@ -14,6 +14,7 @@ import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import PublicationDate from '../../components/PublicationDate'
 import Tag from '../../components/Tag'
+import TopBar from '../../components/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
 
 // TODO: topLevelAwait
@@ -105,7 +106,9 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
     margin-top: ${theme.spacing.x8}px;
     margin-bottom: ${theme.spacing.x8}px;
     color: ${theme.colors.black};
+    background: ${theme.colors.yellow50};
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
+    box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
     padding: ${theme.spacing.x4}px;
     font-size: 16px;
 
@@ -141,7 +144,7 @@ const ArticleLink = styled(Link)(
   ({ theme }) => css`
     :hover {
       ${ArticleTitle} {
-        color: ${theme.colors.yellow};
+        color: ${theme.colors.white};
         background-position-y: 100%;
       }
     }
@@ -186,7 +189,9 @@ const GistsIndex = ({ gists }: Props) => {
       />
 
       <Main role="main">
-        <Angle />
+        <TopBar>
+          By <Link href="/">Martijn Hols</Link>
+        </TopBar>
 
         <StyledContainer>
           <Title>Just the gists</Title>

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
+import CopyPasteOnly from './CopyPasteOnly'
 import Link from './Link'
 import Tag from './Tag'
 
@@ -17,8 +18,10 @@ const Container = styled('article', {
   css`
     transform: rotate(-0.85deg);
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
+    box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
     margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
     padding: ${theme.spacing.x3}px;
+    background: ${theme.colors.yellow50};
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-1deg);
@@ -83,17 +86,19 @@ const ProjectAbout = styled.div(
     text-align: justify;
   `,
 )
-const Tech = styled.div`
-  font-size: 16px;
-`
+const Tech = styled.div(
+  ({ theme }) => css`
+    font-size: 16px;
+    display: flex;
+    gap: ${theme.spacing.x1}px;
+    flex-wrap: wrap;
+  `,
+)
 const ContactLinks = styled.div(
   ({ theme }) => css`
     margin-top: ${theme.spacing.x2}px;
   `,
 )
-const InvisibleText = styled.span`
-  font-size: 0;
-`
 
 interface Props {
   thumbnail?: ImageInfo
@@ -161,8 +166,7 @@ const ProjectBrief = ({
             {tech.map((item, index) => (
               <Fragment key={item}>
                 <Tag>{item}</Tag>
-                {/* Add hidden text to make copy-pasting more convenient */}
-                {index !== tech.length - 1 && <InvisibleText>, </InvisibleText>}
+                {index !== tech.length - 1 && <CopyPasteOnly>, </CopyPasteOnly>}
               </Fragment>
             ))}
           </Tech>
