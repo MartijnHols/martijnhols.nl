@@ -102,10 +102,32 @@ const ArticleTitle = styled.h2(
     }
   `,
 )
+const ArticleLink = styled(Link)<{ howTo?: boolean }>(({ theme, howTo }) => [
+  css`
+    display: block;
+    margin-top: ${theme.spacing.x6}px;
+    margin-bottom: ${theme.spacing.x6}px;
+    margin-left: auto;
+    margin-right: auto;
+
+    :hover {
+      ${ArticleTitle} {
+        color: ${theme.colors.white};
+        background-position-y: 100%;
+      }
+    }
+  `,
+  howTo &&
+    css`
+      max-width: 90%;
+
+      @media (min-width: ${theme.breakpoints.TABLET}px) {
+        max-width: 75%;
+      }
+    `,
+])
 const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
-    margin-top: ${theme.spacing.x8}px;
-    margin-bottom: ${theme.spacing.x8}px;
     color: ${theme.colors.black};
     background: ${theme.colors.yellow50};
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
@@ -120,17 +142,12 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
   howTo &&
     css`
       border: 10px solid ${theme.colors.black};
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
       padding: ${theme.spacing.x2}px;
-      font-size: 95%;
-      margin-top: ${theme.spacing.x6}px;
-      margin-bottom: ${theme.spacing.x6}px;
+      font-size: 90%;
+      box-shadow: -4px 4px 0 0px ${theme.colors.yellow};
 
       @media (min-width: ${theme.breakpoints.TABLET}px) {
         padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
-        font-size: 100%;
 
         ${ArticleTitle} {
           font-size: 2em;
@@ -139,16 +156,6 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
       }
     `,
 ])
-const ArticleLink = styled(Link)(
-  ({ theme }) => css`
-    :hover {
-      ${ArticleTitle} {
-        color: ${theme.colors.white};
-        background-position-y: 100%;
-      }
-    }
-  `,
-)
 const ArticleMetadata = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -198,7 +205,11 @@ const GistsIndex = ({ gists }: Props) => {
           <ArticleList>
             {filteredGists.map((gist) => (
               <li key={gist.slug}>
-                <ArticleLink href={`/gists/${gist.slug}`} className="plain">
+                <ArticleLink
+                  href={`/gists/${gist.slug}`}
+                  className="plain"
+                  howTo={gist.tags.includes(GistTag.HowTo)}
+                >
                   <Article howTo={gist.tags.includes(GistTag.HowTo)}>
                     <ArticleTitle>{gist.title}</ArticleTitle>
                     <p>{gist.description}</p>
