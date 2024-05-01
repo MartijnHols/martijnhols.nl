@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@emotion/react'
 import { AppProps } from 'next/app'
 import { DehydratedState } from 'react-query'
+import PortalTarget from '../components/PortalTarget'
 import ReactQueryProvider from '../components/ReactQueryProvider'
 import * as theme from '../theme'
 import GlobalStyles from '../theme/GlobalStyles'
@@ -16,8 +17,10 @@ const App = ({ Component, pageProps, router }: MyAppProps) => {
   return (
     <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Component {...pageProps} />
+        <PortalTarget>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </PortalTarget>
       </ThemeProvider>
     </ReactQueryProvider>
   )

@@ -9,6 +9,7 @@ import BaseHead from './BaseHead'
 import Container from './Container'
 import Link from './Link'
 import PageWrapper from './PageWrapper'
+import PortalTarget from './PortalTarget'
 import PublicationDateComponent from './PublicationDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
@@ -175,7 +176,8 @@ const Gist = ({
 
         <Title>{titleReact ?? title}</Title>
 
-        {children}
+        {/** Portal target so tooltips can share base article styling (mostly font-size) */}
+        <PortalTarget>{children}</PortalTarget>
 
         <Tags>
           {tags.map((tag) => (
