@@ -92,6 +92,7 @@ const ArticleTitle = styled.h2(
     // close to the text.
     padding-top: ${theme.spacing.x1}px;
     margin-top: -${theme.spacing.x1}px;
+    margin-bottom: 0;
     hyphens: auto;
     font-size: 2em;
 
@@ -114,7 +115,6 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-0.85deg);
       padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
-      font-size: 112.5%;
     }
   `,
   howTo &&
