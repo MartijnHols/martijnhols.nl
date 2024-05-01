@@ -93,11 +93,11 @@ const ArticleTitle = styled.h2(
     padding-top: ${theme.spacing.x1}px;
     margin-top: -${theme.spacing.x1}px;
     hyphens: auto;
-    font-size: 32px;
+    font-size: 2em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       hyphens: manual;
-      font-size: 54px;
+      font-size: 3em;
     }
   `,
 )
@@ -110,12 +110,11 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
     box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
     padding: ${theme.spacing.x4}px;
-    font-size: 16px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-0.85deg);
       padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
-      font-size: 18px;
+      font-size: 112.5%;
     }
   `,
   howTo &&
@@ -125,16 +124,16 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
       margin-left: auto;
       margin-right: auto;
       padding: ${theme.spacing.x2}px;
-      font-size: 14px;
+      font-size: 95%;
       margin-top: ${theme.spacing.x6}px;
       margin-bottom: ${theme.spacing.x6}px;
 
       @media (min-width: ${theme.breakpoints.TABLET}px) {
         padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
-        font-size: 16px;
+        font-size: 100%;
 
         ${ArticleTitle} {
-          font-size: 32px;
+          font-size: 2em;
           border-bottom: ${theme.spacing.x1}px solid ${theme.colors.black};
         }
       }

@@ -10,7 +10,6 @@ export const buttonCss = css`
   padding: 10px 28px; // height margin is more in practice due to line-height
   border-radius: 5px;
   color: ${text};
-  font-size: 18px;
   font-weight: 500;
   border: 2px solid ${background};
   position: relative;

@@ -20,7 +20,7 @@ const StyledFigure = styled.figure`
   }
 `
 const FigCaption = styled.figcaption`
-  font-size: 14px;
+  font-size: 90%;
 `
 
 interface Props extends Omit<ComponentProps<typeof Link>, 'className'> {

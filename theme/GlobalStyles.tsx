@@ -15,7 +15,6 @@ const GlobalStyles = () => (
           -moz-osx-font-smoothing: grayscale;
           background: ${theme.colors.black};
           color: ${theme.colors.black};
-          font-size: ${theme.fontSizes.mainText}px;
           line-height: 1.6;
 
           --angle-height: calc(10px + 100vw / 2000 * 30);

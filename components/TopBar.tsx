@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import Angle from './Angle'
+
 const Sticky = styled.div(
   ({ theme }) => css`
     position: sticky;
@@ -11,6 +12,10 @@ const Sticky = styled.div(
 
     ${StyledAngle} {
       pointer-events: none;
+    }
+
+    @media print {
+      display: none;
     }
   `,
 )
@@ -23,7 +28,7 @@ const Container = styled.div(
     background: ${theme.colors.black};
     color: ${theme.colors.yellow};
 
-    --font-size: 14px;
+    --font-size: 1rem;
     // Resize everything at the same rate as Angle so it fits perfectly
     --font-size: calc(12px + 100vw / 2000 * 11);
     --line-height: calc(var(--font-size) + 14px + 100vw / 2000 * 20);
@@ -40,7 +45,6 @@ const Content = styled.div(
     z-index: 1;
     // Fallbacks
     padding: 6px 7px 0 8px;
-    font-size: 14px;
     padding: 0 calc(7px + 100vw / 2000 * 7);
     font-size: var(--font-size);
     line-height: calc(var(--line-height));

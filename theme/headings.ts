@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import { breakpoints, colors, spacing } from '.'
 
 export const h1 = css`
-  font-size: 56px;
+  font-size: 3.5em;
   font-weight: 1000;
   text-transform: uppercase;
   margin-bottom: ${spacing.x6}px;
@@ -16,7 +16,7 @@ export const h1 = css`
     -4px 4px 0 ${colors.yellow};
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 80px;
+    font-size: 5em;
     text-shadow: -7px 7px ${colors.yellow};
     // It doesn't fit the theme, but stretching it makes the text more readable
     text-shadow:
@@ -29,11 +29,15 @@ export const h1 = css`
       -7px 7px 0 ${colors.yellow};
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 100px;
+    font-size: 6.25em;
+  }
+
+  @media print {
+    text-shadow: none;
   }
 `
 export const h2 = css`
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 1.3;
   text-transform: uppercase;
   border-top: ${spacing.x2}px solid currentColor;
@@ -60,11 +64,11 @@ export const h2 = css`
   } */
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 54px;
+    font-size: 3.375em;
   }
 `
 export const h3 = css`
-  font-size: 30px;
+  font-size: 1.875em;
   text-transform: uppercase;
   font-weight: 800;
   line-height: 1;
@@ -73,32 +77,32 @@ export const h3 = css`
   margin-bottom: ${spacing.x2}px;
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 36px;
+    font-size: 2.25em;
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 40px;
+    font-size: 2.5em;
   }
 `
 export const h4 = css`
-  font-size: 20px;
+  font-size: 1.25em;
   margin-bottom: ${spacing.x2}px;
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 22px;
+    font-size: 1.375em;
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 30px;
+    font-size: 1.875em;
   }
 `
 export const h5 = css`
-  font-size: 18px;
+  font-size: 1.125em;
   margin-bottom: ${spacing.x1}px;
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 20px;
+    font-size: 1.25em;
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 24px;
+    font-size: 1.5em;
   }
 `
 

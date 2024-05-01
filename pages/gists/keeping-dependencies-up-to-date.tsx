@@ -38,7 +38,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     <p>
       Never updating dependencies is not an option.{' '}
       <strong>
-        Sooner or later you <i>have</i> to update.
+        Sooner or later you <em>have</em> to update.
       </strong>{' '}
       It may be due to a security update, bug fix or new feature you need,
       performance improvements, or because you want to update another

@@ -32,7 +32,7 @@ const SubTitle = styled.div(
   ({ theme }) => css`
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.5em;
     transform: rotate(-1deg);
     margin-bottom: ${theme.spacing.x6}px;
     letter-spacing: 3px;

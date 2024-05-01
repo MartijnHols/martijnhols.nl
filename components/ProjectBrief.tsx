@@ -88,7 +88,6 @@ const ProjectAbout = styled.div(
 )
 const Tech = styled.div(
   ({ theme }) => css`
-    font-size: 16px;
     display: flex;
     gap: ${theme.spacing.x1}px;
     flex-wrap: wrap;

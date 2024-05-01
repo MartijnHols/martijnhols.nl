@@ -36,7 +36,7 @@ const Container = styled('div', {
       border-radius: 3px 3px 0 0;
       text-transform: uppercase;
       font-weight: 600;
-      font-size: ${theme.fontSizes.tertiaryText}px;
+      font-size: 0.875rem;
 
       transition: transform 120ms ease-out;
       transform: translateY(10px);
@@ -45,7 +45,7 @@ const Container = styled('div', {
       }
 
       @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-        font-size: ${theme.fontSizes.mainText}px;
+        font-size: 1.125rem;
       }
     `,
     hovering &&

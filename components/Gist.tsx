@@ -54,12 +54,11 @@ const StyledContainer = styled(Container)(
     padding-bottom: ${theme.spacing.x10}px;
     // This width makes code snippet width match the column width I use in my
     // IDE perfectly
-    max-width: 1010px;
-    font-size: 16px;
+    max-width: 57em;
     overflow: hidden;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 18px;
+      font-size: 112.5%;
       padding-top: ${theme.spacing.x1 * 20}px;
       padding-bottom: ${theme.spacing.x1 * 20}px;
     }
@@ -83,17 +82,17 @@ const StyledContainer = styled(Container)(
 )
 const Title = styled.h1(
   ({ theme }) => css`
-    font-size: 46px;
+    font-size: 2.9em;
     margin-bottom: ${theme.spacing.x2}px;
     // Move the title a bit to the left so the bottom of the (rotated) text
     // aligns with the first paragraph
     margin-left: -3px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 64px;
+      font-size: 3.5em;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      font-size: 80px;
+      font-size: 4.4em;
       line-height: 1.2;
       margin-left: -4px;
     }

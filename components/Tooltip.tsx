@@ -8,6 +8,11 @@ import 'tippy.js/animations/shift-away.css'
 const StyledTippy = styled(Tippy)(
   ({ theme }) => css`
     background: ${theme.colors.black};
+    // Inherit all font properties to match parent style since they're presented
+    // as related elements.
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
     color: ${theme.colors.white};
     pointer-events: all;
     text-align: center;
