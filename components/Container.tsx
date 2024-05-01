@@ -5,7 +5,7 @@ const Container = styled.div(
   ({ theme }) => css`
     margin: 0 auto;
     width: 100%;
-    max-width: 1300px;
+    max-width: 81.25em;
     padding-left: ${theme.spacing.x2}px;
     padding-right: ${theme.spacing.x2}px;
 
