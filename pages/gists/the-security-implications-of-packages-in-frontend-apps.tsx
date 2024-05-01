@@ -198,10 +198,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       on the internet?
     </p>
 
-    <p>
-      There's no reason not to be as wary, if not more wary, of package install
-      scripts.
-    </p>
+    <p>There's no reason not to be as wary of package install scripts.</p>
 
     <Figure
       caption={
