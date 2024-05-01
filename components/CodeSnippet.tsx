@@ -16,7 +16,7 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
       // Offset the padding so the code text aligns with the rest of the text
       margin-left: -1em;
       margin-right: -1em;
-      padding: ${theme.spacing.x2}px 1em;
+      padding: 0.8em 1em;
       background: ${theme.colors.black};
       position: relative;
 
@@ -29,7 +29,7 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
         content: '';
         position: absolute;
         display: block;
-        --size: ${theme.spacing.x2}px;
+        --size: 0.8em;
         height: var(--size);
         inset: calc(var(--size) * -1) 0;
       }
@@ -51,7 +51,7 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
 
         ::before,
         ::after {
-          --size: ${theme.spacing.x1}px;
+          --size: 0.4em;
         }
       `,
   ],
@@ -61,7 +61,7 @@ const BottomAngle = styled.div<{ variant?: 'sm' | 'md' }>(
     css`
       position: absolute;
       display: block;
-      --size: ${theme.spacing.x2}px;
+      --size: 0.8em;
       height: var(--box-shadow-distance);
       inset: calc(var(--box-shadow-distance) * -1) 0;
       left: calc(var(--box-shadow-distance) * -1);
@@ -102,7 +102,7 @@ const BottomAngle = styled.div<{ variant?: 'sm' | 'md' }>(
     `,
     variant === 'sm' &&
       css`
-        --size: ${theme.spacing.x1}px;
+        --size: 0.4em;
       `,
   ],
 )

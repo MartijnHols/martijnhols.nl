@@ -11,7 +11,6 @@ const Container = styled.div(
     border-right: 0;
     display: flex;
     align-items: center;
-    gap: ${theme.spacing.x2}px;
     transform: rotate(-0.85deg);
     margin: ${theme.spacing.x3}px 0;
 
@@ -57,11 +56,9 @@ const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
       `,
   ],
 )
-const Content = styled.div(
-  ({ theme }) => css`
-    padding: 0 ${theme.spacing.x2}px;
-  `,
-)
+const Content = styled.div`
+  padding: 0 1.6em 0;
+`
 
 interface Props {
   children: ReactNode

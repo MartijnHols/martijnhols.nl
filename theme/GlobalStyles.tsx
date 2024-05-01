@@ -29,10 +29,6 @@ const GlobalStyles = () => (
           height: auto;
         }
 
-        p {
-          margin: ${theme.spacing.x2}px 0;
-        }
-
         * {
           outline-color: ${theme.colors.black};
         }

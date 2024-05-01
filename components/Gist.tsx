@@ -63,9 +63,9 @@ const StyledContainer = styled(Container)(
       padding-bottom: ${theme.spacing.x1 * 20}px;
     }
 
-    p strong {
+    strong {
       background: ${theme.colors.yellow};
-      padding: 3px 2px;
+      padding: 0.167em 0.111em;
 
       &::selection {
         background-color: #bea500;
@@ -74,9 +74,6 @@ const StyledContainer = styled(Container)(
     img {
       max-width: 100%;
       height: auto;
-    }
-    figure {
-      margin: ${theme.spacing.x2}px;
     }
   `,
 )

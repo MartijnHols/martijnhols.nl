@@ -6,8 +6,8 @@ const Container = styled.div(
     margin: 0 auto;
     width: 100%;
     max-width: 81.25em;
-    padding-left: ${theme.spacing.x2}px;
-    padding-right: ${theme.spacing.x2}px;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       padding-left: ${theme.spacing.x6}px;
