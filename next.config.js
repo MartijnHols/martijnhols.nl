@@ -76,11 +76,12 @@ const nextConfig = withBundleAnalyzer({
   ],
   rewrites: async () => [
     {
-      source: '/hoi/js/script.js',
-      destination: 'https://plausible.io/js/script.js',
+      source: '/hoi/script.js',
+      destination:
+        'https://plausible.io/js/script.tagged-events.outbound-links.js',
     },
     {
-      source: '/hoi/api/event',
+      source: '/hoi/event',
       destination: 'https://plausible.io/api/event',
     },
   ],

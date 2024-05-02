@@ -7,8 +7,8 @@ export default function Document(props: DocumentProps) {
         <script
           defer
           data-domain="martijnhols.nl"
-          src="/hoi/js/script.js"
-          data-api="/hoi/api/event"
+          src="/hoi/script.js"
+          data-api="/hoi/event"
         />
       </Head>
       <body>

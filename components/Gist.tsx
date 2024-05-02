@@ -2,11 +2,12 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
+import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
 import PageWrapper from './PageWrapper'
 import PortalTarget from './PortalTarget'
@@ -146,6 +147,24 @@ const Gist = ({
 }: Props) => {
   const { pathname } = useRouter()
 
+  const [startReading] = useState(() => Date.now())
+  const hasFinishedReading = useRef(false)
+  const intersectionObserverRef = useIntersectionObserver((isIntersecting) => {
+    if (!isIntersecting) {
+      return
+    }
+    if (hasFinishedReading.current) {
+      return
+    }
+    const readingTime = (Date.now() - startReading) / 1000
+    if (readingTime < 15) {
+      // Too short to be considered a read
+      return
+    }
+    window.plausible?.('Finished reading')
+    hasFinishedReading.current = true
+  })
+
   return (
     <PageWrapper>
       <BaseHead
@@ -178,6 +197,8 @@ const Gist = ({
 
         {/** Portal target so tooltips can share base article styling (mostly font-size) */}
         <PortalTarget>{children}</PortalTarget>
+
+        <div ref={intersectionObserverRef} />
 
         <Tags>
           {tags.map((tag) => (
