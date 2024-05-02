@@ -11,11 +11,13 @@ const BaseHead = ({
   description,
   absoluteUrl: absoluteUrlProp,
   image,
+  type = 'website',
 }: {
   title: string
   description?: string
   absoluteUrl: string
   image?: ImageInfo
+  type?: 'website' | 'article'
 }) => {
   const theme = useTheme()
 
@@ -26,8 +28,9 @@ const BaseHead = ({
       <link rel="icon" type="image/png" href="/favicon.png" />
       {description && <meta name="description" content={description} />}
       <meta name="theme-color" content={theme.colors.black} />
+      <meta property="og:type" content={type} />
+      <meta property="og:site_name" content="Martijn Hols" />
       <meta property="og:title" content={title} />
-      <meta property="og:type" content="website" />
       {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={absoluteUrlProp} />
       {image?.src && (

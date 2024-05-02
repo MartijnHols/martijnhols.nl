@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import Head from 'next/head'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode, useRef, useState } from 'react'
@@ -132,6 +133,7 @@ interface Props {
   description: string
   image?: StaticImageData
   publishedAt?: PublicationDate
+  updatedAt?: PublicationDate
   tags: string[]
   children: ReactNode
 }
@@ -142,6 +144,7 @@ const Gist = ({
   description,
   image,
   publishedAt,
+  updatedAt,
   tags,
   children,
 }: Props) => {
@@ -172,7 +175,15 @@ const Gist = ({
         description={description}
         image={image}
         absoluteUrl={absoluteUrl(pathname)}
+        type="article"
       />
+      <Head>
+        <meta property="article:published_time" content={publishedAt} />
+        <meta
+          property="article:modified_time"
+          content={updatedAt ?? publishedAt}
+        />
+      </Head>
 
       <TopBar>
         <Link href="/gists">Gists</Link> by <Link href="/">Martijn Hols</Link>
