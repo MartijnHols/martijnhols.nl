@@ -218,7 +218,9 @@ export default ArticleSelect
       's names to <Code>{`\`articles.\${articleId}.publishedAt\``}</Code> and{' '}
       <Code>{`\`articles.\${articleId}.updatedAt\``}</Code> respectively.
     </p>
-    <p>I wonder how far this approach can go.</p>
+    <p>
+      You really rarely actually need <Code>useFieldArray</Code>.
+    </p>
   </Gist>
 )
 
