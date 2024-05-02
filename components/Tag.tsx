@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { GistTag } from './Gist'
+import Tooltip from './Tooltip'
 
 const Container = styled.div(
   ({ theme }) => css`
@@ -37,11 +39,19 @@ const Container = styled.div(
 )
 
 interface Props {
-  children: string
+  children: string | GistTag
 }
 
-const Tag = ({ children }: Props) => (
-  <Container data-value={children.toLowerCase()}>{children}</Container>
-)
+const Tag = ({ children }: Props) => {
+  if (children === GistTag.HowTo) {
+    return (
+      <Tooltip content="How-tos are technical gists, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
+        <Container data-value={children.toLowerCase()}>{children}</Container>
+      </Tooltip>
+    )
+  }
+
+  return <Container data-value={children.toLowerCase()}>{children}</Container>
+}
 
 export default Tag
