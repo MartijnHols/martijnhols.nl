@@ -37,34 +37,19 @@ export const h1 = css`
   }
 `
 export const h2 = css`
-  font-size: 2.5em;
+  font-size: 2.2em;
   line-height: 1.3;
   text-transform: uppercase;
-  border-top: ${spacing.x2}px solid currentColor;
+  border-top: 0.16em solid currentColor;
   display: inline-block;
   text-transform: uppercase;
   font-weight: 800;
-  margin-top: ${spacing.x5}px;
-  margin-bottom: ${spacing.x1}px; // the rotation also adds some margin
+  margin-top: 0.5em;
+  margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
   transform: rotate(-1deg);
 
-  /* border-top: none;
-  --distance: 4px;
-  text-shadow: calc(var(--distance) * -1) var(--distance) ${colors.yellow};
-  position: relative;
-  ::before {
-    content: '';
-    position: absolute;
-    top: -${spacing.x2}px;
-    left: 0;
-    width: 100%;
-    height: ${spacing.x2}px;
-    background: currentColor;
-    box-shadow: calc(var(--distance) * -1) var(--distance) 0 0 ${colors.yellow};
-  } */
-
-  @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 3.375em;
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    font-size: 2.5em;
   }
 `
 export const h3 = css`
@@ -74,13 +59,10 @@ export const h3 = css`
   line-height: 1;
   letter-spacing: -0.3px;
   margin-top: ${spacing.x4}px;
-  margin-bottom: ${spacing.x2}px;
+  margin-bottom: 0;
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 2.25em;
-  }
-  @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 `
 export const h4 = css`

@@ -50,6 +50,7 @@ const Container = styled('article', {
 ])
 const Header = styled.h3`
   margin-top: 0;
+  margin-bottom: 0.5em;
 `
 const Name = styled.span``
 const Period = styled.span``
