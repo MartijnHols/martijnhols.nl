@@ -74,6 +74,16 @@ const nextConfig = withBundleAnalyzer({
       permanent: true,
     },
   ],
+  rewrites: async () => [
+    {
+      source: '/hoi/js/script.js',
+      destination: 'https://plausible.io/js/script.js',
+    },
+    {
+      source: '/hoi/api/event',
+      destination: 'https://plausible.io/api/event',
+    },
+  ],
   webpack: (config) => {
     config.module.rules = [
       ...config.module.rules,

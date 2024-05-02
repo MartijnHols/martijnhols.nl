@@ -7,7 +7,8 @@ export default function Document(props: DocumentProps) {
         <script
           defer
           data-domain="martijnhols.nl"
-          src="https://plausible.io/js/script.js"
+          src="/hoi/js/script.js"
+          data-api="/hoi/api/event"
         />
       </Head>
       <body>
