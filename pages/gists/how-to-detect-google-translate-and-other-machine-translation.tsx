@@ -9,15 +9,16 @@ export const meta: GistMeta = {
   description:
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
   publishedAt: '2024-04-21',
+  updatedAt: '2024-05-04',
   tags: [GistTag.HowTo, GistTag.MachineTranslation],
 }
 
 const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
   <Gist {...meta}>
     <p>
-      Machine translation, such as done by Google Translate inside the Google
-      Chrome browser, provides users with dynamic translation of webpages from
-      within their browser tab.
+      Machine translation, such as done natively by Google Translate inside the
+      Google Chrome browser, provides users with dynamic translation of webpages
+      from within their browser tab.
     </p>
     <p>
       There may be many reasons to want to detect when this happens, such as to
@@ -33,15 +34,17 @@ const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
       <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/lang">
         lang
       </a>{' '}
-      attribute for changes. Proper machine translators will update its value to
-      reflect the new language inside your page after translation is applied.
+      attribute for changes. Any proper machine translator will update its value
+      to reflect the new language inside your page after translation is applied.
     </p>
-    <Aside label="Note">
+    <Aside label="Note" variant="xs">
       Make sure your <Code>html</Code> element has the correct <Code>lang</Code>{' '}
-      attribute set initially. If it is omitted, the machine translator may not
-      update it.
+      attribute set initially. If it is omitted, detection will not work.
     </Aside>
-    <p>The code to detect all proper machine translators is below.</p>
+    <p>
+      You can detect most machine translations, including Google Translate, with
+      the following code snippet:
+    </p>
     <CodeSnippet>{`
 const originalLanguge = document.documentElement.lang;
 
@@ -65,8 +68,9 @@ observer.observe(document.documentElement, {
 });
 `}</CodeSnippet>
     <p>
-      Unfortunately Microsoft Edge (the new Internet Explorer), doesn’t actually
-      update the <Code>lang</Code> attribute, so it needs its own detector;
+      Unfortunately Microsoft Edge (the new Internet Explorer) doesn't actually
+      update the <Code>lang</Code> attribute when translating, so it needs its
+      own detector;
     </p>
     <CodeSnippet>{`
 const title = document.getElementsByTagName('title')[0];
@@ -76,11 +80,8 @@ if (!title) {
 
 const observer = new MutationObserver(() => {
   if (title.hasAttribute('_msttexthash')) {
-    // This is triggered twice
-    console.log(
-      'Page translation detected (Microsoft Edge)',
-      \`lang="\${document.documentElement.lang}" (original="\${originalLanguge}")\`
-    );
+    // This gets triggered twice when translation is on
+    console.log('Page translation detected (Microsoft Edge)');
   }
 });
 observer.observe(title, {
@@ -92,7 +93,8 @@ observer.observe(title, {
 `}</CodeSnippet>
     <p>
       With these code snippets, in place of the <Code>console.log</Code>, you
-      can do anything you might want. You could apply{' '}
+      can trigger anything you want to trigger when your page gets translated.
+      You could apply{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
         a monkey patch
       </a>
@@ -102,17 +104,8 @@ observer.observe(title, {
     <p>Hope that helps.</p>
     <Aside>
       Machine translators' DOM changes often interfere with tools like React,
-      which may lead to crashes. For React I plan to post a more extensive gist
-      about ways to mitigate this at some point. I wouldn't fix this the same
-      way today{' '}
-      <a href="https://github.com/facebook/react/issues/11538#issuecomment-350110297">
-        as I fixed it in 2017
-      </a>
-      , but unfortunately,{' '}
-      <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
-        the monkey patch
-      </a>{' '}
-      posted by gaearon just makes things worse.
+      leading to crashes. For React I plan to write a more extensive gist about
+      ways to mitigate this.
     </Aside>
   </Gist>
 )
