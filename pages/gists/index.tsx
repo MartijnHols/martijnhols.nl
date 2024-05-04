@@ -24,9 +24,9 @@ export const gists = [
   require('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
   require('./how-to-get-document-height-ios-safari-osk'),
   require('./the-security-implications-of-packages-in-frontend-apps'),
-  require('./how-to-handle-array-values-in-react-hook-form'),
   require('./how-to-detect-google-translate-and-other-machine-translation'),
   require('./keeping-dependencies-up-to-date'),
+  require('./how-to-handle-array-values-in-react-hook-form'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 const filterUnpublished = (

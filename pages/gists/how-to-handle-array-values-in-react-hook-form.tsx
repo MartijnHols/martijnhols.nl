@@ -8,7 +8,7 @@ export const meta: GistMeta = {
   title: 'How to handle array values in react-hook-form',
   description:
     'A simple way to handle fields with basic array values in react-hook-form.',
-  // publishedAt: '2024-04-22',
+  publishedAt: '2024-05-04',
   tags: [GistTag.HowTo, GistTag.ReactHookForm, GistTag.React],
 }
 
@@ -25,9 +25,9 @@ const GistHowToHandleArrayValuesInReactHookForm = () => (
       is how to handle array values. Maybe it's a <Code>string[]</Code> for
       email addresses or a <Code>number[]</Code> for ids of some model. This is
       still a very simple to do, but if you're going to query Google with
-      something like "react-hook-form array value", you will be pointed straight
-      to <Code>useFieldArray</Code> which would put you completely on the wrong
-      track.
+      something like "<mark>react-hook-form array value</mark>", you will be
+      pointed straight to <Code>useFieldArray</Code> which would put you
+      completely on the wrong track.
     </p>
     <p>
       There's a much simpler solution, which is to use react-hook-form's{' '}
@@ -148,9 +148,11 @@ const ArticleSelect = ({ value, name, onChange, onBlur, disabled }: Props) => (
 export default ArticleSelect
 `}</CodeSnippet>
     <p>
-      It looks like a lot, but that's mostly just table markup. The important
-      bits are the component's props, the <Code>articles.map</Code> and the
-      input elements.
+      It looks like a lot, but that's mostly just table markup.{' '}
+      <strong>
+        The important bits are the component's props, the{' '}
+        <Code>articles.map</Code> and the input elements.
+      </strong>
     </p>
     <p>
       The <Code>value</Code> and <Code>onChange</Code> props are the essentials
