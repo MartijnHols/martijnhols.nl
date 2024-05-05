@@ -61,8 +61,8 @@ const LanguageBar = () => {
     <Bar lang="en">
       <Container>
         <MainText>
-          Sorry, since I'm only looking for clients inside the Netherlands at
-          this time, this page is only available in Dutch.
+          Sorry, this page is only available in Dutch, as I'm only looking for
+          clients inside the Netherlands at this time.
         </MainText>
         <Actions>
           <Action>
