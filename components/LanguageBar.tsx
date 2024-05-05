@@ -45,7 +45,7 @@ const LanguageBar = () => {
   const config = usePrismicConfig()
   const [show, setShow] = useState(false)
   useEffect(() => {
-    setShow(navigator.languages.some((lang) => lang.startsWith('nl')))
+    setShow(!navigator.languages.some((lang) => lang.startsWith('nl')))
   }, [])
 
   if (
