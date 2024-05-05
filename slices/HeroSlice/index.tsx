@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
 import { isFilled } from '@prismicio/helpers'
 import { asText } from '@prismicio/richtext'
+import LanguageBar from '../../components/LanguageBar'
 import PrismicRichText from '../../components/PrismicRichText'
 import TopBar from '../../components/TopBar'
 import reactStringReplace from '../../utils/reactStringReplace'
@@ -69,6 +70,7 @@ interface Props {
 
 const HeroSlice = ({ slice }: Props) => (
   <>
+    <LanguageBar />
     <TopBar />
 
     <Hero
