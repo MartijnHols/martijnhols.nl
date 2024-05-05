@@ -66,16 +66,6 @@ const StyledContainer = styled(Container)(
       padding-bottom: ${theme.spacing.x1 * 20}px;
     }
 
-    strong,
-    mark {
-      background: ${theme.colors.yellow};
-      padding: 0.167em 0.111em;
-
-      &::selection,
-      *::selection {
-        background-color: #bea500;
-      }
-    }
     img {
       max-width: 100%;
       height: auto;
