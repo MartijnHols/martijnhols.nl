@@ -71,7 +71,8 @@ const StyledContainer = styled(Container)(
       background: ${theme.colors.yellow};
       padding: 0.167em 0.111em;
 
-      &::selection {
+      &::selection,
+      *::selection {
         background-color: #bea500;
       }
     }
