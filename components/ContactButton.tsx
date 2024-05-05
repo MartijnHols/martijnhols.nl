@@ -54,9 +54,9 @@ const Container = styled('div', {
       `,
     inverted &&
       css`
-        background: ${theme.colors.white};
+        background: ${theme.colors.yellow};
         color: ${theme.colors.black};
-        --background-color: ${theme.colors.white};
+        --background-color: ${theme.colors.yellow};
       `,
   ],
 )
