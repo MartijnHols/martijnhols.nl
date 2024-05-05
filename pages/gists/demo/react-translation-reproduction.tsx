@@ -1,11 +1,15 @@
+import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import Aside from '../../../components/Aside'
 import Code from '../../../components/Code'
 import CodeSnippet from '../../../components/CodeSnippet'
 import Container from '../../../components/Container'
+import Link from '../../../components/Link'
 import PageWrapper from '../../../components/PageWrapper'
+import TopBar from '../../../components/TopBar'
 
 const applyRemoveChildMonkeyPatch = () => {
+  // Source: https://github.com/facebook/react/issues/11538#issuecomment-417504600
   /* eslint-disable prefer-rest-params */
   if (typeof Node === 'function' && Node.prototype) {
     const originalRemoveChild = Node.prototype.removeChild
@@ -44,6 +48,10 @@ const applyRemoveChildMonkeyPatch = () => {
   }
 }
 
+const Hr = styled.hr`
+  margin: 2em 0;
+`
+
 const ReactTranslationReproduction = () => {
   const [isMonkeyPatchEnabled, setIsMonkeyPatchEnabled] = useState(false)
 
@@ -74,13 +82,23 @@ const ReactTranslationReproduction = () => {
 
   return (
     <PageWrapper>
+      <TopBar>
+        <a href="https://github.com/MartijnHols/martijnhols.nl/blob/main/pages/gists/demo/react-translation-reproduction.tsx">
+          Source code
+        </a>
+      </TopBar>
+
       <Container>
         <p>
-          <a href="https://github.com/MartijnHols/martijnhols.nl/blob/main/pages/gists/demo/react-translation-reproduction.tsx">
-            Source code
-          </a>
+          <mark>See browser console for errors.</mark>
         </p>
-        <p>See browser console for errors.</p>
+        <p>
+          Click this button to apply the removeChild MonkeyPatch suggested in{' '}
+          <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
+            this comment
+          </a>
+          :
+        </p>
         <p>
           <button
             type="button"
@@ -91,35 +109,35 @@ const ReactTranslationReproduction = () => {
               ? 'removeChild MonkeyPatch is applied!'
               : 'Enable removeChild MonkeyPatch'}
           </button>{' '}
-          (
-          <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
-            source
-          </a>
-          )
+        </p>
+        <p>
+          Click this button to simulate a React rerender after Google Translate
+          has translated a page:
         </p>
         <p>
           <button type="button" onClick={() => setClicks(clicks + 1)}>
-            Trigger crash
-          </button>
+            Increment clicks
+          </button>{' '}
+          (this will trigger the crash)
         </p>
         <p>
           You have clicked the button{' '}
-          <span id="crashhere">
+          <mark id="crashhere">
             {clicks === 1 && 'once'}
             {clicks !== 1 && `${clicks} times`}
-          </span>
+          </mark>
           .
         </p>
 
-        <hr />
+        <Hr />
         <p>The line above is rendered using the following code:</p>
         <CodeSnippet variant="sm">{`
 <p>
   You have clicked the button{' '}
-  <span id="crashhere">
+  <mark id="crashhere">
     {clicks === 1 && 'once'}
     {clicks !== 1 && \`\${clicks} times\`}
-  </span>
+  </mark>
   .
 </p>
 `}</CodeSnippet>
@@ -131,14 +149,24 @@ const ReactTranslationReproduction = () => {
           do.
         </p>
         <p>
-          When you click the "Trigger crash" button, the <Code>clicks</Code>{' '}
-          state is simply incremented by one. This is all just normal React
-          code.
+          When you click the "Increment clicks" button, the only thing that
+          happens is the <Code>clicks</Code> state is simply incremented by one
+          to trigger a rerender of React. This is all just normal React code.
+        </p>
+        <p>
+          The crash is caused by the DOM code being changed by the{' '}
+          <Code>useEffect</Code>. This <Code>useEffect</Code> is just a way to
+          simulate how most machine translation tools work, including Google
+          Translate inside Google Chrome.
         </p>
         <Aside variant="xs">
           You can't reproduce this as easily with a ternary since React will
           cleverly replace the TextNode's content for those if possible.
         </Aside>
+
+        <p>
+          <Link href="/gists">More gists</Link>
+        </p>
       </Container>
     </PageWrapper>
   )
