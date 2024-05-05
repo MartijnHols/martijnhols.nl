@@ -47,9 +47,8 @@ const SubTitle = styled.div(
 )
 
 const useProjects = () => {
-  const { locale } = useRouter()
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const prismicLocale = toPrismicLocale(locale!)
+  const { locale = 'nl' } = useRouter()
+  const prismicLocale = toPrismicLocale(locale)
   const prismicClient = usePrismicClient()
   const { data } = useQuery(['projects', prismicLocale], () =>
     getProjects(prismicClient, prismicLocale),
