@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Aside from '../../../components/Aside'
 import Code from '../../../components/Code'
 import CodeSnippet from '../../../components/CodeSnippet'
 import Container from '../../../components/Container'
@@ -63,7 +64,7 @@ const ReactTranslationReproduction = () => {
     elem?.childNodes.forEach((child) => {
       if (child.nodeType === Node.TEXT_NODE) {
         const fontEl = document.createElement('font')
-        fontEl.textContent = child.textContent
+        fontEl.textContent = `[${child.textContent}]`
 
         child.parentElement?.insertBefore(fontEl, child)
         child.parentElement?.removeChild(child)
@@ -124,19 +125,20 @@ const ReactTranslationReproduction = () => {
 `}</CodeSnippet>
         <p>
           I also set up a <Code>useEffect</Code> to replace the{' '}
-          <Code>crashhere</Code>
-          element's text content with a <Code>font</Code> element. This is very
+          <Code>crashhere</Code> element's text content with a <Code>font</Code>{' '}
+          element that adds square brackets around the text. This is pretty
           similar to what Google Translate and other machine translation tools
-          do. If you want to see the element, you can inspect the DOM.
+          do.
         </p>
         <p>
-          When you click the "Trigger crash" button, <Code>clicks</Code> is
-          simply incremented by one. This is all just normal React code.
+          When you click the "Trigger crash" button, the <Code>clicks</Code>{' '}
+          state is simply incremented by one. This is all just normal React
+          code.
         </p>
-        <p>
+        <Aside variant="xs">
           You can't reproduce this as easily with a ternary since React will
           cleverly replace the TextNode's content for those if possible.
-        </p>
+        </Aside>
       </Container>
     </PageWrapper>
   )
