@@ -25,6 +25,9 @@ export const meta: GistMeta = {
   image: openGraphImage,
   publishedAt: '2024-04-28',
   tags: [GistTag.Dependencies, GistTag.Security],
+  relatedGist: import(
+    './the-security-implications-of-packages-in-frontend-apps'
+  ),
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (

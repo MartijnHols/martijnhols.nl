@@ -3,11 +3,12 @@ import styled from '@emotion/styled'
 import Head from 'next/head'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
+import GistReadMore from './GistReadMore'
 import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
 import PageWrapper from './PageWrapper'
@@ -49,6 +50,7 @@ export interface GistMeta {
   publishedAt?: PublicationDate
   updatedAt?: PublicationDate
   tags: GistTag[]
+  relatedGist?: Promise<{ meta: GistMeta }>
 }
 
 const StyledContainer = styled(Container)(
@@ -118,6 +120,9 @@ const Footer = styled.footer(
     padding-bottom: ${theme.spacing.x4}px;
   `,
 )
+const StyledGistReadMore = styled(GistReadMore)`
+  margin-top: 1.75em;
+`
 
 interface Props {
   title: string
@@ -127,6 +132,8 @@ interface Props {
   publishedAt?: PublicationDate
   updatedAt?: PublicationDate
   tags: string[]
+  // Async to avoid circular reference issues
+  relatedGist?: Promise<{ meta: GistMeta }>
   children: ReactNode
 }
 
@@ -138,6 +145,7 @@ const Gist = ({
   publishedAt,
   updatedAt,
   tags,
+  relatedGist: relatedGistPromise,
   children,
 }: Props) => {
   const { pathname } = useRouter()
@@ -159,6 +167,11 @@ const Gist = ({
     window.plausible?.('Finished reading')
     hasFinishedReading.current = true
   })
+
+  const [relatedGist, setRelatedGist] = useState<GistMeta>()
+  useEffect(() => {
+    relatedGistPromise?.then((gist) => setRelatedGist(gist.meta))
+  }, [relatedGistPromise])
 
   return (
     <PageWrapper>
@@ -210,6 +223,8 @@ const Gist = ({
             </Link>
           ))}
         </Tags>
+
+        {relatedGist && <StyledGistReadMore gist={relatedGist} />}
       </StyledContainer>
 
       <Angle inverted />
