@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => ({
     gists: (await Promise.all(gists))
       .map((gist) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { titleReact, ...serializableGistMeta } = gist.meta
+        const { titleReact, relatedGist, ...serializableGistMeta } = gist.meta
 
         return serializableGistMeta
       })
