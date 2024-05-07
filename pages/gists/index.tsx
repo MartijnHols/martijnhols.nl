@@ -102,7 +102,9 @@ const ArticleTitle = styled.h2(
     }
   `,
 )
-const ArticleLink = styled(Link)<{ howTo?: boolean }>(({ theme, howTo }) => [
+const ArticleLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== 'howTo',
+})<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
     display: block;
     margin-top: ${theme.spacing.x6}px;
