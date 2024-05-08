@@ -98,6 +98,9 @@ const TextLine = styled.div(
     }
   `,
 )
+const MoreLikeThisLink = styled(Link)`
+  border-bottom: 0;
+`
 const StyledLink = styled(Link)`
   display: block;
   width: 100%;
@@ -151,7 +154,9 @@ const MoreLikeThis = ({ gist, className }: Props) => {
   return (
     <PageOverflowContainer>
       <StyledContainer>
-        <TextLine>More like this</TextLine>
+        <TextLine>
+          <MoreLikeThisLink href="/gists">More like this</MoreLikeThisLink>
+        </TextLine>
         {alternativeGists?.slice(0, 1).map((item) => (
           <StyledLink
             key={item.slug}
