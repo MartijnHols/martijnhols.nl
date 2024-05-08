@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { PublicationDate } from '../components/Gist'
+import { PublicationDate } from '../components/GistMeta'
 import absoluteUrl from '../utils/absoluteUrl'
 import { createClient, getPages, getProjects } from '../utils/prismic'
 import prismicLinkResolver, {

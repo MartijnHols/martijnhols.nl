@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import { gists } from '../pages/gists'
 import Container from './Container'
-import { GistMeta, GistTag } from './Gist'
+import GistMeta, { GistTag } from './GistMeta'
 import Link from './Link'
 import Tag from './Tag'
 

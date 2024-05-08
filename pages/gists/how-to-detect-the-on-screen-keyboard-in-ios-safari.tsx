@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist, { GistMeta, GistTag } from '../../components/Gist'
+import Gist from '../../components/Gist'
+import GistMeta, { GistTag } from '../../components/GistMeta'
 import iosOskNative from './assets/ios-osk-native.gif'
 import iosOskSafari from './assets/ios-osk-safari.gif'
 

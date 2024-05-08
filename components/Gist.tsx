@@ -1,13 +1,13 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Head from 'next/head'
-import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
+import GistMeta from './GistMeta'
 import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
 import MoreLikeThis from './MoreLikeThis'
@@ -16,42 +16,6 @@ import PortalTarget from './PortalTarget'
 import PublicationDateComponent from './PublicationDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
-
-export const enum GistTag {
-  // Types:
-  Meta = 'meta',
-  HowTo = 'how-to',
-  Basics = 'basics',
-  // Tags:
-  React = 'react',
-  ReactHookForm = 'react-hook-form',
-  Security = 'security',
-  Dependencies = 'dependencies',
-  MachineTranslation = 'machine-translation',
-  Ios = 'ios',
-  Safari = 'safari',
-  Javascript = 'javascript',
-}
-
-type PublishedAtYear = `20${number}${number}`
-type PublishedAtMonth = `${0 | 1}${number}`
-type PublishedAtDay = `${0 | 1 | 2 | 3}${number}`
-// Overcomplicated type to avoid publishing with an invalid date
-export type PublicationDate =
-  `${PublishedAtYear}-${PublishedAtMonth}-${PublishedAtDay}`
-
-export interface GistMeta {
-  slug: string
-  title: string
-  /** An optional alternative rendering of the title-string. */
-  titleReact?: ReactNode
-  description: string
-  image?: StaticImageData
-  publishedAt?: PublicationDate
-  updatedAt?: PublicationDate
-  tags: GistTag[]
-  relatedGist?: Promise<{ meta: GistMeta }>
-}
 
 const StyledContainer = styled(Container)(
   ({ theme }) => css`

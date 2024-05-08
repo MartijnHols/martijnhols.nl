@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { GistTag } from './Gist'
+import { GistTag } from './GistMeta'
 import Tooltip from './Tooltip'
 
 const Container = styled.div(

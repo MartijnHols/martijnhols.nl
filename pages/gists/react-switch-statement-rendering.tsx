@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist, { GistMeta, GistTag } from '../../components/Gist'
+import Gist from '../../components/Gist'
+import GistMeta, { GistTag } from '../../components/GistMeta'
 
 export const meta: GistMeta = {
   slug: 'react-switch-statement-rendering',

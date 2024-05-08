@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
-import { PublicationDate as PublicationDateType } from './Gist'
+import { PublicationDate as PublicationDateType } from './GistMeta'
 import Tooltip from './Tooltip'
 
 const Time = styled.time`

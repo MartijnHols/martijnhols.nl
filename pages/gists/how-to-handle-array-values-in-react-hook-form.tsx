@@ -1,6 +1,7 @@
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist, { GistMeta, GistTag } from '../../components/Gist'
+import Gist from '../../components/Gist'
+import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 
 export const meta: GistMeta = {

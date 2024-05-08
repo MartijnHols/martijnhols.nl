@@ -5,11 +5,10 @@ import { useRouter } from 'next/router'
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
-import {
-  GistMeta,
+import GistMeta, {
   GistTag,
   PublicationDate as PublicationDateType,
-} from '../../components/Gist'
+} from '../../components/GistMeta'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import PublicationDate from '../../components/PublicationDate'
