@@ -85,7 +85,7 @@ const Title = styled.h1(
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 4.4em;
-      line-height: 1.2;
+      line-height: 1.15;
       margin-left: -4px;
     }
   `,
