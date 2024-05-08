@@ -19,14 +19,14 @@ import absoluteUrl from '../../utils/absoluteUrl'
 
 // TODO: topLevelAwait
 export const gists = [
-  require('./intro'),
-  require('./license'),
-  require('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
-  require('./how-to-get-document-height-ios-safari-osk'),
-  require('./the-security-implications-of-packages-in-frontend-apps'),
-  require('./how-to-detect-google-translate-and-other-machine-translation'),
-  require('./keeping-dependencies-up-to-date'),
-  require('./how-to-handle-array-values-in-react-hook-form'),
+  import('./intro'),
+  import('./license'),
+  import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
+  import('./how-to-get-document-height-ios-safari-osk'),
+  import('./the-security-implications-of-packages-in-frontend-apps'),
+  import('./how-to-detect-google-translate-and-other-machine-translation'),
+  import('./keeping-dependencies-up-to-date'),
+  import('./how-to-handle-array-values-in-react-hook-form'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 const filterUnpublished = (
