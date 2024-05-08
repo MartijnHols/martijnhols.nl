@@ -134,7 +134,7 @@ const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
     background: ${theme.colors.yellow50};
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
     box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
-    padding: ${theme.spacing.x4}px;
+    padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       transform: rotate(-0.85deg);

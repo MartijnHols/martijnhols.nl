@@ -137,6 +137,7 @@ interface Props {
 const MoreLikeThis = ({ gist, className }: Props) => {
   const [alternativeGists, setAlternativeGists] = useState<GistMeta[]>()
   useEffect(() => {
+    // TODO: Move this into getStaticProps. Probably going to have to move gists out of the pages folder for that
     Promise.all(gists).then((gists) =>
       setAlternativeGists(
         gists
