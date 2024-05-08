@@ -26,7 +26,7 @@ const StyledAngle = styled(Angle)`
 const Container = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
-    color: ${theme.colors.yellow};
+    color: ${theme.colors.white};
 
     --font-size: 1rem;
     // Resize everything at the same rate as Angle so it fits perfectly
@@ -35,7 +35,7 @@ const Container = styled.div(
     height: calc(var(--line-height) - var(--angle-height));
 
     a {
-      --link-color: ${theme.colors.yellow};
+      --link-color: ${theme.colors.white};
     }
   `,
 )
