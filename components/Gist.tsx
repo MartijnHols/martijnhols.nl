@@ -39,7 +39,7 @@ const StyledContainer = styled(Container)(
 const Title = styled.h1(
   ({ theme }) => css`
     font-size: 2.9em;
-    margin-bottom: ${theme.spacing.x2}px;
+    margin-bottom: 0.4em;
     // Move the title a bit to the left so the bottom of the (rotated) text
     // aligns with the first paragraph
     margin-left: -3px;
@@ -49,7 +49,6 @@ const Title = styled.h1(
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 4.4em;
-      line-height: 1.15;
       margin-left: -4px;
     }
   `,
