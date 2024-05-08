@@ -40,7 +40,7 @@ const LicenseGist = () => (
         <Link href="https://stackoverflow.com/help/licensing">
           Stack Overflow
         </Link>
-        )
+        ) unless otherwise specified
       </li>
     </ul>
     <p>You can't:</p>
