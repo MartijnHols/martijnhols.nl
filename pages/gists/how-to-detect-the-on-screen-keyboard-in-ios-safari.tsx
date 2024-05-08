@@ -15,7 +15,7 @@ export const meta: GistMeta = {
 }
 
 const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       When it comes to the on-screen keyboard (OSK), iOS Safari behaves weirdly.
       This gist is just a small part of the things you need to do to deal with

@@ -13,7 +13,7 @@ export const meta: GistMeta = {
 }
 
 const GistHowToHandleArrayValuesInReactHookForm = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       <Link href="https://react-hook-form.com/">react-hook-form</Link> is by far
       the most popular form library in React. Having used most of the big ones,

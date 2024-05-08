@@ -16,7 +16,7 @@ export const meta: GistMeta = {
 }
 
 const GistHowToGetDocumentHeightIosSafariOsk = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       When it comes to the on-screen keyboard (OSK), Safari on iOS{' '}
       <Link href="./how-to-detect-the-on-screen-keyboard-in-ios-safari#ios-safari-behavior">

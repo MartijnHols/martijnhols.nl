@@ -12,7 +12,7 @@ export const meta: GistMeta = {
 }
 
 const LicenseGist = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       I don't think there's a standard license for this, so I'll write a custom
       one. I think this covers everything.

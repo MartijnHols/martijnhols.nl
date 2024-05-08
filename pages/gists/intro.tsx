@@ -12,7 +12,7 @@ export const meta: GistMeta = {
 }
 
 const Intro = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       On April 1st of all days, I hereby launch my new gists section. This will
       be brief articles, snippets, opinions and answers to questions. Mostly

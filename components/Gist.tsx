@@ -3,14 +3,14 @@ import styled from '@emotion/styled'
 import Head from 'next/head'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
-import GistReadMore from './GistReadMore'
 import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
+import MoreLikeThis from './MoreLikeThis'
 import PageWrapper from './PageWrapper'
 import PortalTarget from './PortalTarget'
 import PublicationDateComponent from './PublicationDate'
@@ -60,12 +60,10 @@ const StyledContainer = styled(Container)(
     // This width makes code snippet width match the column width I use in my
     // IDE perfectly
     max-width: 57em;
-    overflow: hidden;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 112.5%;
       padding-top: ${theme.spacing.x1 * 20}px;
-      padding-bottom: ${theme.spacing.x1 * 20}px;
     }
 
     img {
@@ -120,34 +118,24 @@ const Footer = styled.footer(
     padding-bottom: ${theme.spacing.x4}px;
   `,
 )
-const StyledGistReadMore = styled(GistReadMore)`
-  margin-top: 1.75em;
-`
 
 interface Props {
-  title: string
-  titleReact?: ReactNode
-  description: string
-  image?: StaticImageData
-  publishedAt?: PublicationDate
-  updatedAt?: PublicationDate
-  tags: string[]
+  gist: GistMeta
   // Async to avoid circular reference issues
   relatedGist?: Promise<{ meta: GistMeta }>
   children: ReactNode
 }
 
-const Gist = ({
-  title,
-  titleReact,
-  description,
-  image,
-  publishedAt,
-  updatedAt,
-  tags,
-  relatedGist: relatedGistPromise,
-  children,
-}: Props) => {
+const Gist = ({ gist, children }: Props) => {
+  const {
+    title,
+    titleReact,
+    description,
+    image,
+    publishedAt,
+    updatedAt,
+    tags,
+  } = gist
   const { pathname } = useRouter()
 
   const [startReading] = useState(() => Date.now())
@@ -167,11 +155,6 @@ const Gist = ({
     window.plausible?.('Finished reading')
     hasFinishedReading.current = true
   })
-
-  const [relatedGist, setRelatedGist] = useState<GistMeta>()
-  useEffect(() => {
-    relatedGistPromise?.then((gist) => setRelatedGist(gist.meta))
-  }, [relatedGistPromise])
 
   return (
     <PageWrapper>
@@ -223,9 +206,9 @@ const Gist = ({
             </Link>
           ))}
         </Tags>
-
-        {relatedGist && <StyledGistReadMore gist={relatedGist} />}
       </StyledContainer>
+
+      <MoreLikeThis gist={gist} />
 
       <Angle inverted />
 

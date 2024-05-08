@@ -13,7 +13,7 @@ export const meta: GistMeta = {
 }
 
 const GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>In React JSX I can do most things with just JavaScript;</p>
 
     <CodeSnippet>

@@ -31,7 +31,7 @@ export const meta: GistMeta = {
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       When you're using many dependencies, keeping them up-to-date can be a real
       challenge. Installing dependency updates can take a lot of time, time that

@@ -14,7 +14,7 @@ export const meta: GistMeta = {
 }
 
 const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       Machine translation, such as done natively by Google Translate inside the
       Google Chrome browser, provides users with dynamic translation of webpages

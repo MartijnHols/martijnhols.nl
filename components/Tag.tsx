@@ -40,18 +40,25 @@ const Container = styled.div(
 
 interface Props {
   children: string | GistTag
+  className?: string
 }
 
-const Tag = ({ children }: Props) => {
+const Tag = ({ children, className }: Props) => {
   if (children === GistTag.HowTo) {
     return (
       <Tooltip content="How-tos are technical gists, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
-        <Container data-value={children.toLowerCase()}>{children}</Container>
+        <Container data-value={children.toLowerCase()} className={className}>
+          {children}
+        </Container>
       </Tooltip>
     )
   }
 
-  return <Container data-value={children.toLowerCase()}>{children}</Container>
+  return (
+    <Container data-value={children.toLowerCase()} className={className}>
+      {children}
+    </Container>
+  )
 }
 
 export default Tag

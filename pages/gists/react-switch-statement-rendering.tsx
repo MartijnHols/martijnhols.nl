@@ -16,7 +16,7 @@ export const meta: GistMeta = {
 // I forgot the <div>{{ [true]: <LightSwitchOn/>, [false]: <LightSwitchOff/>}[enabled]}</div> pattern
 
 const ReactSwitchStatementRendering = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       You can safely use any plain old JavaScript to dynamically render
       components in React, so long as you do not make and use a component

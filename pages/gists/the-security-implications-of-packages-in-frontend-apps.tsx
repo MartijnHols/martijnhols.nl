@@ -36,7 +36,7 @@ export const meta: GistMeta = {
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
-  <Gist {...meta}>
+  <Gist gist={meta}>
     <p>
       Third-party packages are great. They provide a lot of functionality and
       save us a lot of time. But what exactly are the security implications of
