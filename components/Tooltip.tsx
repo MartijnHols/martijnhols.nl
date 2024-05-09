@@ -24,6 +24,10 @@ const StyledTippy = styled(Tippy)(
     padding: 4px 10px 5px;
     border-radius: 0;
     filter: drop-shadow(-4px 4px 0 ${theme.colors.yellow});
+    // If the tooltip is over a codeblock, these borders give the tooltip a
+    // proper outline. They're meant to appear invisible.
+    border-top: 1px solid ${theme.colors.white};
+    border-right: 1px solid ${theme.colors.white};
 
     .tippy-content {
       padding: 0;
