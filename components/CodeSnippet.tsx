@@ -121,6 +121,18 @@ export type PrismLanguages =
   | 'graphql'
   | 'yaml'
   | 'markdown'
+export const useHighlightTheme = () => {
+  const theme = useTheme()
+
+  return {
+    ...themes.oneDark,
+    plain: {
+      ...themes.oneDark.plain,
+      backgroundColor: theme.colors.black,
+      color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
+    },
+  }
+}
 
 interface Props {
   children: string
@@ -129,7 +141,7 @@ interface Props {
 }
 
 const CodeSnippet = ({ children, language = 'tsx', variant = 'md' }: Props) => {
-  const theme = useTheme()
+  const highlightTheme = useHighlightTheme()
 
   return (
     <>
@@ -139,14 +151,7 @@ const CodeSnippet = ({ children, language = 'tsx', variant = 'md' }: Props) => {
       </CopyPasteOnly>
       <Code translate="no" variant={variant}>
         <Highlight
-          theme={{
-            ...themes.oneDark,
-            plain: {
-              ...themes.oneDark.plain,
-              backgroundColor: theme.colors.black,
-              color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
-            },
-          }}
+          theme={highlightTheme}
           code={children.trim()}
           language={language}
         >

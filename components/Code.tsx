@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { Highlight, themes } from 'prism-react-renderer'
-import { PrismLanguages } from './CodeSnippet'
+import { Highlight } from 'prism-react-renderer'
+import { PrismLanguages, useHighlightTheme } from './CodeSnippet'
 import CopyPasteOnly from './CopyPasteOnly'
 
 const StyledCode = styled.code`
@@ -13,24 +13,28 @@ interface Props {
   language?: PrismLanguages
 }
 
-const Code = ({ children, language = 'tsx' }: Props) => (
-  <>
-    <CopyPasteOnly>`</CopyPasteOnly>
-    <Highlight theme={themes.oneDark} code={children} language={language}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <StyledCode className={className} style={style} translate="no">
-          {tokens.map((line, i) => (
-            <span key={i} {...getLineProps({ line })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
-              ))}
-            </span>
-          ))}
-        </StyledCode>
-      )}
-    </Highlight>
-    <CopyPasteOnly>`</CopyPasteOnly>
-  </>
-)
+const Code = ({ children, language = 'tsx' }: Props) => {
+  const highlightTheme = useHighlightTheme()
+
+  return (
+    <>
+      <CopyPasteOnly>`</CopyPasteOnly>
+      <Highlight theme={highlightTheme} code={children} language={language}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <StyledCode className={className} style={style} translate="no">
+            {tokens.map((line, i) => (
+              <span key={i} {...getLineProps({ line })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </span>
+            ))}
+          </StyledCode>
+        )}
+      </Highlight>
+      <CopyPasteOnly>`</CopyPasteOnly>
+    </>
+  )
+}
 
 export default Code
