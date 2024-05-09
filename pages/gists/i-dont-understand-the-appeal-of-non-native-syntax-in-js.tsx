@@ -1,16 +1,14 @@
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
 import GistMeta, { GistTag } from '../../components/GistMeta'
 
 export const meta: GistMeta = {
-  slug: 'i-dont-understand-why-people-prefer-non-native-syntax',
-  title: "I don't understand why anyone would prefer non-native syntax in JS",
-  // I don't understand preferring non-native syntax in JS
+  slug: 'i-dont-understand-the-appeal-of-non-native-syntax-in-js',
+  title: "I don't understand the appeal of non-native syntax in JS",
   description:
-    'I just don’t understand how anyone could prefer non-native syntax in React over native JavaScript.',
+    "I don't understand why many JavaScript frameworks prefer string-based templating over native JavaScript.",
   tags: [GistTag.Javascript, GistTag.React],
 }
 
@@ -33,9 +31,15 @@ const List = ({ items }) => (
     </CodeSnippet>
 
     <p>
-      But for some reason many of the competing frameworks are opting to use a
-      custom templating language that compiles back to JS. Let's look at the
-      first example from the Vue docs (
+      But for some reason many of the "competing" frameworks are opting to use a
+      custom string templating language that compiles back to JS. An example of
+      that is Vue.js. Let's look at the{' '}
+      <Annotation
+        annotation={`There are better examples, but I wanted to be fair by not cherry-picking. The docs recommend these "Single-File Components", as they're called, for real-world applications.`}
+      >
+        first example
+      </Annotation>{' '}
+      from the Vue docs (
       <a href="https://vuejs.org/guide/introduction.html">source</a>
       );
     </p>
@@ -57,53 +61,60 @@ button {
 </style>
 `}</CodeSnippet>
 
-    <p>🤯</p>
-
     <p>
-      This isn't even a <Code>.js</Code> file, it's a <Code>.vue</Code> file. To
-      work with it in an IDE, you'll need to install an extension.
+      Unlike our React example, the majority of this snippet is a custom
+      templating language. This is reflected by its file extension; it isn't a{' '}
+      <Code>.js</Code> file, it's a <Code>.vue</Code> file. In order to make
+      your IDE understand it, you will need to install{' '}
+      <a href="https://marketplace.visualstudio.com/items?itemName=Vue.volar">
+        an extension
+      </a>
+      .
     </p>
 
+    <p></p>
+
     <p>
-      But to understand it, you need to learn a completely new syntax. This
-      example seems easy enough to understand, but writing it is going to be a
-      completely different story. The only way you can learn to even just make
-      something like a basic loop (and there are a bunch of different ways to
-      loop) is to consult the docs. It's a completely custom syntax so you need
-      to learn this custom syntax from the ground up, and that knowledge isn't
-      applicable to anything else.
+      But{' '}
+      <strong>
+        to work with it, you will need to learn a completely new syntax
+      </strong>
+      . The example above seems easy enough to understand, but expanding it is
+      going to be a completely different story. To figure out how to even just
+      make something like a basic loop (and there are a bunch of different kinds
+      of loops), you will need to consult the docs for that specific keyword.
+      It's an entirely custom syntax, so you need to learn this custom syntax
+      from the ground up, and that knowledge isn't applicable to anything else.
     </p>
 
     <p>
       In contrast,{' '}
-      <strong>
-        JavaScript is applicable to every web app/site and even Node.js
-      </strong>
-      . Even the libraries you use are all in native JavaScript (with TypeScript
-      types available). That language is going somewhere.
+      <strong>JavaScript is applicable to every web app/site</strong>.
+      Everything in the browser compiles down to JavaScript. You can build
+      servers and scripts with Node.js. The libraries you use are all in native
+      JavaScript (with TypeScript types available). Even Vue uses JavaScript for
+      every bit of code apart from the templating. So why not use native
+      JavaScript for the templating as well?
     </p>
 
     <p>
-      For this snippet to work: <Code>{`<button @click="count++">`}</Code>, you
-      need to rely on framework-magic. I get that <Code>@click</Code> binds
-      something to the click event, but how the hell would{' '}
-      <Code>"count++"</Code> ever be executed if not for framework-magic? Not to
-      mention that putting code inside a string is just a terrible idea. Now you
-      need IDE extensions to do anything with it, as native JavaScript analysis
-      and refactoring tools won't be able to recognize it.
+      Using strings to refer to variables and functions comes with many
+      challenges. Not only do you need to learn a new syntax with custom
+      keywords, but you also lose the ability to use native JavaScript analysis
+      and refactoring tools on it.
     </p>
 
     <p>
-      Oh, and that loop thing?{' '}
-      <a href="https://vuejs.org/guide/essentials/list">More strings</a>;{' '}
-      <Code>{`<li v-for="item in items">`}</Code>
+      This example snippet above is still very basic. It was the first thing in
+      their docs, and I didn't want to go around cherry-picking. It gets messier
+      when components need to do more. Loops, for example, are more strings;{' '}
+      <Code>{`<li v-for="item in items">`}</Code>. And when you need a value to
+      be more than just a value, you can place an expression inside your string
+      ! <Code>{`<div :id="\`list-\${id}\`"></div>`}</Code> When you need to
+      conditionally render something, a plain old expression or ternary would be
+      crazy, so Vue instead opted for{' '}
+      <Code>{`<p v-if="seen">Now you see me</p>`}</Code>.
     </p>
-
-    <Aside variant="sm">
-      In React, event handlers are just functions. Just like they would be if
-      you added a native JS event handler.{' '}
-      <Code>{`<button onClick={() => setCount(count + 1)}>`}</Code>.
-    </Aside>
 
     <p>
       I just don't understand how anyone could prefer this non-native templating
@@ -145,6 +156,7 @@ button {
       (that is still growing in popularity) is the best choice, and in this case
       I concur.
     </p>
+    <p>After all, I chose to focus entirely on React for a reason.</p>
   </Gist>
 )
 
