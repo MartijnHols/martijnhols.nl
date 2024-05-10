@@ -5,8 +5,3 @@ updates:
     directory: '/'
     schedule:
       interval: 'monthly'
-  # While I normally find this very annoying and time consuming for a project that is not actively being maintained, since this is open source and representative of my skills, I want to keep it up to date
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'monthly'
