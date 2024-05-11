@@ -66,8 +66,12 @@ const ReactTranslationReproduction = () => {
 
   const [clicks, setClicks] = useState(0)
 
+  const [simulateGoogleTranslate, setSimulateGoogleTranslate] = useState(true)
   useEffect(() => {
     const elem = document.getElementById('crashhere')
+    if (!simulateGoogleTranslate) {
+      return
+    }
 
     elem?.childNodes.forEach((child) => {
       if (child.nodeType === Node.TEXT_NODE) {
@@ -81,7 +85,7 @@ const ReactTranslationReproduction = () => {
   })
 
   return (
-    <PageWrapper>
+    <PageWrapper key={String(simulateGoogleTranslate)}>
       <TopBar>
         <a href="https://github.com/MartijnHols/martijnhols.nl/blob/main/pages/gists/demo/react-translation-reproduction.tsx">
           Source code
@@ -106,9 +110,10 @@ const ReactTranslationReproduction = () => {
             disabled={isMonkeyPatchEnabled}
           >
             {isMonkeyPatchEnabled
-              ? 'removeChild MonkeyPatch is applied!'
+              ? '✅ removeChild MonkeyPatch is applied!'
               : 'Enable removeChild MonkeyPatch'}
           </button>{' '}
+          {isMonkeyPatchEnabled && '(reload the page to disable)'}
         </p>
         <p>
           Click this button to simulate a React rerender after Google Translate
@@ -127,6 +132,18 @@ const ReactTranslationReproduction = () => {
             {clicks !== 1 && `${clicks} times`}
           </mark>
           .
+        </p>
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              checked={simulateGoogleTranslate}
+              onChange={() =>
+                setSimulateGoogleTranslate(!simulateGoogleTranslate)
+              }
+            />{' '}
+            Simulate Google Translate DOM manipilation in the marked text above
+          </label>
         </p>
 
         <Hr />
