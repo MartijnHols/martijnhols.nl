@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
+import Annotation from '../../../components/Annotation'
 import Aside from '../../../components/Aside'
 import Code from '../../../components/Code'
 import CodeSnippet from '../../../components/CodeSnippet'
@@ -144,6 +145,16 @@ const ReactTranslationReproduction = () => {
             />{' '}
             Simulate Google Translate DOM manipilation in the marked text above
           </label>
+        </p>
+
+        <p>
+          <small>Real clicks: {clicks}</small> /{' '}
+          <small translate="no">
+            Real clicks: {clicks}{' '}
+            <Annotation annotation="If you're testing a machine translator on this page, this element should not be translated.">
+              *
+            </Annotation>
+          </small>
         </p>
 
         <Hr />
