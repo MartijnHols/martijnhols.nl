@@ -121,6 +121,8 @@ export type PrismLanguages =
   | 'graphql'
   | 'yaml'
   | 'markdown'
+  | ''
+
 export const useHighlightTheme = () => {
   const theme = useTheme()
 
