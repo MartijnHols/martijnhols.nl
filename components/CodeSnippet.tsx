@@ -138,9 +138,15 @@ interface Props {
   children: string
   language?: PrismLanguages
   variant?: 'sm' | 'md'
+  className?: string
 }
 
-const CodeSnippet = ({ children, language = 'tsx', variant = 'md' }: Props) => {
+const CodeSnippet = ({
+  children,
+  language = 'tsx',
+  variant = 'md',
+  ...others
+}: Props) => {
   const highlightTheme = useHighlightTheme()
 
   return (
@@ -149,7 +155,7 @@ const CodeSnippet = ({ children, language = 'tsx', variant = 'md' }: Props) => {
         ```
         <br />
       </CopyPasteOnly>
-      <Code translate="no" variant={variant}>
+      <Code translate="no" variant={variant} {...others}>
         <Highlight
           theme={highlightTheme}
           code={children.trim()}
