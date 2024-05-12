@@ -19,9 +19,17 @@ const GlobalStyles = () => (
 
           --angle-height: calc(10px + 100vw / 2000 * 30);
         }
-        code {
+        code,
+        pre {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
             monospace;
+          // Monospace fonts look bigger, so to make code blocks balanced, we need to
+          // make the font-size smaller. Goal: 16px on 18px parent
+          font-size: 0.8889em;
+        }
+        code > pre,
+        pre > code {
+          font-size: 1em;
         }
 
         svg {
