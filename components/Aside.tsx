@@ -11,12 +11,12 @@ const Container = styled.div(
     border-right: 0;
     display: flex;
     align-items: center;
-    transform: rotate(-0.85deg);
+    transform: rotate(-0.35deg);
     margin: ${theme.spacing.x3}px 0;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 94.5%; // 1px smaller to very slightly de-emphasize
-      transform: rotate(-1deg);
+      transform: rotate(-0.5deg);
       margin-left: -${theme.spacing.x6}px;
       margin-right: -${theme.spacing.x6}px;
     }
