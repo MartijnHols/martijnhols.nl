@@ -32,9 +32,11 @@ const GistHowToHandleArrayValuesInReactHookForm = () => (
     </p>
     <p>
       There's a much simpler solution, which is to use react-hook-form's{' '}
-      <a href="https://react-hook-form.com/docs/usecontroller/controller">
-        <Code>Controller</Code>
-      </a>{' '}
+      <Code>
+        <a href="https://react-hook-form.com/docs/usecontroller/controller">
+          Controller
+        </a>
+      </Code>{' '}
       component. With the Controller component, simple array field values are a
       breeze. A nice added bonus is that you also end up with an input component
       that is pure React and not entangled with react-hook-form at all.

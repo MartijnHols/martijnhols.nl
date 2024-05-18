@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { ReactNode } from 'react'
 
 const StyledCode = styled.code`
   padding: 0.3em;
@@ -10,7 +11,7 @@ const StyledCode = styled.code`
 `
 
 interface Props {
-  children: string
+  children: ReactNode
   className?: string
 }
 
