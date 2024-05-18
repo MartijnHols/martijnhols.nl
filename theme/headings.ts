@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { breakpoints, colors, spacing } from '.'
+import { breakpoints, spacing } from '.'
 
 export const h1 = css`
   font-size: 3.5em;
@@ -7,33 +7,12 @@ export const h1 = css`
   text-transform: uppercase;
   margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
-  transform: rotate(-1deg);
-  text-shadow: -4px 4px ${colors.yellow};
-  text-shadow:
-    -1px 1px 0 ${colors.yellow},
-    -2px 2px 0 ${colors.yellow},
-    -3px 3px 0 ${colors.yellow},
-    -4px 4px 0 ${colors.yellow};
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 5em;
-    text-shadow: -7px 7px ${colors.yellow};
-    // It doesn't fit the theme, but stretching it makes the text more readable
-    text-shadow:
-      -1px 1px 0 ${colors.yellow},
-      -2px 2px 0 ${colors.yellow},
-      -3px 3px 0 ${colors.yellow},
-      -4px 4px 0 ${colors.yellow},
-      -5px 5px 0 ${colors.yellow},
-      -6px 6px 0 ${colors.yellow},
-      -7px 7px 0 ${colors.yellow};
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
     font-size: 6.25em;
-  }
-
-  @media print {
-    text-shadow: none;
   }
 `
 export const h2 = css`
@@ -46,7 +25,6 @@ export const h2 = css`
   font-weight: 800;
   margin-top: 0.5em;
   margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
-  transform: rotate(-1deg);
 
   @media (min-width: ${breakpoints.DESKTOP}px) {
     font-size: 2.5em;

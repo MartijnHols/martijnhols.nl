@@ -40,16 +40,12 @@ const Title = styled.h1(
   ({ theme }) => css`
     font-size: 2.9em;
     margin-bottom: 0.4em;
-    // Move the title a bit to the left so the bottom of the (rotated) text
-    // aligns with the first paragraph
-    margin-left: -3px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 3.5em;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 4.4em;
-      margin-left: -4px;
     }
   `,
 )
@@ -58,7 +54,6 @@ const ArticleHeader = styled.div(
     display: flex;
     gap: ${theme.spacing.x2}px;
     align-items: flex-end;
-    transform: rotate(-1deg);
   `,
 )
 const ArticleMetadata = styled.div`

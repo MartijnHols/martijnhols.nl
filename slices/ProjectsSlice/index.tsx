@@ -33,16 +33,8 @@ const SubTitle = styled.div(
     text-transform: uppercase;
     font-weight: 600;
     font-size: 1.5em;
-    transform: rotate(-1deg);
     margin-bottom: ${theme.spacing.x6}px;
     letter-spacing: 3px;
-    margin-left: 5px;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      // The translation puts it at the same position as a border-bottom should be,
-      // which should be nice for visual consistency.
-      transform: rotate(-1deg) translateY(-40%);
-    }
   `,
 )
 
