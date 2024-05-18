@@ -30,7 +30,6 @@ const Title = styled.h2`
 `
 const SubTitle = styled.div(
   ({ theme }) => css`
-    text-transform: uppercase;
     font-weight: 600;
     font-size: 1.5em;
     margin-bottom: ${theme.spacing.x6}px;

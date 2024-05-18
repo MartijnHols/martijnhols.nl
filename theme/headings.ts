@@ -4,7 +4,6 @@ import { breakpoints, spacing } from '.'
 export const h1 = css`
   font-size: 3.5em;
   font-weight: 1000;
-  text-transform: uppercase;
   margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
 
@@ -18,10 +17,8 @@ export const h1 = css`
 export const h2 = css`
   font-size: 2.2em;
   line-height: 1.3;
-  text-transform: uppercase;
   border-top: 0.16em solid currentColor;
   display: inline-block;
-  text-transform: uppercase;
   font-weight: 800;
   margin-top: 0.5em;
   margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
@@ -32,7 +29,6 @@ export const h2 = css`
 `
 export const h3 = css`
   font-size: 1.875em;
-  text-transform: uppercase;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.3px;
