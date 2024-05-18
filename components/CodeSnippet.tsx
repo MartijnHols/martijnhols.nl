@@ -20,7 +20,8 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
       background: ${theme.colors.black};
       position: relative;
 
-      --box-shadow-distance: 14px;
+      --box-shadow-distance: 0.75em;
+      --size: 0.8em;
 
       box-shadow: calc(var(--box-shadow-distance) * -1)
         var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
@@ -29,7 +30,6 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
         content: '';
         position: absolute;
         display: block;
-        --size: 0.8em;
         height: var(--size);
         inset: calc(var(--size) * -1) 0;
       }
@@ -48,11 +48,7 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
         padding-top: 9px;
         padding-bottom: 9px;
         --box-shadow-distance: 9px;
-
-        ::before,
-        ::after {
-          --size: 0.4em;
-        }
+        --size: 0.4em;
       `,
   ],
 )
@@ -73,6 +69,7 @@ const BottomAngle = styled.div<{ variant?: 'sm' | 'md' }>(
       ::before {
         content: '';
         position: absolute;
+        z-index: 1;
         display: block;
         height: var(--size);
         left: var(--box-shadow-distance);
