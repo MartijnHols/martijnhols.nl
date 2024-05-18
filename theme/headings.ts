@@ -21,7 +21,7 @@ export const h2 = css`
   border-top: 0.16em solid currentColor;
   display: inline-block;
   font-weight: 800;
-  margin-top: 0.5em;
+  margin-top: 0.75em;
   margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
 
   @media (min-width: ${breakpoints.DESKTOP}px) {
