@@ -15,7 +15,7 @@ export const h1 = css`
   }
 `
 export const h2 = css`
-  font-size: 2.2em;
+  font-size: 2.25em;
   line-height: 1.2;
   padding-top: 0.1em;
   border-top: 0.16em solid currentColor;
@@ -29,15 +29,15 @@ export const h2 = css`
   }
 `
 export const h3 = css`
-  font-size: 1.875em;
+  font-size: 1.75em;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.3px;
-  margin-top: ${spacing.x4}px;
+  margin-top: 0.75em;
   margin-bottom: 0;
 
   @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 2em;
+    font-size: 1.75em;
   }
 `
 export const h4 = css`
@@ -48,7 +48,7 @@ export const h4 = css`
     font-size: 1.375em;
   }
   @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 1.875em;
+    font-size: 1.5em;
   }
 `
 export const h5 = css`
@@ -57,9 +57,6 @@ export const h5 = css`
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 1.25em;
-  }
-  @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 1.5em;
   }
 `
 
