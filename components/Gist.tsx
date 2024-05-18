@@ -45,7 +45,7 @@ const Title = styled.h1(
       font-size: 3.5em;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      font-size: 4.4em;
+      font-size: 4em;
     }
   `,
 )
