@@ -173,7 +173,7 @@ const ProjectBrief = ({
           {(url || sourceCode) && (
             <ContactLinks>
               {url && <Link href={url}>{config?.visit}</Link>}
-              {url && sourceCode && ' | '}
+              {url && sourceCode && <span>{' | '}</span>}
               {sourceCode && (
                 <Link href={sourceCode}>{config?.sourceCode}</Link>
               )}

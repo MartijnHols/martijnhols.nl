@@ -231,7 +231,7 @@ const GistsIndex = ({ gists }: Props) => {
           </ArticleList>
 
           {tagToFilter && (
-            <div>
+            <div key={filteredGists.length}>
               {filteredGists.length}{' '}
               {filteredGists.length === 1 ? 'result' : 'results'} for{' '}
               <Tag>{tagToFilter}</Tag> (<Link href={pathname}>show all</Link>)
