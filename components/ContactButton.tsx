@@ -8,7 +8,7 @@ import Link from './Link'
 const Positioner = styled.div(
   ({ theme }) => css`
     position: fixed;
-    z-index: ${theme.zIndex.topBar};
+    z-index: ${theme.zIndex.contactButton};
     bottom: 0;
     right: 30px;
 
