@@ -3,22 +3,11 @@ import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import Angle from './Angle'
 
-const Sticky = styled.div(
-  ({ theme }) => css`
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: ${theme.zIndex.topBar};
-
-    ${StyledAngle} {
-      pointer-events: none;
-    }
-
-    @media print {
-      display: none;
-    }
-  `,
-)
+const Sticky = styled.div`
+  @media print {
+    display: none;
+  }
+`
 
 const StyledAngle = styled(Angle)`
   pointer-events: none;
