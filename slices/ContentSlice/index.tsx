@@ -2,12 +2,14 @@ import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Content } from '@prismicio/client'
 import Image from 'next/image'
+import AngleWithContactButton from '../../components/AngleWithContactButton'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
 import PrismicRichText from '../../components/PrismicRichText'
 import convertPrismicImage from '../../utils/convertPrismicImage'
 
-const Section = styled.section`
+const Section = styled.section``
+const BackgroundWrapper = styled.div`
   position: relative;
 `
 const StyledContainer = styled(Container)(
@@ -85,44 +87,50 @@ const ContentSlice = ({ slice }: Props) => {
   const theme = useTheme()
 
   return (
-    <Section
-      style={{
-        // TODO: Move this to the styled component
-        background: inverted ? theme.colors.black : theme.colors.white,
-        color: inverted ? theme.colors.white : theme.colors.black,
-      }}
-      className={inverted ? 'inverted' : undefined}
-    >
-      <StyledContainer>
-        {image && (
-          <ImageContainer>
-            <SideImage
-              src={image}
-              alt={image.alt ?? ''}
-              sizes={`(min-width: ${theme.breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${theme.breakpoints.TABLET}px) 400px, 100vw`}
-            />
-          </ImageContainer>
-        )}
-        <ContentContainer
-          className={inverted ? 'inverted' : undefined}
-          twoColumnsText={
-            slice.variation === 'twoColumnsText' ||
-            slice.variation === 'twoColumnsTextInverted'
-          }
-        >
-          <PrismicRichText
-            field={slice.primary.content}
-            multiline
-            components={{
-              heading1: ({ key, children }) => (
-                <Title key={key}>{children}</Title>
-              ),
-            }}
-          />
-        </ContentContainer>
-      </StyledContainer>
+    <Section>
+      <AngleWithContactButton inverted />
 
-      <ContactButtonClipped inverted={inverted} />
+      <BackgroundWrapper
+        style={{
+          // TODO: Move this to the styled component
+          background: inverted ? theme.colors.black : theme.colors.white,
+          color: inverted ? theme.colors.white : theme.colors.black,
+        }}
+        className={inverted ? 'inverted' : undefined}
+      >
+        <StyledContainer>
+          {image && (
+            <ImageContainer>
+              <SideImage
+                src={image}
+                alt={image.alt ?? ''}
+                sizes={`(min-width: ${theme.breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${theme.breakpoints.TABLET}px) 400px, 100vw`}
+              />
+            </ImageContainer>
+          )}
+          <ContentContainer
+            className={inverted ? 'inverted' : undefined}
+            twoColumnsText={
+              slice.variation === 'twoColumnsText' ||
+              slice.variation === 'twoColumnsTextInverted'
+            }
+          >
+            <PrismicRichText
+              field={slice.primary.content}
+              multiline
+              components={{
+                heading1: ({ key, children }) => (
+                  <Title key={key}>{children}</Title>
+                ),
+              }}
+            />
+          </ContentContainer>
+        </StyledContainer>
+
+        <ContactButtonClipped inverted={inverted} />
+      </BackgroundWrapper>
+
+      <AngleWithContactButton />
     </Section>
   )
 }
