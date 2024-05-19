@@ -18,7 +18,6 @@ export const h1 = css`
 export const h2 = css`
   font-size: 2.25em;
   line-height: 1.2;
-  padding-top: 0.1em;
   border-top: 0.16em solid currentColor;
   display: inline-block;
   font-weight: 800;
