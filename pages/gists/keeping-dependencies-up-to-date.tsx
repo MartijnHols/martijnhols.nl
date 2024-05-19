@@ -16,9 +16,8 @@ export const meta: GistMeta = {
   title: 'Keeping dependencies up-to-date',
   titleReact: (
     <>
-      Keeping <span style={{ whiteSpace: 'nowrap' }}>dependencies&nbsp;</span>
-      <br style={{ userSelect: 'none' }} />
-      up-to-date
+      Keeping dependencies{' '}
+      <span style={{ whiteSpace: 'nowrap' }}>up-to-date</span>
     </>
   ),
   description:
