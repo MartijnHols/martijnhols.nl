@@ -13,6 +13,9 @@ const Container = styled.div(
     align-items: center;
     transform: rotate(-0.35deg);
     margin: ${theme.spacing.x3}px 0;
+    --box-shadow-distance: 0.5em;
+    box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
+      0 0 ${theme.colors.yellow};
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 94.5%; // 1px smaller to very slightly de-emphasize
