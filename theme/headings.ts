@@ -1,11 +1,12 @@
 import { css } from '@emotion/react'
-import { breakpoints, spacing } from '.'
+import { breakpoints, colors, spacing } from '.'
 
 export const h1 = css`
   font-size: 3.5em;
   font-weight: 1000;
   margin-bottom: ${spacing.x6}px;
   line-height: 1.1;
+  text-decoration: underline ${colors.yellow};
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 5em;

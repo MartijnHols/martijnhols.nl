@@ -39,7 +39,7 @@ const StyledContainer = styled(Container)(
 const Title = styled.h1(
   ({ theme }) => css`
     font-size: 2.9em;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.25em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 3.5em;
