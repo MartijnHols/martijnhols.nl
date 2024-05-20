@@ -19,6 +19,32 @@ const GlobalStyles = () => (
 
           --angle-height: calc(10px + 100vw / 2000 * 30);
         }
+
+        * {
+          outline-color: ${theme.colors.black};
+        }
+
+        ::selection {
+          background: ${theme.colors.yellow};
+        }
+
+        svg {
+          width: auto;
+          height: auto;
+        }
+
+        strong,
+        mark {
+          background: ${theme.colors.yellow};
+          color: ${theme.colors.black};
+          padding: 0.167em 0.111em;
+
+          &::selection,
+          *::selection {
+            background-color: #bea500;
+          }
+        }
+
         code,
         pre {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -32,29 +58,11 @@ const GlobalStyles = () => (
           font-size: 1em;
         }
 
-        svg {
-          width: auto;
-          height: auto;
-        }
-
-        * {
-          outline-color: ${theme.colors.black};
-        }
-
-        ::selection {
-          background: ${theme.colors.yellow};
-        }
-
-        strong,
-        mark {
-          background: ${theme.colors.yellow};
-          color: ${theme.colors.black};
-          padding: 0.167em 0.111em;
-
-          &::selection,
-          *::selection {
-            background-color: #bea500;
-          }
+        blockquote {
+          border-left: 0.25em solid ${theme.colors.black};
+          margin-left: 0;
+          padding: 0.25em 0 0.25em 2em;
+          font-style: italic;
         }
       `,
       theme.links.globalStyles,
