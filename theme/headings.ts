@@ -41,23 +41,16 @@ export const h3 = css`
   }
 `
 export const h4 = css`
-  font-size: 1.25em;
-  margin-bottom: ${spacing.x2}px;
-
-  @media (min-width: ${breakpoints.TABLET}px) {
-    font-size: 1.375em;
-  }
-  @media (min-width: ${breakpoints.DESKTOP}px) {
-    font-size: 1.5em;
-  }
-`
-export const h5 = css`
-  font-size: 1.125em;
-  margin-bottom: ${spacing.x1}px;
+  font-size: 1.1em;
+  margin-bottom: -1em;
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 1.25em;
   }
+`
+export const h5 = css`
+  font-size: 1em;
+  margin-bottom: -1em;
 `
 
 export const globalStyles = css`
