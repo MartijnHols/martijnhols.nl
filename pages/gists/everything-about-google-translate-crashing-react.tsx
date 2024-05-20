@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
+import Aside from '../../components/Aside'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Gist from '../../components/Gist'
@@ -16,13 +17,20 @@ const CodeError = styled(Code)`
   color: red;
 `
 
+// TODO: Add ids to headings
+// TODO: add reproductions
+// TODO: add reproduction codepen links
+// TODO: add images
+// TODO: grammarly
+// TODO: ChatGPT
+
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
-  title:
-    'Everything about Google Translate crashing React apps (and other DOM manipulators)',
-  // Everything about Google Translate crashing React (and every other DOM manipulator)
-  // Everything about Google Translate crashing React (and other DOM manipulation)
-  // Google Translate breaks React apps (and other DOM manipulation)
+  // TODO: Pick final title and remove alts
+  title: 'Everything about Google Translate crashing React (and other webapps)',
+  // Everything about Google Translate interference crashing React and other webapps
+  // Google Translate breaks React apps (and other webapps)
+  // TODO: add description
   description: 'TODO',
   tags: [GistTag.React, GistTag.MachineTranslation],
 }
@@ -30,31 +38,27 @@ export const meta: GistMeta = {
 const LicenseGist = () => (
   <Gist gist={meta}>
     <p>
-      <Annotation
-        annotation="Google Chrome's in-browser web page translator, not the
-      website."
-      >
-        Google Translate
-      </Annotation>{' '}
-      is an in-browser machine translators. It provides users with dynamic
-      in-place translation of websites from within their browser tabs. There are
-      several other in-browser machine translators, such as Bergamot in Firefox,
-      Microsoft Translator in Edge and Web Page Translation in Safari, but
-      Chrome's Google Translate is the most popular.
+      Google Translate, the built-in extension of Google Chrome, is a{' '}
+      <i>machine translator</i> that provides users with an easy way of
+      translating webpages from within their browser tab. This allows webpages
+      to be used by users from all over the world, regardless of their native
+      language.
     </p>
     <p>
-      These translators have a very big problem when translating modern web:{' '}
+      But this functionality comes at a cost, as it interferes with the
+      reactivity of many modern sites. This is because{' '}
       <strong>
-        machine translators manipulate the DOM in such a way that{' '}
-        <em>any code</em> manipulating DOM nodes may break
-      </strong>
-      . This often reveals itself with crashes such as an{' '}
+        Google Translate manipulates the DOM in such a way that it breaks
+        complex apps.
+      </strong>{' '}
+      This interference often reveals itself with crashes caused by the DOM
+      element's native <Code>removeChild</Code> method;{' '}
       <CodeError>
         NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be
         removed is not a child of this node.
-      </CodeError>{' '}
-      error, but translators break a lot more (and it's not always as obvious as
-      a crash).
+      </CodeError>
+      , but it affects a lot more.{' '}
+      <strong>Not all issues are as obvious as a crash.</strong>
     </p>
     <p>
       The focus of this article will be on Google Translate's effect on React,
@@ -81,7 +85,10 @@ const LicenseGist = () => (
       represented by a <Code>TextNode</Code>.
     </p>
     <p>Let's take a simple piece of HTML:</p>
-    <CodeSnippet language="markup">{`<p>There are 3 lights</p>`}</CodeSnippet>
+    <CodeSnippet
+      language="markup"
+      variant="sm"
+    >{`<p>There are 3 lights</p>`}</CodeSnippet>
     <p>
       In JavaScript, this is represented in the DOM by a structure like this:
     </p>
@@ -106,7 +113,10 @@ const LicenseGist = () => (
       elements with the new, translated, strings inside. This results into the
       following HTML (assuming we're translating to Dutch):
     </p>
-    <CodeSnippet language="markup">{`<p><font>Er zijn 3 lampen</font></p>`}</CodeSnippet>
+    <CodeSnippet
+      language="markup"
+      variant="sm"
+    >{`<p><font>Er zijn 3 lampen</font></p>`}</CodeSnippet>
     <p>More importantly, the DOM structure becomes this:</p>
     <div>
       <div
@@ -158,29 +168,161 @@ const LicenseGist = () => (
         <Annotation annotation="That means it is no longer a part of the HTML-document, so it is no longer being rendered in the browser.">
           unmounted
         </Annotation>{' '}
-        and in its place is a newly created <Code>FontElement</Code> with the
-        translated text inside
+        and replaced with a new <Code>FontElement</Code>
+      </strong>{' '}
+      with the translated text inside.
+    </p>
+    <p>
+      This is the gist of how Google Translate impacts the DOM and an important
+      piece of why Google Translate causes problems with JavaScript that does
+      DOM manipulation.
+    </p>
+    {/** Make this a <details> thing? It feels like a TMI */}
+    <h3>Simulating Google Translate</h3>
+    <p>
+      Now that we know how Google Translate works, we can simulate it being
+      applied to a part of a page. This will allow us to reproduce the issues
+      caused by Google Translate more easily.
+    </p>
+    <p>
+      The snippet below will search for an element with the id "translateme" and
+      replace all direct <Code>TextNode</Code> children with{' '}
+      <Code>FontElement</Code>s similar to how Google Translate operates. To
+      make it more obvious which text has the Google Translate simulation
+      applied, any text affected is surrounded with square brackets (“There are
+      3 lights” becomes “[There are 3 lights]”).
+    </p>
+    <CodeSnippet>{`
+useEffect(() => {
+  document.getElementById('translateme').childNodes.forEach((child) => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      const fontElem = document.createElement('font')
+      fontElem.textContent = \`[\${child.textContent}]\`
+
+      child.parentElement.insertBefore(fontElem, child)
+      child.parentElement.removeChild(child)
+    }
+  })
+})
+`}</CodeSnippet>
+    <p>
+      The reproduction examples below all use this method to simulate Google
+      Translate.
+    </p>
+
+    <h2>Issue 1: Translated text won't update</h2>
+    <p>
+      The first issue caused by Google Translate, is one that is hard to
+      discover since it fails silently; it doesn't lead to a crash or any error.
+    </p>
+    <p>
+      In the previous section we established that Google Translate unmounts DOM
+      nodes and places its own new ones in their place. The consequence of this
+      is that{' '}
+      <strong>
+        the user won't be able to see any changes made to the original DOM nodes
       </strong>
-      . This is significant to understand why Google Translate causes problems
-      with JavaScript that does DOM manipulation (more on this later).
+      . They will not show up in the user's browser in any way, and the changes
+      only update the unmounted <Code>TextNode</Code>s in memory.
     </p>
     <p>
-      That is the gist of what Google Translate does and all you need to know to
-      follow the rest of this article.
+      This is a big problem for systems like React that work with a Virtual DOM.
+      One of the main reasons for using the Virtual DOM is performance, and so,
+      one of the key features of the Virtual DOM, is updating the values of DOM
+      nodes wherever possible instead of replacing them.
     </p>
-    <h2 id="not-just-google-translate">Not just Google Translate</h2>
     <p>
-      Most machine translators work pretty much the same way as Google
-      Translate, so the issue isn't just limited to Google Translate. But it
-      doesn't stop with machine translation. Any browser extension that
-      manipulates the DOM is affected. Some examples are:
+      As a result, in React, every text or number that might change alongside a
+      string is affected. When Google Translate is applied, the values shown on
+      your page may never update again.
+    </p>
+    <p>
+      This is a big problem for any app that shows users important data, which
+      probably means every big React app.{' '}
+      <strong>
+        Showing the wrong data could be misleading and even dangerous.
+      </strong>{' '}
+      To your company, and especially to your users. A dashboard showing the
+      wrong number could lead to users make the wrong decisions, your app
+      showing invalid prices could open you up to litigation, while showing a
+      user the wrong dosage of a medicine could have much more dire
+      consequences. How big of a risk this is, depends on your app.
+    </p>
+    <h3>Reproduction</h3>
+    <p>
+      The button below increments the number of lights in state by one every
+      time it’s pressed. The marked label directly next to it is no more than{' '}
+      <Code>{`There are {lights} lights!`}</Code>. The square brackets around
+      this label are added by our Google Translate simulation to indicate it’s
+      active. The value shown underneath the button is the actual value,
+      unaffected by Google Translate.
+    </p>
+    <p>[repro]</p>
+    <p>
+      When you click the button a few times, you will see the state is updating
+      and the component is rerendering, but the text is never updated to reflect
+      the new value.
+    </p>
+    <p>If you would prefer testing this with a real translator, click here.</p>
+    <h2>Issue 2: Crashes</h2>
+    <p>
+      If you’re running an error monitoring tool like Sentry or tried manually
+      testing Google Translate, this is the obvious issue. In React, one of the
+      following errors may occur due to interference from Google Translate:
     </p>
     <ul>
-      <li>Password managers changing forms to show prefill dropdowns</li>
       <li>
-        Extensions that amend prices to show the cheapest price of a product on
-        competing webshops{' '}
-        <Annotation annotation="These extensions often misdetect any monetary amounts, so they affect more than just webshops.">
+        <CodeError>
+          NotFoundError: Failed to execute 'removeChild' on 'Node': The node to
+          be removed is not a child of this node.
+        </CodeError>
+      </li>
+      <li>
+        <CodeError>
+          Failed to execute 'insertBefore' on 'Node': The node before which the
+          new node is to be inserted is not a child of this node.
+        </CodeError>
+      </li>
+    </ul>
+    <p>
+      When one of those errors occurs, React will unmount your tree to the
+      closest error boundary. If you have no error boundary, your entire React
+      app will crash instead.
+    </p>
+    <p>
+      The <Code>removeChild</Code> error usually happens because your app was
+      trying to remove a conditionally rendered <Code>TextNode</Code> from the
+      DOM that Google Translate unmounted. The <Code>insertBefore</Code> error
+      is less common; this usually occurs because something conditionally
+      rendered is trying to appear <i>before</i> a <Code>TextNode</Code> that
+      was unmounted by Google Translate.
+    </p>
+    <Aside>
+      I would argue the crashes are actually a less significant issue than text
+      not updating. I reckon misleading users is worse and less predictable than
+      not showing anything at all.
+    </Aside>
+    <h3>Reproduction</h3>
+    <p>
+      The button below toggles the lights, leading to the “There are 3 lights”
+      text to no longer being rendered in the React component. React tries to
+      reconsolidate this render by removing the <Code>TextNode</Code> from the
+      parent that it added it to.
+    </p>
+    <p>[repro]</p>
+    <p>If you would prefer testing this with a real translator, click here.</p>
+    <h2>Not just Google Translate</h2>
+    <p>
+      Most machine translators work pretty much the same way as Google
+      Translate, so the issue isn't just limited to Google Translate. But the
+      issue is even bigger than that: any browser extensions that manipulate the
+      DOM can be troublesome. Some examples are:
+    </p>
+    <ul>
+      <li>Password managers manipulating forms to show prefill dropdowns</li>
+      <li>
+        Extensions that inject alternative prices on competing webshops{' '}
+        <Annotation annotation="These extensions may wrongly detect any monetary amounts shown, so they affect more than just webshops.">
           (*)
         </Annotation>
       </li>
@@ -189,14 +331,21 @@ const LicenseGist = () => (
           AutocardAnywhere
         </a>
         : Displays card image popups for collectable card games{' '}
-        <Annotation
-          annotation={`I ran into this specific extension back in 2017 on my WoWAnalyzer project. A user reported a crash with an "insertBefore" error, and we found this specific extension to be the cause. You can still find the report on the WoWAnalyzer Discord.`}
-        >
+        <Annotation annotation="I ran into this one back in 2017 when a user reported a crash with the “insertBefore” error on my WoWAnalyzer project. With some help from the user debugging the issue, it turned out to be caused by this extension. You can still find the report on the WoWAnalyzer Discord.">
           (*)
         </Annotation>
       </li>
     </ul>
-    [Image](An extension adding a Magic the Gathering card image popup)
+    <p>[Image](An extension adding a Magic the Gathering card image popup)</p>
+    <h2>Fixing the crashes</h2>
+    <h3>Monkeypatching removeChild and insertBefore</h3>
+    <h3>An improved Monkeypatch</h3>
+    <h3>Surrounding TextNodes with spans</h3>
+    <h2>Not just React</h2>
+    <h2>The one true solution</h2>
+    <h2>Alternative solutions</h2>
+    <h2>The regrettable “fix” (for now)</h2>
+    <h2>What's next</h2>
   </Gist>
 )
 
