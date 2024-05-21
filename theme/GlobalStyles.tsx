@@ -63,6 +63,10 @@ const GlobalStyles = () => (
           margin-left: 0;
           padding: 0.25em 0 0.25em 2em;
           font-style: italic;
+
+          .inverted & {
+            border-left-color: ${theme.colors.white};
+          }
         }
       `,
       theme.links.globalStyles,
