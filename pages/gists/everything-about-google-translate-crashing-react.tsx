@@ -257,7 +257,9 @@ useEffect(() => {
       common issues are:
     </p>
 
-    <h3>Translated text won't update</h3>
+    <h3 id="issue-translated-text-wont-update">
+      Issue: Translated text won't update
+    </h3>
     <p>
       This issue caused by Google Translate, is one that is hard to discover
       since it fails silently; it doesn't lead to a crash or any error.
@@ -310,7 +312,7 @@ useEffect(() => {
       the new value.
     </p>
     <p>If you would prefer testing this with a real translator, click here.</p>
-    <h3>Crashes</h3>
+    <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
       If you're running an error monitoring tool like Sentry or tried manually
       testing Google Translate, you've probably seen these before. In React, the
@@ -332,8 +334,8 @@ useEffect(() => {
     </ul>
     <p>
       When one of those errors occurs, React will unmount your tree to the
-      closest error boundary. If you have no error boundary,{' '}
-      <strong>your entire app will crash</strong> instead.
+      closest error boundary. But if you have no error boundary (which is not
+      uncommon), <strong>your entire app will crash</strong>.
     </p>
     <p>
       The <Code>removeChild</Code> error usually happens because your app was
@@ -343,11 +345,15 @@ useEffect(() => {
       rendered is trying to appear <em>before</em> a <Code>TextNode</Code> that
       was unmounted by Google Translate.
     </p>
-    <Aside variant="sm">
-      I would argue the crashes are actually a less significant issue than text
-      not updating. I reckon misleading users is worse and less predictable than
-      not showing anything at all.
-    </Aside>
+    <p>
+      I think the crashes are actually less important than{' '}
+      <Link href="#issue-translated-text-wont-update">
+        translated text not updating
+      </Link>
+      . I reckon text not updating is less predictable than not showing anything
+      at all and it may mislead users, which would be a worse outcome than not
+      showing anything at all.
+    </p>
     <h4>Reproduction</h4>
     <p>
       The button below toggles the lights, leading to the “There are 3 lights”
@@ -358,7 +364,9 @@ useEffect(() => {
     <p>[TODO: repro]</p>
     <p>If you would prefer testing this with a real translator, click here.</p>
 
-    <h4>Workarounds</h4>
+    <h4>
+      <mark>Workarounds</mark>
+    </h4>
     <p>
       React's crashes have been reported in{' '}
       <a href="https://github.com/facebook/react/issues/11538">this issue</a> on
@@ -372,7 +380,7 @@ useEffect(() => {
 
     <h5>1. Monkey patching removeChild and insertBefore</h5>
     <p>
-      Gaearon, a member of the React Core team, posted{' '}
+      <i>Gaearon</i>, a member of the React Core team, posted{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
         a workaround
       </a>{' '}
@@ -402,7 +410,7 @@ useEffect(() => {
 
     <h5>2. Surrounding TextNodes with spans</h5>
     <p>
-      Github user "shuhei" shared{' '}
+      Github user <i>shuhei</i> shared{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-390386520">
         a workaround
       </a>{' '}
@@ -413,9 +421,11 @@ useEffect(() => {
 
     <p>
       <strong>This works as a proper fix for the crashes.</strong> It does,
-      however, require a pretty big change to a big and complex codebase.
-      Without an ESLint rule to enforce this, it will take a lot of pleading in
-      PRs to get your entire team to consistently apply this workaround.
+      however, require you to change a lot of parts if you have a big and
+      complex codebase. Without an ESLint rule to enforce this, it will take a
+      lot of pleading in PRs to get your entire team to consistently apply this
+      workaround. And for many the honest truth is that it's not worth the
+      effort for them.
     </p>
 
     <h5>3. Self re-rendering error boundaries</h5>
@@ -432,15 +442,15 @@ useEffect(() => {
       spans.
     </p>
 
-    <h3>
-      Inconsistent <Code>event.target</Code>
+    <h3 id="issue-inconsistent-event-target">
+      Isuee: Inconsistent <Code>event.target</Code>
     </h3>
     <p>
       When Google Translate is active, the value of <Code>event.target</Code>{' '}
       becomes unpredictable, as users are likely to click on one of Google
       Translate's <Code>font</Code> elements instead of the underlying element
-      that you, as a developer, created and could reasonably expect. In specific
-      code, this could lead to events not working correctly.
+      that you, as the developer, created and could reasonably expect. In
+      specific code, this could lead to events not working correctly.
     </p>
     <p>
       While this issue is very specific and can be worked around with relative
@@ -455,7 +465,7 @@ useEffect(() => {
 
     <p>
       <strong>
-        Not only React is affected by Google Translate's interference.
+        Not just React is affected by Google Translate's interference.
       </strong>
     </p>
 
@@ -502,30 +512,21 @@ useEffect(() => {
       [TODO: Image](An extension adding a Magic the Gathering card image popup)
     </p>
     <p>
-      I want to stress that{' '}
-      <strong>
-        I do not think the team behind Google Translate deserve any blame for
-        the issues
-      </strong>
-      . It's a great tool that helps people worldwide and made the web usable to
-      many more people. I reckon Google Translate was originally architected in
-      a time where the web was very different from what it is today. The issues
-      are a result of the web evolving; the web isn't almost exclusively static
-      websites anymore. Many of the popular websites today are actually very
-      large and complex web apps.
-    </p>
-    <p>
-      I am not even sure if these issues should be fixed within Google
-      Translate. These issues reveal a bigger problem at the core of how browser
-      extensions interact with the web. It might be a problem that needs to be
-      fixed in the platform (i.e. inside the browsers).
+      I want to stress that I do not think the team behind Google Translate
+      deserve any blame for the issues. It's a great tool that helps people
+      worldwide and made the web usable to many more people. I reckon Google
+      Translate was originally architected in a time where the web was very
+      different from what it is today. The issues are a result of the web
+      evolving; the web isn't almost exclusively static websites anymore. Many
+      of the popular websites today are actually very large and complex web
+      apps.
     </p>
 
     <h2>There is no real solution (yet)</h2>
     <p>
-      Unfortunately, at the time of writing, there's no solution that can make
-      Google Translate work well enough with React for a large React app. As
-      mentioned above, the workarounds for the crashes introduce a new set of
+      At the time of writing, there is, unfortunately, no solution yet that can
+      make Google Translate work well enough with React for a large React app.
+      As mentioned above, the workarounds for the crashes introduce a new set of
       issues, and they still leave any complex app barely usable after
       translation by Google Translate.
     </p>
@@ -548,8 +549,8 @@ useEffect(() => {
 
     <p>
       I don't like solving it this way. It makes apps less accessible to people
-      worldwide. But it beats serving Google Translate users a broken app that
-      barely works and will likely mislead them.
+      worldwide. But it beats serving Google Translate users an app that is so
+      broken, it barely works.
     </p>
 
     <p>
@@ -563,8 +564,8 @@ useEffect(() => {
     </p>
 
     <Aside>
-      It might help to inform users of the issues of using Google Translate. See
-      the gist of{' '}
+      Regardless of what you do, it might help to inform users of the issues
+      they might encounter when using Google Translate. See the gist of{' '}
       <Link href="/gists/how-to-detect-google-translate-and-other-machine-translation">
         How to detect Google Translate and other machine translation
       </Link>{' '}
