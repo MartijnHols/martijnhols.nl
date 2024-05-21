@@ -17,7 +17,7 @@ import PublicationDateComponent from './PublicationDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
 
-const StyledContainer = styled(Container)(
+const ArticleContent = styled(Container)(
   ({ theme }) => css`
     padding-top: ${theme.spacing.x10}px;
     padding-bottom: ${theme.spacing.x10}px;
@@ -27,13 +27,25 @@ const StyledContainer = styled(Container)(
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 112.5%;
-      padding-top: ${theme.spacing.x1 * 20}px;
     }
 
     img {
       max-width: 100%;
       height: auto;
     }
+  `,
+)
+const MainArticleContent = styled(ArticleContent)(
+  ({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      padding-top: ${theme.spacing.x1 * 20}px;
+    }
+  `,
+)
+const Addendum = styled.div(
+  ({ theme }) => css`
+    background: ${theme.colors.black};
+    color: ${theme.colors.white};
   `,
 )
 const Title = styled.h1(
@@ -82,9 +94,10 @@ interface Props {
   // Async to avoid circular reference issues
   relatedGist?: Promise<{ meta: GistMeta }>
   children: ReactNode
+  addendum?: ReactNode
 }
 
-const Gist = ({ gist, children }: Props) => {
+const Gist = ({ gist, children, addendum }: Props) => {
   const {
     title,
     titleReact,
@@ -135,36 +148,51 @@ const Gist = ({ gist, children }: Props) => {
         <Link href="/gists">Gists</Link> by <Link href="/">Martijn Hols</Link>
       </TopBar>
 
-      <StyledContainer as="article">
-        <ArticleHeader>
-          <div>
-            <Link href="/gists">← More gists</Link>
-          </div>
-          <ArticleMetadata>
-            Published{' '}
-            {publishedAt ? (
-              <PublicationDateComponent date={publishedAt} />
-            ) : (
-              'N/A'
-            )}
-          </ArticleMetadata>
-        </ArticleHeader>
+      <article>
+        <MainArticleContent>
+          <ArticleHeader>
+            <div>
+              <Link href="/gists">← More gists</Link>
+            </div>
+            <ArticleMetadata>
+              Published{' '}
+              {publishedAt ? (
+                <PublicationDateComponent date={publishedAt} />
+              ) : (
+                'N/A'
+              )}
+            </ArticleMetadata>
+          </ArticleHeader>
 
-        <Title>{titleReact ?? title}</Title>
+          <Title>{titleReact ?? title}</Title>
 
-        {/** Portal target so tooltips can share base article styling (mostly font-size) */}
-        <PortalTarget>{children}</PortalTarget>
+          {/** Portal target so tooltips can share base article styling (mostly font-size) */}
+          <PortalTarget>{children}</PortalTarget>
 
-        <div ref={intersectionObserverRef} />
+          <div ref={intersectionObserverRef} />
 
-        <Tags>
-          {tags.map((tag) => (
-            <Link key={tag} href={`/gists?tag=${tag}`} className="plain">
-              <Tag>{tag}</Tag>
-            </Link>
-          ))}
-        </Tags>
-      </StyledContainer>
+          <Tags>
+            {tags.map((tag) => (
+              <Link key={tag} href={`/gists?tag=${tag}`} className="plain">
+                <Tag>{tag}</Tag>
+              </Link>
+            ))}
+          </Tags>
+        </MainArticleContent>
+
+        {addendum && (
+          <>
+            <Angle inverted />
+            <Addendum className="inverted">
+              <ArticleContent>
+                <Title>Addendum</Title>
+                {addendum}
+              </ArticleContent>
+            </Addendum>
+            <Angle />
+          </>
+        )}
+      </article>
 
       <MoreLikeThis gist={gist} />
 
