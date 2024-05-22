@@ -28,21 +28,14 @@ const CodeError = styled(Code)`
   color: red;
 `
 
-// TODO: Add ids to headings
-// TODO: add images
 // TODO: grammarly
 // TODO: ChatGPT
 
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
-  // TODO: Pick final title and remove alts
   title: 'Everything about Google Translate crashing React (and other webapps)',
-  // Everything about Google Translate interference crashing React and other webapps
-  // Everything about Google Translate interference
-  // Everything about Google Translate interference with React and other webapps
-  // Google Translate breaks React apps (and other webapps)
-  // TODO: add description
-  description: 'TODO',
+  description:
+    'The gist of Google Translate (and other browser extensions) interference breaking React and other webapps.',
   tags: [GistTag.React, GistTag.MachineTranslation],
 }
 
@@ -181,8 +174,8 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
       piece of why Google Translate causes problems (i.e. interferes) with
       JavaScript apps doing DOM manipulation.
     </p>
-    {/** Make this a <details> thing? It feels like a TMI */}
-    <h3>Simulating Google Translate</h3>
+
+    <h3 id="simulating-google-translate">Simulating Google Translate</h3>
     <p>
       Now that we know how Google Translate works, we can simulate it being
       applied to a part of a page. This will allow us to reproduce the issues
@@ -214,7 +207,9 @@ useEffect(() => {
       Translate.
     </p>
 
-    <h3>Manually testing Google Translate</h3>
+    <h3 id="manually-testing-google-translate">
+      Manually testing Google Translate
+    </h3>
     <p>
       If you want to validate the issues caused by Google Translate yourself,
       you can do so by manually testing it. This will help you understand the
@@ -258,7 +253,7 @@ useEffect(() => {
       />
     </Figure>
 
-    <h2>The interference issues</h2>
+    <h2 id="the-interference-issues">The interference issues</h2>
     <p>
       With the knowledge of how Google Translate works, we can now better
       understand the interference issues it causes for React apps. The most
@@ -390,9 +385,7 @@ useEffect(() => {
       rendered will have a sibling.
     </p>
 
-    <h4>
-      <mark>Workarounds</mark>
-    </h4>
+    <h4 id="workarounds">Workarounds</h4>
     <p>
       React's crashes have been reported in{' '}
       <a href="https://github.com/facebook/react/issues/11538">this issue</a> on
@@ -444,7 +437,9 @@ useEffect(() => {
       of resetting the component to its initial state.
     </p>
 
-    <h5>2. Surrounding TextNodes with spans</h5>
+    <h5 id="surrounding-textnodes-with-spans">
+      2. Surrounding TextNodes with spans
+    </h5>
     <p>
       Github user <i>shuhei</i> shared{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-390386520">
@@ -464,7 +459,9 @@ useEffect(() => {
       effort for them.
     </p>
 
-    <h5>3. Self re-rendering error boundaries</h5>
+    <h5 id="self-re-rendering-error-boundaries">
+      3. Self re-rendering error boundaries
+    </h5>
     <p>
       An error boundary that just renders the same children again when it runs
       into an error is{' '}
@@ -511,7 +508,7 @@ useEffect(() => {
       <GoogleTranslateEventTargetRepro />
     </Reproduction>
 
-    <h2>Not just React</h2>
+    <h2 id="not-just-react">Not just React</h2>
 
     <p>
       <strong>
@@ -587,7 +584,7 @@ useEffect(() => {
       apps.
     </p>
 
-    <h2>There is no real solution (yet)</h2>
+    <h2 id="there-is-no-real-solution-yet">There is no real solution (yet)</h2>
     <p>
       At the time of writing, there is, unfortunately, no solution yet that can
       make Google Translate work well enough with React for a large React app.
@@ -637,7 +634,7 @@ useEffect(() => {
       for a way of detecting when Google Translate is active.
     </Aside>
 
-    <h3>Alternatives</h3>
+    <h3 id="alternatives">Alternatives</h3>
     <p>
       The only alternative solution that I can think of, is to{' '}
       <strong>implement your own localization within your app</strong> (i.e.
@@ -661,7 +658,7 @@ useEffect(() => {
       apps. Do you know of any other alternatives?
     </p>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <p>
       That's the gist of Google Translate crashing React (and other webapps).
       Or, as we've discovered, the gist of third-party browser extension DOM
