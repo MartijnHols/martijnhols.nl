@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import Code from './Code'
+import ErrorBoundary from './ErrorBoundary'
 
 const Container = styled('div', {
   shouldForwardProp: (prop) => prop !== 'label',
@@ -12,6 +14,7 @@ const Container = styled('div', {
     background: ${theme.colors.yellow50};
     padding: 1em;
     position: relative;
+    margin: 1em 0;
 
     ::before {
       content: '${label}';
@@ -34,6 +37,11 @@ const Container = styled('div', {
     }
   `,
 )
+const CodeError = styled(Code)`
+  display: block;
+  margin-bottom: 1em;
+  color: red;
+`
 
 interface Props {
   children: ReactNode
@@ -41,7 +49,23 @@ interface Props {
 }
 
 const Reproduction = ({ children, label = 'Reproduction' }: Props) => (
-  <Container label={label}>{children}</Container>
+  <Container label={label}>
+    <ErrorBoundary
+      fallback={(error, reset) => (
+        <div>
+          <div>Error caught by error boundary:</div>
+          <CodeError>
+            {error.name}: {error.message}
+          </CodeError>
+          <button type="button" onClick={reset}>
+            Reset
+          </button>
+        </div>
+      )}
+    >
+      {children}
+    </ErrorBoundary>
+  </Container>
 )
 
 export default Reproduction
