@@ -33,9 +33,10 @@ const CodeError = styled(Code)`
 
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
-  title: 'Everything about Google Translate crashing React (and other webapps)',
+  title:
+    'Everything about Google Translate crashing React (and other web apps)',
   description:
-    'The gist of Google Translate (and other browser extensions) interference breaking React and other webapps.',
+    'The gist of Google Translate (and other browser extensions) interference breaking React and other web apps.',
   tags: [GistTag.React, GistTag.MachineTranslation],
 }
 
@@ -67,12 +68,12 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     <p>
       The focus of this article will be on Google Translate's interference of
       React, but it's important to note that these issues affect most machine
-      translators and will affect most large and complex webapps.
+      translators and will affect most large and complex web apps.
     </p>
     <h2 id="how-google-translate-works">How Google Translate works</h2>
     <p>
-      In order to understand what Google Translate does, we need to take a close
-      look at the DOM structure before and after translation.
+      To understand what Google Translate does, we need to take a close look at
+      the DOM structure before and after translation.
     </p>
     <p>
       All HTML that is rendered in the browser is represented by the{' '}
@@ -107,7 +108,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     <p>
       When Google Translate activates, it looks for <Code>TextNode</Code>s to
       translate. These nodes are then replaced with <Code>FontElement</Code>{' '}
-      elements with the new, translated, strings inside. This results into the
+      elements with the new, translated, strings inside. This results in the
       following HTML (assuming we're translating to Dutch):
     </p>
     <CodeSnippet
@@ -264,22 +265,22 @@ useEffect(() => {
       Issue: Translated text won't update
     </h3>
     <p>
-      This issue caused by Google Translate, is one that is hard to discover
-      since it fails silently; it doesn't lead to a crash or any error.
+      This issue caused by Google Translate, is hard to discover since it fails
+      silently; it doesn't lead to a crash or any error.
     </p>
     <p>
       In the previous section, we established that Google Translate unmounts DOM
       nodes and places its own new ones in their place. The consequence of this
       is that while the original DOM nodes continue to exist in-memory, any
-      changes to the original DOM nodes will not show up on the page . They will
+      changes to the original DOM nodes will not show up on the page. They will
       not show up in the user's browser in any way. The changes only happen
       in-memory.
     </p>
     <p>
       This is an issue for systems like React that work with a Virtual DOM. One
       of the main reasons behind using the Virtual DOM is performance, and a key
-      part of that, is updating the values of DOM nodes instead of replacing
-      them whenever possible. Replacing nodes is quite expensive.
+      part of that is updating the values of DOM nodes instead of replacing them
+      whenever possible. Replacing nodes is quite expensive.
     </p>
     <p>
       The consequence of this is that, in React, any text or number that might
@@ -293,15 +294,15 @@ useEffect(() => {
       This is a big problem for any app that shows users important data, which
       probably means every big React app. Showing the wrong data could be
       misleading and even dangerous. To your company, and especially to your
-      users. A dashboard showing the wrong number could lead to users make the
+      users. A dashboard showing the wrong number could lead to users making the
       wrong decisions, your app showing invalid prices could be a legal issue,
-      while showing a user the wrong dosage of a medicine could have much more
+      while showing a user the wrong dosage of medicine could have much more
       dire consequences. How big of a risk this is, depends on your app and
       business.
     </p>
     <h4 id="issue-translated-text-wont-update-reproduction">Reproduction</h4>
     <p>
-      The button below increments the number of lights in state by one every
+      The button below increments the number of lights in the state by one every
       time it's pressed. The marked label directly next to it is no more than{' '}
       <Code>{`There are {lights} lights!`}</Code>. The square brackets around
       this label are added by our Google Translate simulation to indicate it's
@@ -360,7 +361,7 @@ useEffect(() => {
       was unmounted by Google Translate.
     </p>
     <p>
-      I think the crashes are actually less important than{' '}
+      I think the crashes are actually less important than the{' '}
       <Link href="#issue-translated-text-wont-update">
         translated text not updating
       </Link>
@@ -370,10 +371,10 @@ useEffect(() => {
     </p>
     <h4 id="issue-crashes-reproduction">Reproduction</h4>
     <p>
-      The button below toggles the lights, which toggles rendering of the “There
-      are 3 lights” text in the React component. React tries to reconsolidate
-      this render by removing the <Code>TextNode</Code> from the parent that it
-      added it to.
+      The button below toggles the lights, which toggles the rendering of the
+      “There are 3 lights” text in the React component. React tries to
+      reconsolidate this render by removing the <Code>TextNode</Code> from the
+      parent that it added it to.
     </p>
     <Reproduction>
       <GoogleTranslateCrashesRepro />
@@ -389,7 +390,7 @@ useEffect(() => {
     <p>
       React's crashes have been reported in{' '}
       <a href="https://github.com/facebook/react/issues/11538">this issue</a> on
-      Github. Several workarounds have been posted, but unfortunately none of
+      GitHub. Several workarounds have been posted, but unfortunately, none of
       the workarounds provide a quick fix. Some just make things worse.
     </p>
     <p>
@@ -416,8 +417,8 @@ useEffect(() => {
       does nothing and{' '}
       <strong>the translated text will remain in the DOM</strong> until its
       parent is removed. And when the <Code>insertBefore</Code> error is
-      triggered, the <strong>newly rendered text won't actually appear</strong>{' '}
-      for your user.
+      triggered, the <strong>newly rendered text won't appear</strong> for your
+      user.
     </p>
 
     <p>
@@ -441,7 +442,7 @@ useEffect(() => {
       2. Surrounding TextNodes with spans
     </h5>
     <p>
-      Github user <i>shuhei</i> shared{' '}
+      GitHub user <i>Shuhei</i> shared{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-390386520">
         a workaround
       </a>{' '}
@@ -466,11 +467,11 @@ useEffect(() => {
       An error boundary that just renders the same children again when it runs
       into an error is{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-2052692225">
-        a good idea by Github user sorahn
+        a good idea by GitHub user Sorahn
       </a>
-      , but unfortunately any components in the subtree will lose their state in
-      the process. While this could work for some of the instances, it's not a
-      general solution and if you're going to be adapting your code anyway,
+      , but unfortunately, any components in the subtree will lose their state
+      in the process. While this could work for some of the instances, it's not
+      a general solution and if you're going to be adapting your code anyway,
       you're probably better off surrounding your <Code>TextNode</Code>s with
       spans.
     </p>
@@ -493,7 +494,7 @@ useEffect(() => {
 
     <h4 id="issue-inconsistent-event-target-reproduction">Reproduction</h4>
     <p>
-      In the reproduction below, the text of the button gets tranlated by the
+      In the reproduction below, the text of the button gets translated by the
       Google Translate simulator. When you click anywhere within the
       reproduction, the element type of the <Code>event.target</Code> will be
       visible. When Google Translate is active, the <Code>event.target</Code>{' '}
@@ -517,10 +518,10 @@ useEffect(() => {
     </p>
 
     <p>
-      Any JavaScript code that uses a reference to either update the value of a
+      Any JavaScript code that uses a reference to either update the value of a{' '}
       <Code>TextNode</Code>, add or remove children to a parent, or uses{' '}
-      <Code>e.target</Code>, is affected by these issues. It is not a React
-      specific issue. However, React is the most prominent user of the “
+      <Code>e.target</Code>, is affected by these issues. It is not a
+      React-specific issue. However, React is the most prominent user of the “
       <a href="https://reactjs.org/docs/faq-internals.html">Virtual DOM</a>”, so
       the issue <em>is</em> <b>most common</b> in React.
     </p>
@@ -548,7 +549,7 @@ useEffect(() => {
         <a href="https://chromewebstore.google.com/detail/eobkhgkgoejnjaiofdmphhkemmomfabg">
           AutocardAnywhere
         </a>
-        : Displays card image popups for collectable card games{' '}
+        : Displays card image popups for collectible card games{' '}
         <Annotation annotation="I ran into this one back in 2017 when a user reported a crash with the “insertBefore” error on my WoWAnalyzer project. With some help from the user debugging the issue, it turned out to be caused by this extension. You can still find the report on the WoWAnalyzer Discord.">
           (*)
         </Annotation>
@@ -575,9 +576,9 @@ useEffect(() => {
     </Figure>
     <p>
       I want to stress that I do not think the team behind Google Translate
-      deserve any blame for the issues. It's a great tool that helps people
-      worldwide and made the web usable to many more people. I reckon Google
-      Translate was originally architected in a time where the web was very
+      deserves any blame for the issues. It's a great tool that helps people
+      worldwide and makes the web usable for many more people. I reckon Google
+      Translate was originally architected at a time when the web was very
       different from what it is today. The issues are a result of the web
       evolving; the web isn't almost exclusively static websites anymore. Many
       of the popular websites today are actually very large and complex web
@@ -606,7 +607,7 @@ useEffect(() => {
         ”fixed” my app by blocking translation entirely
       </a>
       . Now, 7 years later, I am sad to have to report that this still appears
-      to the best way to avoid all of the issues caused by Google Translate.
+      to be the best way to avoid all of the issues caused by Google Translate.
     </p>
 
     <p>
@@ -660,7 +661,7 @@ useEffect(() => {
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
-      That's the gist of Google Translate crashing React (and other webapps).
+      That's the gist of Google Translate crashing React (and other web apps).
       Or, as we've discovered, the gist of third-party browser extension DOM
       manipulation interfering with complex JavaScript app reactivity, often
       leading to crashes and other issues.
@@ -685,7 +686,7 @@ useEffect(() => {
     <p>
       Want more? I wrote an <Link href="#addendum">addendum</Link> in which I go
       into the question of whether an app should claim full and exclusive
-      control of the DOM, and I propose a solution to avoid extensions from
+      control of the DOM, and I propose a solution to prevent extensions from
       interfering with web apps.
     </p>
 
@@ -816,7 +817,7 @@ const Addendum = () => (
     breakage
   </p>
   <p>
-    Maybe browsers should do that. Give the original webapp full and exclusive
+    Maybe browsers should do that. Give the original web app full and exclusive
     control and only execute extensions on a copy of it that do not affect the
     original. Rerun extensions any time the original changes. Make extensions
     deal with the issues, rather than every single webdeveloper.
