@@ -28,12 +28,9 @@ const CodeError = styled(Code)`
 `
 
 // TODO: Add ids to headings
-// TODO: add reproductions
-// TODO: add reproduction codepen links
 // TODO: add images
 // TODO: grammarly
 // TODO: ChatGPT
-// TODO: Add error boundaries around reproductions
 
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
@@ -228,10 +225,13 @@ useEffect(() => {
       change your <i>Preferred languages</i> in the settings like so:
     </p>
 
-    <Figure caption="TODO: image" href="">
+    <Figure
+      caption="Replace all preferred languages in the settings"
+      href={chromeLanguageSetupImage.src}
+    >
       <Image
         src={chromeLanguageSetupImage}
-        alt="" // TODO
+        alt={`An animated GIF showing Chrome "Preferred language" settings. The Dutch language is added, and all other languages are removed afterwards.`}
         width={500}
         sizes="(min-width: 768px) 500px, 100vw"
       />
@@ -245,10 +245,13 @@ useEffect(() => {
       the translation icon in the address bar.
     </p>
 
-    <Figure caption="TODO: image" href="">
+    <Figure
+      caption="Google Translate will immediately translate the page"
+      href={activateGoogleTranslateImage.src}
+    >
       <Image
         src={activateGoogleTranslateImage}
-        alt="" // TODO
+        alt="An animated GIF showing how Google Translate activation in Chrome."
         width={500}
         sizes="(min-width: 768px) 500px, 100vw"
       />
