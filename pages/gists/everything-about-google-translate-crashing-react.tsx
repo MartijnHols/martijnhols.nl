@@ -574,11 +574,11 @@ useEffect(() => {
 
     <h3>Alternatives</h3>
     <p>
-      The only alternative solution that I reckon is available, is to{' '}
+      The only alternative solution that I can think of, is to{' '}
       <strong>implement your own localization within your app</strong> (i.e.
-      internationalization a.k.a. i18n). This makes machine translation
-      unnecessary and provides international users with the best possible
-      experience. But this has a couple of downsides:
+      internationalization). This makes machine translation unnecessary and
+      provides international users with the best possible experience. But this
+      has a couple of downsides:
     </p>
 
     <ul>
@@ -593,7 +593,38 @@ useEffect(() => {
 
     <p>
       All things considered, this isn't the most practical solution for most
-      apps. It's unfortunate that there's a lack of good alternatives.
+      apps. Do you know of any other alternatives?
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      That's the gist of Google Translate crashing React (and other webapps).
+      Or, as we've discovered, the gist of third-party browser extension DOM
+      manipulation interfering with complex JavaScript app reactivity, often
+      leading to crashes and other issues.
+    </p>
+    <p>
+      I hope this article will help you understand the issue better and help you
+      choose the right workaround for your app.
+    </p>
+    <p>
+      Please help this issue get attention at Google by upvoting its bug report
+      on the Chromium project:{' '}
+      <a href="https://issues.chromium.org/issues/41407169">
+        https://issues.chromium.org/issues/41407169
+      </a>
+      . The more attention it gets, the more likely it is to be fixed.
+    </p>
+    <p>
+      So what do you think? Can you think of any other workarounds? Or do you
+      know a machine translator that doesn't have these issues? Let me know in
+      the comments below.
+    </p>
+    <p>
+      Want more? I wrote an <Link href="#addendum">addendum</Link> in which I go
+      into the question of whether an app should claim full and exclusive
+      control of the DOM, and I propose a solution to avoid extensions from
+      interfering with web apps.
     </p>
 
     <Aside>
@@ -601,24 +632,9 @@ useEffect(() => {
       mechanic to React Dev Tools's “render highlighting” to trigger remounting
       (by React) of the entire parent of <Code>TextNode</Code>s that are
       changed, but I looked into the feature's code and that is part of a
-      &gt;4500 LOC file so it seemed more involved than I bargained for.
+      &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
+      someone else can take a look at it.
     </Aside>
-
-    <h2>What's next</h2>
-    <p>
-      That's the (rather in-depth) gist of Google Translate crashing React (and
-      other webapps). Or, as we've learned, the gist of third-party extension
-      DOM manipulation interfering with complex JavaScript app reactivity (often
-      leading to crashes and other issues).
-    </p>
-    <p>
-      Upvote this report on the Chromium project:
-      <a href="https://issues.chromium.org/issues/41407169">
-        https://issues.chromium.org/issues/41407169
-      </a>{' '}
-      and similar issues for other machine translators.
-    </p>
-    <p>Is there a translator that doesn't have these issues?</p>
   </Gist>
 )
 
