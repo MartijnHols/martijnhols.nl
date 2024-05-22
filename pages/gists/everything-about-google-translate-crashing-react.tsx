@@ -17,6 +17,7 @@ import NodeTree from '../../components/NodeTree'
 import Reproduction from '../../components/Reproduction'
 import Tooltip from '../../components/Tooltip'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
+import autoCardAnywhereImage from './assets/google-translate-autocardanywhere.png'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
@@ -556,9 +557,17 @@ useEffect(() => {
         </Annotation>
       </li>
     </ul>
-    <p>
-      [TODO: Image](An extension adding a Magic the Gathering card image popup)
-    </p>
+    <Figure
+      caption="AutocardAnywhere showing a Magic: the Gathering card for a random piece of text on WoWAnalyzer"
+      href={autoCardAnywhereImage.src}
+    >
+      <Image
+        src={autoCardAnywhereImage}
+        alt="A screenshot of WoWAnalyzer, showing a Magic: the Gathering card popup added by AutocardAnywhere for a random, but matching piece of text."
+        width={800}
+        sizes="(min-width: 768px) 800px, 100vw"
+      />
+    </Figure>
     <p>
       I want to stress that I do not think the team behind Google Translate
       deserve any blame for the issues. It's a great tool that helps people
