@@ -558,7 +558,15 @@ useEffect(() => {
       </li>
     </ul>
     <Figure
-      caption="AutocardAnywhere showing a Magic: the Gathering card for a random piece of text on WoWAnalyzer"
+      caption={
+        <>
+          AutocardAnywhere showing a Magic: the Gathering card for a random
+          piece of text on{' '}
+          <Annotation annotation="WoWAnalyzer is a large and complex (Open Source) React app that I founded in 2017.">
+            WoWAnalyzer
+          </Annotation>
+        </>
+      }
       href={autoCardAnywhereImage.src}
     >
       <Image
