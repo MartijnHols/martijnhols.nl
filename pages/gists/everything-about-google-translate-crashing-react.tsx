@@ -14,9 +14,11 @@ import Link from '../../components/Link'
 import Node from '../../components/Node'
 import NodeChildren from '../../components/NodeChildren'
 import NodeTree from '../../components/NodeTree'
+import Reproduction from '../../components/Reproduction'
 import Tooltip from '../../components/Tooltip'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
+import GoogleTranslateTextNotUpdatingRepro from './demo/google-translate-text-not-updating-repro'
 
 const CodeError = styled(Code)`
   color: red;
@@ -28,6 +30,7 @@ const CodeError = styled(Code)`
 // TODO: add images
 // TODO: grammarly
 // TODO: ChatGPT
+// TODO: Add error boundaries around reproductions
 
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
@@ -164,7 +167,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     <p>
       What this shows is that{' '}
       <strong>
-        the original <Code>TextNode</Code> with the English text is{' '}
+        the original <Code>TextNode</Code> is{' '}
         <Annotation annotation="That means it is no longer a part of the HTML-document, so it is no longer being rendered in the browser.">
           unmounted
         </Annotation>{' '}
@@ -296,7 +299,7 @@ useEffect(() => {
       dire consequences. How big of a risk this is, depends on your app and
       business.
     </p>
-    <h4>Reproduction</h4>
+    <h4 id="issue-translated-text-wont-update-reproduction">Reproduction</h4>
     <p>
       The button below increments the number of lights in state by one every
       time it's pressed. The marked label directly next to it is no more than{' '}
@@ -305,13 +308,24 @@ useEffect(() => {
       active. The value shown underneath the button is the actual value,
       unaffected by Google Translate.
     </p>
-    <p>[TODO: repro]</p>
+    <Reproduction>
+      <GoogleTranslateTextNotUpdatingRepro />
+    </Reproduction>
     <p>
       When you click the button a few times, you will see the state is updating
       and the component is rerendering, but the text is never updated to reflect
       the new value.
     </p>
-    <p>If you would prefer testing this with a real translator, click here.</p>
+    <Aside>
+      The reproduction shows three sets of brackets around the text. This is
+      because React makes a new <Code>TextNode</Code> for each variable within a
+      string. Google Translate would{' '}
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize">
+        normalize
+      </a>{' '}
+      the text nodes; merging them together. This makes the reproduction
+      slightly different, but the effect is the same.
+    </Aside>
     <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
       If you're running an error monitoring tool like Sentry or tried manually
