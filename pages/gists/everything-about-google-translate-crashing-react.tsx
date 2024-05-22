@@ -18,6 +18,8 @@ import Reproduction from '../../components/Reproduction'
 import Tooltip from '../../components/Tooltip'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
+import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
+import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
 import GoogleTranslateTextNotUpdatingRepro from './demo/google-translate-text-not-updating-repro'
 
 const CodeError = styled(Code)`
@@ -213,8 +215,6 @@ useEffect(() => {
       Translate.
     </p>
 
-    <p>TODO: Add example here?</p>
-
     <h3>Manually testing Google Translate</h3>
     <p>
       If you want to validate the issues caused by Google Translate yourself,
@@ -368,15 +368,22 @@ useEffect(() => {
       at all and it may mislead users, which would be a worse outcome than not
       showing anything at all.
     </p>
-    <h4>Reproduction</h4>
+    <h4 id="issue-crashes-reproduction">Reproduction</h4>
     <p>
-      The button below toggles the lights, leading to the “There are 3 lights”
-      text to no longer being rendered in the React component. React tries to
-      reconsolidate this render by removing the <Code>TextNode</Code> from the
-      parent that it added it to.
+      The button below toggles the lights, which toggles rendering of the “There
+      are 3 lights” text in the React component. React tries to reconsolidate
+      this render by removing the <Code>TextNode</Code> from the parent that it
+      added it to.
     </p>
-    <p>[TODO: repro]</p>
-    <p>If you would prefer testing this with a real translator, click here.</p>
+    <Reproduction>
+      <GoogleTranslateCrashesRepro />
+    </Reproduction>
+
+    <p>
+      Do note that to reproduce it, the conditional <Code>TextNode</Code> needs
+      to have a sibling. In React nearly every node that's conditionally
+      rendered will have a sibling.
+    </p>
 
     <h4>
       <mark>Workarounds</mark>
@@ -392,7 +399,9 @@ useEffect(() => {
       impact on translated text not updating.
     </p>
 
-    <h5>1. Monkey patching removeChild and insertBefore</h5>
+    <h5 id="monkey-patching-removechild-and-insertbefore">
+      1. Monkey patching removeChild and insertBefore
+    </h5>
     <p>
       <i>Gaearon</i>, a member of the React Core team, posted{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-417504600">
@@ -420,7 +429,15 @@ useEffect(() => {
 
     <p>Watch this monkey patch in action:</p>
 
-    <p>[TODO: Reproduce on Codepen]</p>
+    <Reproduction>
+      <GoogleTranslateCrashesMonkeyPatchRepro />
+    </Reproduction>
+
+    <p>
+      You can toggle the Google Translate simulation to see how the component
+      behaves with and without its interference. It also serves as a great way
+      of resetting the component to its initial state.
+    </p>
 
     <h5>2. Surrounding TextNodes with spans</h5>
     <p>
@@ -473,7 +490,7 @@ useEffect(() => {
     </p>
 
     <h4>Reproduction</h4>
-    <p>TODO</p>
+    <Reproduction>TODO</Reproduction>
 
     <h2>Not just React</h2>
 
@@ -484,13 +501,12 @@ useEffect(() => {
     </p>
 
     <p>
-      Any JavaScript code that keeps a reference to elements and uses that
-      reference to either update the value of a TextNode, or add or remove
-      children to a parent, or uses <Code>e.target</Code>, is affected by these
-      issues. It is not a React specific issue. However, React is the most
-      prominent user of the “
+      Any JavaScript code that uses a reference to either update the value of a
+      <Code>TextNode</Code>, add or remove children to a parent, or uses{' '}
+      <Code>e.target</Code>, is affected by these issues. It is not a React
+      specific issue. However, React is the most prominent user of the “
       <a href="https://reactjs.org/docs/faq-internals.html">Virtual DOM</a>”, so
-      the issue <em>is</em> most common in React.
+      the issue <em>is</em> <b>most common</b> in React.
     </p>
 
     <h2 id="not-just-google-translate">Not just Google Translate</h2>

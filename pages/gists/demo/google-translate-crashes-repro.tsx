@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import Link from '../../../components/Link'
 
-const GoogleTranslateTextNotUpdatingRepro = () => {
-  const [lights, setLights] = useState(3)
+const GoogleTranslateCrashesRepro = () => {
+  const [lightsOn, setLightsOn] = useState(true)
 
   const [simulateGoogleTranslate, setSimulateGoogleTranslate] = useState(true)
   useEffect(() => {
@@ -13,7 +13,7 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
     // Not using ref because I want to eliminate all magic and any suggestion
     // that React might be doing something funny
     document
-      .getElementById('GoogleTranslateTextNotUpdatingRepro-translateme')
+      .getElementById('GoogleTranslateCrashesRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
           const fontElem = document.createElement('font')
@@ -43,38 +43,27 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
         </label>
       </div>
 
-      <div id="GoogleTranslateTextNotUpdatingRepro-translateme">
+      <div id="GoogleTranslateCrashesRepro-translateme">
         <button
           type="button"
-          onClick={() => setLights(lights + 1)}
+          onClick={() => setLightsOn(!lightsOn)}
           style={{ marginRight: '0.5em' }}
         >
-          Add light
+          Toggle lights
         </button>
-        There are {lights} lights
-      </div>
-      <div
-        style={{
-          color: '#494',
-        }}
-        translate="no"
-      >
-        There are {lights} lights
+        {lightsOn && 'There are 3 lights'}
       </div>
 
       <div style={{ marginTop: '1em' }}>
-        <a
-          href="/gists/demo/google-translate-text-not-updating-repro"
-          target="_blank"
-        >
+        <a href="/gists/demo/google-translate-crashes-repro" target="_blank">
           Open in new window
         </a>
         {' | '}
-        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/gists/demo/google-translate-text-not-updating-repro.tsx">
+        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/gists/demo/google-translate-crashes-repro.tsx">
           Source
         </a>
         {' | '}
-        <Link href="/gists/everything-about-google-translate-crashing-react#issue-translated-text-wont-update-reproduction">
+        <Link href="/gists/everything-about-google-translate-crashing-react#issue-crashes-reproduction">
           More info
         </Link>
       </div>
@@ -82,4 +71,4 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
   )
 }
 
-export default GoogleTranslateTextNotUpdatingRepro
+export default GoogleTranslateCrashesRepro
