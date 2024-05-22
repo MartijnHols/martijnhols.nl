@@ -20,6 +20,7 @@ import activateGoogleTranslateImage from './assets/google-translate-activate.gif
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
+import GoogleTranslateEventTargetRepro from './demo/google-translate-event-target-repro'
 import GoogleTranslateTextNotUpdatingRepro from './demo/google-translate-text-not-updating-repro'
 
 const CodeError = styled(Code)`
@@ -481,7 +482,7 @@ useEffect(() => {
       becomes unpredictable, as users are likely to click on one of Google
       Translate's <Code>font</Code> elements instead of the underlying element
       that you, as the developer, created and could reasonably expect. In
-      specific code, this could lead to events not working correctly.
+      specific code, this could lead to a certain feature not working correctly.
     </p>
     <p>
       While this issue is very specific and can be worked around with relative
@@ -489,8 +490,22 @@ useEffect(() => {
       it.
     </p>
 
-    <h4>Reproduction</h4>
-    <Reproduction>TODO</Reproduction>
+    <h4 id="issue-inconsistent-event-target-reproduction">Reproduction</h4>
+    <p>
+      In the reproduction below, the text of the button gets tranlated by the
+      Google Translate simulator. When you click anywhere within the
+      reproduction, the element type of the <Code>event.target</Code> will be
+      visible. When Google Translate is active, the <Code>event.target</Code>{' '}
+      will be a <Code>font</Code> element, as opposed to when it is inactive.
+    </p>
+    <p>
+      Click the button. Toggle Google Translate simulation. Click again. Compare
+      results.
+    </p>
+
+    <Reproduction>
+      <GoogleTranslateEventTargetRepro />
+    </Reproduction>
 
     <h2>Not just React</h2>
 
