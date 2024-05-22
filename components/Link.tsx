@@ -82,7 +82,8 @@ const Link = ({
       if (!elem) {
         return
       }
-      e.preventDefault() // it not updating the URL is a feature
+      e.preventDefault()
+      window.history.pushState({}, '', href)
       // While I generally hate scroll hijacking, for anchor links this provides
       // users with context so they can keep their orientation. This is
       // especially important for #footer links, as it may otherwise not be
