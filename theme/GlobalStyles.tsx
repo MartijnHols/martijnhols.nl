@@ -7,6 +7,9 @@ const GlobalStyles = () => (
   <Global
     styles={(theme) => [
       css`
+        html {
+          scroll-padding-top: 2rem;
+        }
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
             'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
