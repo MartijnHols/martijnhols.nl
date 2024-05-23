@@ -8,7 +8,7 @@ const StyledFigure = styled.figure`
   text-align: center;
   // vertical equal to paragraph margin, for horizontal the article padding will
   // take care of it
-  margin: 1em 0;
+  margin: 1.5em 0;
 
   img {
     border: 7px solid black;

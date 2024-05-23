@@ -51,7 +51,8 @@ const Addendum = styled.div(
 const Title = styled.h1(
   ({ theme }) => css`
     font-size: 2.9em;
-    margin-bottom: 0.25em;
+    margin-top: 0.05em;
+    margin-bottom: 0.5em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 3.5em;

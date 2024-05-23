@@ -30,6 +30,15 @@ const GlobalStyles = () => (
           background: ${theme.colors.yellow};
         }
 
+        p,
+        ul {
+          margin: 1.25em 0;
+
+          > li {
+            margin: 0.5em 0;
+          }
+        }
+
         svg {
           width: auto;
           height: auto;

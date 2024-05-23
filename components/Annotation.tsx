@@ -9,6 +9,10 @@ const Container = styled.span(
     text-decoration: underline wavy ${theme.colors.black};
     text-decoration-skip-ink: none;
     cursor: help;
+
+    .inverted & {
+      text-decoration-color: ${theme.colors.white};
+    }
   `,
 )
 

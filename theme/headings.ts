@@ -17,11 +17,11 @@ export const h1 = css`
 `
 export const h2 = css`
   font-size: 2.25em;
-  line-height: 1.2;
+  line-height: 1.5;
   border-top: 0.16em solid currentColor;
   display: inline-block;
   font-weight: 800;
-  margin-top: 0.75em;
+  margin-top: 1.5em;
   margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
 
   @media (min-width: ${breakpoints.DESKTOP}px) {
@@ -33,7 +33,7 @@ export const h3 = css`
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.3px;
-  margin-top: 0.75em;
+  margin-top: 1.5em;
   margin-bottom: 0;
 
   @media (min-width: ${breakpoints.TABLET}px) {

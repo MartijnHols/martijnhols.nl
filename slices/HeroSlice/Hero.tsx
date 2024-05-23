@@ -34,6 +34,10 @@ const IntroSubText = styled.span(
     display: block;
     ${theme.headings.h4}
     margin-bottom: ${theme.spacing.x1}px;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      font-size: 1.75em;
+    }
   `,
 )
 export const IntroTitle = styled.h1`
@@ -42,7 +46,7 @@ export const IntroTitle = styled.h1`
 const SubText = styled.div(
   ({ theme }) => css`
     font-weight: 500;
-    ${theme.headings.h5}
+    ${theme.headings.h4}
     margin-top: ${theme.spacing.x2}px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
