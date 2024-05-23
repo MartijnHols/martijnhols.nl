@@ -29,6 +29,17 @@ const GoogleTranslateCrashesRepro = () => {
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
       key={`${simulateGoogleTranslate}`}
+      // Just a little something to show current state
+      style={
+        lightsOn
+          ? {}
+          : {
+              backgroundColor: '#333',
+              color: 'white',
+              padding: '1em',
+              margin: '-1em',
+            }
+      }
     >
       <div style={{ marginBottom: '1em' }}>
         <label>

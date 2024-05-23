@@ -28,9 +28,6 @@ const CodeError = styled(Code)`
   color: red;
 `
 
-// TODO: grammarly
-// TODO: ChatGPT
-
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
   title:
@@ -50,14 +47,14 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
       language.
     </p>
     <p>
-      But this functionality comes at a cost, as it interferes with the workings
+      But this convenience comes at a cost, as it interferes with the workings
       of many modern sites. This is because{' '}
       <strong>
         Google Translate manipulates the DOM in such a way that it breaks the
         base apps.
       </strong>{' '}
-      This interference often reveals itself via crashes caused by the DOM
-      element's native <Code>removeChild</Code> method;{' '}
+      This interference often manifest as crashes caused by the DOM element's
+      native <Code>removeChild</Code> method, resulting in errors like{' '}
       <CodeError>
         NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be
         removed is not a child of this node.
@@ -67,9 +64,25 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     </p>
     <p>
       The focus of this article will be on Google Translate's interference of
-      React, but it's important to note that these issues affect most machine
-      translators and will affect most large and complex web apps.
+      React, but it's important to note that these issues are not unique to
+      React; they affect most machine translators and can disrupt any large and
+      complex web app.
     </p>
+    <p>In this article, we will explore:</p>
+    <ul>
+      <li>How Google Translate works</li>
+      <li>Google Translate's interference</li>
+      <li>The interference of browser extensions in general</li>
+      <li>The impact on regular JavaScript code</li>
+      <li>Possible workarounds and alternatives</li>
+    </ul>
+    <p>
+      Additionally, at the end of the article you will find an{' '}
+      <Link href="#addendum">addendum</Link> in which I share my views on
+      whether web apps should even claim full and exclusive control of the DOM.
+    </p>
+    <p>But first, let's take a look at how Google Translate works.</p>
+
     <h2 id="how-google-translate-works">How Google Translate works</h2>
     <p>
       To understand what Google Translate does, we need to take a close look at
@@ -256,9 +269,9 @@ useEffect(() => {
 
     <h2 id="the-interference-issues">The interference issues</h2>
     <p>
-      With the knowledge of how Google Translate works, we can now better
-      understand the interference issues it causes for React apps. The most
-      common issues are:
+      Now that we know how Google Translate manipulates the DOM, we can now take
+      a clone look at the interference issues it causes. The most common issues
+      are:
     </p>
 
     <h3 id="issue-translated-text-wont-update">
@@ -324,8 +337,8 @@ useEffect(() => {
       <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize">
         normalize
       </a>{' '}
-      the text nodes; merging them together. This makes the reproduction
-      slightly different, but the effect is the same.
+      the text nodes; merging them together. This makes this reproduction
+      slightly different from Google Translate, but the result is the same.
     </Aside>
     <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
@@ -661,41 +674,41 @@ useEffect(() => {
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
-      That's the gist of Google Translate crashing React (and other web apps).
-      Or, as we've discovered, the gist of third-party browser extension DOM
-      manipulation interfering with complex JavaScript app reactivity, often
+      That's the gist of Google Translate crashing React apps (and other web
+      apps). Or, as we've discovered, the gist of third-party browser extension
+      DOM manipulation interfering with complex JavaScript app reactivity, often
       leading to crashes and other issues.
     </p>
     <p>
-      I hope this article will help you understand the issue better and help you
-      choose the right workaround for your app.
+      I hope this article will help you understand the issues and help you
+      choose the right way to deal with them in your app.
     </p>
     <p>
-      Please help this issue get attention at Google by upvoting its bug report
-      on the Chromium project:{' '}
+      Please help bring attention to this issue by upvoting its bug report on
+      the Chromium project:{' '}
       <a href="https://issues.chromium.org/issues/41407169">
         https://issues.chromium.org/issues/41407169
       </a>
-      . The more attention it gets, the more likely it is to be fixed.
+      . The increased attention can help the chances of the issues being
+      addressed.
     </p>
     <p>
       So what do you think? Can you think of any other workarounds? Or do you
-      know a machine translator that doesn't have these issues? Let me know in
-      the comments below.
+      know a machine translator that doesn't have these issues? Please share
+      your insights through the links below.
     </p>
     <p>
-      Want more? I wrote an <Link href="#addendum">addendum</Link> in which I go
-      into the question of whether an app should claim full and exclusive
-      control of the DOM, and I propose a solution to prevent extensions from
-      interfering with web apps.
+      ps. In the <Link href="#addendum">addendum</Link> below, I discuss whether
+      it is reasonable for an app to claim full and exclusive control of the
+      DOM, as React does with its Virtual DOM.
     </p>
 
     <Aside>
-      I think there might be a possible workaround in React that uses a similar
-      mechanic to React Dev Tools's “render highlighting” to trigger remounting
-      (by React) of the entire parent of <Code>TextNode</Code>s that are
-      changed, but I looked into the feature's code and that is part of a
-      &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
+      There might be a possible (external) workaround in React that uses a
+      similar mechanic to React Dev Tools's “render highlighting” to trigger
+      remounting (by React) of the entire parent of <Code>TextNode</Code>s that
+      are changed. However, I looked into the feature's code and that is part of
+      a &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
       someone else can take a look at it.
     </Aside>
   </Gist>
@@ -706,7 +719,7 @@ export default EverythingAboutGoogleTranslateCrashingReact
 const Addendum = () => (
   <>
     <h2 id="should-an-app-claim-full-control-of-its-dom">
-      Should an app claim full-control of its DOM?
+      Addendum: Should an app claim full-control of its DOM?
     </h2>
     <p>
       <Annotation annotation="br...@localizejs.com - The issue tracker doesn't do names.">
@@ -715,9 +728,9 @@ const Addendum = () => (
       of the translation project <a href="https://localizejs.com/">Localize</a>{' '}
       posted{' '}
       <a href="https://issues.chromium.org/issues/41407169#comment10">
-        a well thought out and in-depth comment
+        their thoughts
       </a>{' '}
-      on the Chromium issue tracker for this issue. In it they wrote:
+      on the issue in the Chromium report for this issue. In it, they wrote:
     </p>
     <blockquote>
       The problem is introduced when a javascript library assumes that it has
@@ -729,7 +742,7 @@ const Addendum = () => (
     <blockquote>
       Even if a website owner wanted to give full and exclusive control of the
       DOM to a VDOM library, it's not practical if you also have end-users with
-      DOM-modifying chrome extensions (ie. Grammarly, password managers, etc) or
+      DOM-modifying Chrome extensions (ie. Grammarly, password managers, etc) or
       if you have users with browsers that modify the DOM (ie. Chrome's built-in
       translation functionality). There's a large ecosystem dependent on DOM
       manipulation - that ecosystem is an unintended victim of the adoption of
@@ -740,99 +753,50 @@ const Addendum = () => (
     </blockquote>
     <p>
       This raises an important question:{' '}
-      <strong>should an app claim full-control over the DOM?</strong> They do
-      well to point out the potential problems of doing so.
+      <strong>should an app claim full-control over the DOM?</strong>
     </p>
     <p>
-      But as I mentioned earlier, the interference is broader than just full and
-      exclusive control. Extensions like Google Translate touch so much, that it
-      can break <em>any</em> DOM manipulation, even small pieces of code from
-      random web developers that doesn't even use a library. The core of the
-      issue is in third-party DOM manipulation, not just Virtual DOM libraries.
+      As I mentioned <Link href="#not-just-react">earlier</Link>, third-party
+      extensions interfere with more than just apps that claim full and
+      exclusive control over the DOM. Extensions like Google Translate touch so
+      much of the DOM, that it can break <em>any</em> DOM manipulation, even
+      small pieces of code not built on top of a library. The core of the issue
+      is in third-party DOM manipulation. It's not just limited to frameworks
+      using the Virtual DOM.
     </p>
     <p>
-      I think it's unreasonable to expect every web developer to consider
-      possible interference from third-party (browser) extensions. There are
-      many different kinds of developers with various experience levels and
-      knowledge. I don't think it would be helpful to include this in the
-      curriculum of developers.
+      The nature of browser extensions (and modding in general) involves
+      patching other people's work, and a big part of that is ensuring you don't
+      break things in the process. I don't think it would be reasonable to
+      expect web developers to consider and solve third-party (browser)
+      extension interference. These extensions are beyond the web developer's
+      control and should be designed with caution to minimize potential
+      disruptions. The responsibility lies with the creators of these extensions
+      to ensure compatibility and avoid negatively impacting web applications.
     </p>
     <p>
-      As for React using the Virtual DOM this way, and more specifically, for it
-      to reuse and update DOM nodes instead of replacing them whenever possible,
-      I think it's only natural for libraries to evolve in this direction. There
-      is a notable performance benefit to doing it this way.
+      React's use of a Virtual DOM to reuse and update nodes instead of
+      constantly replacing them is a natural evolution for frameworks. After
+      all, there are notable performance benefits to doing it this way.
+      Therefore, I don't think it's unreasonable for React to apply this to all
+      DOM nodes, claiming full and exclusive control over the DOM in the
+      process.
     </p>
     <p>
-      In the end, I think the third-party extensions are best equipped to
-      consider what they might affect and could possibly break, and they should
-      be first to solve their interference.
+      In the end, third-party extensions are best equipped to assess their
+      potential impact and address any interference they might cause. They
+      should be the first to resolve any interference with the proper
+      functioning of web apps.
     </p>
     <p>
-      But I also think it might not be reasonable to expect extensions to
-      consider <em>all</em> possible interference either.
+      But it might also be unreasonable to expect extensions to consider{' '}
+      <em>all</em> possible interference.
     </p>
     <p>
       The only reasonable solution might be to solve this within the platform;
-      inside the browsers that inject third-party extensions.
+      inside the browsers that inject those third-party extensions. But it
+      probably isn't a big enough problem for that to happen, so extension
+      developers will have to take care of it themselves.
     </p>
-
-    <h2 id="an-idea-for-a-fix">An idea for a fix</h2>
-    <p>
-      These problems are caused by third-party browser extensions manipulating
-      the DOM of web apps. With the wide variety of web apps available, it's
-      pretty much impossible for non-simple extensions to consider all possible
-      interference they might cause.
-    </p>
-    <p>
-      The solution to these issues, and any other issues caused by extensions,
-      is to prevent them from manipulating the DOM in any way so that web apps
-      can have full and exclusive control of the DOM. This is the only way to be
-      sure that there is no interference.
-    </p>
-    <p>
-      Of course, this is infeasible. Extensions are a big part of the web
-      ecosystem and they provide a lot of value to users. It's also not that
-      simple. For example for translation. Sometimes the DOM needs to be
-      restructured to ensure the translated sentence has a correct structure. A
-      link or a number might need to be moved from the end of a sentence to the
-      start. This is not something that can be done without manipulating the DOM
-      in some way.
-    </p>
-    <p>TODO: bit about how it could be solved in the browser</p>
-    <p>TODO: add a "more realistically" paragraph</p>
-    {/* <p>
-    But it should be solved at the browser level, limiting DOM manipulation by
-    extensions. An adblocker could use `hidden` rather than removing elements
-    from the DOM
-  </p>
-  <p>
-    Maybe Google Translate should keep two versions of the page active in
-    memory when translation is active and leave the original as-is for
-    JavaScript to interact with it and automatically reconcile changes to the
-    DOM to its translated version. Since this requires two-way binding, this
-    would probably be not trivial to build, but to me it seems like it's the
-    only solution that will forever stop Google Translate from breaking apps.
-    There is just no other way to manipulate the DOM that doesn't risk
-    breakage
-  </p>
-  <p>
-    Maybe browsers should do that. Give the original web app full and exclusive
-    control and only execute extensions on a copy of it that do not affect the
-    original. Rerun extensions any time the original changes. Make extensions
-    deal with the issues, rather than every single webdeveloper.
-  </p> */}
-    <pre>
-      {`How could Google Translate do this? They could:
-- unmount the entire tree from the body
-- this solves React crashing because of removeChild on an unparented TextNode
-- insert a copy of the tree at the body with event handlers proxied to the original tree
-- add mutationobservers to the unmounted tree
-- when something changes, copy the change to the copy
-- figure out how to deal with document.getElement issues
-- probably also add mutationobservers to the mounted tree and reconcile them
-- or ignore them with a “when google translate is active, it's exclusive” philosophy
-- glhf`}
-    </pre>
   </>
 )

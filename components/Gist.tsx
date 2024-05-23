@@ -184,11 +184,8 @@ const Gist = ({ gist, children, addendum }: Props) => {
         {addendum && (
           <>
             <Angle inverted />
-            <Addendum className="inverted">
-              <ArticleContent>
-                <Title id="addendum">Addendum</Title>
-                {addendum}
-              </ArticleContent>
+            <Addendum className="inverted" id="addendum">
+              <ArticleContent>{addendum}</ArticleContent>
             </Addendum>
             <Angle />
           </>
