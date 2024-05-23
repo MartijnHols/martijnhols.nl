@@ -18,11 +18,29 @@ export const h1 = css`
 export const h2 = css`
   font-size: 2.25em;
   line-height: 1.5;
-  border-top: 0.16em solid currentColor;
   display: inline-block;
   font-weight: 800;
   margin-top: 1.5em;
   margin-bottom: 0; // inline-block doesn't margin-collapse, so the next element will have to take care of it
+
+  ::before {
+    content: '';
+    width: 120px;
+    height: 1px;
+    --color: ${colors.yellow};
+    background: var(--color);
+    box-shadow:
+      -1px 1px 0 var(--color),
+      -2px 2px 0 var(--color),
+      -3px 3px 0 var(--color),
+      -4px 4px 0 var(--color),
+      1px -1px 0 var(--color),
+      2px -2px 0 var(--color),
+      3px -3px 0 var(--color),
+      4px -4px 0 var(--color);
+    display: block;
+    margin-bottom: 0.25em;
+  }
 
   @media (min-width: ${breakpoints.DESKTOP}px) {
     font-size: 2.5em;
