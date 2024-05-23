@@ -13,7 +13,7 @@ const StyledFigure = styled.figure`
   img {
     border: 7px solid black;
     box-shadow: -7px 7px 0 0px ${colors.yellow};
-    margin-bottom: 7px;
+    margin-bottom: 9px;
     transition: all 120ms ease-out;
 
     :hover {
