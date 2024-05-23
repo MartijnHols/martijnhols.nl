@@ -19,12 +19,9 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
       padding: 0.8em 1em;
       background: ${theme.colors.black};
       position: relative;
-
-      --box-shadow-distance: 0.75em;
-      --size: 0.8em;
-
       box-shadow: calc(var(--box-shadow-distance) * -1)
         var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
+      --size: 0.8em;
 
       ::before {
         content: '';
@@ -47,7 +44,6 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
       css`
         padding-top: 9px;
         padding-bottom: 9px;
-        --box-shadow-distance: 9px;
         --size: 0.4em;
       `,
   ],

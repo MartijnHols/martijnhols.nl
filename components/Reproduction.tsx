@@ -15,6 +15,8 @@ const Container = styled('div', {
     padding: 1em;
     position: relative;
     margin: 1em 0;
+    box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
+      0 0 ${theme.colors.yellow};
 
     ::before {
       content: '${label}';

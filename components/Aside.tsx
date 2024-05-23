@@ -13,7 +13,6 @@ const Container = styled.div(
     align-items: center;
     transform: rotate(-0.35deg);
     margin: 1em 0 2em;
-    --box-shadow-distance: 0.5em;
     box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
       0 0 ${theme.colors.yellow};
 
@@ -21,7 +20,6 @@ const Container = styled.div(
       font-size: 94.5%; // 1px smaller to very slightly de-emphasize
       // These values should be based on the font-size of the parent
       margin: 1.06em 0 2.12em;
-      --box-shadow-distance: 0.53em;
       transform: rotate(-0.5deg);
       margin-left: -${theme.spacing.x6}px;
       margin-right: -${theme.spacing.x6}px;

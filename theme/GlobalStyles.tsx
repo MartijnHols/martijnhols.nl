@@ -9,6 +9,7 @@ const GlobalStyles = () => (
       css`
         html {
           scroll-padding-top: 2rem;
+          --box-shadow-distance: 8px;
         }
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
