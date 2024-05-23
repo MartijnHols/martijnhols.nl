@@ -38,6 +38,7 @@ export const h2 = css`
       2px -2px 0 var(--color),
       3px -3px 0 var(--color),
       4px -4px 0 var(--color);
+    margin-left: 5px;
     display: block;
     margin-bottom: 0.25em;
   }
