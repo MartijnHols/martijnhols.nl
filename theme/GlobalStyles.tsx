@@ -35,6 +35,9 @@ const GlobalStyles = () => (
         ul {
           margin: 1.25em 0;
 
+          > ul {
+            margin: 0.75em 0;
+          }
           > li {
             margin: 0.5em 0;
           }
