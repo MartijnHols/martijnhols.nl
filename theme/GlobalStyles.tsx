@@ -34,27 +34,12 @@ const GlobalStyles = () => (
         p,
         ul {
           margin: 1.25em 0;
-          list-style: none;
 
           > ul {
             margin: 0.75em 0;
           }
           > li {
             margin: 0.5em 0;
-            position: relative;
-
-            ::before {
-              content: '';
-              display: block;
-              position: absolute;
-              top: 0.7em;
-              height: 4px;
-              width: 20px;
-              background: ${theme.colors.black};
-              transform: skew(-15deg);
-              margin-right: 1em;
-              margin-left: -2em;
-            }
           }
         }
 
