@@ -46,6 +46,12 @@ const Addendum = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
     color: ${theme.colors.white};
+
+    ${ArticleContent} {
+      > h2:first-of-type {
+        margin-top: 0;
+      }
+    }
   `,
 )
 const Title = styled.h1(
