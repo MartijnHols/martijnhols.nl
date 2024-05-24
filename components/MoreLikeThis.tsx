@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import { gists } from '../pages/gists'
 import Container from './Container'
-import GistMeta, { GistTag } from './GistMeta'
+import GistMeta, { GistTag, priorityTags } from './GistMeta'
 import Link from './Link'
 import Tag from './Tag'
 
@@ -116,14 +116,19 @@ const tagRelevancyScore = (base: GistTag[], alternative: GistTag[]) => {
   let score = 0
   base.forEach((tag) => {
     if (alternative.includes(tag)) {
-      score += 1
+      score += 10
     }
   })
   if (alternative.includes(GistTag.HowTo)) {
     score -= 1
   }
+  priorityTags.forEach((tag) => {
+    if (alternative.includes(tag)) {
+      score += 10
+    }
+  })
   if (!base.includes(GistTag.Meta) && alternative.includes(GistTag.Meta)) {
-    score -= 10
+    score -= 100
   }
 
   return score
@@ -138,7 +143,22 @@ const MoreLikeThis = ({ gist, className }: Props) => {
   const [alternativeGists, setAlternativeGists] = useState<GistMeta[]>()
   useEffect(() => {
     // TODO: Move this into getStaticProps. Probably going to have to move gists out of the pages folder for that
-    Promise.all(gists).then((gists) =>
+    Promise.all(gists).then((gists) => {
+      console.table(
+        gists
+          .map((g) => g.meta)
+          ?.filter((item) => item.slug !== gist.slug)
+          .sort(
+            (a, b) =>
+              tagRelevancyScore(gist.tags, b.tags) -
+              tagRelevancyScore(gist.tags, a.tags),
+          )
+          .map((item) => [
+            item.title,
+            item.tags.join(','),
+            tagRelevancyScore(gist.tags, item.tags),
+          ]),
+      )
       setAlternativeGists(
         gists
           .map((g) => g.meta)
@@ -148,8 +168,8 @@ const MoreLikeThis = ({ gist, className }: Props) => {
               tagRelevancyScore(gist.tags, b.tags) -
               tagRelevancyScore(gist.tags, a.tags),
           ),
-      ),
-    )
+      )
+    })
   }, [])
 
   return (

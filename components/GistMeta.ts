@@ -16,6 +16,11 @@ export const enum GistTag {
   Safari = 'safari',
   Javascript = 'javascript',
 }
+export const priorityTags = [
+  GistTag.ReactHookForm,
+  GistTag.Dependencies,
+  GistTag.MachineTranslation,
+]
 
 type PublishedAtYear = `20${number}${number}`
 type PublishedAtMonth = `${0 | 1}${number}`
