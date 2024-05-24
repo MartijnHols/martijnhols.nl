@@ -92,10 +92,6 @@ const TextLine = styled.div(
       height: 0.25em;
       background: ${theme.colors.black};
     }
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: 5em;
-    }
   `,
 )
 const MoreLikeThisLink = styled(Link)`
@@ -173,7 +169,7 @@ const MoreLikeThis = ({ gist, className }: Props) => {
   }, [])
 
   return (
-    <PageOverflowContainer>
+    <PageOverflowContainer className={className}>
       <StyledContainer>
         <TextLine>
           <MoreLikeThisLink href="/gists">More like this</MoreLikeThisLink>
@@ -184,7 +180,7 @@ const MoreLikeThis = ({ gist, className }: Props) => {
             href={`/gists/${item.slug}`}
             className="plain"
           >
-            <Article className={className}>
+            <Article>
               <ArticleTitle>{item.title}</ArticleTitle>
 
               <Tags>

@@ -110,6 +110,9 @@ const Tags = styled.div(
     margin-top: ${theme.spacing.x4}px;
   `,
 )
+const StyledMoreLikeThis = styled(MoreLikeThis)`
+  margin-top: 5em;
+`
 const Footer = styled.footer(
   ({ theme }) => css`
     background: ${theme.colors.black};
@@ -221,7 +224,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
         )}
       </article>
 
-      <MoreLikeThis gist={gist} />
+      <StyledMoreLikeThis gist={gist} />
 
       <Angle inverted />
 
