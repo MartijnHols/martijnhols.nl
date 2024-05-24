@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from '../../../components/Link'
 
 const GoogleTranslateTextNotUpdatingRepro = () => {
-  const [lights, setLights] = useState(3)
+  const [lights, setLights] = useState(4)
 
   const [simulateGoogleTranslate, setSimulateGoogleTranslate] = useState(true)
   useEffect(() => {
@@ -51,7 +51,7 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
         >
           Add light
         </button>
-        There are {lights} lights
+        There are {lights} lights!
       </div>
       <div
         style={{
@@ -59,7 +59,7 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
         }}
         translate="no"
       >
-        There are {lights} lights
+        There are {lights} lights!
       </div>
 
       <div style={{ marginTop: '1em' }}>
@@ -74,7 +74,7 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
           Source
         </a>
         {' | '}
-        <Link href="/gists/everything-about-google-translate-crashing-react#issue-translated-text-wont-update-reproduction">
+        <Link href="/gists/everything-about-google-translate-crashing-react#issue-translated-text-not-updating-reproduction">
           More info
         </Link>
       </div>

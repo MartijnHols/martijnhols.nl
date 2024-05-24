@@ -99,7 +99,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     <CodeSnippet
       language="markup"
       variant="sm"
-    >{`<p>There are 3 lights</p>`}</CodeSnippet>
+    >{`<p>There are 4 lights!</p>`}</CodeSnippet>
     <p>
       In JavaScript, this is represented in the DOM by a structure like this:
     </p>
@@ -111,7 +111,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
           <Node>ParagraphElement</Node>
         </NodeChildren>
         <NodeChildren>
-          <Tooltip content="There are 3 lights">
+          <Tooltip content="There are 4 lights!">
             <Node variant="highlight">TextNode</Node>
           </Tooltip>
         </NodeChildren>
@@ -127,7 +127,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
     <CodeSnippet
       language="markup"
       variant="sm"
-    >{`<p><font>Er zijn 3 lampen</font></p>`}</CodeSnippet>
+    >{`<p><font>Er zijn 4 lampen!</font></p>`}</CodeSnippet>
     <p>More importantly, the DOM structure becomes this:</p>
     <div>
       <div
@@ -151,7 +151,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
               <Node variant="new">FontElement</Node>
             </NodeChildren>
             <NodeChildren>
-              <Tooltip content="Er zijn 3 lampen">
+              <Tooltip content="Er zijn 4 lampen!">
                 <Node variant="new">TextNode</Node>
               </Tooltip>
             </NodeChildren>
@@ -164,7 +164,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
         >
           <div>Unmounted (the original English node)</div>
           <NodeTree>
-            <Tooltip content="There are 3 lights">
+            <Tooltip content="There are 4 lights!">
               <Node variant="highlight">TextNode</Node>
             </Tooltip>
           </NodeTree>
@@ -201,7 +201,7 @@ const EverythingAboutGoogleTranslateCrashingReact = () => (
       <Code>FontElement</Code>s similar to how Google Translate operates. To
       make it more obvious which text has the Google Translate simulation
       applied, any text affected is surrounded with square brackets (“There are
-      3 lights” becomes “[There are 3 lights]”).
+      4 lights!” becomes “[There are 4 lights!]”).
     </p>
     <CodeSnippet>{`
 useEffect(() => {
@@ -269,18 +269,13 @@ useEffect(() => {
 
     <h2 id="the-interference-issues">The interference issues</h2>
     <p>
-      Now that we know how Google Translate manipulates the DOM, we can now take
-      a clone look at the interference issues it causes. The most common issues
-      are:
+      Now that we know how Google Translate manipulates the DOM, we can explore
+      the interference issues it causes. The most common issues are:
     </p>
 
-    <h3 id="issue-translated-text-wont-update">
-      Issue: Translated text won't update
+    <h3 id="issue-translated-text-not-updating">
+      Issue: Translated text not updating
     </h3>
-    <p>
-      This issue caused by Google Translate, is hard to discover since it fails
-      silently; it doesn't lead to a crash or any error.
-    </p>
     <p>
       In the previous section, we established that Google Translate unmounts DOM
       nodes and places its own new ones in their place. The consequence of this
@@ -292,28 +287,32 @@ useEffect(() => {
     <p>
       This is an issue for systems like React that work with a Virtual DOM. One
       of the main reasons behind using the Virtual DOM is performance, and a key
-      part of that is updating the values of DOM nodes instead of replacing them
-      whenever possible. Replacing nodes is quite expensive.
+      part of that is, whenever possible, updating the values of DOM nodes
+      instead of replacing them. Replacing DOM nodes is more computationally
+      expensive.
     </p>
     <p>
       The consequence of this is that, in React, any text or number that might
       change alongside another string is affected.{' '}
       <strong>
-        When Google Translate is applied, any values shown on your page may
-        never update again.
+        When Google Translate is applied, values shown on your page may never
+        update again.
       </strong>
     </p>
     <p>
       This is a big problem for any app that shows users important data, which
       probably means every big React app. Showing the wrong data could be
-      misleading and even dangerous. To your company, and especially to your
-      users. A dashboard showing the wrong number could lead to users making the
-      wrong decisions, your app showing invalid prices could be a legal issue,
-      while showing a user the wrong dosage of medicine could have much more
-      dire consequences. How big of a risk this is, depends on your app and
-      business.
+      misleading and even dangerous. A dashboard showing the wrong number could
+      lead to users making the wrong decisions, your app showing invalid prices
+      could be a legal issue, while showing a user the wrong dosage of medicine
+      could have much more dire consequences. How big of a risk this is, depends
+      on your app and your business.
     </p>
-    <h4 id="issue-translated-text-wont-update-reproduction">Reproduction</h4>
+    <p>
+      This issue is hard to discover since it doesn't lead to a crash or any
+      error.
+    </p>
+    <h4 id="issue-translated-text-not-updating-reproduction">Reproduction</h4>
     <p>
       The button below increments the number of lights in the state by one every
       time it's pressed. The marked label directly next to it is no more than{' '}
@@ -327,8 +326,8 @@ useEffect(() => {
     </Reproduction>
     <p>
       When you click the button a few times, you will see the state is updating
-      and the component is rerendering, but the text is never updated to reflect
-      the new value.
+      and the component is rerendering, but the translated text is never updated
+      to reflect the new value.
     </p>
     <Aside>
       The reproduction shows three sets of brackets around the text. This is
@@ -337,8 +336,9 @@ useEffect(() => {
       <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize">
         normalize
       </a>{' '}
-      the text nodes; merging them together. This makes this reproduction
-      slightly different from Google Translate, but the result is the same.
+      the text nodes; merging them together. The Google Translate simulation
+      doesn't do this to keep it simple. This makes this reproduction slightly
+      different from Google Translate, but the result is the same.
     </Aside>
     <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
@@ -362,8 +362,8 @@ useEffect(() => {
     </ul>
     <p>
       When one of those errors occurs, React will unmount your tree to the
-      closest error boundary. But if you have no error boundary (which is not
-      uncommon), <strong>your entire app will crash</strong>.
+      closest error boundary. But if you have no error boundary (which is common
+      on websites), <strong>your entire app will crash</strong>.
     </p>
     <p>
       The <Code>removeChild</Code> error usually happens because your app was
@@ -374,20 +374,20 @@ useEffect(() => {
       was unmounted by Google Translate.
     </p>
     <p>
-      I think the crashes are actually less important than the{' '}
-      <Link href="#issue-translated-text-wont-update">
+      I think these crashes are actually less important than the{' '}
+      <Link href="#issue-translated-text-not-updating">
         translated text not updating
       </Link>
-      . I reckon text not updating is less predictable than not showing anything
-      at all and it may mislead users, which would be a worse outcome than not
-      showing anything at all.
+      . Text not updating is less predictable than not showing anything at all.
+      It may mislead users, which would be a worse outcome than not showing
+      anything at all.
     </p>
     <h4 id="issue-crashes-reproduction">Reproduction</h4>
     <p>
-      The button below toggles the lights, which toggles the rendering of the
-      “There are 3 lights” text in the React component. React tries to
-      reconsolidate this render by removing the <Code>TextNode</Code> from the
-      parent that it added it to.
+      The button below toggles whether the lights are on. When the lights are
+      off, the “There are 4 lights!” text will no longer be rendered. React
+      tries to reconsolidate this render by removing the <Code>TextNode</Code>{' '}
+      from the parent that it added it to.
     </p>
     <Reproduction>
       <GoogleTranslateCrashesRepro />
@@ -470,7 +470,7 @@ useEffect(() => {
       complex codebase. Without an ESLint rule to enforce this, it will take a
       lot of pleading in PRs to get your entire team to consistently apply this
       workaround. And for many the honest truth is that it's not worth the
-      effort for them.
+      effort and code quality sacrifice for them.
     </p>
 
     <h5 id="self-re-rendering-error-boundaries">
@@ -490,14 +490,15 @@ useEffect(() => {
     </p>
 
     <h3 id="issue-inconsistent-event-target">
-      Isuee: Inconsistent <Code>event.target</Code>
+      Issue: Inconsistent <Code>event.target</Code>
     </h3>
     <p>
       When Google Translate is active, the value of <Code>event.target</Code>{' '}
       becomes unpredictable, as users are likely to click on one of Google
       Translate's <Code>font</Code> elements instead of the underlying element
-      that you, as the developer, created and could reasonably expect. In
-      specific code, this could lead to a certain feature not working correctly.
+      that you, as the developer, created and could reasonably expect. In some
+      instances, such as inside overlays, this could lead to click events not
+      working correctly.
     </p>
     <p>
       While this issue is very specific and can be worked around with relative
@@ -509,9 +510,11 @@ useEffect(() => {
     <p>
       In the reproduction below, the text of the button gets translated by the
       Google Translate simulator. When you click anywhere within the
-      reproduction, the element type of the <Code>event.target</Code> will be
-      visible. When Google Translate is active, the <Code>event.target</Code>{' '}
-      will be a <Code>font</Code> element, as opposed to when it is inactive.
+      reproduction, the element type of the <Code>event.target</Code> (the
+      element you clicked on) will appear in the text underneath the button.
+      Normally when you click the button, <Code>event.target</Code> would refer
+      to the <Code>button</Code>, but with Google Translate, it will be a{' '}
+      <Code>font</Code> element instead.
     </p>
     <p>
       Click the button. Toggle Google Translate simulation. Click again. Compare
@@ -523,20 +526,29 @@ useEffect(() => {
     </Reproduction>
 
     <h2 id="not-just-react">Not just React</h2>
-
     <p>
       <strong>
         Not just React is affected by Google Translate's interference.
       </strong>
     </p>
-
     <p>
       Any JavaScript code that uses a reference to either update the value of a{' '}
       <Code>TextNode</Code>, add or remove children to a parent, or uses{' '}
       <Code>e.target</Code>, is affected by these issues. It is not a
-      React-specific issue. However, React is the most prominent user of the “
+      React-specific issue.
+    </p>
+    <p>
+      However, since React is the most prominent user of the “
       <a href="https://reactjs.org/docs/faq-internals.html">Virtual DOM</a>”, so
-      the issue <em>is</em> <b>most common</b> in React.
+      the issue <em>is</em> <strong>most common in React</strong>. An important
+      aspect of the Virtual DOM is keeping a reference to all DOM nodes. This
+      allows it to only update parts of the DOM that are actually changed
+      (through a process called{' '}
+      <a href="https://reactjs.org/docs/reconciliation.html">reconciliation</a>
+      ). This allows for high-performance apps, as replacing DOM nodes is more
+      computationally expensive. Because of this, React's use of a Virtual DOM
+      to reuse and update nodes instead of constantly replacing them is a
+      natural evolution for frameworks.
     </p>
 
     <h2 id="not-just-google-translate">Not just Google Translate</h2>
@@ -547,7 +559,7 @@ useEffect(() => {
       <strong>
         any browser extensions that manipulate the DOM can interfere
       </strong>
-      . Some examples are:
+      . Some other examples are:
     </p>
     <ul>
       <li>Password managers manipulating forms to show prefill dropdowns</li>
@@ -608,8 +620,8 @@ useEffect(() => {
     </p>
 
     <p>
-      There are two things you <em>can</em> do, but you're not going to like
-      them.
+      There are two things you <em>can</em> do, but I don't think you're gonna
+      like them.
     </p>
 
     <h3 id="the-regrettable-fix">The regrettable “fix”</h3>
@@ -631,12 +643,13 @@ useEffect(() => {
 
     <p>
       An exception could be made for a simple website like this; it could be
-      valid to consider wrapping conditional <Code>TextNode</Code>s in{' '}
-      <Code>span</Code>s and leaving Google Translate enabled. A typical website
-      isn't very reactive, has a small codebase, has few developers working on
-      it, and doesn't show any critical computed numbers. You will have to
-      carefully consider for yourself whether this applies to your site and you
-      can safely leave Google Translate available.
+      valid to consider{' '}
+      <Link href="#surrounding-textnodes-with-spans">wrapping</Link> conditional{' '}
+      <Code>TextNode</Code>s in <Code>span</Code>s and leaving Google Translate
+      enabled. A typical website isn't very reactive, has a small codebase, has
+      few developers working on it, and doesn't show any critical computed
+      numbers. You will have to carefully consider for yourself whether this
+      applies to your site and you can safely leave Google Translate available.
     </p>
 
     <Aside>
@@ -645,7 +658,7 @@ useEffect(() => {
       <Link href="/gists/how-to-detect-google-translate-and-other-machine-translation">
         How to detect Google Translate and other machine translation
       </Link>{' '}
-      for a way of detecting when Google Translate is active.
+      for a way to detect when Google Translate is active.
     </Aside>
 
     <h3 id="alternatives">Alternatives</h3>
@@ -671,6 +684,15 @@ useEffect(() => {
       All things considered, this isn't the most practical solution for most
       apps. Do you know of any other alternatives?
     </p>
+
+    <Aside>
+      There might be a possible (external) workaround in React that uses a
+      similar mechanic to React Dev Tools's “render highlighting” to trigger
+      remounting (by React) of the entire parent of <Code>TextNode</Code>s that
+      are changed. However, I looked into the feature's code and that is part of
+      a &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
+      someone else can take a look at it.
+    </Aside>
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
@@ -702,15 +724,6 @@ useEffect(() => {
       it is reasonable for an app to claim full and exclusive control of the
       DOM, as React does with its Virtual DOM.
     </p>
-
-    <Aside>
-      There might be a possible (external) workaround in React that uses a
-      similar mechanic to React Dev Tools's “render highlighting” to trigger
-      remounting (by React) of the entire parent of <Code>TextNode</Code>s that
-      are changed. However, I looked into the feature's code and that is part of
-      a &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
-      someone else can take a look at it.
-    </Aside>
   </Gist>
 )
 
@@ -778,7 +791,8 @@ const Addendum = () => (
       React's use of a Virtual DOM to reuse and update nodes instead of
       constantly replacing them is a natural evolution for frameworks. After
       all, there are notable performance benefits to doing it this way.
-      Therefore, I don't think it's unreasonable for React to apply this to all
+      Therefore, I don't think it's unreasonable for React to apply this to{' '}
+      <em>all</em>
       DOM nodes, claiming full and exclusive control over the DOM in the
       process.
     </p>
@@ -793,10 +807,10 @@ const Addendum = () => (
       <em>all</em> possible interference.
     </p>
     <p>
-      The only reasonable solution might be to solve this within the platform;
-      inside the browsers that inject those third-party extensions. But it
-      probably isn't a big enough problem for that to happen, so extension
-      developers will have to take care of it themselves.
+      In conclusion, the only reasonable solution might be to solve this within
+      the platform; inside the browsers that inject those third-party
+      extensions. But it probably isn't a big enough problem for that to happen,
+      so extension developers will have to take care of it themselves.
     </p>
   </>
 )

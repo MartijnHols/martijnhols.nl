@@ -112,12 +112,11 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
           onClick={() => setLightsOn(!lightsOn)}
           style={{
             marginRight: '0.5em',
-            borderColor: 'currentcolor',
           }}
         >
           Toggle lights
         </button>
-        {lightsOn && 'There are 3 lights'}
+        {lightsOn && 'There are 4 lights!'}
       </div>
 
       <div style={{ marginTop: '1em' }}>

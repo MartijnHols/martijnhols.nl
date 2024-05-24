@@ -50,7 +50,7 @@ const GoogleTranslateEventTargetRepro = () => {
 
       <div>
         <button type="button" id="GoogleTranslateEventTargetRepro-translateme">
-          There are 3 lights
+          There are 4 lights!
         </button>
       </div>
 

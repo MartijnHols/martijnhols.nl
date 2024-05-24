@@ -62,7 +62,7 @@ const GoogleTranslateCrashesRepro = () => {
         >
           Toggle lights
         </button>
-        {lightsOn && 'There are 3 lights'}
+        {lightsOn && 'There are 4 lights!'}
       </div>
 
       <div style={{ marginTop: '1em' }}>

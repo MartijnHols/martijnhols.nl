@@ -98,6 +98,10 @@ const GlobalStyles = () => (
             border-left-color: ${theme.colors.white};
           }
         }
+
+        button {
+          border-color: currentColor;
+        }
       `,
       theme.links.globalStyles,
       theme.headings.globalStyles,
