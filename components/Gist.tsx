@@ -51,8 +51,7 @@ const ArticleContent = styled(Container)(
           width: 20px;
           background: ${theme.colors.black};
           transform: skew(-15deg);
-          margin-right: 1em;
-          margin-left: -2em;
+          margin-left: -38px;
         }
       }
     }
