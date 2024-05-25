@@ -19,6 +19,7 @@ import Tooltip from '../../components/Tooltip'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
 import autoCardAnywhereImage from './assets/google-translate-autocardanywhere.png'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
+import openGraphImage from './assets/ogimage-everything-about-google-translate-crashing-react.png'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
 import GoogleTranslateEventTargetRepro from './demo/google-translate-event-target-repro'
@@ -34,6 +35,7 @@ export const meta: GistMeta = {
     'Everything about Google Translate crashing React (and other web apps)',
   description:
     'The gist of Google Translate (and other browser extensions) interference breaking React and other web apps.',
+  image: openGraphImage,
   tags: [GistTag.React, GistTag.MachineTranslation],
 }
 

@@ -42,7 +42,42 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
 
   const title = req.query.title as string
 
-  const png = await PNG(
+  const textStyle = {
+    position: 'absolute',
+    top: 95,
+    left: 40,
+    right: 40,
+    margin: 0,
+    padding: 0,
+    fontSize: 88,
+    lineHeight: 1.1,
+    letterSpacing: '-3px',
+    color: colors.black,
+    display: 'flex',
+  } as const
+  const text = (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {title.split('\n').map((line, index) => (
+        <div key={index}>{line}</div>
+      ))}
+    </div>
+  )
+  const textStroke = (x: number, y: number) => (
+    <div
+      // This div is only to act like text-decoration-skip-ink
+      style={{
+        ...textStyle,
+        left: textStyle.left + x,
+        top: textStyle.top + y,
+        // This can't be transparent or the text-shadow won't appear
+        color: 'white',
+      }}
+    >
+      {text}
+    </div>
+  )
+
+  const jsx = (
     <div
       style={{
         background: colors.white,
@@ -75,33 +110,60 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
           width: '100%',
           height: 30,
           background: `linear-gradient(
-            to bottom right,
-            ${colors.black} 49.5%,
-            transparent 50.5%
-          )`,
+          to bottom right,
+          ${colors.black} 49.5%,
+          transparent 50.5%
+        )`,
         }}
       />
+
       <div
+        // This div is only to create the underline at the required position
         style={{
-          position: 'absolute',
-          top: 70,
-          left: 40,
-          right: 40,
-          margin: 0,
-          padding: 0,
-          fontSize: 100,
-          lineHeight: 1,
-          letterSpacing: '-3px',
-          transform: 'rotate(-2deg)',
-          textTransform: 'uppercase',
-          color: colors.black,
-          display: 'flex',
+          ...textStyle,
+          top: textStyle.top + 3, // 3 to act as the textUnderlineOffset
+          // Transparent so this text is invisible
+          color: 'transparent',
+          textDecoration: `underline ${colors.yellow}`,
+          textUnderlineOffset: 4, // TODO: This is not supported in Satori
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {title.split('\n').map((line, index) => (
-            <div key={index}>{line}</div>
-          ))}
+        {text}
+      </div>
+      {/* 
+        This is only to act like text-decoration-skip-ink. text-shadow on text
+        doesn't work in sharp, as it only uses the last value.
+      */}
+      {textStroke(-8, 0)}
+      {textStroke(-8, 1)}
+      {textStroke(-8, 2)}
+      {textStroke(-8, 3)}
+      {textStroke(-8, 4)}
+      {textStroke(8, 0)}
+      {textStroke(8, 1)}
+      {textStroke(8, 2)}
+      {textStroke(8, 3)}
+      {textStroke(8, 4)}
+      <div
+        style={{
+          ...textStyle,
+          color: colors.black,
+        }}
+      >
+        {text}
+
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            transform: 'translateY(20px)',
+            left: 0,
+            right: 0,
+            fontSize: 40,
+            letterSpacing: '-2px',
+          }}
+        >
+          By Martijn Hols
         </div>
       </div>
       <div
@@ -112,10 +174,10 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
           width: '100%',
           height: 35,
           background: `linear-gradient(
-            to bottom right,
-            transparent 49.5%,
-            ${colors.black} 50.5%
-          )`,
+          to bottom right,
+          transparent 49.5%,
+          ${colors.black} 50.5%
+        )`,
         }}
       />
       <div
@@ -128,8 +190,13 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
           background: colors.black,
         }}
       />
-    </div>,
+    </div>
   )
+
+  // res.setHeader('Content-Type', 'image/svg+xml').send(await SVG(jsx))
+  // return
+
+  const png = await PNG(jsx)
 
   res.setHeader('Content-Type', 'image/png').send(png)
 }
