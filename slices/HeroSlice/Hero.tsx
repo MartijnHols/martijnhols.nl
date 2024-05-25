@@ -33,7 +33,6 @@ const IntroSubText = styled.span(
   ({ theme }) => css`
     display: block;
     ${theme.headings.h4}
-    margin-bottom: ${theme.spacing.x1}px;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 1.75em;

@@ -16,7 +16,7 @@ const Container = styled('article', {
   isPlaceholder?: boolean
 }>(({ theme, highlighted, isPlaceholder }) => [
   css`
-    transform: rotate(-0.85deg);
+    transform: rotate(-0.5deg);
     border: ${theme.spacing.x2}px solid ${theme.colors.black};
     box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
     margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
@@ -24,7 +24,6 @@ const Container = styled('article', {
     background: ${theme.colors.yellow50};
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      transform: rotate(-1deg);
       padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
     }
   `,
@@ -33,7 +32,7 @@ const Container = styled('article', {
       @media (min-width: ${theme.breakpoints.TABLET}px) {
         margin-top: ${theme.spacing.x1 * 10}px;
         margin-bottom: ${theme.spacing.x1 * 10}px;
-        transform: rotate(-1deg) scale(1.1);
+        transform: rotate(-0.5deg) scale(1.1);
 
         & + & {
           margin-top: ${theme.spacing.x1 * 14}px;
