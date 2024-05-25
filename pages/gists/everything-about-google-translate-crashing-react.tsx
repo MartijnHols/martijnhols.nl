@@ -797,8 +797,8 @@ const Addendum = () => (
       process.
     </p>
     <p>
-      In the end, third-party extensions are best equipped to assess their
-      potential impact and address any interference they might cause. They
+      All things considered, third-party extensions are best equipped to assess
+      their potential impact and address any interference they might cause. They
       should be the first to resolve any interference with the proper
       functioning of web apps.
     </p>
@@ -807,10 +807,11 @@ const Addendum = () => (
       <em>all</em> possible interference.
     </p>
     <p>
-      In conclusion, the only reasonable solution might be to solve this within
-      the platform; inside the browsers that inject those third-party
-      extensions. But it probably isn't a big enough problem for that to happen,
-      so extension developers will have to take care of it themselves.
+      In the end, the only reasonable solution might be to solve this within the
+      platform; inside the browsers that inject those third-party extensions.
+      The issues probably aren't a big enough problem for that to happen any
+      time soon, so for now extension developers will have to take care of it
+      themselves.
     </p>
   </>
 )
