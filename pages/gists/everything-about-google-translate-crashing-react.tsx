@@ -528,27 +528,26 @@ useEffect(() => {
     <h2 id="not-just-react">Not just React</h2>
     <p>
       <strong>
-        Not just React is affected by Google Translate's interference.
+        Google Translate's interference affects not just React apps.
       </strong>
     </p>
     <p>
-      Any JavaScript code that uses a reference to either update the value of a{' '}
-      <Code>TextNode</Code>, add or remove children to a parent, or uses{' '}
-      <Code>e.target</Code>, is affected by these issues. It is not a
-      React-specific issue.
+      Any JavaScript code that manipulates the DOM in a similar fasion is
+      affected. This includes operations such as updating a value of a{' '}
+      <Code>TextNode</Code>, adding or removing children, or using{' '}
+      <Code>event.target</Code>. These operations are not specific to React.
     </p>
     <p>
-      However, since React is the most prominent user of the “
-      <a href="https://reactjs.org/docs/faq-internals.html">Virtual DOM</a>”, so
-      the issue <em>is</em> <strong>most common in React</strong>. An important
-      aspect of the Virtual DOM is keeping a reference to all DOM nodes. This
-      allows it to only update parts of the DOM that are actually changed
-      (through a process called{' '}
+      However, these issues are more commonly observed in React applications
+      since React is a prominent user of the “
+      <a href="https://reactjs.org/docs/faq-internals.html">Virtual DOM</a>”.
+      The Virtual DOM keeps references to all DOM nodes so it only has to update
+      parts of the DOM that are actually changed (through a process called{' '}
       <a href="https://reactjs.org/docs/reconciliation.html">reconciliation</a>
-      ). This allows for high-performance apps, as replacing DOM nodes is more
-      computationally expensive. Because of this, React's use of a Virtual DOM
-      to reuse and update nodes instead of constantly replacing them is a
-      natural evolution for frameworks.
+      ). This allows for high-performance apps, as it's more efficient than
+      replacing DOM nodes. Because of this, React's use of a Virtual DOM to
+      reuse and update nodes rather than constantly replacing them is a natural
+      evolution for frameworks.
     </p>
 
     <h2 id="not-just-google-translate">Not just Google Translate</h2>
