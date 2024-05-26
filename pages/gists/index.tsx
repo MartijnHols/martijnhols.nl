@@ -15,6 +15,7 @@ import PublicationDate from '../../components/PublicationDate'
 import Tag from '../../components/Tag'
 import TopBar from '../../components/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
+import generateRssFeed from '../../utils/generateRssFeed'
 
 // TODO: topLevelAwait
 export const gists = [
@@ -28,7 +29,7 @@ export const gists = [
   import('./how-to-handle-array-values-in-react-hook-form'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
-const filterUnpublished = (
+export const filterUnpublished = (
   gist: GistMeta,
 ): gist is typeof gist & { publishedAt: PublicationDateType } =>
   gist.publishedAt !== undefined
@@ -41,18 +42,22 @@ type SerializableGistMeta = Omit<GistMeta, 'titleReact'> & {
   publishedAt: PublicationDateType
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => ({
-  props: {
-    gists: (await Promise.all(gists))
-      .map((gist) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { titleReact, relatedGist, ...serializableGistMeta } = gist.meta
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  await generateRssFeed()
 
-        return serializableGistMeta
-      })
-      .filter(filterUnpublished),
-  },
-})
+  return {
+    props: {
+      gists: (await Promise.all(gists))
+        .map((gist) => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const { titleReact, relatedGist, ...serializableGistMeta } = gist.meta
+
+          return serializableGistMeta
+        })
+        .filter(filterUnpublished),
+    },
+  }
+}
 
 const Main = styled.main`
   display: flex;

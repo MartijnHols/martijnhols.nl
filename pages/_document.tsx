@@ -4,6 +4,12 @@ export default function Document(props: DocumentProps) {
   return (
     <Html lang={props.dangerousAsPath.startsWith('/gists') ? 'en' : 'nl'}>
       <Head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed"
+          href="/rss/"
+        />
         <script
           defer
           data-domain="martijnhols.nl"
