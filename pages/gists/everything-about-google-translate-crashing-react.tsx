@@ -463,16 +463,16 @@ useEffect(() => {
       </a>{' '}
       of surrounding all conditionally rendered and adjacent text in{' '}
       <Code>span</Code> elements. This avoids the crashes by ensuring React
-      never tries to do any direct DOM manipulation of a <Code>TextNode</Code>.
+      never tries to remove or insert a <Code>TextNode</Code> directly.
     </p>
 
     <p>
-      <strong>This works as a proper fix for the crashes.</strong> It does,
-      however, require you to change a lot of parts if you have a big and
-      complex codebase. Without an ESLint rule to enforce this, it will take a
-      lot of pleading in PRs to get your entire team to consistently apply this
-      workaround. And for many the honest truth is that it's not worth the
-      effort and code quality sacrifice for them.
+      <strong>This works as a proper fix for the crashes.</strong> Implementing
+      it does require mangling a lot of existing, regular, code. Without an
+      ESLint rule to enforce this, it is going take a lot of pleading in PRs to
+      get your entire team to consistently apply this workaround. And for many
+      the honest truth is that it's not worth the effort and code quality
+      sacrifice for them.
     </p>
 
     <h5 id="self-re-rendering-error-boundaries">
