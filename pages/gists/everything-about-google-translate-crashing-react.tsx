@@ -22,6 +22,7 @@ import chromeLanguageSetupImage from './assets/google-translate-language-setup.g
 import openGraphImage from './assets/ogimage-everything-about-google-translate-crashing-react.png'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
+import GoogleTranslateCrashesTernaryRepro from './demo/google-translate-crashes-ternary-repro'
 import GoogleTranslateEventTargetRepro from './demo/google-translate-event-target-repro'
 import GoogleTranslateTextNotUpdatingRepro from './demo/google-translate-text-not-updating-repro'
 
@@ -32,6 +33,9 @@ const CodeError = styled(Code)`
 export const meta: GistMeta = {
   slug: 'everything-about-google-translate-crashing-react',
   title:
+    // "Everything" might be a bit presumptuous, but I also think it's more
+    // neutral than "A deep dive into...". I do think I cover every important
+    // part in this article, so I think it's a fair enough
     'Everything about Google Translate crashing React (and other web apps)',
   description:
     'The gist of Google Translate (and other browser extensions) interference breaking React and other web apps.',
@@ -376,7 +380,7 @@ useEffect(() => {
       was unmounted by Google Translate.
     </p>
     <p>
-      I think these crashes are actually less important than the{' '}
+      I think in many cases these crashes might be less important than the{' '}
       <Link href="#issue-translated-text-not-updating">
         translated text not updating
       </Link>
@@ -386,19 +390,61 @@ useEffect(() => {
     </p>
     <h4 id="issue-crashes-reproduction">Reproduction</h4>
     <p>
-      The button below toggles whether the lights are on. When the lights are
-      off, the “There are 4 lights!” text will no longer be rendered. React
-      tries to reconsolidate this render by removing the <Code>TextNode</Code>{' '}
-      from the parent that it added it to.
+      The button below toggles whether the lights are on by simply flipping a
+      boolean in a <Code>useState</Code>. When the lights are turned off, the
+      “There are 4 lights!” text will no longer be rendered through the
+      conditional expression{' '}
+      <Code>{`{lightsOn && 'There are 4 lights!'}`}</Code>. React tries to
+      reconsolidate this render by removing the <Code>TextNode</Code> from the
+      parent that it added it to. When it does this with Google Translate
+      active, the <Code>TextNode</Code> is no longer a child of the parent,
+      which results in a crash.
     </p>
+
     <Reproduction>
       <GoogleTranslateCrashesRepro />
     </Reproduction>
 
     <p>
-      Do note that to reproduce it, the conditional <Code>TextNode</Code> needs
-      to have a sibling. In React nearly every node that's conditionally
-      rendered will have a sibling.
+      To reproduce it, the conditional <Code>TextNode</Code> needs to have a
+      sibling of any kind. In React nearly every node that's conditionally
+      rendered will have a sibling, so this is a common situation.
+    </p>
+
+    <p>
+      Another way of reproducing this crash is by rendering a different amount
+      of <Code>TextNode</Code>s within a ternary. The reproduction below also
+      toggles the lights, but instead of rendering nothing when the lights are
+      off, it tries to render the text "The lights are off" through a ternary:{' '}
+      <Code>
+        {`{lightsOn ? <>There are {lights} lights!</> : <>The lights are off</>}`}
+      </Code>
+      .
+    </p>
+
+    <Reproduction>
+      <GoogleTranslateCrashesTernaryRepro />
+    </Reproduction>
+
+    <p>
+      The important part of this reproduction is that the sides of the ternary
+      have a different amount of <Code>TextNode</Code>s. While it might not be
+      obvious, this is the case here, as React produces three{' '}
+      <Code>TextNode</Code>s for the{' '}
+      <Code>{`<>There are {lights} lights!</>`}</Code> expression.
+    </p>
+
+    <p>
+      This reproduction is a simplified version of what you might have in your
+      app. In the example code, you could have used a single template string for
+      both sides of the ternary. In the real world, these expressions tend to be
+      more complex.
+    </p>
+
+    <p>
+      As there are more ways to vary the amount of <Code>TextNode</Code>s
+      rendered, I'm sure there are more ways of reproducing this crash. This
+      makes it hard to find a workaround that works in all cases.
     </p>
 
     <h4 id="workarounds">Workarounds</h4>
@@ -457,23 +503,49 @@ useEffect(() => {
       2. Surrounding TextNodes with spans
     </h5>
     <p>
-      GitHub user <i>Shuhei</i> shared{' '}
+      GitHub user <i>Shuhei</i> proposed{' '}
       <a href="https://github.com/facebook/react/issues/11538#issuecomment-390386520">
         a workaround
       </a>{' '}
       of surrounding all conditionally rendered and adjacent text in{' '}
       <Code>span</Code> elements. This avoids the crashes by ensuring React
-      never tries to remove or insert a <Code>TextNode</Code> directly.
+      doesn't try to remove or insert a <Code>TextNode</Code> directly.
     </p>
 
     <p>
-      <strong>This works as a proper fix for the crashes.</strong> Implementing
-      it does require mangling a lot of existing, regular, code. Without an
-      ESLint rule to enforce this, it is going take a lot of pleading in PRs to
-      get your entire team to consistently apply this workaround. And for many
-      the honest truth is that it's not worth the effort and code quality
-      sacrifice for them.
+      <strong>
+        This fixes some of the most common crashes, but not all of them.
+      </strong>{' '}
+      The crashes caused by conditionally rendered <Code>TextNode</Code>s like
+      the <Code>{`{lightsOn && 'There are 4 lights!'}`}</Code> expression in the
+      first reproduction above, can be fixed by this workaround. But crashes
+      caused by other conditionally rendered <Code>TextNode</Code>s, like those
+      in the ternary expression reproduction, are not.
     </p>
+
+    <p>
+      Implementing this workaround does require mangling a lot of existing,
+      regular, code. Without an ESLint rule to enforce this, it is going take a
+      lot of pleading in PRs to get your entire team to consistently apply this
+      workaround. And for many the honest truth is that it's not worth the
+      effort and code quality sacrifice for them.
+    </p>
+
+    <Aside>
+      The ESLint plugin{' '}
+      <a href="https://github.com/sayari-analytics/eslint-plugin-sayari">
+        eslint-plugin-sayari
+      </a>{' '}
+      has a rule that{' '}
+      <i>
+        requires <Code>TextNode</Code>s that share a common parent with other
+        elements to be wrapped in a <Code>{`<span>`}</Code> tag
+      </i>
+      . While this probably catches the problematic expressions, this rule has
+      an extremely high false-positive rate and will require you to wrap nearly
+      all <Code>TextNode</Code>s in your app. The ternary crashes are also not
+      solved by this rule.
+    </Aside>
 
     <h5 id="self-re-rendering-error-boundaries">
       3. Self re-rendering error boundaries
