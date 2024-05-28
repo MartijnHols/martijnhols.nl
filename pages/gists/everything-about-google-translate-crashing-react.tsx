@@ -283,12 +283,10 @@ useEffect(() => {
       Issue: Translated text not updating
     </h3>
     <p>
-      In the previous section, we established that Google Translate unmounts DOM
-      nodes and places its own new ones in their place. The consequence of this
-      is that while the original DOM nodes continue to exist in-memory, any
-      changes to the original DOM nodes will not show up on the page. They will
-      not show up in the user's browser in any way. The changes only happen
-      in-memory.
+      When Google Translate unmounts DOM nodes and places its own new ones in
+      their place, the original DOM nodes will continue to exist in-memory. Any
+      changes then made to the original DOM nodes will not show up in the user's
+      browser in any way. The changes will remain in-memory.
     </p>
     <p>
       This is an issue for systems like React that work with a Virtual DOM. One
@@ -320,12 +318,18 @@ useEffect(() => {
     </p>
     <h4 id="issue-translated-text-not-updating-reproduction">Reproduction</h4>
     <p>
-      The button below increments the number of lights in the state by one every
-      time it's pressed. The marked label directly next to it is no more than{' '}
-      <Code>{`There are {lights} lights!`}</Code>. The square brackets around
-      this label are added by our Google Translate simulation to indicate it's
-      active. The value shown underneath the button is the actual value,
-      unaffected by Google Translate.
+      In the below reproduction, we have a simple counter tracking the number of
+      lights (a number in a <Code>useState</Code>). The button increments the
+      number of lights by one every time it's pressed. The marked label directly
+      next to it is no more than <Code>{`There are {lights} lights!`}</Code> -
+      no conditions or anything.
+    </p>
+    <p>
+      We simulate Google Translate using the method{' '}
+      <Link href="#simulating-google-translate">described above</Link>. The
+      Google Translate simulation adds square brackets around the text to
+      indicate it's active. The value shown in green underneath the button is
+      the actual value, which is unaffected by Google Translate.
     </p>
     <Reproduction>
       <GoogleTranslateTextNotUpdatingRepro />
@@ -337,14 +341,14 @@ useEffect(() => {
     </p>
     <Aside>
       The reproduction shows three sets of brackets around the text. This is
-      because React makes a new <Code>TextNode</Code> for each variable within a
-      string. Google Translate would{' '}
+      because React makes a separate <Code>TextNode</Code> for each variable in
+      a string. The real Google Translate would{' '}
       <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize">
         normalize
       </a>{' '}
-      the text nodes; merging them together. The Google Translate simulation
-      doesn't do this to keep it simple. This makes this reproduction slightly
-      different from Google Translate, but the result is the same.
+      the text nodes, merging them together, but our simulation doesn't do this
+      to keep it simpler. This makes the reproduction slightly different from
+      Google Translate, but the result is the same.
     </Aside>
     <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
@@ -436,15 +440,15 @@ useEffect(() => {
 
     <p>
       This reproduction is a simplified version of what you might have in your
-      app. In the example code, you could have used a single template string for
+      app. In the example code, we could have used a single template string for
       both sides of the ternary. In the real world, these expressions tend to be
-      more complex.
+      more complex, making it hard to turn it into a template string.
     </p>
 
     <p>
       As there are more ways to vary the amount of <Code>TextNode</Code>s
       rendered, I'm sure there are more ways of reproducing this crash. This
-      makes it hard to find a workaround that works in all cases.
+      makes it hard to find a workaround that solves all cases.
     </p>
 
     <h4 id="workarounds">Workarounds</h4>
@@ -638,7 +642,15 @@ useEffect(() => {
       <li>Password managers manipulating forms to show prefill dropdowns</li>
       <li>
         Extensions that inject alternative prices on competing webshops{' '}
-        <Annotation annotation="These extensions may wrongly detect any monetary amounts shown, so they affect more than just webshops.">
+        <Annotation
+          annotation={
+            <>
+              In my experience this type of extensions may wrongly detect{' '}
+              <em>any</em> monetary amounts shown, so they affect more than just
+              webshops.
+            </>
+          }
+        >
           (*)
         </Annotation>
       </li>
@@ -675,12 +687,17 @@ useEffect(() => {
     <p>
       I want to stress that I do not think the team behind Google Translate
       deserves any blame for the issues. It's a great tool that helps people
-      worldwide and makes the web usable for many more people. I reckon Google
-      Translate was originally architected at a time when the web was very
-      different from what it is today. The issues are a result of the web
-      evolving; the web isn't almost exclusively static websites anymore. Many
-      of the popular websites today are actually very large and complex web
-      apps.
+      worldwide and makes the web usable for many more people. Google Translate
+      was originally architected at a time when the web was very different from
+      what it is today. The issues are a result of the web evolving; websites
+      aren't almost exclusively static websites anymore as many of the popular
+      websites today are actually large and complex web apps.
+    </p>
+    <p>
+      Fixing the issues is also not trivial. For many translations, Google
+      Translate needs to be able to restructure sentences to make them work in
+      the target language. That's nearly impossible to do without interfering
+      with the DOM.
     </p>
 
     <h2 id="there-is-no-real-solution-yet">There is no real solution (yet)</h2>
@@ -705,7 +722,8 @@ useEffect(() => {
         ”fixed” my app by blocking translation entirely
       </a>
       . Now, 7 years later, I am sad to have to report that this still appears
-      to be the best way to avoid all of the issues caused by Google Translate.
+      to be the only quick way of avoiding all of the issues caused by Google
+      Translate.
     </p>
 
     <p>
@@ -715,14 +733,15 @@ useEffect(() => {
     </p>
 
     <p>
-      An exception could be made for a simple website like this; it could be
-      valid to consider{' '}
+      If you have the time,{' '}
       <Link href="#surrounding-textnodes-with-spans">wrapping</Link> conditional{' '}
-      <Code>TextNode</Code>s in <Code>span</Code>s and leaving Google Translate
-      enabled. A typical website isn't very reactive, has a small codebase, has
-      few developers working on it, and doesn't show any critical computed
-      numbers. You will have to carefully consider for yourself whether this
-      applies to your site and you can safely leave Google Translate available.
+      <Code>TextNode</Code>s in <Code>span</Code>s will solve most of the
+      crashes, but leaves the issue of translated text not updating. This will
+      usually be good enough for a simple website like this as a typical website
+      isn't very reactive, has a small codebase, has few developers working on
+      it, and doesn't show any computed numbers that are critical. You will have
+      to carefully consider for yourself whether this also applies to your app,
+      but leaving Google Translate available is a big advantage for your users.
     </p>
 
     <Aside>

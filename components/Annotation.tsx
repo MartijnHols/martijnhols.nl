@@ -18,7 +18,7 @@ const Container = styled.span(
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode
-  annotation: string
+  annotation: ReactNode
 }
 
 const Annotation = ({ children, annotation, ...others }: Props) => (
