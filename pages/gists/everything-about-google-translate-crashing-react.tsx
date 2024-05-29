@@ -19,6 +19,7 @@ import Tooltip from '../../components/Tooltip'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
 import autoCardAnywhereImage from './assets/google-translate-autocardanywhere.png'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
+import lightsMemeImage from './assets/google-translate-lights-meme.gif'
 import openGraphImage from './assets/ogimage-everything-about-google-translate-crashing-react.png'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
@@ -339,6 +340,14 @@ useEffect(() => {
       and the component is rerendering, but the translated text is never updated
       to reflect the new value.
     </p>
+    <Figure caption="There are 4 lights!" href={lightsMemeImage.src}>
+      <Image
+        src={lightsMemeImage}
+        alt={`An animated GIF of Jean-Luc Picard (Star Trek) yelling "There are four lights!".`}
+        width={400}
+        sizes="(min-width: 768px) 400px, 100vw"
+      />
+    </Figure>
     <Aside>
       The reproduction shows three sets of brackets around the text. This is
       because React makes a separate <Code>TextNode</Code> for each variable in
