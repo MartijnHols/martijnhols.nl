@@ -710,8 +710,8 @@ useEffect(() => {
     </p>
 
     <p>
-      There are two things you <em>can</em> do, but I don't think you're gonna
-      like them.
+      There are a couple of things you <em>can</em> do, but I don't think you're
+      gonna like them.
     </p>
 
     <h3 id="the-regrettable-fix">The regrettable “fix”</h3>
@@ -728,20 +728,25 @@ useEffect(() => {
 
     <p>
       I don't like solving it this way. It makes apps less accessible to people
-      worldwide. But it beats serving Google Translate users an app that is so
-      broken, it barely works.
+      worldwide. But for some complex apps, it beats serving Google Translate
+      users a broken app that barely works.
     </p>
 
     <p>
-      If you have the time,{' '}
+      If you're willing to put in the time and effort,{' '}
       <Link href="#surrounding-textnodes-with-spans">wrapping</Link> conditional{' '}
-      <Code>TextNode</Code>s in <Code>span</Code>s will solve most of the
-      crashes, but leaves the issue of translated text not updating. This will
-      usually be good enough for a simple website like this as a typical website
-      isn't very reactive, has a small codebase, has few developers working on
-      it, and doesn't show any computed numbers that are critical. You will have
-      to carefully consider for yourself whether this also applies to your app,
-      but leaving Google Translate available is a big advantage for your users.
+      <Code>TextNode</Code>s in <Code>span</Code>s will solve a large chunk of
+      the crashes (but not the other issues). This will usually be good enough
+      for a simple website like this as a typical website isn't very reactive,
+      has a small codebase, has few developers working on it, and doesn't show
+      any computed numbers that are critical.
+    </p>
+
+    <p>
+      You will have to carefully consider which of these solutions is the right
+      fit for your app. Leaving Google Translate available will be a big help
+      for some of your users, but it will take some debugging to get it to work
+      well enough and ensure you're not showing users incorrect data.
     </p>
 
     <Aside>
