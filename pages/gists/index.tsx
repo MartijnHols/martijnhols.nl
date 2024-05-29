@@ -27,6 +27,7 @@ export const gists = [
   import('./how-to-detect-google-translate-and-other-machine-translation'),
   import('./keeping-dependencies-up-to-date'),
   import('./how-to-handle-array-values-in-react-hook-form'),
+  import('./everything-about-google-translate-crashing-react'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 export const filterUnpublished = (
