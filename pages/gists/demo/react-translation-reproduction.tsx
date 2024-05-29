@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import Annotation from '../../../components/Annotation'
@@ -8,6 +9,16 @@ import Container from '../../../components/Container'
 import Link from '../../../components/Link'
 import PageWrapper from '../../../components/PageWrapper'
 import TopBar from '../../../components/TopBar'
+
+const Alert = styled.div(
+  ({ theme }) => css`
+    background: ${theme.colors.yellow};
+    color: ${theme.colors.black};
+    border: 4px solid ${theme.colors.black};
+    padding: 1rem;
+    font-weight: 500;
+  `,
+)
 
 const applyRemoveChildMonkeyPatch = () => {
   // Source: https://github.com/facebook/react/issues/11538#issuecomment-417504600
@@ -94,6 +105,14 @@ const ReactTranslationReproduction = () => {
       </TopBar>
 
       <Container>
+        <Alert>
+          I wrote an in-depth article on{' '}
+          <Link href="/gists/everything-about-google-translate-crashing-react">
+            Everything about Google Translate crashing React (and other) apps
+          </Link>{' '}
+          that has all the information you could want on this subject (including
+          other issues you may run into) and several other reproduction samples.
+        </Alert>
         <p>
           <mark>See browser console for errors.</mark>
         </p>
