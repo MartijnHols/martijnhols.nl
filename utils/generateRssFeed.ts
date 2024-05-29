@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import RSS from 'rss'
 import { filterUnpublished, gists } from '../pages/gists'
 
@@ -41,7 +41,7 @@ export default async function generateRssFeed() {
     })
   })
 
-  fs.writeFileSync(
+  await fs.writeFile(
     './public/rss.xml',
     feed.xml({
       indent: true,

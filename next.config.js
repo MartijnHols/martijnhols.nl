@@ -73,6 +73,16 @@ const nextConfig = withBundleAnalyzer({
       destination: 'https://martijnhols.nl/:path*',
       permanent: true,
     },
+    {
+      source: '/feed',
+      destination: '/rss.xml',
+      permanent: true,
+    },
+    {
+      source: '/rss',
+      destination: '/rss.xml',
+      permanent: true,
+    },
   ],
   rewrites: async () => [
     {

@@ -8,7 +8,7 @@ export default function Document(props: DocumentProps) {
           rel="alternate"
           type="application/rss+xml"
           title="RSS Feed"
-          href="/rss/"
+          href="/rss.xml"
         />
         <script
           defer
