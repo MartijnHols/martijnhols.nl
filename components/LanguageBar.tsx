@@ -9,7 +9,7 @@ import Container from './Container'
 const Bar = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.yellow};
-    padding: ${theme.spacing.x2}px 0;
+    padding: ${theme.spacing.x3}px 0;
 
     *::selection {
       background-color: ${theme.colors.black};
@@ -18,8 +18,9 @@ const Bar = styled.div(
   `,
 )
 const MainText = styled.div`
+  font-size: 1.5em;
   font-weight: 800;
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
 `
 const Actions = styled.div(
   ({ theme }) => css`
@@ -34,10 +35,11 @@ const Actions = styled.div(
 )
 const Action = styled.div(
   ({ theme }) => css`
-    padding: 0.5em;
+    padding: ${theme.spacing.x2}px;
     flex: 1 1 50%;
     border: 1px solid ${theme.colors.black};
     border-radius: 6px;
+    font-size: 1.25em;
   `,
 )
 
@@ -61,24 +63,25 @@ const LanguageBar = () => {
     <Bar lang="en">
       <Container>
         <MainText>
-          Sorry, this page is only available in Dutch, as I'm only looking for
-          clients inside the Netherlands at this time.
+          This page is only available in Dutch, as I'm only looking for clients
+          in my area at this time.
         </MainText>
         <Actions>
           <Action>
             <a href="https://martijnhols-nl.translate.goog/?_x_tr_sl=nl&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp&_x_tr_hist=true">
-              Click here to open this page in Google Translate.
+              Open this page with Google Translate.
             </a>
             <br />
-            Note: Google Translate is unfortunately{' '}
-            <a href="https://github.com/facebook/react/issues/11538">
-              error-prone in React apps
-            </a>
+            Note: Google Translate{' '}
+            <Link href="/gists/everything-about-google-translate-crashing-react">
+              may be error-prone in React apps
+            </Link>
             .
           </Action>
           <Action>
-            You may also be interested in my <Link href="/gists">blog</Link>,
-            where I post short articles and share solutions (gists) in English.
+            Alternatively, you may be interested in my{' '}
+            <Link href="/gists">blog</Link>, where I post articles and share
+            solutions in English.
           </Action>
         </Actions>
       </Container>
