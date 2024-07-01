@@ -155,7 +155,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: 'Build martijnhols/martijnhols.nl:${{env.DOCKER_BUILD_TAG}}'
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: . # otherwise the action does weird things with the git context (see docs)
           tags: 'martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}'
