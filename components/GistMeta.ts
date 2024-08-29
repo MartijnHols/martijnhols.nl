@@ -15,6 +15,7 @@ export const enum GistTag {
   Ios = 'ios',
   Safari = 'safari',
   Javascript = 'javascript',
+  Git = 'git',
 }
 export const priorityTags = [
   GistTag.ReactHookForm,
