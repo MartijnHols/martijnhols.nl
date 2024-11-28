@@ -29,6 +29,7 @@ export const gists = [
   import('./how-to-handle-array-values-in-react-hook-form'),
   import('./everything-about-google-translate-crashing-react'),
   import('./how-to-write-a-good-git-commit-message'),
+  import('./you-dont-need-lodash'),
 ] as Array<Promise<{ meta: GistMeta }>>
 
 export const filterUnpublished = (
