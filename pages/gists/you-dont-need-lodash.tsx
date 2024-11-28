@@ -40,17 +40,17 @@ const GistYouDontNeedLodash = () => (
 
     <p>
       Everything you can do in Lodash, you can do just as well in ES6 either
-      entirely (isArray, map) or with a simple pattern (groupBy, sortBy,
-      distinct).
+      entirely (isArray, map) or with a basic repeatable pattern (groupBy,
+      sortBy, distinct).
     </p>
     <p>
       You're better off learning and using the patterns of the language you're
-      using, instead of learning the characteristics of a library and dealing
+      using, rather than learning the characteristics of a library and dealing
       with the bundle size, license,{' '}
       <Link href="/gists/the-security-implications-of-packages-in-frontend-apps">
         security
-      </Link>{' '}
-      and{' '}
+      </Link>
+      , and{' '}
       <Link href="gists/keeping-dependencies-up-to-date">
         maintenance implications
       </Link>
@@ -58,16 +58,16 @@ const GistYouDontNeedLodash = () => (
       <a href="https://timkadlec.com/remembers/2019-10-21-using-the-platform/">
         here to stay
       </a>
-      . And the language is applicable to every single project with this
-      language (and in a landscape like React).
+      , and language familiarity applies to every project that uses it
+      (especially in a landscape like React).
     </p>
     <p>
-      Not only does it make <i>you</i> a more versatile JS/TS-developer, but{' '}
+      Not only does it make <i>you</i> a more versatile JS/TS developer, but{' '}
       <strong>
         using the language makes it easier for other developers with experience
         with the language to get up to speed
       </strong>
-      . You're never going to find someone that is familiar with all the
+      . You're never going to find someone who is familiar with all of the
       libraries you use, but it's relatively easy to find someone with
       experience in the language.
     </p>
@@ -82,12 +82,12 @@ const GistYouDontNeedLodash = () => (
         [1 (see FAQ)]
       </Link>
       ,<Link href="https://news.ycombinator.com/item?id=35056669">[2]</Link>).
-      And importing per function is yet another thing you're going to have to
-      teach your developers and enforce in PRs, especially since hardly any
-      other libraries require this nowadays.
+      And importing per function is yet another thing you'll have to teach your
+      developers and enforce in PRs, especially since hardly any other libraries
+      require this nowadays.
     </p>
     <p>
-      Some of the{' '}
+      Some{' '}
       <a href="https://you-dont-need.github.io/You-Dont-Need-Lodash-Underscore/">
         patterns to replace Lodash
       </a>{' '}
@@ -96,13 +96,14 @@ const GistYouDontNeedLodash = () => (
       <Code>{'sumBy(items, item => item.value)'}</Code> vs{' '}
       <Code>{'items.reduce((total, item) => total + item, 0)'}</Code>. And by
       using the language, you can chain <Code>filter(x)</Code>,{' '}
-      <Code>map(y)</Code> and <Code>sort(z)</Code> easily (unless you're also
+      <Code>map(y)</Code>, and <Code>sort(z)</Code> easily (unless you're also
       using Lodash for that, then I would wonder where your own code starts).
     </p>
     <p>
-      This gist isn't even just about Lodash. This applies to all libraries.
-      Another obvious example is Axios, and a less obvious example is{' '}
-      <Link href="https://redux-observable.js.org/">redux-observables</Link>{' '}
+      This gist isn't even just about Lodash. This applies to most libraries
+      that have usable native alternatives. Another such example is Axios, and a
+      less obvious example is{' '}
+      <Link href="https://redux-observable.js.org/">redux-observables</Link>,{' '}
       which just happens to be abandoned as well (another risk).
     </p>
     <p>
