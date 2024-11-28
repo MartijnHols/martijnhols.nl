@@ -140,21 +140,6 @@ const MoreLikeThis = ({ gist, className }: Props) => {
   useEffect(() => {
     // TODO: Move this into getStaticProps. Probably going to have to move gists out of the pages folder for that
     Promise.all(gists).then((gists) => {
-      console.table(
-        gists
-          .map((g) => g.meta)
-          ?.filter((item) => item.slug !== gist.slug)
-          .sort(
-            (a, b) =>
-              tagRelevancyScore(gist.tags, b.tags) -
-              tagRelevancyScore(gist.tags, a.tags),
-          )
-          .map((item) => [
-            item.title,
-            item.tags.join(','),
-            tagRelevancyScore(gist.tags, item.tags),
-          ]),
-      )
       setAlternativeGists(
         gists
           .map((g) => g.meta)
