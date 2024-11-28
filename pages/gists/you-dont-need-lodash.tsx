@@ -6,7 +6,7 @@ import Gist from '../../components/Gist'
 import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import lodashImage from './assets/lodash.png'
-import openGraphImage from './assets/ogimage-everything-about-google-translate-crashing-react.png'
+import openGraphImage from './assets/ogimage-you-dont-need-lodash.png'
 
 const LodashFigure = styled(Figure)`
   text-align: center;
