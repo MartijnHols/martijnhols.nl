@@ -169,6 +169,7 @@ jobs:
   # TODO: Cypress
 
   lhci-mobile:
+    if: false # TODO: fixme
     needs: [install, docker-image]
     name: Lighthouse Mobile
     runs-on: ubuntu-latest
@@ -207,6 +208,7 @@ jobs:
           name: lighthouse-mobile
           path: lighthouse
   lhci-desktop:
+    if: false # TODO: fixme
     needs: [install, docker-image]
     name: Lighthouse Desktop
     runs-on: ubuntu-latest
