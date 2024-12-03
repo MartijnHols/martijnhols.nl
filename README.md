@@ -54,14 +54,12 @@ Since this is a small project, the folder structure is minimal.
 
 There are several things I am considering improving for this app, such as:
 
+- Add job title to projects, reduce size of comany name and period. I think listing the job title will improve SEO since it will repeat these keywords more. No one will find my by searching for the company titles, so they really shouldn't be so big (even if it's most relevant for users).
+- Add a React Architect page
+- More info on the hero
+- Add some USPs block, or maybe a row with my rate, location (action radius) and experience
 - RSS
-- ~~With legacy Prismic setups I always kept the Prismic components separate from the slice components, so all the Prismic mess and real components aren't mixed. In other words, I am considering adding the slices to the components folder but with the Prismic bridging code exclusively in the current slices folder. Theoretically this makes it easier to switch CMS, but that would probably never happen. More importantly code separation and components become cleaner and shorter.~~ I tried entangling them, and this made it very hard to reuse the components for the articles pages. Splitting is the way to go.
+- Remove Prismic integration. I'm a coder, so hardcoding content is no issue for me (it's actually easier). Better yet, I like having it appear in commit history so I have a log of all changes I made to my site, not just code changes.
 - Cypress. I am a big fan of Cypress E2E testing. While it would be overkill for this site, it would be a good opportunity to show off and polish my usual implementation.
-- Case Studies for my projects. Explain how things were solved, why, lessons learned, regrets, etc. A lot of work, and not sure how useful this would be.
-- Clean up `[slug].tsx`: consider separating the backend code from the frontend code. I am a fan of code co-location to a certain point, and this may exceed the threshold where it's cleaner.
-- ESLint
-- Prettier
-- Husky
-- OpenGraph image generation: https://github.com/neg4n/next-api-og-image - make OG image text dynamic for easy testing
 - Canonical / alternate / hreflang meta tags
 - Add a page with local town names for Google indexing so I'm findable for "react developer amersfoort" etc (veenendaal, rhenen)
