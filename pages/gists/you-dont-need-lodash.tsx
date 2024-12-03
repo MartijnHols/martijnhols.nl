@@ -25,7 +25,6 @@ export const meta: GistMeta = {
 const GistYouDontNeedLodash = () => (
   <Gist gist={meta}>
     <p>And I reckon you shouldn't use it.</p>
-
     <LodashFigure
       caption="Lodash as it describes itself"
       href="https://lodash.com/"
@@ -37,7 +36,6 @@ const GistYouDontNeedLodash = () => (
         sizes="(min-width: 768px) 500px, 100vw"
       />
     </LodashFigure>
-
     <p>
       Everything you can do in Lodash, you can do just as well in ES6 either
       entirely (isArray, map) or with a basic repeatable pattern (groupBy,
@@ -87,17 +85,17 @@ const GistYouDontNeedLodash = () => (
       require this nowadays.
     </p>
     <p>
-      Some{' '}
+      Some of the{' '}
       <a href="https://you-dont-need.github.io/You-Dont-Need-Lodash-Underscore/">
         patterns to replace Lodash
       </a>{' '}
-      might seem more complicated, but when you use them daily, you'll quickly
+      might initially seem more complex, but with daily use, you'll quickly
       start recognizing them at a glance. Think{' '}
       <Code>{'sumBy(items, item => item.value)'}</Code> vs{' '}
       <Code>{'items.reduce((total, item) => total + item, 0)'}</Code>. And by
-      using the language, you can chain <Code>filter(x)</Code>,{' '}
-      <Code>map(y)</Code>, and <Code>sort(z)</Code> easily (unless you're also
-      using Lodash for that, then I would wonder where your own code starts).
+      leveraging the language itself, you can easily chain{' '}
+      <Code>filter(x)</Code>, <Code>map(y)</Code>, and <Code>sort(z)</Code> in a
+      more readable and maintainable manner.
     </p>
     <p>
       This gist isn't even just about Lodash. This applies to most libraries
