@@ -30,10 +30,10 @@ const Title = styled.h2`
 `
 const SubTitle = styled.div(
   ({ theme }) => css`
-    font-weight: 600;
-    font-size: 1.5em;
+    font-weight: 500;
+    font-size: 1.25em;
     margin-bottom: ${theme.spacing.x6}px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
   `,
 )
 
