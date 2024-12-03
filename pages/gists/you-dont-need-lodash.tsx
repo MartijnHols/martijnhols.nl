@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import Annotation from '../../components/Annotation'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
 import Gist from '../../components/Gist'
@@ -70,16 +71,19 @@ const GistYouDontNeedLodash = () => (
       experience in the language.
     </p>
     <p>
-      Not using Lodash also saves you <em>a lot</em> in bundle size. If you're
-      importing the entire library, it's{' '}
+      Not using Lodash also saves you <em>a lot</em> in bundle size. If you're{' '}
+      <Annotation annotation="The projects that I worked on that were using Lodash all (usually accidentally) did this because there was at least one import of the main library somewhere.">
+        importing the entire library
+      </Annotation>
+      , it's{' '}
       <Link href="https://bundlephobia.com/package/lodash@4.17.21">70KB</Link>.
-      That's half of the React library. But if you're going through the trouble
-      of importing per function (how much time did you spend on doing this
-      btw?), you're getting a lot more than you bargained for (
+      That's half of the entire React library. And even if you're going through
+      the trouble of importing per function (how much time did you spend on
+      doing this btw?), you're still getting a lot more than you bargained for (
       <Link href="https://thescottyjam.github.io/snap.js/#!/nolodash">
         [1 (see FAQ)]
       </Link>
-      ,<Link href="https://news.ycombinator.com/item?id=35056669">[2]</Link>).
+      , <Link href="https://news.ycombinator.com/item?id=35056669">[2]</Link>).
       And importing per function is yet another thing you'll have to teach your
       developers and enforce in PRs, especially since hardly any other libraries
       require this nowadays.
