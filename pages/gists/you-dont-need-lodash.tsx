@@ -17,9 +17,10 @@ export const meta: GistMeta = {
   slug: 'you-dont-need-lodash',
   title: "You don't need Lodash",
   description:
-    "And I reckon you shouldn't use it. Or any libraries that fill a similar role. Here's why.",
+    "And I reckon you shouldn't use it, or any libraries that you can solve natively just as well. Here's why.",
   image: openGraphImage,
   publishedAt: '2024-11-28',
+  updatedAt: '2024-12-03',
   tags: [GistTag.Javascript, GistTag.Dependencies, GistTag.React],
 }
 
