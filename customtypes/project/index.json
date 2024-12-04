@@ -3,6 +3,7 @@
   "label": "Project",
   "repeatable": true,
   "status": true,
+  "format": "custom",
   "json": {
     "Main": {
       "thumbnail": {
@@ -16,10 +17,17 @@
           "thumbnails": []
         }
       },
+      "functionTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Function title",
+          "placeholder": ""
+        }
+      },
       "name": {
         "type": "Text",
         "config": {
-          "label": "Name",
+          "label": "Company name",
           "placeholder": ""
         }
       },

@@ -16,15 +16,13 @@ const Container = styled('article', {
   isPlaceholder?: boolean
 }>(({ theme, highlighted, isPlaceholder }) => [
   css`
-    transform: rotate(-0.5deg);
-    border: ${theme.spacing.x2}px solid ${theme.colors.black};
-    box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
     margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
     padding: ${theme.spacing.x3}px;
     background: ${theme.colors.yellow50};
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
+      transform: rotate(-0.5deg);
+      padding: ${theme.spacing.x4}px ${theme.spacing.x5}px;
     }
   `,
   highlighted &&
@@ -47,11 +45,14 @@ const Container = styled('article', {
       margin: 0 auto;
     `,
 ])
-const Header = styled.h3`
+const Header = styled.div`
   margin-top: 0;
   margin-bottom: 0.5em;
 `
-const Name = styled.span``
+const Title = styled.h3`
+  margin-top: 0;
+  margin-bottom: 0.1em;
+`
 const Period = styled.span``
 const Main = styled.div(
   ({ theme }) => css`
@@ -69,6 +70,20 @@ const Thumbnail = styled.div(
   ({ theme }) => css`
     flex: 0 0 auto;
 
+    img {
+      border: 7px solid ${theme.colors.black};
+      box-shadow: calc(var(--box-shadow-distance) * -1)
+        var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
+      margin-bottom: 9px;
+      transition: all 120ms ease-out;
+      padding: 7px;
+
+      :hover {
+        box-shadow: -11px 11px 0 0px ${theme.colors.yellow};
+        transform: translate(4px, -4px);
+      }
+    }
+
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 200px;
     }
@@ -77,15 +92,13 @@ const Thumbnail = styled.div(
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
-const ProjectAbout = styled.div(
-  ({ theme }) => css`
-    // Cancel out paragraph margin
-    margin-top: -${theme.spacing.x2}px;
-    margin-bottom: ${theme.spacing.x2}px;
-    hyphens: auto;
-    text-align: justify;
-  `,
-)
+const ProjectAbout = styled.div`
+  // Cancel out paragraph margin
+  margin-top: -1.25em;
+  margin-bottom: 1.25em;
+  hyphens: auto;
+  text-align: justify;
+`
 const Tech = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -101,7 +114,8 @@ const ContactLinks = styled.div(
 
 interface Props {
   thumbnail?: ImageInfo
-  name: string
+  functionTitle: string
+  companyName: string
   started?: string
   ended?: string
   url?: string
@@ -114,7 +128,8 @@ interface Props {
 
 const ProjectBrief = ({
   thumbnail,
-  name,
+  functionTitle,
+  companyName,
   started,
   ended,
   url,
@@ -145,17 +160,20 @@ const ProjectBrief = ({
   return (
     <Container highlighted={highlighted} isPlaceholder={placeholder}>
       <Header>
-        <Name title={name}>{name}</Name> (
-        <Period>{formatPeriod(started, ended)}</Period>)
+        <Title>{functionTitle}</Title>
+        <div>
+          <span>{companyName}</span> (
+          <Period>{formatPeriod(started, ended)}</Period>)
+        </div>
       </Header>
       <Main>
         {thumbnail && (
           <Thumbnail>
             <Image
               src={thumbnail}
-              alt={thumbnail.alt ?? name}
-              width={200}
-              height={200}
+              alt={thumbnail.alt ?? companyName}
+              width={100}
+              height={100}
             />
           </Thumbnail>
         )}

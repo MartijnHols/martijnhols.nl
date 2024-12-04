@@ -68,7 +68,7 @@ const ProjectsSlice = ({ slice }: Props) => {
           ?.sort((a, b) => (b.endedYear || '').localeCompare(a.endedYear || ''))
           .map((project) => {
             const thumbnail = convertPrismicImage(project.thumbnail)
-            if (!project.name) {
+            if (!project.name || !project.functionTitle) {
               return null
             }
 
@@ -81,7 +81,8 @@ const ProjectsSlice = ({ slice }: Props) => {
             return (
               <ProjectBrief
                 key={project.name}
-                name={project.name}
+                functionTitle={project.functionTitle}
+                companyName={project.name}
                 thumbnail={thumbnail}
                 url={url || undefined}
                 sourceCode={sourceCode || undefined}

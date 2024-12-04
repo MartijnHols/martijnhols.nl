@@ -12,7 +12,7 @@ const StyledFigure = styled.figure(
     margin: 1.5em 0;
 
     img {
-      border: 7px solid black;
+      border: 7px solid ${theme.colors.black};
       box-shadow: calc(var(--box-shadow-distance) * -1)
         var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
       margin-bottom: 9px;

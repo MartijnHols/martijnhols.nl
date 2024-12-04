@@ -325,7 +325,18 @@ interface ProjectDocumentData {
   thumbnail: prismic.ImageField<never>
 
   /**
-   * Name field in *Project*
+   * Function title field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.functionTitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  functionTitle: prismic.KeyTextField
+
+  /**
+   * Company name field in *Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*

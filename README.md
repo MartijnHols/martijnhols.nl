@@ -54,7 +54,6 @@ Since this is a small project, the folder structure is minimal.
 
 There are several things I am considering improving for this app, such as:
 
-- Add job title to projects, reduce size of comany name and period. I think listing the job title will improve SEO since it will repeat these keywords more. No one will find my by searching for the company titles, so they really shouldn't be so big (even if it's most relevant for users).
 - Add a React Architect page
 - More info on the hero
 - Add some USPs block, or maybe a row with my rate, location (action radius) and experience
