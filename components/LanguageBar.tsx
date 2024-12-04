@@ -15,13 +15,22 @@ const Bar = styled.div(
       background-color: ${theme.colors.black};
       color: ${theme.colors.yellow};
     }
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      font-size: 1.25em;
+    }
   `,
 )
-const MainText = styled.div`
-  font-size: 1.5em;
-  font-weight: 800;
-  margin-bottom: 0.75em;
-`
+const MainText = styled.div(
+  ({ theme }) => css`
+    font-weight: 800;
+    margin-bottom: 0.75em;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      font-size: 1.25em;
+    }
+  `,
+)
 const Actions = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -39,7 +48,6 @@ const Action = styled.div(
     flex: 1 1 50%;
     border: 1px solid ${theme.colors.black};
     border-radius: 6px;
-    font-size: 1.25em;
   `,
 )
 
@@ -64,7 +72,7 @@ const LanguageBar = () => {
       <Container>
         <MainText>
           This page is only available in Dutch, as I'm only looking for clients
-          in my area at this time.
+          in my area at this time. You can however:
         </MainText>
         <Actions>
           <Action>
@@ -80,8 +88,7 @@ const LanguageBar = () => {
           </Action>
           <Action>
             Alternatively, you may be interested in my{' '}
-            <Link href="/gists">blog</Link>, where I post articles and share
-            solutions in English.
+            <Link href="/gists">blog</Link>, which is fully English.
           </Action>
         </Actions>
       </Container>
