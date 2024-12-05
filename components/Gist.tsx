@@ -159,7 +159,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
       </TopBar>
 
       <article>
-        <MainArticleContent>
+        <MainArticleContent className="content">
           <ArticleHeader>
             <div>
               <Link href="/gists">← More gists</Link>
@@ -194,7 +194,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
           <>
             <Angle inverted />
             <Addendum className="inverted" id="addendum">
-              <ArticleContent>{addendum}</ArticleContent>
+              <ArticleContent className="content">{addendum}</ArticleContent>
             </Addendum>
             <Angle />
           </>

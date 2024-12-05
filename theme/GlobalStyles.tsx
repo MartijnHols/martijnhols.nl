@@ -88,7 +88,7 @@ const GlobalStyles = () => (
           border-color: currentColor;
         }
 
-        ul {
+        .content ul {
           list-style: none;
 
           > li {

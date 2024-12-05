@@ -109,7 +109,7 @@ const ContentSlice = ({ slice }: Props) => {
             </ImageContainer>
           )}
           <ContentContainer
-            className={inverted ? 'inverted' : undefined}
+            className={`content ${inverted ? 'inverted' : ''}`}
             twoColumnsText={
               slice.variation === 'twoColumnsText' ||
               slice.variation === 'twoColumnsTextInverted'
