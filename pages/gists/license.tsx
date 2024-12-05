@@ -55,6 +55,11 @@ const LicenseGist = () => (
         scheme, typography, layout (including the angles), animations
       </li>
       <li>❌ Copy content outside of blog articles</li>
+      <li>
+        ❌ Use content to train machine learning ("AI") models, except for
+        titles and descriptions so long as you provide a link to the full
+        article
+      </li>
     </ul>
     <p>
       Exceptions or explicit approval may be given via email at{' '}
