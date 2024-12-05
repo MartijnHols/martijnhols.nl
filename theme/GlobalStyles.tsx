@@ -87,6 +87,33 @@ const GlobalStyles = () => (
         button {
           border-color: currentColor;
         }
+
+        ul {
+          list-style: none;
+
+          > li {
+            margin: 0.5em 0;
+            position: relative;
+
+            ::before {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 0.7em;
+              height: 4px;
+              width: 20px;
+              background: ${theme.colors.black};
+              transform: skew(-15deg);
+              margin-left: -38px;
+            }
+          }
+
+          .inverted & {
+            > li::before {
+              background: ${theme.colors.white};
+            }
+          }
+        }
       `,
       theme.links.globalStyles,
       theme.headings.globalStyles,
