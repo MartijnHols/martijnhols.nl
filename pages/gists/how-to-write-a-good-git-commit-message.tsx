@@ -16,7 +16,7 @@ export const meta: GistMeta = {
     'Without any structure, your Git history can become a mess. This is the gist of writing good commit messages.',
   publishedAt: '2024-08-29',
   updatedAt: '2024-08-29',
-  tags: [GistTag.HowTo, GistTag.Git],
+  tags: [GistTag.HowTo, GistTag.Git, GistTag.Maintainability],
 }
 
 const GistHowToWriteAGoodGitCommitMessage = () => (

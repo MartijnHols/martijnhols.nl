@@ -32,7 +32,7 @@ export const meta: GistMeta = {
   image: OgImage,
   publishedAt: '2024-04-15',
   updatedAt: '2024-04-21',
-  tags: [GistTag.Security, GistTag.Dependencies],
+  tags: [GistTag.Security, GistTag.Dependencies, GistTag.Maintainability],
   relatedGist: import('./keeping-dependencies-up-to-date'),
 }
 

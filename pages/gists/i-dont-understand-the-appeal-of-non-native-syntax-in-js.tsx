@@ -9,7 +9,7 @@ export const meta: GistMeta = {
   title: "I don't understand the appeal of non-native syntax in JS",
   description:
     "I don't understand why many JavaScript frameworks prefer string-based templating over native JavaScript.",
-  tags: [GistTag.Javascript, GistTag.React],
+  tags: [GistTag.Javascript, GistTag.React, GistTag.Maintainability],
 }
 
 const GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax = () => (

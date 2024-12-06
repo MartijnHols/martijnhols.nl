@@ -11,7 +11,7 @@ export const meta: GistMeta = {
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
   publishedAt: '2024-04-21',
   updatedAt: '2024-05-04',
-  tags: [GistTag.HowTo, GistTag.MachineTranslation],
+  tags: [GistTag.HowTo, GistTag.MachineTranslation, GistTag.I18n],
 }
 
 const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (

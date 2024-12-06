@@ -10,7 +10,12 @@ export const meta: GistMeta = {
   description:
     'A simple way to handle fields with basic array values in react-hook-form.',
   publishedAt: '2024-05-04',
-  tags: [GistTag.HowTo, GistTag.ReactHookForm, GistTag.React],
+  tags: [
+    GistTag.HowTo,
+    GistTag.ReactHookForm,
+    GistTag.React,
+    GistTag.Maintainability,
+  ],
 }
 
 const GistHowToHandleArrayValuesInReactHookForm = () => (

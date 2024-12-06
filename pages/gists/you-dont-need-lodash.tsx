@@ -21,7 +21,12 @@ export const meta: GistMeta = {
   image: openGraphImage,
   publishedAt: '2024-11-28',
   updatedAt: '2024-12-03',
-  tags: [GistTag.Javascript, GistTag.Dependencies, GistTag.React],
+  tags: [
+    GistTag.Javascript,
+    GistTag.Dependencies,
+    GistTag.React,
+    GistTag.Maintainability,
+  ],
 }
 
 const GistYouDontNeedLodash = () => (

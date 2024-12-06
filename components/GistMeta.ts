@@ -5,18 +5,31 @@ export const enum GistTag {
   // Types:
   Meta = 'meta',
   HowTo = 'how-to',
+  /** @deprecated Just don't post "basics" articles */
   Basics = 'basics',
   // Tags:
   React = 'react',
   ReactHookForm = 'react-hook-form',
-  Security = 'security',
   Dependencies = 'dependencies',
   MachineTranslation = 'machine-translation',
   Ios = 'ios',
   Safari = 'safari',
   Javascript = 'javascript',
   Git = 'git',
+  Stability = 'stability',
+  Maintainability = 'maintainability',
+  // Standardisation = 'standardisation', use maintainability instead
+  Performance = 'performance',
+  Security = 'security',
+  Accessibility = 'accessibility',
+  UX = 'ux',
+  DX = 'dx',
+  Integrations = 'integrations',
+  CI_CD = 'ci-cd',
+  Testing = 'testing',
+  I18n = 'i18n',
 }
+
 export const priorityTags = [
   GistTag.ReactHookForm,
   GistTag.Dependencies,

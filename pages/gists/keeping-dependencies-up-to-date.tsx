@@ -24,7 +24,7 @@ export const meta: GistMeta = {
     'The gist of keeping dependencies up-to-date. When to update, how to update, and what to update first.',
   image: openGraphImage,
   publishedAt: '2024-04-28',
-  tags: [GistTag.Dependencies, GistTag.Security],
+  tags: [GistTag.Dependencies, GistTag.Security, GistTag.Maintainability],
   relatedGist: import(
     './the-security-implications-of-packages-in-frontend-apps'
   ),

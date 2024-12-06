@@ -42,7 +42,7 @@ export const meta: GistMeta = {
     'The (in-depth) gist of Google Translate (and other browser extensions) interference breaking React and other web apps.',
   image: openGraphImage,
   publishedAt: '2024-05-29',
-  tags: [GistTag.React, GistTag.MachineTranslation],
+  tags: [GistTag.React, GistTag.MachineTranslation, GistTag.I18n],
 }
 
 const EverythingAboutGoogleTranslateCrashingReact = () => (
