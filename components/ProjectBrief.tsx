@@ -45,13 +45,18 @@ const Container = styled('article', {
       margin: 0 auto;
     `,
 ])
-const Header = styled.div`
+const Header = styled.h3`
   margin-top: 0;
   margin-bottom: 0.5em;
 `
-const Title = styled.h3`
+const Title = styled.div`
   margin-top: 0;
   margin-bottom: 0.1em;
+`
+const SubTitle = styled.div`
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 0.5em;
 `
 const Period = styled.span``
 const Main = styled.div(
@@ -161,10 +166,10 @@ const ProjectBrief = ({
     <Container highlighted={highlighted} isPlaceholder={placeholder}>
       <Header>
         <Title>{functionTitle}</Title>
-        <div>
+        <SubTitle>
           <span>{companyName}</span> (
           <Period>{formatPeriod(started, ended)}</Period>)
-        </div>
+        </SubTitle>
       </Header>
       <Main>
         {thumbnail && (
