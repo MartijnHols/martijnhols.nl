@@ -20,11 +20,48 @@ const Container = styled('article', {
     padding: ${theme.spacing.x3}px;
     background: ${theme.colors.yellow50};
 
+    // Top and bottom margins are not equal since the angle changes the visual
+    // margin. I believe the left-most column is most important to appear
+    // visually aligned.
+    margin-top: ${theme.spacing.x5}px;
+    margin-bottom: ${theme.spacing.x7}px;
+    // Offset the padding so the code text aligns with the rest of the text
+    margin-left: -${theme.spacing.x4}px;
+    margin-right: -${theme.spacing.x4}px;
+    padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
+    position: relative;
+    --size: 0.8em;
+
+    ::before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: var(--size);
+      inset: calc(var(--size) * -1) 0;
+      bottom: auto;
+      background: linear-gradient(
+        to bottom right,
+        /* We need some margin to prevent a jagged edge */ transparent 49.5%,
+        ${theme.colors.yellow50} 50.5%
+      );
+    }
+    ::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 calc(var(--size) * -1);
+      display: block;
+      height: var(--size);
+      background: linear-gradient(
+        to bottom right,
+        /* We need some margin to prevent a jagged edge */
+          ${theme.colors.yellow50} 49.5%,
+        transparent 50.5%
+      );
+    }
+
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       display: flex;
       gap: ${theme.spacing.x4}px;
-      transform: rotate(-0.5deg);
-      padding: ${theme.spacing.x4}px ${theme.spacing.x5}px;
     }
   `,
   highlighted &&
@@ -32,7 +69,7 @@ const Container = styled('article', {
       @media (min-width: ${theme.breakpoints.TABLET}px) {
         margin-top: ${theme.spacing.x1 * 10}px;
         margin-bottom: ${theme.spacing.x1 * 10}px;
-        transform: rotate(-0.5deg) scale(1.1);
+        transform: scale(1.1);
 
         & + & {
           margin-top: ${theme.spacing.x1 * 14}px;
@@ -78,20 +115,6 @@ const Main = styled.div(
 const Thumbnail = styled.div(
   ({ theme }) => css`
     flex: 0 0 auto;
-
-    img {
-      border: 7px solid ${theme.colors.black};
-      box-shadow: calc(var(--box-shadow-distance) * -1)
-        var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
-      margin-bottom: 9px;
-      transition: all 120ms ease-out;
-      padding: 7px;
-
-      :hover {
-        box-shadow: -11px 11px 0 0px ${theme.colors.yellow};
-        transform: translate(4px, -4px);
-      }
-    }
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 200px;

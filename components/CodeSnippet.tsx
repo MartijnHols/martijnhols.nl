@@ -29,9 +29,6 @@ const Code = styled.code<{ variant?: 'sm' | 'md' }>(
         display: block;
         height: var(--size);
         inset: calc(var(--size) * -1) 0;
-      }
-
-      ::before {
         bottom: auto;
         background: linear-gradient(
           to bottom right,
