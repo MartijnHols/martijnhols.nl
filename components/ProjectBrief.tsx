@@ -4,11 +4,12 @@ import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
+import AngledContainer from './AngledContainer'
 import CopyPasteOnly from './CopyPasteOnly'
 import Link from './Link'
 import Tag from './Tag'
 
-const Container = styled('article', {
+const Container = styled(AngledContainer, {
   shouldForwardProp: (prop) =>
     prop !== 'highlighted' && prop !== 'isPlaceholder',
 })<{
@@ -16,10 +17,7 @@ const Container = styled('article', {
   isPlaceholder?: boolean
 }>(({ theme, highlighted, isPlaceholder }) => [
   css`
-    margin: ${theme.spacing.x6}px -${theme.spacing.x2}px;
-    padding: ${theme.spacing.x3}px;
-    background: ${theme.colors.yellow50};
-
+    --background: ${theme.colors.yellow50};
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.
@@ -29,35 +27,6 @@ const Container = styled('article', {
     margin-left: -${theme.spacing.x4}px;
     margin-right: -${theme.spacing.x4}px;
     padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
-    position: relative;
-    --size: 0.8em;
-
-    ::before {
-      content: '';
-      position: absolute;
-      display: block;
-      height: var(--size);
-      inset: calc(var(--size) * -1) 0;
-      bottom: auto;
-      background: linear-gradient(
-        to bottom right,
-        /* We need some margin to prevent a jagged edge */ transparent 49.5%,
-        ${theme.colors.yellow50} 50.5%
-      );
-    }
-    ::after {
-      content: '';
-      position: absolute;
-      inset: auto 0 calc(var(--size) * -1);
-      display: block;
-      height: var(--size);
-      background: linear-gradient(
-        to bottom right,
-        /* We need some margin to prevent a jagged edge */
-          ${theme.colors.yellow50} 49.5%,
-        transparent 50.5%
-      );
-    }
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       display: flex;
@@ -78,7 +47,6 @@ const Container = styled('article', {
     `,
   isPlaceholder &&
     css`
-      border-color: rgba(0, 0, 0, 0.3);
       opacity: 0.6;
       max-width: 750px;
       margin: 0 auto;
@@ -206,7 +174,12 @@ const ProjectBrief = ({
   }
 
   return (
-    <Container highlighted={highlighted} isPlaceholder={placeholder}>
+    <Container
+      as="article"
+      boxShadow={false}
+      highlighted={highlighted}
+      isPlaceholder={placeholder}
+    >
       <div>
         <Period>{formatPeriod(started, ended)}</Period>
         {thumbnail && (
