@@ -21,6 +21,8 @@ const Container = styled('article', {
     background: ${theme.colors.yellow50};
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
+      display: flex;
+      gap: ${theme.spacing.x4}px;
       transform: rotate(-0.5deg);
       padding: ${theme.spacing.x4}px ${theme.spacing.x5}px;
     }
@@ -53,12 +55,14 @@ const Title = styled.div`
   margin-top: 0;
   margin-bottom: 0.1em;
 `
-const SubTitle = styled.div`
-  font-size: 1rem;
-  font-weight: 400;
-  margin-top: 0.5em;
-`
-const Period = styled.span``
+const Period = styled.div(
+  ({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      margin-top: 0.3em;
+      margin-bottom: 1em;
+    }
+  `,
+)
 const Main = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -91,6 +95,22 @@ const Thumbnail = styled.div(
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       max-width: 200px;
+    }
+  `,
+)
+const ThumbnailDesktop = styled(Thumbnail)(
+  ({ theme }) => css`
+    display: none;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      display: block;
+    }
+  `,
+)
+const ThumbnailMobile = styled(Thumbnail)(
+  ({ theme }) => css`
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      display: none;
     }
   `,
 )
@@ -164,45 +184,60 @@ const ProjectBrief = ({
 
   return (
     <Container highlighted={highlighted} isPlaceholder={placeholder}>
-      <Header>
-        <Title>{functionTitle}</Title>
-        <SubTitle>
-          <span>{companyName}</span> (
-          <Period>{formatPeriod(started, ended)}</Period>)
-        </SubTitle>
-      </Header>
-      <Main>
+      <div>
+        <Period>{formatPeriod(started, ended)}</Period>
         {thumbnail && (
-          <Thumbnail>
+          <ThumbnailDesktop>
             <Image
               src={thumbnail}
               alt={thumbnail.alt ?? companyName}
               width={100}
               height={100}
             />
-          </Thumbnail>
+          </ThumbnailDesktop>
         )}
-        <ProjectExplanation>
-          <ProjectAbout>{about}</ProjectAbout>
-          <Tech>
-            {tech.map((item, index) => (
-              <Fragment key={item}>
-                <Tag>{item}</Tag>
-                {index !== tech.length - 1 && <CopyPasteOnly>, </CopyPasteOnly>}
-              </Fragment>
-            ))}
-          </Tech>
-          {(url || sourceCode) && (
-            <ContactLinks>
-              {url && <Link href={url}>{config?.visit}</Link>}
-              {url && sourceCode && <span>{' | '}</span>}
-              {sourceCode && (
-                <Link href={sourceCode}>{config?.sourceCode}</Link>
-              )}
-            </ContactLinks>
+      </div>
+      <div>
+        <Header>
+          <Title>
+            {functionTitle} @ {companyName}
+          </Title>
+        </Header>
+        <Main>
+          {thumbnail && (
+            <ThumbnailMobile>
+              <Image
+                src={thumbnail}
+                alt={thumbnail.alt ?? companyName}
+                width={100}
+                height={100}
+              />
+            </ThumbnailMobile>
           )}
-        </ProjectExplanation>
-      </Main>
+          <ProjectExplanation>
+            <ProjectAbout>{about}</ProjectAbout>
+            <Tech>
+              {tech.map((item, index) => (
+                <Fragment key={item}>
+                  <Tag>{item}</Tag>
+                  {index !== tech.length - 1 && (
+                    <CopyPasteOnly>, </CopyPasteOnly>
+                  )}
+                </Fragment>
+              ))}
+            </Tech>
+            {(url || sourceCode) && (
+              <ContactLinks>
+                {url && <Link href={url}>{config?.visit}</Link>}
+                {url && sourceCode && <span>{' | '}</span>}
+                {sourceCode && (
+                  <Link href={sourceCode}>{config?.sourceCode}</Link>
+                )}
+              </ContactLinks>
+            )}
+          </ProjectExplanation>
+        </Main>
+      </div>
     </Container>
   )
 }
