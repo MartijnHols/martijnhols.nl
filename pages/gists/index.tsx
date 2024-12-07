@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Angle from '../../components/Angle'
+import AngledContainer from '../../components/AngledContainer'
 import BaseHead from '../../components/BaseHead'
 import Container from '../../components/Container'
 import GistMeta, {
@@ -122,6 +123,7 @@ const ArticleLink = styled(Link, {
     margin-bottom: ${theme.spacing.x6}px;
     margin-left: auto;
     margin-right: auto;
+    color: ${theme.colors.black};
 
     :hover {
       ${ArticleTitle} {
@@ -133,31 +135,27 @@ const ArticleLink = styled(Link, {
   howTo &&
     css`
       max-width: 90%;
-
-      @media (min-width: ${theme.breakpoints.TABLET}px) {
-        max-width: 75%;
-      }
     `,
 ])
-const Article = styled.article<{ howTo?: boolean }>(({ theme, howTo }) => [
+const Article = styled(AngledContainer, {
+  shouldForwardProp: (prop) => prop !== 'howTo',
+})<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
-    color: ${theme.colors.black};
-    background: ${theme.colors.yellow50};
-    border: ${theme.spacing.x2}px solid ${theme.colors.black};
-    box-shadow: -7px 7px 0 0px ${theme.colors.yellow};
-    padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      transform: rotate(-0.5deg);
-      padding: ${theme.spacing.x3}px ${theme.spacing.x4}px;
-    }
+    --background: ${theme.colors.yellow50};
+    // Top and bottom margins are not equal since the angle changes the visual
+    // margin. I believe the left-most column is most important to appear
+    // visually aligned.
+    margin-top: ${theme.spacing.x5}px;
+    margin-bottom: ${theme.spacing.x7}px;
+    // Offset the padding so the code text aligns with the rest of the text
+    margin-left: -${theme.spacing.x4}px;
+    margin-right: -${theme.spacing.x4}px;
+    padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
   `,
   howTo &&
     css`
-      border: 10px solid ${theme.colors.black};
       padding: ${theme.spacing.x2}px;
       font-size: 90%;
-      box-shadow: -4px 4px 0 0px ${theme.colors.yellow};
 
       @media (min-width: ${theme.breakpoints.TABLET}px) {
         padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
@@ -223,7 +221,11 @@ const GistsIndex = ({ gists }: Props) => {
                   className="plain"
                   howTo={gist.tags.includes(GistTag.HowTo)}
                 >
-                  <Article howTo={gist.tags.includes(GistTag.HowTo)}>
+                  <Article
+                    as="article"
+                    boxShadow={false}
+                    howTo={gist.tags.includes(GistTag.HowTo)}
+                  >
                     <ArticleTitle>{gist.title}</ArticleTitle>
                     <p>{gist.description}</p>
                     <ArticleMetadata>
