@@ -14,13 +14,15 @@ const BackgroundWrapper = styled.div`
 `
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 40px;
+    padding-bottom: 60px;
     display: flex;
     flex-flow: column;
     gap: ${theme.spacing.x6}px;
 
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
+      padding-top: 100px;
+      padding-bottom: 100px;
       flex-flow: row;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
@@ -34,14 +36,15 @@ const ImageContainer = styled.div`
 const SideImage = styled(Image)(
   ({ theme }) => css`
     clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
+    display: block;
     width: 100%;
     height: auto;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      max-width: 400px;
+      width: 400px;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      max-width: 500px;
+      width: 500px;
     }
   `,
 )
