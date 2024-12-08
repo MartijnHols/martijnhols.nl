@@ -83,7 +83,7 @@ const ArticleTitle = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.black};
     text-decoration: none;
-    border-bottom: ${theme.spacing.x2}px solid ${theme.colors.black};
+    border-bottom: 10px solid ${theme.colors.black};
     transition: all 120ms ease-out;
     // It is not possible to animate a linear-gradient (yet), so we need to do
     // some background-positioning trickery to get the effect we want.
