@@ -133,14 +133,14 @@ const GistCard = ({ gist }: Props) => (
       <ArticleTitle>{gist.title}</ArticleTitle>
       <p>{gist.description}</p>
       <ArticleMetadata>
-        <PublishedAt>
-          Published <PublicationDate date={gist.publishedAt} />
-        </PublishedAt>
         <Tags>
           {gist.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </Tags>
+        <PublishedAt>
+          Published <PublicationDate date={gist.publishedAt} />
+        </PublishedAt>
       </ArticleMetadata>
     </Article>
   </ArticleLink>
