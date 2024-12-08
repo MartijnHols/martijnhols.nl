@@ -55,3 +55,7 @@ export default interface GistMeta {
   tags: GistTag[]
   relatedGist?: Promise<{ meta: GistMeta }>
 }
+
+export type SerializableGistMeta = Omit<GistMeta, 'titleReact'> & {
+  publishedAt: PublicationDate
+}
