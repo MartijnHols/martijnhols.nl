@@ -47,7 +47,7 @@ const Figure = ({
   ...others
 }: Props) => (
   <StyledFigure className={className}>
-    <span style={{ fontSize: 0 }}>Picture:&nbsp;</span>
+    <CopyPasteOnly>Picture:&nbsp;</CopyPasteOnly>
     <Link href={href} className="plain" {...others}>
       {children}
     </Link>
