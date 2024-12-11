@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import CopyPasteOnly from './CopyPasteOnly'
 
 const StyledCode = styled.code`
   padding: 0.3em;
@@ -18,9 +19,13 @@ interface Props {
 }
 
 const Code = ({ children, ...others }: Props) => (
-  <StyledCode translate="no" {...others}>
-    {children}
-  </StyledCode>
+  <>
+    <CopyPasteOnly inline>`</CopyPasteOnly>
+    <StyledCode translate="no" {...others}>
+      {children}
+    </StyledCode>
+    <CopyPasteOnly inline>`</CopyPasteOnly>
+  </>
 )
 
 export default Code
