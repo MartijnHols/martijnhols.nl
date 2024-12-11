@@ -1,8 +1,8 @@
 import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Highlight, themes } from 'prism-react-renderer'
-import AngledContainer from './AngledContainer'
 import CopyPasteOnly from './CopyPasteOnly'
+import Panel from './Panel'
 // Alternative: https://github.com/react-simple-code-editor/react-simple-code-editor
 
 const Code = styled.code`
@@ -61,7 +61,7 @@ const CodeSnippet = ({
         <br />
       </CopyPasteOnly>
       <Code translate="no" {...others}>
-        <AngledContainer variant={variant}>
+        <Panel variant={variant}>
           <Highlight
             theme={highlightTheme}
             code={children.trim()}
@@ -79,7 +79,7 @@ const CodeSnippet = ({
               </PreformattedContainer>
             )}
           </Highlight>
-        </AngledContainer>
+        </Panel>
       </Code>
       <CopyPasteOnly>
         ```

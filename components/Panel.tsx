@@ -117,7 +117,7 @@ interface Props {
   className?: string
 }
 
-const AngledContainer = ({
+const Panel = ({
   children,
   variant = 'md',
   boxShadow = true,
@@ -135,4 +135,4 @@ const AngledContainer = ({
   </Container>
 )
 
-export default AngledContainer
+export default Panel

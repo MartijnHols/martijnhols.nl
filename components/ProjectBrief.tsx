@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 import { ImageInfo } from '../utils/convertPrismicImage'
 import { usePrismicConfig } from '../utils/prismicConfig'
-import AngledContainer from './AngledContainer'
 import CopyPasteOnly from './CopyPasteOnly'
 import Link from './Link'
+import Panel from './Panel'
 import Tag from './Tag'
 
-const Container = styled(AngledContainer, {
+const Container = styled(Panel, {
   shouldForwardProp: (prop) =>
     prop !== 'highlighted' && prop !== 'isPlaceholder',
 })<{

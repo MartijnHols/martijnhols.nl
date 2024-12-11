@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import AngledContainer from './AngledContainer'
 import { GistTag, SerializableGistMeta } from './GistMeta'
 import Link from './Link'
+import Panel from './Panel'
 import PublicationDate from './PublicationDate'
 import Tag from './Tag'
 
@@ -65,7 +65,7 @@ const ArticleLink = styled(Link, {
       max-width: 90%;
     `,
 ])
-const Article = styled(AngledContainer, {
+const Article = styled(Panel, {
   shouldForwardProp: (prop) => prop !== 'howTo',
 })<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
