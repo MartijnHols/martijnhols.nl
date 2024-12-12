@@ -10,8 +10,9 @@ const Container = styled('span', {
     line-height: 0;
     opacity: 0;
     overflow: hidden;
-    width: 0;
-    height: 0;
+    // Essential or the element can't be copied (at least in Chrome).
+    width: 1px;
+    height: 1px;
     padding: 0;
     pointer-events: none;
     clip: rect(0, 0, 0, 0);
