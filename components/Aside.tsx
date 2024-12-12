@@ -34,7 +34,11 @@ const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: ${theme.spacing.x1}px;
+      padding: 3px 5px;
+      letter-spacing: 2.5px;
+      // Letter-spacing places letters to the left of the space they occupy.
+      // This makes the letters appear centered.
+      padding-bottom: 1px;
       text-transform: uppercase;
       writing-mode: vertical-rl;
       text-orientation: mixed;
@@ -47,6 +51,7 @@ const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
     variant === 'sm' &&
       css`
         letter-spacing: 4px;
+        padding: ${theme.spacing.x1}px;
         // Letter-spacing places letters to the left of the space they occupy.
         // This makes the letters appear centered.
         padding-bottom: ${theme.spacing.x1 / 2}px;
