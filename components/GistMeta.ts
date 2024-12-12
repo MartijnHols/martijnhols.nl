@@ -15,6 +15,8 @@ export const enum GistTag {
   Ios = 'ios',
   Safari = 'safari',
   Javascript = 'javascript',
+  HTML = 'html',
+  CSS = 'css',
   Git = 'git',
   Stability = 'stability',
   Maintainability = 'maintainability',

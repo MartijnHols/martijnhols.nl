@@ -7,6 +7,7 @@ import absoluteUrl from '../utils/absoluteUrl'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
+import CopyPasteOnly from './CopyPasteOnly'
 import GistMeta from './GistMeta'
 import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
@@ -175,6 +176,9 @@ const Gist = ({ gist, children, addendum }: Props) => {
           </ArticleHeader>
 
           <Title>{titleReact ?? title}</Title>
+          <CopyPasteOnly>
+            <br />
+          </CopyPasteOnly>
 
           {/** Portal target so tooltips can share base article styling (mostly font-size) */}
           <PortalTarget>{children}</PortalTarget>
