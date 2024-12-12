@@ -74,11 +74,7 @@ const HeroSlice = ({ slice }: Props) => (
     <TopBar />
 
     <Hero
-      preTitle={
-        isFilled.richText(slice.primary.intro) && (
-          <PrismicRichText field={slice.primary.intro} multiline />
-        )
-      }
+      preTitle={asText(slice.primary.intro)}
       title={
         slice.primary.reactifyTitle
           ? reactifyTitle(asText(slice.primary.title))

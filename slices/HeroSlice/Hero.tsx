@@ -27,10 +27,11 @@ const Intro = styled.div`
   font-weight: 800;
   margin-bottom: 0;
 `
-const IntroSubText = styled.span(
+const PreTitle = styled.span(
   ({ theme }) => css`
     display: block;
     ${theme.headings.h4}
+    margin-bottom: 0.25em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 1.75em;
@@ -62,7 +63,7 @@ const Hero = ({ preTitle, title, subText }: Props) => (
   <Section>
     <StyledContainer>
       <Intro>
-        {preTitle && <IntroSubText>{preTitle}</IntroSubText>}
+        {preTitle && <PreTitle>{preTitle}</PreTitle>}
         <IntroTitle>{title}</IntroTitle>
       </Intro>
       {subText && <SubText>{subText}</SubText>}
