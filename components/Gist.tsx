@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ReactNode, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
+import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import Angle from './Angle'
 import BaseHead from './BaseHead'
 import Container from './Container'
@@ -138,6 +139,14 @@ const Gist = ({ gist, children, addendum }: Props) => {
     hasFinishedReading.current = true
   })
 
+  const publisedAtDate = publishedAt ? new Date(publishedAt) : undefined
+  const updatedAtDate = updatedAt ? new Date(updatedAt) : undefined
+  const isUpdatedAtDifferent =
+    publisedAtDate &&
+    updatedAtDate &&
+    getRelativeTimeStringDays(updatedAtDate) !==
+      getRelativeTimeStringDays(publisedAtDate)
+
   return (
     <PageWrapper>
       <BaseHead
@@ -163,7 +172,14 @@ const Gist = ({ gist, children, addendum }: Props) => {
         <MainArticleContent className="content">
           <ArticleHeader>
             <div>
-              <Link href="/gists">← More gists</Link>
+              <Link
+                href="/gists"
+                css={css`
+                  white-space: nowrap;
+                `}
+              >
+                ← More gists
+              </Link>
             </div>
             <ArticleMetadata>
               Published{' '}
@@ -171,6 +187,18 @@ const Gist = ({ gist, children, addendum }: Props) => {
                 <PublicationDateComponent date={publishedAt} />
               ) : (
                 'N/A'
+              )}
+              {updatedAt && isUpdatedAtDifferent && (
+                <>
+                  ,{' '}
+                  <span
+                    css={css`
+                      white-space: nowrap;
+                    `}
+                  >
+                    updated <PublicationDateComponent date={updatedAt} />
+                  </span>
+                </>
               )}
             </ArticleMetadata>
           </ArticleHeader>
