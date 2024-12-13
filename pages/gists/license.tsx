@@ -8,7 +8,7 @@ export const meta: GistMeta = {
   description:
     'The license to content in my gists, on the rest of my website and the source code of it all.',
   publishedAt: '2024-04-01',
-  updatedAt: '2024-04-14',
+  updatedAt: '2024-12-05',
   tags: [GistTag.Meta],
 }
 
