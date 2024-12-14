@@ -10,7 +10,7 @@ import sFProFont from './SF-Pro-Text-Black.otf'
 async function SVG(component: JSX.Element) {
   return await satori(component, {
     width: 1200,
-    height: 520,
+    height: 627,
     fonts: [
       {
         name: 'SF-Pro',
@@ -44,7 +44,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
 
   const textStyle = {
     position: 'absolute',
-    top: 95,
+    top: 115,
     left: 40,
     right: 40,
     margin: 0,
@@ -159,7 +159,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
             transform: 'translateY(20px)',
             left: 0,
             right: 0,
-            fontSize: 40,
+            fontSize: 36,
             letterSpacing: '-2px',
           }}
         >
