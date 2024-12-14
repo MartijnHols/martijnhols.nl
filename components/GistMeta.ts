@@ -53,6 +53,8 @@ export default interface GistMeta {
   description: string
   image?: StaticImageData
   publishedAt?: PublicationDate
+  republishedAt?: PublicationDate
+  republishedReason?: string
   updatedAt?: PublicationDate
   tags: GistTag[]
   relatedGist?: Promise<{ meta: GistMeta }>

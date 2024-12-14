@@ -48,13 +48,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       gists: (await Promise.all(gists))
-        .map((gist) => {
+        .map((file) => file.meta)
+        .filter(filterUnpublished)
+        .map(
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const { titleReact, relatedGist, ...serializableGistMeta } = gist.meta
-
-          return serializableGistMeta
-        })
-        .filter(filterUnpublished),
+          ({ titleReact, relatedGist, ...serializableGistMeta }) =>
+            serializableGistMeta,
+        )
+        .sort((a, b) =>
+          (a.republishedAt ?? a.publishedAt).localeCompare(
+            b.republishedAt ?? b.publishedAt,
+          ),
+        ),
     },
   }
 }

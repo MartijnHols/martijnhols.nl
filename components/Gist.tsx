@@ -6,6 +6,7 @@ import { ReactNode, useRef, useState } from 'react'
 import absoluteUrl from '../utils/absoluteUrl'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import Angle from './Angle'
+import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import Container from './Container'
 import CopyPasteOnly from './CopyPasteOnly'
@@ -116,6 +117,8 @@ const Gist = ({ gist, children, addendum }: Props) => {
     description,
     image,
     publishedAt,
+    republishedAt,
+    republishedReason,
     updatedAt,
     tags,
   } = gist
@@ -139,13 +142,12 @@ const Gist = ({ gist, children, addendum }: Props) => {
     hasFinishedReading.current = true
   })
 
-  const publisedAtDate = publishedAt ? new Date(publishedAt) : undefined
-  const updatedAtDate = updatedAt ? new Date(updatedAt) : undefined
+  const shownPublishedAt = republishedAt ?? publishedAt
   const isUpdatedAtDifferent =
-    publisedAtDate &&
-    updatedAtDate &&
-    getRelativeTimeStringDays(updatedAtDate) !==
-      getRelativeTimeStringDays(publisedAtDate)
+    shownPublishedAt &&
+    updatedAt &&
+    getRelativeTimeStringDays(new Date(updatedAt)) !==
+      getRelativeTimeStringDays(new Date(shownPublishedAt))
 
   return (
     <PageWrapper>
@@ -157,10 +159,10 @@ const Gist = ({ gist, children, addendum }: Props) => {
         type="article"
       />
       <Head>
-        <meta property="article:published_time" content={publishedAt} />
+        <meta property="article:published_time" content={shownPublishedAt} />
         <meta
           property="article:modified_time"
-          content={updatedAt ?? publishedAt}
+          content={updatedAt ?? shownPublishedAt}
         />
       </Head>
 
@@ -182,11 +184,24 @@ const Gist = ({ gist, children, addendum }: Props) => {
               </Link>
             </div>
             <ArticleMetadata>
-              Published{' '}
-              {publishedAt ? (
-                <PublicationDateComponent date={publishedAt} />
+              {republishedAt ? (
+                <>
+                  <Annotation
+                    annotation={`Originaly published at ${publishedAt}, republished ${republishedAt}. ${republishedReason}`}
+                  >
+                    Republished
+                  </Annotation>{' '}
+                  <PublicationDateComponent date={republishedAt} />
+                </>
               ) : (
-                'N/A'
+                <>
+                  Published{' '}
+                  {publishedAt ? (
+                    <PublicationDateComponent date={publishedAt} />
+                  ) : (
+                    'N/A'
+                  )}
+                </>
               )}
               {updatedAt && isUpdatedAtDifferent && (
                 <>

@@ -139,7 +139,8 @@ const GistCard = ({ gist }: Props) => (
           ))}
         </Tags>
         <PublishedAt>
-          Published <PublicationDate date={gist.publishedAt} />
+          {gist.republishedAt ? 'Republished' : 'Published'}{' '}
+          <PublicationDate date={gist.republishedAt ?? gist.publishedAt} />
         </PublishedAt>
       </ArticleMetadata>
     </Article>

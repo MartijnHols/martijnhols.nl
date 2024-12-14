@@ -75,7 +75,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     {
       loc: absoluteUrl('/gists'),
       lastmod: gists.reduce((latest, gist) => {
-        const updatedAt = gist.updatedAt ?? gist.publishedAt
+        const updatedAt =
+          gist.updatedAt ?? gist.republishedAt ?? gist.publishedAt
         return updatedAt > latest ? updatedAt : latest
       }, '2024-04-01'),
       changefreq: 'daily',
@@ -83,7 +84,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     },
     ...gists.map((gist) => ({
       loc: absoluteUrl(`/gists/${gist.slug}`),
-      lastmod: gist.updatedAt ?? gist.publishedAt,
+      lastmod: gist.updatedAt ?? gist.republishedAt ?? gist.publishedAt,
       priority: 0.4,
     })),
   ])

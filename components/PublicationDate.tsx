@@ -12,8 +12,8 @@ interface Props {
 }
 
 const PublicationDate = ({ date }: Props) => {
-  const publishedAt = new Date(date)
-  const relativeTime = getRelativeTimeStringDays(publishedAt)
+  const dateObject = new Date(date)
+  const relativeTime = getRelativeTimeStringDays(dateObject)
 
   return (
     <Tooltip

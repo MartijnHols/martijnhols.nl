@@ -30,10 +30,12 @@ export const meta: GistMeta = {
   slug: 'the-security-risks-of-front-end-dependencies',
   title: 'The security risks of front-end dependencies',
   description:
-    'The gist of the security risks of using third-party dependencies in front-end projects.',
+    'A dive into the security risks of using third-party dependencies in front-end projects.',
   image: OgImage,
   publishedAt: '2024-04-15',
-  updatedAt: '2024-12-14',
+  republishedAt: '2024-12-14',
+  republishedReason:
+    'I rewrote the article to significantly improve the flow, add details and reduce repetition. The spirit of the article remains the same, but it should read a lot better.',
   tags: [GistTag.Security, GistTag.Dependencies, GistTag.Maintainability],
   relatedGist: import('./keeping-dependencies-up-to-date'),
 }

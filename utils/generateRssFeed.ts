@@ -19,8 +19,8 @@ export default async function generateRssFeed() {
     site_url: baseUrl,
     pubDate: new Date(
       publishedGists.reduce((latest, gist) => {
-        const updatedAt = gist.updatedAt ?? gist.publishedAt
-        return updatedAt > latest ? updatedAt : latest
+        const publishedAt = gist.republishedAt ?? gist.publishedAt
+        return publishedAt > latest ? publishedAt : latest
       }, '2024-04-01'),
     ),
     managingEditor: 'Martijn Hols',
@@ -35,7 +35,7 @@ export default async function generateRssFeed() {
       title: gist.title,
       description: gist.description,
       url: `${baseUrl}/gists/${gist.slug}`,
-      date: new Date(gist.publishedAt),
+      date: new Date(gist.republishedAt ?? gist.publishedAt),
       author: 'Martijn Hols',
       categories: gist.tags,
     })
