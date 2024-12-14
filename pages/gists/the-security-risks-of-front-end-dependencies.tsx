@@ -12,7 +12,7 @@ import Link from '../../components/Link'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
-import OgImage from './assets/ogimage-security-implications-of-packages.png'
+import openGraphImage from './assets/ogimage-security-implications-of-packages.png'
 
 const ObfuscatedPackageFigure = styled(Figure)(
   ({ theme }) => css`
@@ -31,7 +31,7 @@ export const meta: GistMeta = {
   title: 'The security risks of front-end dependencies',
   description:
     'A dive into the security risks of using third-party dependencies in front-end projects.',
-  image: OgImage,
+  image: openGraphImage,
   publishedAt: '2024-04-15',
   republishedAt: '2024-12-14',
   republishedReason:
