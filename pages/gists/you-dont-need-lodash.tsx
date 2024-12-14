@@ -47,7 +47,7 @@ const GistYouDontNeedLodash = () => (
       You're better off learning and using the patterns of the language you're
       using, rather than learning the characteristics of a library and dealing
       with the bundle size, license,{' '}
-      <Link href="/gists/the-security-implications-of-packages-in-frontend-apps">
+      <Link href="/gists/the-security-risks-of-front-end-dependencies">
         security
       </Link>
       , and{' '}

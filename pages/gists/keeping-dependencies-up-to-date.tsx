@@ -25,9 +25,7 @@ export const meta: GistMeta = {
   image: openGraphImage,
   publishedAt: '2024-04-28',
   tags: [GistTag.Dependencies, GistTag.Security, GistTag.Maintainability],
-  relatedGist: import(
-    './the-security-implications-of-packages-in-frontend-apps'
-  ),
+  relatedGist: import('./the-security-risks-of-front-end-dependencies'),
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
@@ -98,7 +96,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       There's also the question of whether you <i>should</i> update to the
       latest version of packages as soon as possible. If a package has only just
       been released, it may have brand new bugs, performance issues, or worse,{' '}
-      <Link href="./the-security-implications-of-packages-in-frontend-apps">
+      <Link href="./the-security-risks-of-front-end-dependencies">
         deliberately introduced malicious code
       </Link>
       . It's safer to let new versions mature a bit before installing them.
@@ -145,7 +143,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
       update a dependency. This allows you to let new versions mature a bit
       before you adopt them. As mentioned before, this reduces the chance you
       introduce new issues or{' '}
-      <Link href="./the-security-implications-of-packages-in-frontend-apps">
+      <Link href="./the-security-risks-of-front-end-dependencies">
         security vulnerabilities
       </Link>
       .

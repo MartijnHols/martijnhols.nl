@@ -83,6 +83,11 @@ const nextConfig = withBundleAnalyzer({
       destination: '/rss.xml',
       permanent: true,
     },
+    {
+      source: '/gists/the-security-implications-of-packages-in-frontend-apps',
+      destination: '/gists/the-security-risks-of-front-end-dependencies',
+      permanent: true,
+    },
   ],
   rewrites: async () => [
     {

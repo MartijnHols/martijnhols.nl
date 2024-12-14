@@ -23,7 +23,7 @@ export const gists = [
   import('./license'),
   import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
   import('./how-to-get-document-height-ios-safari-osk'),
-  import('./the-security-implications-of-packages-in-frontend-apps'),
+  import('./the-security-risks-of-front-end-dependencies'),
   import('./how-to-detect-google-translate-and-other-machine-translation'),
   import('./keeping-dependencies-up-to-date'),
   import('./how-to-handle-array-values-in-react-hook-form'),
