@@ -61,7 +61,7 @@ const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
         letter-spacing: 7px;
         // Letter-spacing places letters to the left of the space they occupy.
         // This makes the letters appear centered.
-        padding-bottom: ${theme.spacing.x1 / 2}px;
+        padding-bottom: 0;
       `,
   ],
 )
