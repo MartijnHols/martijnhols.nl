@@ -58,8 +58,8 @@ const FooterSlice = () => (
             </Item>
           </Values>
           <small>
-            Ik ben het beste bereikbaar op dinsdag, donderdag, vrijdag, en in
-            het weekend.
+            Ik ben het best bereikbaar op dinsdag, donderdag, vrijdag, en in het
+            weekend.
           </small>
         </div>
       </ContactRow>
