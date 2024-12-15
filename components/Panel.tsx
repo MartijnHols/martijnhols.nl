@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ComponentProps, ReactNode } from 'react'
+import { ComponentProps, forwardRef, ReactNode } from 'react'
 
 const Container = styled('div', {
   shouldForwardProp: (prop) =>
@@ -10,6 +10,9 @@ const Container = styled('div', {
   boxShadow: boolean
 }>(({ theme, variant, boxShadow }) => [
   css`
+    // TODO: Move all margins to parents? An element should not affect siblings
+    //  But it's not clear cut, since the negative margins need to match the
+    //  padding.
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.
@@ -109,30 +112,30 @@ const BottomAngle = styled('div', {
     `,
 ])
 
-interface Props {
+interface Props
+  extends Omit<ComponentProps<typeof Container>, 'variant' | 'boxShadow'> {
   children: ReactNode
   variant?: 'sm' | 'md'
   boxShadow?: boolean
-  as?: ComponentProps<typeof Container>['as']
-  className?: string
 }
 
-const Panel = ({
-  children,
-  variant = 'md',
-  boxShadow = true,
-  as,
-  className,
-}: Props) => (
-  <Container
-    as={as}
-    variant={variant}
-    boxShadow={boxShadow}
-    className={className}
-  >
-    {children}
-    <BottomAngle variant={variant} boxShadow={boxShadow} />
-  </Container>
+// eslint-disable-next-line react/display-name
+const Panel = forwardRef<HTMLDivElement, Props>(
+  (
+    { children, variant = 'md', boxShadow = true, as, ...others }: Props,
+    ref,
+  ) => (
+    <Container
+      as={as}
+      variant={variant}
+      boxShadow={boxShadow}
+      ref={ref}
+      {...others}
+    >
+      {children}
+      <BottomAngle variant={variant} boxShadow={boxShadow} />
+    </Container>
+  ),
 )
 
 export default Panel
