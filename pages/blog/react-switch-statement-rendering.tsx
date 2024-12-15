@@ -1,23 +1,25 @@
 /* eslint-disable react/jsx-curly-brace-presence */
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'react-switch-statement-rendering',
   title:
     'React basics: Can I use a switch statement to render components in React?',
   description:
     'Exploring the various ways to conditionally render components in React.',
   publishedAt: '2024-03-31',
-  tags: [GistTag.React, GistTag.Basics],
+  tags: [BlogArticleTag.React, BlogArticleTag.Basics],
 }
 
 // I forgot the <div>{{ [true]: <LightSwitchOn/>, [false]: <LightSwitchOff/>}[enabled]}</div> pattern
 
 const ReactSwitchStatementRendering = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       You can safely use any plain old JavaScript to dynamically render
       components in React, so long as you do not make and use a component
@@ -186,7 +188,7 @@ const ReactSwitchStatementRendering = () => (
       </a>
       .
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default ReactSwitchStatementRendering

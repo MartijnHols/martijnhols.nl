@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
 import { ReactNode } from 'react'
 
-export const enum GistTag {
+export const enum BlogArticleTag {
   // Types:
   Meta = 'meta',
   HowTo = 'how-to',
@@ -33,9 +33,9 @@ export const enum GistTag {
 }
 
 export const priorityTags = [
-  GistTag.ReactHookForm,
-  GistTag.Dependencies,
-  GistTag.MachineTranslation,
+  BlogArticleTag.ReactHookForm,
+  BlogArticleTag.Dependencies,
+  BlogArticleTag.MachineTranslation,
 ]
 
 type PublishedAtYear = `20${number}${number}`
@@ -45,7 +45,7 @@ type PublishedAtDay = `${0 | 1 | 2 | 3}${number}`
 export type PublicationDate =
   `${PublishedAtYear}-${PublishedAtMonth}-${PublishedAtDay}`
 
-export default interface GistMeta {
+export default interface BlogArticleMeta {
   slug: string
   title: string
   /** An optional alternative rendering of the title-string. */
@@ -56,10 +56,13 @@ export default interface GistMeta {
   republishedAt?: PublicationDate
   republishedReason?: string
   updatedAt?: PublicationDate
-  tags: GistTag[]
-  relatedGist?: Promise<{ meta: GistMeta }>
+  tags: BlogArticleTag[]
+  relatedArticle?: Promise<{ meta: BlogArticleMeta }>
 }
 
-export type SerializableGistMeta = Omit<GistMeta, 'titleReact'> & {
+export type SerializableBlogArticleMeta = Omit<
+  BlogArticleMeta,
+  'titleReact'
+> & {
   publishedAt: PublicationDate
 }

@@ -1,21 +1,27 @@
 import Aside from '../../components/Aside'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-detect-google-translate-and-other-machine-translation',
   title: 'How to detect Google Translate and other machine translation',
   description:
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
   publishedAt: '2024-04-21',
   updatedAt: '2024-05-04',
-  tags: [GistTag.HowTo, GistTag.MachineTranslation, GistTag.I18n],
+  tags: [
+    BlogArticleTag.HowTo,
+    BlogArticleTag.MachineTranslation,
+    BlogArticleTag.I18n,
+  ],
 }
 
 const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       Machine translation, such as done natively by Google Translate inside the
       Google Chrome browser, provides users with dynamic translation of webpages
@@ -108,7 +114,7 @@ observer.observe(title, {
       leading to crashes. For React I plan to write a more extensive gist about
       ways to mitigate this.
     </Aside>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistHowToDetectGoogleTranslateAndOtherMachineTranslation

@@ -4,11 +4,13 @@ import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import Node from '../../components/Node'
 import NodeChildren from '../../components/NodeChildren'
@@ -30,7 +32,7 @@ const CodeError = styled(Code)`
   color: red;
 `
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'everything-about-google-translate-crashing-react',
   title:
     // "Everything" might be a bit presumptuous, but I also think it's more
@@ -38,14 +40,18 @@ export const meta: GistMeta = {
     // part in this article, so I think it's a fair enough
     'Everything about Google Translate crashing React (and other web apps)',
   description:
-    'The (in-depth) gist of Google Translate (and other browser extensions) interference breaking React and other web apps.',
+    'A deep dive into Google Translate (and other browser extensions) interference breaking React and other web apps.',
   image: openGraphImage,
   publishedAt: '2024-05-29',
-  tags: [GistTag.React, GistTag.MachineTranslation, GistTag.I18n],
+  tags: [
+    BlogArticleTag.React,
+    BlogArticleTag.MachineTranslation,
+    BlogArticleTag.I18n,
+  ],
 }
 
 const EverythingAboutGoogleTranslateCrashingReact = () => (
-  <Gist gist={meta} addendum={<Addendum />}>
+  <BlogArticle article={meta} addendum={<Addendum />}>
     <p>
       Google Translate, the built-in extension of Google Chrome, is a{' '}
       <i>machine translator</i> that provides users with an easy way of
@@ -760,8 +766,8 @@ useEffect(() => {
 
     <Aside>
       Regardless of what you do, it might help to inform users of the issues
-      they might encounter when using Google Translate. See the gist of{' '}
-      <Link href="/gists/how-to-detect-google-translate-and-other-machine-translation">
+      they might encounter when using Google Translate. See my article{' '}
+      <Link href="/blog/how-to-detect-google-translate-and-other-machine-translation">
         How to detect Google Translate and other machine translation
       </Link>{' '}
       for a way to detect when Google Translate is active.
@@ -802,10 +808,10 @@ useEffect(() => {
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
-      That's the gist of Google Translate crashing React apps (and other web
-      apps). Or, as we've discovered, the gist of third-party browser extension
-      DOM manipulation interfering with complex JavaScript app reactivity, often
-      leading to crashes and other issues.
+      That's everything about Google Translate crashing React apps (and other
+      web apps). Or, as we've discovered, everything about third-party browser
+      extension DOM manipulation interfering with complex JavaScript app
+      reactivity, often leading to crashes and other issues.
     </p>
     <p>
       I hope this article will help you understand the issues and help you
@@ -830,7 +836,7 @@ useEffect(() => {
       it is reasonable for an app to claim full and exclusive control of the
       DOM, as React does with its Virtual DOM.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default EverythingAboutGoogleTranslateCrashingReact

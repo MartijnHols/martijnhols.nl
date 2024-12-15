@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import Link from '../../../components/Link'
 
-const GoogleTranslateCrashesTernaryRepro = () => {
-  const lights = 4
-  const [lightsOn, setLightsOn] = useState(true)
+const GoogleTranslateTextNotUpdatingRepro = () => {
+  const [lights, setLights] = useState(4)
 
   const [simulateGoogleTranslate, setSimulateGoogleTranslate] = useState(true)
   useEffect(() => {
@@ -14,7 +13,7 @@ const GoogleTranslateCrashesTernaryRepro = () => {
     // Not using ref because I want to eliminate all magic and any suggestion
     // that React might be doing something funny
     document
-      .getElementById('GoogleTranslateCrashesTernaryRepro-translateme')
+      .getElementById('GoogleTranslateTextNotUpdatingRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
           const fontElem = document.createElement('font')
@@ -30,17 +29,6 @@ const GoogleTranslateCrashesTernaryRepro = () => {
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
       key={`${simulateGoogleTranslate}`}
-      // Just a little something to show current state
-      style={
-        lightsOn
-          ? {}
-          : {
-              backgroundColor: '#333',
-              color: 'white',
-              padding: '1em',
-              margin: '-1em',
-            }
-      }
     >
       <div style={{ marginBottom: '1em' }}>
         <label>
@@ -55,30 +43,38 @@ const GoogleTranslateCrashesTernaryRepro = () => {
         </label>
       </div>
 
-      <div id="GoogleTranslateCrashesTernaryRepro-translateme">
+      <div id="GoogleTranslateTextNotUpdatingRepro-translateme">
         <button
           type="button"
-          onClick={() => setLightsOn(!lightsOn)}
+          onClick={() => setLights(lights + 1)}
           style={{ marginRight: '0.5em' }}
         >
-          Toggle lights
+          Add light
         </button>
-        {lightsOn ? <>There are {lights} lights!</> : <>The lights are off</>}
+        There are {lights} lights!
+      </div>
+      <div
+        style={{
+          color: '#494',
+        }}
+        translate="no"
+      >
+        There are {lights} lights!
       </div>
 
       <div style={{ marginTop: '1em' }}>
         <a
-          href="/gists/demo/google-translate-crashes-ternary-repro"
+          href="/blog/demo/google-translate-text-not-updating-repro"
           target="_blank"
         >
           Open in new window
         </a>
         {' | '}
-        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/gists/demo/google-translate-crashes-ternary-repro.tsx">
+        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/blog/demo/google-translate-text-not-updating-repro.tsx">
           Source
         </a>
         {' | '}
-        <Link href="/gists/everything-about-google-translate-crashing-react#issue-crashes-reproduction">
+        <Link href="/blog/everything-about-google-translate-crashing-react#issue-translated-text-not-updating-reproduction">
           More info
         </Link>
       </div>
@@ -86,4 +82,4 @@ const GoogleTranslateCrashesTernaryRepro = () => {
   )
 }
 
-export default GoogleTranslateCrashesTernaryRepro
+export default GoogleTranslateTextNotUpdatingRepro

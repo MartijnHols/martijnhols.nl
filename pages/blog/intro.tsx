@@ -1,66 +1,31 @@
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Link from '../../components/Link'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'intro',
-  title: 'The gist of my gists',
+  title: 'Blog intro',
   description:
     'The gist of this, why this format, what motivates me, and what to expect.',
   publishedAt: '2024-04-01',
   updatedAt: '2024-05-04',
-  tags: [GistTag.Meta],
+  tags: [BlogArticleTag.Meta],
 }
 
 const Intro = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
-      On April 1st of all days, I hereby launch my new gists section. This will
+      On April 1st of all days, I hereby launch my new blog section. This will
       be brief articles, snippets, opinions and answers to questions. Mostly
       about React and closely related things, occasionally some other
-      technologies like Node.js. Maybe at some point I'll throw in some gists
+      technologies like Node.js. Maybe at some point I'll throw in some blog
       about my hobbies as well.
     </p>
-    <h2>Why gists?</h2>
-    <p>
-      I have tried writing long-form articles for a very long time, but the
-      scope of them is preventing me from ever finishing them. Much like I do
-      all the time in software development, I realized I had to break down the
-      work into smaller deliverables. Gists are that. I've been writing gists
-      forever, like when I respond to discussions on Reddit or issues on GitHub.
-      Writing those never took me anywhere nearly as long as articles did.
-    </p>
-    <p>
-      Most worthwhile topics already have lengthy articles dedicated to them.
-      There's no point repeating them. Instead, I can try to give you the gist
-      of my take, and link to these excellent articles as a sort of drilldown.
-    </p>
-    <p>
-      I also had the idea that these gists could end up becoming sort of like my
-      knowledge base. A collection of common discussions, questions and answers.
-      In a similar vein, I can hop on Stack Overflow, pick out questions to
-      answer and use those questions as inspiration to dive further into topics
-      (or tangents).
-    </p>
-    <p>
-      The first gist I wrote was about{' '}
-      <a href="./react-switch-statement-rendering">
-        using switch statements when rendering in React
-      </a>{' '}
-      which came from the Stack Overflow question{' '}
-      <a href="https://stackoverflow.com/a/78251113/684353">
-        The components are getting unmounted and mounted again if we use switch
-        case, Why?
-      </a>
-      . (Update 1 month later:) I unlisted the gist since I realized I want this
-      blog to be focussed on more advanced subjects and basics would distract
-      and detract from that. I still think discussions on Reddit are a great way
-      to collect things to write about, and I can use comments as a way to test
-      some of my ideas.
-    </p>
-    <p>This approach will achieve at least two of my goals:</p>
-    <p></p>
+
     <h2>Why write at all?</h2>
+
     <p>I have many reasons to want to write;</p>
     <ul>
       <li>
@@ -99,7 +64,7 @@ const Intro = () => (
     </p>
     <p>I'm not looking for internet fame or points.</p>
     <h2>Some other subjects</h2>
-    <p>Some other subjects I want to get the gist down about;</p>
+    <p>Some other subjects I want to get an article about;</p>
     <ul>
       <li>Global state management in React</li>
       <li>
@@ -126,12 +91,6 @@ const Intro = () => (
       <li>React folder structure</li>
     </ul>
     <p>Some of these are probably too big ideas to even get finished.</p>
-    <h2>The initial setup</h2>
-    <p>
-      I quickly threw some code together to get started and test whether this
-      was a good idea. The current setup on my site is basically the gist of
-      what might come.
-    </p>
     <p>
       If you read all this, I thank you for your time. I didn't expect anyone to
       be this interested in this particular gist, I just wanted there to be some
@@ -140,7 +99,7 @@ const Intro = () => (
     <p>
       <Link href="./">Let's go.</Link>
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default Intro

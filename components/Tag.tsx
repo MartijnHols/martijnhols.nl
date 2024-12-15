@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { GistTag } from './GistMeta'
+import { BlogArticleTag } from './BlogArticleMeta'
 import Tooltip from './Tooltip'
 
 const Container = styled.div(
@@ -39,14 +39,14 @@ const Container = styled.div(
 )
 
 interface Props {
-  children: string | GistTag
+  children: string | BlogArticleTag
   className?: string
 }
 
 const Tag = ({ children, className }: Props) => {
-  if (children === GistTag.HowTo) {
+  if (children === BlogArticleTag.HowTo) {
     return (
-      <Tooltip content="How-tos are technical gists, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
+      <Tooltip content="How-tos are technical articles, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
         <Container data-value={children.toLowerCase()} className={className}>
           {children}
         </Container>

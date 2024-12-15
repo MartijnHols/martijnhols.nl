@@ -1,11 +1,11 @@
 import { GetServerSideProps } from 'next'
-import { PublicationDate } from '../components/GistMeta'
+import { PublicationDate } from '../components/BlogArticleMeta'
 import absoluteUrl from '../utils/absoluteUrl'
 import { createClient, getPages, getProjects } from '../utils/prismic'
 import prismicLinkResolver, {
   HOMEPAGE_SLUG,
 } from '../utils/prismicLinkResolver'
-import { gists as gistsPromise } from './gists'
+import { articles as articlesPromise } from './blog'
 
 interface SiteMapUrl {
   loc: string
@@ -42,11 +42,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const pages = await getPages(client)
   const projects = await getProjects(client, '*')
 
-  const gists = (await Promise.all(gistsPromise))
+  const articles = (await Promise.all(articlesPromise))
     .map((file) => file.meta)
     .filter(
-      (gist): gist is typeof gist & { publishedAt: PublicationDate } =>
-        gist.publishedAt !== undefined,
+      (article): article is typeof article & { publishedAt: PublicationDate } =>
+        article.publishedAt !== undefined,
     )
 
   const sitemap = createSiteMapXml([
@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       .map((page) => {
         const isHomepage = page.uid === HOMEPAGE_SLUG
 
-        // Only include the date part so its format is equal to that of the gists
+        // Only include the date part so its format is equal to that of the articles
         let lastmod = page.last_publication_date.split('T')[0]
         if (isHomepage) {
           lastmod = projects.reduce((latest, project) => {
@@ -73,18 +73,19 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         }
       }),
     {
-      loc: absoluteUrl('/gists'),
-      lastmod: gists.reduce((latest, gist) => {
+      loc: absoluteUrl('/blog'),
+      lastmod: articles.reduce((latest, article) => {
         const updatedAt =
-          gist.updatedAt ?? gist.republishedAt ?? gist.publishedAt
+          article.updatedAt ?? article.republishedAt ?? article.publishedAt
         return updatedAt > latest ? updatedAt : latest
       }, '2024-04-01'),
       changefreq: 'daily',
       priority: 1,
     },
-    ...gists.map((gist) => ({
-      loc: absoluteUrl(`/gists/${gist.slug}`),
-      lastmod: gist.updatedAt ?? gist.republishedAt ?? gist.publishedAt,
+    ...articles.map((article) => ({
+      loc: absoluteUrl(`/blog/${article.slug}`),
+      lastmod:
+        article.updatedAt ?? article.republishedAt ?? article.publishedAt,
       priority: 0.4,
     })),
   ])

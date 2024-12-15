@@ -1,22 +1,29 @@
 import Image from 'next/image'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import iosOskNative from './assets/ios-osk-native.gif'
 import iosOskSafari from './assets/ios-osk-safari.gif'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-detect-the-on-screen-keyboard-in-ios-safari',
   title: 'How to detect the on-screen keyboard in iOS Safari',
   description:
     'A gist about detecting the on-screen keyboard in iOS Safari with an example React hook.',
   publishedAt: '2024-04-01',
-  tags: [GistTag.HowTo, GistTag.Ios, GistTag.Safari, GistTag.React],
+  tags: [
+    BlogArticleTag.HowTo,
+    BlogArticleTag.Ios,
+    BlogArticleTag.Safari,
+    BlogArticleTag.React,
+  ],
 }
 
 const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       When it comes to the on-screen keyboard (OSK), iOS Safari behaves weirdly.
       This gist is just a small part of the things you need to do to deal with
@@ -24,7 +31,7 @@ const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (
       (mostly) mimic native app behavior in a PWA.
     </p>
     <p>
-      If you want more gists about this, ping me at{' '}
+      If you want more articles about this, ping me at{' '}
       <a href="https://twitter.com/MartijnHols">Twitter</a>.
     </p>
     <p>
@@ -160,7 +167,7 @@ export default useIsOnScreenKeyboardOpen
       add a check that the viewport size decreased after the{' '}
       <Code>focusin</Code> event.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistHowToDetectTheOnScreenKeybordInIosSafari

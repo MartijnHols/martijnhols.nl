@@ -1,28 +1,34 @@
 import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Aside from '../../components/Aside'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import gitForkImage from './assets/git-commit-git-fork.png'
 import githubLongTitleImage from './assets/git-commit-github-long-title.png'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-write-a-good-git-commit-message',
   title: 'How to write a good git commit message',
   description:
-    'Without any structure, your Git history can become a mess. This is the gist of writing good commit messages.',
+    'Without any structure, your Git history can become a mess. In this article I go into how to write good commit messages.',
   publishedAt: '2024-08-29',
   updatedAt: '2024-08-29',
-  tags: [GistTag.HowTo, GistTag.Git, GistTag.Maintainability],
+  tags: [
+    BlogArticleTag.HowTo,
+    BlogArticleTag.Git,
+    BlogArticleTag.Maintainability,
+  ],
 }
 
-const GistHowToWriteAGoodGitCommitMessage = () => (
-  <Gist gist={meta}>
+const BlogArticleHowToWriteAGoodGitCommitMessage = () => (
+  <BlogArticle article={meta}>
     <p>
-      There’s a lot of freedom to writing commit messages in Git, but without
+      There's a lot of freedom to writing commit messages in Git, but without
       any structure your Git history will become an unusable mess. This can make
       it harder to make sense of your changes during active development (to
       rebase, cherry pick or revert as necessary). It can also affect the
@@ -47,7 +53,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       On the Git CLI, the title is the first line of a commit, and if there are
       no other lines, the entire commit message. The body starts after the first
       newline and is the remainder of the commit message. In a Git UI, these
-      fields are usually separate and you won’t have to manually add a newline.
+      fields are usually separate and you won't have to manually add a newline.
     </p>
     <Figure
       caption="Git interfaces usually show separate fields for the title and body (Git Fork pictured)"
@@ -71,7 +77,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
     </p>
     <Aside>
       “Fix PR feedback” or any variations are never a good Git commit message.
-      It doesn’t describe what changes, and it isn’t even a good motivation to
+      It doesn't describe what changes, and it isn't even a good motivation to
       make a change.
     </Aside>
     <p>
@@ -89,7 +95,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       <a href="https://www.grammarly.com/blog/imperative-sentences/">
         imperative statement
       </a>
-      . You commit does something to your codebase; it’s a patch on everything
+      . You commit does something to your codebase; it's a patch on everything
       that was before. Your commit message represents that patch.
     </p>
     <p>
@@ -99,7 +105,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       react-lib2”, “Fix issue where no one could upvote my posts”.
     </p>
     <p>
-      What imperative verb you use isn’t very important. Most of my commits
+      What imperative verb you use isn't very important. Most of my commits
       start with “Fix”, “Add”, “Update” or “Refactor”. I also sometimes use
       “Improve”, “Replace”, “Make x do y”, “Clean up”, “Rename” etc., but that
       does make me feel a little bit dirty.
@@ -111,7 +117,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       often not enough. Tools such as GitHub sometimes [cut off](They move them
       into the commit body) commit messages longer than 72 characters, so that
       is a more reasonable limit. Still, if you really need more characters,
-      there’s no good reason not to use them.
+      there's no good reason not to use them.
     </p>
     <Figure
       caption="A very long commit message gets cut off in the GitHub commit view"
@@ -126,7 +132,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
     </Figure>
     <p>
       The commit message should state as briefly as possible what was changed.
-      But it’s important not to skip over any details. If possible and within
+      But it's important not to skip over any details. If possible and within
       reason, be specific. A commit message that is just “Update Tooltip” or
       “Fix logout issue” only points us in a direction and misses any useful
       information about <i>what</i> you did. Much better would be “Fix Tooltip
@@ -141,13 +147,13 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       change.
     </p>
     <p>
-      When you’ve finished work on something, you’ve become the expert of that
+      When you've finished work on something, you've become the expert of that
       piece of your app. You might have spent hours figuring out how everything
       fits together and how to make the required change without the entire house
       of cards falling down. That context is hard to come by, so share it in the
       commit body. This is useful for your reviewer to understand your change,
       the next person who gets a bug report in that piece of code, and future
-      you when you’re refactoring it.
+      you when you're refactoring it.
     </p>
     <p>
       Focus on <strong>why you made the change</strong>. The commit title and
@@ -161,14 +167,14 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
     </ul>
     <p>
       <strong>In most commits, you can omit the commit body</strong> as the
-      title sufficiently describes the commit. Still, it’s better to write a
+      title sufficiently describes the commit. Still, it's better to write a
       body too often than hardly ever.
     </p>
     <Aside>
       Any context that you would write in your PR should be part of your commit
       messages in Git. If you forgot to add sufficient context in your initial
       commit, you can always amend or rebase it in later. The only thing you
-      unfortunately can’t put in a commit are screenshots (unless you upload
+      unfortunately can't put in a commit are screenshots (unless you upload
       them first).
     </Aside>
     <h2 id="5-reference-everything">5. Reference everything</h2>
@@ -184,7 +190,7 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
     </p>
     <p>
       If the referenced item does a good job of describing the requirements that
-      necessitated your changes, that’s a great way to avoid needing to write
+      necessitated your changes, that's a great way to avoid needing to write
       that again.
     </p>
 
@@ -211,13 +217,13 @@ const GistHowToWriteAGoodGitCommitMessage = () => (
       requirements, business logic and existing code and then added something
       new on top of that. The majority of the time spent goes into this process
       of analysis and planning, while the time spent actually typing code is
-      minimal. Write your git commit message for someone who hasn’t gone through
+      minimal. Write your git commit message for someone who hasn't gone through
       these processes yet, so they can understand your change without needing to
       go through the entire process.
     </p>
     <hr />
     <p>
-      That’s the gist of writing a good Git commit message. When it all comes
+      That's the gist of writing a good Git commit message. When it all comes
       together, you get something like:
     </p>
     <CodeSnippet language="markdown">
@@ -227,7 +233,7 @@ This makes all text base font-size scale based on the font-size visitors
 configured in their browser. Standard in Chrome is 16pixels.
 
 Based on https://adrianroselli.com/2024/03/the-ultimate-ideal-bestest-base-font-size-that-everyone-is-keeping-a-secret-especially-chet.html
-I am a big fan of using browser defaults (using the platform), and it hadn’t occurred to me 
+I am a big fan of using browser defaults (using the platform), and it hadn't occurred to me 
 before that font-size also applied to that.
 
 Fixes #46`}
@@ -283,14 +289,14 @@ Fixes #46`}
       an edge case that I missed. When I add support for this edge case, I will
       make sure to create a separate commit for it. Then when someone inspects
       my code 6 months later, Git Blame will clearly reveal the edge case and
-      they can use the commit as if it’s a requirement.
+      they can use the commit as if it's a requirement.
     </p>
 
     <h3 id="dont-put-the-issue-id-in-the-commit-title">
-      Don’t put the issue ID in the commit title
+      Don't put the issue ID in the commit title
     </h3>
     <p>
-      Don’t put the issue ID in the commit title. It is useless to anyone
+      Don't put the issue ID in the commit title. It is useless to anyone
       glancing the history or blame. No one has issue IDs memorized. It
       distracts and takes precious characters away from the most important
       information of a commit. Any decent Git tool will be able to search inside
@@ -301,17 +307,17 @@ Fixes #46`}
     <h3 id="git-fork">Git Fork</h3>
     <p>
       (Not sponsored) As user interface for Git, I use{' '}
-      <a href="https://git-fork.com/">Git Fork</a>. It’s fast, user friendly,
+      <a href="https://git-fork.com/">Git Fork</a>. It's fast, user friendly,
       works on Mac and Windows, does not require a subscription, and makes
       anything you want to do in a Git a breeze. The visual overview and
       feedback of the commit history also adds a lot, and interactive rebasing
-      has never been easier. Most people I asked don’t know how to stage only a
+      has never been easier. Most people I asked don't know how to stage only a
       subset (a few lines) of a changed file on the CLI, yet with Git Fork this
       is trivial and gives clear visual feedback which makes splitting up
       commits much easier. I cannot recommend{' '}
       <a href="https://git-fork.com/">Git Fork</a> enough.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
-export default GistHowToWriteAGoodGitCommitMessage
+export default BlogArticleHowToWriteAGoodGitCommitMessage

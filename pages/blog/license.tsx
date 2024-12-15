@@ -1,19 +1,21 @@
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Link from '../../components/Link'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'license',
   title: 'License',
   description:
-    'The license to content in my gists, on the rest of my website and the source code of it all.',
+    'The license to content in my blog, on the rest of my website and the source code of it all.',
   publishedAt: '2024-04-01',
   updatedAt: '2024-12-05',
-  tags: [GistTag.Meta],
+  tags: [BlogArticleTag.Meta],
 }
 
 const LicenseGist = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       I don't think there's a standard license for this, so I'll write a custom
       one. I think this covers everything.
@@ -65,7 +67,7 @@ const LicenseGist = () => (
       Exceptions or explicit approval may be given via email at{' '}
       <Link href="mailto:website@martijnhols.nl">website@martijnhols.nl</Link>.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default LicenseGist

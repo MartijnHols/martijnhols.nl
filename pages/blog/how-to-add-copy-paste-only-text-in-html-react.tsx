@@ -1,21 +1,28 @@
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import CopyPasteOnly from '../../components/CopyPasteOnly'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-add-copy-paste-only-text-in-html-react',
   title: 'How to add copy-paste only text in HTML (plus a React component)',
   description:
     'In this gist I share a code snippet to (statically) insert text that appears when pasting content copied from your site.',
   publishedAt: '2024-12-12',
-  tags: [GistTag.HowTo, GistTag.HTML, GistTag.CSS, GistTag.React],
+  tags: [
+    BlogArticleTag.HowTo,
+    BlogArticleTag.HTML,
+    BlogArticleTag.CSS,
+    BlogArticleTag.React,
+  ],
 }
 
 const GistHowToAddCopyPasteOnlyText = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       When finalizing an article for this blog, I often copy-paste text into
       tools like Grammarly and ChatGPT for feedback. But these tools often
@@ -158,7 +165,7 @@ export default CopyPasteOnly
       this article and pasting it somewhere else.
     </p>
     <p>Hope that helps.</p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistHowToAddCopyPasteOnlyText

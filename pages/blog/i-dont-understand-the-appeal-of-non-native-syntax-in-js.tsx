@@ -1,19 +1,25 @@
 import Annotation from '../../components/Annotation'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'i-dont-understand-the-appeal-of-non-native-syntax-in-js',
   title: "I don't understand the appeal of non-native syntax in JS",
   description:
     "I don't understand why many JavaScript frameworks prefer string-based templating over native JavaScript.",
-  tags: [GistTag.Javascript, GistTag.React, GistTag.Maintainability],
+  tags: [
+    BlogArticleTag.Javascript,
+    BlogArticleTag.React,
+    BlogArticleTag.Maintainability,
+  ],
 }
 
 const GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       In JSX code of a React app, most things can be done with just JavaScript;
     </p>
@@ -157,7 +163,7 @@ button {
       I concur.
     </p>
     <p>After all, I chose to focus entirely on React for a reason.</p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax

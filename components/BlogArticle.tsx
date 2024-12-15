@@ -8,15 +8,15 @@ import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import Angle from './Angle'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
+import BlogArticleMeta from './BlogArticleMeta'
+import MoreLikeThis from './BlogMoreLikeThis'
 import Container from './Container'
 import CopyPasteOnly from './CopyPasteOnly'
-import GistMeta from './GistMeta'
 import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
-import MoreLikeThis from './MoreLikeThis'
 import PageWrapper from './PageWrapper'
 import PortalTarget from './PortalTarget'
-import PublicationDateComponent from './PublicationDate'
+import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
 
@@ -103,14 +103,14 @@ const Footer = styled.footer(
 )
 
 interface Props {
-  gist: GistMeta
+  article: BlogArticleMeta
   // Async to avoid circular reference issues
-  relatedGist?: Promise<{ meta: GistMeta }>
+  relatedArticle?: Promise<{ meta: BlogArticleMeta }>
   children: ReactNode
   addendum?: ReactNode
 }
 
-const Gist = ({ gist, children, addendum }: Props) => {
+const BlogArticle = ({ article, children, addendum }: Props) => {
   const {
     title,
     titleReact,
@@ -121,7 +121,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
     republishedReason,
     updatedAt,
     tags,
-  } = gist
+  } = article
   const { pathname } = useRouter()
 
   const [startReading] = useState(() => Date.now())
@@ -167,7 +167,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
       </Head>
 
       <TopBar>
-        <Link href="/gists">Gists</Link> by <Link href="/">Martijn Hols</Link>
+        <Link href="/blog">Blog</Link> by <Link href="/">Martijn Hols</Link>
       </TopBar>
 
       <article>
@@ -175,12 +175,12 @@ const Gist = ({ gist, children, addendum }: Props) => {
           <ArticleHeader>
             <div>
               <Link
-                href="/gists"
+                href="/blog"
                 css={css`
                   white-space: nowrap;
                 `}
               >
-                ← More gists
+                ← Blog index
               </Link>
             </div>
             <ArticleMetadata>
@@ -191,16 +191,12 @@ const Gist = ({ gist, children, addendum }: Props) => {
                   >
                     Republished
                   </Annotation>{' '}
-                  <PublicationDateComponent date={republishedAt} />
+                  <RelativeDate date={republishedAt} />
                 </>
               ) : (
                 <>
                   Published{' '}
-                  {publishedAt ? (
-                    <PublicationDateComponent date={publishedAt} />
-                  ) : (
-                    'N/A'
-                  )}
+                  {publishedAt ? <RelativeDate date={publishedAt} /> : 'N/A'}
                 </>
               )}
               {updatedAt && isUpdatedAtDifferent && (
@@ -211,7 +207,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
                       white-space: nowrap;
                     `}
                   >
-                    updated <PublicationDateComponent date={updatedAt} />
+                    updated <RelativeDate date={updatedAt} />
                   </span>
                 </>
               )}
@@ -230,7 +226,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
 
           <Tags>
             {tags.map((tag) => (
-              <Link key={tag} href={`/gists?tag=${tag}`} className="plain">
+              <Link key={tag} href={`/blog?tag=${tag}`} className="plain">
                 <Tag>{tag}</Tag>
               </Link>
             ))}
@@ -248,7 +244,7 @@ const Gist = ({ gist, children, addendum }: Props) => {
         )}
       </article>
 
-      <StyledMoreLikeThis gist={gist} />
+      <StyledMoreLikeThis article={article} />
 
       <Angle inverted />
 
@@ -264,4 +260,4 @@ const Gist = ({ gist, children, addendum }: Props) => {
   )
 }
 
-export default Gist
+export default BlogArticle

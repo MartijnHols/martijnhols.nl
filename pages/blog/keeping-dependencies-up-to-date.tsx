@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Aside from '../../components/Aside'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import dependabotImage from './assets/dependabot.png'
 import dependencyUpdatesScheduledImage from './assets/dependency-updates-scheduled.png'
@@ -11,7 +13,7 @@ import dependencyUpdatesIcal from './assets/dependencyupdates.ics'
 import libyearsCartoonImage from './assets/libyears-cartoon.png'
 import openGraphImage from './assets/ogimage-keeping-dependencies-up-to-date.png'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'keeping-dependencies-up-to-date',
   title: 'Keeping dependencies up-to-date',
   titleReact: (
@@ -21,15 +23,19 @@ export const meta: GistMeta = {
     </>
   ),
   description:
-    'The gist of keeping dependencies up-to-date. When to update, how to update, and what to update first.',
+    'A strategy for keeping dependencies up-to-date. When to update, how to update, and what to update first.',
   image: openGraphImage,
   publishedAt: '2024-04-28',
-  tags: [GistTag.Dependencies, GistTag.Security, GistTag.Maintainability],
-  relatedGist: import('./the-security-risks-of-front-end-dependencies'),
+  tags: [
+    BlogArticleTag.Dependencies,
+    BlogArticleTag.Security,
+    BlogArticleTag.Maintainability,
+  ],
+  relatedArticle: import('./the-security-risks-of-front-end-dependencies'),
 }
 
 const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       When you're using many dependencies, keeping them up-to-date can be a real
       challenge. Installing dependency updates can take a lot of time, time that
@@ -278,7 +284,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
     </p>
 
     <p>Just keep at it.</p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default SecurityImplicationsOfPackagesOnTheFrontendGist

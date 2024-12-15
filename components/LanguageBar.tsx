@@ -81,14 +81,14 @@ const LanguageBar = () => {
             </a>
             <br />
             Note: Google Translate{' '}
-            <Link href="/gists/everything-about-google-translate-crashing-react">
+            <Link href="/blog/everything-about-google-translate-crashing-react">
               may be error-prone in React apps
             </Link>
             .
           </Action>
           <Action>
             Alternatively, you may be interested in my{' '}
-            <Link href="/gists">blog</Link>, which is fully English.
+            <Link href="/blog">blog</Link>, which is fully English.
           </Action>
         </Actions>
       </Container>

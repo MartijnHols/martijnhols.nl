@@ -12,7 +12,7 @@ type MyAppProps = AppProps<{
 }>
 
 const App = ({ Component, pageProps, router }: MyAppProps) => {
-  useForceHtmlLangAttribute(router.asPath.startsWith('/gists') ? 'en' : 'nl')
+  useForceHtmlLangAttribute(router.asPath.startsWith('/blog') ? 'en' : 'nl')
 
   return (
     <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>

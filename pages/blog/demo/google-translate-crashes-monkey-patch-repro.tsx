@@ -27,7 +27,7 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
 
   // I only want to monkey patch the element that I'm simulating Google
   // Translate on, and not on the entire page.
-  // See https://martijnhols.nl/gists/demo/react-translation-reproduction if you
+  // See https://martijnhols.nl/blog/demo/react-translation-reproduction if you
   // want to see the monkey patching running on an entire page exactly as it
   // was suggested in the React issue.
   useEffect(() => {
@@ -121,17 +121,17 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
 
       <div style={{ marginTop: '1em' }}>
         <a
-          href="/gists/demo/google-translate-crashes-monkey-patch-repro"
+          href="/blog/demo/google-translate-crashes-monkey-patch-repro"
           target="_blank"
         >
           Open in new window
         </a>
         {' | '}
-        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/gists/demo/google-translate-crashes-monkey-patch-repro.tsx">
+        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/blog/demo/google-translate-crashes-monkey-patch-repro.tsx">
           Source
         </a>
         {' | '}
-        <Link href="/gists/everything-about-google-translate-crashing-react#monkey-patching-removechild-and-insertbefore">
+        <Link href="/blog/everything-about-google-translate-crashing-react#monkey-patching-removechild-and-insertbefore">
           More info
         </Link>
       </div>

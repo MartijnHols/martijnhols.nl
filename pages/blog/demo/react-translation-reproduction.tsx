@@ -99,7 +99,7 @@ const ReactTranslationReproduction = () => {
   return (
     <PageWrapper key={String(simulateGoogleTranslate)}>
       <TopBar>
-        <a href="https://github.com/MartijnHols/martijnhols.nl/blob/main/pages/gists/demo/react-translation-reproduction.tsx">
+        <a href="https://github.com/MartijnHols/martijnhols.nl/blob/main/pages/blog/demo/react-translation-reproduction.tsx">
           Source code
         </a>
       </TopBar>
@@ -107,7 +107,7 @@ const ReactTranslationReproduction = () => {
       <Container>
         <Alert>
           I wrote an in-depth article on{' '}
-          <Link href="/gists/everything-about-google-translate-crashing-react">
+          <Link href="/blog/everything-about-google-translate-crashing-react">
             Everything about Google Translate crashing React (and other) apps
           </Link>{' '}
           that has all the information you could want on this subject (including
@@ -212,7 +212,7 @@ const ReactTranslationReproduction = () => {
         </Aside>
 
         <p>
-          <Link href="/gists">More gists</Link>
+          <Link href="/blog">More articles</Link>
         </p>
       </Container>
     </PageWrapper>

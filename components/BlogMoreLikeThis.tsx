@@ -1,9 +1,12 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
-import { gists } from '../pages/gists'
+import { articles } from '../pages/blog'
+import BlogArticleMeta, {
+  BlogArticleTag,
+  priorityTags,
+} from './BlogArticleMeta'
 import Container from './Container'
-import GistMeta, { GistTag, priorityTags } from './GistMeta'
 import Link from './Link'
 import Tag from './Tag'
 
@@ -108,14 +111,17 @@ const Tags = styled.div`
   flex-wrap: wrap;
 `
 
-const tagRelevancyScore = (base: GistTag[], alternative: GistTag[]) => {
+const tagRelevancyScore = (
+  base: BlogArticleTag[],
+  alternative: BlogArticleTag[],
+) => {
   let score = 0
   base.forEach((tag) => {
     if (alternative.includes(tag)) {
       score += 10
     }
   })
-  if (alternative.includes(GistTag.HowTo)) {
+  if (alternative.includes(BlogArticleTag.HowTo)) {
     score -= 1
   }
   priorityTags.forEach((tag) => {
@@ -123,7 +129,10 @@ const tagRelevancyScore = (base: GistTag[], alternative: GistTag[]) => {
       score += 10
     }
   })
-  if (!base.includes(GistTag.Meta) && alternative.includes(GistTag.Meta)) {
+  if (
+    !base.includes(BlogArticleTag.Meta) &&
+    alternative.includes(BlogArticleTag.Meta)
+  ) {
     score -= 100
   }
 
@@ -131,23 +140,24 @@ const tagRelevancyScore = (base: GistTag[], alternative: GistTag[]) => {
 }
 
 interface Props {
-  gist: GistMeta
+  article: BlogArticleMeta
   className?: string
 }
 
-const MoreLikeThis = ({ gist, className }: Props) => {
-  const [alternativeGists, setAlternativeGists] = useState<GistMeta[]>()
+const MoreLikeThis = ({ article, className }: Props) => {
+  const [alternativeArticles, setAlternativeArticles] =
+    useState<BlogArticleMeta[]>()
   useEffect(() => {
-    // TODO: Move this into getStaticProps. Probably going to have to move gists out of the pages folder for that
-    Promise.all(gists).then((gists) => {
-      setAlternativeGists(
-        gists
+    // TODO: Move this into getStaticProps. Probably going to have to move articles out of the pages folder for that
+    Promise.all(articles).then((articles) => {
+      setAlternativeArticles(
+        articles
           .map((g) => g.meta)
-          ?.filter((item) => item.slug !== gist.slug)
+          ?.filter((item) => item.slug !== article.slug)
           .sort(
             (a, b) =>
-              tagRelevancyScore(gist.tags, b.tags) -
-              tagRelevancyScore(gist.tags, a.tags),
+              tagRelevancyScore(article.tags, b.tags) -
+              tagRelevancyScore(article.tags, a.tags),
           ),
       )
     })
@@ -157,12 +167,12 @@ const MoreLikeThis = ({ gist, className }: Props) => {
     <PageOverflowContainer className={className}>
       <StyledContainer>
         <TextLine>
-          <MoreLikeThisLink href="/gists">More like this</MoreLikeThisLink>
+          <MoreLikeThisLink href="/blog">More like this</MoreLikeThisLink>
         </TextLine>
-        {alternativeGists?.slice(0, 1).map((item) => (
+        {alternativeArticles?.slice(0, 1).map((item) => (
           <StyledLink
             key={item.slug}
-            href={`/gists/${item.slug}`}
+            href={`/blog/${item.slug}`}
             className="plain"
           >
             <Article>

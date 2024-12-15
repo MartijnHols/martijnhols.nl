@@ -1,23 +1,30 @@
 import Image from 'next/image'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import iosSafariUseViewportSize from './assets/ios-safari-useviewportsize.gif'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-get-document-height-ios-safari-osk',
   title:
     'How to get the document height in iOS Safari when the on-screen keyboard is open',
   description:
     'In this gist I share a React hook to get an accurate document height that correctly accounts for the on-screen keyboard on iOS Safari.',
   publishedAt: '2024-04-04',
-  tags: [GistTag.HowTo, GistTag.Ios, GistTag.Safari, GistTag.React],
+  tags: [
+    BlogArticleTag.HowTo,
+    BlogArticleTag.Ios,
+    BlogArticleTag.Safari,
+    BlogArticleTag.React,
+  ],
 }
 
 const GistHowToGetDocumentHeightIosSafariOsk = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       When it comes to the on-screen keyboard (OSK), Safari on iOS{' '}
       <Link href="./how-to-detect-the-on-screen-keyboard-in-ios-safari#ios-safari-behavior">
@@ -155,7 +162,7 @@ export default useViewportSize
       's <Code>resize</Code> event is also triggered for the scrollbar appearing
       and disappearing in regular browsers. That might come in handy.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistHowToGetDocumentHeightIosSafariOsk

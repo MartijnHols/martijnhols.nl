@@ -1,10 +1,12 @@
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Annotation from '../../components/Annotation'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import lodashImage from './assets/lodash.png'
 import openGraphImage from './assets/ogimage-you-dont-need-lodash.png'
@@ -13,7 +15,7 @@ const LodashFigure = styled(Figure)`
   text-align: center;
 `
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'you-dont-need-lodash',
   title: "You don't need Lodash",
   description:
@@ -21,11 +23,15 @@ export const meta: GistMeta = {
   image: openGraphImage,
   publishedAt: '2024-11-28',
   updatedAt: '2024-12-03',
-  tags: [GistTag.Javascript, GistTag.Dependencies, GistTag.Maintainability],
+  tags: [
+    BlogArticleTag.Javascript,
+    BlogArticleTag.Dependencies,
+    BlogArticleTag.Maintainability,
+  ],
 }
 
 const GistYouDontNeedLodash = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>And I reckon you shouldn't use it.</p>
     <LodashFigure
       caption="Lodash as it describes itself"
@@ -47,11 +53,11 @@ const GistYouDontNeedLodash = () => (
       You're better off learning and using the patterns of the language you're
       using, rather than learning the characteristics of a library and dealing
       with the bundle size, license,{' '}
-      <Link href="/gists/the-security-risks-of-front-end-dependencies">
+      <Link href="/blog/the-security-risks-of-front-end-dependencies">
         security
       </Link>
       , and{' '}
-      <Link href="gists/keeping-dependencies-up-to-date">
+      <Link href="/blog/keeping-dependencies-up-to-date">
         maintenance implications
       </Link>
       . On the other hand, the language syntax is{' '}
@@ -103,7 +109,7 @@ const GistYouDontNeedLodash = () => (
       more readable and maintainable manner.
     </p>
     <p>
-      This gist isn't even just about Lodash. This applies to most libraries
+      This article isn't even just about Lodash. This applies to most libraries
       that have usable native alternatives. Another such example is Axios, and a
       less obvious example is{' '}
       <Link href="https://redux-observable.js.org/">redux-observables</Link>,{' '}
@@ -119,7 +125,7 @@ const GistYouDontNeedLodash = () => (
         Let me know what you think.
       </Link>
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistYouDontNeedLodash

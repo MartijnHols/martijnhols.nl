@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
@@ -26,7 +28,7 @@ const ObfuscatedPackageFigure = styled(Figure)(
   `,
 )
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'the-security-risks-of-front-end-dependencies',
   title: 'The security risks of front-end dependencies',
   description:
@@ -36,12 +38,16 @@ export const meta: GistMeta = {
   republishedAt: '2024-12-14',
   republishedReason:
     'I rewrote the article to significantly improve the flow, add details and reduce repetition. The spirit of the article remains the same, but it should read a lot better.',
-  tags: [GistTag.Security, GistTag.Dependencies, GistTag.Maintainability],
-  relatedGist: import('./keeping-dependencies-up-to-date'),
+  tags: [
+    BlogArticleTag.Security,
+    BlogArticleTag.Dependencies,
+    BlogArticleTag.Maintainability,
+  ],
+  relatedArticle: import('./keeping-dependencies-up-to-date'),
 }
 
 const SecurityImplicationsOfDependenciesOnTheFrontendGist = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       Front-end apps are built with hundreds of dependencies, each one a
       potential risk. This year alone, thousands of JavaScript vulnerabilities
@@ -396,7 +402,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = () => (
       <li>Avoid obfuscated packages</li>
       <li>Increase the barrier of adding new dependencies to your project</li>
       <li>
-        <Link href="/gists/keeping-dependencies-up-to-date">
+        <Link href="/blog/keeping-dependencies-up-to-date">
           Keep dependencies (reasonably) up-to-date
         </Link>{' '}
         so that it's easy to update when a security advisory is published
@@ -418,7 +424,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = () => (
       updates to the latest version of actions by default. These can inject
       nasty stuff into your builds as well, and their code is even less visible.
     </Aside>
-  </Gist>
+  </BlogArticle>
 )
 
 // Some ideas to help with this:

@@ -1,43 +1,43 @@
 import fs from 'fs/promises'
 import RSS from 'rss'
-import { filterUnpublished, gists } from '../pages/gists'
+import { filterUnpublished, articles } from '../pages/blog'
 
 export default async function generateRssFeed() {
   const baseUrl = process.env.NEXT_PUBLIC_PRIMARY_HOST
 
-  const publishedGists = (await Promise.all(gists))
-    .map((gist) => gist.meta)
+  const publishedArticles = (await Promise.all(articles))
+    .map((article) => article.meta)
     .filter(filterUnpublished)
 
   const feed = new RSS({
-    title: 'Gists by Martijn Hols',
+    title: 'Blog by Martijn Hols',
     description:
-      "Martijn Hols's gists are brief code snippets, opinions and answers to common questions and problems. Mostly about React and closely related things.",
+      'My blog where I post articles on React, TypeScript, JavaScript and related subjects. I post deep dives, brief code snippets, opinions, etc..',
     generator:
       'https://github.com/MartijnHols/martijnhols.nl/tree/main/utils/generateRssFeed.ts',
     feed_url: `${baseUrl}/rss.xml`,
     site_url: baseUrl,
     pubDate: new Date(
-      publishedGists.reduce((latest, gist) => {
-        const publishedAt = gist.republishedAt ?? gist.publishedAt
+      publishedArticles.reduce((latest, article) => {
+        const publishedAt = article.republishedAt ?? article.publishedAt
         return publishedAt > latest ? publishedAt : latest
       }, '2024-04-01'),
     ),
     managingEditor: 'Martijn Hols',
-    copyright: `${baseUrl}/gists/license`,
+    copyright: `${baseUrl}/blog/license`,
     language: 'en-US',
     categories: ['Web', 'Programming', 'React', 'JavaScript'],
     ttl: 120,
   })
 
-  publishedGists.toReversed().map((gist) => {
+  publishedArticles.toReversed().map((article) => {
     feed.item({
-      title: gist.title,
-      description: gist.description,
-      url: `${baseUrl}/gists/${gist.slug}`,
-      date: new Date(gist.republishedAt ?? gist.publishedAt),
+      title: article.title,
+      description: article.description,
+      url: `${baseUrl}/blog/${article.slug}`,
+      date: new Date(article.republishedAt ?? article.publishedAt),
       author: 'Martijn Hols',
-      categories: gist.tags,
+      categories: article.tags,
     })
   })
 

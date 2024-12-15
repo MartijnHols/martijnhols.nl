@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { GistTag, SerializableGistMeta } from './GistMeta'
+import { BlogArticleTag, SerializableBlogArticleMeta } from './BlogArticleMeta'
 import Link from './Link'
 import Panel from './Panel'
-import PublicationDate from './PublicationDate'
+import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 
 const ArticleTitle = styled.h2(
@@ -116,35 +116,35 @@ const Tags = styled.div(
 )
 
 interface Props {
-  gist: SerializableGistMeta
+  article: SerializableBlogArticleMeta
 }
 
-const GistCard = ({ gist }: Props) => (
+const BlogArticleCard = ({ article }: Props) => (
   <ArticleLink
-    href={`/gists/${gist.slug}`}
+    href={`/blog/${article.slug}`}
     className="plain"
-    howTo={gist.tags.includes(GistTag.HowTo)}
+    howTo={article.tags.includes(BlogArticleTag.HowTo)}
   >
     <Article
       as="article"
       boxShadow={false}
-      howTo={gist.tags.includes(GistTag.HowTo)}
+      howTo={article.tags.includes(BlogArticleTag.HowTo)}
     >
-      <ArticleTitle>{gist.title}</ArticleTitle>
-      <p>{gist.description}</p>
+      <ArticleTitle>{article.title}</ArticleTitle>
+      <p>{article.description}</p>
       <ArticleMetadata>
         <Tags>
-          {gist.tags.map((tag) => (
+          {article.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </Tags>
         <PublishedAt>
-          {gist.republishedAt ? 'Republished' : 'Published'}{' '}
-          <PublicationDate date={gist.republishedAt ?? gist.publishedAt} />
+          {article.republishedAt ? 'Republished' : 'Published'}{' '}
+          <RelativeDate date={article.republishedAt ?? article.publishedAt} />
         </PublishedAt>
       </ArticleMetadata>
     </Article>
   </ArticleLink>
 )
 
-export default GistCard
+export default BlogArticleCard

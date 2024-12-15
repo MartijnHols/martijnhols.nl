@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import Link from '../../../components/Link'
 
-const GoogleTranslateCrashesRepro = () => {
-  const [lightsOn, setLightsOn] = useState(true)
+const GoogleTranslateEventTargetRepro = () => {
+  const [clickedElement, setClickedElement] = useState<HTMLElement | null>(null)
 
   const [simulateGoogleTranslate, setSimulateGoogleTranslate] = useState(true)
   useEffect(() => {
@@ -13,7 +13,7 @@ const GoogleTranslateCrashesRepro = () => {
     // Not using ref because I want to eliminate all magic and any suggestion
     // that React might be doing something funny
     document
-      .getElementById('GoogleTranslateCrashesRepro-translateme')
+      .getElementById('GoogleTranslateEventTargetRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
           const fontElem = document.createElement('font')
@@ -25,21 +25,15 @@ const GoogleTranslateCrashesRepro = () => {
       })
   })
 
+  const handleClick = (e: MouseEvent) => {
+    setClickedElement(e.target as HTMLElement | null)
+  }
+
   return (
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
       key={`${simulateGoogleTranslate}`}
-      // Just a little something to show current state
-      style={
-        lightsOn
-          ? {}
-          : {
-              backgroundColor: '#333',
-              color: 'white',
-              padding: '1em',
-              margin: '-1em',
-            }
-      }
+      onClick={handleClick}
     >
       <div style={{ marginBottom: '1em' }}>
         <label>
@@ -54,27 +48,27 @@ const GoogleTranslateCrashesRepro = () => {
         </label>
       </div>
 
-      <div id="GoogleTranslateCrashesRepro-translateme">
-        <button
-          type="button"
-          onClick={() => setLightsOn(!lightsOn)}
-          style={{ marginRight: '0.5em' }}
-        >
-          Toggle lights
+      <div>
+        <button type="button" id="GoogleTranslateEventTargetRepro-translateme">
+          There are 4 lights!
         </button>
-        {lightsOn && 'There are 4 lights!'}
       </div>
 
+      <div>You clicked: {clickedElement ? clickedElement.tagName : 'N/A'}</div>
+
       <div style={{ marginTop: '1em' }}>
-        <a href="/gists/demo/google-translate-crashes-repro" target="_blank">
+        <a
+          href="/blog/demo/google-translate-event-target-repro"
+          target="_blank"
+        >
           Open in new window
         </a>
         {' | '}
-        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/gists/demo/google-translate-crashes-repro.tsx">
+        <a href="https://github.com/MartijnHols/martijnhols.nl/tree/main/pages/blog/demo/google-translate-event-target-repro.tsx">
           Source
         </a>
         {' | '}
-        <Link href="/gists/everything-about-google-translate-crashing-react#issue-crashes-reproduction">
+        <Link href="/blog/everything-about-google-translate-crashing-react#issue-inconsistent-event-target-reproduction">
           More info
         </Link>
       </div>
@@ -82,4 +76,4 @@ const GoogleTranslateCrashesRepro = () => {
   )
 }
 
-export default GoogleTranslateCrashesRepro
+export default GoogleTranslateEventTargetRepro

@@ -3,13 +3,13 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
-import Container from '../../components/Container'
-import GistCard from '../../components/GistCard'
-import GistMeta, {
-  GistTag,
+import BlogArticleCard from '../../components/BlogArticleCard'
+import BlogArticleMeta, {
+  BlogArticleTag,
   PublicationDate as PublicationDateType,
-  SerializableGistMeta,
-} from '../../components/GistMeta'
+  SerializableBlogArticleMeta,
+} from '../../components/BlogArticleMeta'
+import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import Tag from '../../components/Tag'
@@ -18,7 +18,7 @@ import absoluteUrl from '../../utils/absoluteUrl'
 import generateRssFeed from '../../utils/generateRssFeed'
 
 // TODO: topLevelAwait
-export const gists = [
+export const articles = [
   import('./intro'),
   import('./license'),
   import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
@@ -31,29 +31,30 @@ export const gists = [
   import('./how-to-write-a-good-git-commit-message'),
   import('./you-dont-need-lodash'),
   import('./how-to-add-copy-paste-only-text-in-html-react'),
-] as Array<Promise<{ meta: GistMeta }>>
+] as Array<Promise<{ meta: BlogArticleMeta }>>
 
 export const filterUnpublished = (
-  gist: GistMeta,
-): gist is typeof gist & { publishedAt: PublicationDateType } =>
-  gist.publishedAt !== undefined
+  article: BlogArticleMeta,
+): article is typeof article & { publishedAt: PublicationDateType } =>
+  article.publishedAt !== undefined
 // We do this client-side so we can avoid the hassle of having to generate new
 // pages. We'll do that when we get enough articles to warrant it.
-const makeFilterByTag = (tag: GistTag | undefined) => (gist: GistMeta) =>
-  tag === undefined || gist.tags.includes(tag)
+const makeFilterByTag =
+  (tag: BlogArticleTag | undefined) => (article: BlogArticleMeta) =>
+    tag === undefined || article.tags.includes(tag)
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   await generateRssFeed()
 
   return {
     props: {
-      gists: (await Promise.all(gists))
+      articles: (await Promise.all(articles))
         .map((file) => file.meta)
         .filter(filterUnpublished)
         .map(
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          ({ titleReact, relatedGist, ...serializableGistMeta }) =>
-            serializableGistMeta,
+          ({ titleReact, relatedArticle, ...serializableArticleMeta }) =>
+            serializableArticleMeta,
         )
         .sort((a, b) =>
           (a.republishedAt ?? a.publishedAt).localeCompare(
@@ -82,20 +83,22 @@ const ArticleList = styled.ul`
 `
 
 interface Props {
-  gists: SerializableGistMeta[]
+  articles: SerializableBlogArticleMeta[]
 }
 
-const GistsIndex = ({ gists }: Props) => {
+const BlogIndex = ({ articles }: Props) => {
   const { pathname, query } = useRouter()
 
-  const tagToFilter = query.tag as GistTag | undefined
-  const filteredGists = gists.filter(makeFilterByTag(tagToFilter)).reverse()
+  const tagToFilter = query.tag as BlogArticleTag | undefined
+  const filteredArticles = articles
+    .filter(makeFilterByTag(tagToFilter))
+    .reverse()
 
   return (
     <PageWrapper>
       <BaseHead
-        title={`Gists by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
-        description="Martijn Hols's gists are brief code snippets, opinions and answers to common questions and problems. Mostly about React and closely related things."
+        title={`Blog by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
+        description="My blog where I post articles on React, TypeScript, JavaScript and related subjects. I post deep dives, brief code snippets, opinions, etc.."
         absoluteUrl={absoluteUrl(pathname)}
       />
 
@@ -105,20 +108,20 @@ const GistsIndex = ({ gists }: Props) => {
         </TopBar>
 
         <StyledContainer>
-          <Title>Just the gists</Title>
+          <Title>Blog.</Title>
 
           <ArticleList>
-            {filteredGists.map((gist) => (
-              <li key={gist.slug}>
-                <GistCard gist={gist} />
+            {filteredArticles.map((article) => (
+              <li key={article.slug}>
+                <BlogArticleCard article={article} />
               </li>
             ))}
           </ArticleList>
 
           {tagToFilter && (
-            <div key={filteredGists.length}>
-              {filteredGists.length}{' '}
-              {filteredGists.length === 1 ? 'result' : 'results'} for{' '}
+            <div key={filteredArticles.length}>
+              {filteredArticles.length}{' '}
+              {filteredArticles.length === 1 ? 'result' : 'results'} for{' '}
               <Tag>{tagToFilter}</Tag> (<Link href={pathname}>show all</Link>)
             </div>
           )}
@@ -127,9 +130,9 @@ const GistsIndex = ({ gists }: Props) => {
         <Angle inverted />
       </Main>
 
-      {/** TODO: Custom gist footer (don't want phone number in there) */}
+      {/** TODO: Custom blog footer (don't want phone number in there) */}
     </PageWrapper>
   )
 }
 
-export default GistsIndex
+export default BlogIndex

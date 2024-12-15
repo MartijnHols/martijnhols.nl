@@ -1,25 +1,27 @@
+import BlogArticle from '../../components/BlogArticle'
+import BlogArticleMeta, {
+  BlogArticleTag,
+} from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
-import Gist from '../../components/Gist'
-import GistMeta, { GistTag } from '../../components/GistMeta'
 import Link from '../../components/Link'
 
-export const meta: GistMeta = {
+export const meta: BlogArticleMeta = {
   slug: 'how-to-handle-array-values-in-react-hook-form',
   title: 'How to handle array values in react-hook-form',
   description:
     'A simple way to handle fields with basic array values in react-hook-form.',
   publishedAt: '2024-05-04',
   tags: [
-    GistTag.HowTo,
-    GistTag.ReactHookForm,
-    GistTag.React,
-    GistTag.Maintainability,
+    BlogArticleTag.HowTo,
+    BlogArticleTag.ReactHookForm,
+    BlogArticleTag.React,
+    BlogArticleTag.Maintainability,
   ],
 }
 
 const GistHowToHandleArrayValuesInReactHookForm = () => (
-  <Gist gist={meta}>
+  <BlogArticle article={meta}>
     <p>
       <Link href="https://react-hook-form.com/">react-hook-form</Link> is by far
       the most popular form library in React. Having used most of the big ones,
@@ -231,7 +233,7 @@ export default ArticleSelect
     <p>
       You really rarely actually need <Code>useFieldArray</Code>.
     </p>
-  </Gist>
+  </BlogArticle>
 )
 
 export default GistHowToHandleArrayValuesInReactHookForm
