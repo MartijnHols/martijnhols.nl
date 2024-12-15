@@ -53,29 +53,37 @@ const FooterSlice = ({ slice }: Props) => {
       <Container>
         <ContactRow>
           <Label>{slice.primary.contactLabel}</Label>
-          <Values>
-            {slice.primary.email && (
-              <Item>
-                <a href={`mailto:${slice.primary.email}`}>
-                  {slice.primary.email}
-                </a>
-              </Item>
-            )}
-            {slice.primary.whatsApp && (
-              <Item>
-                <a
-                  href={`https://api.whatsapp.com/send?phone=${slice.primary.whatsApp}`}
-                >
-                  WhatsApp
-                </a>
-              </Item>
-            )}
-            {slice.primary.phone && (
-              <Item>
-                <a href={`tel:${slice.primary.phone}`}>{slice.primary.phone}</a>
-              </Item>
-            )}
-          </Values>
+          <div>
+            <Values>
+              {slice.primary.email && (
+                <Item>
+                  <a href={`mailto:${slice.primary.email}`}>
+                    {slice.primary.email}
+                  </a>
+                </Item>
+              )}
+              {slice.primary.whatsApp && (
+                <Item>
+                  <a
+                    href={`https://api.whatsapp.com/send?phone=${slice.primary.whatsApp}`}
+                  >
+                    WhatsApp
+                  </a>
+                </Item>
+              )}
+              {slice.primary.phone && (
+                <Item>
+                  <a href={`tel:${slice.primary.phone}`}>
+                    {slice.primary.phone}
+                  </a>
+                </Item>
+              )}
+            </Values>
+            <small>
+              Ik ben het beste bereikbaar op dinsdag, donderdag, vrijdag, en in
+              het weekend.
+            </small>
+          </div>
         </ContactRow>
         {isFilled.richText(slice.primary.contactAnnotation) && (
           <Row>
