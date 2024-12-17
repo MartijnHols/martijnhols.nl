@@ -25,14 +25,14 @@ const Container = styled('div', {
     --background: ${theme.colors.black};
     background: var(--background);
     position: relative;
-    --size: 0.8em;
+    --angle-size: 0.8em;
 
     ::before {
       content: '';
       position: absolute;
       display: block;
-      height: var(--size);
-      inset: calc(var(--size) * -1) 0;
+      height: var(--angle-size);
+      inset: calc(var(--angle-size) * -1) 0;
       bottom: auto;
       background: linear-gradient(
         to bottom right,
@@ -45,7 +45,7 @@ const Container = styled('div', {
     css`
       padding-top: 9px;
       padding-bottom: 9px;
-      --size: 0.4em;
+      --angle-size: 0.4em;
     `,
   boxShadow &&
     css`
@@ -62,7 +62,7 @@ const BottomAngle = styled('div', {
   css`
     position: absolute;
     display: block;
-    --size: 0.8em;
+    --angle-size: 0.8em;
     height: var(--box-shadow-distance);
     inset: calc(var(--box-shadow-distance) * -1) 0;
     left: calc(var(--box-shadow-distance) * -1);
@@ -75,7 +75,7 @@ const BottomAngle = styled('div', {
       position: absolute;
       z-index: 1;
       display: block;
-      height: var(--size);
+      height: var(--angle-size);
       left: var(--box-shadow-distance);
       width: 100%;
       background: linear-gradient(
@@ -88,7 +88,7 @@ const BottomAngle = styled('div', {
   `,
   variant === 'sm' &&
     css`
-      --size: 0.4em;
+      --angle-size: 0.4em;
     `,
   boxShadow &&
     css`
@@ -98,10 +98,10 @@ const BottomAngle = styled('div', {
         content: '';
         position: absolute;
         display: block;
-        height: var(--size);
+        height: var(--angle-size);
         width: 100%;
         left: 0;
-        bottom: calc(var(--size) * -1);
+        bottom: calc(var(--angle-size) * -1);
         background: linear-gradient(
           to bottom right,
           /* We need some margin to prevent a jagged edge */

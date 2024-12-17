@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
+import UspBar from './UspBar'
 
 const Section = styled.header(
   ({ theme }) => css`
@@ -18,7 +19,7 @@ const StyledContainer = styled(Container)(
 
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       padding-top: 110px;
-      padding-bottom: 150px;
+      padding-bottom: 110px;
     }
   `,
 )
@@ -46,9 +47,19 @@ const SubText = styled.div(
     font-weight: 500;
     ${theme.headings.h4}
     margin-top: ${theme.spacing.x2}px;
+    margin-bottom: 0;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       margin-top: ${theme.spacing.x4}px;
+    }
+  `,
+)
+const StyledUspBar = styled(UspBar)(
+  ({ theme }) => css`
+    margin-top: 1em;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      margin-top: 2em;
     }
   `,
 )
@@ -67,6 +78,8 @@ const Hero = ({ preTitle, title, subText }: Props) => (
         <IntroTitle>{title}</IntroTitle>
       </Intro>
       {subText && <SubText>{subText}</SubText>}
+
+      <StyledUspBar />
     </StyledContainer>
 
     <ContactButtonClipped />
