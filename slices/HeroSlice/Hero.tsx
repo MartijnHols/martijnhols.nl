@@ -61,6 +61,9 @@ const StyledUspBar = styled(UspBar)(
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       margin-top: 2em;
     }
+    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+      margin-top: 2.5em;
+    }
   `,
 )
 
