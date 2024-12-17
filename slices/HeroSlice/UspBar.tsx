@@ -97,7 +97,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
       <UspLink href="#footer" className="plain">
         <UspPanel variant="sm">
           <UspPanelTitle>Beschikbaarheid</UspPanelTitle>
-          <UspPanelText>Snel beschikbaar. Neem contact op →</UspPanelText>
+          <UspPanelText>Op dit moment niet beschikbaar.</UspPanelText>
         </UspPanel>
       </UspLink>
     </div>
