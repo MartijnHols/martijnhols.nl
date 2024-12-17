@@ -95,10 +95,14 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>
     <div>
       <UspLink href="#footer" className="plain">
-        <UspPanel variant="sm">
-          <UspPanelTitle>Beschikbaarheid</UspPanelTitle>
-          <UspPanelText>Op dit moment niet beschikbaar.</UspPanelText>
-        </UspPanel>
+        <Tooltip content="De komende tijd heb ik al een opdracht, maar je kunt altijd contact opnemen.">
+          <UspPanel variant="sm">
+            <UspPanelTitle>Beschikbaarheid</UspPanelTitle>
+            <UspPanelText>
+              Op dit moment niet beschik&shy;baar voor iets nieuws.
+            </UspPanelText>
+          </UspPanel>
+        </Tooltip>
       </UspLink>
     </div>
     <div>
@@ -106,7 +110,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
         <UspPanel variant="sm">
           <UspPanelTitle>Bereik</UspPanelTitle>
           <UspPanelText>
-            Midden-Nederland en omgeving{' '}
+            Midden-Nederland en om&shy;geving{' '}
             <DesktopOnlyText>(hybride werkplek)</DesktopOnlyText>
           </UspPanelText>
         </UspPanel>
