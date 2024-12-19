@@ -1,8 +1,10 @@
-import { css } from '@emotion/react'
+import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import ContactButtonClipped from '../../components/ContactButtonClipped'
 import Container from '../../components/Container'
+import reactStringReplace from '../../utils/reactStringReplace'
+import ReactLogo from './ReactLogo.svg'
 import UspBar from './UspBar'
 
 const Section = styled.header(
@@ -39,7 +41,7 @@ const PreTitle = styled.span(
     }
   `,
 )
-export const IntroTitle = styled.h1`
+const IntroTitle = styled.h1`
   margin: 0;
 `
 const SubText = styled.div(
@@ -66,6 +68,60 @@ const StyledUspBar = styled(UspBar)(
     }
   `,
 )
+
+const React = styled.span`
+  white-space: nowrap;
+`
+const ReactLogoAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+const StyledReactLogo = styled(ReactLogo)`
+  height: 1em;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${ReactLogoAnimation} infinite 20s linear;
+  }
+
+  ${IntroTitle} & {
+    // It hides the element *after* the scale transition is done, so this should
+    // do a good job of informing browsers the element and animation are
+    // inactive without affecting the user
+    visibility: hidden;
+    transition: visibility 600ms ease-out;
+
+    path {
+      transform: scale(0);
+      transition: transform 300ms ease-in-out;
+      transform-origin: center center;
+    }
+  }
+
+  ${IntroTitle}:hover & {
+    visibility: visible;
+
+    path {
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    display: none;
+  }
+`
+
+export const reactifyTitle = (title: string) =>
+  reactStringReplace(
+    title,
+    'React',
+    <React>
+      React <StyledReactLogo aria-label="" aria-hidden />
+    </React>,
+  )
 
 interface Props {
   preTitle?: ReactNode
