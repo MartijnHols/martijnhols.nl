@@ -1,21 +1,16 @@
 import { ThemeProvider } from '@emotion/react'
 import { AppProps } from 'next/app'
-import { DehydratedState } from 'react-query'
 import PortalTarget from '../components/PortalTarget'
 import ReactQueryProvider from '../components/ReactQueryProvider'
 import * as theme from '../theme'
 import GlobalStyles from '../theme/GlobalStyles'
 import useForceHtmlLangAttribute from '../utils/useForceHtmlLangAttribute'
 
-type MyAppProps = AppProps<{
-  dehydratedState: DehydratedState
-}>
-
-const App = ({ Component, pageProps, router }: MyAppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
   useForceHtmlLangAttribute(router.asPath.startsWith('/blog') ? 'en' : 'nl')
 
   return (
-    <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
+    <ReactQueryProvider>
       <ThemeProvider theme={theme}>
         <PortalTarget>
           <GlobalStyles />

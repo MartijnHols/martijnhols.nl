@@ -1,17 +1,11 @@
 import { ReactNode, useState } from 'react'
-import {
-  QueryClient,
-  QueryClientProvider,
-  Hydrate,
-  DehydratedState,
-} from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 interface Props {
-  dehydratedState: DehydratedState
   children: ReactNode
 }
 
-const ReactQueryProvider = ({ dehydratedState, children }: Props) => {
+const ReactQueryProvider = ({ children }: Props) => {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -26,9 +20,7 @@ const ReactQueryProvider = ({ dehydratedState, children }: Props) => {
   )
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={dehydratedState}>{children}</Hydrate>
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }
 

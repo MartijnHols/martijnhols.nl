@@ -3,7 +3,6 @@ import { SliceZone } from '@prismicio/react'
 import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
 import { useMemo } from 'react'
-import { dehydrate, QueryClient, DehydratedState } from 'react-query'
 import BaseHead from '../components/BaseHead'
 import HrefLangHead from '../components/HrefLangHead'
 import PageWrapper from '../components/PageWrapper'
@@ -12,7 +11,6 @@ import { components } from '../slices'
 import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
 import { toPrismicLocale } from '../utils/locales'
-import prefetchSliceSubQueries from '../utils/prefetchSliceSubQueries'
 import {
   createClient,
   getByUid,
@@ -52,7 +50,6 @@ const getCmsPage = async (
   prismicClient: PrismicClient,
   slug: string,
   locale: string,
-  queryClient: QueryClient,
 ) => {
   const page = await getByUid<PrismicPage<true>>(
     prismicClient,
@@ -64,14 +61,6 @@ const getCmsPage = async (
     return
   }
 
-  await prefetchSliceSubQueries({
-    prismicClient,
-    prismicLocale: locale,
-    queryClient,
-    slices: page.data.slices,
-    components,
-  })
-
   return page
 }
 
@@ -81,7 +70,6 @@ interface StaticProps {
   page: PrismicPage<true>
   layout: PrismicLayout
   previewData?: PreviewData
-  dehydratedState: DehydratedState
 }
 
 export const getStaticProps: GetStaticProps<
@@ -92,21 +80,8 @@ export const getStaticProps: GetStaticProps<
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const prismicLocale = toPrismicLocale(locale!)
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-      },
-    },
-  })
-
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const page = await getCmsPage(
-    prismicClient,
-    params!.slug,
-    prismicLocale,
-    queryClient,
-  )
+  const page = await getCmsPage(prismicClient, params!.slug, prismicLocale)
 
   const layout = await getLayoutById(
     prismicClient,
@@ -140,7 +115,6 @@ export const getStaticProps: GetStaticProps<
       page,
       layout,
       previewData,
-      dehydratedState: dehydrate(queryClient),
     }),
     revalidate: serverRuntimeConfig.pageRevalidateInterval,
   }
