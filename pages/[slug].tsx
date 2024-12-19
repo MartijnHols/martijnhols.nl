@@ -1,5 +1,4 @@
 import { Client as PrismicClient, Content } from '@prismicio/client'
-import { isFilled } from '@prismicio/helpers'
 import { SliceZone } from '@prismicio/react'
 import { GetStaticProps, PreviewData } from 'next'
 import getConfig from 'next/config'
@@ -22,11 +21,6 @@ import {
   PrismicLayout,
   PrismicPage,
 } from '../utils/prismic'
-import {
-  getPrismicConfig,
-  PrismicConfig,
-  PrismicConfigProvider,
-} from '../utils/prismicConfig'
 import prismicLinkResolver, { slugResolver } from '../utils/prismicLinkResolver'
 import stripUndefined from '../utils/stripUndefined'
 
@@ -84,7 +78,6 @@ const getCmsPage = async (
 const { serverRuntimeConfig } = getConfig()
 
 interface StaticProps {
-  config: PrismicConfig
   page: PrismicPage<true>
   layout: PrismicLayout
   previewData?: PreviewData
@@ -107,26 +100,21 @@ export const getStaticProps: GetStaticProps<
     },
   })
 
-  const [config, page] = await Promise.all([
-    getPrismicConfig(prismicClient, prismicLocale),
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    getCmsPage(prismicClient, params!.slug, prismicLocale, queryClient),
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  ])
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const page = await getCmsPage(
+    prismicClient,
+    params!.slug,
+    prismicLocale,
+    queryClient,
+  )
 
-  const layoutRef = isFilled.contentRelationship(page?.data.layout)
-    ? page?.data.layout
-    : isFilled.contentRelationship(config.data.defaultLayout)
-      ? config.data.defaultLayout
-      : undefined
-  if (!layoutRef) {
-    throw new Error(
-      'Page layout not set and config is missing the default layout',
-    )
-  }
-  const layout = await getLayoutById(prismicClient, layoutRef.id, prismicLocale)
+  const layout = await getLayoutById(
+    prismicClient,
+    'Y9wvsxIAACAAj3uQ',
+    prismicLocale,
+  )
 
-  if (!config || !page) {
+  if (!page) {
     return {
       notFound: true,
       revalidate: serverRuntimeConfig.pageRevalidateInterval,
@@ -149,7 +137,6 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: stripUndefined({
-      config: config.data,
       page,
       layout,
       previewData,
@@ -159,7 +146,7 @@ export const getStaticProps: GetStaticProps<
   }
 }
 
-const Page = ({ config, page, layout, previewData }: StaticProps) => {
+const Page = ({ page, layout, previewData }: StaticProps) => {
   const PageContentSlice = useMemo(
     () =>
       function PageContentDynamicComponent() {
@@ -185,15 +172,13 @@ const Page = ({ config, page, layout, previewData }: StaticProps) => {
       <HrefLangHead page={page} />
 
       <PrismicProvider previewData={previewData}>
-        <PrismicConfigProvider value={config}>
-          <SliceZone
-            slices={layout.data.slices}
-            components={{
-              ...components,
-              page_content: PageContentSlice,
-            }}
-          />
-        </PrismicConfigProvider>
+        <SliceZone
+          slices={layout.data.slices}
+          components={{
+            ...components,
+            page_content: PageContentSlice,
+          }}
+        />
       </PrismicProvider>
     </PageWrapper>
   )

@@ -1,10 +1,8 @@
 import { useRouter } from 'next/router'
-import { usePrismicConfig } from '../utils/prismicConfig'
 import Link from './Link'
 
 const LanguageSwitcher = () => {
   const { locale } = useRouter()
-  const config = usePrismicConfig()
 
   const alternativeLocale = locale === 'nl' ? 'en' : 'nl'
   const handleSwitchLanguage = () => {
@@ -13,7 +11,7 @@ const LanguageSwitcher = () => {
 
   return (
     <Link href="/" locale={alternativeLocale} onClick={handleSwitchLanguage}>
-      {config?.languageToggle}
+      {alternativeLocale === 'en' ? 'English' : 'Nederlands'}
     </Link>
   )
 }

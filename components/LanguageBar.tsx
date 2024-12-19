@@ -1,9 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { FilledContentRelationshipField } from '@prismicio/client'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { usePrismicConfig } from '../utils/prismicConfig'
 import Container from './Container'
 
 const Bar = styled.div(
@@ -52,17 +50,11 @@ const Action = styled.div(
 )
 
 const LanguageBar = () => {
-  const config = usePrismicConfig()
   const [show, setShow] = useState(false)
   useEffect(() => {
     setShow(!navigator.languages.some((lang) => lang.startsWith('nl')))
   }, [])
 
-  if (
-    (config.defaultLayout as FilledContentRelationshipField).lang !== 'nl-nl'
-  ) {
-    return
-  }
   if (!show) {
     return null
   }

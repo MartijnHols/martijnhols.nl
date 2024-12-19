@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
 import { ImageInfo } from '../utils/convertPrismicImage'
-import { usePrismicConfig } from '../utils/prismicConfig'
 import CopyPasteOnly from './CopyPasteOnly'
 import Link from './Link'
 import Panel from './Panel'
@@ -155,8 +154,6 @@ const ProjectBrief = ({
   highlighted,
   placeholder,
 }: Props) => {
-  const config = usePrismicConfig()
-
   const formatPeriod = (
     started: string | undefined,
     ended: string | undefined,
@@ -224,11 +221,9 @@ const ProjectBrief = ({
             </Tech>
             {(url || sourceCode) && (
               <ContactLinks>
-                {url && <Link href={url}>{config?.visit}</Link>}
+                {url && <Link href={url}>Bezoeken</Link>}
                 {url && sourceCode && <span>{' | '}</span>}
-                {sourceCode && (
-                  <Link href={sourceCode}>{config?.sourceCode}</Link>
-                )}
+                {sourceCode && <Link href={sourceCode}>Broncode</Link>}
               </ContactLinks>
             )}
           </ProjectExplanation>

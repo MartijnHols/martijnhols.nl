@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-import { usePrismicConfig } from '../utils/prismicConfig'
 import ChatIcon from './icons/chat.svg'
 import Link from './Link'
 
@@ -76,22 +75,18 @@ interface Props
   hovering?: boolean
 }
 
-const ContactButton = ({ inverted, hovering, ...others }: Props) => {
-  const config = usePrismicConfig()
-
-  return (
-    <Positioner>
-      <Link className="plain" href="#footer" {...others}>
-        <Container inverted={inverted} hovering={hovering}>
-          <ChatIconContainer>
-            <StyledChatIcon aria-label="" />
-          </ChatIconContainer>
-          <Divider />
-          {config?.contact}
-        </Container>
-      </Link>
-    </Positioner>
-  )
-}
+const ContactButton = ({ inverted, hovering, ...others }: Props) => (
+  <Positioner>
+    <Link className="plain" href="#footer" {...others}>
+      <Container inverted={inverted} hovering={hovering}>
+        <ChatIconContainer>
+          <StyledChatIcon aria-label="" />
+        </ChatIconContainer>
+        <Divider />
+        Contact
+      </Container>
+    </Link>
+  </Positioner>
+)
 
 export default ContactButton
