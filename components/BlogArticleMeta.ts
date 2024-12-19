@@ -15,6 +15,7 @@ export const enum BlogArticleTag {
   Ios = 'ios',
   Safari = 'safari',
   Javascript = 'javascript',
+  TypeScript = 'typescript',
   HTML = 'html',
   CSS = 'css',
   Git = 'git',

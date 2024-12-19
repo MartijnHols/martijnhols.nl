@@ -106,6 +106,7 @@ const nextConfig = withBundleAnalyzer({
     },
   ],
   webpack: (config) => {
+    config.experiments = { ...config.experiments, topLevelAwait: true }
     config.module.rules = [
       ...config.module.rules,
       // Import SVG components as react components

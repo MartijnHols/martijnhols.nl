@@ -104,6 +104,9 @@ const ThumbnailMobile = styled(Thumbnail)(
     }
   `,
 )
+const ThumbnailImage = styled(Image)`
+  object-fit: contain;
+`
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
@@ -131,7 +134,7 @@ interface Props {
   thumbnail?: ImageInfo
   functionTitle: string
   companyName: string
-  started?: string
+  started?: number
   ended?: string
   url?: string
   sourceCode?: string
@@ -178,10 +181,10 @@ const ProjectBrief = ({
       isPlaceholder={placeholder}
     >
       <div>
-        <Period>{formatPeriod(started, ended)}</Period>
+        <Period>{formatPeriod(String(started), ended)}</Period>
         {thumbnail && (
           <ThumbnailDesktop>
-            <Image
+            <ThumbnailImage
               src={thumbnail}
               alt={thumbnail.alt ?? companyName}
               width={100}
@@ -199,7 +202,7 @@ const ProjectBrief = ({
         <Main>
           {thumbnail && (
             <ThumbnailMobile>
-              <Image
+              <ThumbnailImage
                 src={thumbnail}
                 alt={thumbnail.alt ?? companyName}
                 width={100}
