@@ -1,7 +1,7 @@
-import { GetServerSideProps } from 'next'
+import fs from 'fs/promises'
 import { PublicationDate } from '../components/BlogArticleMeta'
-import absoluteUrl from '../utils/absoluteUrl'
-import { articles as articlesPromise } from './blog'
+import { articles as articlesPromise } from '../pages/blog'
+import absoluteUrl from './absoluteUrl'
 
 interface SiteMapUrl {
   loc: string
@@ -33,7 +33,7 @@ const createSiteMapXml = (urls: SiteMapUrl[]) =>
   </urlset>
 `.trim()
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export default async function generateSitemap() {
   const articles = (await Promise.all(articlesPromise))
     .map((file) => file.meta)
     .filter(
@@ -72,19 +72,5 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     })),
   ])
 
-  res.setHeader('Content-Type', 'text/xml')
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=600, stale-while-revalidate=600',
-  )
-  res.write(sitemap)
-  res.end()
-
-  return {
-    props: {},
-  }
+  await fs.writeFile('./public/sitemap.xml', sitemap)
 }
-
-const SiteMap = () => null
-
-export default SiteMap

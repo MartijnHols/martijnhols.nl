@@ -10,6 +10,7 @@ import PrismicProvider from '../components/PrismicProvider'
 import { components } from '../slices'
 import absoluteUrl from '../utils/absoluteUrl'
 import convertPrismicImage from '../utils/convertPrismicImage'
+import generateSitemap from '../utils/generateSitemap'
 import { toPrismicLocale } from '../utils/locales'
 import {
   createClient,
@@ -21,6 +22,10 @@ import {
 } from '../utils/prismic'
 import prismicLinkResolver, { slugResolver } from '../utils/prismicLinkResolver'
 import stripUndefined from '../utils/stripUndefined'
+
+// The generated code contains 'async/await' because this module is using "topLevelAwait".
+// However, your target environment does not appear to support 'async/await'.
+// As a result, the code may not run as expected or may cause runtime errors.
 
 const isFileDownloadPage = (page: PrismicPage<false>) => {
   const fileDownloadSlice = page.data.slices.find(
@@ -36,6 +41,8 @@ const isFileDownloadPage = (page: PrismicPage<false>) => {
 export const getStaticPaths = async () => {
   const client = createClient()
   const pages = await getPages(client)
+
+  await generateSitemap()
 
   return {
     paths: pages.filter(isFileDownloadPage).map((page) => ({
