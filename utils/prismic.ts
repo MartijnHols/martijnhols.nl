@@ -77,13 +77,6 @@ export const getPages = async (
     lang: locale,
   })
 
-export type PrismicProject = Content.ProjectDocument
-
-export const getProjects = (client: Client, locale: string) =>
-  client.getAllByType<PrismicProject>('project', {
-    lang: locale,
-  })
-
 export type PrismicLayout = PrismicDocument<
   Content.LayoutDocument['data'] & {
     // This is necessary because the generated types do not include "filled" which is very troublesome to work around

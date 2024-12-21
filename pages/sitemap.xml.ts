@@ -1,10 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { PublicationDate } from '../components/BlogArticleMeta'
 import absoluteUrl from '../utils/absoluteUrl'
-import { createClient, getPages, getProjects } from '../utils/prismic'
-import prismicLinkResolver, {
-  HOMEPAGE_SLUG,
-} from '../utils/prismicLinkResolver'
 import { articles as articlesPromise } from './blog'
 
 interface SiteMapUrl {
@@ -38,10 +34,6 @@ const createSiteMapXml = (urls: SiteMapUrl[]) =>
 `.trim()
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const client = createClient()
-  const pages = await getPages(client)
-  const projects = await getProjects(client, '*')
-
   const articles = (await Promise.all(articlesPromise))
     .map((file) => file.meta)
     .filter(
@@ -50,28 +42,18 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     )
 
   const sitemap = createSiteMapXml([
-    ...pages
-      .filter((page) => page.data.sitemap !== false)
-      .map((page) => {
-        const isHomepage = page.uid === HOMEPAGE_SLUG
-
-        // Only include the date part so its format is equal to that of the articles
-        let lastmod = page.last_publication_date.split('T')[0]
-        if (isHomepage) {
-          lastmod = projects.reduce((latest, project) => {
-            const updatedAt = project.last_publication_date.split('T')[0]
-            return updatedAt > latest ? updatedAt : latest
-          }, lastmod)
-        }
-
-        return {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          loc: absoluteUrl(prismicLinkResolver(page)),
-          lastmod,
-          changefreq: isHomepage ? ('weekly' as const) : undefined,
-          priority: isHomepage ? 1 : undefined,
-        }
-      }),
+    {
+      loc: absoluteUrl(''),
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'weekly',
+      priority: 1,
+    },
+    {
+      loc: absoluteUrl('/freelance-react-architect'),
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'weekly',
+      priority: 1,
+    },
     {
       loc: absoluteUrl('/blog'),
       lastmod: articles.reduce((latest, article) => {
