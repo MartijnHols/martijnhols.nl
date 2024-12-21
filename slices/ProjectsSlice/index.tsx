@@ -29,7 +29,7 @@ const SubTitle = styled.div(
 const ProjectsSlice = () => (
   <Section>
     <Container>
-      <Title>Projecten</Title>
+      <Title id="projecten">Projecten</Title>
       <SubTitle>
         Grote en kleine projecten met resultaten waar ik één voor één trots op
         ben.

@@ -39,19 +39,15 @@ const Page = () => (
           <>
             <AboutMeHeading>Over mij</AboutMeHeading>
             <p>
-              Ik ben een ervaren <strong>Freelance React Developer</strong> met
-              meet dan 15 jaar full-stack ervaring. Als Freelance React
+              Ik ben een ervaren <strong>Freelance React Architect</strong> met
+              meet dan 20 jaar full-stack ervaring. Als Freelance React
               Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
               van opzet tot doorontwikkeling. Ik ben{' '}
               <strong>al ruim 8 jaar gespecialiseerd in React</strong> - zoveel
               diepgaande React-ervaring is zeldzaam! Ik kan veel betekenen voor
               jouw projecten en team.
             </p>
-            <p>
-              Bij de meeste opdrachten vervul ik de rol van{' '}
-              <strong>React Architect</strong>. Ik richt me graag op technische
-              uitdagingen, zoals:
-            </p>
+            <p>Ik richt me graag op technische uitdagingen, zoals:</p>
             <ul>
               <li>
                 <Link href="/blog?tag=maintainability">Onderhoudbaarheid</Link>,
@@ -79,13 +75,10 @@ const Page = () => (
               projecten schaalbaar en toekomstbestendig zijn.
             </p>
             <p>
-              Meer weten? Bekijk hieronder mijn projecten, ga naar mijn blog, of
-              neem contact op voor mijn CV.
-            </p>
-            <p>
-              <Link href="#footer">Contact</Link>
-              {' | '}
-              <Link href="/blog">Blog (Engels)</Link>
+              Meer weten? Bekijk hieronder de{' '}
+              <Link href="#projecten">projecten</Link> waar ik aan heb gewerkt,
+              ga naar mijn <Link href="/blog">blog</Link>, of neem{' '}
+              <Link href="#footer">contact</Link> op.
             </p>
           </>
         }
