@@ -41,6 +41,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const title = req.query.title as string
+  const subTitle = req.query.subTitle as string | undefined
 
   const textStyle = {
     position: 'absolute',
@@ -62,6 +63,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
       ))}
     </div>
   )
+  const subText = subTitle ?? 'By Martijn Hols'
   const textStroke = (x: number, y: number) => (
     <div
       // This div is only to act like text-decoration-skip-ink
@@ -163,7 +165,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
             letterSpacing: '-2px',
           }}
         >
-          By Martijn Hols
+          {subText}
         </div>
       </div>
       <div

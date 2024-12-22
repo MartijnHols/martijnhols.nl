@@ -11,6 +11,7 @@ import Hero, { reactifyTitle } from '../slices/HeroSlice/Hero'
 import ProjectsSlice from '../slices/ProjectsSlice'
 import absoluteUrl from '../utils/absoluteUrl'
 import photo from './assets/martijn-hols.jpg'
+import openGraphImage from './assets/ogimage-freelance-react-architect.png'
 
 const AboutMeHeading = styled.h2`
   margin: 0;
@@ -22,7 +23,7 @@ const Page = () => (
       title="Martijn Hols: React Architect"
       description="Ik ben dé Freelance React Architect die je zoekt. Al 8 jaar gespecialiseerd in React, met veel full stack ervaring. Ik kan veel voor je projecten betekenen."
       absoluteUrl={absoluteUrl('/react-architect')}
-      // TODO: ogimage
+      image={openGraphImage}
     />
 
     <LanguageBar />
