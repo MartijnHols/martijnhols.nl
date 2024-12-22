@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import BlogArticleMeta from '../components/BlogArticleMeta'
-import { articles } from '../pages/blog'
+import { getArticles } from '../pages/blog'
 import tagRelevancyScore from './tagRelevancyScore'
 
 export interface ArticleStaticProps {
@@ -13,7 +13,7 @@ const makeArticleGetStaticProps =
   async () => ({
     props: {
       article,
-      relatedArticles: (await Promise.all(articles))
+      relatedArticles: (await getArticles())
         .filter((item) => item.slug !== article.slug)
         .sort(
           (a, b) =>

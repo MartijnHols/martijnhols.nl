@@ -1,5 +1,5 @@
 import fs from 'fs/promises'
-import { articles, publishedFilter } from '../pages/blog'
+import { getPublishedArticles } from '../pages/blog'
 import absoluteUrl from './absoluteUrl'
 
 interface SiteMapUrl {
@@ -33,9 +33,7 @@ const createSiteMapXml = (urls: SiteMapUrl[]) =>
 `.trim()
 
 export default async function generateSitemap() {
-  const publishedArticles = (await Promise.all(articles)).filter(
-    publishedFilter,
-  )
+  const publishedArticles = await getPublishedArticles()
 
   const sitemap = createSiteMapXml([
     {

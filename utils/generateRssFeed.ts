@@ -1,13 +1,11 @@
 import fs from 'fs/promises'
 import RSS from 'rss'
-import { articles, publishedFilter } from '../pages/blog'
+import { getPublishedArticles } from '../pages/blog'
 
 export default async function generateRssFeed() {
   const baseUrl = process.env.NEXT_PUBLIC_PRIMARY_HOST
 
-  const publishedArticles = (await Promise.all(articles)).filter(
-    publishedFilter,
-  )
+  const publishedArticles = await getPublishedArticles()
 
   const feed = new RSS({
     title: 'Blog by Martijn Hols',

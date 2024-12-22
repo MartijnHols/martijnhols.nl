@@ -6,7 +6,7 @@ import BaseHead from '../../components/BaseHead'
 import BlogArticleCard from '../../components/BlogArticleCard'
 import BlogArticleMeta, {
   BlogArticleTag,
-  PublicationDate as PublicationDateType,
+  PublicationDate,
   SerializableBlogArticleMeta,
 } from '../../components/BlogArticleMeta'
 import Container from '../../components/Container'
@@ -17,8 +17,7 @@ import TopBar from '../../components/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
 import generateRssFeed from '../../utils/generateRssFeed'
 
-// TODO: topLevelAwait
-export const articles = [
+const articles = [
   import('./intro'),
   import('./license'),
   import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
@@ -31,13 +30,18 @@ export const articles = [
   import('./how-to-write-a-good-git-commit-message'),
   import('./you-dont-need-lodash'),
   import('./how-to-add-copy-paste-only-text-in-html-react'),
-].map((promise) => promise.then((file) => file.meta)) as Array<
-  Promise<BlogArticleMeta>
->
+] as Array<Promise<{ meta: BlogArticleMeta }>>
+
+export const getArticles = async () =>
+  await Promise.all(
+    articles.map((promise) => promise.then((file) => file.meta)),
+  )
+export const getPublishedArticles = async () =>
+  (await getArticles()).filter(publishedFilter)
 
 export const publishedFilter = (
   article: BlogArticleMeta,
-): article is typeof article & { publishedAt: PublicationDateType } =>
+): article is typeof article & { publishedAt: PublicationDate } =>
   article.publishedAt !== undefined
 
 // We do this client-side so we can avoid the hassle of having to generate new
@@ -51,13 +55,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      articles: (await Promise.all(articles))
-        .filter(publishedFilter)
-        .sort((a, b) =>
-          (a.republishedAt ?? a.publishedAt).localeCompare(
-            b.republishedAt ?? b.publishedAt,
-          ),
+      articles: (await getPublishedArticles()).sort((a, b) =>
+        (a.republishedAt ?? a.publishedAt).localeCompare(
+          b.republishedAt ?? b.publishedAt,
         ),
+      ),
     },
   }
 }

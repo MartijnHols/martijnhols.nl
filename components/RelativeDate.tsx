@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
-import { PublicationDate as PublicationDateType } from './BlogArticleMeta'
+import { PublicationDate } from './BlogArticleMeta'
 import Tooltip from './Tooltip'
 
 const Time = styled.time`
@@ -8,7 +8,7 @@ const Time = styled.time`
 `
 
 interface Props {
-  date: PublicationDateType
+  date: PublicationDate
 }
 
 const RelativeDate = ({ date }: Props) => {
