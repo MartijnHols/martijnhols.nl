@@ -1,10 +1,9 @@
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'intro',
   title: 'Blog intro',
   description:
@@ -12,10 +11,11 @@ export const meta: BlogArticleMeta = {
   publishedAt: '2024-04-01',
   updatedAt: '2024-05-04',
   tags: [BlogArticleTag.Meta],
-}
+})
+export { meta, getStaticProps }
 
-const Intro = () => (
-  <BlogArticle article={meta}>
+const Intro = (props: ArticleStaticProps) => (
+  <BlogArticle {...props}>
     <p>
       On April 1st of all days, I hereby launch my new blog section. This will
       be brief articles, snippets, opinions and answers to questions. Mostly

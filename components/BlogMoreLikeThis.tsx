@@ -1,11 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { useEffect, useState } from 'react'
-import { articles } from '../pages/blog'
-import BlogArticleMeta, {
-  BlogArticleTag,
-  priorityTags,
-} from './BlogArticleMeta'
+import { ComponentProps } from 'react'
+import BlogArticleMeta from './BlogArticleMeta'
 import Container from './Container'
 import Link from './Link'
 import Tag from './Tag'
@@ -111,84 +107,35 @@ const Tags = styled.div`
   flex-wrap: wrap;
 `
 
-const tagRelevancyScore = (
-  base: BlogArticleTag[],
-  alternative: BlogArticleTag[],
-) => {
-  let score = 0
-  base.forEach((tag) => {
-    if (alternative.includes(tag)) {
-      score += 10
-    }
-  })
-  if (alternative.includes(BlogArticleTag.HowTo)) {
-    score -= 1
-  }
-  priorityTags.forEach((tag) => {
-    if (alternative.includes(tag)) {
-      score += 10
-    }
-  })
-  if (
-    !base.includes(BlogArticleTag.Meta) &&
-    alternative.includes(BlogArticleTag.Meta)
-  ) {
-    score -= 100
-  }
-
-  return score
+interface Props extends ComponentProps<typeof PageOverflowContainer> {
+  relatedArticles: BlogArticleMeta[]
 }
 
-interface Props {
-  article: BlogArticleMeta
-  className?: string
-}
+const BlogMoreLikeThis = ({ relatedArticles, ...others }: Props) => (
+  <PageOverflowContainer {...others}>
+    <StyledContainer>
+      <TextLine>
+        <MoreLikeThisLink href="/blog">More like this</MoreLikeThisLink>
+      </TextLine>
+      {relatedArticles?.slice(0, 1).map((item) => (
+        <StyledLink
+          key={item.slug}
+          href={`/blog/${item.slug}`}
+          className="plain"
+        >
+          <Article>
+            <ArticleTitle>{item.title}</ArticleTitle>
 
-const MoreLikeThis = ({ article, className }: Props) => {
-  const [alternativeArticles, setAlternativeArticles] =
-    useState<BlogArticleMeta[]>()
-  useEffect(() => {
-    // TODO: Move this into getStaticProps. Probably going to have to move articles out of the pages folder for that
-    Promise.all(articles).then((articles) => {
-      setAlternativeArticles(
-        articles
-          .map((g) => g.meta)
-          ?.filter((item) => item.slug !== article.slug)
-          .sort(
-            (a, b) =>
-              tagRelevancyScore(article.tags, b.tags) -
-              tagRelevancyScore(article.tags, a.tags),
-          ),
-      )
-    })
-  }, [])
+            <Tags>
+              {item.tags.map((tag) => (
+                <StyledTag key={tag}>{tag}</StyledTag>
+              ))}
+            </Tags>
+          </Article>
+        </StyledLink>
+      ))}
+    </StyledContainer>
+  </PageOverflowContainer>
+)
 
-  return (
-    <PageOverflowContainer className={className}>
-      <StyledContainer>
-        <TextLine>
-          <MoreLikeThisLink href="/blog">More like this</MoreLikeThisLink>
-        </TextLine>
-        {alternativeArticles?.slice(0, 1).map((item) => (
-          <StyledLink
-            key={item.slug}
-            href={`/blog/${item.slug}`}
-            className="plain"
-          >
-            <Article>
-              <ArticleTitle>{item.title}</ArticleTitle>
-
-              <Tags>
-                {item.tags.map((tag) => (
-                  <StyledTag key={tag}>{tag}</StyledTag>
-                ))}
-              </Tags>
-            </Article>
-          </StyledLink>
-        ))}
-      </StyledContainer>
-    </PageOverflowContainer>
-  )
-}
-
-export default MoreLikeThis
+export default BlogMoreLikeThis

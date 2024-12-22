@@ -9,7 +9,7 @@ import Angle from './Angle'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import BlogArticleMeta from './BlogArticleMeta'
-import MoreLikeThis from './BlogMoreLikeThis'
+import BlogMoreLikeThis from './BlogMoreLikeThis'
 import Container from './Container'
 import CopyPasteOnly from './CopyPasteOnly'
 import useIntersectionObserver from './IntersectionObserver'
@@ -90,7 +90,7 @@ const Tags = styled.div(
     margin-top: ${theme.spacing.x4}px;
   `,
 )
-const StyledMoreLikeThis = styled(MoreLikeThis)`
+const StyledBlogMoreLikeThis = styled(BlogMoreLikeThis)`
   margin-top: 5em;
 `
 const Footer = styled.footer(
@@ -104,16 +104,22 @@ const Footer = styled.footer(
 
 interface Props {
   article: BlogArticleMeta
-  // Async to avoid circular reference issues
-  relatedArticle?: Promise<{ meta: BlogArticleMeta }>
+  relatedArticles: BlogArticleMeta[]
+  /** An optional alternative rendering of the title-string. */
+  titleReact?: ReactNode
   children: ReactNode
   addendum?: ReactNode
 }
 
-const BlogArticle = ({ article, children, addendum }: Props) => {
+const BlogArticle = ({
+  article,
+  relatedArticles,
+  titleReact,
+  children,
+  addendum,
+}: Props) => {
   const {
     title,
-    titleReact,
     description,
     image,
     publishedAt,
@@ -244,7 +250,7 @@ const BlogArticle = ({ article, children, addendum }: Props) => {
         )}
       </article>
 
-      <StyledMoreLikeThis article={article} />
+      <StyledBlogMoreLikeThis relatedArticles={relatedArticles} />
 
       <Angle inverted />
 

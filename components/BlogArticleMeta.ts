@@ -1,5 +1,4 @@
 import { StaticImageData } from 'next/image'
-import { ReactNode } from 'react'
 
 export const enum BlogArticleTag {
   // Types:
@@ -49,8 +48,6 @@ export type PublicationDate =
 export default interface BlogArticleMeta {
   slug: string
   title: string
-  /** An optional alternative rendering of the title-string. */
-  titleReact?: ReactNode
   description: string
   image?: StaticImageData
   publishedAt?: PublicationDate
@@ -58,7 +55,6 @@ export default interface BlogArticleMeta {
   republishedReason?: string
   updatedAt?: PublicationDate
   tags: BlogArticleTag[]
-  relatedArticle?: Promise<{ meta: BlogArticleMeta }>
 }
 
 export type SerializableBlogArticleMeta = Omit<

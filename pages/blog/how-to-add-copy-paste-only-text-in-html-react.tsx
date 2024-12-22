@@ -1,13 +1,12 @@
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import CopyPasteOnly from '../../components/CopyPasteOnly'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-add-copy-paste-only-text-in-html-react',
   title: 'How to add copy-paste only text in HTML (plus a React component)',
   description:
@@ -19,10 +18,11 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.CSS,
     BlogArticleTag.React,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistHowToAddCopyPasteOnlyText = () => (
-  <BlogArticle article={meta}>
+const GistHowToAddCopyPasteOnlyText = (props: ArticleStaticProps) => (
+  <BlogArticle {...props}>
     <p>
       When finalizing an article for this blog, I often copy-paste text into
       tools like Grammarly and ChatGPT for feedback. But these tools often

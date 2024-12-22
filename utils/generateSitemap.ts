@@ -1,6 +1,5 @@
 import fs from 'fs/promises'
-import { PublicationDate } from '../components/BlogArticleMeta'
-import { articles as articlesPromise } from '../pages/blog'
+import { articles, publishedFilter } from '../pages/blog'
 import absoluteUrl from './absoluteUrl'
 
 interface SiteMapUrl {
@@ -34,12 +33,9 @@ const createSiteMapXml = (urls: SiteMapUrl[]) =>
 `.trim()
 
 export default async function generateSitemap() {
-  const articles = (await Promise.all(articlesPromise))
-    .map((file) => file.meta)
-    .filter(
-      (article): article is typeof article & { publishedAt: PublicationDate } =>
-        article.publishedAt !== undefined,
-    )
+  const publishedArticles = (await Promise.all(articles)).filter(
+    publishedFilter,
+  )
 
   const sitemap = createSiteMapXml([
     {
@@ -56,7 +52,7 @@ export default async function generateSitemap() {
     },
     {
       loc: absoluteUrl('/blog'),
-      lastmod: articles.reduce((latest, article) => {
+      lastmod: publishedArticles.reduce((latest, article) => {
         const updatedAt =
           article.updatedAt ?? article.republishedAt ?? article.publishedAt
         return updatedAt > latest ? updatedAt : latest
@@ -64,7 +60,7 @@ export default async function generateSitemap() {
       changefreq: 'daily',
       priority: 1,
     },
-    ...articles.map((article) => ({
+    ...publishedArticles.map((article) => ({
       loc: absoluteUrl(`/blog/${article.slug}`),
       lastmod:
         article.updatedAt ?? article.republishedAt ?? article.publishedAt,

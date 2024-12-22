@@ -5,30 +5,17 @@ import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
 import openGraphImage from './assets/ogimage-security-implications-of-packages.png'
 
-const ObfuscatedPackageFigure = styled(Figure)(
-  ({ theme }) => css`
-    text-align: center;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      float: right;
-      margin-left: 1.5em;
-      margin-bottom: 1em;
-    }
-  `,
-)
-
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'the-security-risks-of-front-end-dependencies',
   title: 'The security risks of front-end dependencies',
   description:
@@ -43,11 +30,25 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Dependencies,
     BlogArticleTag.Maintainability,
   ],
-  relatedArticle: import('./keeping-dependencies-up-to-date'),
-}
+})
+export { meta, getStaticProps }
 
-const SecurityImplicationsOfDependenciesOnTheFrontendGist = () => (
-  <BlogArticle article={meta}>
+const ObfuscatedPackageFigure = styled(Figure)(
+  ({ theme }) => css`
+    text-align: center;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      float: right;
+      margin-left: 1.5em;
+      margin-bottom: 1em;
+    }
+  `,
+)
+
+const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       Front-end apps are built with hundreds of dependencies, each one a
       potential risk. This year alone, thousands of JavaScript vulnerabilities

@@ -31,12 +31,15 @@ export const articles = [
   import('./how-to-write-a-good-git-commit-message'),
   import('./you-dont-need-lodash'),
   import('./how-to-add-copy-paste-only-text-in-html-react'),
-] as Array<Promise<{ meta: BlogArticleMeta }>>
+].map((promise) => promise.then((file) => file.meta)) as Array<
+  Promise<BlogArticleMeta>
+>
 
-export const filterUnpublished = (
+export const publishedFilter = (
   article: BlogArticleMeta,
 ): article is typeof article & { publishedAt: PublicationDateType } =>
   article.publishedAt !== undefined
+
 // We do this client-side so we can avoid the hassle of having to generate new
 // pages. We'll do that when we get enough articles to warrant it.
 const makeFilterByTag =
@@ -49,13 +52,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       articles: (await Promise.all(articles))
-        .map((file) => file.meta)
-        .filter(filterUnpublished)
-        .map(
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          ({ titleReact, relatedArticle, ...serializableArticleMeta }) =>
-            serializableArticleMeta,
-        )
+        .filter(publishedFilter)
         .sort((a, b) =>
           (a.republishedAt ?? a.publishedAt).localeCompare(
             b.republishedAt ?? b.publishedAt,

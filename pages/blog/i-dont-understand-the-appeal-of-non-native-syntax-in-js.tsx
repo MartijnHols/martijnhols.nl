@@ -1,12 +1,11 @@
 import Annotation from '../../components/Annotation'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'i-dont-understand-the-appeal-of-non-native-syntax-in-js',
   title: "I don't understand the appeal of non-native syntax in JS",
   description:
@@ -16,10 +15,13 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.React,
     BlogArticleTag.Maintainability,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax = () => (
-  <BlogArticle article={meta}>
+const GistIDoNotUnderstandWhyPeoplePreferNonNativeSyntax = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       In JSX code of a React app, most things can be done with just JavaScript;
     </p>

@@ -2,20 +2,15 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Annotation from '../../components/Annotation'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import lodashImage from './assets/lodash.png'
 import openGraphImage from './assets/ogimage-you-dont-need-lodash.png'
 
-const LodashFigure = styled(Figure)`
-  text-align: center;
-`
-
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'you-dont-need-lodash',
   title: "You don't need Lodash",
   description:
@@ -28,10 +23,15 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Dependencies,
     BlogArticleTag.Maintainability,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistYouDontNeedLodash = () => (
-  <BlogArticle article={meta}>
+const LodashFigure = styled(Figure)`
+  text-align: center;
+`
+
+const GistYouDontNeedLodash = (props: ArticleStaticProps) => (
+  <BlogArticle {...props}>
     <p>And I reckon you shouldn't use it.</p>
     <LodashFigure
       caption="Lodash as it describes itself"

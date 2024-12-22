@@ -1,12 +1,11 @@
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-detect-google-translate-and-other-machine-translation',
   title: 'How to detect Google Translate and other machine translation',
   description:
@@ -18,10 +17,13 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.MachineTranslation,
     BlogArticleTag.I18n,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = () => (
-  <BlogArticle article={meta}>
+const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       Machine translation, such as done natively by Google Translate inside the
       Google Chrome browser, provides users with dynamic translation of webpages

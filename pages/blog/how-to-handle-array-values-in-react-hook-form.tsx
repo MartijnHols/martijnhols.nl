@@ -1,12 +1,11 @@
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-handle-array-values-in-react-hook-form',
   title: 'How to handle array values in react-hook-form',
   description:
@@ -18,10 +17,13 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.React,
     BlogArticleTag.Maintainability,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistHowToHandleArrayValuesInReactHookForm = () => (
-  <BlogArticle article={meta}>
+const GistHowToHandleArrayValuesInReactHookForm = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       <Link href="https://react-hook-form.com/">react-hook-form</Link> is by far
       the most popular form library in React. Having used most of the big ones,

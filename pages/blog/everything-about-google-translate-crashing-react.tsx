@@ -5,9 +5,7 @@ import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
@@ -17,6 +15,7 @@ import NodeChildren from '../../components/NodeChildren'
 import NodeTree from '../../components/NodeTree'
 import Reproduction from '../../components/Reproduction'
 import Tooltip from '../../components/Tooltip'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import activateGoogleTranslateImage from './assets/google-translate-activate.gif'
 import autoCardAnywhereImage from './assets/google-translate-autocardanywhere.png'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
@@ -28,11 +27,7 @@ import GoogleTranslateCrashesTernaryRepro from './demo/google-translate-crashes-
 import GoogleTranslateEventTargetRepro from './demo/google-translate-event-target-repro'
 import GoogleTranslateTextNotUpdatingRepro from './demo/google-translate-text-not-updating-repro'
 
-const CodeError = styled(Code)`
-  color: red;
-`
-
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'everything-about-google-translate-crashing-react',
   title:
     // "Everything" might be a bit presumptuous, but I also think it's more
@@ -48,10 +43,17 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.MachineTranslation,
     BlogArticleTag.I18n,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const EverythingAboutGoogleTranslateCrashingReact = () => (
-  <BlogArticle article={meta} addendum={<Addendum />}>
+const CodeError = styled(Code)`
+  color: red;
+`
+
+const EverythingAboutGoogleTranslateCrashingReact = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle addendum={<Addendum />} {...props}>
     <p>
       Google Translate, the built-in extension of Google Chrome, is a{' '}
       <i>machine translator</i> that provides users with an easy way of

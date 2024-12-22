@@ -1,14 +1,13 @@
 import Image from 'next/image'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import iosOskNative from './assets/ios-osk-native.gif'
 import iosOskSafari from './assets/ios-osk-safari.gif'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-detect-the-on-screen-keyboard-in-ios-safari',
   title: 'How to detect the on-screen keyboard in iOS Safari',
   description:
@@ -20,10 +19,13 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Safari,
     BlogArticleTag.React,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistHowToDetectTheOnScreenKeybordInIosSafari = () => (
-  <BlogArticle article={meta}>
+const GistHowToDetectTheOnScreenKeybordInIosSafari = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       When it comes to the on-screen keyboard (OSK), iOS Safari behaves weirdly.
       This gist is just a small part of the things you need to do to deal with

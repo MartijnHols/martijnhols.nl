@@ -1,10 +1,9 @@
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'license',
   title: 'License',
   description:
@@ -12,10 +11,11 @@ export const meta: BlogArticleMeta = {
   publishedAt: '2024-04-01',
   updatedAt: '2024-12-05',
   tags: [BlogArticleTag.Meta],
-}
+})
+export { meta, getStaticProps }
 
-const LicenseGist = () => (
-  <BlogArticle article={meta}>
+const LicenseGist = (props: ArticleStaticProps) => (
+  <BlogArticle {...props}>
     <p>
       I don't think there's a standard license for this, so I'll write a custom
       one. I think this covers everything.

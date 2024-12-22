@@ -2,16 +2,15 @@ import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import gitForkImage from './assets/git-commit-git-fork.png'
 import githubLongTitleImage from './assets/git-commit-github-long-title.png'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-write-a-good-git-commit-message',
   title: 'How to write a good git commit message',
   description:
@@ -23,10 +22,13 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Git,
     BlogArticleTag.Maintainability,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const BlogArticleHowToWriteAGoodGitCommitMessage = () => (
-  <BlogArticle article={meta}>
+const BlogArticleHowToWriteAGoodGitCommitMessage = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle {...props}>
     <p>
       There's a lot of freedom to writing commit messages in Git, but without
       any structure your Git history will become an unusable mess. This can make

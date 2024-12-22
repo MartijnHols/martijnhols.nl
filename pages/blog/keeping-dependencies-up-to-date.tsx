@@ -1,27 +1,20 @@
 import Image from 'next/image'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import dependabotImage from './assets/dependabot.png'
 import dependencyUpdatesScheduledImage from './assets/dependency-updates-scheduled.png'
 import dependencyUpdatesIcal from './assets/dependencyupdates.ics'
 import libyearsCartoonImage from './assets/libyears-cartoon.png'
 import openGraphImage from './assets/ogimage-keeping-dependencies-up-to-date.png'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'keeping-dependencies-up-to-date',
   title: 'Keeping dependencies up-to-date',
-  titleReact: (
-    <>
-      Keeping dependencies{' '}
-      <span style={{ whiteSpace: 'nowrap' }}>up-to-date</span>
-    </>
-  ),
   description:
     'A strategy for keeping dependencies up-to-date. When to update, how to update, and what to update first.',
   image: openGraphImage,
@@ -31,11 +24,21 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Security,
     BlogArticleTag.Maintainability,
   ],
-  relatedArticle: import('./the-security-risks-of-front-end-dependencies'),
-}
+})
+export { meta, getStaticProps }
 
-const SecurityImplicationsOfPackagesOnTheFrontendGist = () => (
-  <BlogArticle article={meta}>
+const SecurityImplicationsOfPackagesOnTheFrontendGist = (
+  props: ArticleStaticProps,
+) => (
+  <BlogArticle
+    titleReact={
+      <>
+        Keeping dependencies{' '}
+        <span style={{ whiteSpace: 'nowrap' }}>up-to-date</span>
+      </>
+    }
+    {...props}
+  >
     <p>
       When you're using many dependencies, keeping them up-to-date can be a real
       challenge. Installing dependency updates can take a lot of time, time that

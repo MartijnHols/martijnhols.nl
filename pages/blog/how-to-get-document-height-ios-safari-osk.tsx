@@ -1,14 +1,13 @@
 import Image from 'next/image'
 import BlogArticle from '../../components/BlogArticle'
-import BlogArticleMeta, {
-  BlogArticleTag,
-} from '../../components/BlogArticleMeta'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Link from '../../components/Link'
+import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import iosSafariUseViewportSize from './assets/ios-safari-useviewportsize.gif'
 
-export const meta: BlogArticleMeta = {
+const { meta, getStaticProps } = articleMeta({
   slug: 'how-to-get-document-height-ios-safari-osk',
   title:
     'How to get the document height in iOS Safari when the on-screen keyboard is open',
@@ -21,10 +20,11 @@ export const meta: BlogArticleMeta = {
     BlogArticleTag.Safari,
     BlogArticleTag.React,
   ],
-}
+})
+export { meta, getStaticProps }
 
-const GistHowToGetDocumentHeightIosSafariOsk = () => (
-  <BlogArticle article={meta}>
+const GistHowToGetDocumentHeightIosSafariOsk = (props: ArticleStaticProps) => (
+  <BlogArticle {...props}>
     <p>
       When it comes to the on-screen keyboard (OSK), Safari on iOS{' '}
       <Link href="./how-to-detect-the-on-screen-keyboard-in-ios-safari#ios-safari-behavior">
