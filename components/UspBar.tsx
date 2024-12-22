@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-import Link from '../../components/Link'
-import Panel from '../../components/Panel'
-import Tooltip from '../../components/Tooltip'
+import Link from './Link'
+import Panel from './Panel'
+import Tooltip from './Tooltip'
 
 const Container = styled.div(
   ({ theme }) => css`

@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Hols;Martijn
+FN:Martijn Hols
+ORG:MartijnHols
+TITLE:Freelance React Developer
+ADR:;;Pastoor Gowthorpestraat 95;Barneveld;;3772CA;
+TEL;WORK;VOICE:+31657946114
+EMAIL;WORK;INTERNET:contact@martijnhols.nl
+URL:https://martijnhols.nl
+END:VCARD

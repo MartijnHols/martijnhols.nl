@@ -5,7 +5,6 @@ declare namespace NodeJS {
     NODE_ENV: 'development' | 'production'
     NEXT_PUBLIC_DEFAULT_LOCALE: 'nl' | 'en'
     PAGE_REVALIDATE_INTERVAL: 'false' | `${number}`
-    PRISMIC_REPOSITORY_NAME: string
     NEXT_PUBLIC_PRIMARY_HOST: string
     NEXT_PUBLIC_SITE_NAME_FALLBACK: string
   }

@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
 import AngleWithContactButton from '../components/AngleWithContactButton'
 import BaseHead from '../components/BaseHead'
+import ContentSection from '../components/ContentSection'
+import FooterSlice from '../components/FooterSection'
+import HeroSection, { reactifyTitle } from '../components/HeroSection'
 import LanguageBar from '../components/LanguageBar'
 import Link from '../components/Link'
 import PageWrapper from '../components/PageWrapper'
+import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
-import ContentSection from '../slices/ContentSlice/ContentSection'
-import FooterSlice from '../slices/FooterSlice'
-import Hero, { reactifyTitle } from '../slices/HeroSlice/Hero'
-import ProjectsSlice from '../slices/ProjectsSlice'
 import absoluteUrl from '../utils/absoluteUrl'
 import photo from './assets/martijn-hols.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
@@ -30,7 +30,7 @@ const Page = () => (
     <TopBar />
 
     <main role="main">
-      <Hero
+      <HeroSection
         preTitle="👋 Hoi, ik ben Martijn. Ik ben dé"
         title={reactifyTitle('Freelance React Developer')}
         subText="Met een passie voor React en TypeScript. Ik werk al ruim 8 jaar primair met React en heb meer dan 20 jaar full stack ervaring."
@@ -93,7 +93,7 @@ const Page = () => (
         }}
         variant="imageLeftInverted"
       />
-      <ProjectsSlice />
+      <ProjectsSection />
     </main>
     <AngleWithContactButton inverted />
     <FooterSlice />

@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react'
 import Head from 'next/head'
 import absoluteUrl from '../utils/absoluteUrl'
-import { ImageInfo } from '../utils/convertPrismicImage'
+import ImageInfo from '../utils/ImageInfo'
 
 /**
  * Head config that should be on every page.

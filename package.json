@@ -17,8 +17,6 @@
     "lint:fix": "yarn --silent lint:code --fix && prettier --write '**/*.{json,md,css,graphql,yml}'",
     "fix-all": "yarn && yarn lint:fix && yarn typecheck && yarn test",
     "typecheck": "tsc --noEmit",
-    "slicemachine": "start-slicemachine",
-    "start-all": "concurrently \"yarn start\" \"yarn slicemachine\" --names \"next,slicemachine\" --prefix-colors gray,magenta",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -26,12 +24,6 @@
     "@emotion/styled": "^11.11.5",
     "@lhci/cli": "^0.13.0",
     "@next/bundle-analyzer": "^15.1.2",
-    "@prismicio/client": "^7.4.1",
-    "@prismicio/helpers": "^2.3.5",
-    "@prismicio/next": "^1.5.0",
-    "@prismicio/react": "^2.7.4",
-    "@prismicio/richtext": "^2.1.5",
-    "@prismicio/slice-simulator-react": "^0.2.2",
     "@tippyjs/react": "^4.2.6",
     "concurrently": "^8.2.2",
     "next": "^15.1.2",
@@ -43,7 +35,6 @@
     "sanitize.css": "^13.0.0",
     "satori": "^0.10.13",
     "sharp": "^0.33.5",
-    "slice-machine-ui": "^1.26.0",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {
@@ -64,7 +55,7 @@
     "typescript": "^5.7.2"
   },
   "lint-staged": {
-    "!(*\\.generated|.slicemachine\\/**)\\.{ts,tsx,js,jsx}": [
+    "!(*\\.generated)\\.{ts,tsx,js,jsx}": [
       "yarn --silent lint:code:specific:fix"
     ],
     "*.{json,md,css,scss,graphql,yml}": [

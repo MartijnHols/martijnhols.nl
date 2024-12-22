@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import ContactButtonClipped from '../../components/ContactButtonClipped'
-import Container from '../../components/Container'
-import Link from '../../components/Link'
+import ContactButtonClipped from './ContactButtonClipped'
+import Container from './Container'
+import Link from './Link'
 
 const Section = styled.footer(
   ({ theme }) => css`

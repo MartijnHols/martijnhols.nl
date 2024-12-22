@@ -1,4 +1,3 @@
-import getConfig from 'next/config'
 import NextLink from 'next/link'
 import {
   AnchorHTMLAttributes,
@@ -6,8 +5,6 @@ import {
   MouseEvent,
   ReactNode,
 } from 'react'
-
-const { publicRuntimeConfig } = getConfig()
 
 /**
  * This component simplifies next/link by adding an anchor element always. We
@@ -36,46 +33,6 @@ const Link = ({
   onClick,
   ...others
 }: Props) => {
-  const isAbsolute = href.startsWith(process.env.NEXT_PUBLIC_PRIMARY_HOST)
-  // Make absolute URLs relative to benefit from preloading, and make the URLs
-  // work on any domain.
-  // This is necessary because in Prismic we can only enter absolute URLs.
-  if (isAbsolute) {
-    href = href.substring(process.env.NEXT_PUBLIC_PRIMARY_HOST.length)
-
-    // Automatically detect the locale from absolute URLs as Next otherwise will
-    // treat them as a regular page.
-    // This is necessary because in Prismic when generating a link we can't
-    // select documents from other locales (this only works for the Content
-    // Relationship field), so we must use an absolute URL.
-    const hrefLocale =
-      !locale &&
-      Object.values(
-        publicRuntimeConfig.prismicLocaleMap as {
-          [prismicLocale: string]: string
-        },
-      ).find(
-        (userLocale) =>
-          href.startsWith(`/${userLocale}/`) || href === `/${userLocale}`,
-      )
-    if (hrefLocale) {
-      href = href.substring(`/${hrefLocale}`.length)
-      locale = hrefLocale
-    }
-
-    if (href === '') {
-      // If the href only included the primary host (and optionally just a
-      // locale), we might have ended up with an empty href that is supposed to
-      // link to the homepage.
-      href = '/'
-    }
-  }
-
-  // Prismic does not allow for real hash links and prefixes them with https://
-  const hashLink = 'https://#'
-  if (href.startsWith(hashLink)) {
-    href = href.substring(hashLink.length - 1)
-  }
   if (!onClick && href.startsWith('#')) {
     onClick = (e: MouseEvent) => {
       const elem = document.querySelector(href)

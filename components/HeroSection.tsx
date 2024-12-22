@@ -1,10 +1,10 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
-import ContactButtonClipped from '../../components/ContactButtonClipped'
-import Container from '../../components/Container'
-import reactStringReplace from '../../utils/reactStringReplace'
-import ReactLogo from './ReactLogo.svg'
+import reactStringReplace from '../utils/reactStringReplace'
+import ReactLogo from './assets/ReactLogo.svg'
+import ContactButtonClipped from './ContactButtonClipped'
+import Container from './Container'
 import UspBar from './UspBar'
 
 const Section = styled.header(
@@ -129,7 +129,7 @@ interface Props {
   subText?: ReactNode
 }
 
-const Hero = ({ preTitle, title, subText }: Props) => (
+const HeroSection = ({ preTitle, title, subText }: Props) => (
   <Section>
     <StyledContainer>
       <Intro>
@@ -145,4 +145,4 @@ const Hero = ({ preTitle, title, subText }: Props) => (
   </Section>
 )
 
-export default Hero
+export default HeroSection

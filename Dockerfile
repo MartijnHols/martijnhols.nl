@@ -28,7 +28,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 CMD ["node_modules/.bin/next", "start"]
 
-COPY ./.env ./next.config.js ./slicemachine.config.json ./
+COPY ./.env ./next.config.js ./
 # TODO: output standalone https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY ./node_modules ./node_modules
 COPY ./package.json ./package.json

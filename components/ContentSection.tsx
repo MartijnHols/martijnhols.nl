@@ -2,10 +2,10 @@ import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ReactNode } from 'react'
-import AngleWithContactButton from '../../components/AngleWithContactButton'
-import ContactButtonClipped from '../../components/ContactButtonClipped'
-import Container from '../../components/Container'
-import { ImageInfo } from '../../utils/convertPrismicImage'
+import ImageInfo from '../utils/ImageInfo'
+import AngleWithContactButton from './AngleWithContactButton'
+import ContactButtonClipped from './ContactButtonClipped'
+import Container from './Container'
 
 const Section = styled.section``
 const BackgroundWrapper = styled.div`

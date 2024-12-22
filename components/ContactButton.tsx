@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-import ChatIcon from './icons/chat.svg'
+import ChatIcon from './assets/chat.svg'
 import Link from './Link'
 
 const Positioner = styled.div(

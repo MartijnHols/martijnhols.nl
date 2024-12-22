@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import ContactButtonClipped from '../../components/ContactButtonClipped'
-import Container from '../../components/Container'
-import ProjectBrief from '../../components/ProjectBrief'
-import projects from '../../data/projects'
+import projects from '../data/projects'
+import ContactButtonClipped from './ContactButtonClipped'
+import Container from './Container'
+import ProjectBrief from './ProjectBrief'
 
 const Section = styled.section(
   ({ theme }) => css`
@@ -26,7 +26,7 @@ const SubTitle = styled.div(
   `,
 )
 
-const ProjectsSlice = () => (
+const ProjectsSection = () => (
   <Section>
     <Container>
       <Title id="projecten">Projecten</Title>
@@ -65,4 +65,4 @@ const ProjectsSlice = () => (
   </Section>
 )
 
-export default ProjectsSlice
+export default ProjectsSection
