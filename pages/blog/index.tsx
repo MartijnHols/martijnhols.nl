@@ -13,9 +13,11 @@ import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
 import Tag from '../../components/Tag'
+import Tooltip from '../../components/Tooltip'
 import TopBar from '../../components/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
 import generateRssFeed from '../../utils/generateRssFeed'
+import RssFeedIcon from './assets/rss.svg'
 
 const articles = [
   import('./intro'),
@@ -80,6 +82,12 @@ const ArticleList = styled.ul`
   list-style: none;
   padding: 0;
 `
+const StyledRssFeedLink = styled(Link)`
+  display: inline-block;
+`
+const StyledRssFeedIcon = styled(RssFeedIcon)`
+  width: 2em;
+`
 
 interface Props {
   articles: SerializableBlogArticleMeta[]
@@ -126,6 +134,12 @@ const BlogIndex = ({ articles }: Props) => {
               <Tag>{tagToFilter}</Tag> (<Link href={pathname}>show all</Link>)
             </div>
           )}
+
+          <Tooltip content="RSS Feed">
+            <StyledRssFeedLink href="/rss.xml" className="plain">
+              <StyledRssFeedIcon aria-label="RSS Feed" />
+            </StyledRssFeedLink>
+          </Tooltip>
         </StyledContainer>
 
         <Angle inverted />
