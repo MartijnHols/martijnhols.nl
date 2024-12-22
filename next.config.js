@@ -1,11 +1,13 @@
 /* eslint-env node */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import makeBundleAnalyzer from '@next/bundle-analyzer'
+import { getRepositoryName } from '@prismicio/client'
+import slicemachine from './slicemachine.config.json' with { type: 'json' }
+
+const withBundleAnalyzer = makeBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
-const { getRepositoryName } = require('@prismicio/client')
-const prismicConfig = require('./slicemachine.config.json')
 
-const prismicRepositoryName = getRepositoryName(prismicConfig.apiEndpoint)
+const prismicRepositoryName = getRepositoryName(slicemachine.apiEndpoint)
 /**
  * All supported locales.
  * Prismic locale => user-facing locale
@@ -105,11 +107,22 @@ const nextConfig = withBundleAnalyzer({
       destination: 'https://plausible.io/api/event',
     },
   ],
-  webpack: (config) => {
-    config.experiments = { ...config.experiments, topLevelAwait: true }
+  webpack: (config, { isServer }) => {
+    // Top-level await
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    }
+    if (!isServer) {
+      config.output.environment = {
+        ...config.output.environment,
+        asyncFunction: true,
+      }
+    }
+
+    // SVGR - Import SVG components as react components
     config.module.rules = [
       ...config.module.rules,
-      // Import SVG components as react components
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
@@ -123,7 +136,11 @@ const nextConfig = withBundleAnalyzer({
           },
         ],
       },
-      // Downloadable assets
+    ]
+
+    // Downloadable files
+    config.module.rules = [
+      ...config.module.rules,
       {
         test: /\.(ics|otf|ttf)/,
         type: 'asset/resource',
@@ -134,4 +151,4 @@ const nextConfig = withBundleAnalyzer({
   },
 })
 
-module.exports = nextConfig
+export default nextConfig
