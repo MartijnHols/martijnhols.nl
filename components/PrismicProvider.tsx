@@ -34,11 +34,7 @@ const PrismicProvider = ({ children, previewData }: Props) => {
         // Only load when previewing to avoid loading the Prismic toolbar JS in
         // for all users. This saves us quite a lot of KBs, but breaks Prismic's
         // shareable links feature.
-        <PrismicPreview
-          repositoryName={process.env.PRISMIC_REPOSITORY_NAME}
-          updatePreviewURL="/api/preview"
-          exitPreviewURL="/api/preview-exit"
-        >
+        <PrismicPreview repositoryName={process.env.PRISMIC_REPOSITORY_NAME}>
           {children}
         </PrismicPreview>
       ) : (
