@@ -209,16 +209,17 @@ const projects: Project[] = [
     placeholder: false,
   },
   {
-    company: 'New Faith Network via DutchChannels',
+    company: 'DutchChannels',
     functionTitle: 'Freelance Front-end Ontwikkelaar',
     about: (
       <p>
-        Voor de videoplatformen WithLove en New Faith Network heb ik in twee
-        korte maanden de landing- en onboardingpagina's opnieuw opgezet met
-        React, Next.js, Prismic, TypeScript en Cypress. Met de wijzigingen kan
-        het ontwikkelteam sneller, stabieler en toekomstbestendig verder
-        ontwikkelen aan de sites, is de tracking verbeterd met nieuwe events en
-        de performance de best mogelijke.
+        Voor DutchChannels, dat achter de videoplatformen WithLove en New Faith
+        Network zit, heb ik in twee korte maanden de landing- en
+        onboardingpagina's opnieuw opgezet met React, Next.js, Prismic,
+        TypeScript en Cypress. Met de wijzigingen kan het ontwikkelteam sneller,
+        stabieler en toekomstbestendig verder ontwikkelen aan de sites, is de
+        tracking verbeterd met nieuwe events en de performance de best
+        mogelijke.
       </p>
     ),
     startedYear: 2022,
