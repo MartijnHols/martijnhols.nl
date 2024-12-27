@@ -45,13 +45,13 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
 
   const textStyle = {
     position: 'absolute',
-    top: 115,
+    top: 80,
     left: 40,
     right: 40,
     margin: 0,
     padding: 0,
-    fontSize: 88,
-    lineHeight: 1.1,
+    fontSize: 92,
+    lineHeight: 1.2,
     letterSpacing: '-3px',
     color: colors.black,
     display: 'flex',
@@ -162,7 +162,7 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
             left: 0,
             right: 0,
             fontSize: 36,
-            letterSpacing: '-2px',
+            letterSpacing: '-1.5px',
           }}
         >
           {subText}
