@@ -32,6 +32,7 @@ const articles = [
   import('./how-to-write-a-good-git-commit-message'),
   import('./you-dont-need-lodash'),
   import('./how-to-add-copy-paste-only-text-in-html-react'),
+  import('./accessibility-essentials-every-react-developer-should-know'),
 ] as Array<Promise<{ meta: BlogArticleMeta }>>
 
 export const getArticles = async () =>

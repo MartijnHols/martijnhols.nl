@@ -87,6 +87,10 @@ const GlobalStyles = () => (
         button {
           border-color: currentColor;
         }
+        input {
+          border-color: currentColor;
+          border-radius: 0;
+        }
 
         .content ul {
           list-style: none;
