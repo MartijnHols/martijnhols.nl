@@ -43,8 +43,14 @@ const Container = styled('div', {
         transform: translateY(1px);
       }
 
-      @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+      @media (min-width: ${theme.breakpoints.TABLET}px) {
+        font-size: 1rem;
+      }
+      @media (min-width: ${theme.breakpoints.DESKTOP}px) {
         font-size: 1.125rem;
+      }
+      @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+        font-size: 1.25rem;
       }
     `,
     hovering &&
