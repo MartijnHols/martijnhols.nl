@@ -18,7 +18,7 @@ const { meta, getStaticProps } = articleMeta({
   slug: 'accessibility-essentials-every-react-developer-should-know',
   title: 'Accessibility essentials every React developer should know',
   description:
-    'Many developers view accessibility as an overwhelming task, requiring a lot of extra effort or specialized knowledge, but a few basic practices can make a significant impact. This article covers the essentials that every React developer should know.',
+    'Essential accessibility practices for React developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
   image: openGraphImage,
   // publishedAt: '2024-12-28',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
@@ -75,8 +75,6 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       developer, can do to improve the accessibility of your components without
       spending a lot of extra time and effort.
     </p>
-
-    <p>Let's dive in.</p>
 
     <Aside variant="sm">
       While this article is focused on React, the principles apply to any
@@ -175,12 +173,12 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <Figure
-      caption="Form fields in a form allowing jumping between fields and submitting from the on-screen keyboard"
+      caption="Form fields in a React form allowing jumping between fields and submitting from the on-screen keyboard"
       href="/blog/demo/accessibility-form-in-a-form"
     >
       <Image
         src={formFieldJumpingImage}
-        alt='An animated GIF showing a form with three fields; firstname, lastname and email, and a submit button. Each field is entered using the on-screen keyboard, and arrows atop the on-screen keyboard are used to jump to each next field. Finally the form is submitted using "return" on the keyboard.'
+        alt='An animated GIF showing a React form with three fields; firstname, lastname and email, and a submit button. Each field is entered using the on-screen keyboard, and arrows atop the on-screen keyboard are used to jump to each next field. Finally the form is submitted using "return" on the keyboard.'
         width={360}
       />
     </Figure>
@@ -246,9 +244,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>
       Alt texts are essential for accessibility. You should add an{' '}
-      <Code>alt</Code> tag to every image, with <Code>alt=""</Code> for images
-      that are purely decorative or redundant to the text to ensure they're
-      ignored by screen readers.
+      <Code>alt</Code> attribute to every image, with <Code>alt=""</Code> for
+      images that are purely decorative or redundant to the text to ensure
+      they're ignored by screen readers.
     </p>
 
     <p>
@@ -264,7 +262,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      Alt tags also improve SEO by helping search engines understand your
+      Alt text also improve SEO by helping search engines understand your
       content better.
     </p>
 
@@ -410,10 +408,10 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h3>Clickable areas</h3>
 
     <p>
-      Ensure buttons and links have large, easily clickable areas both for mouse
-      users and on mobile. You can easily achieve this by adding padding to the
-      element and, if necessary, using negative margins to make it appear
-      visually equal.
+      Ensure buttons and links have{' '}
+      <strong>large, easily clickable areas for mouse and touch users</strong>.
+      You can easily achieve this by adding padding to the element and, if
+      necessary, using negative margins to make it appear visually equal.
     </p>
 
     <Figure
@@ -450,8 +448,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h3>Accessible responsive design</h3>
 
     <p>
-      One little-known fact is that browsers allow users to customize the
-      default font size for web pages.
+      One little-known fact is that{' '}
+      <strong>browsers allow users to customize the default font size</strong>{' '}
+      for web pages.
     </p>
 
     <p>
@@ -497,10 +496,13 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      While semantic HTML is a good starting point, ARIA attributes can help
-      fill gaps in screen reader support where semantic HTML falls short.
-      However, they can also do more harm than good if misused, so it's best to
-      use them sparingly and thoughtfully.
+      While semantic HTML is a good starting point,{' '}
+      <strong>
+        ARIA attributes can help fill gaps in screen reader support where
+        semantic HTML falls short
+      </strong>
+      . However, they can also do more harm than good if misused, so it's best
+      to use them sparingly and thoughtfully.
     </p>
 
     <p>The two most important ARIA attributes are:</p>
@@ -543,17 +545,18 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       ARIA attributes that you will need if you decide to go for full screen
       reader support. Some noteworthy ones are <Code>aria-live</Code>,{' '}
       <Code>aria-expanded</Code>, and <Code>aria-describedby</Code>, but it
-      quickly becomes quite involved if you want to do it right. The ones I've
-      mentioned are a good start, though.
+      quickly becomes quite involved if you want to do it right.
     </p>
 
     <h2 id="conclusion">Conclusion</h2>
 
     <p>
       These are the tools and principles that I believe every React developer
-      should incorporate when building components. Accessibility isn't a
-      separate task to tackle later, it's something that should be a part of
-      your development process from the start.
+      should incorporate when building components.{' '}
+      <strong>
+        Accessibility isn't a separate task to tackle later, it's something that
+        should be a part of your development process from the start.
+      </strong>
     </p>
 
     <p>
