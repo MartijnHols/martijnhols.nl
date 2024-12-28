@@ -6,6 +6,7 @@ import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
 import Figure from '../../components/Figure'
+import Iphone15Overlay from '../../components/Iphone15Overlay'
 import Link from '../../components/Link'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import closeButtonClickableAreaImage from './assets/accessibility-closebuttonclickablearea.jpg'
@@ -174,16 +175,30 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       to field within the form without having to close the on-screen keyboard.
     </p>
 
-    <Figure
-      caption="Form fields in a React form allowing jumping between fields and submitting from the on-screen keyboard"
-      href="/blog/demo/accessibility-form-in-a-form"
+    <figure
+      css={css`
+        text-align: center;
+      `}
     >
-      <Image
-        src={formFieldJumpingImage}
-        alt='An animated GIF showing a React form with three fields; firstname, lastname and email, and a submit button. Each field is entered using the on-screen keyboard, and arrows atop the on-screen keyboard are used to jump to each next field. Finally the form is submitted using "return" on the keyboard.'
-        width={360}
-      />
-    </Figure>
+      <Iphone15Overlay width={360}>
+        <Image
+          src={formFieldJumpingImage}
+          alt='An animated GIF showing a React form with three fields; firstname, lastname and email, and a submit button. Each field is entered using the on-screen keyboard, and arrows atop the on-screen keyboard are used to jump to each next field. Finally the form is submitted using "return" on the keyboard.'
+          width={360}
+        />
+      </Iphone15Overlay>
+
+      <figcaption
+        css={css`
+          font-size: 90%;
+        `}
+      >
+        <Link href="/blog/demo/accessibility-form-in-a-form">
+          Form fields in a React form allowing jumping between fields and
+          submitting from the on-screen keyboard.
+        </Link>
+      </figcaption>
+    </figure>
 
     <h3>Labels</h3>
 
