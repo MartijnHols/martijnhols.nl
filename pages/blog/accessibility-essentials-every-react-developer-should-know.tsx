@@ -85,10 +85,11 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="semantic-html">Semantic HTML</h2>
 
     <p>
-      Accessibility begins with semantic HTML; using the correct HTML5 elements
-      for their intended purposes. This helps browsers and tools understand the
-      structure of your page allowing them to provide built-in accessibility
-      benefits. And a nice bonus is that semantic HTML also improves SEO.
+      <strong>Accessibility begins with semantic HTML</strong>; using the
+      correct HTML5 elements for their intended purposes. This helps browsers
+      and tools understand the structure of your page allowing them to provide
+      built-in accessibility benefits. And a nice bonus is that semantic HTML
+      also improves SEO.
     </p>
 
     <h3>Interactive elements</h3>
@@ -137,11 +138,12 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h3>Native elements</h3>
 
     <p>
-      Beyond buttons and links, native elements like <Code>{`<select>`}</Code>,{' '}
-      <Code>{`<input>`}</Code>, and <Code>{`<textarea>`}</Code> are accessible
-      out of the box. A <Code>{`<select>`}</Code> dropdown, for example, works
-      seamlessly with screen readers and keyboard navigation, providing a
-      consistent user experience without extra work.
+      Beyond buttons and links, <strong>native elements</strong> like{' '}
+      <Code>{`<select>`}</Code>, <Code>{`<input>`}</Code>, and{' '}
+      <Code>{`<textarea>`}</Code> <strong>are accessible out of the box</strong>
+      . A <Code>{`<select>`}</Code> dropdown, for example, works seamlessly with
+      screen readers and keyboard navigation, providing a consistent user
+      experience without extra work.
     </p>
 
     <p>
@@ -243,27 +245,29 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      Alt texts are essential for accessibility. You should add an{' '}
-      <Code>alt</Code> attribute to every image, with <Code>alt=""</Code> for
-      images that are purely decorative or redundant to the text to ensure
-      they're ignored by screen readers.
+      Alt texts are essential for making images accessible, and as a nice bonus,
+      they improve SEO by helping search engines understand your content better.
+    </p>
+
+    <p>
+      You should{' '}
+      <strong>
+        add the <Code>alt</Code> attribute to images without exception
+      </strong>
+      . Use an empty alt text (<Code>alt=""</Code>) only for images that are
+      purely decorative or redundant to the text; this makes screen readers skip
+      over images.
     </p>
 
     <p>
       Writing good alt text is hard, and many guidelines on the internet are
       confusing. Over the years, I've developed a rule of thumb that works for
-      me: I imagine explaining the image to someone with poor vision rather than
-      someone who is entirely blind. They can see parts of the image that could
-      be misleading. The alt-text has to fill in the gaps of what they're seeing
-      and not seeing. A key takeaway from this approach is that if the image
-      contains text, that text should always be included in the alt text. I find
-      this approach leads me to add an alt text to images more often than you
-      would if you followed guidelines you typically find online.
-    </p>
-
-    <p>
-      Alt text also improve SEO by helping search engines understand your
-      content better.
+      me: imagine explaining the image to someone with poor vision. They can see
+      some parts of the image, but can't make out everything. The alt text has
+      to fill in the gaps of what they're seeing and not seeing. A key takeaway
+      from this approach is that if the image contains text, that text should
+      always be included in the alt text. I find this approach leads me to add
+      alt text to images more often than other guidelines typically suggest.
     </p>
 
     <h2 id="keyboard-navigation">Keyboard navigation</h2>
@@ -401,8 +405,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       The GIF above has a custom field for the "Soort" (type) field. It's fully
       accessible, as it's built with radio buttons and CSS. The radio buttons
       are visually hidden but fully accessible; they can still be selected and
-      are announced by screen readers. This highlights the power of semantic
-      HTML.
+      are announced by screen readers. This highlights the power of using
+      semantic HTML as much as possible.
     </Aside>
 
     <h3>Clickable areas</h3>
