@@ -3,7 +3,9 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import moneyMonkImage from '../data/assets/moneymonk.png'
 import politieImage from '../data/assets/politie.jpg'
+import jetjeImage from './assets/jetje-with-bg.png'
 import pmeLegendImage from './assets/pme-legend-logo-bg.png'
+import wowAnalyzerImage from './assets/wowanalyzer-with-bg.png'
 
 const ImageContainer = styled.div(
   ({ theme }) => css`
@@ -16,7 +18,7 @@ const ImageContainer = styled.div(
       border: 1px solid ${theme.colors.black};
     }
     > img:not(:first-of-type) {
-      margin-left: -0.25em;
+      margin-left: -0.5em;
     }
   `,
 )
@@ -24,6 +26,8 @@ const ImageContainer = styled.div(
 const HeroKicker = () => (
   <>
     <ImageContainer>
+      <Image src={wowAnalyzerImage} alt="WoWAnalyzer" width={34} priority />
+      <Image src={jetjeImage} alt="Jetje" width={34} priority />
       <Image src={pmeLegendImage} alt="PME-Legend" width={34} priority />
       <Image src={moneyMonkImage} alt="MoneyMonk" width={34} priority />
       <Image src={politieImage} alt="Politie" width={34} priority />
