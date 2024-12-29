@@ -60,8 +60,9 @@ const Page = () => (
                 standaardisering en versimpeling
               </li>
               <li>
-                <Link href="/blog?tag=security">Security</Link> (dependencies
-                e.d.) en performance
+                <Link href="/blog?tag=security">Security</Link> (
+                <Link href="/blog?tag=dependencies">dependencies</Link> e.d.) en
+                performance
               </li>
               <li>
                 UX, accessibility en{' '}
