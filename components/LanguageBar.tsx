@@ -6,17 +6,9 @@ import Container from './Container'
 
 const Bar = styled.div(
   ({ theme }) => css`
-    background: ${theme.colors.yellow};
-    padding: ${theme.spacing.x3}px 0;
-
-    *::selection {
-      background-color: ${theme.colors.black};
-      color: ${theme.colors.yellow};
-    }
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 1.25em;
-    }
+    background: ${theme.colors.black};
+    color: ${theme.colors.white};
+    padding: 1em 0 0;
   `,
 )
 const MainText = styled.div(
@@ -25,7 +17,7 @@ const MainText = styled.div(
     margin-bottom: 0.75em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 1.25em;
+      font-size: 1em;
     }
   `,
 )
@@ -40,14 +32,11 @@ const Actions = styled.div(
     }
   `,
 )
-const Action = styled.div(
-  ({ theme }) => css`
-    padding: ${theme.spacing.x2}px;
-    flex: 1 1 50%;
-    border: 1px solid ${theme.colors.black};
-    border-radius: 6px;
-  `,
-)
+const Action = styled.div`
+  padding: 0.6em 0.75em;
+  flex: 1 1 50%;
+  border: 1px solid currentColor;
+`
 
 const LanguageBar = () => {
   const [show, setShow] = useState(false)
@@ -61,10 +50,10 @@ const LanguageBar = () => {
 
   return (
     <Bar lang="en">
-      <Container>
+      <Container className="inverted">
         <MainText>
-          This page is only available in Dutch, as I'm only looking for clients
-          in my area at this time. You can however:
+          Hi international visitor! This page is only available in Dutch, as I'm
+          only looking for clients in my area. But you can:
         </MainText>
         <Actions>
           <Action>
@@ -72,15 +61,16 @@ const LanguageBar = () => {
               Open this page with Google Translate.
             </a>
             <br />
-            Note: Google Translate{' '}
-            <Link href="/blog/everything-about-google-translate-crashing-react">
-              may be error-prone in React apps
-            </Link>
-            .
+            <small>
+              Note: Google Translate{' '}
+              <Link href="/blog/everything-about-google-translate-crashing-react">
+                is error-prone in React apps
+              </Link>
+              .
+            </small>
           </Action>
           <Action>
-            Alternatively, you may be interested in my{' '}
-            <Link href="/blog">blog</Link>, which is fully English.
+            Visit my <Link href="/blog">blog</Link>, which is in English.
           </Action>
         </Actions>
       </Container>
