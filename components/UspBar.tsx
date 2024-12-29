@@ -89,7 +89,15 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
         <UspPanel variant="sm">
           <UspPanelTitle>Ervaring</UspPanelTitle>
           <UspPanelText>
-            Meer dan 8 jaar React en 20 jaar full stack ervaring.
+            Meer dan 8 jaar React en{' '}
+            <span
+              css={css`
+                white-space: nowrap;
+              `}
+            >
+              20 jaar
+            </span>{' '}
+            full stack ervaring.
           </UspPanelText>
         </UspPanel>
       </UspLink>
