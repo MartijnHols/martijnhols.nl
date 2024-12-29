@@ -3,6 +3,7 @@ import AngleWithContactButton from '../components/AngleWithContactButton'
 import BaseHead from '../components/BaseHead'
 import ContentSection from '../components/ContentSection'
 import FooterSlice from '../components/FooterSection'
+import HeroKicker from '../components/HeroKicker'
 import HeroSection, { reactifyTitle } from '../components/HeroSection'
 import LanguageBar from '../components/LanguageBar'
 import Link from '../components/Link'
@@ -31,9 +32,9 @@ const Page = () => (
 
     <main role="main">
       <HeroSection
-        preTitle="👋 Hoi, ik ben Martijn. Ik ben dé"
+        kicker={<HeroKicker />}
         title={reactifyTitle('Freelance React Architect')}
-        subText="Met een passie voor React en TypeScript. Ik werk al ruim 8 jaar primair met React en heb meer dan 20 jaar full stack ervaring."
+        subText="Ik bouw schaalbare en onderhoudbare applicaties met React en TypeScript, altijd met oog voor een solide architectuur."
       />
       <ContentSection
         content={

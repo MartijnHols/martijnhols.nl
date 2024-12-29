@@ -30,7 +30,7 @@ const Intro = styled.div`
   font-weight: 800;
   margin-bottom: 0;
 `
-const PreTitle = styled.span(
+const Kicker = styled.span(
   ({ theme }) => css`
     display: block;
     ${theme.headings.h4}
@@ -58,13 +58,13 @@ const SubText = styled.div(
 )
 const StyledUspBar = styled(UspBar)(
   ({ theme }) => css`
-    margin-top: 1em;
+    margin-top: 3em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: 2em;
+      margin-top: 4em;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      margin-top: 2.5em;
+      margin-top: 5em;
     }
   `,
 )
@@ -124,16 +124,16 @@ export const reactifyTitle = (title: string) =>
   )
 
 interface Props {
-  preTitle?: ReactNode
+  kicker?: ReactNode
   title: ReactNode
   subText?: ReactNode
 }
 
-const HeroSection = ({ preTitle, title, subText }: Props) => (
+const HeroSection = ({ kicker, title, subText }: Props) => (
   <Section>
     <StyledContainer>
       <Intro>
-        {preTitle && <PreTitle>{preTitle}</PreTitle>}
+        {kicker && <Kicker>{kicker}</Kicker>}
         <IntroTitle>{title}</IntroTitle>
       </Intro>
       {subText && <SubText>{subText}</SubText>}

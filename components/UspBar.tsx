@@ -81,37 +81,25 @@ const UspPanelText = styled.div(
     }
   `,
 )
-const DesktopOnlyText = styled.span(
-  ({ theme }) => css`
-    display: none;
-
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      display: inline;
-    }
-  `,
-)
 
 const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>
     <div>
       <UspLink href="#footer" className="plain">
-        <Tooltip content="De komende tijd heb ik al een opdracht, maar je kunt altijd contact opnemen.">
-          <UspPanel variant="sm">
-            <UspPanelTitle>Beschikbaarheid</UspPanelTitle>
-            <UspPanelText>
-              Op dit moment niet beschik&shy;baar voor iets nieuws.
-            </UspPanelText>
-          </UspPanel>
-        </Tooltip>
+        <UspPanel variant="sm">
+          <UspPanelTitle>Ervaring</UspPanelTitle>
+          <UspPanelText>
+            Meer dan 8 jaar React en 20 jaar full stack ervaring.
+          </UspPanelText>
+        </UspPanel>
       </UspLink>
     </div>
     <div>
       <Tooltip content="Gebaseerd in Barneveld, Gelderland. Ik sta open voor opdrachten binnen 60 minuten rijden, zoals Amsterdam, Amersfoort, Veenendaal, Ede, Wageningen, Apeldoorn, Utrecht, Zeist, Hilversum, Rhenen, Nijkerk, Leusden, Arnhem, Nijmegen, Deventer, Zwolle, Almere en omstreken.">
         <UspPanel variant="sm">
-          <UspPanelTitle>Bereik</UspPanelTitle>
+          <UspPanelTitle>Locatie</UspPanelTitle>
           <UspPanelText>
-            Midden-Nederland en om&shy;geving{' '}
-            <DesktopOnlyText>(hybride werkplek)</DesktopOnlyText>
+            Omgeving Midden-Nederland (inclusief Amsterdam)
           </UspPanelText>
         </UspPanel>
       </Tooltip>
@@ -121,7 +109,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
         <UspPanel variant="sm">
           <UspPanelTitle>Blog</UspPanelTitle>
           <UspPanelText>
-            Lees mijn blog over React, TypeScript en JavaScript →
+            Lees mijn blog over React, TypeScript en front-end →
           </UspPanelText>
         </UspPanel>
       </UspLink>
