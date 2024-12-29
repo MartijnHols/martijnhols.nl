@@ -6,6 +6,7 @@ import politieImage from '../data/assets/politie.jpg'
 import jetjeImage from './assets/jetje-with-bg.png'
 import pmeLegendImage from './assets/pme-legend-logo-bg.png'
 import wowAnalyzerImage from './assets/wowanalyzer-with-bg.png'
+import Tooltip from './Tooltip'
 
 const ImageContainer = styled.div(
   ({ theme }) => css`
@@ -26,11 +27,21 @@ const ImageContainer = styled.div(
 const HeroKicker = () => (
   <>
     <ImageContainer>
-      <Image src={wowAnalyzerImage} alt="WoWAnalyzer" width={34} priority />
-      <Image src={jetjeImage} alt="Jetje" width={34} priority />
-      <Image src={pmeLegendImage} alt="PME-Legend" width={34} priority />
-      <Image src={moneyMonkImage} alt="MoneyMonk" width={34} priority />
-      <Image src={politieImage} alt="Politie" width={34} priority />
+      <Tooltip content="WoWAnalyzer">
+        <Image src={wowAnalyzerImage} alt="WoWAnalyzer" width={34} priority />
+      </Tooltip>
+      <Tooltip content="Jetje">
+        <Image src={jetjeImage} alt="Jetje" width={34} priority />
+      </Tooltip>
+      <Tooltip content="PME-Legend">
+        <Image src={pmeLegendImage} alt="PME-Legend" width={34} priority />
+      </Tooltip>
+      <Tooltip content="MoneyMonk">
+        <Image src={moneyMonkImage} alt="MoneyMonk" width={34} priority />
+      </Tooltip>
+      <Tooltip content="Politie">
+        <Image src={politieImage} alt="Politie" width={34} priority />
+      </Tooltip>
     </ImageContainer>{' '}
     15+ succesvolle React projecten
   </>
