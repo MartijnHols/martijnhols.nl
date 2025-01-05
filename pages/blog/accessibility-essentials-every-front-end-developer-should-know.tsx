@@ -13,7 +13,7 @@ import closeButtonClickableAreaImage from './assets/accessibility-closebuttoncli
 import focusIndicatorImage from './assets/accessibility-focus-indicator.gif'
 import formFieldJumpingImage from './assets/accessibility-form-field-jumping.gif'
 import placeholdersImage from './assets/accessibility-placeholders.png'
-import openGraphImage from './assets/ogimage-accessibility-essentials-every-react-developer-should-know.png'
+import openGraphImage from './assets/ogimage-accessibility-essentials-every-front-end-developer-should-know.png'
 
 const { meta, getStaticProps } = articleMeta({
   slug: 'accessibility-essentials-every-front-end-developer-should-know',
