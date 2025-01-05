@@ -16,12 +16,12 @@ import placeholdersImage from './assets/accessibility-placeholders.png'
 import openGraphImage from './assets/ogimage-accessibility-essentials-every-react-developer-should-know.png'
 
 const { meta, getStaticProps } = articleMeta({
-  slug: 'accessibility-essentials-every-react-developer-should-know',
-  title: 'Accessibility essentials every React developer should know',
+  slug: 'accessibility-essentials-every-front-end-developer-should-know',
+  title: 'Accessibility essentials every front-end developer should know',
   description:
-    'Essential accessibility practices for React developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
+    'Essential accessibility practices for front-end developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
   image: openGraphImage,
-  // publishedAt: '2024-12-28',
+  // publishedAt: '2025-01-07',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
@@ -36,7 +36,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>
       In this article, I'll cover the key accessibility principles I believe
-      every React developer should apply when building components. We'll cover:
+      every Front-end developer should apply when building components. We'll
+      cover:
     </p>
 
     <ul>
@@ -72,15 +73,15 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      The focus of the article will be on the basic things you, as a React
+      The focus of the article will be on the basic things you, as a Front-end
       developer, can do to improve the accessibility of your components without
       spending a lot of extra time and effort.
     </p>
 
     <Aside variant="sm">
-      While this article is focused on React, the principles apply to any
-      frontend app. If you're not using React, you can still benefit from the
-      practices outlined here.
+      While most examples in this article use React, the principles apply to any
+      front-end app. Even if you're not using React, you can still benefit from
+      the practices outlined here.
     </Aside>
 
     <h2 id="semantic-html">Semantic HTML</h2>
@@ -103,7 +104,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      A common anti-pattern in (React) applications are divs with{' '}
+      A common anti-pattern in (web) applications are divs with{' '}
       <Code>onClick</Code> handlers.{' '}
       <strong>
         Never use a <Code>{`<div>`}</Code> with an <Code>onClick</Code> handler
@@ -194,8 +195,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         `}
       >
         <Link href="/blog/demo/accessibility-form-in-a-form">
-          Form fields in a React form allowing jumping between fields and
-          submitting from the on-screen keyboard.
+          Form fields in a form allow jumping between fields and submitting from
+          the on-screen keyboard.
         </Link>
       </figcaption>
     </figure>
@@ -570,8 +571,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="conclusion">Conclusion</h2>
 
     <p>
-      These are the tools and principles that I believe every React developer
-      should incorporate when building components.{' '}
+      These are the tools and principles that I believe every Front-end
+      developer should incorporate when building components.{' '}
       <strong>
         Accessibility isn't a separate task to tackle later, it's something that
         should be a part of your development process from the start.
