@@ -22,6 +22,7 @@ const { meta, getStaticProps } = articleMeta({
     'Essential accessibility practices for front-end developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
   image: openGraphImage,
   publishedAt: '2025-01-07',
+  updatedAt: '2025-01-09',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
