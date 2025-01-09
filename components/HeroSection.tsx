@@ -119,7 +119,7 @@ export const reactifyTitle = (title: string) =>
     title,
     'React',
     <React>
-      React <StyledReactLogo aria-label="" aria-hidden />
+      React <StyledReactLogo aria-hidden />
     </React>,
   )
 

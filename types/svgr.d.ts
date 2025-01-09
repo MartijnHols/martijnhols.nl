@@ -1,14 +1,13 @@
 declare module '*.svg' {
   import { FC, SVGProps } from 'react'
 
-  // Make aria-label required
+  // Make aria-hidden required
   type IconProps = SVGProps<SVGSVGElement> & {
     /**
-     * An accessible version of the image in case the image is substantional to
-     * the meaning of the interface element. If the image is merely visible,
-     * provide an empty string instead.
+     * Describe the interactive element with an aria-label if the icon doesn't
+     * have a (sufficiently describing) label.
      */
-    'aria-label': SVGProps<SVGSVGElement>['aria-label']
+    'aria-hidden': true
   }
 
   const content: FC<IconProps>

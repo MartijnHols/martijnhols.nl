@@ -86,7 +86,7 @@ const ContactButton = ({ inverted, hovering, ...others }: Props) => (
     <Link className="plain" href="#footer" {...others}>
       <Container inverted={inverted} hovering={hovering}>
         <ChatIconContainer>
-          <StyledChatIcon aria-label="" />
+          <StyledChatIcon aria-hidden />
         </ChatIconContainer>
         <Divider />
         Contact
