@@ -276,16 +276,34 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       over images.
     </p>
 
+    <h3 id="writing-alt-texts">Writing alt texts</h3>
+
     <p>
       Writing good alt text is hard, and many guidelines on the internet are
       confusing. Over the years, I've developed a rule of thumb that works for
-      me: imagine explaining the image to someone with poor vision. They can see
-      some parts of the image, but can't make out everything. The alt text has
-      to fill in the gaps of what they're seeing and not seeing. A key takeaway
-      from this approach is that if the image contains text, that text should
-      always be included in the alt text. I find this approach leads me to add
-      alt text to images more often than other guidelines typically suggest.
+      me:
     </p>
+
+    <p>
+      Imagine explaining the image to someone with poor vision. They can see
+      some parts of the image, but can't make out everything. The alt text has
+      to fill in the gaps of what they're seeing and not seeing.
+    </p>
+
+    <p>
+      A key takeaway from this approach is that if the image contains text, that
+      text should always be included in the alt text. I find this approach leads
+      me to add alt text to images more often than other guidelines would
+      typically suggest.
+    </p>
+
+    <Aside>
+      <Link href="https://adrianroselli.com/2017/02/not-all-screen-reader-users-are-blind.html">
+        Not all screen reader users are blind
+      </Link>{' '}
+      by Adrian Roselli is a great read if you want to learn more about the
+      diversity of screen reader users.
+    </Aside>
 
     <h2 id="keyboard-navigation">Keyboard navigation</h2>
 
