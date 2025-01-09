@@ -94,7 +94,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       also improves SEO.
     </p>
 
-    <h3>Interactive elements</h3>
+    <h3 id="interactive-elements">Interactive elements</h3>
 
     <p>
       The most important elements to get right are <Code>{`<button>`}</Code> and{' '}
@@ -137,7 +137,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       <Link href="#styling">later</Link>.
     </p>
 
-    <h3>Native elements</h3>
+    <h3 id="native-elements">Native elements</h3>
 
     <p>
       Beyond buttons and links, <strong>native elements</strong> like{' '}
@@ -201,7 +201,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       </figcaption>
     </figure>
 
-    <h3>Labels</h3>
+    <h3 id="labels">Labels</h3>
 
     <p>
       <strong>
@@ -226,7 +226,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       effort.
     </p>
 
-    <h3>Placeholders</h3>
+    <h3 id="placeholders">Placeholders</h3>
 
     <p>
       <strong>Placeholders are not substitutes for labels.</strong> They
@@ -298,7 +298,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       <Link href="#focus-indicators">later</Link>.
     </p>
 
-    <h3>Modals</h3>
+    <h3 id="modals">Modals</h3>
 
     <p>
       Keyboard navigation becomes more challenging when modals are introduced.
@@ -392,7 +392,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       I'll focus on the areas where we can have the most direct impact.
     </p>
 
-    <h3>Focus indicators</h3>
+    <h3 id="focus-indicators">Focus indicators</h3>
 
     <p>
       <strong>Never disable focus indicators.</strong> They are essential for
@@ -425,7 +425,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       semantic HTML as much as possible.
     </Aside>
 
-    <h3>Clickable areas</h3>
+    <h3 id="clickable-areas">Clickable areas</h3>
 
     <p>
       Ensure buttons and links have{' '}
@@ -447,7 +447,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       />
     </Figure>
 
-    <h3>Reduced motion</h3>
+    <h3 id="reduced-motion">Reduced motion</h3>
 
     <p>
       Animations can enhance usability by helping users maintain orientation on
@@ -465,7 +465,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 }
 `}</CodeSnippet>
 
-    <h3>Accessible responsive design</h3>
+    <h3 id="accessible-responsive-design">Accessible responsive design</h3>
 
     <p>
       One little-known fact is that{' '}
@@ -482,7 +482,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       avoided.
     </p>
 
-    <h4>Applied to this blog</h4>
+    <h4 id="applied-to-this-blog">Applied to this blog</h4>
 
     <p>
       This blog uses relative sizing in most places (although it's far from
@@ -527,7 +527,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>The two most important ARIA attributes are:</p>
 
-    <h3>aria-label</h3>
+    <h3 id="aria-label">aria-label</h3>
 
     <p>
       Adds an accessible label to elements that do not have visible text. For
@@ -541,7 +541,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 </button>
 `}</CodeSnippet>
 
-    <h3>aria-hidden</h3>
+    <h3 id="aria-hidden">aria-hidden</h3>
 
     <p>
       Hides elements from screen readers without removing them visually. This is
