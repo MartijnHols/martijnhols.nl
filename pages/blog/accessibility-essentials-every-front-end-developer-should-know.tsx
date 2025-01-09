@@ -510,9 +510,12 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="aria-attributes">ARIA attributes</h2>
 
     <p>
-      An article on accessibility wouldn't be complete without mentioning ARIA
-      attributes, even if this article is focused on things benefitting all
-      users, not just those relying on screen readers.
+      An article on accessibility wouldn't be complete without mentioning{' '}
+      <Link href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">
+        ARIA
+      </Link>{' '}
+      attributes, even if it's focused on things benefitting all users, not just
+      those relying on screen readers.
     </p>
 
     <p>
@@ -521,8 +524,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         ARIA attributes can help fill gaps in screen reader support where
         semantic HTML falls short
       </strong>
-      . However, they can also do more harm than good if misused, so it's best
-      to use them sparingly and thoughtfully.
+      . But if misused, they can also do more harm than good, so it's best to
+      use them sparingly and thoughtfully.
     </p>
 
     <p>The two most important ARIA attributes are:</p>
@@ -540,6 +543,21 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
   <SearchIcon />
 </button>
 `}</CodeSnippet>
+
+    <p>
+      While it can be used on any element,{' '}
+      <strong>
+        <Code>aria-label</Code> should only be used on{' '}
+        <Link href="#interactive-elements">interactive elements</Link>.
+      </strong>{' '}
+      It is not supported on non-interactive elements, and using it there can
+      result in the label{' '}
+      <Link href="https://ericwbailey.website/published/aria-label-is-a-code-smell/#1.-aria-label%E2%80%99s-varied-support-when-declared-on-a-non-interactive-element">
+        being ignored or causing confusing, unexpected, or annoying
+        announcements
+      </Link>
+      .
+    </p>
 
     <h3 id="aria-hidden">aria-hidden</h3>
 
