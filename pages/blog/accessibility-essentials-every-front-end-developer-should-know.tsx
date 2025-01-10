@@ -209,8 +209,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         Every input field must have a clear label describing its purpose.
       </strong>{' '}
       Labels should be linked to the input field by making the <Code>for</Code>{' '}
-      attribute (<Code>htmlFor</Code> in React) refer to the
-      <Code>id</Code> of the input field:
+      attribute (<Code>htmlFor</Code> in React) refer to the <Code>id</Code> of
+      the input field:
     </p>
 
     <CodeSnippet>{`
