@@ -206,32 +206,41 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>
       <strong>
-        Input fields must have a clear label describing their purpose.
+        Every input field must have a clear label describing its purpose.
       </strong>{' '}
-      These labels must be correctly linked with the input field, with{' '}
-      <Code>htmlFor</Code>:
+      Labels should be linked to the input field by making the <Code>for</Code>{' '}
+      attribute (<Code>htmlFor</Code> in React) refer to the
+      <Code>id</Code> of the input field:
     </p>
 
     <CodeSnippet>{`
-<label htmlFor="email">Email:</label>
-<input type="email" id="email" {...register('email')} /> 
+<label for="email">Email:</label>
+<input type="email" id="email" /> 
 `}</CodeSnippet>
 
     <p>
-      While it's valid HTML to omit the <Code>htmlFor</Code> and wrap the input
-      field in the label, not all screen readers properly support this and so
-      that should be avoided.
+      Although it's valid HTML to omit the <Code>for</Code> attribute and wrap
+      the text and input field in a <Code>{`<label>`}</Code>,{' '}
+      <Link href="https://www.tpgi.com/should-form-labels-be-wrapped-or-separate/">
+        not all screen readers support this properly
+      </Link>
+      . To ensure good support across all assistive technologies, it's best to
+      always use the <Code>for</Code> attribute.
     </p>
 
-    {/* <p>
-      I'm not a fan of any hard-coded global ids, since React components are
-      meant to be easily reusable and can be used multiple times on the same
-      page, which would result in duplicate ids. You can use the{' '}
+    <Aside>
+      I am not a fan of hard-coded global ids in React, as components are meant
+      to be easily reusable and may be rendered multiple times on the same page.
+      To avoid id conflicts, you can use React's{' '}
       <Link href="https://react.dev/reference/react/useId">
         <Code>useId</Code>
-      </Link> hook from the React library to generate unique ids for each
-      field. 
-    </p> */}
+      </Link>{' '}
+      hook to generate unique ids for each field. See{' '}
+      <Link href="https://react.dev/reference/react/useId#generating-ids-for-several-related-elements">
+        Generating IDs for several related elements
+      </Link>{' '}
+      for an example of how to do this efficiently in forms.
+    </Aside>
 
     <h3 id="placeholders">Placeholders</h3>
 
