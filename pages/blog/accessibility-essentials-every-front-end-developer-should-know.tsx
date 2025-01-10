@@ -219,8 +219,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 `}</CodeSnippet>
 
     <p>
-      Although it's valid HTML to omit the <Code>for</Code> attribute and wrap
-      the text and input field in a <Code>{`<label>`}</Code>,{' '}
+      Although it's valid HTML to implicitly link the label and input by
+      omitting the <Code>for</Code> attribute and wrapping them together in a{' '}
+      <Code>{`<label>`}</Code> element,{' '}
       <Link href="https://www.tpgi.com/should-form-labels-be-wrapped-or-separate/">
         not all screen readers support this properly
       </Link>
