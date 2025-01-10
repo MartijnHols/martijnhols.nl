@@ -22,7 +22,7 @@ const { meta, getStaticProps } = articleMeta({
     'Essential accessibility practices for front-end developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
   image: openGraphImage,
   publishedAt: '2025-01-07',
-  updatedAt: '2025-01-09',
+  updatedAt: '2025-01-10',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
@@ -209,23 +209,29 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         Input fields must have a clear label describing their purpose.
       </strong>{' '}
       These labels must be correctly linked with the input field, with{' '}
-      <Code>htmlFor</Code>, or my preferred approach, by wrapping the label text
-      and input directly inside a <Code>{`<label>`}</Code> element:
+      <Code>htmlFor</Code>:
     </p>
 
     <CodeSnippet>{`
-<label>
-  <div>Email:</div>
-  <input type="email" {...register('email')} /> 
-</label>
+<label htmlFor="email">Email:</label>
+<input type="email" id="email" {...register('email')} /> 
 `}</CodeSnippet>
 
     <p>
-      This eliminates the need for <Code>id</Code> attributes, simplifying the
-      code while maintaining accessibility. It works great with libraries like{' '}
-      <Code>react-hook-form</Code>, and ensures accessibility without extra
-      effort.
+      While it's valid HTML to omit the <Code>htmlFor</Code> and wrap the input
+      field in the label, not all screen readers properly support this and so
+      that should be avoided.
     </p>
+
+    {/* <p>
+      I'm not a fan of any hard-coded global ids, since React components are
+      meant to be easily reusable and can be used multiple times on the same
+      page, which would result in duplicate ids. You can use the{' '}
+      <Link href="https://react.dev/reference/react/useId">
+        <Code>useId</Code>
+      </Link> hook from the React library to generate unique ids for each
+      field. 
+    </p> */}
 
     <h3 id="placeholders">Placeholders</h3>
 
