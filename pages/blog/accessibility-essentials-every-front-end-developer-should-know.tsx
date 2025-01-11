@@ -22,7 +22,7 @@ const { meta, getStaticProps } = articleMeta({
     'Essential accessibility practices for front-end developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
   image: openGraphImage,
   publishedAt: '2025-01-07',
-  updatedAt: '2025-01-10',
+  updatedAt: '2025-01-11',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
@@ -51,12 +51,16 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         improve usability for everyone.
       </li>
       <li>
-        <Link href="#image-alt-texts">Image Alt Texts</Link>: Write better
-        descriptions to make images more accessible.
+        <Link href="#keyboard-navigation">Keyboard navigation</Link>: Ensure
+        users can navigate around with their keyboard.
       </li>
       <li>
-        <Link href="#keyboard-navigation">Keyboard Navigation</Link>: Ensure
-        seamless navigation with focus management and modals.
+        <Link href="#modals">Modals</Link>: Modals come with many accessibility
+        requirements.
+      </li>
+      <li>
+        <Link href="#image-alt-texts">Image alt texts</Link>: Write better
+        descriptions to make images more accessible.
       </li>
       <li>
         <Link href="#styling">Styling</Link>: Enhance accessibility through
@@ -270,6 +274,127 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       sparingly.
     </p>
 
+    <h2 id="keyboard-navigation">Keyboard navigation</h2>
+
+    <p>
+      An essential alternative to navigation with a mouse, is the keyboard. Make
+      sure users can navigate your app logically with the <Code>Tab</Code> key
+      and trigger actions with <Code>Enter</Code>. Using native HTML elements
+      like <Code>{`<button>`}</Code> and <Code>{`<a>`}</Code> plays a
+      significant role in making this seamless.
+    </p>
+
+    <p>
+      Focus indicators are also crucial for keyboard navigation, but we'll touch
+      on that <Link href="#focus-indicators">later</Link>.
+    </p>
+
+    <h2 id="modals">Modals</h2>
+
+    <p>
+      Modals come with many accessibility requirements and can take a lot of
+      effort to implement correctly. The key challenges are focus management,
+      keyboard navigation, and hiding inactive content from screen readers.
+    </p>
+
+    <p>
+      The easiest way to make modals accessible is again by using the power of
+      semantic HTML;{' '}
+      <Link href="https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html">
+        use the <Code>{`<dialog>`}</Code> element
+      </Link>
+      . This element now has{' '}
+      <Link href="https://caniuse.com/dialog">solid browser support</Link> and
+      addresses most accessibility concerns with modals, including keyboard
+      navigation.
+    </p>
+
+    <h3 id="custom-modals">Custom modals</h3>
+
+    <p>
+      If you build a custom modal without <Code>{`<dialog>`}</Code>, there are
+      many accessibility factors to consider. Here are some key points to
+      consider that also improve usability:
+    </p>
+
+    <h4 id="focus-management">Focus management</h4>
+
+    <p>
+      When a modal opens,{' '}
+      <strong>
+        the user's focus remains on the button that opened the modal
+      </strong>
+      , making it difficult for users to interact with the newly opened modal.
+      This can also lead to users accidentally opening multiple instances of the
+      same modal.
+    </p>
+
+    <p>To address this:</p>
+    <ol>
+      <li>
+        <strong>Set the focus to the modal</strong> as soon as it opens.
+      </li>
+      <li>
+        <strong>Implement a focus trap</strong> to keep the focus within the
+        modal so users cannot tab to the underlying page.
+      </li>
+      <li>
+        <strong>Return focus</strong> to the triggering element when the modal
+        closes.
+      </li>
+    </ol>
+
+    <p>
+      A library like{' '}
+      <Link href="https://github.com/theKashey/react-focus-lock">
+        react-focus-lock
+      </Link>{' '}
+      provides good solutions for this. It handles the initial focus, traps the
+      focus so it cycles only through active elements within the modal, and can
+      restore focus to the triggering element when the modal closes using its{' '}
+      <Code>returnFocus</Code> option.
+    </p>
+
+    <Aside>
+      For confirmation dialogs, consider settings the initial focus to the
+      "Confirm" button. This allows users to immediately confirm an action by
+      pressing <Code>Enter</Code>, just like in native dialogs.
+    </Aside>
+
+    <h4 id="inactive-content">Inactive content</h4>
+
+    <p>
+      When a modal opens, the content behind it is usually blocked visually by a
+      backdrop. However, users, in particular those using screen readers, may
+      still be able to interact with the underlying content.
+    </p>
+
+    <p>
+      To prevent this, add the{' '}
+      <Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert">
+        <Code>inert</Code>
+      </Link>{' '}
+      attribute to the content behind the modal. This makes the content
+      non-interactive and hides it from assistive technologies. The{' '}
+      <Code>inert</Code> attribute is supported by all modern browsers.
+    </p>
+
+    <p>
+      To use <Code>inert</Code> in React, you need to portal your modal out of
+      your main content. This ensures it falls outside of the <Code>inert</Code>{' '}
+      scope, as <Code>inert</Code> applies to all children and cannot be
+      disabled on child elements.
+    </p>
+
+    <h4 id="closing-modals">Closing modals</h4>
+
+    <p>
+      Users should be able to close modals with the <Code>Escape</Code> key.
+      This is a common pattern that users expect that benefits users with
+      mobility impairments and improves the overall user experience by providing
+      a consistent way to dismiss modals.
+    </p>
+
     <h2 id="image-alt-texts">Image alt texts</h2>
 
     <p>
@@ -319,68 +444,6 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       </Link>{' '}
       by Adrian Roselli is a great read if you want to learn more about the
       diversity of screen reader users.
-    </Aside>
-
-    <h2 id="keyboard-navigation">Keyboard navigation</h2>
-
-    <p>
-      An essential alternative to navigation with a mouse, is the keyboard. Make
-      sure users can navigate your app logically with the <Code>Tab</Code> key
-      and trigger actions with <Code>Enter</Code>. Using native HTML elements
-      like <Code>{`<button>`}</Code> and <Code>{`<a>`}</Code> plays a
-      significant role in making this seamless. Focus indicators are also
-      crucial for keyboard navigation, but we'll touch on that{' '}
-      <Link href="#focus-indicators">later</Link>.
-    </p>
-
-    <h3 id="modals">Modals</h3>
-
-    <p>
-      Keyboard navigation becomes more challenging when modals are introduced.
-    </p>
-
-    <p>
-      By default,{' '}
-      <strong>
-        the user's focus remains on the button that opened the modal
-      </strong>
-      , making it difficult for users to interact with the newly opened modal.
-      It also risks users accidentally opening multiple instances of the same
-      modal.
-    </p>
-
-    <p>To address this:</p>
-    <ol>
-      <li>
-        <strong>Set the focus to the modal</strong> as soon as it opens.
-      </li>
-      <li>
-        <strong>Implement a focus trap</strong> to keep the focus contained
-        within the modal. Without this users might tab out of the modal and back
-        into the rest of the app.
-      </li>
-    </ol>
-
-    <p>
-      A library like{' '}
-      <Link href="https://github.com/theKashey/react-focus-lock">
-        react-focus-trap
-      </Link>{' '}
-      provides good solutions for this. It handles the initial focus, traps the
-      focus so it cycles only through active elements within the modal, and can
-      even restore focus to the triggering element when the modal closes using
-      its <Code>returnFocus</Code> option.
-    </p>
-
-    <p>
-      Finally, give users an easy alternative to close modals by allowing them
-      to dismiss them with the <Code>Escape</Code> key.
-    </p>
-
-    <Aside>
-      For confirmation dialogs, consider settings the initial focus to the
-      confirm button. This allows users to immediately confirm an action by
-      pressing <Code>Enter</Code> just like in most native dialogs.
     </Aside>
 
     <h2 id="styling">Styling</h2>
