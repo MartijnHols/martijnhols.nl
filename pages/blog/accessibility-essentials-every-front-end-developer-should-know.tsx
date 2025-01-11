@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
+import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
@@ -36,9 +37,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      In this article, I'll cover the key accessibility principles I believe
-      every Front-end developer should apply when building components. We'll
-      cover:
+      In this article, I'll walk you through the key accessibility principles I
+      believe every front-end developer should apply when building components,
+      including:
     </p>
 
     <ul>
@@ -55,7 +56,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         users can navigate around with their keyboard.
       </li>
       <li>
-        <Link href="#modals">Modals</Link>: Modals come with many accessibility
+        <Link href="#modals">Modals</Link>: Modals have many accessibility
         requirements.
       </li>
       <li>
@@ -78,13 +79,13 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <p>
-      The focus of the article will be on the basic things you, as a Front-end
-      developer, can do to improve the accessibility of your components without
-      spending a lot of extra time and effort.
+      This article focuses on the basic things you, as a front-end developer,
+      can do to improve accessibility and usability without spending much extra
+      time and effort.
     </p>
 
     <Aside variant="sm">
-      While most examples in this article use React, the principles apply to any
+      Most examples in this article use React, but the principles apply to any
       front-end app. Even if you're not using React, you can still benefit from
       the practices outlined here.
     </Aside>
@@ -234,7 +235,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <Aside>
-      I am not a fan of hard-coded global ids in React, as components are meant
+      In React, I am not a fan of hard-coded global ids as components are meant
       to be easily reusable and may be rendered multiple times on the same page.
       To avoid id conflicts, you can use React's{' '}
       <Link href="https://react.dev/reference/react/useId">
@@ -254,7 +255,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       disappear when users start typing, which can leave users confused about
       what the field is for. They're also often harder to read due to their low
       contrast. Additionally, placeholders make it harder to identify which
-      fields have not yet been filled.
+      fields have not yet been filled, as shown in the image below.
     </p>
 
     <Figure
@@ -277,24 +278,53 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="keyboard-navigation">Keyboard navigation</h2>
 
     <p>
-      An essential alternative to navigation with a mouse, is the keyboard. Make
-      sure users can navigate your app logically with the <Code>Tab</Code> key
-      and trigger actions with <Code>Enter</Code>. Using native HTML elements
-      like <Code>{`<button>`}</Code> and <Code>{`<a>`}</Code> plays a
+      The keyboard is an essential alternative tool to navigating with a mouse.
+      Make sure users can navigate your app logically with the <Code>Tab</Code>{' '}
+      key and trigger actions with <Code>Enter</Code>. Using native HTML
+      elements like <Code>{`<button>`}</Code> and <Code>{`<a>`}</Code> plays a
       significant role in making this seamless.
     </p>
 
+    <h3 id="focus-indicators">Focus indicators</h3>
+
     <p>
-      Focus indicators are also crucial for keyboard navigation, but we'll touch
-      on that <Link href="#focus-indicators">later</Link>.
+      <strong>Focus indicators are essential for keyboard navigation.</strong>{' '}
+      Never disable focus indicators completely. The{' '}
+      <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible">
+        <Code>:focus-visible</Code>
+      </Link>{' '}
+      selector, rather than <Code>:focus</Code>, allows you to show focus
+      indicators only when browsers deem it relevant to the user. This provides
+      a solution to the old complaints that focus rings are visually ugly
+      without sacrificing accessibility.
     </p>
+
+    <Figure
+      caption="Jumping through form fields with focus indicator"
+      href={focusIndicatorImage.src}
+    >
+      <Image
+        src={focusIndicatorImage}
+        alt="An animated GIF showing a modal with a form for creating a project in MoneyMonk (text in Dutch). The focus indicator moves through the fields, showing the user's current position. At the end, it loops back to the close button."
+        width={420}
+      />
+    </Figure>
+
+    <Aside>
+      The GIF above has a custom field for the "Soort" (type) field. It's fully
+      accessible, as it's built with radio buttons and CSS. The radio buttons
+      are visually hidden but fully accessible; they can still be selected and
+      are announced by screen readers. This highlights the power of using
+      semantic HTML as much as possible.
+    </Aside>
 
     <h2 id="modals">Modals</h2>
 
     <p>
-      Modals come with many accessibility requirements and can take a lot of
-      effort to implement correctly. The key challenges are focus management,
-      keyboard navigation, and hiding inactive content from screen readers.
+      Modals are common in larger web applications but{' '}
+      <strong>it can be challenging to make modals accessible</strong>. The key
+      challenges to consider are focus management, keyboard navigation, and
+      ensuring inactive content is hidden.
     </p>
 
     <p>
@@ -313,8 +343,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>
       If you build a custom modal without <Code>{`<dialog>`}</Code>, there are
-      many accessibility factors to consider. Here are some key points to
-      consider that also improve usability:
+      many accessibility factors to consider. It might be better to consider
+      using a library to take care of this for you. If you're building something
+      yourself, here are some key points to consider:
     </p>
 
     <h4 id="focus-management">Focus management</h4>
@@ -455,7 +486,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <ul>
       <li>
-        <b>Focus indicators</b>: Highlight the focused element with an outline.
+        <b>Focus indicators</b>: Highlight the focused element with an outline
+        (as covered <Link href="#focus-indicators">earlier</Link>).
       </li>
       <li>
         <b>Interactive elements</b>: Ensure links look like links and buttons
@@ -489,39 +521,6 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       Most of these are design-driven and fall outside of our direct influence.
       I'll focus on the areas where we can have the most direct impact.
     </p>
-
-    <h3 id="focus-indicators">Focus indicators</h3>
-
-    <p>
-      <strong>Never disable focus indicators.</strong> They are essential for
-      keyboard navigation. The{' '}
-      <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible">
-        <Code>:focus-visible</Code>
-      </Link>{' '}
-      selector, rather than <Code>:focus</Code>, allows you to show focus
-      indicators only when browsers deem it relevant to the user. This provides
-      a solution to the old complaints that focus rings are visually ugly
-      without sacrificing accessibility.
-    </p>
-
-    <Figure
-      caption="Jumping through form fields with focus indicator"
-      href={focusIndicatorImage.src}
-    >
-      <Image
-        src={focusIndicatorImage}
-        alt="An animated GIF showing a modal with a form for creating a project in MoneyMonk (text in Dutch). The focus indicator moves through the fields, showing the user's current position. At the end, it loops back to the close button."
-        width={420}
-      />
-    </Figure>
-
-    <Aside>
-      The GIF above has a custom field for the "Soort" (type) field. It's fully
-      accessible, as it's built with radio buttons and CSS. The radio buttons
-      are visually hidden but fully accessible; they can still be selected and
-      are announced by screen readers. This highlights the power of using
-      semantic HTML as much as possible.
-    </Aside>
 
     <h3 id="clickable-areas">Clickable areas</h3>
 
@@ -619,11 +618,11 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <p>
       While semantic HTML is a good starting point,{' '}
       <strong>
-        ARIA attributes can help fill gaps in screen reader support where
-        semantic HTML falls short
+        ARIA attributes should only be used as a last resort when semantic
+        elements can't achieve the desired result
       </strong>
-      . But if misused, they can also do more harm than good, so it's best to
-      use them sparingly and thoughtfully.
+      . Misusing ARIA can do more harm than good, so it's best to use them
+      sparingly and thoughtfully.
     </p>
 
     <p>The two most important ARIA attributes are:</p>
@@ -646,7 +645,17 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       While it can be used on any element,{' '}
       <strong>
         <Code>aria-label</Code> should only be used on{' '}
-        <Link href="#interactive-elements">interactive elements</Link>.
+        <Annotation
+          annotation={
+            <>
+              This includes <Code>{`<button>`}</Code>, <Code>{`<a>`}</Code>,{' '}
+              <Code>{`<input>`}</Code>, <Code>{`<select>`}</Code> and more.
+            </>
+          }
+        >
+          interactive elements
+        </Annotation>
+        .
       </strong>{' '}
       It is not supported on non-interactive elements, and using it there can
       result in the label{' '}
@@ -687,8 +696,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="conclusion">Conclusion</h2>
 
     <p>
-      These are the tools and principles that I believe every Front-end
-      developer should incorporate when building components.{' '}
+      These are the tools and principles that I reckon every front-end developer
+      should use when building components.{' '}
       <strong>
         Accessibility isn't a separate task to tackle later, it's something that
         should be a part of your development process from the start.
