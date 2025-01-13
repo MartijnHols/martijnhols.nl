@@ -61,7 +61,8 @@ const Page = () => (
                 performance
               </li>
               <li>
-                UX, accessibility en{' '}
+                <Link href="/blog?tag=ux">UX</Link>,{' '}
+                <Link href="/blog?tag=accessibility">accessibility</Link> en{' '}
                 <Link href="/blog?tag=machine-translation">i18n</Link>
               </li>
               <li>
