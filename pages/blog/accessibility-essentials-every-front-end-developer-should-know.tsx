@@ -235,9 +235,9 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <Aside>
-      In React, I am not a fan of hard-coded global ids as components are meant
-      to be easily reusable and may be rendered multiple times on the same page.
-      To avoid id conflicts, you can use React's{' '}
+      In React, I'm not a fan of hard-coded ids as components are meant to be
+      easily reusable and may be rendered multiple times on the same page. To
+      avoid id conflicts, you can use React's{' '}
       <Link href="https://react.dev/reference/react/useId">
         <Code>useId</Code>
       </Link>{' '}
@@ -245,7 +245,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       <Link href="https://react.dev/reference/react/useId#generating-ids-for-several-related-elements">
         Generating IDs for several related elements
       </Link>{' '}
-      for an example of how to do this efficiently in forms.
+      for an example of how to do this in forms.
     </Aside>
 
     <h3 id="placeholders">Placeholders</h3>
@@ -342,10 +342,11 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h3 id="custom-modals">Custom modals</h3>
 
     <p>
-      If you build a custom modal without <Code>{`<dialog>`}</Code>, there are
-      many accessibility factors to consider. It might be better to consider
-      using a library to take care of this for you. If you're building something
-      yourself, here are some key points to consider:
+      If you're building a custom modal without <Code>{`<dialog>`}</Code>, there
+      are many accessibility factors to account for. Modals are tricky to get
+      right, and creating a fully accessible one from scratch is a significant
+      challenge. Covering all the details would take an entire article, but here
+      are some key points to consider:
     </p>
 
     <h4 id="focus-management">Focus management</h4>
@@ -396,8 +397,8 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
 
     <p>
       When a modal opens, the content behind it is usually blocked visually by a
-      backdrop. However, users, in particular those using screen readers, may
-      still be able to interact with the underlying content.
+      backdrop. However, users, especially those using screen readers, may still
+      be able to interact with the underlying content.
     </p>
 
     <p>
@@ -406,8 +407,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         <Code>inert</Code>
       </Link>{' '}
       attribute to the content behind the modal. This makes the content
-      non-interactive and hides it from assistive technologies. The{' '}
-      <Code>inert</Code> attribute is supported by all modern browsers.
+      non-interactive and hides it from assistive technologies.
     </p>
 
     <p>
