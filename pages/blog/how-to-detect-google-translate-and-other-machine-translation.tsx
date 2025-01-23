@@ -3,6 +3,7 @@ import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import CodeSnippet from '../../components/CodeSnippet'
+import Link from '../../components/Link'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 
 const { meta, getStaticProps } = articleMeta({
@@ -11,7 +12,7 @@ const { meta, getStaticProps } = articleMeta({
   description:
     'In this gist I share a simple but reliable way to detect Google Translate and other machine translation tools.',
   publishedAt: '2024-04-21',
-  updatedAt: '2024-05-04',
+  updatedAt: '2025-01-23',
   tags: [
     BlogArticleTag.HowTo,
     BlogArticleTag.MachineTranslation,
@@ -113,8 +114,11 @@ observer.observe(title, {
     <p>Hope that helps.</p>
     <Aside>
       Machine translators' DOM changes often interfere with tools like React,
-      leading to crashes. For React I plan to write a more extensive gist about
-      ways to mitigate this.
+      leading to crashes. See{' '}
+      <Link href="/blog/everything-about-google-translate-crashing-react">
+        Everything about Google Translate crashing React (and other web apps)
+      </Link>{' '}
+      for more info.
     </Aside>
   </BlogArticle>
 )
