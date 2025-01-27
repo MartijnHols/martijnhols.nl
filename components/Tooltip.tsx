@@ -45,11 +45,13 @@ const FloatingTooltip = styled.div(
     text-align: left;
     padding: 4px 10px 5px;
     border-radius: 0;
-    filter: drop-shadow(-4px 4px 0 ${theme.colors.yellow});
-    // If the tooltip is over a codeblock, these borders give the tooltip a
-    // proper outline. They're meant to appear invisible.
-    border-top: 1px solid ${theme.colors.white};
-    border-right: 1px solid ${theme.colors.white};
+    filter: drop-shadow(-4px 4px 0 ${theme.colors.yellow})
+      // If the tooltip is over a codeblock, these borders give the tooltip a
+      // small outline. They're meant to appear invisible.
+      drop-shadow(0 0.5px 0 ${theme.colors.white})
+      drop-shadow(0 -0.5px 0 ${theme.colors.white})
+      drop-shadow(0.5px 0 0 ${theme.colors.white})
+      drop-shadow(-0.5px 0 0 ${theme.colors.white});
     // Make it a similar width as the VSCode tooltip
     max-width: 450px;
   `,
