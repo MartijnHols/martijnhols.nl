@@ -31,20 +31,12 @@ import { usePortalTarget } from './PortalTarget'
 const FloatingTooltip = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
-    // Inherit all font properties to match parent style since they're presented
-    // as related elements.
-    font: inherit;
-    line-height: inherit;
-    letter-spacing: inherit;
+    color: ${theme.colors.white};
     // A tooltip should not be main content, in other words it should be less
     // important. Make the font size smaller to further de-emphasize it and
     // create a hierarchy.
     font-size: 90%;
-    color: ${theme.colors.white};
-    pointer-events: all;
-    text-align: left;
-    padding: 4px 10px 5px;
-    border-radius: 0;
+    padding: 5px 10px;
     filter: drop-shadow(-4px 4px 0 ${theme.colors.yellow})
       // If the tooltip is over a codeblock, these borders give the tooltip a
       // small outline. They're meant to appear invisible.
@@ -148,6 +140,7 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
             ref={refs.setFloating}
             style={floatingStyles}
             {...getFloatingProps()}
+            className="inverted"
           >
             {content}
 
