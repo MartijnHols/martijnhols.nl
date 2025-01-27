@@ -12,13 +12,13 @@ const ImageContainer = styled.div(
   ({ theme }) => css`
     display: inline-block;
 
-    > img {
+    > * > img {
       border-radius: 50%;
       width: 1.2em;
       height: 1.2em;
       border: 1px solid ${theme.colors.black};
     }
-    > img:not(:first-of-type) {
+    > *:not(:first-of-type) > img {
       margin-left: -0.5em;
     }
   `,

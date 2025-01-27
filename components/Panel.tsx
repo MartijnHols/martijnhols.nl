@@ -73,7 +73,6 @@ const BottomAngle = styled('div', {
     ::before {
       content: '';
       position: absolute;
-      z-index: 1;
       display: block;
       height: var(--angle-size);
       left: var(--box-shadow-distance);

@@ -18,10 +18,11 @@ const RelativeDate = ({ date }: Props) => {
   return (
     <Tooltip
       // Making a human readable date would be fairly trivial, but I actually
-      // prefer an ISO date since this is a technical blog and it's a fun quirk
+      // prefer an ISO date since this is a technical blog and I think it's a
+      // fun quirk
       content={date}
     >
-      {(props) => (
+      {({ props }) => (
         <Time {...props} dateTime={date}>
           {relativeTime}
         </Time>

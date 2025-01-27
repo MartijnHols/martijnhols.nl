@@ -137,13 +137,16 @@ const BlogIndex = ({ articles }: Props) => {
           )}
 
           <Tooltip content="RSS Feed">
-            <StyledRssFeedLink
-              href="/rss.xml"
-              className="plain"
-              aria-label="RSS Feed"
-            >
-              <StyledRssFeedIcon aria-hidden />
-            </StyledRssFeedLink>
+            {({ props }) => (
+              <StyledRssFeedLink
+                {...props}
+                href="/rss.xml"
+                className="plain"
+                aria-label="RSS Feed"
+              >
+                <StyledRssFeedIcon aria-hidden />
+              </StyledRssFeedLink>
+            )}
           </Tooltip>
         </StyledContainer>
 

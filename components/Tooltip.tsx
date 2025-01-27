@@ -1,12 +1,34 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
-import Tippy from '@tippyjs/react'
-import { cloneElement, ReactElement, ReactNode, useState } from 'react'
+import {
+  arrow,
+  autoUpdate,
+  ExtendedRefs,
+  flip,
+  FloatingArrow,
+  FloatingPortal,
+  inline,
+  offset,
+  ReferenceType,
+  safePolygon,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useRole,
+} from '@floating-ui/react'
+import {
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+  useRef,
+  useState,
+} from 'react'
 import { usePortalTarget } from './PortalTarget'
-import 'tippy.js/dist/tippy.css'
-import 'tippy.js/animations/shift-away.css'
 
-const StyledTippy = styled(Tippy)(
+const FloatingTooltip = styled.div(
   ({ theme }) => css`
     background: ${theme.colors.black};
     // Inherit all font properties to match parent style since they're presented
@@ -28,50 +50,114 @@ const StyledTippy = styled(Tippy)(
     // proper outline. They're meant to appear invisible.
     border-top: 1px solid ${theme.colors.white};
     border-right: 1px solid ${theme.colors.white};
-
-    .tippy-content {
-      padding: 0;
-    }
-    .tippy-arrow {
-      color: ${theme.colors.black};
-    }
+    // Make it a similar width as the VSCode tooltip
+    max-width: 450px;
   `,
 )
 
-interface Props {
-  children:
-    | ReactElement
-    | ((props: { tabIndex: number; 'aria-expanded': boolean }) => ReactElement)
+type TriggerRenderer = (params: {
+  state: { isOpen: boolean }
+  props: HTMLAttributes<HTMLSpanElement> & {
+    ref: ExtendedRefs<ReferenceType>['setReference']
+  }
+}) => ReactElement
+
+interface Props
+  extends Omit<HTMLAttributes<HTMLSpanElement>, 'children' | 'content'> {
+  children: ReactNode | TriggerRenderer
   content: ReactNode
-  className?: string
+  role?: 'tooltip' | 'label'
 }
 
-const Tooltip = ({ children, content, className }: Props) => {
+const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false)
 
   const portalTarget = usePortalTarget()
+  const arrowRef = useRef(null)
+  const { refs, floatingStyles, context } = useFloating({
+    open: isTooltipOpen,
+    onOpenChange: setIsTooltipOpen,
+    whileElementsMounted: autoUpdate,
+    placement: 'top',
+    middleware: [
+      flip({
+        padding: 16,
+      }),
+      arrow({
+        element: arrowRef,
+      }),
+      offset({
+        mainAxis: 7,
+      }),
+      inline(),
+    ],
+  })
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    useHover(context, {
+      // WCAG 2.1/1.4.13 requires tooltips to not close when the tooltip is hovered
+      handleClose: safePolygon({
+        // Prevents an issue where hovering a second tooltip trigger when moving
+        // towards the tooltip would activate two tooltips.
+        blockPointerEvents: true,
+      }),
+    }),
+    useFocus(context),
+    useDismiss(context),
+    useRole(context, {
+      role,
+    }),
+    // Toggle tooltip by click so that if a user clicks without hovering (e.g.
+    // by instructing their screen reader to click), the tooltip will still
+    // appear. Also enables keyboard confirm (enter/space).
+    useClick(context),
+  ])
+
+  const triggerProps = {
+    role: 'button',
+    tabIndex: 0,
+    'aria-expanded': isTooltipOpen,
+    ...getReferenceProps(),
+    ref: refs.setReference,
+    ...others,
+  }
+
+  const theme = useTheme()
 
   return (
-    <StyledTippy
-      content={content}
-      animation="shift-away"
-      onMount={() => setIsTooltipOpen(true)}
-      onHide={() => setIsTooltipOpen(false)}
-      className={className}
-      appendTo={() => portalTarget ?? document.body}
-      // Make it look like the VSCode tooltip
-      maxWidth={450}
-    >
-      {typeof children === 'function'
-        ? children({
-            tabIndex: 0,
-            'aria-expanded': isTooltipOpen,
-          })
-        : cloneElement(children, {
-            tabIndex: 0,
-            'aria-expanded': isTooltipOpen,
-          })}
-    </StyledTippy>
+    <>
+      {typeof children === 'function' ? (
+        children({
+          state: {
+            isOpen: isTooltipOpen,
+          },
+          props: triggerProps,
+        })
+      ) : (
+        // As much as I want to use a button, buttons do not support display:
+        // inline, or in other words, it doesn't wrap text across multiple
+        // lines. See https://github.com/w3c/csswg-drafts/issues/3226
+        <span {...triggerProps}>{children}</span>
+      )}
+
+      {isTooltipOpen && (
+        <FloatingPortal root={portalTarget}>
+          <FloatingTooltip
+            ref={refs.setFloating}
+            style={floatingStyles}
+            {...getFloatingProps()}
+          >
+            {content}
+
+            <FloatingArrow
+              ref={arrowRef}
+              context={context}
+              fill={theme.colors.black}
+            />
+          </FloatingTooltip>
+        </FloatingPortal>
+      )}
+    </>
   )
 }
 

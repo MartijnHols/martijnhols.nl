@@ -127,7 +127,11 @@ const EverythingAboutGoogleTranslateCrashingReact = (
         </NodeChildren>
         <NodeChildren>
           <Tooltip content="There are 4 lights!">
-            <Node variant="highlight">TextNode</Node>
+            {({ props }) => (
+              <Node variant="highlight" {...props}>
+                TextNode
+              </Node>
+            )}
           </Tooltip>
         </NodeChildren>
       </NodeTree>
@@ -167,7 +171,11 @@ const EverythingAboutGoogleTranslateCrashingReact = (
             </NodeChildren>
             <NodeChildren>
               <Tooltip content="Er zijn 4 lampen!">
-                <Node variant="new">TextNode</Node>
+                {({ props }) => (
+                  <Node variant="new" {...props}>
+                    TextNode
+                  </Node>
+                )}
               </Tooltip>
             </NodeChildren>
           </NodeTree>
@@ -180,7 +188,11 @@ const EverythingAboutGoogleTranslateCrashingReact = (
           <div>Unmounted (the original English node)</div>
           <NodeTree>
             <Tooltip content="There are 4 lights!">
-              <Node variant="highlight">TextNode</Node>
+              {({ props }) => (
+                <Node variant="highlight" {...props}>
+                  TextNode
+                </Node>
+              )}
             </Tooltip>
           </NodeTree>
         </div>
@@ -191,7 +203,7 @@ const EverythingAboutGoogleTranslateCrashingReact = (
       What this shows is that{' '}
       <strong>
         the original <Code>TextNode</Code> is{' '}
-        <Annotation annotation="That means it is no longer a part of the HTML-document, so it is no longer being rendered in the browser.">
+        <Annotation annotation="It's no longer a part of the (active) HTML-document/DOM, so it's no longer being rendered in the browser.">
           unmounted
         </Annotation>{' '}
         and replaced with a new <Code>FontElement</Code>

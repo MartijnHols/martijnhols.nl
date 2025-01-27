@@ -103,7 +103,17 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
       </UspLink>
     </div>
     <div>
-      <Tooltip content="Gebaseerd in Barneveld, Gelderland. Ik sta open voor opdrachten binnen 60 minuten rijden, zoals Amsterdam, Amersfoort, Veenendaal, Ede, Wageningen, Apeldoorn, Utrecht, Zeist, Hilversum, Rhenen, Nijkerk, Leusden, Arnhem, Nijmegen, Deventer, Zwolle, Almere en omstreken.">
+      <Tooltip
+        content={
+          <>
+            Gebaseerd in <strong>Barneveld, Gelderland</strong>. Ik sta open
+            voor opdrachten binnen 60 minuten rijden, zoals Amsterdam,
+            Amersfoort, Veenendaal, Ede, Wageningen, Apeldoorn, Utrecht, Zeist,
+            Hilversum, Rhenen, Nijkerk, Leusden, Arnhem, Nijmegen, Deventer,
+            Zwolle, Almere en omstreken.
+          </>
+        }
+      >
         <UspPanel variant="sm">
           <UspPanelTitle>Locatie</UspPanelTitle>
           <UspPanelText>

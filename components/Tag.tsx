@@ -47,9 +47,15 @@ const Tag = ({ children, className }: Props) => {
   if (children === BlogArticleTag.HowTo) {
     return (
       <Tooltip content="How-tos are technical articles, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
-        <Container data-value={children.toLowerCase()} className={className}>
-          {children}
-        </Container>
+        {({ props }) => (
+          <Container
+            {...props}
+            data-value={children.toLowerCase()}
+            className={className}
+          >
+            {children}
+          </Container>
+        )}
       </Tooltip>
     )
   }
