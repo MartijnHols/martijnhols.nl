@@ -23,11 +23,11 @@ interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'title'> {
 
 const Abbreviation = ({ children, annotation, ...others }: Props) => (
   <Tooltip content={annotation}>
-    {(props) => (
+    {({ state, props }) => (
       <Container
         // Remove the title if the tooltip is open so users don't see the same
         // content twice
-        title={props['aria-expanded'] ? undefined : annotation}
+        title={state.isOpen ? undefined : annotation}
         {...props}
         {...others}
       >
