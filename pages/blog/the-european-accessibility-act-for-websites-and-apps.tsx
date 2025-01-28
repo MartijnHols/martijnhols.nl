@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
@@ -6,7 +7,6 @@ import Code from '../../components/Code'
 import Link from '../../components/Link'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import openGraphImage from './assets/ogimage-accessibility-essentials-every-front-end-developer-should-know.png'
-import { useState } from 'react'
 
 const { meta, getStaticProps } = articleMeta({
   slug: 'the-european-accessibility-act-for-websites-and-apps',
@@ -140,6 +140,26 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         text, visuals, or audio. The key requirements include:
       </p>
       {/* > Toggle: [Summary | Detailed overview] */}
+      <div>
+        <label>
+          <input
+            type="radio"
+            name="details"
+            value="0"
+            onChange={(e) => setShowDetails(!e.target.checked)}
+          />{' '}
+          Summary
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="details"
+            value="1"
+            onChange={(e) => setShowDetails(e.target.checked)}
+          />{' '}
+          Detailed overview
+        </label>
+      </div>
       {showDetails ? (
         <ul>
           <li>
@@ -361,6 +381,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           </li>
         </ul>
       )}
+
       <h4>3. Understandable</h4>
       <p>
         Create interfaces and content that are clear and predictable. The key
@@ -538,7 +559,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
       <ul>
         <li>
           <strong>Educate your dev team</strong>: Share resources like{' '}
-          <Link href="/accessibility-essentials-every-front-end-developer-should-know">
+          <Link href="/blog/accessibility-essentials-every-front-end-developer-should-know">
             Accessibility essentials every front-end developer should know
           </Link>
           , and the{' '}
