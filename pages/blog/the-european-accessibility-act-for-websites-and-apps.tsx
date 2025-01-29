@@ -65,10 +65,10 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           Accessibility is about building websites and apps that are usable by
           as many people as possible
         </strong>
-        , regardless of their abilities, devices or input methods. This is
-        primarily done by making content easier to read, interactive elements
-        easy to use, and ensuring support for keyboard, screen reader, and voice
-        navigation.
+        , regardless of their abilities, devices or input methods. Making sites
+        and apps accessible is mainly done by making content easy to read,
+        interactive elements easy to use, and ensuring support for keyboard,
+        screen reader, and voice navigation.
       </p>
       <p>
         A common misconception is that accessibility only affects a small group
