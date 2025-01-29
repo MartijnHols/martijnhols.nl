@@ -1,12 +1,13 @@
+import { css } from '@emotion/react'
 import { useState } from 'react'
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Link from '../../components/Link'
+import SegmentedControl from '../../components/SegmentedControl'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
-import openGraphImage from './assets/ogimage-accessibility-essentials-every-front-end-developer-should-know.png'
+import openGraphImage from './assets/ogimage-the-european-accessibility-act-for-websites-and-apps.png'
 
 const { meta, getStaticProps } = articleMeta({
   slug: 'the-european-accessibility-act-for-websites-and-apps',
@@ -119,12 +120,6 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         <li>Accessibility statement</li>
       </ol>
       <p>Here's a closer look at each.</p>
-      <Aside>
-        While the{' '}
-        <Link href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 document</Link>{' '}
-        provides a set of <i>guidelines</i>, the EAA makes conformance with
-        items up to Level AA a legacy requirement.
-      </Aside>
       <h3>Accessible UI and content</h3>
       <p>
         Your{' '}
@@ -132,338 +127,342 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           interface and content must conform with{' '}
           <Link href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 level AA</Link>
         </strong>
-        . WCAG 2.1 is built on four main principles, abbreviated as POUR:
+        . WCAG (Web Content Accessibility Guidelines) is a set of
+        recommendations for making digital content accessible to as many users
+        as possible.
       </p>
-      <h4>1. Perceivable</h4>
       <p>
-        Ensure all information is accessible through multiple means, such as
-        text, visuals, or audio. The key requirements include:
+        While WCAG is typically a guideline, the EAA makes conformance with{' '}
+        <b>all</b> level A and level AA criteria a legal requirement. So while
+        WCAG provides recommendations, under the EAA you can't pick and choose
+        which criteria to follow.
       </p>
-      {/* > Toggle: [Summary | Detailed overview] */}
+      <p>
+        WCAG 2.1 is built on four key principles, abbreviated as <i>POUR</i>:
+      </p>
       <div>
-        <label>
-          <input
-            type="radio"
-            name="details"
-            value="0"
-            onChange={(e) => setShowDetails(!e.target.checked)}
-          />{' '}
-          Summary
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="details"
-            value="1"
-            onChange={(e) => setShowDetails(e.target.checked)}
-          />{' '}
-          Detailed overview
-        </label>
-      </div>
-      {showDetails ? (
-        <ul>
-          <li>
-            <b>1.1.1 Text Alternatives</b>: Provide text alternatives (e.g.{' '}
-            <Code>alt</Code>
-            attributes) for all{' '}
-            <Annotation
-              annotation="Anything that is not a string
+        <h4>1. Perceivable</h4>
+        <p>
+          Ensure all information is accessible through multiple means, such as
+          text, visuals, or audio. The key requirements include:
+        </p>
+        <SegmentedControl
+          name="show-details-perceivable"
+          options={[
+            { label: 'Summary', value: false },
+            { label: 'Detailed overview', value: true },
+          ]}
+          value={showDetails}
+          onChange={setShowDetails}
+          css={css`
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          `}
+        />
+        {showDetails ? (
+          <ul>
+            <li>
+              <b>1.1.1 Text Alternatives</b>: Provide text alternatives (e.g.{' '}
+              <Code>alt</Code> attributes) for all{' '}
+              <Annotation
+                annotation="Anything that is not a string
           of characters, including images, videos, ASCII Art, and emojis."
-            >
-              non-text content
-            </Annotation>
-            .
-          </li>
-          <li>
-            <b>1.2 Captions</b>: Provide captions for all audio content in
-            synchronized media.
-          </li>
-          <li>
-            <b>1.3.1 Info and Relationships</b>: Use semantic HTML to convey
-            relationships (e.g., headings, lists, tables).
-          </li>
-          <li>
-            <b>1.3.2 Meaningful Sequence</b>: Ensure content is presented in a
-            logical reading order.
-          </li>
-          <li>
-            <b>1.3.3 Sensory Characteristics</b>: Ensure instructions do not
-            rely solely on sensory characteristics like shape, color, or
-            location.
-          </li>
-          <li>
-            <b>1.3.4 Orientation</b>: Content must work in both portrait and
-            landscape orientations unless a specific orientation is essential.
-          </li>
-          <li>
-            <b>1.3.5 Identify Input Purpose</b>: Ensure form fields are
-            programmatically identifiable (i.e. have a label).
-          </li>
-          <li>
-            <b>1.4.1 Use of Color</b>: Ensure that color is not the sole method
-            for conveying information.
-          </li>
-          <li>
-            <b>1.4.3 Contrast (Minimum)</b>: Text and images of text must have a
-            contrast ratio of at least 4.5:1 (or 3:1 for{' '}
-            <Annotation
-              annotation={
-                <>
-                  About <Code>1.5em</Code>+ for regular text, and{' '}
-                  <Code>1.2em</Code>+ for bold text, assuming the user
-                  configured default font size is used. With the default font
-                  size of <Code>16px</Code>, <Code>1.5em</Code> would be{' '}
-                  <Code>24px</Code>.
-                </>
-              }
-            >
-              large text
-            </Annotation>
-            ).
-          </li>
-          <li>
-            <b>1.4.4 Resize Text</b>: Content must remain usable and readable
-            when text is resized up to <Code>200%</Code> - without requiring
-            horizontal scrolling.
-          </li>
-          <li>
-            <b>1.4.5 Images of Text</b>: Avoid using images of text unless
-            essential.
-          </li>
-          <li>
-            <b>1.4.10 Reflow</b>: Content must reflow within a viewport without
-            horizontal scrolling at widths as small as <Code>320px</Code>.
-          </li>
-          <li>
-            <b>1.4.11 Non-Text Contrast</b>: UI components and graphics must
-            have a contrast ratio of at least 3:1.
-          </li>
-          <li>
-            <b>1.4.12 Text Spacing</b>: Ensure text spacing settings do not
-            break content or functionality.
-          </li>
-          <li>
-            <b>1.4.13 Content on Hover or Focus</b>: Content that appears on
-            hover or focus must be{' '}
-            <Annotation
-              annotation="A mechanism is available to dismiss the
+              >
+                non-text content
+              </Annotation>
+              .
+            </li>
+            <li>
+              <b>1.2 Captions</b>: Provide captions for all audio content in
+              synchronized media.
+            </li>
+            <li>
+              <b>1.3.1 Info and Relationships</b>: Use semantic HTML to convey
+              relationships (e.g., headings, lists, tables).
+            </li>
+            <li>
+              <b>1.3.2 Meaningful Sequence</b>: Ensure content is presented in a
+              logical reading order.
+            </li>
+            <li>
+              <b>1.3.3 Sensory Characteristics</b>: Ensure instructions do not
+              rely solely on sensory characteristics like shape, color, or
+              location.
+            </li>
+            <li>
+              <b>1.3.4 Orientation</b>: Content must work in both portrait and
+              landscape orientations unless a specific orientation is essential.
+            </li>
+            <li>
+              <b>1.3.5 Identify Input Purpose</b>: Ensure form fields are
+              programmatically identifiable (i.e. have a label).
+            </li>
+            <li>
+              <b>1.4.1 Use of Color</b>: Ensure that color is not the sole
+              method for conveying information.
+            </li>
+            <li>
+              <b>1.4.3 Contrast (Minimum)</b>: Text and images of text must have
+              a contrast ratio of at least 4.5:1 (or 3:1 for{' '}
+              <Annotation
+                annotation={
+                  <>
+                    About <Code>1.5em</Code>+ for regular text, and{' '}
+                    <Code>1.2em</Code>+ for bold text, assuming the user
+                    configured default font size is used. With the default font
+                    size of <Code>16px</Code>, <Code>1.5em</Code> would be{' '}
+                    <Code>24px</Code>.
+                  </>
+                }
+              >
+                large text
+              </Annotation>
+              ).
+            </li>
+            <li>
+              <b>1.4.4 Resize Text</b>: Content must remain usable and readable
+              when text is resized up to <Code>200%</Code> - without requiring
+              horizontal scrolling.
+            </li>
+            <li>
+              <b>1.4.5 Images of Text</b>: Avoid using images of text unless
+              essential.
+            </li>
+            <li>
+              <b>1.4.10 Reflow</b>: Content must reflow within a viewport
+              without horizontal scrolling at widths as small as{' '}
+              <Code>320px</Code>.
+            </li>
+            <li>
+              <b>1.4.11 Non-Text Contrast</b>: UI components and graphics must
+              have a contrast ratio of at least 3:1.
+            </li>
+            <li>
+              <b>1.4.12 Text Spacing</b>: Ensure text spacing settings do not
+              break content or functionality.
+            </li>
+            <li>
+              <b>1.4.13 Content on Hover or Focus</b>: Content that appears on
+              hover or focus must be{' '}
+              <Annotation
+                annotation="A mechanism is available to dismiss the
           additional content without moving pointer hover or keyboard focus,
           unless the additional content communicates an input error or does not
           obscure or replace other content."
-            >
-              dismissible
-            </Annotation>
-            ,{' '}
-            <Annotation
-              annotation="If pointer hover can trigger the additional content,
+              >
+                dismissible
+              </Annotation>
+              ,{' '}
+              <Annotation
+                annotation="If pointer hover can trigger the additional content,
           then the pointer can be moved over the additional content without the
           additional content disappearing."
-            >
-              hoverable
-            </Annotation>
-            , and{' '}
-            <Annotation
-              annotation="The additional
+              >
+                hoverable
+              </Annotation>
+              , and{' '}
+              <Annotation
+                annotation="The additional
           content remains visible until the hover or focus trigger is removed,
           the user dismisses it, or its information is no longer valid."
-            >
-              persistent
-            </Annotation>
-            .
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <li>
-            <b>Text alternatives</b>: Use <Code>alt</Code> attributes for images
-            and provide captions for audio and video.
-          </li>
-          <li>
-            <b>Semantic HTML</b>: Use proper HTML elements for structure, such
-            as headings, lists, and tables.
-          </li>
-          <li>
-            <b>Color contrast</b>: Ensure text and images of text have a
-            contrast ratio of at least 4.5:1 (or 3:1 for{' '}
-            <Annotation
-              annotation={
-                <>
-                  About <Code>1.5em</Code>+ for regular text, and{' '}
-                  <Code>1.2em</Code>+ for bold text, assuming the user
-                  configured default font size is used. With the default font
-                  size of <Code>16px</Code>, <Code>1.5em</Code> would be{' '}
-                  <Code>24px</Code>.
-                </>
-              }
-            >
-              large text
-            </Annotation>
-            ).
-          </li>
-          <li>
-            <b>Scalable text</b>: Ensure your site or app works well with text
-            sizes up to 200%.
-          </li>
-        </ul>
-      )}
-      <h4>2. Operable</h4>
-      <p>
-        Your site or app must be usable, regardless of input method. The key
-        requirements include:
-      </p>
-      {/* > Toggle: [Brief overview | Detailed overview] */}
-      {showDetails ? (
-        <ul>
-          <li>
-            <b>2.1.1 Keyboard</b>: All functionality must be operable via a
-            keyboard.
-          </li>
-          <li>
-            <b>2.1.2 No Keyboard Trap</b>: Users must be able to navigate away
-            from any component using only a keyboard.
-          </li>
-          <li>
-            <b>2.2 Timing Adjustable</b>: Users must be given options to adjust
-            time limits for time-sensitive content or interactions, and be able
-            to stop, or hide moving, blinking, or scrolling content.
-          </li>
-          <li>
-            <b>2.3.1 Three Flashes or Below Threshold</b>: Content must not
-            flash more than three times per second unless it's below the general
-            flash and red flash thresholds.
-          </li>
-          <li>
-            <b>2.4.1 Bypass Blocks</b>: Provide a way to skip repeated content
-            (e.g., navigation menus).
-          </li>
-          <li>
-            <b>2.4.2 Page Titled</b>: Pages must have clear and descriptive
-            titles.
-          </li>
-          <li>
-            <b>2.4.3 Focus Order</b>: Ensure focusable elements have a logical
-            navigation order.
-          </li>
-          <li>
-            <b>2.4.4 Link Purpose</b>: Links must clearly describe their
-            purpose, even without surrounding context.
-          </li>
-          <li>
-            <b>2.4.5 Multiple Ways</b>: Provide more than one way to locate
-            content (e.g., search, navigation menus).
-          </li>
-          <li>
-            <b>2.4.6 Headings and Labels</b>: Use descriptive headings and
-            labels to clarify content or functionality.
-          </li>
-          <li>
-            <b>2.4.7 Focus Visible</b>: Ensure a visible focus indicator for
-            keyboard navigation.
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <li>
-            <b>Keyboard accessibility</b>: Make sure all functionality works
-            well with a keyboard.
-          </li>
-          <li>
-            <b>Visible focus</b>: Include a clear focus indicator for keyboard
-            navigation.
-          </li>
-          <li>
-            <b>Avoid flashing content</b>: Limit flashing elements to no more
-            than three flashes per second.
-          </li>
-          <li>
-            <b>Logical navigation</b>: Ensure focus order is intuitive and links
-            are descriptive.
-          </li>
-        </ul>
-      )}
+              >
+                persistent
+              </Annotation>
+              .
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <b>Text alternatives</b>: Use <Code>alt</Code> attributes for
+              images and provide captions for audio and video.
+            </li>
+            <li>
+              <b>Semantic HTML</b>: Use proper HTML elements for structure, such
+              as headings, lists, and tables.
+            </li>
+            <li>
+              <b>Color contrast</b>: Ensure text and images of text have a
+              contrast ratio of at least 4.5:1 (or 3:1 for{' '}
+              <Annotation
+                annotation={
+                  <>
+                    About <Code>1.5em</Code>+ for regular text, and{' '}
+                    <Code>1.2em</Code>+ for bold text, assuming the user
+                    configured default font size is used. With the default font
+                    size of <Code>16px</Code>, <Code>1.5em</Code> would be{' '}
+                    <Code>24px</Code>.
+                  </>
+                }
+              >
+                large text
+              </Annotation>
+              ).
+            </li>
+            <li>
+              <b>Scalable text</b>: Ensure your site or app works well with text
+              sizes up to 200%.
+            </li>
+          </ul>
+        )}
+        <h4>2. Operable</h4>
+        <p>
+          Your site or app must be usable, regardless of input method. The key
+          requirements include:
+        </p>
+        {showDetails ? (
+          <ul>
+            <li>
+              <b>2.1.1 Keyboard</b>: All functionality must be operable via a
+              keyboard.
+            </li>
+            <li>
+              <b>2.1.2 No Keyboard Trap</b>: Users must be able to navigate away
+              from any component using only a keyboard.
+            </li>
+            <li>
+              <b>2.2 Timing Adjustable</b>: Users must be given options to
+              adjust time limits for time-sensitive content or interactions, and
+              be able to stop, or hide moving, blinking, or scrolling content.
+            </li>
+            <li>
+              <b>2.3.1 Three Flashes or Below Threshold</b>: Content must not
+              flash more than three times per second unless it's below the
+              general flash and red flash thresholds.
+            </li>
+            <li>
+              <b>2.4.1 Bypass Blocks</b>: Provide a way to skip repeated content
+              (e.g., navigation menus).
+            </li>
+            <li>
+              <b>2.4.2 Page Titled</b>: Pages must have clear and descriptive
+              titles.
+            </li>
+            <li>
+              <b>2.4.3 Focus Order</b>: Ensure focusable elements have a logical
+              navigation order.
+            </li>
+            <li>
+              <b>2.4.4 Link Purpose</b>: Links must clearly describe their
+              purpose, even without surrounding context.
+            </li>
+            <li>
+              <b>2.4.5 Multiple Ways</b>: Provide more than one way to locate
+              content (e.g., search, navigation menus).
+            </li>
+            <li>
+              <b>2.4.6 Headings and Labels</b>: Use descriptive headings and
+              labels to clarify content or functionality.
+            </li>
+            <li>
+              <b>2.4.7 Focus Visible</b>: Ensure a visible focus indicator for
+              keyboard navigation.
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <b>Keyboard accessibility</b>: Make sure all functionality works
+              well with a keyboard.
+            </li>
+            <li>
+              <b>Visible focus</b>: Include a clear focus indicator for keyboard
+              navigation.
+            </li>
+            <li>
+              <b>Avoid flashing content</b>: Limit flashing elements to no more
+              than three flashes per second.
+            </li>
+            <li>
+              <b>Logical navigation</b>: Ensure focus order is intuitive and
+              links are descriptive.
+            </li>
+          </ul>
+        )}
 
-      <h4>3. Understandable</h4>
-      <p>
-        Create interfaces and content that are clear and predictable. The key
-        requirements include:
-      </p>
-      {/* > Toggle: [Brief overview | Detailed overview] */}
-      {showDetails ? (
-        <ul>
-          <li>
-            <b>3.1 Language of content</b>: Specify the language of the page
-            (HTML <Code>lang</Code> attribute) and content that deviates from
-            that (e.g., <Code>{`<span lang="fr">`}</Code>).
-          </li>
-          <li>
-            <b>3.2 Change of Context</b>:{' '}
-            <Link href="https://www.w3.org/TR/WCAG21/#dfn-change-of-context">
-              Changes of context
-            </Link>{' '}
-            must not occur automatically when the focus or an input is changed.
-          </li>
-          <li>
-            <b>3.2.3 Consistent Navigation</b>: Use consistent navigation across
-            pages or sections.
-          </li>
-          <li>
-            <b>3.2.4 Consistent Identification</b>: Ensure components that share
-            functionality have consistent labels.
-          </li>
-          <li>
-            <b>3.3 Errors</b>: Clearly indicate input errors and provide
-            suggestions for correction.
-          </li>
-          <li>
-            <b>3.3.2 Labels or Instructions</b>: Provide clear labels and
-            instructions for form fields.
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <li>
-            <b>Language declaration</b>: Specify the page's language using the
-            HTML
-            <Code>lang</Code> attribute.
-          </li>
-          <li>
-            <b>Consistent navigation</b>: Maintain consistent menus and naming
-            (labels) across pages.
-          </li>
-          <li>
-            <b>Error messages</b>: Provide clear error messages and suggestions
-            for correction.
-          </li>
-        </ul>
-      )}
-      <h4>4. Robust</h4>
-      <p>
-        Ensure compatibility with a wide range of devices, browsers, and
-        assistive technologies. The key requirements include:
-      </p>
-      {/* > Toggle: [Brief overview | Detailed overview] */}
-      {showDetails ? (
-        <ul>
-          <li>
-            <b>4.1.1 Parsing</b>: Ensure HTML is valid and error-free.
-          </li>
-          <li>
-            <b>4.1.2 Name, Role, Value</b>: Use proper ARIA roles and attributes
-            to convey the purpose, state, and value of custom interface
-            elements.
-          </li>
-        </ul>
-      ) : (
-        <ul>
-          <li>
-            <b>Valid HTML</b>: Ensure code is well-structured and error-free.
-          </li>
-          <li>
-            <b>ARIA roles</b>: Use ARIA roles appropriately to convey the
-            purpose and state of custom components.
-          </li>
-        </ul>
-      )}
+        <h4>3. Understandable</h4>
+        <p>
+          Create interfaces and content that are clear and predictable. The key
+          requirements include:
+        </p>
+        {showDetails ? (
+          <ul>
+            <li>
+              <b>3.1 Language of content</b>: Specify the language of the page
+              (HTML <Code>lang</Code> attribute) and content that deviates from
+              that (e.g., <Code>{`<span lang="fr">`}</Code>).
+            </li>
+            <li>
+              <b>3.2 Change of Context</b>:{' '}
+              <Link href="https://www.w3.org/TR/WCAG21/#dfn-change-of-context">
+                Changes of context
+              </Link>{' '}
+              must not occur automatically when the focus or an input is
+              changed.
+            </li>
+            <li>
+              <b>3.2.3 Consistent Navigation</b>: Use consistent navigation
+              across pages or sections.
+            </li>
+            <li>
+              <b>3.2.4 Consistent Identification</b>: Ensure components that
+              share functionality have consistent labels.
+            </li>
+            <li>
+              <b>3.3 Errors</b>: Clearly indicate input errors and provide
+              suggestions for correction.
+            </li>
+            <li>
+              <b>3.3.2 Labels or Instructions</b>: Provide clear labels and
+              instructions for form fields.
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <b>Language declaration</b>: Specify the page's language using the
+              HTML
+              <Code>lang</Code> attribute.
+            </li>
+            <li>
+              <b>Consistent navigation</b>: Maintain consistent menus and naming
+              (labels) across pages.
+            </li>
+            <li>
+              <b>Error messages</b>: Provide clear error messages and
+              suggestions for correction.
+            </li>
+          </ul>
+        )}
+        <h4>4. Robust</h4>
+        <p>
+          Ensure compatibility with a wide range of devices, browsers, and
+          assistive technologies. The key requirements include:
+        </p>
+        {showDetails ? (
+          <ul>
+            <li>
+              <b>4.1.1 Parsing</b>: Ensure HTML is valid and error-free.
+            </li>
+            <li>
+              <b>4.1.2 Name, Role, Value</b>: Use proper ARIA roles and
+              attributes to convey the purpose, state, and value of custom
+              interface elements.
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <b>Valid HTML</b>: Ensure code is well-structured and error-free.
+            </li>
+            <li>
+              <b>ARIA roles</b>: Use ARIA roles appropriately to convey the
+              purpose and state of custom components.
+            </li>
+          </ul>
+        )}
+      </div>
       <hr />
       <p>
         For the full list of requirements, see the full{' '}

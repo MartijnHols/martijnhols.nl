@@ -46,6 +46,7 @@ const FloatingTooltip = styled.div(
       drop-shadow(-0.5px 0 0 ${theme.colors.white});
     // Make it a similar width as the VSCode tooltip
     max-width: 450px;
+    z-index: 10;
   `,
 )
 
