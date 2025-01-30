@@ -33,6 +33,7 @@ const articles = [
   import('./you-dont-need-lodash'),
   import('./how-to-add-copy-paste-only-text-in-html-react'),
   import('./accessibility-essentials-every-front-end-developer-should-know'),
+  import('./the-european-accessibility-act-for-websites-and-apps'),
 ] as Array<Promise<{ meta: BlogArticleMeta }>>
 
 export const getArticles = async () =>
