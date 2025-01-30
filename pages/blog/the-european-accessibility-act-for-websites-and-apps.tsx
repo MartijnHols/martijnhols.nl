@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import Image from 'next/image'
 import { useState } from 'react'
 import Annotation from '../../components/Annotation'
 import Aside from '../../components/Aside'
@@ -8,6 +9,7 @@ import Code from '../../components/Code'
 import Link from '../../components/Link'
 import SegmentedControl from '../../components/SegmentedControl'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
+import euAccessibilityImage from './assets/eu-accessibility.png'
 import openGraphImage from './assets/ogimage-the-european-accessibility-act-for-websites-and-apps.png'
 
 const { meta, getStaticProps } = articleMeta({
@@ -26,6 +28,17 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
 
   return (
     <BlogArticle {...props}>
+      <Image
+        src={euAccessibilityImage}
+        alt=""
+        width={200}
+        css={css`
+          float: right;
+          margin-left: 1em;
+          margin-bottom: 1em;
+        `}
+      />
+
       <p>
         The European Accessibility Act (EAA) goes into effect on{' '}
         <strong>June 28, 2025</strong> - just 5 months from now. From that
