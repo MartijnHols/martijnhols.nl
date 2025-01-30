@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import { useState } from 'react'
 import Annotation from '../../components/Annotation'
+import Aside from '../../components/Aside'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -15,8 +16,8 @@ const { meta, getStaticProps } = articleMeta({
   description:
     'Learn how the European Accessibility Act (EAA) impacts websites and apps, key accessibility requirements, deadlines, and tips to prepare for compliance.',
   image: openGraphImage,
-  publishedAt: '2025-01-28',
-  tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
+  publishedAt: '2025-01-30',
+  tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
 
@@ -70,9 +71,9 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
       <p>
         Making sites and apps accessible is mainly done by ensuring content is{' '}
         <Annotation annotation="This applies in the broadest possible way, from font size for regular text to captions for audio and video. It also includes avoiding barriers that make content difficult to consume, such as low contrast or missing labels.">
-          easy to read
-        </Annotation>{' '}
-        for both humans and machines, interactive elements are{' '}
+          easy to consume
+        </Annotation>
+        , interactive elements are{' '}
         <Annotation annotation="This means ensuring controls are large enough to interact with, clickable elements have sufficient spacing, focus states are clearly visible, and all actions can be performed using a keyboard.">
           easy to use
         </Annotation>
@@ -135,28 +136,46 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         <li>Accessibility statement</li>
       </ol>
       <p>Here's a closer look at each.</p>
-      <h3>Accessible UI and content</h3>
+      <h3 id="accessible-ui-and-content">Accessible UI and content</h3>
       <p>
-        Your{' '}
+        Your interface and content must be accessible according to the EAA's
+        principles. The law requires that websites and apps are perceivable,
+        operable, understandable, and robust, but it doesn't specify exactly how
+        to achieve this.
+      </p>
+      <p>
+        In practice,{' '}
         <strong>
-          interface and content must conform with{' '}
-          <Link href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 level AA</Link>
+          the{' '}
+          <Link href="https://www.w3.org/TR/WCAG21/">
+            Web Content Accessibility Guidelines (WCAG) 2.1
+          </Link>{' '}
+          level AA is widely considered the best way to meet these legal
+          requirements
         </strong>
-        . WCAG (Web Content Accessibility Guidelines) is a set of
-        recommendations for making digital content accessible to as many users
-        as possible.
+        . While WCAG isn't explicitly written into the law, it aligns closely
+        with the EAA's principles and is referenced in{' '}
+        <Link href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">
+          EN 301 549
+        </Link>
+        , the European standard for ICT accessibility. This makes WCAG 2.1 the
+        most reliable framework to ensure compliance.
       </p>
-      <p>
-        While WCAG is typically a guideline, the EAA makes conformance with{' '}
-        <b>all</b> level A and level AA criteria a legal requirement. So while
-        WCAG provides recommendations, under the EAA you can't pick and choose
-        which criteria to follow.
-      </p>
+      <Aside>
+        <Link href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">
+          EN 301 549
+        </Link>{' '}
+        is currently being revised to align more closely with the EAA, with a
+        new version expected in late 2025. Once published, it will serve as the
+        official standard for EAA compliance. This update is expected to require
+        WCAG 2.2 AA conformance, but until then, WCAG 2.1 AA remains the best
+        way to ensure compliance.
+      </Aside>
       <p>
         WCAG 2.1 is built on four key principles, abbreviated as <i>POUR</i>:
       </p>
       <div>
-        <h4>1. Perceivable</h4>
+        <h4 id="1-perceivable">1. Perceivable</h4>
         <p>
           Ensure all information is accessible through multiple means, such as
           text, visuals, or audio. The key requirements include:
@@ -321,7 +340,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
             </li>
           </ul>
         )}
-        <h4>2. Operable</h4>
+        <h4 id="2-operable">2. Operable</h4>
         <p>
           Your site or app must be usable, regardless of input method. The key
           requirements include:
@@ -396,7 +415,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           </ul>
         )}
 
-        <h4>3. Understandable</h4>
+        <h4 id="3-understandable">3. Understandable</h4>
         <p>
           Create interfaces and content that are clear and predictable. The key
           requirements include:
@@ -450,7 +469,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
             </li>
           </ul>
         )}
-        <h4>4. Robust</h4>
+        <h4 id="4-robust">4. Robust</h4>
         <p>
           Ensure compatibility with a wide range of devices, browsers, and
           assistive technologies. The key requirements include:
@@ -483,7 +502,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         For the full list of requirements, see the full{' '}
         <Link href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 Guidelines</Link>.
       </p>
-      <h3>Accessibility statement</h3>
+      <h3 id="accessibility-statement">Accessibility statement</h3>
       <p>
         The EAA also requires you to publish an <i>accessibility statement</i>.
         This should include:
@@ -514,7 +533,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         </Link>
         .
       </p>
-      <h3>Disproportionate burden</h3>
+      <h3 id="disproportionate-burden">Disproportionate burden</h3>
       <p>
         The EAA allows organizations to claim a{' '}
         <strong>disproportionate burden exemption</strong> if meeting certain
@@ -528,15 +547,16 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         accessibility. The exemption is based on <strong>good faith</strong>;
         it's not an excuse to ignore accessibility altogether.
       </p>
-      <h2>Timeline</h2>
-      <p>The EAA outlines the following deadlines:</p>
+      <h2 id="timeline">Timeline</h2>
+      <p>
+        As I mentioned earlier, the EAA takes effect in just five months. But
+        that's only the first deadline; there are two key dates to keep in mind:
+      </p>
       <ul>
         <li>
-          {' '}
           <strong>June 28, 2025</strong>: All new developments must comply.
         </li>
         <li>
-          {' '}
           <strong>June 28, 2027</strong>: Existing services must comply.
         </li>
       </ul>
@@ -561,8 +581,16 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         early will give you the time to assess, plan, and tackle accessibility
         issues incrementally.
       </p>
-      <p>With this in mind, let's look into what you can do now to prepare.</p>
-      <h2>Conclusion</h2>
+      <Aside>
+        Remember that in late 2025,{' '}
+        <Link href="https://portal.etsi.org/eWPM/index.html#/schedule?WKI_ID=64282">
+          a new version of EN 301 549
+        </Link>{' '}
+        is expected that will closely align with the EAA. Once published, it
+        will become the official technical standard for EAA compliance, and
+        you'll need to ensure your sites and apps meet the updated requirements.
+      </Aside>
+      <h2 id="next-steps">Next steps</h2>
       <p>
         The EAA introduces many new requirements, and its deadlines are fast
         approaching. Complying with these requirements may take significant time
