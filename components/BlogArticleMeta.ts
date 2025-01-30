@@ -36,6 +36,7 @@ export const priorityTags = [
   BlogArticleTag.ReactHookForm,
   BlogArticleTag.Dependencies,
   BlogArticleTag.MachineTranslation,
+  BlogArticleTag.Accessibility,
 ]
 
 type PublishedAtYear = `20${number}${number}`
