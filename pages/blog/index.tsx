@@ -108,6 +108,7 @@ const BlogIndex = ({ articles }: Props) => {
       <BaseHead
         title={`Blog by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
         description="My blog where I post articles on React, TypeScript, JavaScript and related subjects. I post deep dives, brief code snippets, opinions, etc.."
+        // TODO: opengraph image
         absoluteUrl={absoluteUrl(
           tagToFilter ? `${pathname}?tag=${tagToFilter}` : pathname,
         )}

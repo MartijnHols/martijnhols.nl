@@ -26,7 +26,6 @@ export const h2 = css`
   ::before {
     content: '';
     width: 120px;
-    height: 1px;
     background: ${colors.yellow};
     height: 9px;
     transform: skew(-45deg);
