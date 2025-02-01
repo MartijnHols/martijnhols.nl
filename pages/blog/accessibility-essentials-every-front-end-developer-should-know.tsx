@@ -14,6 +14,7 @@ import closeButtonClickableAreaImage from './assets/accessibility-closebuttoncli
 import focusIndicatorImage from './assets/accessibility-focus-indicator.gif'
 import formFieldJumpingImage from './assets/accessibility-form-field-jumping.gif'
 import placeholdersImage from './assets/accessibility-placeholders.png'
+import accessibilityToolkitImage from './assets/accessibility-toolkit.png'
 import openGraphImage from './assets/ogimage-accessibility-essentials-every-front-end-developer-should-know.png'
 
 const { meta, getStaticProps } = articleMeta({
@@ -21,7 +22,8 @@ const { meta, getStaticProps } = articleMeta({
   title: 'Accessibility essentials every front-end developer should know',
   description:
     'Essential accessibility practices for front-end developers, including semantic HTML, alt texts, ARIA, and keyboard navigation tips to build inclusive components.',
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
+  image: accessibilityToolkitImage,
   publishedAt: '2025-01-07',
   updatedAt: '2025-01-11',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],

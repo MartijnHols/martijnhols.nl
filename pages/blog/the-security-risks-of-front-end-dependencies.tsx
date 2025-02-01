@@ -20,7 +20,7 @@ const { meta, getStaticProps } = articleMeta({
   title: 'The security risks of front-end dependencies',
   description:
     'A dive into the security risks of using third-party dependencies in front-end projects.',
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
   publishedAt: '2024-04-15',
   republishedAt: '2024-12-14',
   republishedReason:

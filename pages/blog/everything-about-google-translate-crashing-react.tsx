@@ -36,7 +36,7 @@ const { meta, getStaticProps } = articleMeta({
     'Everything about Google Translate crashing React (and other web apps)',
   description:
     'A deep dive into Google Translate (and other browser extensions) interference breaking React and other web apps.',
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
   publishedAt: '2024-05-29',
   tags: [
     BlogArticleTag.React,

@@ -121,7 +121,7 @@ const BlogArticle = ({
   const {
     title,
     description,
-    image,
+    openGraphImage,
     publishedAt,
     republishedAt,
     republishedReason,
@@ -160,7 +160,7 @@ const BlogArticle = ({
       <BaseHead
         title={`${title} by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
         description={description}
-        image={image}
+        image={openGraphImage}
         absoluteUrl={absoluteUrl(pathname)}
         type="article"
       />

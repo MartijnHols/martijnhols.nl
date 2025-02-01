@@ -17,7 +17,8 @@ const { meta, getStaticProps } = articleMeta({
   title: 'The European Accessibility Act for websites and apps',
   description:
     'Learn how the European Accessibility Act (EAA) impacts websites and apps, key accessibility requirements, deadlines, and tips to prepare for compliance.',
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
+  image: euAccessibilityImage,
   publishedAt: '2025-01-30',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
 })

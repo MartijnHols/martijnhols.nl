@@ -15,7 +15,7 @@ const { meta, getStaticProps } = articleMeta({
   title: "You don't need Lodash",
   description:
     "And I reckon you shouldn't use it, or any libraries that you can solve natively just as well. Here's why.",
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
   publishedAt: '2024-11-28',
   updatedAt: '2024-12-03',
   tags: [

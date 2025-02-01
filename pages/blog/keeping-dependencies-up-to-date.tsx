@@ -17,7 +17,7 @@ const { meta, getStaticProps } = articleMeta({
   title: 'Keeping dependencies up-to-date',
   description:
     'A strategy for keeping dependencies up-to-date. When to update, how to update, and what to update first.',
-  image: openGraphImage,
+  openGraphImage: openGraphImage,
   publishedAt: '2024-04-28',
   tags: [
     BlogArticleTag.Dependencies,

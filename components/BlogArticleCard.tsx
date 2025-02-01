@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import Image from 'next/image'
 import { BlogArticleTag, SerializableBlogArticleMeta } from './BlogArticleMeta'
 import Link from './Link'
 import Panel from './Panel'
@@ -26,8 +27,8 @@ const ArticleTitle = styled.h2(
     transform: none;
     // Add some extra space on top so the hover state background's top isn't too
     // close to the text.
-    padding-top: ${theme.spacing.x1}px;
-    margin-top: -${theme.spacing.x1}px;
+    padding-top: 0.1em;
+    margin-top: -0.5em;
     margin-bottom: 0;
     hyphens: auto;
     font-size: 2em;
@@ -80,6 +81,14 @@ const Article = styled(Panel, {
     margin-left: -${theme.spacing.x4}px;
     margin-right: -${theme.spacing.x4}px;
     padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
+    display: flex;
+    gap: 1em;
+    flex-flow: column;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      flex-direction: row;
+      gap: 2em;
+    }
   `,
   howTo &&
     css`
@@ -96,6 +105,9 @@ const Article = styled(Panel, {
       }
     `,
 ])
+const ArticleTextContainer = styled.div`
+  flex: 1 1 auto;
+`
 const ArticleMetadata = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -131,19 +143,22 @@ const BlogArticleCard = ({ article }: Props) => (
       boxShadow={false}
       howTo={article.tags.includes(BlogArticleTag.HowTo)}
     >
-      <ArticleTitle>{article.title}</ArticleTitle>
-      <p>{article.description}</p>
-      <ArticleMetadata>
-        <Tags>
-          {article.tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </Tags>
-        <PublishedAt>
-          {article.republishedAt ? 'Republished' : 'Published'}{' '}
-          <RelativeDate date={article.republishedAt ?? article.publishedAt} />
-        </PublishedAt>
-      </ArticleMetadata>
+      {article.image && <Image src={article.image} width={200} alt="" />}
+      <ArticleTextContainer>
+        <ArticleTitle>{article.title}</ArticleTitle>
+        <p>{article.description}</p>
+        <ArticleMetadata>
+          <Tags>
+            {article.tags.map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+          </Tags>
+          <PublishedAt>
+            {article.republishedAt ? 'Republished' : 'Published'}{' '}
+            <RelativeDate date={article.republishedAt ?? article.publishedAt} />
+          </PublishedAt>
+        </ArticleMetadata>
+      </ArticleTextContainer>
     </Article>
   </ArticleLink>
 )

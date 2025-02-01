@@ -50,6 +50,7 @@ export default interface BlogArticleMeta {
   slug: string
   title: string
   description: string
+  openGraphImage?: StaticImageData
   image?: StaticImageData
   publishedAt?: PublicationDate
   republishedAt?: PublicationDate
