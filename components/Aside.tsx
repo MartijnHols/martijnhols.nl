@@ -24,6 +24,9 @@ const Container = styled.div(
       margin-left: -${theme.spacing.x6}px;
       margin-right: -${theme.spacing.x6}px;
     }
+    @media print {
+      box-shadow: none;
+    }
   `,
 )
 const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(

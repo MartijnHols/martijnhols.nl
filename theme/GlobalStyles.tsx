@@ -95,6 +95,10 @@ const GlobalStyles = () => (
         .content ul {
           list-style: none;
 
+          @media print {
+            list-style: square;
+          }
+
           > li {
             margin: 0.5em 0;
             position: relative;

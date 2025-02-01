@@ -13,6 +13,10 @@ const StyledContainer = styled(Container)`
   max-width: 57em;
   font-size: 112.5%;
   padding-bottom: 4em;
+
+  @media print {
+    display: none;
+  }
 `
 const StyledTag = styled(Tag)``
 const Article = styled.article(
