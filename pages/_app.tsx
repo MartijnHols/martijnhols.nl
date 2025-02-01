@@ -4,9 +4,11 @@ import PortalTarget from '../components/PortalTarget'
 import * as theme from '../theme'
 import GlobalStyles from '../theme/GlobalStyles'
 import useForceHtmlLangAttribute from '../utils/useForceHtmlLangAttribute'
+import useTrackPrint from '../utils/useTrackPrint'
 
 const App = ({ Component, pageProps, router }: AppProps) => {
   useForceHtmlLangAttribute(router.asPath.startsWith('/blog') ? 'en' : 'nl')
+  useTrackPrint()
 
   return (
     <ThemeProvider theme={theme}>
