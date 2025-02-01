@@ -9,9 +9,17 @@ const TopAngle = styled.div`
   width: 100%;
   height: calc(10px + 100vw / 2000 * 30);
   clip-path: polygon(0 0, 100% 0, 0 100%);
+
+  @media print {
+    display: none;
+  }
 `
 const BottomAngle = styled(TopAngle)`
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
+
+  @media print {
+    display: none;
+  }
 `
 
 interface Props {

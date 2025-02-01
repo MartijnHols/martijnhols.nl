@@ -12,6 +12,10 @@ const ContactButtonClipper = styled.div`
   > * {
     pointer-events: all;
   }
+
+  @media print {
+    display: none;
+  }
 `
 
 type Props = ComponentProps<typeof ContactButton>
