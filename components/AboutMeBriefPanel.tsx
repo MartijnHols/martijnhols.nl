@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ComponentProps } from 'react'
 import Annotation from './Annotation'
 import GithubLogoImage from './assets/github-mark-white.svg'
-import meSquaredImage from './assets/martijn-hols-sq.jpg'
+import meSquaredImage from './assets/martijn-hols-sq.png'
 import TwitterLogoImage from './assets/twitter.svg'
 import Link from './Link'
 import Panel from './Panel'
@@ -38,7 +38,12 @@ type Props = Omit<ComponentProps<typeof Panel>, 'children'>
 const AboutMeBriefPanel = ({ className, ...others }: Props) => (
   <Panel {...others} className={`inverted ${className}`} variant="sm">
     <ImageTextContainer>
-      <PhotoImage src={meSquaredImage} alt="Martijn Hols" width={100} />
+      <PhotoImage
+        src={meSquaredImage}
+        alt="Martijn Hols"
+        width={100}
+        height={100}
+      />
       <div>
         Hi, I'm Martijn Hols, a{' '}
         <Link href="/freelance-react-architect">
