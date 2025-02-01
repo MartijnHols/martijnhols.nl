@@ -14,6 +14,7 @@ const ImageTextContainer = styled.div(
     display: flex;
     gap: 1em;
     flex-flow: column;
+    padding: 0.25em 0;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       flex-flow: row;
@@ -35,7 +36,7 @@ const socialImageCss = css`
 type Props = Omit<ComponentProps<typeof Panel>, 'children'>
 
 const AboutMeBriefPanel = ({ className, ...others }: Props) => (
-  <Panel {...others} className={`inverted ${className}`}>
+  <Panel {...others} className={`inverted ${className}`} variant="sm">
     <ImageTextContainer>
       <PhotoImage src={meSquaredImage} alt="Martijn Hols" width={100} />
       <div>
@@ -100,8 +101,7 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
           20 years in full-stack development
         </Annotation>
         . I specialize in building scalable and maintainable architectures using{' '}
-        <strong>React</strong> and <strong>TypeScript</strong>, empowering teams
-        to build efficiently.
+        React and TypeScript, empowering teams to build efficiently.
         <SocialContainer>
           <Link
             href="https://twitter.com/MartijnHols"
