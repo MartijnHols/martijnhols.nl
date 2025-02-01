@@ -143,7 +143,17 @@ const BlogArticleCard = ({ article }: Props) => (
       boxShadow={false}
       howTo={article.tags.includes(BlogArticleTag.HowTo)}
     >
-      {article.image && <Image src={article.image} width={200} alt="" />}
+      {article.image && (
+        <Image
+          src={article.image}
+          width={200}
+          height={150}
+          style={{
+            objectFit: 'contain',
+          }}
+          alt=""
+        />
+      )}
       <ArticleTextContainer>
         <ArticleTitle>{article.title}</ArticleTitle>
         <p>{article.description}</p>

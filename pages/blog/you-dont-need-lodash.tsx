@@ -7,6 +7,7 @@ import Code from '../../components/Code'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
+import doNotUseLodashImage from './assets/do-not-use-lodash.png'
 import lodashImage from './assets/lodash.png'
 import openGraphImage from './assets/ogimage-you-dont-need-lodash.png'
 
@@ -16,6 +17,7 @@ const { meta, getStaticProps } = articleMeta({
   description:
     "And I reckon you shouldn't use it, or any libraries that you can solve natively just as well. Here's why.",
   openGraphImage: openGraphImage,
+  image: doNotUseLodashImage,
   publishedAt: '2024-11-28',
   updatedAt: '2024-12-03',
   tags: [
