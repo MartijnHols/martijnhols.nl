@@ -70,6 +70,7 @@ const Article = styled(Panel, {
 })<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
     --background: ${theme.colors.yellow50};
+    color: ${theme.colors.black};
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.

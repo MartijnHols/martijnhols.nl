@@ -1,6 +1,8 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import AboutMeBriefPanel from '../../components/AboutMeBriefPanel'
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
 import BlogArticleCard from '../../components/BlogArticleCard'
@@ -85,6 +87,29 @@ const ArticleList = styled.ul`
   list-style: none;
   padding: 0;
 `
+const ArticleListFooter = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    gap: 1em;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      flex-flow: row;
+    }
+  `,
+)
+const StyledAboutMeBriefPanel = styled(AboutMeBriefPanel)(
+  ({ theme }) => css`
+    flex: 1 1 auto;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      max-width: 700px;
+      margin-right: 0;
+      margin-top: 0;
+    }
+  `,
+)
 const StyledRssFeedLink = styled(Link)`
   display: inline-block;
 `
@@ -142,18 +167,21 @@ const BlogIndex = ({ articles }: Props) => {
             </div>
           )}
 
-          <Tooltip content="RSS Feed">
-            {({ props }) => (
-              <StyledRssFeedLink
-                {...props}
-                href="/rss.xml"
-                className="plain"
-                aria-label="RSS Feed"
-              >
-                <StyledRssFeedIcon aria-hidden />
-              </StyledRssFeedLink>
-            )}
-          </Tooltip>
+          <ArticleListFooter>
+            <StyledAboutMeBriefPanel />
+            <Tooltip content="RSS Feed">
+              {({ props }) => (
+                <StyledRssFeedLink
+                  {...props}
+                  href="/rss.xml"
+                  className="plain"
+                  aria-label="RSS Feed"
+                >
+                  <StyledRssFeedIcon aria-hidden />
+                </StyledRssFeedLink>
+              )}
+            </Tooltip>
+          </ArticleListFooter>
         </StyledContainer>
 
         <Angle inverted />

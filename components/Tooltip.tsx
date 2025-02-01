@@ -47,6 +47,13 @@ const FloatingTooltip = styled.div(
     // Make it a similar width as the VSCode tooltip
     max-width: 450px;
     z-index: 10;
+
+    p:first-of-type {
+      margin-top: 0;
+    }
+    p:last-of-type {
+      margin-bottom: 0;
+    }
   `,
 )
 

@@ -9,7 +9,6 @@ const Container = styled.div(
   ({ theme }) => css`
     display: flex;
     gap: ${theme.spacing.x4}px;
-    color: ${theme.colors.white};
     flex-flow: column;
 
     > div {

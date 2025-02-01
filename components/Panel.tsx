@@ -22,6 +22,7 @@ const Container = styled('div', {
     margin-left: -1em;
     margin-right: -1em;
     padding: 0.8em 1em;
+    color: ${theme.colors.white};
     --background: ${theme.colors.black};
     background: var(--background);
     position: relative;
@@ -69,6 +70,7 @@ const BottomAngle = styled('div', {
     width: 100%;
     bottom: calc(var(--box-shadow-distance) * -1);
     top: auto;
+    z-index: 0;
 
     ::before {
       content: '';
@@ -83,6 +85,7 @@ const BottomAngle = styled('div', {
           49.5%,
         transparent 50.5%
       );
+      z-index: 1;
     }
   `,
   variant === 'sm' &&
