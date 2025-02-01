@@ -51,8 +51,10 @@ const Page = () => (
             </p>
             <p>
               Bij de meeste opdrachten vervul ik de rol van{' '}
-              <strong>React Architect</strong>. Ik richt me graag op technische
-              uitdagingen, zoals:
+              <Link href="/freelance-react-architect">
+                <strong>React Architect</strong>
+              </Link>
+              . Ik richt me graag op technische uitdagingen, zoals:
             </p>
             <ul>
               <li>
