@@ -58,9 +58,12 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
   } as const
   const text = (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {title.split('\n').map((line, index) => (
-        <div key={index}>{line}</div>
-      ))}
+      {title
+        .replace(/\\n/g, '\n')
+        .split('\n')
+        .map((line, index) => (
+          <div key={index}>{line}</div>
+        ))}
     </div>
   )
   const subText = subTitle ?? 'By Martijn Hols'

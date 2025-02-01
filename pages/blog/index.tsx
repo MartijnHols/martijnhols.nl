@@ -17,6 +17,7 @@ import Tooltip from '../../components/Tooltip'
 import TopBar from '../../components/TopBar'
 import absoluteUrl from '../../utils/absoluteUrl'
 import generateRssFeed from '../../utils/generateRssFeed'
+import openGraphImage from './assets/ogimage-blog.png'
 import RssFeedIcon from './assets/rss.svg'
 
 const articles = [
@@ -108,7 +109,10 @@ const BlogIndex = ({ articles }: Props) => {
       <BaseHead
         title={`Blog by ${process.env.NEXT_PUBLIC_SITE_NAME_FALLBACK}`}
         description="My blog where I post articles on React, TypeScript, JavaScript and related subjects. I post deep dives, brief code snippets, opinions, etc.."
-        // TODO: opengraph image
+        image={{
+          ...openGraphImage,
+          alt: "Martijn's blog about React, TypeScript and front-end (by Martijn Hols)",
+        }}
         absoluteUrl={absoluteUrl(
           tagToFilter ? `${pathname}?tag=${tagToFilter}` : pathname,
         )}
