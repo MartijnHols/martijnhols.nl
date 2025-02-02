@@ -75,30 +75,33 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
           annotation={
             <>
               <p>
-                Initially self-taught, I started in 2004 with PHP 4 and
-                struggled with classic JavaScript during the XHR era. Founding a
-                big PHP/JS project (Elite Avengers) back then kickstarted my
-                passion for web development and entrepreneurship.
+                Initially self-taught, I started in 2004 with PHP 4 and wrestled
+                with classic JavaScript during the XHR era. Founding a large
+                PHP/JS project (Elite Avengers) back then kickstarted my passion
+                for web development and entrepreneurship.
               </p>
               <p>
-                For a long time I thought backend was my calling, but during my
-                time at the HAN University of Applied Sciences, I discovered my
-                true interest: technical web development (which I reckon is
-                close to software architecture).
+                For a long time, I thought backend development was my calling. I
+                dived deep into design patterns, OOP and other backend
+                principles. However, during my time at the HAN University of
+                Applied Sciences, I discovered what true passion was: technical
+                web development (which I reckon is close to software
+                architecture).
               </p>
               <p>
                 Over the years, I've founded several projects, handling
                 everything from frontend and backend to business and community
-                building. My passion for the web has kept me focussed on JS/TS
-                for those backends, though I've also worked extensively with
-                languages like C#.
+                building. My passion for the web has made me opt for JS/TS for
+                those backends, though in other projects I've also worked
+                extensively with languages like C# and Swift.
               </p>
               <p>
-                For clients, I focus exclusively on JS/TS. I want to be among
-                the best at what I do, and that means specialization. My backend
-                and full-stack experience helps me bridge the gap between
-                frontend and backend, enabling me to design hollistic
-                architectures that serve both users and developers effectively.
+                Nowadays, for clients, I focus exclusively on JS/TS. I want to
+                be among the best at what I do, and that means specialization.
+                My background in backend and full-stack development helps me
+                bridge the gap between frontend and backend, enabling me to
+                design hollistic architectures that serve both users and
+                developers effectively.
               </p>
             </>
           }
