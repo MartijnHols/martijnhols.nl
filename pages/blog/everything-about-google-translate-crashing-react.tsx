@@ -20,6 +20,7 @@ import activateGoogleTranslateImage from './assets/google-translate-activate.gif
 import autoCardAnywhereImage from './assets/google-translate-autocardanywhere.png'
 import chromeLanguageSetupImage from './assets/google-translate-language-setup.gif'
 import lightsMemeImage from './assets/google-translate-lights-meme.gif'
+import googleTranslateReactClashingImage from './assets/google-translate-react-clashing.png'
 import openGraphImage from './assets/ogimage-everything-about-google-translate-crashing-react.png'
 import GoogleTranslateCrashesMonkeyPatchRepro from './demo/google-translate-crashes-monkey-patch-repro'
 import GoogleTranslateCrashesRepro from './demo/google-translate-crashes-repro'
@@ -37,6 +38,7 @@ const { meta, getStaticProps } = articleMeta({
   description:
     'A deep dive into Google Translate (and other browser extensions) interference breaking React and other web apps.',
   openGraphImage: openGraphImage,
+  image: googleTranslateReactClashingImage,
   publishedAt: '2024-05-29',
   tags: [
     BlogArticleTag.React,
