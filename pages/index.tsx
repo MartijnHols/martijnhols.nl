@@ -21,7 +21,7 @@ const AboutMeHeading = styled.h2`
 const Page = () => (
   <PageWrapper>
     <BaseHead
-      title="Martijn Hols: React Developer"
+      title="Martijn Hols: Freelance React Developer"
       description="Ik ben dé Freelance React Developer die je zoekt. Al 8 jaar gespecialiseerd in React, met veel full stack ervaring. Ik kan veel voor je projecten betekenen."
       absoluteUrl={absoluteUrl('/')}
       image={openGraphImage}
