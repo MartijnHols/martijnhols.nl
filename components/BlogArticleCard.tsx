@@ -147,9 +147,10 @@ const BlogArticleCard = ({ article }: Props) => (
         <Image
           src={article.image}
           width={200}
-          height={150}
+          height={180}
           style={{
             objectFit: 'contain',
+            objectPosition: 'top',
           }}
           alt=""
         />
