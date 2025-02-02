@@ -23,7 +23,6 @@ import openGraphImage from './assets/ogimage-blog.png'
 import RssFeedIcon from './assets/rss.svg'
 
 const articles = [
-  import('./intro'),
   import('./license'),
   import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),
   import('./how-to-get-document-height-ios-safari-osk'),
