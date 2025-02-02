@@ -32,6 +32,17 @@ export { meta, getStaticProps }
 
 const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
   <BlogArticle {...props}>
+    <Image
+      src={accessibilityToolkitImage}
+      alt="Accessibility toolkit"
+      width={200}
+      css={css`
+        float: right;
+        margin-left: 1em;
+        margin-bottom: 1em;
+      `}
+    />
+
     <p>
       Many developers view accessibility as an overwhelming task, requiring a
       lot of extra effort or specialized knowledge. But{' '}

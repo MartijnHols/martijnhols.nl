@@ -63,6 +63,17 @@ const EverythingAboutGoogleTranslateCrashingReact = (
       to be used by users from all over the world, regardless of their native
       language.
     </p>
+    <Image
+      src={googleTranslateReactClashingImage}
+      alt=""
+      width={200}
+      css={css`
+        float: right;
+        margin-top: 1em;
+        margin-left: 1em;
+        margin-bottom: 1em;
+      `}
+    />
     <p>
       But this convenience comes at a cost, as it interferes with the workings
       of many modern sites. This is because{' '}
