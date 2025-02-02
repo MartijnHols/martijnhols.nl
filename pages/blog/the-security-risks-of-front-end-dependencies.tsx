@@ -12,6 +12,7 @@ import Link from '../../components/Link'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
+import dependencySecurityRisksImage from './assets/dependency-security-risks.png'
 import GithubSecurityAdvisories from './assets/github-security-advisories.png'
 import openGraphImage from './assets/ogimage-security-implications-of-packages.png'
 
@@ -21,8 +22,10 @@ const { meta, getStaticProps } = articleMeta({
   description:
     'A dive into the security risks of using third-party dependencies in front-end projects.',
   openGraphImage: openGraphImage,
+  image: dependencySecurityRisksImage,
   publishedAt: '2024-04-15',
   republishedAt: '2024-12-14',
+  updatedAt: '2025-02-02',
   republishedReason:
     'I rewrote the article to significantly improve the flow, add details and reduce repetition. The spirit of the article remains the same, but it should read a lot better.',
   tags: [
@@ -58,6 +61,27 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       for professional developers to understand and address their potential
       impact.
     </p>
+    <Figure
+      caption={
+        <div style={{ maxWidth: 400, margin: '0 auto' }}>
+          With thousands of dependencies, there's bound to be some shady
+          maintainers.
+          <br />
+          <small>
+            Based on the{' '}
+            <Link href="https://xkcd.com/2347/">xkcd 'Dependency' comic</Link>
+          </small>
+        </div>
+      }
+      captionLink={false}
+      href={dependencySecurityRisksImage.src}
+    >
+      <Image
+        src={dependencySecurityRisksImage}
+        width={400}
+        alt={`A modified version of the xkcd "Dependency" comic; a tower of blocks representing dependencies. The top is labeled with "Your frontend components", and a tiny block at the bottom has an arrow pointing with the text "A dependency maintained by someone with a shady background that you don't know".`}
+      />
+    </Figure>
     <p>
       In this article, we'll dive into these risks and explore their specific
       impact on front-end projects. The key concerns are:
