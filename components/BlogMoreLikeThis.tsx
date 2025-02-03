@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import Image from 'next/image'
 import { ComponentProps } from 'react'
 import BlogArticleMeta from './BlogArticleMeta'
 import Container from './Container'
@@ -42,6 +43,14 @@ const Article = styled.article(
     ${StyledTag} {
       transition: all 200ms ease-out;
     }
+    display: flex;
+    flex-flow: column;
+    gap: 0.5em;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      flex-direction: row;
+      gap: 1em;
+    }
 
     :hover {
       color: ${theme.colors.white};
@@ -55,6 +64,20 @@ const Article = styled.article(
     }
   `,
 )
+const ArticleImage = styled(Image)(
+  ({ theme }) => css`
+    margin: 0 auto;
+    height: 5em;
+
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
+      margin: 0;
+      height: 6.5em;
+    }
+  `,
+)
+const ArticleTextContainer = styled.div`
+  flex: 1 1 auto;
+`
 const ArticleTitle = styled.h1(
   ({ theme }) => css`
     font-size: 1.3em;
@@ -100,15 +123,20 @@ const TextLine = styled.div(
 const MoreLikeThisLink = styled(Link)`
   border-bottom: 0;
 `
+const RelatedArticles = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+`
 const StyledLink = styled(Link)`
   display: block;
   width: 100%;
-  max-width: 32em;
 `
 const Tags = styled.div`
   display: flex;
-  gap: 0.375em;
+  gap: 0.5em;
   flex-wrap: wrap;
+  font-size: 0.75em;
 `
 
 interface Props extends ComponentProps<typeof PageOverflowContainer> {
@@ -121,23 +149,38 @@ const BlogMoreLikeThis = ({ relatedArticles, ...others }: Props) => (
       <TextLine>
         <MoreLikeThisLink href="/blog">More like this</MoreLikeThisLink>
       </TextLine>
-      {relatedArticles?.slice(0, 1).map((item) => (
-        <StyledLink
-          key={item.slug}
-          href={`/blog/${item.slug}`}
-          className="plain"
-        >
-          <Article>
-            <ArticleTitle>{item.title}</ArticleTitle>
+      <RelatedArticles>
+        {relatedArticles?.slice(0, 2).map((article) => (
+          <StyledLink
+            key={article.slug}
+            href={`/blog/${article.slug}`}
+            className="plain"
+          >
+            <Article>
+              {article.image && (
+                <ArticleImage
+                  src={article.image}
+                  width={140}
+                  height={126}
+                  style={{
+                    objectFit: 'contain',
+                  }}
+                  alt=""
+                />
+              )}
+              <ArticleTextContainer>
+                <ArticleTitle>{article.title}</ArticleTitle>
 
-            <Tags>
-              {item.tags.map((tag) => (
-                <StyledTag key={tag}>{tag}</StyledTag>
-              ))}
-            </Tags>
-          </Article>
-        </StyledLink>
-      ))}
+                <Tags>
+                  {article.tags.map((tag) => (
+                    <StyledTag key={tag}>{tag}</StyledTag>
+                  ))}
+                </Tags>
+              </ArticleTextContainer>
+            </Article>
+          </StyledLink>
+        ))}
+      </RelatedArticles>
     </StyledContainer>
   </PageOverflowContainer>
 )

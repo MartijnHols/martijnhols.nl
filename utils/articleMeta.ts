@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import BlogArticleMeta from '../components/BlogArticleMeta'
 import { getPublishedArticles } from '../pages/blog'
-import tagRelevancyScore from './tagRelevancyScore'
+import articleRelevancyScore from './articleRelevancyScore'
 
 export interface ArticleStaticProps {
   article: BlogArticleMeta
@@ -16,8 +16,7 @@ const makeArticleGetStaticProps =
       .filter((item) => item.slug !== article.slug)
       .sort(
         (a, b) =>
-          tagRelevancyScore(article.tags, b.tags) -
-          tagRelevancyScore(article.tags, a.tags),
+          articleRelevancyScore(article, b) - articleRelevancyScore(article, a),
       )
 
     return {
