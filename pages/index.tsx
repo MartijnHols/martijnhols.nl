@@ -34,7 +34,7 @@ const Page = () => (
       <HeroSection
         kicker={<HeroKicker />}
         title={reactifyTitle('Freelance React Developer')}
-        subText="Ik bouw schaalbare en onderhoudbare applicaties met React en TypeScript, altijd met oog voor een solide architectuur."
+        subText="Ik bouw schaalbare en onderhoudbare applicaties met React en TypeScript, met oog voor een solide architectuur."
       />
       <ContentSection
         content={

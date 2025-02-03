@@ -84,22 +84,20 @@ const UspPanelText = styled.div(
 const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>
     <div>
-      <UspLink href="#footer" className="plain">
-        <UspPanel variant="sm">
-          <UspPanelTitle>Ervaring</UspPanelTitle>
-          <UspPanelText>
-            Meer dan 8 jaar React en{' '}
-            <span
-              css={css`
-                white-space: nowrap;
-              `}
-            >
-              20 jaar
-            </span>{' '}
-            full stack ervaring.
-          </UspPanelText>
-        </UspPanel>
-      </UspLink>
+      <UspPanel variant="sm">
+        <UspPanelTitle>🧑‍💻 Ervaring</UspPanelTitle>
+        <UspPanelText>
+          Meer dan 8 jaar React en{' '}
+          <span
+            css={css`
+              white-space: nowrap;
+            `}
+          >
+            20 jaar
+          </span>{' '}
+          full stack ervaring.
+        </UspPanelText>
+      </UspPanel>
     </div>
     <div>
       <Tooltip
@@ -114,17 +112,15 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
         }
       >
         <UspPanel variant="sm">
-          <UspPanelTitle>Locatie</UspPanelTitle>
-          <UspPanelText>
-            Omgeving Midden-Nederland (inclusief Amsterdam)
-          </UspPanelText>
+          <UspPanelTitle>📍 Locatie</UspPanelTitle>
+          <UspPanelText>Hybride in omgeving Midden-Nederland</UspPanelText>
         </UspPanel>
       </Tooltip>
     </div>
     <div>
       <UspLink href="/blog" className="plain">
         <UspPanel variant="sm">
-          <UspPanelTitle>Blog</UspPanelTitle>
+          <UspPanelTitle>📝 Blog</UspPanelTitle>
           <UspPanelText>
             Lees mijn blog over React, TypeScript en front-end →
           </UspPanelText>
