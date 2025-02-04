@@ -57,6 +57,13 @@ const ArticleLink = styled(Link, {
       max-width: 90%;
     `,
 ])
+const Tags = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    gap: ${theme.spacing.x1}px;
+    flex-wrap: wrap;
+  `,
+)
 const Article = styled(Panel, {
   shouldForwardProp: (prop) => prop !== 'howTo',
 })<{ howTo?: boolean }>(({ theme, howTo }) => [
@@ -91,7 +98,9 @@ const Article = styled(Panel, {
 
         ${ArticleTitle} {
           font-size: 2em;
-          border-bottom: ${theme.spacing.x1}px solid ${theme.colors.black};
+        }
+        ${Tags} {
+          font-size: 90%;
         }
       }
     `,
@@ -115,13 +124,6 @@ const ArticleMetadata = styled.div(
 const PublishedAt = styled.div`
   opacity: 0.6;
 `
-const Tags = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: ${theme.spacing.x1}px;
-    flex-wrap: wrap;
-  `,
-)
 
 interface Props {
   article: SerializableBlogArticleMeta
