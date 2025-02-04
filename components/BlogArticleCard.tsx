@@ -7,11 +7,9 @@ import Panel from './Panel'
 import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 
-const ArticleTitle = styled.h2(
+const ArticleTitle = styled.h1(
   ({ theme }) => css`
     color: ${theme.colors.black};
-    text-decoration: none;
-    border-bottom: 10px solid ${theme.colors.black};
     transition: all 120ms ease-out;
     // It is not possible to animate a linear-gradient (yet), so we need to do
     // some background-positioning trickery to get the effect we want.
@@ -22,24 +20,17 @@ const ArticleTitle = styled.h2(
     );
     background-size: 100% 200%;
     background-position-y: 0px;
-    margin-top: 0;
-    border-top: 0;
-    transform: none;
     // Add some extra space on top so the hover state background's top isn't too
     // close to the text.
-    padding-top: 0.1em;
-    margin-top: -0.5em;
-    margin-bottom: 0;
+    padding: 0.1em 0;
+    margin-top: -0.25em;
+    margin-bottom: 0.175em;
     hyphens: auto;
     font-size: 2em;
 
-    ::before {
-      content: none;
-    }
-
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       hyphens: manual;
-      font-size: 3em;
+      font-size: 2.75em;
     }
   `,
 )
@@ -108,6 +99,10 @@ const Article = styled(Panel, {
 const ArticleTextContainer = styled.div`
   flex: 1 1 auto;
 `
+const ArticleDescription = styled.p`
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+`
 const ArticleMetadata = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -157,7 +152,7 @@ const BlogArticleCard = ({ article }: Props) => (
       )}
       <ArticleTextContainer>
         <ArticleTitle>{article.title}</ArticleTitle>
-        <p>{article.description}</p>
+        <ArticleDescription>{article.description}</ArticleDescription>
         <ArticleMetadata>
           <Tags>
             {article.tags.map((tag) => (
