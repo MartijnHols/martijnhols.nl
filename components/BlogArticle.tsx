@@ -9,7 +9,7 @@ import Angle from './Angle'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import BlogArticleMeta from './BlogArticleMeta'
-import BlogMoreLikeThis from './BlogMoreLikeThis'
+import BlogRelatedArticles from './BlogRelatedArticles'
 import Container from './Container'
 import CopyPasteOnly from './CopyPasteOnly'
 import useIntersectionObserver from './IntersectionObserver'
@@ -90,7 +90,7 @@ const Tags = styled.div(
     margin-top: ${theme.spacing.x4}px;
   `,
 )
-const StyledBlogMoreLikeThis = styled(BlogMoreLikeThis)`
+const StyledBlogMoreLikeThis = styled(BlogRelatedArticles)`
   margin-top: 5em;
 `
 const Footer = styled.footer(

@@ -143,7 +143,7 @@ interface Props extends ComponentProps<typeof PageOverflowContainer> {
   relatedArticles: BlogArticleMeta[]
 }
 
-const BlogMoreLikeThis = ({ relatedArticles, ...others }: Props) => (
+const BlogRelatedArticles = ({ relatedArticles, ...others }: Props) => (
   <PageOverflowContainer {...others}>
     <StyledContainer>
       <TextLine>
@@ -185,4 +185,4 @@ const BlogMoreLikeThis = ({ relatedArticles, ...others }: Props) => (
   </PageOverflowContainer>
 )
 
-export default BlogMoreLikeThis
+export default BlogRelatedArticles
