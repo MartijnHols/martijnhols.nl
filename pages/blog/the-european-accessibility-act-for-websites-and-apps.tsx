@@ -20,6 +20,7 @@ const { meta, getStaticProps } = articleMeta({
   openGraphImage: openGraphImage,
   image: euAccessibilityImage,
   publishedAt: '2025-01-30',
+  updatedAt: '2025-02-06',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
@@ -45,8 +46,9 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         <strong>June 28, 2025</strong> - just 5 months from now. From that
         point,{' '}
         <strong>
-          websites and apps of companies operating in the EU must meet
-          accessibility standards
+          <Link href="#applicable-websites-and-apps">applicable</Link> websites
+          and apps of companies operating in the EU must meet accessibility
+          standards
         </strong>
         . Only{' '}
         <Annotation
@@ -153,9 +155,9 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
       <h3 id="accessible-ui-and-content">Accessible UI and content</h3>
       <p>
         Your interface and content must be accessible according to the EAA's
-        principles. The law requires that websites and apps are perceivable,
-        operable, understandable, and robust, but it doesn't specify exactly how
-        to achieve this.
+        principles. The law requires that applicable websites and apps are
+        perceivable, operable, understandable, and robust, but it doesn't
+        specify exactly how to achieve this.
       </p>
       <p>
         In practice,{' '}
@@ -470,8 +472,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           <ul>
             <li>
               <b>Language declaration</b>: Specify the page's language using the
-              HTML
-              <Code>lang</Code> attribute.
+              HTML <Code>lang</Code> attribute.
             </li>
             <li>
               <b>Consistent navigation</b>: Maintain consistent menus and naming
@@ -641,6 +642,127 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         </strong>
         .
       </p>
+      <h2 id="applicable-websites-and-apps">
+        Update; applicable websites and apps
+      </h2>
+      <p>
+        Reddit user{' '}
+        <Link href="https://old.reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
+          <i>vytah</i>
+        </Link>{' '}
+        pointed out a major oversight on my part;{' '}
+        <strong>the EAA does not apply to all websites and apps</strong>.{' '}
+        <Link href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#art_2.tit_1">
+          The directive
+        </Link>{' '}
+        only covers websites and apps for the following:
+      </p>
+      <blockquote>
+        <ol
+          css={css`
+            list-style: lower-alpha;
+            margin: 0;
+            padding-left: 0;
+          `}
+        >
+          <li>
+            <b>electronic communications services</b> with the exception of
+            transmission services used for the provision of machine-to-machine
+            services;
+          </li>
+          <li>
+            services providing access to <b>audiovisual media services</b>;
+          </li>
+          <li>
+            [most]{' '}
+            <b>air, bus, rail and waterborne passenger transport services</b>{' '}
+            <Annotation
+              annotation={
+                <>
+                  <p>
+                    the following elements of{' '}
+                    <strong>
+                      air, bus, rail and waterborne passenger transport services
+                    </strong>
+                    , except for urban, suburban and regional transport services
+                    for which only the elements under point (v) apply:
+                  </p>
+                  <ol
+                    css={css`
+                      list-style: lower-roman;
+                    `}
+                  >
+                    <li> websites;</li>
+                    <li>
+                      mobile device-based services including mobile
+                      applications;
+                    </li>
+                    <li>
+                      electronic tickets and electronic ticketing services;
+                    </li>
+                    <li>
+                      delivery of transport service information, including
+                      real-time travel information; this shall, with regard to
+                      information screens, be limited to interactive screens
+                      located within the territory of the Union; and
+                    </li>
+                    <li>
+                      interactive self-service terminals located within the
+                      territory of the Union, except those installed as
+                      integrated parts of vehicles, aircrafts, ships and rolling
+                      stock used in the provision of any part of such passenger
+                      transport services;
+                    </li>
+                  </ol>
+                </>
+              }
+            >
+              [...]
+            </Annotation>
+            :
+          </li>
+          <li>
+            <b>consumer banking services</b>;
+          </li>
+          <li>
+            <b>e-books</b> and dedicated software; and
+          </li>
+          <li>
+            <b>e-commerce services</b>.
+          </li>
+        </ol>
+      </blockquote>
+      <p>Some types of content are exempt from EAA requirements:</p>
+      <blockquote>
+        <ol
+          css={css`
+            list-style: lower-alpha;
+            margin: 0;
+            padding-left: 0;
+          `}
+        >
+          <li>
+            <b>pre-recorded time-based media</b> published before 28 June 2025;
+          </li>
+          <li>
+            <b>office file formats</b> published before 28 June 2025;
+          </li>
+          <li>
+            <b>online maps and mapping services</b>, if essential information is
+            provided in an accessible digital manner for maps intended for
+            navigational use;
+          </li>
+          <li>
+            <b>third-party content</b> that is neither funded, developed by, or
+            under the control of, the economic operator concerned;
+          </li>
+          <li>
+            content of websites and mobile applications qualifying as{' '}
+            <b>archives</b>, meaning that they only contain content that is not
+            updated or edited after 28 June 2025.
+          </li>
+        </ol>
+      </blockquote>
     </BlogArticle>
   )
 }
