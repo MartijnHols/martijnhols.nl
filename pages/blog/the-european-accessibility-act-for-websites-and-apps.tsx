@@ -48,9 +48,9 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
             <Link href="https://old.reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
               pointed this out
             </Link>
-            . I first added a quick fix on February 6, 2025, to address this,
-            and a day later, the scope was integrated seamlessly into the
-            article.
+            . I first added a quick fix to address this issue on February 6,
+            2025, and the next day, I reworked part of the article to integrate
+            the scope more seamlessly.
           </p>
           <p>
             This update remains because I believe in owning my mistakes and want
