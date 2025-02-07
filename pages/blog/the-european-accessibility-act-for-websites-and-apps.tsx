@@ -20,7 +20,7 @@ const { meta, getStaticProps } = articleMeta({
   openGraphImage: openGraphImage,
   image: euAccessibilityImage,
   publishedAt: '2025-01-30',
-  updatedAt: '2025-02-06',
+  updatedAt: '2025-02-07',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
 })
 export { meta, getStaticProps }
@@ -29,7 +29,36 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
   const [showDetails, setShowDetails] = useState(false)
 
   return (
-    <BlogArticle {...props}>
+    <BlogArticle
+      {...props}
+      addendum={
+        <>
+          <h2 id="applicable-websites-and-apps">
+            Update February 6, 2025; Added scope
+          </h2>
+          <p>
+            In a significant oversight on my part,{' '}
+            <>
+              the initial version of this article did not cover{' '}
+              <Link href="#which-websites-and-apps-are-covered">
+                the scope of the EAA
+              </Link>
+            </>
+            . Reddit user <i>vytah</i> correctly{' '}
+            <Link href="https://old.reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
+              pointed this out
+            </Link>
+            . I first added a quick fix on February 6, 2025, to address this,
+            and a day later, the scope was integrated seamlessly into the
+            article.
+          </p>
+          <p>
+            This update remains because I believe in owning my mistakes and want
+            to be transparent with returning visitors.
+          </p>
+        </>
+      }
+    >
       <Image
         src={euAccessibilityImage}
         alt=""
@@ -46,9 +75,8 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         <strong>June 28, 2025</strong> - just 5 months from now. From that
         point,{' '}
         <strong>
-          <Link href="#applicable-websites-and-apps">applicable</Link> websites
-          and apps of companies operating in the EU must meet accessibility
-          standards
+          covered websites and apps of companies operating in the EU must meet
+          accessibility standards
         </strong>
         . Only{' '}
         <Annotation
@@ -60,22 +88,22 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         are exempt.
       </p>
       <p>
-        In this article, I'll dive into the requirements of the EAA for websites
-        and apps, the timeline, and a plan to help you get started.
+        In this article, I'll dive into which websites and apps are covered, the
+        EAA's requirements, the timeline, and a plan to help you get started.
       </p>
       <p>
         If you're new to accessibility, you might want to start with{' '}
         <Link href="#what-is-accessibility-and-who-is-it-for">
-          What is accessibility and who is it for
+          What is accessibility and who is it for?
         </Link>
-        . Otherwise, skip ahead to the{' '}
-        <Link href="#european-accessibility-act-requirements">
-          EAA requirements
+        . Otherwise, skip ahead to{' '}
+        <Link href="#which-websites-and-apps-are-covered">
+          Which websites and apps are covered?
         </Link>
         .
       </p>
       <h2 id="what-is-accessibility-and-who-is-it-for">
-        What is accessibility and who is it for
+        What is accessibility and who is it for?
       </h2>
       <p>
         <strong>
@@ -143,6 +171,83 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         can reach more people and have SEO benefits, as search engines can
         understand your content better.
       </p>
+
+      <h2 id="which-websites-and-apps-are-covered">
+        Which websites and apps are covered?
+      </h2>
+      <p>
+        <strong>The EAA only applies to specific types of services.</strong> The{' '}
+        <Link href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#art_2.tit_1">
+          list of covered services
+        </Link>{' '}
+        currently includes:
+      </p>
+      <ul>
+        <li>
+          <b>Electronic communications services</b>, except those used only for
+          machine-to-machine communication.
+        </li>
+        <li>
+          <b>Audiovisual media service platforms</b>, such as video streaming
+          services.
+        </li>
+        <li>
+          <b>Passenger transport services</b> (air, bus, rail, and waterborne
+          transport), except for urban and suburban public transport.
+        </li>
+        <li>
+          <b>Banking and financial services</b>, including payment services,
+          consumer credit, investment services, and insurance-related financial
+          products.
+        </li>
+        <li>
+          <b>E-books and dedicated reading software.</b>
+        </li>
+        <li>
+          <b>E-commerce services</b> (i.e. webshops).
+        </li>
+      </ul>
+      <p>
+        Some content is <strong>exempt</strong> from the EAA:
+      </p>
+      <ul>
+        <li>
+          <b>Pre-recorded media</b> (videos, audio) published before June 28,
+          2025.
+        </li>
+        <li>
+          <b>Office documents</b> (PDFs, Word files, etc.) published before June
+          28, 2025.
+        </li>
+        <li>
+          <b>Online maps</b> unless used for navigation.
+        </li>
+        <li>
+          <b>Third-party content</b> that isn't funded, developed, or controlled
+          by the business operating the website or app.
+        </li>
+        <li>
+          <b>Archived content</b>, meaning pages that are no longer updated or
+          edited after June 28, 2025.
+        </li>
+      </ul>
+      <p>
+        If your business falls under one of the covered services, now is the
+        time to start preparing. The EAA's deadlines are closer than they seem,
+        and making your website or app accessible can be a big task, especially
+        if accessibility hasn't been a focus before.
+      </p>
+      <p>
+        <strong>
+          Even if your services aren't covered yet, it's worth considering
+          accessibility now.
+        </strong>{' '}
+        The EAA's scope is designed to evolve, and future updates may include
+        more industries. Proactively improving accessibility not only keeps you
+        ahead of potential regulations but also enhances the user experience for
+        everyone.
+      </p>
+
       <h2 id="european-accessibility-act-requirements">
         European Accessibility Act requirements
       </h2>
@@ -642,127 +747,6 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         </strong>
         .
       </p>
-      <h2 id="applicable-websites-and-apps">
-        Update; applicable websites and apps
-      </h2>
-      <p>
-        Reddit user{' '}
-        <Link href="https://old.reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
-          <i>vytah</i>
-        </Link>{' '}
-        pointed out a major oversight on my part;{' '}
-        <strong>the EAA does not apply to all websites and apps</strong>.{' '}
-        <Link href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#art_2.tit_1">
-          The directive
-        </Link>{' '}
-        only covers websites and apps for the following:
-      </p>
-      <blockquote>
-        <ol
-          css={css`
-            list-style: lower-alpha;
-            margin: 0;
-            padding-left: 0;
-          `}
-        >
-          <li>
-            <b>electronic communications services</b> with the exception of
-            transmission services used for the provision of machine-to-machine
-            services;
-          </li>
-          <li>
-            services providing access to <b>audiovisual media services</b>;
-          </li>
-          <li>
-            [most]{' '}
-            <b>air, bus, rail and waterborne passenger transport services</b>{' '}
-            <Annotation
-              annotation={
-                <>
-                  <p>
-                    the following elements of{' '}
-                    <strong>
-                      air, bus, rail and waterborne passenger transport services
-                    </strong>
-                    , except for urban, suburban and regional transport services
-                    for which only the elements under point (v) apply:
-                  </p>
-                  <ol
-                    css={css`
-                      list-style: lower-roman;
-                    `}
-                  >
-                    <li> websites;</li>
-                    <li>
-                      mobile device-based services including mobile
-                      applications;
-                    </li>
-                    <li>
-                      electronic tickets and electronic ticketing services;
-                    </li>
-                    <li>
-                      delivery of transport service information, including
-                      real-time travel information; this shall, with regard to
-                      information screens, be limited to interactive screens
-                      located within the territory of the Union; and
-                    </li>
-                    <li>
-                      interactive self-service terminals located within the
-                      territory of the Union, except those installed as
-                      integrated parts of vehicles, aircrafts, ships and rolling
-                      stock used in the provision of any part of such passenger
-                      transport services;
-                    </li>
-                  </ol>
-                </>
-              }
-            >
-              [...]
-            </Annotation>
-            :
-          </li>
-          <li>
-            <b>consumer banking services</b>;
-          </li>
-          <li>
-            <b>e-books</b> and dedicated software; and
-          </li>
-          <li>
-            <b>e-commerce services</b>.
-          </li>
-        </ol>
-      </blockquote>
-      <p>Some types of content are exempt from EAA requirements:</p>
-      <blockquote>
-        <ol
-          css={css`
-            list-style: lower-alpha;
-            margin: 0;
-            padding-left: 0;
-          `}
-        >
-          <li>
-            <b>pre-recorded time-based media</b> published before 28 June 2025;
-          </li>
-          <li>
-            <b>office file formats</b> published before 28 June 2025;
-          </li>
-          <li>
-            <b>online maps and mapping services</b>, if essential information is
-            provided in an accessible digital manner for maps intended for
-            navigational use;
-          </li>
-          <li>
-            <b>third-party content</b> that is neither funded, developed by, or
-            under the control of, the economic operator concerned;
-          </li>
-          <li>
-            content of websites and mobile applications qualifying as{' '}
-            <b>archives</b>, meaning that they only contain content that is not
-            updated or edited after 28 June 2025.
-          </li>
-        </ol>
-      </blockquote>
     </BlogArticle>
   )
 }

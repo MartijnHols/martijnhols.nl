@@ -54,6 +54,9 @@ const Addendum = styled.div(
       > h2:first-of-type {
         margin-top: 0;
       }
+      > p:last-of-type {
+        margin-bottom: 0;
+      }
     }
   `,
 )
