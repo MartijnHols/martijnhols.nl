@@ -11,7 +11,7 @@ const Positioner = styled.div(
     bottom: 0;
     right: 30px;
 
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
+    @media (min-width: ${theme.breakpoints.TABLET}px) {
       bottom: auto;
       // We can't use transform since the rotation messes that up. It doesn't need
       // to be perfectly centered anyway.
@@ -28,29 +28,26 @@ const Container = styled('div', {
   ({ theme, inverted, hovering }) => [
     css`
       display: flex;
-      padding: 7px 14px 17px;
+      padding: 0.5em 1em 1em;
       background: ${theme.colors.black};
       color: ${theme.colors.white};
       --background-color: ${theme.colors.black};
-      border-radius: 3px 3px 0 0;
+      border-radius: 0.2em 0.2em 0 0;
       text-transform: uppercase;
       font-weight: 600;
-      font-size: 0.875rem;
+      font-size: 1rem;
 
       transition: transform 120ms ease-out;
-      transform: translateY(10px);
+      transform: translateY(0.5em);
       :hover {
-        transform: translateY(1px);
+        transform: translateY(0em);
       }
 
-      @media (min-width: ${theme.breakpoints.TABLET}px) {
-        font-size: 1rem;
-      }
       @media (min-width: ${theme.breakpoints.DESKTOP}px) {
         font-size: 1.125rem;
       }
       @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
       }
     `,
     hovering &&
