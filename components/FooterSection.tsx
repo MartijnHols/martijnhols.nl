@@ -35,7 +35,7 @@ const SocialRow = styled(Row)``
 const BusinessRow = styled(Row)``
 const Item = styled.div``
 
-const email = 'website@martijnhols.nl'
+const email = 'martijnhols.nl@martijnhols.nl'
 const phone = '0657946114'
 const linkedIn = 'https://www.linkedin.com/in/martijnhols/'
 const gitHub = 'https://github.com/MartijnHols'

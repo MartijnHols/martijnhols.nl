@@ -65,7 +65,10 @@ const LicenseGist = (props: ArticleStaticProps) => (
     </ul>
     <p>
       Exceptions or explicit approval may be given via email at{' '}
-      <Link href="mailto:website@martijnhols.nl">website@martijnhols.nl</Link>.
+      <Link href="mailto:martijnhols.nl@martijnhols.nl">
+        martijnhols.nl@martijnhols.nl
+      </Link>
+      .
     </p>
   </BlogArticle>
 )
