@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { GetStaticProps } from 'next'
 import AngleWithContactButton from '../components/AngleWithContactButton'
 import BaseHead from '../components/BaseHead'
 import ContentSection from '../components/ContentSection'
@@ -11,8 +12,17 @@ import PageWrapper from '../components/PageWrapper'
 import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
 import absoluteUrl from '../utils/absoluteUrl'
+import generateSitemap from '../utils/generateSitemap'
 import photo from './assets/martijn-hols.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
+
+export const getStaticProps: GetStaticProps = async () => {
+  await generateSitemap()
+
+  return {
+    props: {},
+  }
+}
 
 const AboutMeHeading = styled.h2`
   margin: 0;
