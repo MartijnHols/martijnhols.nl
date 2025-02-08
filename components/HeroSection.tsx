@@ -58,13 +58,10 @@ const SubText = styled.div(
 )
 const StyledUspBar = styled(UspBar)(
   ({ theme }) => css`
-    margin-top: 3em;
+    margin-top: 2em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: 4em;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      margin-top: 5em;
+      margin-top: 3em;
     }
   `,
 )
