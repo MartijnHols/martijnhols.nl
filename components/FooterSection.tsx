@@ -57,10 +57,6 @@ const FooterSlice = () => (
               <a href={`tel:${phone}`}>{phone}</a>
             </Item>
           </Values>
-          <small>
-            Ik ben het best bereikbaar op dinsdag, donderdag, vrijdag, en in het
-            weekend.
-          </small>
         </div>
       </ContactRow>
       <Row>

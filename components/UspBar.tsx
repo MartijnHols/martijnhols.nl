@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
+import Annotation from './Annotation'
 import Link from './Link'
 import Panel from './Panel'
-import Tooltip from './Tooltip'
 
 const Container = styled.div(
   ({ theme }) => css`
@@ -75,9 +75,6 @@ const UspPanelText = styled.div(
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       font-size: 1.25em;
     }
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      font-size: 1.5em;
-    }
   `,
 )
 
@@ -85,44 +82,41 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>
     <div>
       <UspPanel variant="sm">
-        <UspPanelTitle>🧑‍💻 Ervaring</UspPanelTitle>
-        <UspPanelText>
-          Meer dan 8 jaar React en{' '}
+        <UspPanelTitle>🧑‍💻 Senior expertise</UspPanelTitle>
+        <UspPanelText className="inverted">
+          8+ jaar React-specialist &amp;{' '}
           <span
             css={css`
               white-space: nowrap;
             `}
           >
-            20 jaar
-          </span>{' '}
-          full stack ervaring.
+            20+ jaar full-stack ervaring.
+          </span>
         </UspPanelText>
       </UspPanel>
     </div>
     <div>
-      <Tooltip
-        content={
-          <>
-            Gebaseerd in <strong>Barneveld, Gelderland</strong>. Ik sta open
-            voor opdrachten binnen 60 minuten rijden, zoals Amsterdam,
-            Amersfoort, Veenendaal, Ede, Wageningen, Apeldoorn, Utrecht, Zeist,
-            Hilversum, Rhenen, Nijkerk, Leusden, Arnhem, Nijmegen, Deventer,
-            Zwolle, Almere en omstreken.
-          </>
-        }
-      >
-        <UspPanel variant="sm">
-          <UspPanelTitle>📍 Locatie</UspPanelTitle>
-          <UspPanelText>Hybride in omgeving Midden-Nederland</UspPanelText>
-        </UspPanel>
-      </Tooltip>
+      <UspPanel variant="sm">
+        <UspPanelTitle>🏛️ Duurzame React-architectuur</UspPanelTitle>
+        <UspPanelText className="inverted">
+          Pragmatische architectuur met focus op{' '}
+          <Annotation annotation="User Experience; een intuïtieve, snelle en gebruiksvriendelijke app zorgt voor een betere ervaring voor eindgebruikers.">
+            UX
+          </Annotation>{' '}
+          én{' '}
+          <Annotation annotation="Developer Experience; een goed doordachte architectuur en duidelijke patronen maken ontwikkeling efficiënter en onderhoud eenvoudiger.">
+            DX
+          </Annotation>
+          .
+        </UspPanelText>
+      </UspPanel>
     </div>
     <div>
       <UspLink href="/blog" className="plain">
         <UspPanel variant="sm">
-          <UspPanelTitle>📝 Blog</UspPanelTitle>
-          <UspPanelText>
-            Lees mijn blog over React, TypeScript en front-end →
+          <UspPanelTitle>📚 Ik deel mijn kennis</UspPanelTitle>
+          <UspPanelText className="inverted">
+            Lees mijn artikelen over React & front-end →
           </UspPanelText>
         </UspPanel>
       </UspLink>
