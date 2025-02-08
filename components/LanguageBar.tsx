@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import Container from './Container'
 
 const Bar = styled.div(
@@ -9,6 +8,11 @@ const Bar = styled.div(
     background: ${theme.colors.black};
     color: ${theme.colors.white};
     padding: 1em 0 0;
+    display: none;
+
+    :not(.dutch &) {
+      display: block;
+    }
   `,
 )
 const MainText = styled.div(
@@ -38,17 +42,21 @@ const Action = styled.div`
   border: 1px solid currentColor;
 `
 
-const LanguageBar = () => {
-  const [show, setShow] = useState(false)
-  useEffect(() => {
-    setShow(!navigator.languages.some((lang) => lang.startsWith('nl')))
-  }, [])
-
-  if (!show) {
-    return null
-  }
-
-  return (
+const LanguageBar = () => (
+  <>
+    <script
+      // Since this language alert causes a big layout shift, we need to toggle
+      // it as soon as possible.
+      // We can't use useEffect, as downloading and running the script takes a
+      // lot of time on slow mobile devices.
+      // Instead, this inline script will run immediately after it's parsed. It
+      // executes before the rest of the page is even rendered.
+      dangerouslySetInnerHTML={{
+        __html: `
+          navigator.languages.some(lang => lang.startsWith('nl'))&&document.body.classList.add('dutch');
+        `.trim(),
+      }}
+    />
     <Bar lang="en">
       <Container className="inverted">
         <MainText>
@@ -75,7 +83,7 @@ const LanguageBar = () => {
         </Actions>
       </Container>
     </Bar>
-  )
-}
+  </>
+)
 
 export default LanguageBar
