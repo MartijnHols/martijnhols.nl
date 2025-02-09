@@ -59,9 +59,6 @@ export default interface BlogArticleMeta {
   tags: BlogArticleTag[]
 }
 
-export type SerializableBlogArticleMeta = Omit<
-  BlogArticleMeta,
-  'titleReact'
-> & {
+export type SerializableBlogArticleMeta = BlogArticleMeta & {
   publishedAt: PublicationDate
 }

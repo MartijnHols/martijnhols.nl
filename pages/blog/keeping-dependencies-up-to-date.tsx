@@ -30,15 +30,7 @@ export { meta, getStaticProps }
 const SecurityImplicationsOfPackagesOnTheFrontendGist = (
   props: ArticleStaticProps,
 ) => (
-  <BlogArticle
-    titleReact={
-      <>
-        Keeping dependencies{' '}
-        <span style={{ whiteSpace: 'nowrap' }}>up-to-date</span>
-      </>
-    }
-    {...props}
-  >
+  <BlogArticle {...props}>
     <p>
       When you're using many dependencies, keeping them up-to-date can be a real
       challenge. Installing dependency updates can take a lot of time, time that

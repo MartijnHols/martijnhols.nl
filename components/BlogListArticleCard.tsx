@@ -25,11 +25,9 @@ const ArticleTitle = styled.h1(
     padding: 0.1em 0;
     margin-top: -0.25em;
     margin-bottom: 0.175em;
-    hyphens: auto;
     font-size: 2em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      hyphens: manual;
       font-size: 2.75em;
     }
   `,
@@ -129,7 +127,7 @@ interface Props {
   article: SerializableBlogArticleMeta
 }
 
-const BlogArticleCard = ({ article }: Props) => (
+const BlogListArticleCard = ({ article }: Props) => (
   <ArticleLink
     href={`/blog/${article.slug}`}
     className="plain"
@@ -171,4 +169,4 @@ const BlogArticleCard = ({ article }: Props) => (
   </ArticleLink>
 )
 
-export default BlogArticleCard
+export default BlogListArticleCard

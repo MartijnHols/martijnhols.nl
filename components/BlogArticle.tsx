@@ -66,6 +66,7 @@ const Title = styled.h1(
     font-size: 2.9em;
     margin-top: 0.05em;
     margin-bottom: 0.5em;
+    text-wrap: balance;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 3.5em;

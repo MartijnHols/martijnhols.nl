@@ -5,12 +5,12 @@ import { useRouter } from 'next/router'
 import AboutMeBriefPanel from '../../components/AboutMeBriefPanel'
 import Angle from '../../components/Angle'
 import BaseHead from '../../components/BaseHead'
-import BlogArticleCard from '../../components/BlogArticleCard'
 import BlogArticleMeta, {
   BlogArticleTag,
   PublicationDate,
   SerializableBlogArticleMeta,
 } from '../../components/BlogArticleMeta'
+import BlogListArticleCard from '../../components/BlogListArticleCard'
 import Container from '../../components/Container'
 import Link from '../../components/Link'
 import PageWrapper from '../../components/PageWrapper'
@@ -153,7 +153,7 @@ const BlogIndex = ({ articles }: Props) => {
           <ArticleList>
             {filteredArticles.map((article) => (
               <li key={article.slug}>
-                <BlogArticleCard article={article} />
+                <BlogListArticleCard article={article} />
               </li>
             ))}
           </ArticleList>

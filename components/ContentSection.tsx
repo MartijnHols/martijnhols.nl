@@ -61,7 +61,6 @@ const ContentContainer = styled('div', {
       column-count: 2;
       column-gap: ${theme.spacing.x5}px;
       line-height: 1.6;
-      hyphens: manual;
       text-align: left;
     `,
 ])
