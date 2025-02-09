@@ -9,50 +9,40 @@ import Link from './Link'
 import Panel from './Panel'
 import Tag from './Tag'
 
-const Container = styled(Panel, {
-  shouldForwardProp: (prop) =>
-    prop !== 'highlighted' && prop !== 'isPlaceholder',
-})<{
-  highlighted?: boolean
-  isPlaceholder?: boolean
-}>(({ highlighted, isPlaceholder }) => [
-  css`
-    --background: var(--yellow50);
-    color: var(--black);
-    // Top and bottom margins are not equal since the angle changes the visual
-    // margin. I believe the left-most column is most important to appear
-    // visually aligned.
-    margin-top: var(--spacing5);
-    margin-bottom: var(--spacing7);
-    // Offset the padding so the code text aligns with the rest of the text
-    margin-left: calc(var(--spacing4) * -1);
-    margin-right: calc(var(--spacing4) * -1);
-    padding: var(--spacing3) var(--spacing4) var(--spacing2);
+const Container = styled(Panel)`
+  --background: var(--yellow50);
+  color: var(--black);
+  // Top and bottom margins are not equal since the angle changes the visual
+  // margin. I believe the left-most column is most important to appear
+  // visually aligned.
+  margin-top: var(--spacing5);
+  margin-bottom: var(--spacing7);
+  // Offset the padding so the code text aligns with the rest of the text
+  margin-left: calc(var(--spacing4) * -1);
+  margin-right: calc(var(--spacing4) * -1);
+  padding: var(--spacing3) var(--spacing4) var(--spacing2);
 
-    @media (min-width: ${breakpoints.TABLET}px) {
-      display: flex;
-      gap: var(--spacing4);
+  @media (min-width: ${breakpoints.TABLET}px) {
+    display: flex;
+    gap: var(--spacing4);
+  }
+`
+const highlightedCss = css`
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin-top: calc(var(--spacing1) * 10);
+    margin-bottom: calc(var(--spacing1) * 10);
+    transform: scale(1.1);
+
+    & + & {
+      margin-top: calc(var(--spacing1) * 14);
     }
-  `,
-  highlighted &&
-    css`
-      @media (min-width: ${breakpoints.TABLET}px) {
-        margin-top: calc(var(--spacing1) * 10);
-        margin-bottom: calc(var(--spacing1) * 10);
-        transform: scale(1.1);
-
-        & + & {
-          margin-top: calc(var(--spacing1) * 14);
-        }
-      }
-    `,
-  isPlaceholder &&
-    css`
-      opacity: 0.6;
-      max-width: 750px;
-      margin: 0 auto;
-    `,
-])
+  }
+`
+const placeholderCss = css`
+  opacity: 0.6;
+  max-width: 750px;
+  margin: 0 auto;
+`
 const Header = styled.h3`
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -163,8 +153,7 @@ const ProjectBrief = ({
     <Container
       as="article"
       boxShadow={false}
-      highlighted={highlighted}
-      isPlaceholder={placeholder}
+      css={[highlighted && highlightedCss, placeholder && placeholderCss]}
     >
       <div>
         <Period>{formatPeriod(String(started), ended)}</Period>

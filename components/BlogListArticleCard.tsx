@@ -27,75 +27,66 @@ const ArticleTitle = styled.h1`
     font-size: 2.75em;
   }
 `
-const ArticleLink = styled(Link, {
-  shouldForwardProp: (prop) => prop !== 'howTo',
-})<{ howTo?: boolean }>(({ howTo }) => [
-  css`
-    display: block;
-    margin-top: var(--spacing6);
-    margin-bottom: var(--spacing6);
-    margin-left: auto;
-    margin-right: auto;
-    color: var(--black);
+const ArticleLink = styled(Link)`
+  display: block;
+  margin-top: var(--spacing6);
+  margin-bottom: var(--spacing6);
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--black);
 
-    :hover {
-      ${ArticleTitle} {
-        color: var(--white);
-        background-position-y: 100%;
-      }
+  :hover {
+    ${ArticleTitle} {
+      color: var(--white);
+      background-position-y: 100%;
     }
-  `,
-  howTo &&
-    css`
-      max-width: 90%;
-    `,
-])
+  }
+`
+const howToArticleLinkCss = css`
+  max-width: 90%;
+`
 const Tags = styled.div`
   display: flex;
   gap: var(--spacing1);
   flex-wrap: wrap;
 `
-const Article = styled(Panel, {
-  shouldForwardProp: (prop) => prop !== 'howTo',
-})<{ howTo?: boolean }>(({ howTo }) => [
-  css`
-    --background: var(--yellow50);
-    color: var(--black);
-    // Top and bottom margins are not equal since the angle changes the visual
-    // margin. I believe the left-most column is most important to appear
-    // visually aligned.
-    margin-top: var(--spacing5);
-    margin-bottom: var(--spacing7);
-    // Offset the padding so the code text aligns with the rest of the text
-    margin-left: calc(var(--spacing4) * -1);
-    margin-right: calc(var(--spacing4) * -1);
-    padding: var(--spacing3) var(--spacing4) var(--spacing2);
-    display: flex;
-    gap: 1em;
-    flex-flow: column;
+const Article = styled(Panel)`
+  --background: var(--yellow50);
+  color: var(--black);
+  // Top and bottom margins are not equal since the angle changes the visual
+  // margin. I believe the left-most column is most important to appear
+  // visually aligned.
+  margin-top: var(--spacing5);
+  margin-bottom: var(--spacing7);
+  // Offset the padding so the code text aligns with the rest of the text
+  margin-left: calc(var(--spacing4) * -1);
+  margin-right: calc(var(--spacing4) * -1);
+  padding: var(--spacing3) var(--spacing4) var(--spacing2);
+  display: flex;
+  gap: 1em;
+  flex-flow: column;
 
-    @media (min-width: ${breakpoints.TABLET}px) {
-      flex-direction: row;
-      gap: 2em;
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-direction: row;
+    gap: 2em;
+  }
+`
+const howToArticleCss = css`
+  padding: var(--spacing2);
+  font-size: 90%;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    padding: var(--spacing2) var(--spacing3);
+
+    ${ArticleTitle} {
+      font-size: 2em;
     }
-  `,
-  howTo &&
-    css`
-      padding: var(--spacing2);
+    ${Tags} {
       font-size: 90%;
+    }
+  }
+`
 
-      @media (min-width: ${breakpoints.TABLET}px) {
-        padding: var(--spacing2) var(--spacing3);
-
-        ${ArticleTitle} {
-          font-size: 2em;
-        }
-        ${Tags} {
-          font-size: 90%;
-        }
-      }
-    `,
-])
 const ArticleTextContainer = styled.div`
   flex: 1 1 auto;
 `
@@ -122,12 +113,12 @@ const BlogListArticleCard = ({ article }: Props) => (
   <ArticleLink
     href={`/blog/${article.slug}`}
     className="plain"
-    howTo={article.tags.includes(BlogArticleTag.HowTo)}
+    css={article.tags.includes(BlogArticleTag.HowTo) && howToArticleLinkCss}
   >
     <Article
       as="article"
       boxShadow={false}
-      howTo={article.tags.includes(BlogArticleTag.HowTo)}
+      css={article.tags.includes(BlogArticleTag.HowTo) && howToArticleCss}
     >
       {article.image && (
         <Image

@@ -53,23 +53,18 @@ const SideImage = styled(Image)`
     width: 500px;
   }
 `
-const ContentContainer = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'twoColumnsText',
-})<{ twoColumnsText?: boolean }>(({ twoColumnsText }) => [
-  css`
-    flex: 1 1 auto;
-    // Cancels out p-margins
-    margin: calc(var(--spacing2) * -1) 0;
-    text-wrap: pretty;
-  `,
-  twoColumnsText &&
-    css`
-      column-count: 2;
-      column-gap: var(--spacing5);
-      line-height: 1.6;
-      text-align: left;
-    `,
-])
+const ContentContainer = styled.div`
+  flex: 1 1 auto;
+  // Cancels out p-margins
+  margin: calc(var(--spacing2) * -1) 0;
+  text-wrap: pretty;
+`
+const twoColumnsTextCss = css`
+  column-count: 2;
+  column-gap: var(--spacing5);
+  line-height: 1.6;
+  text-align: left;
+`
 
 interface Props {
   variant?:
@@ -108,10 +103,11 @@ const ContentSection = ({ variant = 'default', image, content }: Props) => {
           )}
           <ContentContainer
             className={`content ${inverted ? 'inverted' : ''}`}
-            twoColumnsText={
-              variant === 'twoColumnsText' ||
-              variant === 'twoColumnsTextInverted'
-            }
+            css={[
+              (variant === 'twoColumnsText' ||
+                variant === 'twoColumnsTextInverted') &&
+                twoColumnsTextCss,
+            ]}
           >
             {content}
           </ContentContainer>
