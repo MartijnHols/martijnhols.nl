@@ -1,11 +1,12 @@
 import { css, Global } from '@emotion/react'
+import * as theme from '.'
 import 'sanitize.css'
 import 'sanitize.css/forms.css'
 import 'sanitize.css/typography.css'
 
 const GlobalStyles = () => (
   <Global
-    styles={(theme) => [
+    styles={[
       css`
         :root {
           --yellow: ${theme.colors.yellow};
@@ -25,10 +26,11 @@ const GlobalStyles = () => (
           --spacing8: calc(var(--spacing1) * 8);
           --spacing9: calc(var(--spacing1) * 9);
           --spacing10: calc(var(--spacing1) * 10);
+
+          --box-shadow-distance: var(--spacing1);
         }
         html {
           scroll-padding-top: 2rem;
-          --box-shadow-distance: 8px;
         }
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
