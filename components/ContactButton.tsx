@@ -28,7 +28,7 @@ const Container = styled('div', {
   ({ theme, inverted, hovering }) => [
     css`
       display: flex;
-      padding: 0.5em 1em 1em;
+      padding: 0.5em 0.8em 1em;
       background: ${theme.colors.black};
       color: ${theme.colors.white};
       --background-color: ${theme.colors.black};
