@@ -121,7 +121,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
                     Ik heb mezelf vanaf 2004 webontwikkeling aangeleerd met PHP
                     4 en klassiek JavaScript in het tijdperk van frames en XHR.
                     Het oprichten van een groot PHP/JS-project (Elite Avengers)
-                    en mijn eerste bedrijf destijds wakkerde mijn passie voor
+                    en mijn eerste bedrijf wakkerde mijn passie voor
                     webontwikkeling en ondernemerschap aan.
                   </p>
                   <p>
