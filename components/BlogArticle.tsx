@@ -6,7 +6,8 @@ import { ReactNode, useRef, useState } from 'react'
 import { breakpoints } from '../theme'
 import absoluteUrl from '../utils/absoluteUrl'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
-import Angle from './Angle'
+import AngleBottom from './AngleBottom'
+import AngleTop from './AngleTop'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import BlogArticleMeta from './BlogArticleMeta'
@@ -233,18 +234,18 @@ const BlogArticle = ({
 
         {addendum && (
           <>
-            <Angle inverted />
+            <AngleTop />
             <Addendum className="inverted" id="addendum">
               <ArticleContent className="content">{addendum}</ArticleContent>
             </Addendum>
-            <Angle />
+            <AngleBottom />
           </>
         )}
       </article>
 
       <StyledBlogMoreLikeThis relatedArticles={relatedArticles} />
 
-      <Angle inverted />
+      <AngleTop />
 
       <Footer>
         <Container className="inverted">

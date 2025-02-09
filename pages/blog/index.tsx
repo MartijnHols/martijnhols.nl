@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import AboutMeBriefPanel from '../../components/AboutMeBriefPanel'
-import Angle from '../../components/Angle'
+import AngleTop from '../../components/AngleTop'
 import BaseHead from '../../components/BaseHead'
 import BlogArticleMeta, {
   BlogArticleTag,
@@ -179,7 +179,7 @@ const BlogIndex = ({ articles }: Props) => {
           </ArticleListFooter>
         </StyledContainer>
 
-        <Angle inverted />
+        <AngleTop />
       </Main>
 
       {/** TODO: Custom blog footer (don't want phone number in there) */}

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
-import ContactButton from './ContactButton'
 import ContactButtonGlobalHover from './ContactButtonGlobalHover'
 
 const ContactButtonClipper = styled.div`
@@ -18,7 +17,7 @@ const ContactButtonClipper = styled.div`
   }
 `
 
-type Props = ComponentProps<typeof ContactButton>
+type Props = ComponentProps<typeof ContactButtonGlobalHover>
 
 const ContactButtonClipped = (props: Props) => (
   <ContactButtonClipper>

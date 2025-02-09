@@ -6,6 +6,8 @@ import { useEffect, useReducer } from 'react'
 // Since the library only has 2 stars and the below code is all it takes, I felt
 // it better to maintain a copy.
 
+// TODO: jotai
+
 export type ReactiveVar<T> = {
   (newValue?: T | ((value: T) => T)): T
   subscribe: (handler: (value: T) => void) => () => void

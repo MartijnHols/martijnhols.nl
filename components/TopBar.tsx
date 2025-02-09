@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import { breakpoints } from '../theme'
-import Angle from './Angle'
+import AngleBottom from './AngleBottom'
 
 const Sticky = styled.div`
   @media print {
@@ -9,7 +9,7 @@ const Sticky = styled.div`
   }
 `
 
-const StyledAngle = styled(Angle)`
+const StyledAngle = styled(AngleBottom)`
   pointer-events: none;
 `
 const Container = styled.div`

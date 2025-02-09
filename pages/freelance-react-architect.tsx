@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import AngleTop from '../components/AngleTop'
 import AngleWithContactButton from '../components/AngleWithContactButton'
 import BaseHead from '../components/BaseHead'
 import ContentSection from '../components/ContentSection'
@@ -94,7 +95,7 @@ const Page = () => (
       />
       <ProjectsSection />
     </main>
-    <AngleWithContactButton inverted />
+    <AngleWithContactButton angle={AngleTop} />
     <FooterSlice />
   </PageWrapper>
 )

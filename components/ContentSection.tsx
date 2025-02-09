@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 import { breakpoints } from '../theme'
 import ImageInfo from '../utils/ImageInfo'
+import AngleBottom from './AngleBottom'
+import AngleTop from './AngleTop'
 import AngleWithContactButton from './AngleWithContactButton'
 import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
@@ -86,7 +88,7 @@ const ContentSection = ({ variant = 'default', image, content }: Props) => {
 
   return (
     <Section>
-      <AngleWithContactButton inverted />
+      <AngleWithContactButton angle={AngleTop} />
 
       <BackgroundWrapper
         style={{
@@ -120,7 +122,7 @@ const ContentSection = ({ variant = 'default', image, content }: Props) => {
         <ContactButtonClipped inverted={inverted} />
       </BackgroundWrapper>
 
-      <AngleWithContactButton />
+      <AngleWithContactButton angle={AngleBottom} />
     </Section>
   )
 }

@@ -21,44 +21,36 @@ const Positioner = styled.div`
     transform-origin: right;
   }
 `
-const Container = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'inverted' && prop !== 'hovering',
-})<{ inverted?: boolean; hovering?: boolean }>(({ inverted, hovering }) => [
-  css`
-    display: flex;
-    padding: 0.5em 0.8em 1em;
-    background: var(--black);
-    color: var(--white);
-    --background-color: var(--black);
-    border-radius: 0.2em 0.2em 0 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1rem;
+const Container = styled.div`
+  display: flex;
+  padding: 0.5em 0.8em 1em;
+  background: var(--black);
+  color: var(--white);
+  --background-color: var(--black);
+  border-radius: 0.2em 0.2em 0 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
 
-    transition: transform 120ms ease-out;
-    transform: translateY(0.5em);
-    :hover {
-      transform: translateY(0em);
-    }
+  transition: transform 120ms ease-out;
+  transform: translateY(0.5em);
+  --hover-distance: 0em;
 
-    @media (min-width: ${breakpoints.DESKTOP}px) {
-      font-size: 1.125rem;
-    }
-    @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
-      font-size: 1.3rem;
-    }
-  `,
-  hovering &&
-    css`
-      transform: translateY(1px);
-    `,
-  inverted &&
-    css`
-      background: var(--yellow);
-      color: var(--black);
-      --background-color: var(--yellow);
-    `,
-])
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    font-size: 1.125rem;
+  }
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    font-size: 1.3rem;
+  }
+`
+const invertedCss = css`
+  background: var(--yellow);
+  color: var(--black);
+  --background-color: var(--yellow);
+`
+const hoveringCss = css`
+  transform: translateY(var(--hover-distance));
+`
 const ChatIconContainer = styled.div``
 const StyledChatIcon = styled(ChatIcon)`
   height: 1em;
@@ -78,7 +70,7 @@ interface Props
 const ContactButton = ({ inverted, hovering, ...others }: Props) => (
   <Positioner>
     <Link className="plain" href="#footer" {...others}>
-      <Container inverted={inverted} hovering={hovering}>
+      <Container css={[inverted && invertedCss, hovering && hoveringCss]}>
         <ChatIconContainer>
           <StyledChatIcon aria-hidden />
         </ChatIconContainer>
