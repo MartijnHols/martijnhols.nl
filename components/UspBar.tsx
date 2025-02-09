@@ -1,29 +1,28 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps } from 'react'
+import { breakpoints } from '../theme'
 import Annotation from './Annotation'
 import Link from './Link'
 import Panel from './Panel'
 
-const Container = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: var(--spacing4);
-    flex-flow: column;
+const Container = styled.div`
+  display: flex;
+  gap: var(--spacing4);
+  flex-flow: column;
 
-    > div {
-      flex: 1 1 33%;
-    }
+  > div {
+    flex: 1 1 33%;
+  }
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      gap: var(--spacing8);
-      flex-flow: row;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      gap: var(--spacing10);
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    gap: var(--spacing8);
+    flex-flow: row;
+  }
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    gap: var(--spacing10);
+  }
+`
 const UspLink = styled(Link)`
   color: inherit;
   text-decoration: none;
@@ -50,32 +49,28 @@ const UspPanel = styled(Panel)`
     }
   }
 `
-const UspPanelTitle = styled.div(
-  ({ theme }) => css`
-    font-size: 0.75em;
+const UspPanelTitle = styled.div`
+  font-size: 0.75em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 0.875em;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      font-size: 1em;
-    }
-  `,
-)
-const UspPanelText = styled.div(
-  ({ theme }) => css`
-    font-weight: 600;
+  @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 0.875em;
-    text-wrap: pretty;
+  }
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    font-size: 1em;
+  }
+`
+const UspPanelText = styled.div`
+  font-weight: 600;
+  font-size: 0.875em;
+  text-wrap: pretty;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 1em;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      font-size: 1.25em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 1em;
+  }
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    font-size: 1.25em;
+  }
+`
 
 const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>

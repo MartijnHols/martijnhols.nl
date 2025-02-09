@@ -1,7 +1,7 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ComponentProps } from 'react'
+import { breakpoints } from '../theme'
 import BlogArticleMeta from './BlogArticleMeta'
 import Container from './Container'
 import Link from './Link'
@@ -20,72 +20,66 @@ const StyledContainer = styled(Container)`
   }
 `
 const StyledTag = styled(Tag)``
-const Article = styled.article(
-  ({ theme }) => css`
-    border: 0.5em solid var(--black);
-    box-shadow: -0.5em 0.5em 0 0 var(--yellow);
-    padding: 0.5em;
-    color: var(--black);
-    width: 100%;
-    transform: rotate(-1deg);
+const Article = styled.article`
+  border: 0.5em solid var(--black);
+  box-shadow: -0.5em 0.5em 0 0 var(--yellow);
+  padding: 0.5em;
+  color: var(--black);
+  width: 100%;
+  transform: rotate(-1deg);
 
-    // It is not possible to animate a linear-gradient (yet), so we need to do
-    // some background-positioning trickery to get the effect we want.
-    background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
-    background-size: 100% 200.5%;
-    background-position-y: 0%;
+  // It is not possible to animate a linear-gradient (yet), so we need to do
+  // some background-positioning trickery to get the effect we want.
+  background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
+  background-size: 100% 200.5%;
+  background-position-y: 0%;
 
+  transition: all 200ms ease-out;
+  ${StyledTag} {
     transition: all 200ms ease-out;
+  }
+  display: flex;
+  flex-flow: column;
+  gap: 0.5em;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  :hover {
+    color: var(--white);
+    background-position-y: 100%;
+
     ${StyledTag} {
-      transition: all 200ms ease-out;
+      background: var(--yellow);
+      color: var(--black);
+      box-shadow: none;
     }
-    display: flex;
-    flex-flow: column;
-    gap: 0.5em;
+  }
+`
+const ArticleImage = styled(Image)`
+  margin: 0 auto;
+  height: 5em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-direction: row;
-      gap: 1em;
-    }
-
-    :hover {
-      color: var(--white);
-      background-position-y: 100%;
-
-      ${StyledTag} {
-        background: var(--yellow);
-        color: var(--black);
-        box-shadow: none;
-      }
-    }
-  `,
-)
-const ArticleImage = styled(Image)(
-  ({ theme }) => css`
-    margin: 0 auto;
-    height: 5em;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin: 0;
-      height: 6.5em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin: 0;
+    height: 6.5em;
+  }
+`
 const ArticleTextContainer = styled.div`
   flex: 1 1 auto;
 `
-const ArticleTitle = styled.h1(
-  ({ theme }) => css`
-    font-size: 1.3em;
-    text-shadow: none;
-    transform: none;
-    margin-bottom: 0.5em;
+const ArticleTitle = styled.h1`
+  font-size: 1.3em;
+  text-shadow: none;
+  transform: none;
+  margin-bottom: 0.5em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 1.8em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 1.8em;
+  }
+`
 const TextLine = styled.div`
   transform: rotate(-1deg);
   font-weight: 1000;

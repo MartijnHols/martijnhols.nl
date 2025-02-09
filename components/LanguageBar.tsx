@@ -1,6 +1,6 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import { breakpoints } from '../theme'
 import Container from './Container'
 
 const Bar = styled.div`
@@ -13,27 +13,23 @@ const Bar = styled.div`
     display: block;
   }
 `
-const MainText = styled.div(
-  ({ theme }) => css`
-    font-weight: 800;
-    margin-bottom: 0.75em;
+const MainText = styled.div`
+  font-weight: 800;
+  margin-bottom: 0.75em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 1em;
-    }
-  `,
-)
-const Actions = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: var(--spacing2);
-    flex-direction: column;
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 1em;
+  }
+`
+const Actions = styled.div`
+  display: flex;
+  gap: var(--spacing2);
+  flex-direction: column;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-direction: row;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-direction: row;
+  }
+`
 const Action = styled.div`
   padding: 0.6em 0.75em;
   flex: 1 1 50%;

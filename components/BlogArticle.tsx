@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ReactNode, useRef, useState } from 'react'
+import { breakpoints } from '../theme'
 import absoluteUrl from '../utils/absoluteUrl'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import Angle from './Angle'
@@ -20,32 +21,28 @@ import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
 
-const ArticleContent = styled(Container)(
-  ({ theme }) => css`
-    padding-top: var(--spacing10);
-    padding-bottom: var(--spacing10);
-    // This width makes code snippet width match the column width I use in my
-    // IDE perfectly
-    max-width: 57em;
-    text-wrap: pretty;
+const ArticleContent = styled(Container)`
+  padding-top: var(--spacing10);
+  padding-bottom: var(--spacing10);
+  // This width makes code snippet width match the column width I use in my
+  // IDE perfectly
+  max-width: 57em;
+  text-wrap: pretty;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 112.5%;
-    }
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 112.5%;
+  }
 
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  `,
-)
-const MainArticleContent = styled(ArticleContent)(
-  ({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      padding-top: calc(var(--spacing1) * 20);
-    }
-  `,
-)
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+`
+const MainArticleContent = styled(ArticleContent)`
+  @media (min-width: ${breakpoints.TABLET}px) {
+    padding-top: calc(var(--spacing1) * 20);
+  }
+`
 const Addendum = styled.div`
   background: var(--black);
   color: var(--white);
@@ -59,21 +56,19 @@ const Addendum = styled.div`
     }
   }
 `
-const Title = styled.h1(
-  ({ theme }) => css`
-    font-size: 2.9em;
-    margin-top: 0.05em;
-    margin-bottom: 0.5em;
-    text-wrap: balance;
+const Title = styled.h1`
+  font-size: 2.9em;
+  margin-top: 0.05em;
+  margin-bottom: 0.5em;
+  text-wrap: balance;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 3.5em;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      font-size: 4em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 3.5em;
+  }
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    font-size: 4em;
+  }
+`
 const ArticleHeader = styled.div`
   display: flex;
   gap: var(--spacing2);

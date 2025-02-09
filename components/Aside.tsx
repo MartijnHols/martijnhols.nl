@@ -1,34 +1,33 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import { breakpoints } from '../theme'
 import CopyPasteOnly from './CopyPasteOnly'
 
-const Container = styled.div(
-  ({ theme }) => css`
-    border: 7px solid var(--black);
-    background: var(--yellow50);
-    border-left: 0;
-    border-right: 0;
-    display: flex;
-    align-items: center;
-    transform: rotate(-0.35deg);
-    margin: 1em 0 2em;
-    box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
-      0 0 var(--yellow);
+const Container = styled.div`
+  border: 7px solid var(--black);
+  background: var(--yellow50);
+  border-left: 0;
+  border-right: 0;
+  display: flex;
+  align-items: center;
+  transform: rotate(-0.35deg);
+  margin: 1em 0 2em;
+  box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance) 0
+    0 var(--yellow);
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 94.5%; // 1px smaller to very slightly de-emphasize
-      // These values should be based on the font-size of the parent
-      margin: 1.06em 0 2.12em;
-      transform: rotate(-0.5deg);
-      margin-left: calc(var(--spacing6) * -1);
-      margin-right: calc(var(--spacing6) * -1);
-    }
-    @media print {
-      box-shadow: none;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 94.5%; // 1px smaller to very slightly de-emphasize
+    // These values should be based on the font-size of the parent
+    margin: 1.06em 0 2.12em;
+    transform: rotate(-0.5deg);
+    margin-left: calc(var(--spacing6) * -1);
+    margin-right: calc(var(--spacing6) * -1);
+  }
+  @media print {
+    box-shadow: none;
+  }
+`
 const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(({ variant }) => [
   css`
     background: var(--black);

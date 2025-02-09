@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
@@ -9,6 +8,7 @@ import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
 import Figure from '../../components/Figure'
 import Link from '../../components/Link'
+import { breakpoints } from '../../theme'
 import articleMeta, { ArticleStaticProps } from '../../utils/articleMeta'
 import BundledPackageCode from './assets/bundled-package-code.png'
 import CanIIgnore from './assets/can-i-ignore.png'
@@ -36,17 +36,15 @@ const { meta, getStaticProps } = articleMeta({
 })
 export { meta, getStaticProps }
 
-const ObfuscatedPackageFigure = styled(Figure)(
-  ({ theme }) => css`
-    text-align: center;
+const ObfuscatedPackageFigure = styled(Figure)`
+  text-align: center;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      float: right;
-      margin-left: 1.5em;
-      margin-bottom: 1em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    float: right;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+`
 
 const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
   props: ArticleStaticProps,

@@ -1,6 +1,6 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import { breakpoints } from '../theme'
 import Angle from './Angle'
 
 const Sticky = styled.div`
@@ -26,32 +26,30 @@ const Container = styled.div`
     --link-color: var(--white);
   }
 `
-const Content = styled.div(
-  ({ theme }) => css`
-    position: relative;
-    z-index: 1;
-    // Fallbacks
-    padding: 6px 7px 0 8px;
-    padding: 0 calc(7px + 100vw / 2000 * 7);
-    font-size: var(--font-size);
-    line-height: calc(var(--line-height));
-    font-weight: 500;
-    transform: rotate(-2deg);
-    transform-origin: left;
+const Content = styled.div`
+  position: relative;
+  z-index: 1;
+  // Fallbacks
+  padding: 6px 7px 0 8px;
+  padding: 0 calc(7px + 100vw / 2000 * 7);
+  font-size: var(--font-size);
+  line-height: calc(var(--line-height));
+  font-weight: 500;
+  transform: rotate(-2deg);
+  transform-origin: left;
 
-    a:not(.plain) {
-      // max-width! on mobile the font-size gets quite small, and so it needs
-      // an override
-      @media (max-width: ${theme.breakpoints.TABLET}px) {
-        border-bottom-width: 2px;
-      }
+  a:not(.plain) {
+    // max-width! on mobile the font-size gets quite small, and so it needs
+    // an override
+    @media (max-width: ${breakpoints.TABLET}px) {
+      border-bottom-width: 2px;
     }
+  }
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      transform: rotate(-1.15deg);
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    transform: rotate(-1.15deg);
+  }
+`
 
 interface Props {
   children?: ReactNode

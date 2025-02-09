@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
@@ -17,6 +16,7 @@ import PageWrapper from '../../components/PageWrapper'
 import Tag from '../../components/Tag'
 import Tooltip from '../../components/Tooltip'
 import TopBar from '../../components/TopBar'
+import { breakpoints } from '../../theme'
 import absoluteUrl from '../../utils/absoluteUrl'
 import generateRssFeed from '../../utils/generateRssFeed'
 import openGraphImage from './assets/ogimage-blog.png'
@@ -86,29 +86,25 @@ const ArticleList = styled.ul`
   list-style: none;
   padding: 0;
 `
-const ArticleListFooter = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    justify-content: space-between;
-    flex-flow: column;
-    gap: 1em;
+const ArticleListFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+  gap: 1em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-flow: row;
-    }
-  `,
-)
-const StyledAboutMeBriefPanel = styled(AboutMeBriefPanel)(
-  ({ theme }) => css`
-    flex: 1 1 auto;
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-flow: row;
+  }
+`
+const StyledAboutMeBriefPanel = styled(AboutMeBriefPanel)`
+  flex: 1 1 auto;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      max-width: 700px;
-      margin-right: 0;
-      margin-top: 0;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    max-width: 700px;
+    margin-right: 0;
+    margin-top: 0;
+  }
+`
 const StyledRssFeedLink = styled(Link)`
   display: inline-block;
 `

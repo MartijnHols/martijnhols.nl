@@ -1,33 +1,32 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import { breakpoints } from '../theme'
 import { BlogArticleTag, SerializableBlogArticleMeta } from './BlogArticleMeta'
 import Link from './Link'
 import Panel from './Panel'
 import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 
-const ArticleTitle = styled.h1(
-  ({ theme }) => css`
-    color: var(--black);
-    transition: all 120ms ease-out;
-    // It is not possible to animate a linear-gradient (yet), so we need to do
-    // some background-positioning trickery to get the effect we want.
-    background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
-    background-size: 100% 200%;
-    background-position-y: 0px;
-    // Add some extra space on top so the hover state background's top isn't too
-    // close to the text.
-    padding: 0.1em 0;
-    margin-top: -0.25em;
-    margin-bottom: 0.175em;
-    font-size: 2em;
+const ArticleTitle = styled.h1`
+  color: var(--black);
+  transition: all 120ms ease-out;
+  // It is not possible to animate a linear-gradient (yet), so we need to do
+  // some background-positioning trickery to get the effect we want.
+  background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
+  background-size: 100% 200%;
+  background-position-y: 0px;
+  // Add some extra space on top so the hover state background's top isn't too
+  // close to the text.
+  padding: 0.1em 0;
+  margin-top: -0.25em;
+  margin-bottom: 0.175em;
+  font-size: 2em;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      font-size: 2.75em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 2.75em;
+  }
+`
 const ArticleLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== 'howTo',
 })<{ howTo?: boolean }>(({ howTo }) => [
@@ -58,7 +57,7 @@ const Tags = styled.div`
 `
 const Article = styled(Panel, {
   shouldForwardProp: (prop) => prop !== 'howTo',
-})<{ howTo?: boolean }>(({ theme, howTo }) => [
+})<{ howTo?: boolean }>(({ howTo }) => [
   css`
     --background: var(--yellow50);
     color: var(--black);
@@ -75,7 +74,7 @@ const Article = styled(Panel, {
     gap: 1em;
     flex-flow: column;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
+    @media (min-width: ${breakpoints.TABLET}px) {
       flex-direction: row;
       gap: 2em;
     }
@@ -85,7 +84,7 @@ const Article = styled(Panel, {
       padding: var(--spacing2);
       font-size: 90%;
 
-      @media (min-width: ${theme.breakpoints.TABLET}px) {
+      @media (min-width: ${breakpoints.TABLET}px) {
         padding: var(--spacing2) var(--spacing3);
 
         ${ArticleTitle} {

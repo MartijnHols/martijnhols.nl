@@ -2,6 +2,7 @@ import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ReactNode } from 'react'
+import { breakpoints } from '../theme'
 import ImageInfo from '../utils/ImageInfo'
 import AngleWithContactButton from './AngleWithContactButton'
 import ContactButtonClipped from './ContactButtonClipped'
@@ -11,42 +12,38 @@ const Section = styled.section``
 const BackgroundWrapper = styled.div`
   position: relative;
 `
-const StyledContainer = styled(Container)(
-  ({ theme }) => css`
-    padding-top: 40px;
-    padding-bottom: 60px;
-    display: flex;
-    flex-flow: column;
-    gap: var(--spacing6);
+const StyledContainer = styled(Container)`
+  padding-top: 40px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing6);
 
-    @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      padding-top: 100px;
-      padding-bottom: 100px;
-      flex-flow: row;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      gap: var(--spacing10);
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.DESKTOP}px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    flex-flow: row;
+  }
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    gap: var(--spacing10);
+  }
+`
 const ImageContainer = styled.div`
   flex: 0 0 auto;
 `
-const SideImage = styled(Image)(
-  ({ theme }) => css`
-    clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
-    display: block;
-    width: 100%;
-    height: auto;
+const SideImage = styled(Image)`
+  clip-path: polygon(100% 0%, 100% calc(100% - 16px), 0% 100%, 0% 16px);
+  display: block;
+  width: 100%;
+  height: auto;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      width: 400px;
-    }
-    @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      width: 500px;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    width: 400px;
+  }
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    width: 500px;
+  }
+`
 const ContentContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'twoColumnsText',
 })<{ twoColumnsText?: boolean }>(({ twoColumnsText }) => [
@@ -105,7 +102,7 @@ const ContentSection = ({ variant = 'default', image, content }: Props) => {
               <SideImage
                 src={image}
                 alt={image.alt ?? ''}
-                sizes={`(min-width: ${theme.breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${theme.breakpoints.TABLET}px) 400px, 100vw`}
+                sizes={`(min-width: ${breakpoints.DESKTOP_LARGE}px) 500px, (min-width: ${breakpoints.TABLET}px) 400px, 100vw`}
               />
             </ImageContainer>
           )}

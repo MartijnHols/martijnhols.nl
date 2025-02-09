@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
+import { breakpoints } from '../theme'
 import ImageInfo from '../utils/ImageInfo'
 import CopyPasteOnly from './CopyPasteOnly'
 import Link from './Link'
@@ -14,7 +15,7 @@ const Container = styled(Panel, {
 })<{
   highlighted?: boolean
   isPlaceholder?: boolean
-}>(({ theme, highlighted, isPlaceholder }) => [
+}>(({ highlighted, isPlaceholder }) => [
   css`
     --background: var(--yellow50);
     color: var(--black);
@@ -28,14 +29,14 @@ const Container = styled(Panel, {
     margin-right: calc(var(--spacing4) * -1);
     padding: var(--spacing3) var(--spacing4) var(--spacing2);
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
+    @media (min-width: ${breakpoints.TABLET}px) {
       display: flex;
       gap: var(--spacing4);
     }
   `,
   highlighted &&
     css`
-      @media (min-width: ${theme.breakpoints.TABLET}px) {
+      @media (min-width: ${breakpoints.TABLET}px) {
         margin-top: calc(var(--spacing1) * 10);
         margin-bottom: calc(var(--spacing1) * 10);
         transform: scale(1.1);
@@ -60,51 +61,41 @@ const Title = styled.div`
   margin-top: 0;
   margin-bottom: 0.1em;
 `
-const Period = styled.div(
-  ({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: 0.3em;
-      margin-bottom: 1em;
-    }
-  `,
-)
-const Main = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    flex-flow: column;
-    gap: var(--spacing2);
+const Period = styled.div`
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+  }
+`
+const Main = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing2);
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-flow: row;
-      gap: var(--spacing4);
-    }
-  `,
-)
-const Thumbnail = styled.div(
-  ({ theme }) => css`
-    flex: 0 0 auto;
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-flow: row;
+    gap: var(--spacing4);
+  }
+`
+const Thumbnail = styled.div`
+  flex: 0 0 auto;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      max-width: 200px;
-    }
-  `,
-)
-const ThumbnailDesktop = styled(Thumbnail)(
-  ({ theme }) => css`
+  @media (min-width: ${breakpoints.TABLET}px) {
+    max-width: 200px;
+  }
+`
+const ThumbnailDesktop = styled(Thumbnail)`
+  display: none;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    display: block;
+  }
+`
+const ThumbnailMobile = styled(Thumbnail)`
+  @media (min-width: ${breakpoints.TABLET}px) {
     display: none;
-
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      display: block;
-    }
-  `,
-)
-const ThumbnailMobile = styled(Thumbnail)(
-  ({ theme }) => css`
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      display: none;
-    }
-  `,
-)
+  }
+`
 const ThumbnailImage = styled(Image)`
   object-fit: contain;
 `

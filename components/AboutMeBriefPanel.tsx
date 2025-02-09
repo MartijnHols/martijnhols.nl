@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ComponentProps } from 'react'
+import { breakpoints } from '../theme'
 import Annotation from './Annotation'
 import GithubLogoImage from './assets/github-mark-white.svg'
 import meSquaredImage from './assets/martijn-hols-sq.png'
@@ -9,18 +10,16 @@ import TwitterLogoImage from './assets/twitter.svg'
 import Link from './Link'
 import Panel from './Panel'
 
-const ImageTextContainer = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: 1em;
-    flex-flow: column;
-    padding: 0.25em 0;
+const ImageTextContainer = styled.div`
+  display: flex;
+  gap: 1em;
+  flex-flow: column;
+  padding: 0.25em 0;
 
-    @media (min-width: ${theme.breakpoints.TABLET}px) {
-      flex-flow: row;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    flex-flow: row;
+  }
+`
 const PhotoImage = styled(Image)`
   border-radius: 50%;
 `
