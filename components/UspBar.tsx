@@ -82,7 +82,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
   <Container {...others}>
     <div>
       <UspPanel variant="sm">
-        <UspPanelTitle>🧑‍💻 Senior expertise</UspPanelTitle>
+        <UspPanelTitle>🧑‍💻 Architect-level ervaring</UspPanelTitle>
         <UspPanelText className="inverted">
           8+ jaar React-specialist &amp;{' '}
           <span
