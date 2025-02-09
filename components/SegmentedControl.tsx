@@ -12,31 +12,27 @@ const visuallyHidden = css`
   width: 1px;
 `
 
-const Container = styled.div(
-  ({ theme }) => css`
-    display: inline-flex;
-    gap: 0.3em;
-    background: ${theme.colors.yellow50};
-    padding: 0.3em 0.25em;
-  `,
-)
+const Container = styled.div`
+  display: inline-flex;
+  gap: 0.3em;
+  background: var(--yellow50);
+  padding: 0.3em 0.25em;
+`
 const Option = styled.div``
-const Label = styled.label(
-  ({ theme }) => css`
-    padding: 0.25em 0.5em;
+const Label = styled.label`
+  padding: 0.25em 0.5em;
 
-    input[type='radio']:checked + & {
-      font-weight: bold;
-      background: ${theme.colors.yellow};
-    }
-    :hover {
-      background: ${theme.colors.yellow};
-    }
-    input[type='radio']:focus-visible + & {
-      outline: ${theme.colors.black} auto 1px;
-    }
-  `,
-)
+  input[type='radio']:checked + & {
+    font-weight: bold;
+    background: var(--yellow);
+  }
+  :hover {
+    background: var(--yellow);
+  }
+  input[type='radio']:focus-visible + & {
+    outline: var(--black) auto 1px;
+  }
+`
 
 interface Props<TValue extends string | number | boolean = string> {
   name: string

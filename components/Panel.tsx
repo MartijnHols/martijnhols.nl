@@ -22,8 +22,8 @@ const Container = styled('div', {
     margin-left: -1em;
     margin-right: -1em;
     padding: 0.8em 1em;
-    color: ${theme.colors.white};
-    --background: ${theme.colors.black};
+    color: var(--white);
+    --background: var(--black);
     background: var(--background);
     position: relative;
     --angle-size: 0.8em;
@@ -51,7 +51,7 @@ const Container = styled('div', {
   boxShadow &&
     css`
       box-shadow: calc(var(--box-shadow-distance) * -1)
-        var(--box-shadow-distance) 0 0 ${theme.colors.yellow};
+        var(--box-shadow-distance) 0 0 var(--yellow);
     `,
 ])
 const BottomAngle = styled('div', {
@@ -59,7 +59,7 @@ const BottomAngle = styled('div', {
 })<{
   variant: 'sm' | 'md'
   boxShadow: boolean
-}>(({ theme, variant, boxShadow }) => [
+}>(({ variant, boxShadow }) => [
   css`
     position: absolute;
     display: block;
@@ -94,7 +94,7 @@ const BottomAngle = styled('div', {
     `,
   boxShadow &&
     css`
-      background: ${theme.colors.yellow};
+      background: var(--yellow);
 
       ::after {
         content: '';
@@ -106,8 +106,7 @@ const BottomAngle = styled('div', {
         bottom: calc(var(--angle-size) * -1);
         background: linear-gradient(
           to bottom right,
-          /* We need some margin to prevent a jagged edge */
-            ${theme.colors.yellow} 49.5%,
+          /* We need some margin to prevent a jagged edge */ var(--yellow) 49.5%,
           transparent 50.5%
         );
       }

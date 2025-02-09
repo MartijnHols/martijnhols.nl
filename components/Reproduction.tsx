@@ -9,14 +9,14 @@ const Container = styled('div', {
 })<{
   label: string
 }>(
-  ({ theme, label }) => css`
-    border: 4px solid ${theme.colors.black};
-    background: ${theme.colors.yellow50};
+  ({ label }) => css`
+    border: 4px solid var(--black);
+    background: var(--yellow50);
     padding: 1em;
     position: relative;
     margin: 1em 0;
     box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
-      0 0 ${theme.colors.yellow};
+      0 0 var(--yellow);
 
     ::before {
       content: '${label}';

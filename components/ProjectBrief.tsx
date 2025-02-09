@@ -16,8 +16,8 @@ const Container = styled(Panel, {
   isPlaceholder?: boolean
 }>(({ theme, highlighted, isPlaceholder }) => [
   css`
-    --background: ${theme.colors.yellow50};
-    color: ${theme.colors.black};
+    --background: var(--yellow50);
+    color: var(--black);
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.

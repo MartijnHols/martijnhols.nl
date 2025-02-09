@@ -9,15 +9,11 @@ import Tag from './Tag'
 
 const ArticleTitle = styled.h1(
   ({ theme }) => css`
-    color: ${theme.colors.black};
+    color: var(--black);
     transition: all 120ms ease-out;
     // It is not possible to animate a linear-gradient (yet), so we need to do
     // some background-positioning trickery to get the effect we want.
-    background-image: linear-gradient(
-      0deg,
-      ${theme.colors.black} 50%,
-      transparent 50%
-    );
+    background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
     background-size: 100% 200%;
     background-position-y: 0px;
     // Add some extra space on top so the hover state background's top isn't too
@@ -41,11 +37,11 @@ const ArticleLink = styled(Link, {
     margin-bottom: ${theme.spacing.x6}px;
     margin-left: auto;
     margin-right: auto;
-    color: ${theme.colors.black};
+    color: var(--black);
 
     :hover {
       ${ArticleTitle} {
-        color: ${theme.colors.white};
+        color: var(--white);
         background-position-y: 100%;
       }
     }
@@ -66,8 +62,8 @@ const Article = styled(Panel, {
   shouldForwardProp: (prop) => prop !== 'howTo',
 })<{ howTo?: boolean }>(({ theme, howTo }) => [
   css`
-    --background: ${theme.colors.yellow50};
-    color: ${theme.colors.black};
+    --background: var(--yellow50);
+    color: var(--black);
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.

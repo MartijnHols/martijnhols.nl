@@ -5,14 +5,12 @@ import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
 import ProjectBrief from './ProjectBrief'
 
-const Section = styled.section(
-  ({ theme }) => css`
-    position: relative;
-    color: ${theme.colors.black};
-    padding: 150px 0;
-    overflow: hidden;
-  `,
-)
+const Section = styled.section`
+  position: relative;
+  color: var(--black);
+  padding: 150px 0;
+  overflow: hidden;
+`
 const Title = styled.h2`
   margin-bottom: 0;
   margin-top: 0;

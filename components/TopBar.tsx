@@ -12,22 +12,20 @@ const Sticky = styled.div`
 const StyledAngle = styled(Angle)`
   pointer-events: none;
 `
-const Container = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
+const Container = styled.div`
+  background: var(--black);
+  color: var(--white);
 
-    --font-size: 1rem;
-    // Resize everything at the same rate as Angle so it fits perfectly
-    --font-size: calc(12px + 100vw / 2000 * 11);
-    --line-height: calc(var(--font-size) + 14px + 100vw / 2000 * 20);
-    height: calc(var(--line-height) - var(--angle-height));
+  --font-size: 1rem;
+  // Resize everything at the same rate as Angle so it fits perfectly
+  --font-size: calc(12px + 100vw / 2000 * 11);
+  --line-height: calc(var(--font-size) + 14px + 100vw / 2000 * 20);
+  height: calc(var(--line-height) - var(--angle-height));
 
-    a {
-      --link-color: ${theme.colors.white};
-    }
-  `,
-)
+  a {
+    --link-color: var(--white);
+  }
+`
 const Content = styled.div(
   ({ theme }) => css`
     position: relative;

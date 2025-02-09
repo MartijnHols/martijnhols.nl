@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import moneyMonkImage from '../data/assets/moneymonk.png'
@@ -8,21 +7,19 @@ import pmeLegendImage from './assets/pme-legend-logo-bg.png'
 import wowAnalyzerImage from './assets/wowanalyzer-with-bg.png'
 import Tooltip from './Tooltip'
 
-const ImageContainer = styled.div(
-  ({ theme }) => css`
-    display: inline-block;
+const ImageContainer = styled.div`
+  display: inline-block;
 
-    > * > img {
-      border-radius: 50%;
-      width: 1.2em;
-      height: 1.2em;
-      border: 1px solid ${theme.colors.black};
-    }
-    > *:not(:first-of-type) > img {
-      margin-left: -0.5em;
-    }
-  `,
-)
+  > * > img {
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid var(--black);
+  }
+  > *:not(:first-of-type) > img {
+    margin-left: -0.5em;
+  }
+`
 
 const HeroKicker = () => (
   <>

@@ -6,7 +6,7 @@ type Variant = 'root' | 'new' | 'highlight'
 
 const Container = styled('button', {
   shouldForwardProp: (prop) => prop !== 'variant',
-})<{ variant?: Variant }>(({ theme, variant }) => [
+})<{ variant?: Variant }>(({ variant }) => [
   css`
     display: inline-block;
     padding: 0.25em 0.5em;
@@ -23,7 +23,7 @@ const Container = styled('button', {
     `,
   variant === 'highlight' &&
     css`
-      background: ${theme.colors.yellow};
+      background: var(--yellow);
     `,
 ])
 

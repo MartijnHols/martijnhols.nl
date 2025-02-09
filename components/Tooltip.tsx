@@ -1,4 +1,3 @@
-import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
   arrow,
@@ -28,35 +27,31 @@ import {
 } from 'react'
 import { usePortalTarget } from './PortalTarget'
 
-const FloatingTooltip = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
-    // A tooltip should not be main content, in other words it should be less
-    // important. Make the font size smaller to further de-emphasize it and
-    // create a hierarchy.
-    font-size: 90%;
-    padding: 5px 10px;
-    filter: drop-shadow(-4px 4px 0 ${theme.colors.yellow})
-      // If the tooltip is over a codeblock, these borders give the tooltip a
-      // small outline. They're meant to appear invisible.
-      drop-shadow(0 0.5px 0 ${theme.colors.white})
-      drop-shadow(0 -0.5px 0 ${theme.colors.white})
-      drop-shadow(0.5px 0 0 ${theme.colors.white})
-      drop-shadow(-0.5px 0 0 ${theme.colors.white});
-    // Make it a similar width as the VSCode tooltip
-    max-width: 450px;
-    z-index: 10;
-    text-wrap: pretty;
+const FloatingTooltip = styled.div`
+  background: var(--black);
+  color: var(--white);
+  // A tooltip should not be main content, in other words it should be less
+  // important. Make the font size smaller to further de-emphasize it and
+  // create a hierarchy.
+  font-size: 90%;
+  padding: 5px 10px;
+  filter: drop-shadow(-4px 4px 0 var(--yellow))
+    // If the tooltip is over a codeblock, these borders give the tooltip a
+    // small outline. They're meant to appear invisible.
+    drop-shadow(0 0.5px 0 var(--white)) drop-shadow(0 -0.5px 0 var(--white))
+    drop-shadow(0.5px 0 0 var(--white)) drop-shadow(-0.5px 0 0 var(--white));
+  // Make it a similar width as the VSCode tooltip
+  max-width: 450px;
+  z-index: 10;
+  text-wrap: pretty;
 
-    p:first-of-type {
-      margin-top: 0;
-    }
-    p:last-of-type {
-      margin-bottom: 0;
-    }
-  `,
-)
+  p:first-of-type {
+    margin-top: 0;
+  }
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+`
 
 type TriggerRenderer = (params: {
   state: { isOpen: boolean }
@@ -125,8 +120,6 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
     ...others,
   }
 
-  const theme = useTheme()
-
   return (
     <>
       {typeof children === 'function' ? (
@@ -156,7 +149,7 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
             <FloatingArrow
               ref={arrowRef}
               context={context}
-              fill={theme.colors.black}
+              fill="var(--black)"
             />
           </FloatingTooltip>
         </FloatingPortal>

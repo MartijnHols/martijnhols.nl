@@ -29,9 +29,9 @@ const Container = styled('div', {
     css`
       display: flex;
       padding: 0.5em 0.8em 1em;
-      background: ${theme.colors.black};
-      color: ${theme.colors.white};
-      --background-color: ${theme.colors.black};
+      background: var(--black);
+      color: var(--white);
+      --background-color: var(--black);
       border-radius: 0.2em 0.2em 0 0;
       text-transform: uppercase;
       font-weight: 600;
@@ -56,9 +56,9 @@ const Container = styled('div', {
       `,
     inverted &&
       css`
-        background: ${theme.colors.yellow};
-        color: ${theme.colors.black};
-        --background-color: ${theme.colors.yellow};
+        background: var(--yellow);
+        color: var(--black);
+        --background-color: var(--yellow);
       `,
   ],
 )

@@ -1,19 +1,16 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ComponentProps, ReactNode } from 'react'
 import iPhone15OverlayImage from './assets/iphone-15-overlay.png'
 
-const Container = styled.div(
-  ({ theme }) => css`
-    position: relative;
-    display: inline-block;
-    filter: drop-shadow(
-      calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance) 0
-        ${theme.colors.yellow}
-    );
-  `,
-)
+const Container = styled.div`
+  position: relative;
+  display: inline-block;
+  filter: drop-shadow(
+    calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance) 0
+      var(--yellow)
+  );
+`
 const OverlayImage = styled(Image)`
   position: relative;
   z-index: 1;

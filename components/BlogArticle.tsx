@@ -46,21 +46,19 @@ const MainArticleContent = styled(ArticleContent)(
     }
   `,
 )
-const Addendum = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
+const Addendum = styled.div`
+  background: var(--black);
+  color: var(--white);
 
-    ${ArticleContent} {
-      > h2:first-of-type {
-        margin-top: 0;
-      }
-      > p:last-of-type {
-        margin-bottom: 0;
-      }
+  ${ArticleContent} {
+    > h2:first-of-type {
+      margin-top: 0;
     }
-  `,
-)
+    > p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+`
 const Title = styled.h1(
   ({ theme }) => css`
     font-size: 2.9em;
@@ -100,8 +98,8 @@ const StyledBlogMoreLikeThis = styled(BlogRelatedArticles)`
 `
 const Footer = styled.footer(
   ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
+    background: var(--black);
+    color: var(--white);
     text-align: right;
     padding-bottom: ${theme.spacing.x4}px;
   `,

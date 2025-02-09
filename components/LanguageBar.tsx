@@ -3,18 +3,16 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 import Container from './Container'
 
-const Bar = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
-    padding: 1em 0 0;
-    display: none;
+const Bar = styled.div`
+  background: var(--black);
+  color: var(--white);
+  padding: 1em 0 0;
+  display: none;
 
-    :not(.dutch &) {
-      display: block;
-    }
-  `,
-)
+  :not(.dutch &) {
+    display: block;
+  }
+`
 const MainText = styled.div(
   ({ theme }) => css`
     font-weight: 800;

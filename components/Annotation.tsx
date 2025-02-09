@@ -1,20 +1,17 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { HTMLAttributes, ReactNode } from 'react'
 import Tooltip from './Tooltip'
 
-const StyledTooltip = styled(Tooltip)(
-  ({ theme }) => css`
-    font-style: italic;
-    text-decoration: underline wavy ${theme.colors.black};
-    text-decoration-skip-ink: none;
-    cursor: help;
+const StyledTooltip = styled(Tooltip)`
+  font-style: italic;
+  text-decoration: underline wavy var(--black);
+  text-decoration-skip-ink: none;
+  cursor: help;
 
-    .inverted & {
-      text-decoration-color: ${theme.colors.white};
-    }
-  `,
-)
+  .inverted & {
+    text-decoration-color: var(--white);
+  }
+`
 
 interface Props
   extends Omit<

@@ -1,20 +1,18 @@
-import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Highlight, themes } from 'prism-react-renderer'
 import CopyPasteOnly from './CopyPasteOnly'
 import Panel from './Panel'
 // Alternative: https://github.com/react-simple-code-editor/react-simple-code-editor
+// Alternative2: https://github.com/code-hike/bright
 
 const Code = styled.code`
   display: block;
 `
-const PreformattedContainer = styled.pre(
-  ({ theme }) => css`
-    margin: 0;
-    scrollbar-color: ${theme.colors.white} ${theme.colors.black};
-    font-size: 1em;
-  `,
-)
+const PreformattedContainer = styled.pre`
+  margin: 0;
+  scrollbar-color: var(--white) var(--black);
+  font-size: 1em;
+`
 
 export type PrismLanguages =
   | 'tsx'
@@ -26,18 +24,14 @@ export type PrismLanguages =
   | 'markdown'
   | ''
 
-export const useHighlightTheme = () => {
-  const theme = useTheme()
-
-  return {
-    ...themes.oneDark,
-    plain: {
-      ...themes.oneDark.plain,
-      backgroundColor: theme.colors.black,
-      color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
-    },
-  }
-}
+export const useHighlightTheme = () => ({
+  ...themes.oneDark,
+  plain: {
+    ...themes.oneDark.plain,
+    backgroundColor: 'var(--black)',
+    color: '#dfe1e7', // a lighter variant of the default, since the grey didn't look as good on the darker background color
+  },
+})
 
 interface Props {
   children: string

@@ -22,20 +22,16 @@ const StyledContainer = styled(Container)`
 const StyledTag = styled(Tag)``
 const Article = styled.article(
   ({ theme }) => css`
-    border: 0.5em solid ${theme.colors.black};
-    box-shadow: -0.5em 0.5em 0 0 ${theme.colors.yellow};
+    border: 0.5em solid var(--black);
+    box-shadow: -0.5em 0.5em 0 0 var(--yellow);
     padding: 0.5em;
-    color: ${theme.colors.black};
+    color: var(--black);
     width: 100%;
     transform: rotate(-1deg);
 
     // It is not possible to animate a linear-gradient (yet), so we need to do
     // some background-positioning trickery to get the effect we want.
-    background-image: linear-gradient(
-      0deg,
-      ${theme.colors.black} 50%,
-      transparent 50%
-    );
+    background-image: linear-gradient(0deg, var(--black) 50%, transparent 50%);
     background-size: 100% 200.5%;
     background-position-y: 0%;
 
@@ -53,12 +49,12 @@ const Article = styled.article(
     }
 
     :hover {
-      color: ${theme.colors.white};
+      color: var(--white);
       background-position-y: 100%;
 
       ${StyledTag} {
-        background: ${theme.colors.yellow};
-        color: ${theme.colors.black};
+        background: var(--yellow);
+        color: var(--black);
         box-shadow: none;
       }
     }
@@ -90,36 +86,34 @@ const ArticleTitle = styled.h1(
     }
   `,
 )
-const TextLine = styled.div(
-  ({ theme }) => css`
-    transform: rotate(-1deg);
-    font-weight: 1000;
-    position: relative;
-    display: inline-block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    line-height: 1;
+const TextLine = styled.div`
+  transform: rotate(-1deg);
+  font-weight: 1000;
+  position: relative;
+  display: inline-block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1;
 
-    ::before {
-      content: '';
-      position: absolute;
-      top: calc(50% - 0.1em);
-      left: calc(-100vw - 0.25em);
-      width: 100vw;
-      height: 0.25em;
-      background: ${theme.colors.black};
-    }
-    ::after {
-      content: '';
-      position: absolute;
-      top: calc(50% - 0.1em);
-      right: calc(-100vw - 0.25em);
-      width: 100vw;
-      height: 0.25em;
-      background: ${theme.colors.black};
-    }
-  `,
-)
+  ::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 0.1em);
+    left: calc(-100vw - 0.25em);
+    width: 100vw;
+    height: 0.25em;
+    background: var(--black);
+  }
+  ::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 0.1em);
+    right: calc(-100vw - 0.25em);
+    width: 100vw;
+    height: 0.25em;
+    background: var(--black);
+  }
+`
 const MoreLikeThisLink = styled(Link)`
   border-bottom: 0;
 `

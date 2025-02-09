@@ -7,13 +7,11 @@ import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
 import UspBar from './UspBar'
 
-const Section = styled.header(
-  ({ theme }) => css`
-    position: relative;
-    color: ${theme.colors.black};
-    overflow: hidden;
-  `,
-)
+const Section = styled.header`
+  position: relative;
+  color: var(--black);
+  overflow: hidden;
+`
 const StyledContainer = styled(Container)(
   ({ theme }) => css`
     padding-top: 100px;

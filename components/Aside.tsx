@@ -5,8 +5,8 @@ import CopyPasteOnly from './CopyPasteOnly'
 
 const Container = styled.div(
   ({ theme }) => css`
-    border: 7px solid ${theme.colors.black};
-    background: ${theme.colors.yellow50};
+    border: 7px solid var(--black);
+    background: var(--yellow50);
     border-left: 0;
     border-right: 0;
     display: flex;
@@ -14,7 +14,7 @@ const Container = styled.div(
     transform: rotate(-0.35deg);
     margin: 1em 0 2em;
     box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
-      0 0 ${theme.colors.yellow};
+      0 0 var(--yellow);
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 94.5%; // 1px smaller to very slightly de-emphasize
@@ -32,8 +32,8 @@ const Container = styled.div(
 const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
   ({ theme, variant }) => [
     css`
-      background: ${theme.colors.black};
-      color: ${theme.colors.yellow50};
+      background: var(--black);
+      color: var(--yellow50);
       display: flex;
       align-items: center;
       justify-content: center;

@@ -7,8 +7,8 @@ import Link from './Link'
 const Section = styled.footer(
   ({ theme }) => css`
     position: relative;
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
+    background: var(--black);
+    color: var(--white);
     padding: ${theme.spacing.x5}px 0;
   `,
 )

@@ -28,30 +28,28 @@ const UspLink = styled(Link)`
   color: inherit;
   text-decoration: none;
 `
-const UspPanel = styled(Panel)(
-  ({ theme }) => css`
-    @property --box-shadow-distance {
-      syntax: '<length>';
-      initial-value: 0;
-      inherits: true;
+const UspPanel = styled(Panel)`
+  @property --box-shadow-distance {
+    syntax: '<length>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+  ${UspLink} & {
+    transition:
+      --box-shadow-distance 0.2s ease-in-out,
+      all 0.2s ease-in-out;
+
+    :hover {
+      --box-shadow-distance: 12px;
+      transform: translate(4px, -4px);
+      color: var(--yellow50);
     }
-
-    margin-top: 0;
-    margin-bottom: 0;
-
-    ${UspLink} & {
-      transition:
-        --box-shadow-distance 0.2s ease-in-out,
-        all 0.2s ease-in-out;
-
-      :hover {
-        --box-shadow-distance: 12px;
-        transform: translate(4px, -4px);
-        color: ${theme.colors.yellow50};
-      }
-    }
-  `,
-)
+  }
+`
 const UspPanelTitle = styled.div(
   ({ theme }) => css`
     font-size: 0.75em;

@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import Annotation from '../../../components/Annotation'
@@ -10,15 +9,13 @@ import Link from '../../../components/Link'
 import PageWrapper from '../../../components/PageWrapper'
 import TopBar from '../../../components/TopBar'
 
-const Alert = styled.div(
-  ({ theme }) => css`
-    background: ${theme.colors.yellow};
-    color: ${theme.colors.black};
-    border: 4px solid ${theme.colors.black};
-    padding: 1rem;
-    font-weight: 500;
-  `,
-)
+const Alert = styled.div`
+  background: var(--yellow);
+  color: var(--black);
+  border: 4px solid var(--black);
+  padding: 1rem;
+  font-weight: 500;
+`
 
 const applyRemoveChildMonkeyPatch = () => {
   // Source: https://github.com/facebook/react/issues/11538#issuecomment-417504600

@@ -7,6 +7,14 @@ const GlobalStyles = () => (
   <Global
     styles={(theme) => [
       css`
+        :root {
+          --yellow: ${theme.colors.yellow};
+          --yellow50: ${theme.colors.yellow50};
+          --black: ${theme.colors.black};
+          --black400: ${theme.colors.black400};
+          --black300: ${theme.colors.black300};
+          --white: ${theme.colors.white};
+        }
         html {
           scroll-padding-top: 2rem;
           --box-shadow-distance: 8px;
@@ -17,7 +25,7 @@ const GlobalStyles = () => (
             'Helvetica Neue', sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          color: ${theme.colors.black};
+          color: var(--black);
           line-height: 1.6;
 
           --angle-height: calc(10px + 100vw / 2000 * 30);
@@ -28,7 +36,7 @@ const GlobalStyles = () => (
         }
 
         ::selection {
-          background: ${theme.colors.yellow};
+          background: var(--yellow);
         }
 
         p,
@@ -50,8 +58,8 @@ const GlobalStyles = () => (
 
         strong,
         mark {
-          background: ${theme.colors.yellow};
-          color: ${theme.colors.black};
+          background: var(--yellow);
+          color: var(--black);
           padding: 0.167em 0.111em;
 
           &::selection,
@@ -80,7 +88,7 @@ const GlobalStyles = () => (
           font-style: italic;
 
           .inverted & {
-            border-left-color: ${theme.colors.white};
+            border-left-color: var(--white);
           }
         }
 
@@ -110,7 +118,7 @@ const GlobalStyles = () => (
               top: 0.7em;
               height: 4px;
               width: 20px;
-              background: ${theme.colors.black};
+              background: var(--black);
               transform: skew(-15deg);
               margin-left: -38px;
             }
@@ -118,7 +126,7 @@ const GlobalStyles = () => (
 
           .inverted & {
             > li::before {
-              background: ${theme.colors.white};
+              background: var(--white);
             }
           }
         }
