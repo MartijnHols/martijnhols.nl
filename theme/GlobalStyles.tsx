@@ -43,7 +43,11 @@ const GlobalStyles = () => (
         }
 
         * {
-          outline-color: ${theme.colors.black};
+          outline-color: var(--black);
+        }
+        .inverted,
+        .inverted * {
+          outline-color: var(--white);
         }
 
         ::selection {
@@ -93,7 +97,7 @@ const GlobalStyles = () => (
         }
 
         blockquote {
-          border-left: 0.25em solid ${theme.colors.black};
+          border-left: 0.25em solid var(--black);
           margin-left: 0;
           padding: 0.25em 0 0.25em 2em;
           font-style: italic;

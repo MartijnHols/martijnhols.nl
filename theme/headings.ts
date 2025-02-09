@@ -1,12 +1,12 @@
 import { css } from '@emotion/react'
-import { breakpoints, colors, spacing } from '.'
+import { breakpoints } from '.'
 
 export const h1 = css`
   font-size: 3.5em;
   font-weight: 1000;
-  margin-bottom: ${spacing.x6}px;
+  margin-bottom: var(--spacing6);
   line-height: 1.1;
-  text-decoration: underline ${colors.yellow};
+  text-decoration: underline var(--yellow);
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 5em;
@@ -26,7 +26,7 @@ export const h2 = css`
   ::before {
     content: '';
     width: 120px;
-    background: ${colors.yellow};
+    background: var(--yellow);
     height: 9px;
     transform: skew(-45deg);
     margin-left: 5px;

@@ -1,9 +1,8 @@
 import { css } from '@emotion/react'
-import { colors } from '.'
 
 export const globalStyles = css`
   a:not(.plain) {
-    --link-color: ${colors.black};
+    --link-color: var(--black);
     color: var(--link-color);
     text-decoration: none;
     border-bottom: 3px solid var(--link-color);
@@ -19,7 +18,7 @@ export const globalStyles = css`
     background-position-y: 0px;
 
     :hover {
-      color: ${colors.white};
+      color: var(--white);
       background-position-y: 100%;
     }
   }
@@ -29,10 +28,10 @@ export const globalStyles = css`
 
   .inverted {
     a {
-      --link-color: ${colors.white};
+      --link-color: var(--white);
 
       :hover {
-        color: ${colors.black};
+        color: var(--black);
       }
     }
   }

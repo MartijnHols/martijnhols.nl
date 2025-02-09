@@ -1,17 +1,13 @@
 import { css } from '@emotion/react'
-import { colors } from '.'
-
-const background = colors.black
-const text = colors.white
 
 export const buttonCss = css`
   display: inline-block;
   background: transparent;
   padding: 10px 28px; // height margin is more in practice due to line-height
   border-radius: 5px;
-  color: ${text};
+  color: var(--white);
   font-weight: 500;
-  border: 2px solid ${background};
+  border: 2px solid var(--black);
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -27,13 +23,13 @@ export const buttonCss = css`
     z-index: -1;
     height: 300%;
     border-radius: 50% 50% 0 0;
-    background: ${background};
+    background: var(--black);
     transition: height 400ms ease-out;
   }
 
   :hover {
-    background: ${background};
-    color: ${text};
+    background: var(--black);
+    color: var(--white);
     text-decoration: none; // in case of putting this on a link
 
     ::before {
@@ -43,11 +39,11 @@ export const buttonCss = css`
 `
 export const buttonInvertedCss = css`
   background: transparent;
-  border: 2px solid ${background};
+  border: 2px solid var(--black);
 
   ::before {
     height: 0;
-    background: ${background};
+    background: var(--black);
   }
 
   :hover {
@@ -58,22 +54,3 @@ export const buttonInvertedCss = css`
     }
   }
 `
-// TODO export const buttonOutlineGrayCss = css`
-//   background: transparent;
-//   color: ${colors.neutral800};
-//   border-color: ${colors.neutral600};
-
-//   ::before {
-//     height: 0;
-//     background: ${background};
-//   }
-
-//   :hover {
-//     background: transparent;
-//     color: ${colors.neutral800};
-
-//     ::before {
-//       height: 300%;
-//     }
-//   }
-// `
