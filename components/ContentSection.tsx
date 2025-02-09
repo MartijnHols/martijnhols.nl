@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { ReactNode } from 'react'
@@ -13,6 +13,13 @@ import Container from './Container'
 const Section = styled.section``
 const BackgroundWrapper = styled.div`
   position: relative;
+  background: var(--white);
+  color: var(--black);
+
+  &.inverted {
+    background: var(--black);
+    color: var(--white);
+  }
 `
 const StyledContainer = styled(Container)`
   padding-top: 40px;
@@ -84,20 +91,11 @@ const ContentSection = ({ variant = 'default', image, content }: Props) => {
     variant === 'imageLeftInverted' ||
     variant === 'twoColumnsTextInverted'
 
-  const theme = useTheme()
-
   return (
     <Section>
       <AngleWithContactButton angle={AngleTop} />
 
-      <BackgroundWrapper
-        style={{
-          // TODO: Move this to the styled component
-          background: inverted ? theme.colors.black : theme.colors.white,
-          color: inverted ? theme.colors.white : theme.colors.black,
-        }}
-        className={inverted ? 'inverted' : undefined}
-      >
+      <BackgroundWrapper className={inverted ? 'inverted' : undefined}>
         <StyledContainer>
           {image && (
             <ImageContainer>
