@@ -22,8 +22,8 @@ import TopBar from './TopBar'
 
 const ArticleContent = styled(Container)(
   ({ theme }) => css`
-    padding-top: ${theme.spacing.x10}px;
-    padding-bottom: ${theme.spacing.x10}px;
+    padding-top: var(--spacing10);
+    padding-bottom: var(--spacing10);
     // This width makes code snippet width match the column width I use in my
     // IDE perfectly
     max-width: 57em;
@@ -42,7 +42,7 @@ const ArticleContent = styled(Container)(
 const MainArticleContent = styled(ArticleContent)(
   ({ theme }) => css`
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      padding-top: ${theme.spacing.x1 * 20}px;
+      padding-top: calc(var(--spacing1) * 20);
     }
   `,
 )
@@ -74,36 +74,30 @@ const Title = styled.h1(
     }
   `,
 )
-const ArticleHeader = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: ${theme.spacing.x2}px;
-    align-items: flex-end;
-  `,
-)
+const ArticleHeader = styled.div`
+  display: flex;
+  gap: var(--spacing2);
+  align-items: flex-end;
+`
 const ArticleMetadata = styled.div`
   flex-grow: 1;
   text-align: right;
 `
-const Tags = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: ${theme.spacing.x1}px;
-    flex-wrap: wrap;
-    margin-top: ${theme.spacing.x4}px;
-  `,
-)
+const Tags = styled.div`
+  display: flex;
+  gap: var(--spacing1);
+  flex-wrap: wrap;
+  margin-top: var(--spacing4);
+`
 const StyledBlogMoreLikeThis = styled(BlogRelatedArticles)`
   margin-top: 5em;
 `
-const Footer = styled.footer(
-  ({ theme }) => css`
-    background: var(--black);
-    color: var(--white);
-    text-align: right;
-    padding-bottom: ${theme.spacing.x4}px;
-  `,
-)
+const Footer = styled.footer`
+  background: var(--black);
+  color: var(--white);
+  text-align: right;
+  padding-bottom: var(--spacing4);
+`
 
 interface Props {
   article: BlogArticleMeta

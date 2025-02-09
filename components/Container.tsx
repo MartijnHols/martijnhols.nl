@@ -10,12 +10,12 @@ const Container = styled.div(
     padding-right: 0.8em;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      padding-left: ${theme.spacing.x6}px;
-      padding-right: ${theme.spacing.x6}px;
+      padding-left: var(--spacing6);
+      padding-right: var(--spacing6);
     }
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
-      padding-left: ${theme.spacing.x10}px;
-      padding-right: ${theme.spacing.x10}px;
+      padding-left: var(--spacing10);
+      padding-right: var(--spacing10);
     }
   `,
 )

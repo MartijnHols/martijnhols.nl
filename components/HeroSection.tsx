@@ -47,11 +47,11 @@ const SubText = styled.div(
   ({ theme }) => css`
     font-weight: 500;
     ${theme.headings.h4}
-    margin-top: ${theme.spacing.x2}px;
+    margin-top: var(--spacing2);
     margin-bottom: 0;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      margin-top: ${theme.spacing.x4}px;
+      margin-top: var(--spacing4);
     }
   `,
 )

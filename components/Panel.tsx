@@ -8,7 +8,7 @@ const Container = styled('div', {
 })<{
   variant: 'sm' | 'md'
   boxShadow: boolean
-}>(({ theme, variant, boxShadow }) => [
+}>(({ variant, boxShadow }) => [
   css`
     // TODO: Move all margins to parents? An element should not affect siblings
     //  But it's not clear cut, since the negative margins need to match the
@@ -16,8 +16,8 @@ const Container = styled('div', {
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.
-    margin-top: ${theme.spacing.x3}px;
-    margin-bottom: ${theme.spacing.x5}px;
+    margin-top: var(--spacing3);
+    margin-bottom: var(--spacing5);
     // Offset the padding so the code text aligns with the rest of the text
     margin-left: -1em;
     margin-right: -1em;

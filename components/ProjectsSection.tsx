@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import projects from '../data/projects'
 import ContactButtonClipped from './ContactButtonClipped'
@@ -15,14 +14,12 @@ const Title = styled.h2`
   margin-bottom: 0;
   margin-top: 0;
 `
-const SubTitle = styled.div(
-  ({ theme }) => css`
-    font-weight: 500;
-    font-size: 1.25em;
-    margin-bottom: ${theme.spacing.x6}px;
-    letter-spacing: 1px;
-  `,
-)
+const SubTitle = styled.div`
+  font-weight: 500;
+  font-size: 1.25em;
+  margin-bottom: var(--spacing6);
+  letter-spacing: 1px;
+`
 
 const ProjectsSection = () => (
   <Section>

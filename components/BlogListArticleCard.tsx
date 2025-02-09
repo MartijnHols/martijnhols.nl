@@ -30,11 +30,11 @@ const ArticleTitle = styled.h1(
 )
 const ArticleLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== 'howTo',
-})<{ howTo?: boolean }>(({ theme, howTo }) => [
+})<{ howTo?: boolean }>(({ howTo }) => [
   css`
     display: block;
-    margin-top: ${theme.spacing.x6}px;
-    margin-bottom: ${theme.spacing.x6}px;
+    margin-top: var(--spacing6);
+    margin-bottom: var(--spacing6);
     margin-left: auto;
     margin-right: auto;
     color: var(--black);
@@ -51,13 +51,11 @@ const ArticleLink = styled(Link, {
       max-width: 90%;
     `,
 ])
-const Tags = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: ${theme.spacing.x1}px;
-    flex-wrap: wrap;
-  `,
-)
+const Tags = styled.div`
+  display: flex;
+  gap: var(--spacing1);
+  flex-wrap: wrap;
+`
 const Article = styled(Panel, {
   shouldForwardProp: (prop) => prop !== 'howTo',
 })<{ howTo?: boolean }>(({ theme, howTo }) => [
@@ -67,12 +65,12 @@ const Article = styled(Panel, {
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.
-    margin-top: ${theme.spacing.x5}px;
-    margin-bottom: ${theme.spacing.x7}px;
+    margin-top: var(--spacing5);
+    margin-bottom: var(--spacing7);
     // Offset the padding so the code text aligns with the rest of the text
-    margin-left: -${theme.spacing.x4}px;
-    margin-right: -${theme.spacing.x4}px;
-    padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
+    margin-left: calc(var(--spacing4) * -1);
+    margin-right: calc(var(--spacing4) * -1);
+    padding: var(--spacing3) var(--spacing4) var(--spacing2);
     display: flex;
     gap: 1em;
     flex-flow: column;
@@ -84,11 +82,11 @@ const Article = styled(Panel, {
   `,
   howTo &&
     css`
-      padding: ${theme.spacing.x2}px;
+      padding: var(--spacing2);
       font-size: 90%;
 
       @media (min-width: ${theme.breakpoints.TABLET}px) {
-        padding: ${theme.spacing.x2}px ${theme.spacing.x3}px;
+        padding: var(--spacing2) var(--spacing3);
 
         ${ArticleTitle} {
           font-size: 2em;
@@ -106,15 +104,13 @@ const ArticleDescription = styled.p`
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 `
-const ArticleMetadata = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: ${theme.spacing.x2}px;
-  `,
-)
+const ArticleMetadata = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing2);
+`
 const PublishedAt = styled.div`
   opacity: 0.6;
 `

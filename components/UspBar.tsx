@@ -8,7 +8,7 @@ import Panel from './Panel'
 const Container = styled.div(
   ({ theme }) => css`
     display: flex;
-    gap: ${theme.spacing.x4}px;
+    gap: var(--spacing4);
     flex-flow: column;
 
     > div {
@@ -16,11 +16,11 @@ const Container = styled.div(
     }
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
-      gap: ${theme.spacing.x8}px;
+      gap: var(--spacing8);
       flex-flow: row;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      gap: ${theme.spacing.x10}px;
+      gap: var(--spacing10);
     }
   `,
 )

@@ -17,7 +17,7 @@ const StyledContainer = styled(Container)(
     padding-bottom: 60px;
     display: flex;
     flex-flow: column;
-    gap: ${theme.spacing.x6}px;
+    gap: var(--spacing6);
 
     @media (min-width: ${theme.breakpoints.DESKTOP}px) {
       padding-top: 100px;
@@ -25,7 +25,7 @@ const StyledContainer = styled(Container)(
       flex-flow: row;
     }
     @media (min-width: ${theme.breakpoints.DESKTOP_LARGE}px) {
-      gap: ${theme.spacing.x10}px;
+      gap: var(--spacing10);
     }
   `,
 )
@@ -49,17 +49,17 @@ const SideImage = styled(Image)(
 )
 const ContentContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'twoColumnsText',
-})<{ twoColumnsText?: boolean }>(({ theme, twoColumnsText }) => [
+})<{ twoColumnsText?: boolean }>(({ twoColumnsText }) => [
   css`
     flex: 1 1 auto;
     // Cancels out p-margins
-    margin: -${theme.spacing.x2}px 0;
+    margin: calc(var(--spacing2) * -1) 0;
     text-wrap: pretty;
   `,
   twoColumnsText &&
     css`
       column-count: 2;
-      column-gap: ${theme.spacing.x5}px;
+      column-gap: var(--spacing5);
       line-height: 1.6;
       text-align: left;
     `,

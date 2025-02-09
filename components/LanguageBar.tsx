@@ -26,7 +26,7 @@ const MainText = styled.div(
 const Actions = styled.div(
   ({ theme }) => css`
     display: flex;
-    gap: ${theme.spacing.x2}px;
+    gap: var(--spacing2);
     flex-direction: column;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {

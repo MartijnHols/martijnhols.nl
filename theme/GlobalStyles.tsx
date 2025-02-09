@@ -14,6 +14,17 @@ const GlobalStyles = () => (
           --black400: ${theme.colors.black400};
           --black300: ${theme.colors.black300};
           --white: ${theme.colors.white};
+
+          --spacing1: 0.4375rem;
+          --spacing2: calc(var(--spacing1) * 2);
+          --spacing3: calc(var(--spacing1) * 3);
+          --spacing4: calc(var(--spacing1) * 4);
+          --spacing5: calc(var(--spacing1) * 5);
+          --spacing6: calc(var(--spacing1) * 6);
+          --spacing7: calc(var(--spacing1) * 7);
+          --spacing8: calc(var(--spacing1) * 8);
+          --spacing9: calc(var(--spacing1) * 9);
+          --spacing10: calc(var(--spacing1) * 10);
         }
         html {
           scroll-padding-top: 2rem;

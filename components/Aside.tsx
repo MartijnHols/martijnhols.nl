@@ -21,53 +21,51 @@ const Container = styled.div(
       // These values should be based on the font-size of the parent
       margin: 1.06em 0 2.12em;
       transform: rotate(-0.5deg);
-      margin-left: -${theme.spacing.x6}px;
-      margin-right: -${theme.spacing.x6}px;
+      margin-left: calc(var(--spacing6) * -1);
+      margin-right: calc(var(--spacing6) * -1);
     }
     @media print {
       box-shadow: none;
     }
   `,
 )
-const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(
-  ({ theme, variant }) => [
+const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(({ variant }) => [
+  css`
+    background: var(--black);
+    color: var(--yellow50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 5px;
+    letter-spacing: 2.5px;
+    // Letter-spacing places letters to the left of the space they occupy.
+    // This makes the letters appear centered.
+    padding-bottom: 1px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: bold;
+    align-self: stretch;
+    // This is typically bad form, but this improves the layout of text when
+    // it is copy-pasted, since I add this text back underneath
+    user-select: none;
+  `,
+  variant === 'sm' &&
     css`
-      background: var(--black);
-      color: var(--yellow50);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3px 5px;
-      letter-spacing: 2.5px;
+      letter-spacing: 4px;
+      padding: var(--spacing1);
       // Letter-spacing places letters to the left of the space they occupy.
       // This makes the letters appear centered.
-      padding-bottom: 1px;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-weight: bold;
-      align-self: stretch;
-      // This is typically bad form, but this improves the layout of text when
-      // it is copy-pasted, since I add this text back underneath
-      user-select: none;
+      padding-bottom: calc(var(--spacing1) / 2);
     `,
-    variant === 'sm' &&
-      css`
-        letter-spacing: 4px;
-        padding: ${theme.spacing.x1}px;
-        // Letter-spacing places letters to the left of the space they occupy.
-        // This makes the letters appear centered.
-        padding-bottom: ${theme.spacing.x1 / 2}px;
-      `,
-    variant === 'md' &&
-      css`
-        letter-spacing: 7px;
-        // Letter-spacing places letters to the left of the space they occupy.
-        // This makes the letters appear centered.
-        padding-bottom: 0;
-      `,
-  ],
-)
+  variant === 'md' &&
+    css`
+      letter-spacing: 7px;
+      // Letter-spacing places letters to the left of the space they occupy.
+      // This makes the letters appear centered.
+      padding-bottom: 0;
+    `,
+])
 const Content = styled.div`
   padding: 0 1.6em 0;
 `

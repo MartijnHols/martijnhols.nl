@@ -1,35 +1,28 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
 import Link from './Link'
 
-const Section = styled.footer(
-  ({ theme }) => css`
-    position: relative;
-    background: var(--black);
-    color: var(--white);
-    padding: ${theme.spacing.x5}px 0;
-  `,
-)
-const Row = styled.div(
-  ({ theme }) => css`
-    margin: ${theme.spacing.x2}px 0;
-    display: flex;
-    gap: ${theme.spacing.x2}px ${theme.spacing.x4}px;
-  `,
-)
+const Section = styled.footer`
+  position: relative;
+  background: var(--black);
+  color: var(--white);
+  padding: var(--spacing5) 0;
+`
+const Row = styled.div`
+  margin: var(--spacing2) 0;
+  display: flex;
+  gap: var(--spacing2) var(--spacing4);
+`
 const Label = styled.div`
   min-width: 100px;
   text-align: right;
 `
-const Values = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    gap: ${theme.spacing.x2}px ${theme.spacing.x4}px;
-  `,
-)
+const Values = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing2) var(--spacing4);
+`
 const ContactRow = styled(Row)``
 const SocialRow = styled(Row)``
 const BusinessRow = styled(Row)``

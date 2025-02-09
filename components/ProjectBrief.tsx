@@ -21,27 +21,27 @@ const Container = styled(Panel, {
     // Top and bottom margins are not equal since the angle changes the visual
     // margin. I believe the left-most column is most important to appear
     // visually aligned.
-    margin-top: ${theme.spacing.x5}px;
-    margin-bottom: ${theme.spacing.x7}px;
+    margin-top: var(--spacing5);
+    margin-bottom: var(--spacing7);
     // Offset the padding so the code text aligns with the rest of the text
-    margin-left: -${theme.spacing.x4}px;
-    margin-right: -${theme.spacing.x4}px;
-    padding: ${theme.spacing.x3}px ${theme.spacing.x4}px ${theme.spacing.x2}px;
+    margin-left: calc(var(--spacing4) * -1);
+    margin-right: calc(var(--spacing4) * -1);
+    padding: var(--spacing3) var(--spacing4) var(--spacing2);
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       display: flex;
-      gap: ${theme.spacing.x4}px;
+      gap: var(--spacing4);
     }
   `,
   highlighted &&
     css`
       @media (min-width: ${theme.breakpoints.TABLET}px) {
-        margin-top: ${theme.spacing.x1 * 10}px;
-        margin-bottom: ${theme.spacing.x1 * 10}px;
+        margin-top: calc(var(--spacing1) * 10);
+        margin-bottom: calc(var(--spacing1) * 10);
         transform: scale(1.1);
 
         & + & {
-          margin-top: ${theme.spacing.x1 * 14}px;
+          margin-top: calc(var(--spacing1) * 14);
         }
       }
     `,
@@ -72,11 +72,11 @@ const Main = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-flow: column;
-    gap: ${theme.spacing.x2}px;
+    gap: var(--spacing2);
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       flex-flow: row;
-      gap: ${theme.spacing.x4}px;
+      gap: var(--spacing4);
     }
   `,
 )
@@ -116,18 +116,14 @@ const ProjectAbout = styled.div`
   margin-top: -1.25em;
   margin-bottom: 1.25em;
 `
-const Tech = styled.div(
-  ({ theme }) => css`
-    display: flex;
-    gap: ${theme.spacing.x1}px;
-    flex-wrap: wrap;
-  `,
-)
-const ContactLinks = styled.div(
-  ({ theme }) => css`
-    margin-top: ${theme.spacing.x2}px;
-  `,
-)
+const Tech = styled.div`
+  display: flex;
+  gap: var(--spacing1);
+  flex-wrap: wrap;
+`
+const ContactLinks = styled.div`
+  margin-top: var(--spacing2);
+`
 
 interface Props {
   thumbnail?: ImageInfo
