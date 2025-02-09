@@ -1,7 +1,8 @@
-import { css, keyframes } from '@emotion/react'
+import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import { breakpoints } from '../theme'
+import * as theme from '../theme'
 import reactStringReplace from '../utils/reactStringReplace'
 import ReactLogo from './assets/ReactLogo.svg'
 import ContactButtonClipped from './ContactButtonClipped'
@@ -27,33 +28,29 @@ const Intro = styled.div`
   font-weight: 800;
   margin-bottom: 0;
 `
-const Kicker = styled.span(
-  ({ theme }) => css`
-    display: block;
-    ${theme.headings.h4}
-    margin-bottom: 0.25em;
+const Kicker = styled.span`
+  display: block;
+  ${theme.headings.h4}
+  margin-bottom: 0.25em;
 
-    @media (min-width: ${breakpoints.TABLET}px) {
-      font-size: 1.75em;
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    font-size: 1.75em;
+  }
+`
 const IntroTitle = styled.h1`
   margin: 0;
   text-wrap: balance;
 `
-const SubText = styled.div(
-  ({ theme }) => css`
-    font-weight: 500;
-    ${theme.headings.h4}
-    margin-top: var(--spacing2);
-    margin-bottom: 0;
+const SubText = styled.div`
+  font-weight: 500;
+  ${theme.headings.h4}
+  margin-top: var(--spacing2);
+  margin-bottom: 0;
 
-    @media (min-width: ${breakpoints.TABLET}px) {
-      margin-top: var(--spacing4);
-    }
-  `,
-)
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin-top: var(--spacing4);
+  }
+`
 const StyledUspBar = styled(UspBar)`
   margin-top: 2em;
 
