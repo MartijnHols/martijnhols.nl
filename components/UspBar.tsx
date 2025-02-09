@@ -100,11 +100,11 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
         <UspPanelTitle>🏛️ Duurzame React-architectuur</UspPanelTitle>
         <UspPanelText className="inverted">
           Pragmatische architectuur met focus op{' '}
-          <Annotation annotation="User Experience; een intuïtieve, snelle en gebruiksvriendelijke app zorgt voor een betere ervaring voor eindgebruikers.">
+          <Annotation annotation="User Experience; een intuïtieve, snelle, toegankelijke en gebruiksvriendelijke app zorgt voor een betere ervaring voor eindgebruikers.">
             UX
           </Annotation>{' '}
           én{' '}
-          <Annotation annotation="Developer Experience; een goed doordachte architectuur en duidelijke patronen maken ontwikkeling efficiënter en onderhoud eenvoudiger.">
+          <Annotation annotation="Standaard patronen en een goed gestructureerde architectuur versnellen ontwikkeling, vereenvoudigen onderhoud en zorgen ervoor dat het team soepel kan doorontwikkelen - ook na mijn vertrek.">
             DX
           </Annotation>
           .
