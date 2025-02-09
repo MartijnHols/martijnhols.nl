@@ -54,8 +54,7 @@ const ContentContainer = styled('div', {
     flex: 1 1 auto;
     // Cancels out p-margins
     margin: -${theme.spacing.x2}px 0;
-    hyphens: auto;
-    text-align: justify;
+    text-wrap: pretty;
   `,
   twoColumnsText &&
     css`

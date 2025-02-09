@@ -27,6 +27,7 @@ const ArticleContent = styled(Container)(
     // This width makes code snippet width match the column width I use in my
     // IDE perfectly
     max-width: 57em;
+    text-wrap: pretty;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 112.5%;

@@ -68,6 +68,7 @@ const UspPanelText = styled.div(
   ({ theme }) => css`
     font-weight: 600;
     font-size: 0.875em;
+    text-wrap: pretty;
 
     @media (min-width: ${theme.breakpoints.TABLET}px) {
       font-size: 1em;
