@@ -483,11 +483,17 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <Aside>
-      <Link href="https://adrianroselli.com/2017/02/not-all-screen-reader-users-are-blind.html">
-        Not all screen reader users are blind
+      I wrote a section called{' '}
+      <Link href="/blog/the-european-accessibility-act-for-websites-and-apps#what-is-accessibility-and-who-is-it-for">
+        What is accessibility and who is it for?
       </Link>{' '}
-      by Adrian Roselli is a great read if you want to learn more about the
-      diversity of screen reader users.
+      in my article on{' '}
+      <Link href="/blog/the-european-accessibility-act-for-websites-and-apps">
+        The European Accessibility Act
+      </Link>{' '}
+      that covers the different types of users that benefit from accessibility.
+      It's worth a read if you're interested in learning more about the
+      different types of users that benefit from accessibility.
     </Aside>
 
     <h2 id="styling">Styling</h2>

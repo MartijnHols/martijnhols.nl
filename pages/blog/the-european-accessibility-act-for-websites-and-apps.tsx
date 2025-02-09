@@ -171,6 +171,13 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         can reach more people and have SEO benefits, as search engines can
         understand your content better.
       </p>
+      <Aside>
+        <Link href="https://adrianroselli.com/2017/02/not-all-screen-reader-users-are-blind.html">
+          Not all screen reader users are blind
+        </Link>{' '}
+        by Adrian Roselli is a great read if you want to learn more about the
+        diversity of screen reader users.
+      </Aside>
 
       <h2 id="which-websites-and-apps-are-covered">
         Which websites and apps are covered?
