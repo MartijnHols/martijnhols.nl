@@ -78,7 +78,8 @@ const LanguageBar = () => (
             </small>
           </Action>
           <Action>
-            Visit my <Link href="/blog">blog</Link>, which is in English.
+            Visit my <Link href="/blog">blog</Link> about React and front-end,
+            which is in English.
           </Action>
         </Actions>
       </Container>

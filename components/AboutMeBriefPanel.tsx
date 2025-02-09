@@ -54,16 +54,16 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
           annotation={
             <>
               <p>
-                I recognized React's potential early on and have specialized in
-                it for over 8 years, allowing me to master its many intricacies.
+                I recognized React's potential early on in its life and have
+                specialized in it for over 8 years, mastering its many
+                intricacies.
               </p>
               <p>
-                My true strength lies in technical web development (which I
-                reckon is close to software architecture). Rather than merely
-                implementing designs, I collaborate closely with front-end and
-                back-end developers, designers, and product owners to craft
-                holistic architectures that serve both users and developers
-                effectively, while strengthening the teams behind them.
+                My passion lies in technical web development (which I reckon is
+                close to software architecture). Instead of just implementing
+                designs, I collaborate with developers, designers, and product
+                owners to create robust architectures that improve UX and DX,
+                and helps teams develop more efficiently.
               </p>
             </>
           }
@@ -75,33 +75,32 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
           annotation={
             <>
               <p>
-                Initially self-taught, I started in 2004 with PHP 4 and wrestled
-                with classic JavaScript during the XHR era. Founding a large
-                PHP/JS project (Elite Avengers) back then kickstarted my passion
-                for web development and entrepreneurship.
+                Initially self-taught, I started in 2004 with PHP 4 and classic
+                JavaScript in the frames and XHR era. Founding a large PHP/JS
+                project (Elite Avengers) and my first company back then ignited
+                my passion for web development and entrepreneurship.
               </p>
               <p>
-                For a long time, I thought backend development was my calling. I
-                dived deep into design patterns, OOP and other backend
-                principles. However, during my time at the HAN University of
-                Applied Sciences, I discovered what true passion was: technical
-                web development (which I reckon is close to software
-                architecture).
+                At first, I thought backend development was my true calling,
+                diving deep into design patterns, OOP, and other backend
+                principles. However, during my time at HAN University of Applied
+                Sciences, I discovered my real passion: technical web
+                development (which I reckon is close to software architecture).
               </p>
               <p>
-                Over the years, I've founded several projects, handling
-                everything from frontend and backend to business and community
-                building. My passion for the web has made me opt for JS/TS for
-                those backends, though in other projects I've also worked
-                extensively with languages like C# and Swift.
+                Over the years, I've founded multiple projects and companies,
+                handling everything from frontend and backend to business and
+                community building. My passion for the web has led me to opt for
+                JS/TS for those backends, though I've also worked extensively
+                with languages like C# and Swift.
               </p>
               <p>
-                Nowadays, for clients, I focus exclusively on JS/TS. I want to
-                be among the best at what I do, and that means specialization.
-                My background in backend and full-stack development helps me
-                bridge the gap between frontend and backend, enabling me to
-                design hollistic architectures that serve both users and
-                developers effectively.
+                Nowadays, I focus exclusively on JavaScript and TypeScript for
+                clients. I aim to be among the best at what I do, and that means
+                specialization. My background in backend and full-stack
+                development helps me bridge the gap between frontend and
+                backend, enabling me to design holistic architectures that serve
+                both users and developers effectively.
               </p>
             </>
           }

@@ -84,13 +84,76 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
       <UspPanel variant="sm">
         <UspPanelTitle>🧑‍💻 Architect-level ervaring</UspPanelTitle>
         <UspPanelText className="inverted">
-          8+ jaar React-specialist &amp;{' '}
+          8+ jaar{' '}
+          <Annotation
+            annotation={
+              <>
+                <p>
+                  Ik zag al vroeg het potentieel van React en heb me er meer dan
+                  8 jaar in gespecialiseerd, waardoor ik de vele nuances en
+                  complexiteiten volledig beheers.
+                </p>
+                <p>
+                  Mijn passie ligt bij technische webontwikkeling (wat ik
+                  beschouw als verwant aan softwarearchitectuur). In plaats van
+                  alleen designs te implementeren, werk ik samen met
+                  ontwikkelaars, designers en product owners om robuuste
+                  architecturen te creëren die UX en DX verbeteren en teams
+                  helpen efficiënter te ontwikkelen.
+                </p>
+              </>
+            }
+          >
+            React-specialist
+          </Annotation>{' '}
+          &amp;{' '}
           <span
             css={css`
               white-space: nowrap;
             `}
           >
-            20+ jaar full-stack ervaring.
+            20+ jaar{' '}
+            <Annotation
+              annotation={
+                <>
+                  <p>
+                    Ik heb mezelf vanaf 2004 webontwikkeling aangeleerd met PHP
+                    4 en klassiek JavaScript in het tijdperk van frames en XHR.
+                    Het oprichten van een groot PHP/JS-project (Elite Avengers)
+                    en mijn eerste bedrijf destijds wakkerde mijn passie voor
+                    webontwikkeling en ondernemerschap aan.
+                  </p>
+                  <p>
+                    Aanvankelijk dacht ik dat backend-ontwikkeling mijn ware
+                    roeping was. Ik verdiepte me in design patterns, OOP en
+                    andere backend-principes. Tijdens mijn studie aan de
+                    Hogeschool van Arnhem en Nijmegen ontdekte ik echter mijn
+                    echte passie: technische webontwikkeling (wat ik beschouw
+                    als verwant aan softwarearchitectuur).
+                  </p>
+                  <p>
+                    Door de jaren heen heb ik meerdere projecten en bedrijven
+                    opgericht, waarbij ik voor alles verantwoordelijk ben
+                    geweest: van frontend en backend tot ondernemen en
+                    communities bouwen. Mijn liefde voor het web heeft me
+                    uiteindelijk naar JS/TS als backendtaal geleid, hoewel ik
+                    ook veel ervaring heb met C# en Swift.
+                  </p>
+                  <p>
+                    Tegenwoordig richt ik me uitsluitend op JavaScript en
+                    TypeScript voor klanten. Ik streef ernaar om tot de besten
+                    te behoren, en dat betekent specialisatie. Mijn full-stack
+                    achtergrond stelt me in staat om frontend en backend
+                    naadloos met elkaar te laten samenwerken en architecturen te
+                    ontwerpen die zowel ontwikkelaars als gebruikers optimaal
+                    ondersteunen.
+                  </p>
+                </>
+              }
+            >
+              full-stack
+            </Annotation>{' '}
+            ervaring.
           </span>
         </UspPanelText>
       </UspPanel>
