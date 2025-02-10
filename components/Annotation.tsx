@@ -4,13 +4,12 @@ import Tooltip from './Tooltip'
 
 const StyledTooltip = styled(Tooltip)`
   font-style: italic;
-  text-decoration: underline wavy var(--black);
+  text-decoration: underline;
+  // The shorthand doesn't seem to work in Safari
+  text-decoration-style: wavy;
+  text-decoration-color: currentColor;
   text-decoration-skip-ink: none;
   cursor: help;
-
-  .inverted & {
-    text-decoration-color: var(--white);
-  }
 `
 
 interface Props
