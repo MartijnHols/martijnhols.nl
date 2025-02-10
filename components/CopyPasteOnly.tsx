@@ -46,7 +46,7 @@ interface Props {
  * will copy-paste better for people discussing it as well.
  */
 const CopyPasteOnly = ({ children, inline }: Props) => (
-  <Container aria-hidden css={inline && blockCss}>
+  <Container aria-hidden css={!inline && blockCss}>
     {children}
   </Container>
 )
