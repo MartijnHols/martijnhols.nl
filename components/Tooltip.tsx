@@ -10,6 +10,7 @@ import {
   offset,
   ReferenceType,
   safePolygon,
+  shift,
   useClick,
   useDismiss,
   useFloating,
@@ -81,6 +82,7 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
       flip({
         padding: 16,
       }),
+      shift(),
       arrow({
         element: arrowRef,
       }),
