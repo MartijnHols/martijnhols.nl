@@ -442,7 +442,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     <h2 id="image-alt-texts">Image alt texts</h2>
 
     <p>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/img-redundant-alt */}
       <img alt="A purposefully broken image to show an example alt text" />
     </p>
 

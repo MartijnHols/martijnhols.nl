@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import Link from '../../../components/Link'
 
 const Input = styled.input`
@@ -20,6 +20,8 @@ const AccessibilityPlaceholders = () => {
     setIsSubmitted(true)
   }
 
+  const id = useId()
+
   if (isSubmitted) {
     return (
       <div>
@@ -34,17 +36,32 @@ const AccessibilityPlaceholders = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label htmlFor={`${id}-firstName`}>
         <div>Firstname</div>
-        <Input type="text" name="firstName" placeholder="Peter" />
+        <Input
+          type="text"
+          name="firstName"
+          placeholder="Peter"
+          id={`${id}-firstName`}
+        />
       </label>
-      <label>
+      <label htmlFor={`${id}-lastName`}>
         <div>Lastname</div>
-        <Input type="text" name="lastName" placeholder="Griffin" />
+        <Input
+          type="text"
+          name="lastName"
+          placeholder="Griffin"
+          id={`${id}-lastName`}
+        />
       </label>
-      <label>
+      <label htmlFor={`${id}-email`}>
         <div>Email</div>
-        <Input type="email" name="email" placeholder="peter@griffin.com" />
+        <Input
+          type="email"
+          name="email"
+          placeholder="peter@griffin.com"
+          id={`${id}-email`}
+        />
       </label>
       <div style={{ marginTop: '1em' }}>
         <button type="submit">Submit</button>
