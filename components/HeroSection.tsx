@@ -39,7 +39,6 @@ const Kicker = styled.span`
 `
 const IntroTitle = styled.h1`
   margin: 0;
-  text-wrap: balance;
 `
 const SubText = styled.div`
   font-weight: 500;
