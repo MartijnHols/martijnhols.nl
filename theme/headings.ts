@@ -6,7 +6,11 @@ export const h1 = css`
   font-weight: 1000;
   margin-bottom: var(--spacing6);
   line-height: 1.1;
-  text-decoration: underline var(--yellow);
+  text-decoration: underline;
+  // The shorthand doesn't seem to work in Safari
+  text-decoration-color: var(--yellow);
+  // Each browser chooses differently for "auto", so for consistency we set it explicitly
+  text-decoration-thickness: 0.1em;
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 5em;
