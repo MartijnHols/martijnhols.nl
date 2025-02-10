@@ -53,7 +53,7 @@ const Page = () => (
             <AboutMeHeading>Over mij</AboutMeHeading>
             <p>
               Ik ben een ervaren <strong>Freelance React Developer</strong> met
-              meet dan 20 jaar full-stack ervaring. Als Freelance React
+              meer dan 20 jaar full-stack ervaring. Als Freelance React
               Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
               van opzet tot doorontwikkeling. Ik ben{' '}
               <strong>al ruim 8 jaar gespecialiseerd in React</strong> - zoveel
