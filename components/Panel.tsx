@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ComponentProps, forwardRef, ReactNode } from 'react'
+import { ComponentProps, ReactNode } from 'react'
 
 const Container = styled.div`
   // TODO: Move all margins to parents? An element should not affect siblings
@@ -101,30 +101,26 @@ interface Props
   boxShadow?: boolean
 }
 
-// eslint-disable-next-line react/display-name
-const Panel = forwardRef<HTMLDivElement, Props>(
-  (
-    { children, variant = 'md', boxShadow = true, as, ...others }: Props,
-    ref,
-  ) => (
-    <Container
-      as={as}
-      css={[
-        variant === 'sm' && smallContainerCss,
-        boxShadow && boxShadowContainerCss,
-      ]}
-      ref={ref}
-      {...others}
-    >
-      {children}
-      <BottomAngle
-        css={[
-          variant === 'sm' && smallAngleCss,
-          boxShadow && boxShadowAngleCss,
-        ]}
-      />
-    </Container>
-  ),
+const Panel = ({
+  children,
+  variant = 'md',
+  boxShadow = true,
+  as,
+  ...others
+}: Props) => (
+  <Container
+    as={as}
+    css={[
+      variant === 'sm' && smallContainerCss,
+      boxShadow && boxShadowContainerCss,
+    ]}
+    {...others}
+  >
+    {children}
+    <BottomAngle
+      css={[variant === 'sm' && smallAngleCss, boxShadow && boxShadowAngleCss]}
+    />
+  </Container>
 )
 
 export default Panel

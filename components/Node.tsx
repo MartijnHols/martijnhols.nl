@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ReactNode, forwardRef } from 'react'
+import { ComponentProps } from 'react'
 
 type Variant = 'root' | 'new' | 'highlight'
 
@@ -19,28 +19,22 @@ const newCss = css`
 const highlightCss = css`
   background: var(--yellow);
 `
-interface Props {
-  children: ReactNode
+interface Props extends ComponentProps<typeof Container> {
   variant?: Variant
-  className?: string
 }
 
-// eslint-disable-next-line react/display-name
-const Node = forwardRef<HTMLButtonElement, Props>(
-  ({ children, variant, ...others }, ref) => (
-    <Container
-      type="button"
-      css={[
-        variant === 'root' && rootCss,
-        variant === 'new' && newCss,
-        variant === 'highlight' && highlightCss,
-      ]}
-      ref={ref}
-      {...others}
-    >
-      {children}
-    </Container>
-  ),
+const Node = ({ children, variant, ...others }: Props) => (
+  <Container
+    type="button"
+    css={[
+      variant === 'root' && rootCss,
+      variant === 'new' && newCss,
+      variant === 'highlight' && highlightCss,
+    ]}
+    {...others}
+  >
+    {children}
+  </Container>
 )
 
 export default Node
