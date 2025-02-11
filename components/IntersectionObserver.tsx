@@ -11,12 +11,14 @@ const useIntersectionObserver = (
       return
     }
 
-    const observer = new IntersectionObserver(([entry]) =>
-      onChange(entry.isIntersecting),
-    )
+    const observer = new IntersectionObserver(([entry]) => {
+      onChange(entry.isIntersecting)
+    })
     observer.observe(elem)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
   return ref

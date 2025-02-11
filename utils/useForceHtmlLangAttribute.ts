@@ -20,7 +20,9 @@ const useForceHtmlLangAttribute = (desiredLang: string) => {
       attributeFilter: ['lang'],
     })
 
-    return () => langObserver.disconnect()
+    return () => {
+      langObserver.disconnect()
+    }
   }, [desiredLang])
 }
 

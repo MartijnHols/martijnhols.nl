@@ -1,3 +1,4 @@
+import Annotation from '../../components/Annotation'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Link from '../../components/Link'
@@ -43,16 +44,11 @@ const Intro = (props: ArticleStaticProps) => (
       </li>
       <li>
         To become a better writer
-        <button
-          type="button"
-          onClick={() =>
-            alert(
-              'Often times I will prefer briefness and delivering something today over the perfect flow or sentence structure. "Don\'t let perfect be the enemy of good (enough)".',
-            )
-          }
+        <Annotation
+          annotation={`Often times I will prefer briefness and delivering something today over the perfect flow or sentence structure. "Don't let perfect be the enemy of good (enough)".`}
         >
           *
-        </button>
+        </Annotation>
       </li>
       <li>To get feedback on my ideas and believes</li>
     </ul>

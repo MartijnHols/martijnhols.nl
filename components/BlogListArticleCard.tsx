@@ -132,6 +132,7 @@ const BlogListArticleCard = ({ article }: Props) => (
           alt=""
         />
       )}
+
       <ArticleTextContainer>
         <ArticleTitle>{article.title}</ArticleTitle>
         <ArticleDescription>{article.description}</ArticleDescription>

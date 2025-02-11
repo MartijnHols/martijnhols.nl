@@ -197,7 +197,7 @@ const ProjectBrief = ({
                 </Fragment>
               ))}
             </Tech>
-            {(url || sourceCode) && (
+            {(url ?? sourceCode) && (
               <ContactLinks>
                 {url && <Link href={url}>Bezoeken</Link>}
                 {url && sourceCode && <span>{' | '}</span>}

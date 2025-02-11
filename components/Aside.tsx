@@ -77,10 +77,10 @@ interface Props {
 
 const Aside = ({ children, label, variant = 'md' }: Props) => (
   <Container>
-    <Label variant={variant}>{label || 'Aside'}</Label>
+    <Label variant={variant}>{label ?? 'Aside'}</Label>
     <Content>
       <p>
-        <CopyPasteOnly>&gt; {label || 'Aside'}:&nbsp;</CopyPasteOnly>
+        <CopyPasteOnly>&gt; {label ?? 'Aside'}:&nbsp;</CopyPasteOnly>
         {children}
       </p>
     </Content>

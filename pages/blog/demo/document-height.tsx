@@ -47,7 +47,9 @@ const DocumentHeight = () => {
       return
     }
 
-    const preventDefault = (e: Event | SyntheticEvent) => e.preventDefault()
+    const preventDefault = (e: Event | SyntheticEvent) => {
+      e.preventDefault()
+    }
 
     elem.addEventListener('pointermove', preventDefault)
     elem.addEventListener('touchmove', preventDefault)
@@ -67,15 +69,15 @@ const DocumentHeight = () => {
     return null
   }
 
-  const values: Array<[string, number | string]> = [
+  const values: [string, number | string][] = [
     // safari=OK ios homescreen=NAY
     [
       'document?.documentElement?.clientHeight',
-      document?.documentElement?.clientHeight,
+      document.documentElement.clientHeight,
     ],
     [
       'document?.documentElement?.clientHeight - 1',
-      document?.documentElement?.clientHeight - 1,
+      document.documentElement.clientHeight - 1,
     ],
     // safari=NAY ios homescreen=OK
     [
@@ -101,9 +103,9 @@ const DocumentHeight = () => {
   const handleClick = () => {
     // First reset to ensure the layout is updated with the new value
     setValueIndex(-1)
-    requestAnimationFrame(() =>
-      setValueIndex(valueIndex + 1 === values.length ? 0 : valueIndex + 1),
-    )
+    requestAnimationFrame(() => {
+      setValueIndex(valueIndex + 1 === values.length ? 0 : valueIndex + 1)
+    })
   }
 
   return (
@@ -125,7 +127,9 @@ const DocumentHeight = () => {
         <br />
         <input
           onChange={handleClick}
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation()
+          }}
           style={{ background: '#fff' }}
         />
         <div

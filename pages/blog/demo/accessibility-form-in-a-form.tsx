@@ -20,7 +20,12 @@ const AccessibilityFormInAForm = () => {
       <div>
         Submitted!
         <hr />
-        <button type="button" onClick={() => setIsSubmitted(false)}>
+        <button
+          type="button"
+          onClick={() => {
+            setIsSubmitted(false)
+          }}
+        >
           Reset
         </button>
       </div>

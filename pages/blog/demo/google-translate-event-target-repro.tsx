@@ -16,8 +16,9 @@ const GoogleTranslateEventTargetRepro = () => {
       .getElementById('GoogleTranslateEventTargetRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           const fontElem = document.createElement('font')
-          fontElem.textContent = `[${child.textContent}]`
+          fontElem.textContent = `[${child.textContent ?? ''}]`
 
           child.parentElement?.insertBefore(fontElem, child)
           child.parentElement?.removeChild(child)
@@ -33,7 +34,7 @@ const GoogleTranslateEventTargetRepro = () => {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
-      key={`${simulateGoogleTranslate}`}
+      key={String(simulateGoogleTranslate)}
       onClick={handleClick}
     >
       <div style={{ marginBottom: '1em' }}>
@@ -41,9 +42,9 @@ const GoogleTranslateEventTargetRepro = () => {
           <input
             type="checkbox"
             checked={simulateGoogleTranslate}
-            onChange={() =>
+            onChange={() => {
               setSimulateGoogleTranslate(!simulateGoogleTranslate)
-            }
+            }}
           />{' '}
           Simulate Google Translate
         </label>

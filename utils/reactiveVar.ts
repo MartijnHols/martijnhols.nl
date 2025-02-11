@@ -8,7 +8,7 @@ import { useEffect, useReducer } from 'react'
 
 // TODO: jotai
 
-export type ReactiveVar<T> = {
+export interface ReactiveVar<T> {
   (newValue?: T | ((value: T) => T)): T
   subscribe: (handler: (value: T) => void) => () => void
   unsubscribe: (handler: (value: T) => void) => void
@@ -40,7 +40,9 @@ export const makeVar = <T>(
       value = nextValue
 
       if (valueChanged) {
-        subscribers.forEach((handler) => handler(value))
+        subscribers.forEach((handler) => {
+          handler(value)
+        })
       }
     }
     return value
@@ -59,11 +61,13 @@ export const makeVar = <T>(
 }
 
 export const useReactiveVar = <T>(reactiveVar: ReactiveVar<T>) => {
-  const handler = useReducer((x) => x + 1, 0)[1] as () => void
+  const handler = useReducer<(x: number) => number>((x) => x + 1, 0)[1]
 
   useEffect(() => {
     reactiveVar.subscribe(handler)
-    return () => reactiveVar.unsubscribe(handler)
+    return () => {
+      reactiveVar.unsubscribe(handler)
+    }
   }, [reactiveVar, handler])
 
   return reactiveVar()

@@ -31,7 +31,7 @@ const ProjectsSection = () => (
       </SubTitle>
 
       {projects
-        ?.sort((a, b) => (b.endedYear || '').localeCompare(a.endedYear || ''))
+        .sort((a, b) => (b.endedYear ?? '').localeCompare(a.endedYear ?? ''))
         .map((project) => {
           // Since ended year is used for sorting, it may be suffixed with a /
           // number to affect sort position
@@ -39,7 +39,7 @@ const ProjectsSection = () => (
 
           return (
             <ProjectBrief
-              key={`${project.company}-${project.functionTitle}-${project.endedYear}`}
+              key={`${project.company}-${project.functionTitle}-${project.endedYear ?? ''}`}
               functionTitle={project.functionTitle}
               companyName={project.company}
               thumbnail={project.thumbnail}

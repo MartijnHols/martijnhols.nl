@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader('Content-Type', 'text/plain')
   res.setHeader(

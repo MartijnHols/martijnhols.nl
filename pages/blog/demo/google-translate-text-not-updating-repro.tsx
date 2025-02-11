@@ -16,8 +16,9 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
       .getElementById('GoogleTranslateTextNotUpdatingRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           const fontElem = document.createElement('font')
-          fontElem.textContent = `[${child.textContent}]`
+          fontElem.textContent = `[${child.textContent ?? ''}]`
 
           child.parentElement?.insertBefore(fontElem, child)
           child.parentElement?.removeChild(child)
@@ -28,16 +29,16 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
   return (
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
-      key={`${simulateGoogleTranslate}`}
+      key={String(simulateGoogleTranslate)}
     >
       <div style={{ marginBottom: '1em' }}>
         <label>
           <input
             type="checkbox"
             checked={simulateGoogleTranslate}
-            onChange={() =>
+            onChange={() => {
               setSimulateGoogleTranslate(!simulateGoogleTranslate)
-            }
+            }}
           />{' '}
           Simulate Google Translate
         </label>
@@ -46,7 +47,9 @@ const GoogleTranslateTextNotUpdatingRepro = () => {
       <div id="GoogleTranslateTextNotUpdatingRepro-translateme">
         <button
           type="button"
-          onClick={() => setLights(lights + 1)}
+          onClick={() => {
+            setLights(lights + 1)
+          }}
           style={{ marginRight: '0.5em' }}
         >
           Add light

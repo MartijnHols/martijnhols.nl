@@ -104,6 +104,8 @@ interface Props {
   addendum?: ReactNode
 }
 
+const a = window.navigator.userAgent.includes('bot')
+
 const BlogArticle = ({
   article,
   relatedArticles,
@@ -122,6 +124,10 @@ const BlogArticle = ({
     tags,
   } = article
   const { pathname } = useRouter()
+
+  if (a) {
+    return null
+  }
 
   const [startReading] = useState(() => Date.now())
   const hasFinishedReading = useRef(false)
@@ -183,10 +189,10 @@ const BlogArticle = ({
               </Link>
             </div>
             <ArticleMetadata>
-              {republishedAt ? (
+              {republishedAt && publishedAt ? (
                 <>
                   <Annotation
-                    annotation={`Originaly published at ${publishedAt}, republished ${republishedAt}. ${republishedReason}`}
+                    annotation={`Originaly published at ${publishedAt}, republished ${republishedAt}. ${republishedReason ?? ''}`}
                   >
                     Republished
                   </Annotation>{' '}

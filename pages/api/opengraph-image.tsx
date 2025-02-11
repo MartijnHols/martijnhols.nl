@@ -2,12 +2,13 @@ import fs from 'fs/promises'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PHASE_PRODUCTION_BUILD } from 'next/dist/shared/lib/constants'
 import path from 'path'
+import React from 'react'
 import satori from 'satori'
 import sharp from 'sharp'
 import { colors } from '../../theme'
 import sFProFont from './SF-Pro-Text-Black.otf'
 
-async function SVG(component: JSX.Element) {
+async function SVG(component: React.JSX.Element) {
   return await satori(component, {
     width: 1200,
     height: 627,
@@ -21,7 +22,7 @@ async function SVG(component: JSX.Element) {
   })
 }
 
-async function PNG(component: JSX.Element) {
+async function PNG(component: React.JSX.Element) {
   return await sharp(Buffer.from(await SVG(component)))
     .png({
       quality: 100,
@@ -37,7 +38,8 @@ export default async function Image(req: NextApiRequest, res: NextApiResponse) {
     process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD &&
     process.env.NODE_ENV !== 'development'
   ) {
-    return res.status(401).send('Unauthorized')
+    res.status(401).send('Unauthorized')
+    return
   }
 
   const title = req.query.title as string

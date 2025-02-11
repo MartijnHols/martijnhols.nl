@@ -19,7 +19,7 @@ const Alert = styled.div`
 
 const applyRemoveChildMonkeyPatch = () => {
   // Source: https://github.com/facebook/react/issues/11538#issuecomment-417504600
-  /* eslint-disable prefer-rest-params */
+  /* eslint-disable */
   if (typeof Node === 'function' && Node.prototype) {
     const originalRemoveChild = Node.prototype.removeChild
     // @ts-expect-error Omitting types to make it exactly the same as the original MonkeyPatch
@@ -55,6 +55,7 @@ const applyRemoveChildMonkeyPatch = () => {
       return originalInsertBefore.apply(this, arguments)
     }
   }
+  /* eslint-enable */
 }
 
 const Hr = styled.hr`
@@ -84,8 +85,9 @@ const ReactTranslationReproduction = () => {
 
     elem?.childNodes.forEach((child) => {
       if (child.nodeType === Node.TEXT_NODE) {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const fontEl = document.createElement('font')
-        fontEl.textContent = `[${child.textContent}]`
+        fontEl.textContent = `[${child.textContent ?? ''}]`
 
         child.parentElement?.insertBefore(fontEl, child)
         child.parentElement?.removeChild(child)
@@ -137,7 +139,12 @@ const ReactTranslationReproduction = () => {
           has translated a page:
         </p>
         <p>
-          <button type="button" onClick={() => setClicks(clicks + 1)}>
+          <button
+            type="button"
+            onClick={() => {
+              setClicks(clicks + 1)
+            }}
+          >
             Increment clicks
           </button>{' '}
           (this will trigger the crash)
@@ -155,9 +162,9 @@ const ReactTranslationReproduction = () => {
             <input
               type="checkbox"
               checked={simulateGoogleTranslate}
-              onChange={() =>
+              onChange={() => {
                 setSimulateGoogleTranslate(!simulateGoogleTranslate)
-              }
+              }}
             />{' '}
             Simulate Google Translate DOM manipilation in the marked text above
           </label>

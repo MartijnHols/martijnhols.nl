@@ -16,8 +16,9 @@ const GoogleTranslateCrashesRepro = () => {
       .getElementById('GoogleTranslateCrashesRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           const fontElem = document.createElement('font')
-          fontElem.textContent = `[${child.textContent}]`
+          fontElem.textContent = `[${child.textContent ?? ''}]`
 
           child.parentElement?.insertBefore(fontElem, child)
           child.parentElement?.removeChild(child)
@@ -28,7 +29,7 @@ const GoogleTranslateCrashesRepro = () => {
   return (
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
-      key={`${simulateGoogleTranslate}`}
+      key={String(simulateGoogleTranslate)}
       // Just a little something to show current state
       style={
         lightsOn
@@ -46,9 +47,9 @@ const GoogleTranslateCrashesRepro = () => {
           <input
             type="checkbox"
             checked={simulateGoogleTranslate}
-            onChange={() =>
+            onChange={() => {
               setSimulateGoogleTranslate(!simulateGoogleTranslate)
-            }
+            }}
           />{' '}
           Simulate Google Translate
         </label>
@@ -57,7 +58,9 @@ const GoogleTranslateCrashesRepro = () => {
       <div id="GoogleTranslateCrashesRepro-translateme">
         <button
           type="button"
-          onClick={() => setLightsOn(!lightsOn)}
+          onClick={() => {
+            setLightsOn(!lightsOn)
+          }}
           style={{ marginRight: '0.5em' }}
         >
           Toggle lights

@@ -138,7 +138,7 @@ const BlogRelatedArticles = ({ relatedArticles, ...others }: Props) => (
         <MoreLikeThisLink href="/blog">More like this</MoreLikeThisLink>
       </TextLine>
       <RelatedArticles>
-        {relatedArticles?.slice(0, 2).map((article) => (
+        {relatedArticles.slice(0, 2).map((article) => (
           <StyledLink
             key={article.slug}
             href={`/blog/${article.slug}`}

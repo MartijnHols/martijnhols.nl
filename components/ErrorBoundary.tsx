@@ -30,9 +30,9 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.error) {
       return typeof this.props.fallback === 'function'
-        ? this.props.fallback(this.state.error, () =>
-            this.setState({ error: null }),
-          )
+        ? this.props.fallback(this.state.error, () => {
+            this.setState({ error: null })
+          })
         : this.props.fallback
     }
 

@@ -41,6 +41,7 @@ interface Props {
 }
 
 const Tag = ({ children, className }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
   if (children === BlogArticleTag.HowTo) {
     return (
       <Tooltip content="How-tos are technical articles, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">

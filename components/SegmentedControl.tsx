@@ -38,7 +38,7 @@ interface Props<TValue extends string | number | boolean = string> {
   name: string
   value: TValue
   onChange: (value: TValue) => void
-  options: Array<{ value: TValue; label: ReactNode }>
+  options: { value: TValue; label: ReactNode }[]
   className?: string
 }
 
@@ -54,11 +54,11 @@ const SegmentedControl = <TValue extends string | number | boolean = string>({
   return (
     <Container className={className}>
       {options.map((option) => (
-        <Option key={`${option.value}`}>
+        <Option key={String(option.value)}>
           <input
             type="radio"
             name={name}
-            value={`${option.value}`}
+            value={String(option.value)}
             onChange={(e) => {
               if (e.target.checked) {
                 onChange(option.value)
@@ -66,9 +66,11 @@ const SegmentedControl = <TValue extends string | number | boolean = string>({
             }}
             checked={value === option.value}
             css={visuallyHidden}
-            id={`${id}-${option.value}`}
+            id={`${id}-${String(option.value)}`}
           />
-          <Label htmlFor={`${id}-${option.value}`}>{option.label}</Label>
+          <Label htmlFor={`${id}-${String(option.value)}`}>
+            {option.label}
+          </Label>
         </Option>
       ))}
     </Container>

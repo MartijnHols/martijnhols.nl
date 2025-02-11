@@ -1,4 +1,5 @@
-/* eslint-env node */
+/* global process */
+
 import makeBundleAnalyzer from '@next/bundle-analyzer'
 
 const withBundleAnalyzer = makeBundleAnalyzer({

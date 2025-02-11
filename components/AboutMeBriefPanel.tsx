@@ -35,7 +35,7 @@ const socialImageCss = css`
 type Props = Omit<ComponentProps<typeof Panel>, 'children'>
 
 const AboutMeBriefPanel = ({ className, ...others }: Props) => (
-  <Panel {...others} className={`inverted ${className}`} variant="sm">
+  <Panel {...others} className={`inverted ${className ?? ''}`} variant="sm">
     <ImageTextContainer>
       <PhotoImage
         src={meSquaredImage}

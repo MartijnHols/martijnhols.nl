@@ -16,8 +16,9 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
       .getElementById('GoogleTranslateCrashesMonkeyPatchRepro-translateme')
       ?.childNodes.forEach((child) => {
         if (child.nodeType === Node.TEXT_NODE) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           const fontElem = document.createElement('font')
-          fontElem.textContent = `[${child.textContent}]`
+          fontElem.textContent = `[${child.textContent ?? ''}]`
 
           child.parentElement?.insertBefore(fontElem, child)
           child.parentElement?.removeChild(child)
@@ -40,7 +41,7 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
     }
 
     // Source: https://github.com/facebook/react/issues/11538#issuecomment-417504600
-    /* eslint-disable prefer-rest-params */
+    /* eslint-disable */
     const originalRemoveChild = elem.removeChild
     // @ts-expect-error Omitting types to make it exactly the same as the original MonkeyPatch
     elem.removeChild = function (child) {
@@ -74,13 +75,14 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
       // @ts-expect-error Omitting types to make it exactly the same as the original MonkeyPatch
       return originalInsertBefore.apply(this, arguments)
     }
+    /* eslint-enable */
     elem.setAttribute('data-monkey-patched', '')
   })
 
   return (
     <div
       // Trigger a full remount of the DOM when the checkbox is toggled
-      key={`${simulateGoogleTranslate}`}
+      key={String(simulateGoogleTranslate)}
       // Just a little something to show current state
       style={
         lightsOn
@@ -98,9 +100,9 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
           <input
             type="checkbox"
             checked={simulateGoogleTranslate}
-            onChange={() =>
+            onChange={() => {
               setSimulateGoogleTranslate(!simulateGoogleTranslate)
-            }
+            }}
           />{' '}
           Simulate Google Translate
         </label>
@@ -109,7 +111,9 @@ const GoogleTranslateCrashesMonkeyPatchRepro = () => {
       <div id="GoogleTranslateCrashesMonkeyPatchRepro-translateme">
         <button
           type="button"
-          onClick={() => setLightsOn(!lightsOn)}
+          onClick={() => {
+            setLightsOn(!lightsOn)
+          }}
           style={{
             marginRight: '0.5em',
           }}
