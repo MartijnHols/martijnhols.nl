@@ -3639,6 +3639,11 @@ eslint-plugin-prettier@^5.2.3:
     prettier-linter-helpers "^1.0.0"
     synckit "^0.9.1"
 
+eslint-plugin-react-hooks@^5.2.0-canary-ff628334-20250205:
+  version "5.2.0-canary-ff628334-20250205"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.2.0-canary-ff628334-20250205.tgz#232cf9b61cb6f8bce9e960a4cd853d51098c2ddb"
+  integrity sha512-UcLi2b+P4ozlfL13l9ASIFKuIQ7y/PzPz1bSyK54Jh8UqQfMMda8nDdetB+zjroGR6qZj2vStnqhuemYMqKRjw==
+
 eslint-plugin-react@^7.37.4:
   version "7.37.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.37.4.tgz#1b6c80b6175b6ae4b26055ae4d55d04c414c7181"

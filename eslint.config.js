@@ -9,6 +9,7 @@ import eslintPluginImportX from 'eslint-plugin-import-x'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 import reactPlugin from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
 
 // Only run code style checks on the CLI and in CI. Only rules that are
@@ -131,6 +132,7 @@ export default tseslint.config(
   // React
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
+  reactHooks.configs['recommended-latest'],
   {
     rules: {
       // Add emotion support

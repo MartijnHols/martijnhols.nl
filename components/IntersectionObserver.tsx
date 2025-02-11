@@ -19,7 +19,7 @@ const useIntersectionObserver = (
     return () => {
       observer.disconnect()
     }
-  }, [])
+  }, [onChange])
 
   return ref
 }

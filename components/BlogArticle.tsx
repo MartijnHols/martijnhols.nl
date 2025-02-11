@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useCallback, useRef, useState } from 'react'
 import { breakpoints } from '../theme'
 import absoluteUrl from '../utils/absoluteUrl'
 import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
@@ -104,8 +104,6 @@ interface Props {
   addendum?: ReactNode
 }
 
-const a = window.navigator.userAgent.includes('bot')
-
 const BlogArticle = ({
   article,
   relatedArticles,
@@ -125,27 +123,28 @@ const BlogArticle = ({
   } = article
   const { pathname } = useRouter()
 
-  if (a) {
-    return null
-  }
-
   const [startReading] = useState(() => Date.now())
   const hasFinishedReading = useRef(false)
-  const intersectionObserverRef = useIntersectionObserver((isIntersecting) => {
-    if (!isIntersecting) {
-      return
-    }
-    if (hasFinishedReading.current) {
-      return
-    }
-    const readingTime = (Date.now() - startReading) / 1000
-    if (readingTime < 15) {
-      // Too short to be considered a read
-      return
-    }
-    window.plausible?.('Finished reading')
-    hasFinishedReading.current = true
-  })
+  const intersectionObserverRef = useIntersectionObserver(
+    useCallback(
+      (isIntersecting) => {
+        if (!isIntersecting) {
+          return
+        }
+        if (hasFinishedReading.current) {
+          return
+        }
+        const readingTime = (Date.now() - startReading) / 1000
+        if (readingTime < 15) {
+          // Too short to be considered a read
+          return
+        }
+        window.plausible?.('Finished reading')
+        hasFinishedReading.current = true
+      },
+      [startReading],
+    ),
+  )
 
   const shownPublishedAt = republishedAt ?? publishedAt
   const isUpdatedAtDifferent =
