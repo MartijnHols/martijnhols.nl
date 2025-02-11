@@ -33,7 +33,7 @@ const Page = () => (
   <PageWrapper>
     <BaseHead
       title="Martijn Hols: Freelance React Developer"
-      description="Ik ben dé Freelance React Developer die je zoekt. Al 8 jaar gespecialiseerd in React, met veel full stack ervaring. Ik kan veel voor je projecten betekenen."
+      description="Met 20+ jaar full-stack ervaring, waarvan 8+ jaar gespecialiseerd in React, help ik teams met complexe front-end vraagstukken en architectuur. Laten we kennismaken!"
       absoluteUrl={absoluteUrl('/')}
       image={openGraphImage}
     />
