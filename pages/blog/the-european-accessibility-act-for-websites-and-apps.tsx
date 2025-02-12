@@ -250,9 +250,12 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           accessibility now.
         </strong>{' '}
         The EAA's scope is designed to evolve, and future updates may include
-        more industries. Proactively improving accessibility not only keeps you
-        ahead of potential regulations but also enhances the user experience for
-        everyone.
+        more industries.{' '}
+        <strong>
+          Proactively improving accessibility not only keeps you ahead of
+          potential regulations but also enhances the user experience for
+          everyone.
+        </strong>
       </p>
 
       <h2 id="european-accessibility-act-requirements">
