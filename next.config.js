@@ -18,6 +18,7 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
+  compress: process.env.COMPRESS === 'false' ? false : true,
   reactStrictMode: true,
   // Values that can be different per instance of the server
   serverRuntimeConfig: {
