@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import AngleTop from '../components/AngleTop'
 import AngleWithContactButton from '../components/AngleWithContactButton'
 import BaseHead from '../components/BaseHead'
@@ -13,24 +13,32 @@ import PageWrapper from '../components/PageWrapper'
 import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
 import absoluteUrl from '../utils/absoluteUrl'
-import generateAll from '../utils/generateAll'
 import photo from './assets/martijn-hols.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
 
-export const getStaticProps: GetStaticProps = async () => {
-  await generateAll()
-
-  return {
-    props: {},
-  }
+interface ServerProps {
+  randomValue: number
 }
+
+const doSomething = () =>
+  new Promise<number>((resolve) => {
+    resolve(Math.random())
+  })
+
+export const getServerSideProps: GetServerSideProps<
+  ServerProps
+> = async () => ({
+  props: {
+    randomValue: await doSomething(),
+  },
+})
 
 const AboutMeHeading = styled.h2`
   margin: 0;
 `
 
-const Page = () => (
-  <PageWrapper>
+const Page = ({ randomValue }: ServerProps) => (
+  <PageWrapper data-random={randomValue}>
     <BaseHead
       title="Martijn Hols: Freelance React Developer"
       description="Met 20+ jaar full-stack ervaring, waarvan 8+ jaar gespecialiseerd in React, help ik teams met complexe front-end vraagstukken en architectuur. Laten we kennismaken!"
