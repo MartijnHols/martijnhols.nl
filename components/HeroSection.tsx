@@ -12,7 +12,6 @@ import UspBar from './UspBar'
 const Section = styled.header`
   position: relative;
   color: var(--black);
-  overflow: hidden;
 `
 const StyledContainer = styled(Container)`
   padding-top: 100px;

@@ -8,7 +8,6 @@ const Section = styled.section`
   position: relative;
   color: var(--black);
   padding: 150px 0;
-  overflow: hidden;
 `
 const Title = styled.h2`
   margin-bottom: 0;

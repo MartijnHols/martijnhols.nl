@@ -79,7 +79,6 @@ const StyledContainer = styled(Container)`
   flex-grow: 1;
   padding-top: 100px;
   padding-bottom: 100px;
-  overflow: hidden;
 `
 const Title = styled.h1``
 const ArticleList = styled.ul`
