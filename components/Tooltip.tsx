@@ -36,11 +36,18 @@ const FloatingTooltip = styled.div`
   // create a hierarchy.
   font-size: 90%;
   padding: 5px 10px;
+  --contrast-background-color: var(--white);
+  --contrast-background-color: color-mix(
+    in srgb,
+    var(--white) 50%,
+    transparent
+  );
   filter: drop-shadow(-4px 4px 0 var(--yellow))
     // If the tooltip is over a codeblock, these borders give the tooltip a
-    // small outline. They're meant to appear invisible.
-    drop-shadow(0 0.5px 0 var(--white)) drop-shadow(0 -0.5px 0 var(--white))
-    drop-shadow(0.5px 0 0 var(--white)) drop-shadow(-0.5px 0 0 var(--white));
+    // small outline. They're meant to be invisible - just enough to separate
+    // the tooltip from the codeblock.
+    drop-shadow(1px -1px 0 var(--contrast-background-color))
+    drop-shadow(-1px 1px 0 var(--contrast-background-color));
   // Make it a similar width as the VSCode tooltip
   max-width: 450px;
   z-index: 10;
