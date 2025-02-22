@@ -7,8 +7,12 @@ import { useEffect } from 'react'
  *
  * Source: https://github.com/vercel/next.js/issues/30828#issuecomment-997750399
  */
-const useForceHtmlLangAttribute = (desiredLang: string) => {
+const useForceHtmlLangAttribute = (desiredLang: string | undefined) => {
   useEffect(() => {
+    if (!desiredLang) {
+      return
+    }
+
     document.documentElement.lang = desiredLang
 
     const langObserver = new MutationObserver(() => {

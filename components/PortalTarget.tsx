@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, createContext, useContext, useState } from 'react'
 
 const PortalTargetContext = createContext<HTMLDivElement | null>(null)

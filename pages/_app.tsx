@@ -1,19 +1,16 @@
 import { AppProps } from 'next/app'
+import ForceHtmlLangAttribute from '../components/ForceHtmlLangAttribute'
+import GlobalStyles from '../components/GlobalStyles'
 import PortalTarget from '../components/PortalTarget'
-import GlobalStyles from '../theme/GlobalStyles'
-import useForceHtmlLangAttribute from '../utils/useForceHtmlLangAttribute'
-import useTrackPrint from '../utils/useTrackPrint'
+import TrackPrint from '../components/TrackPrint'
 
-const App = ({ Component, pageProps, router }: AppProps) => {
-  useForceHtmlLangAttribute(router.asPath.startsWith('/blog') ? 'en' : 'nl')
-  useTrackPrint()
-
-  return (
-    <PortalTarget>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </PortalTarget>
-  )
-}
+const App = ({ Component, pageProps }: AppProps) => (
+  <PortalTarget>
+    <GlobalStyles />
+    <TrackPrint />
+    <ForceHtmlLangAttribute />
+    <Component {...pageProps} />
+  </PortalTarget>
+)
 
 export default App
