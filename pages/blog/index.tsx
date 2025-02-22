@@ -18,7 +18,6 @@ import Tooltip from '../../components/Tooltip'
 import TopBar from '../../components/TopBar'
 import { breakpoints } from '../../theme'
 import absoluteUrl from '../../utils/absoluteUrl'
-import generateRssFeed from '../../utils/generateRssFeed'
 import openGraphImage from './assets/ogimage-blog.png'
 import RssFeedIcon from './assets/rss.svg'
 
@@ -56,19 +55,15 @@ const makeFilterByTag =
   (tag: BlogArticleTag | undefined) => (article: BlogArticleMeta) =>
     tag === undefined || article.tags.includes(tag)
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  await generateRssFeed()
-
-  return {
-    props: {
-      articles: (await getPublishedArticles()).sort((a, b) =>
-        (a.republishedAt ?? a.publishedAt).localeCompare(
-          b.republishedAt ?? b.publishedAt,
-        ),
+export const getStaticProps: GetStaticProps<Props> = async () => ({
+  props: {
+    articles: (await getPublishedArticles()).sort((a, b) =>
+      (a.republishedAt ?? a.publishedAt).localeCompare(
+        b.republishedAt ?? b.publishedAt,
       ),
-    },
-  }
-}
+    ),
+  },
+})
 
 const Main = styled.main`
   display: flex;

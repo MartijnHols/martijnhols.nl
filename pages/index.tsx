@@ -13,12 +13,12 @@ import PageWrapper from '../components/PageWrapper'
 import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
 import absoluteUrl from '../utils/absoluteUrl'
-import generateSitemap from '../utils/generateSitemap'
+import generateAll from '../utils/generateAll'
 import photo from './assets/martijn-hols.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
 
 export const getStaticProps: GetStaticProps = async () => {
-  await generateSitemap()
+  await generateAll()
 
   return {
     props: {},
