@@ -1,18 +1,17 @@
-import fs from 'fs/promises'
+import { GetServerSideProps } from 'next'
 import RSS from 'rss'
-import { getPublishedArticles } from '../pages/blog'
+import { getPublishedArticles } from './blog'
 
-export default async function generateRssFeed() {
-  const baseUrl = process.env.NEXT_PUBLIC_PRIMARY_HOST
-
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const publishedArticles = await getPublishedArticles()
+  const baseUrl = process.env.NEXT_PUBLIC_PRIMARY_HOST
 
   const feed = new RSS({
     title: 'Blog by Martijn Hols',
     description:
       'My blog where I post articles on React, TypeScript, JavaScript and related subjects. I post deep dives, brief code snippets, opinions, etc..',
     generator:
-      'https://github.com/MartijnHols/martijnhols.nl/tree/main/utils/generateRssFeed.ts',
+      'https://github.com/MartijnHols/martijnhols.nl/blob/ssr/pages/rss.xml.tsx',
     feed_url: `${baseUrl}/rss.xml`,
     site_url: baseUrl,
     pubDate: new Date(
@@ -38,11 +37,23 @@ export default async function generateRssFeed() {
       categories: article.tags,
     })
   })
-
-  await fs.writeFile(
-    './public/rss.xml',
+  res.setHeader('Content-Type', 'application/xml')
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=600, stale-while-revalidate=600',
+  )
+  res.write(
     feed.xml({
       indent: true,
     }),
   )
+  res.end()
+
+  return {
+    props: {},
+  }
+}
+
+export default function RSSPage() {
+  return null
 }

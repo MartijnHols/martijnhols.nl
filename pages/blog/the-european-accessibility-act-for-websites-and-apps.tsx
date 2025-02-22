@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import { useState } from 'react'
 import Annotation from '../../components/Annotation'
@@ -23,7 +24,12 @@ const { meta, getStaticProps } = articleMeta({
   updatedAt: '2025-02-07',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
 })
-export { meta, getStaticProps }
+export { meta }
+
+export const getServerSideProps: GetServerSideProps<
+  ArticleStaticProps
+  // @ts-expect-error It doesn't use the params, so it doesn't matter that it's omitted
+> = () => getStaticProps()
 
 const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
   const [showDetails, setShowDetails] = useState(false)

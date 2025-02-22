@@ -44,10 +44,12 @@ export const getArticles = async () =>
 export const getPublishedArticles = async () =>
   (await getArticles()).filter(publishedFilter)
 
+export type PublishedArticle = BlogArticleMeta & {
+  publishedAt: PublicationDate
+}
 export const publishedFilter = (
   article: BlogArticleMeta,
-): article is typeof article & { publishedAt: PublicationDate } =>
-  article.publishedAt !== undefined
+): article is PublishedArticle => article.publishedAt !== undefined
 
 // We do this client-side so we can avoid the hassle of having to generate new
 // pages. We'll do that when we get enough articles to warrant it.
