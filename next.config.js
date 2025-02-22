@@ -84,11 +84,27 @@ const nextConfig = withBundleAnalyzer({
     }
 
     // SVGR - Import SVG components as react components
+    // Grab the existing rule that handles SVG imports
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.('.svg'),
+    )
+
     config.module.rules = [
       ...config.module.rules,
+      // Reapply the existing rule, but only for svg imports ending in ?url
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+      // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: {
+          // exclude if *.svg?url
+          not: [...fileLoaderRule.resourceQuery.not, /url/],
+        },
         use: [
           {
             loader: '@svgr/webpack',
