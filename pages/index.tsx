@@ -16,29 +16,17 @@ import absoluteUrl from '../utils/absoluteUrl'
 import photo from './assets/martijn-hols.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
 
-interface ServerProps {
-  randomValue: number
-}
-
-const doSomething = () =>
-  new Promise<number>((resolve) => {
-    resolve(Math.random())
-  })
-
-export const getServerSideProps: GetServerSideProps<
-  ServerProps
-> = async () => ({
-  props: {
-    randomValue: await doSomething(),
-  },
+// eslint-disable-next-line @typescript-eslint/require-await
+export const getServerSideProps: GetServerSideProps = async () => ({
+  props: {},
 })
 
 const AboutMeHeading = styled.h2`
   margin: 0;
 `
 
-const Page = ({ randomValue }: ServerProps) => (
-  <PageWrapper data-random={randomValue}>
+const Page = () => (
+  <PageWrapper>
     <BaseHead
       title="Martijn Hols: Freelance React Developer"
       description="Met 20+ jaar full-stack ervaring, waarvan 8+ jaar gespecialiseerd in React, help ik teams met complexe front-end vraagstukken en architectuur. Laten we kennismaken!"
