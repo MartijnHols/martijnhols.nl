@@ -18,6 +18,8 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
+  output: 'export',
+  images: { unoptimized: true },
   reactStrictMode: true,
   // Values that can be different per instance of the server
   serverRuntimeConfig: {
