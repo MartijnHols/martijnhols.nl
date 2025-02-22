@@ -97,8 +97,8 @@ jobs:
           path: |
             .next
             public
-          key: build-${{ github.run_number }}
-          restore-keys: build
+          key: build2-${{ github.run_number }}
+          restore-keys: build2
           required: false
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
@@ -141,7 +141,7 @@ jobs:
           path: |
             .next
             public
-          key: build-${{ github.run_number }}
+          key: build2-${{ github.run_number }}
           required: true
       - name: Restore "node_modules" from cache
         uses: martijnhols/actions-cache/restore@v3
