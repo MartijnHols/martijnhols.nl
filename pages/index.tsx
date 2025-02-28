@@ -6,7 +6,7 @@ import BaseHead from '../components/BaseHead'
 import ContentSection from '../components/ContentSection'
 import FooterSlice from '../components/FooterSection'
 import HeroKicker from '../components/HeroKicker'
-import HeroSection, { reactifyTitle } from '../components/HeroSection'
+import HeroSection from '../components/HeroSection'
 import LanguageBar from '../components/LanguageBar'
 import Link from '../components/Link'
 import PageWrapper from '../components/PageWrapper'
@@ -44,7 +44,7 @@ const Page = () => (
     <main role="main">
       <HeroSection
         kicker={<HeroKicker />}
-        title={reactifyTitle('Freelance React Developer')}
+        title="Freelance React Developer"
         subText="✅ Hoogwaardige React-ontwikkeling met oog voor detail, een optimale gebruikerservaring en solide architectuur."
       />
       <ContentSection

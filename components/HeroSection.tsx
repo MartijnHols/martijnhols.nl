@@ -1,9 +1,8 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { breakpoints } from '../theme'
 import * as theme from '../theme'
-import reactStringReplace from '../utils/reactStringReplace'
 import ReactLogo from './assets/ReactLogo.svg'
 import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
@@ -27,8 +26,7 @@ const Intro = styled.div`
   font-weight: 800;
   margin-bottom: 0;
 `
-const Kicker = styled.span`
-  display: block;
+const Kicker = styled.div`
   ${theme.headings.h4}
   margin-bottom: 0.25em;
 
@@ -36,8 +34,69 @@ const Kicker = styled.span`
     font-size: 1.75em;
   }
 `
+const slideInAnimation = keyframes`
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+`
+// Progressive enhancement; if a browser doesn't support animations (eg for
+// accessibility or more likely search engine spiders), the text will be visible
+// right away. If it does support this, the text will appear with the animation.
+const mainTextAnimation = keyframes`
+  from {
+    color: transparent;
+  }
+  to {
+    color: transparent;
+  }
+`
+const Word = styled.span`
+  white-space: nowrap;
+`
 const IntroTitle = styled.h1`
   margin: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${mainTextAnimation} forwards;
+
+    *::selection {
+      color: var(--black);
+    }
+
+    ${Word} {
+      position: relative;
+      z-index: 0;
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(50% + 0.528em),
+        0 calc(50% + 0.528em)
+      );
+
+      ::after {
+        content: attr(data-word);
+        display: block;
+        position: absolute;
+        inset: 0;
+        align-self: center;
+        z-index: -1;
+        color: var(--black);
+        transform: translateY(100%);
+        animation: ${slideInAnimation} 0.5s ease-out forwards;
+        // Not really necessary, but just in case some browser is being weird
+        text-decoration: none;
+      }
+    }
+    > span:nth-child(2)::after {
+      animation-delay: 0.12s;
+    }
+    > span:nth-child(3)::after {
+      animation-delay: 0.24s;
+    }
+  }
 `
 const SubText = styled.div`
   font-weight: 500;
@@ -57,10 +116,7 @@ const StyledUspBar = styled(UspBar)`
   }
 `
 
-const React = styled.span`
-  white-space: nowrap;
-`
-const ReactLogoAnimation = keyframes`
+const reactLogoAnimation = keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -69,10 +125,12 @@ const ReactLogoAnimation = keyframes`
   }
 `
 const StyledReactLogo = styled(ReactLogo)`
-  height: 1em;
+  height: 0.8em;
+  margin-top: -0.1em;
+  color: var(--black);
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: ${ReactLogoAnimation} infinite 20s linear;
+    animation: ${reactLogoAnimation} infinite 20s linear;
   }
 
   ${IntroTitle} & {
@@ -80,7 +138,9 @@ const StyledReactLogo = styled(ReactLogo)`
     // do a good job of informing browsers the element and animation are
     // inactive without affecting the user
     visibility: hidden;
-    transition: visibility 600ms ease-out;
+    @media (prefers-reduced-motion: no-preference) {
+      transition: visibility 600ms ease-out;
+    }
 
     path {
       transform: scale(0);
@@ -102,18 +162,9 @@ const StyledReactLogo = styled(ReactLogo)`
   }
 `
 
-export const reactifyTitle = (title: string) =>
-  reactStringReplace(
-    title,
-    'React',
-    <React>
-      React <StyledReactLogo aria-hidden />
-    </React>,
-  )
-
 interface Props {
   kicker?: ReactNode
-  title: ReactNode
+  title: string
   subText?: ReactNode
 }
 
@@ -122,7 +173,22 @@ const HeroSection = ({ kicker, title, subText }: Props) => (
     <StyledContainer>
       <Intro>
         {kicker && <Kicker>{kicker}</Kicker>}
-        <IntroTitle>{title}</IntroTitle>
+        {/** This is setup so the h1 has normal HTML to make it as readable as possible to search engines, and the animation is in pseudo elements. */}
+        <IntroTitle>
+          {title.split(' ').map((word, index) => (
+            <Fragment key={`${word}-${index}`}>
+              <Word data-word={word}>
+                {word === 'React' ? (
+                  <>
+                    React <StyledReactLogo aria-hidden />
+                  </>
+                ) : (
+                  word
+                )}
+              </Word>{' '}
+            </Fragment>
+          ))}
+        </IntroTitle>
       </Intro>
       {subText && <SubText>{subText}</SubText>}
 
