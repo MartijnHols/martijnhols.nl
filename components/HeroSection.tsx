@@ -59,7 +59,7 @@ const Word = styled.span`
 const IntroTitle = styled.h1`
   margin: 0;
 
-  @media (prefers-reduced-motion: no-preference) {
+  /* @media (prefers-reduced-motion: no-preference) {
     animation: ${mainTextAnimation} forwards;
 
     *::selection {
@@ -96,7 +96,7 @@ const IntroTitle = styled.h1`
     > span:nth-child(3)::after {
       animation-delay: 0.24s;
     }
-  }
+  } */
 `
 const SubText = styled.div`
   font-weight: 500;
