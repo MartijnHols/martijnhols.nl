@@ -16,6 +16,19 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
 }
 
+const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`.replace(/\n/g, '')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
   compress: process.env.COMPRESS === 'false' ? false : true,
@@ -71,6 +84,39 @@ const nextConfig = withBundleAnalyzer({
       destination: 'https://plausible.io/api/event',
     },
   ],
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'Referrer-Policy',
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy#directives
+            // Send referer as I will happily show people I linked to their site
+            value: 'no-referrer-when-downgrade',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader,
+          },
+          {
+            key: 'Permissions-Policy',
+            // Disallow everything but video features (fullscreen, PIP)
+            value:
+              'accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=*, geolocation=(), gyroscope=(), microphone=(), midi=(), payment=(), picture-in-picture=*, publickey-credentials-get=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()',
+          },
+        ],
+      },
+    ]
+  },
   webpack: (config, { isServer }) => {
     // Top-level await
     config.experiments = {
