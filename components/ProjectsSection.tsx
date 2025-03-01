@@ -7,7 +7,7 @@ import ProjectBrief from './ProjectBrief'
 const Section = styled.section`
   position: relative;
   color: var(--black);
-  padding: 150px 0;
+  padding: 10em 0;
 `
 const Title = styled.h2`
   margin-bottom: 0;
@@ -17,7 +17,9 @@ const SubTitle = styled.div`
   font-weight: 500;
   font-size: 1.25em;
   margin-bottom: var(--spacing6);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  line-height: 1.4;
 `
 
 const ProjectsSection = () => (

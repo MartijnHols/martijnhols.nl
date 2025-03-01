@@ -5,8 +5,8 @@ const Container = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 81.25em;
-  padding-left: 0.8em;
-  padding-right: 0.8em;
+  padding-left: var(--spacing2);
+  padding-right: var(--spacing2);
 
   @media (min-width: ${breakpoints.TABLET}px) {
     padding-left: var(--spacing6);

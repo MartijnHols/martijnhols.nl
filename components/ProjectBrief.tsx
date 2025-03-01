@@ -18,13 +18,16 @@ const Container = styled(Panel)`
   margin-top: var(--spacing5);
   margin-bottom: var(--spacing7);
   // Offset the padding so the code text aligns with the rest of the text
-  margin-left: calc(var(--spacing4) * -1);
-  margin-right: calc(var(--spacing4) * -1);
+  margin-left: calc(var(--spacing2) * -1);
+  margin-right: calc(var(--spacing2) * -1);
   padding: var(--spacing3) var(--spacing4) var(--spacing2);
 
   @media (min-width: ${breakpoints.TABLET}px) {
     display: flex;
     gap: var(--spacing4);
+    // Offset the padding so the code text aligns with the rest of the text
+    margin-left: calc(var(--spacing4) * -1);
+    margin-right: calc(var(--spacing4) * -1);
   }
 `
 const highlightedCss = css`

@@ -58,10 +58,6 @@ const Article = styled(Panel)`
   // visually aligned.
   margin-top: var(--spacing5);
   margin-bottom: var(--spacing7);
-  // Offset the padding so the code text aligns with the rest of the text
-  margin-left: calc(var(--spacing4) * -1);
-  margin-right: calc(var(--spacing4) * -1);
-  padding: var(--spacing3) var(--spacing4) var(--spacing2);
   display: flex;
   gap: 1em;
   flex-flow: column;
@@ -69,6 +65,10 @@ const Article = styled(Panel)`
   @media (min-width: ${breakpoints.TABLET}px) {
     flex-direction: row;
     gap: 2em;
+    padding: var(--spacing3) var(--spacing4) var(--spacing2);
+    // Offset the padding so the code text aligns with the rest of the text
+    margin-left: calc(var(--spacing4) * -1);
+    margin-right: calc(var(--spacing4) * -1);
   }
 `
 const howToArticleCss = css`

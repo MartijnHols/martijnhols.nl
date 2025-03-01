@@ -12,9 +12,9 @@ const Container = styled.div`
   margin-top: var(--spacing3);
   margin-bottom: var(--spacing5);
   // Offset the padding so the code text aligns with the rest of the text
-  margin-left: -1em;
-  margin-right: -1em;
-  padding: 0.8em 1em;
+  margin-left: calc(var(--spacing2) * -1);
+  margin-right: calc(var(--spacing2) * -1);
+  padding: var(--spacing2) var(--spacing2);
   color: var(--white);
   --background: var(--black);
   background: var(--background);
