@@ -55,11 +55,14 @@ const mainTextAnimation = keyframes`
 `
 const Word = styled.span`
   white-space: nowrap;
+  position: relative;
 `
+const SecondWordUnderline = styled.span``
+const AnimatedWordContainer = styled.span``
 const IntroTitle = styled.h1`
   margin: 0;
 
-  /* @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) {
     animation: ${mainTextAnimation} forwards;
 
     *::selection {
@@ -69,12 +72,29 @@ const IntroTitle = styled.h1`
     ${Word} {
       position: relative;
       z-index: 0;
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(50% + 0.528em),
-        0 calc(50% + 0.528em)
-      );
+      align-self: center;
+    }
+    ${SecondWordUnderline}::before {
+      content: attr(data-word);
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      align-self: center;
+      color: transparent;
+      text-decoration: underline;
+      text-decoration-color: var(--white);
+      text-decoration-thickness: 0.3em;
+      // This is the h1 thinkness + offset combined
+      text-underline-offset: 0.15em;
+      // While I would like to use this so the P isn't cut off when animation is
+      // complete, it makes the P appear before it'd supposed to
+      text-decoration-skip-ink: none;
+    }
+    ${AnimatedWordContainer} {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 0);
+      z-index: -2;
 
       ::after {
         content: attr(data-word);
@@ -82,21 +102,15 @@ const IntroTitle = styled.h1`
         position: absolute;
         inset: 0;
         align-self: center;
-        z-index: -1;
         color: var(--black);
         transform: translateY(100%);
         animation: ${slideInAnimation} 0.5s ease-out forwards;
-        // Not really necessary, but just in case some browser is being weird
+        // Not really necessary, but just in case some browser wants to be weird
         text-decoration: none;
+        animation-delay: calc(var(--index) * 0.12s);
       }
     }
-    > span:nth-child(2)::after {
-      animation-delay: 0.12s;
-    }
-    > span:nth-child(3)::after {
-      animation-delay: 0.24s;
-    }
-  } */
+  }
 `
 const SubText = styled.div`
   font-weight: 500;
@@ -177,7 +191,7 @@ const HeroSection = ({ kicker, title, subText }: Props) => (
         <IntroTitle>
           {title.split(' ').map((word, index) => (
             <Fragment key={`${word}-${index}`}>
-              <Word data-word={word}>
+              <Word>
                 {word === 'React' ? (
                   <>
                     React <StyledReactLogo aria-hidden />
@@ -185,6 +199,15 @@ const HeroSection = ({ kicker, title, subText }: Props) => (
                 ) : (
                   word
                 )}
+
+                <SecondWordUnderline aria-hidden data-word={word} />
+                <AnimatedWordContainer
+                  aria-hidden
+                  data-word={word}
+                  style={{
+                    ['--index' as string]: index,
+                  }}
+                />
               </Word>{' '}
             </Fragment>
           ))}
