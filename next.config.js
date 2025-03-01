@@ -16,6 +16,8 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
 }
 
+// Note there's a bug in Safari where upgrade-insecure-requests prevents
+// localhost from working. See https://github.com/github/secure_headers/issues/348
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
