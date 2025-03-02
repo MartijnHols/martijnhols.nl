@@ -69,6 +69,7 @@ export const h5 = css`
   margin-bottom: -1em;
 `
 
+// TODO: Remove global heading styling
 export const globalStyles = css`
   h1,
   h2,

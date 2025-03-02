@@ -1,8 +1,9 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Fragment, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { breakpoints } from '../theme'
 import * as theme from '../theme'
+import AnimatedH1 from './AnimatedH1'
 import ReactLogo from './assets/ReactLogo.svg'
 import ContactButtonClipped from './ContactButtonClipped'
 import Container from './Container'
@@ -34,83 +35,8 @@ const Kicker = styled.div`
     font-size: 1.75em;
   }
 `
-const slideInAnimation = keyframes`
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-`
-// Progressive enhancement; if a browser doesn't support animations (eg for
-// accessibility or more likely search engine spiders), the text will be visible
-// right away. If it does support this, the text will appear with the animation.
-const mainTextAnimation = keyframes`
-  from {
-    color: transparent;
-  }
-  to {
-    color: transparent;
-  }
-`
-const Word = styled.span`
-  white-space: nowrap;
-  position: relative;
-`
-const SecondWordUnderline = styled.span``
-const AnimatedWordContainer = styled.span``
-const IntroTitle = styled.h1`
+const StyledAnimatedH1 = styled(AnimatedH1)`
   margin: 0;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: ${mainTextAnimation} forwards;
-
-    *::selection {
-      color: var(--black);
-    }
-
-    ${Word} {
-      position: relative;
-      z-index: 0;
-      align-self: center;
-    }
-    ${SecondWordUnderline}::before {
-      content: attr(data-word);
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      align-self: center;
-      color: transparent;
-      text-decoration: underline;
-      text-decoration-color: var(--white);
-      text-decoration-thickness: 0.3em;
-      // This is the h1 thinkness + offset combined
-      text-underline-offset: 0.15em;
-      // While I would like to use this so the P isn't cut off when animation is
-      // complete, it makes the P appear before it'd supposed to
-      text-decoration-skip-ink: none;
-    }
-    ${AnimatedWordContainer} {
-      position: absolute;
-      inset: 0;
-      clip-path: inset(0 0 0 0);
-      z-index: -2;
-
-      ::after {
-        content: attr(data-word);
-        display: block;
-        position: absolute;
-        inset: 0;
-        align-self: center;
-        color: var(--black);
-        transform: translateY(100%);
-        animation: ${slideInAnimation} 0.5s ease-out forwards;
-        // Not really necessary, but just in case some browser wants to be weird
-        text-decoration: none;
-        animation-delay: calc(var(--index) * 0.12s);
-      }
-    }
-  }
 `
 const SubText = styled.div`
   font-weight: 500;
@@ -147,7 +73,7 @@ const StyledReactLogo = styled(ReactLogo)`
     animation: ${reactLogoAnimation} infinite 20s linear;
   }
 
-  ${IntroTitle} & {
+  ${StyledAnimatedH1} & {
     // It hides the element *after* the scale transition is done, so this should
     // do a good job of informing browsers the element and animation are
     // inactive without affecting the user
@@ -163,7 +89,7 @@ const StyledReactLogo = styled(ReactLogo)`
     }
   }
 
-  ${IntroTitle}:hover & {
+  ${StyledAnimatedH1}:hover & {
     visibility: visible;
 
     path {
@@ -187,31 +113,19 @@ const HeroSection = ({ kicker, title, subText }: Props) => (
     <StyledContainer>
       <Intro>
         {kicker && <Kicker>{kicker}</Kicker>}
-        {/** This is setup so the h1 has normal HTML to make it as readable as possible to search engines, and the animation is in pseudo elements. */}
-        <IntroTitle>
-          {title.split(' ').map((word, index) => (
-            <Fragment key={`${word}-${index}`}>
-              <Word>
-                {word === 'React' ? (
-                  <>
-                    React <StyledReactLogo aria-hidden />
-                  </>
-                ) : (
-                  word
-                )}
-
-                <SecondWordUnderline aria-hidden data-word={word} />
-                <AnimatedWordContainer
-                  aria-hidden
-                  data-word={word}
-                  style={{
-                    ['--index' as string]: index,
-                  }}
-                />
-              </Word>{' '}
-            </Fragment>
-          ))}
-        </IntroTitle>
+        <StyledAnimatedH1
+          renderWord={(word) =>
+            word === 'React' ? (
+              <>
+                React <StyledReactLogo aria-hidden />
+              </>
+            ) : (
+              word
+            )
+          }
+        >
+          {title}
+        </StyledAnimatedH1>
       </Intro>
       {subText && <SubText>{subText}</SubText>}
 
