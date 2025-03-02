@@ -16,20 +16,22 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
 }
 
-// Note there's a bug in Safari where upgrade-insecure-requests prevents
-// localhost from working. See https://github.com/github/secure_headers/issues/348
+// There's a bug in Safari where upgrade-insecure-requests prevents localhost
+// from working. See https://github.com/github/secure_headers/issues/348
 const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-`.replace(/\n/g, '')
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' blob: data:;
+  font-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  ${process.env.NODE_ENV === 'production' ? 'upgrade-insecure-requests;' : ''}
+`
+  .replace(/\n/g, '')
+  .trim()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withBundleAnalyzer({
