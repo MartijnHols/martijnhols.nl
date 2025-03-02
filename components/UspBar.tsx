@@ -43,8 +43,8 @@ const UspPanel = styled(Panel)`
       all 0.2s ease-in-out;
 
     :hover {
-      --box-shadow-distance: 12px;
-      transform: translate(4px, -4px);
+      --box-shadow-distance: calc(var(--spacing1) * 1.5);
+      transform: translate(var(--spacing1) * 0.5, calc(var(--spacing1) * -0.5));
       color: var(--yellow50);
     }
   }

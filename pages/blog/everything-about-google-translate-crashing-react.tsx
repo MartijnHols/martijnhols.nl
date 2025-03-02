@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -375,7 +375,7 @@ useEffect(() => {
         sizes="(min-width: 768px) 400px, 100vw"
       />
     </Figure>
-    <Aside>
+    <AsideWithParagraph>
       The reproduction shows three sets of brackets around the text. This is
       because React makes a separate <Code>TextNode</Code> for each variable in
       a string. The real Google Translate would{' '}
@@ -385,7 +385,7 @@ useEffect(() => {
       the text nodes, merging them together, but our simulation doesn't do this
       to keep it simpler. This makes the reproduction slightly different from
       Google Translate, but the result is the same.
-    </Aside>
+    </AsideWithParagraph>
     <h3 id="issue-crashes">Issue: Crashes</h3>
     <p>
       If you're running an error monitoring tool like Sentry or tried manually
@@ -571,7 +571,7 @@ useEffect(() => {
       effort and code quality sacrifice for them.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       The ESLint plugin{' '}
       <a href="https://github.com/sayari-analytics/eslint-plugin-sayari">
         eslint-plugin-sayari
@@ -585,7 +585,7 @@ useEffect(() => {
       an extremely high false-positive rate and will require you to wrap nearly
       all <Code>TextNode</Code>s in your app. The ternary crashes are also not
       solved by this rule.
-    </Aside>
+    </AsideWithParagraph>
 
     <h5 id="self-re-rendering-error-boundaries">
       3. Self re-rendering error boundaries
@@ -784,14 +784,14 @@ useEffect(() => {
       well enough and ensure you're not showing users incorrect data.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       Regardless of what you do, it might help to inform users of the issues
       they might encounter when using Google Translate. See my article{' '}
       <Link href="/blog/how-to-detect-google-translate-and-other-machine-translation">
         How to detect Google Translate and other machine translation
       </Link>{' '}
       for a way to detect when Google Translate is active.
-    </Aside>
+    </AsideWithParagraph>
 
     <h3 id="alternatives">Alternatives</h3>
     <p>
@@ -817,14 +817,14 @@ useEffect(() => {
       apps. Do you know of any other alternatives?
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       There might be a possible (external) workaround in React that uses a
       similar mechanic to React Dev Tools's “render highlighting” to trigger
       remounting (by React) of the entire parent of <Code>TextNode</Code>s that
       are changed. However, I looked into the feature's code and that is part of
       a &gt;4500 LOC file so it seemed more involved than I bargained for. Maybe
       someone else can take a look at it.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="conclusion">Conclusion</h2>
     <p>

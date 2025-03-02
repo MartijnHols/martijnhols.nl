@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -97,11 +97,11 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       time and effort.
     </p>
 
-    <Aside variant="sm">
+    <AsideWithParagraph variant="sm">
       Most examples in this article use React, but the principles apply to any
       front-end app. Even if you're not using React, you can still benefit from
       the practices outlined here.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="semantic-html">Semantic HTML</h2>
 
@@ -247,7 +247,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       always use the <Code>for</Code> attribute.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       In React, I'm not a fan of hard-coded ids as components are meant to be
       easily reusable and may be rendered multiple times on the same page. To
       avoid id conflicts, you can use React's{' '}
@@ -259,7 +259,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
         Generating IDs for several related elements
       </Link>{' '}
       for an example of how to do this in forms.
-    </Aside>
+    </AsideWithParagraph>
 
     <h3 id="placeholders">Placeholders</h3>
 
@@ -324,13 +324,13 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       />
     </Figure>
 
-    <Aside>
+    <AsideWithParagraph>
       The GIF above has a custom field for the "Soort" (type) field. It's fully
       accessible, as it's built with radio buttons and CSS. The radio buttons
       are visually hidden but fully accessible; they can still be selected and
       are announced by screen readers. This highlights the power of using
       semantic HTML as much as possible.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="modals">Modals</h2>
 
@@ -401,11 +401,11 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       <Code>returnFocus</Code> option.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       For confirmation dialogs, consider settings the initial focus to the
       "Confirm" button. This allows users to immediately confirm an action by
       pressing <Code>Enter</Code>, just like in native dialogs.
-    </Aside>
+    </AsideWithParagraph>
 
     <h4 id="inactive-content">Inactive content</h4>
 
@@ -483,7 +483,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       typically suggest.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       I wrote a section called{' '}
       <Link href="/blog/the-european-accessibility-act-for-websites-and-apps#what-is-accessibility-and-who-is-it-for">
         What is accessibility and who is it for?
@@ -495,7 +495,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       that covers the different types of users that benefit from accessibility.
       It's worth a read if you're interested in learning more about the
       different types of users that benefit from accessibility.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="styling">Styling</h2>
 

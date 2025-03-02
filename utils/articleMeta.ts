@@ -8,7 +8,7 @@ export interface ArticleStaticProps {
   relatedArticles: BlogArticleMeta[]
 }
 
-const makeArticleGetStaticProps =
+export const makeArticleGetStaticProps =
   (article: BlogArticleMeta): GetStaticProps<ArticleStaticProps> =>
   async () => {
     const articles = await getPublishedArticles()

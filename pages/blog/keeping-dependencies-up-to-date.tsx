@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
@@ -106,12 +106,12 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
       . It's safer to let new versions mature a bit before installing them.
     </p>
 
-    <Aside variant="sm">
+    <AsideWithParagraph variant="sm">
       The versioning scheme <a href="https://semver.org/">semver</a> is often
       used to indicate the impact of an update. Just know that it's completely
       optional for a library to use the versioning scheme. You can't blindly
       trust version numbers.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="manually-updating">Manually updating</h2>
 
@@ -158,11 +158,11 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
       .
     </p>
 
-    <Aside label="Tip">
+    <AsideWithParagraph label="Tip">
       Before updating a dependency, make sure the dependency is still in use.
       The best kind of dependency update is one where you can remove the
       dependency entirely.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="prioritizing">Prioritizing</h2>
     <p>
@@ -246,7 +246,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
       docker run -v "$PWD":/usr/src/app -w /usr/src/app node:20 npx libyear
     </CodeSnippet>
 
-    <Aside>
+    <AsideWithParagraph>
       The output of the npm/yarn version of libyear looks a lot more complicated
       than it is. Just focus on "drift"; the amount of years (i.e. libyears)
       between when the current version you use was released, and when the latest
@@ -255,7 +255,7 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
         The other metrics
       </a>{' '}
       are much less significant.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="conclusion">Conclusion</h2>
 

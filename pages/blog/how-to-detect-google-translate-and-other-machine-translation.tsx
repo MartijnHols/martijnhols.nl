@@ -1,4 +1,4 @@
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -47,10 +47,10 @@ const GistHowToDetectGoogleTranslateAndOtherMachineTranslation = (
       attribute for changes. Any proper machine translator will update its value
       to reflect the new language inside your page after translation is applied.
     </p>
-    <Aside label="Note" variant="xs">
+    <AsideWithParagraph label="Note" variant="xs">
       Make sure your <Code>html</Code> element has the correct <Code>lang</Code>{' '}
       attribute set initially. If it is omitted, detection will not work.
-    </Aside>
+    </AsideWithParagraph>
     <p>
       You can detect most machine translations, including Google Translate, with
       the following code snippet:
@@ -112,14 +112,14 @@ observer.observe(title, {
       prominent) language switcher, or send an event to GTM.
     </p>
     <p>Hope that helps.</p>
-    <Aside>
+    <AsideWithParagraph>
       Machine translators' DOM changes often interfere with tools like React,
       leading to crashes. See{' '}
       <Link href="/blog/everything-about-google-translate-crashing-react">
         Everything about Google Translate crashing React (and other web apps)
       </Link>{' '}
       for more info.
-    </Aside>
+    </AsideWithParagraph>
   </BlogArticle>
 )
 

@@ -15,7 +15,6 @@ const Container = styled.div`
   margin: 1em 0 2em;
   box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance) 0
     0 var(--yellow);
-  clear: both;
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 94.5%; // 1px smaller to very slightly de-emphasize
@@ -76,14 +75,16 @@ interface Props {
   variant?: 'xs' | 'sm' | 'md'
 }
 
-const Aside = ({ children, label, variant = 'md' }: Props) => (
+const AsideWithParagraph = ({ children, label, variant = 'md' }: Props) => (
   <Container>
     <Label variant={variant}>{label ?? 'Aside'}</Label>
     <Content>
-      <CopyPasteOnly>&gt; {label ?? 'Aside'}:&nbsp;</CopyPasteOnly>
-      {children}
+      <p>
+        <CopyPasteOnly>&gt; {label ?? 'Aside'}:&nbsp;</CopyPasteOnly>
+        {children}
+      </p>
     </Content>
   </Container>
 )
 
-export default Aside
+export default AsideWithParagraph

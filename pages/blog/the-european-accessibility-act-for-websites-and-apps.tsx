@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import Image from 'next/image'
 import { useState } from 'react'
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -171,13 +171,13 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         can reach more people and have SEO benefits, as search engines can
         understand your content better.
       </p>
-      <Aside>
+      <AsideWithParagraph>
         <Link href="https://adrianroselli.com/2017/02/not-all-screen-reader-users-are-blind.html">
           Not all screen reader users are blind
         </Link>{' '}
         by Adrian Roselli is a great read if you want to learn more about the
         diversity of screen reader users.
-      </Aside>
+      </AsideWithParagraph>
 
       <h2 id="which-websites-and-apps-are-covered">
         Which websites and apps are covered?
@@ -292,7 +292,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         , the European standard for ICT accessibility. This makes WCAG 2.1 the
         most reliable framework to ensure compliance.
       </p>
-      <Aside>
+      <AsideWithParagraph>
         <Link href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">
           EN 301 549
         </Link>{' '}
@@ -301,7 +301,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         official standard for EAA compliance. This update is expected to require
         WCAG 2.2 AA conformance, but until then, WCAG 2.1 AA remains the best
         way to ensure compliance.
-      </Aside>
+      </AsideWithParagraph>
       <p>
         WCAG 2.1 is built on four key principles, abbreviated as <i>POUR</i>:
       </p>
@@ -711,7 +711,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         early will give you the time to assess, plan, and tackle accessibility
         issues incrementally.
       </p>
-      <Aside>
+      <AsideWithParagraph>
         Remember that in late 2025,{' '}
         <Link href="https://portal.etsi.org/eWPM/index.html#/schedule?WKI_ID=64282">
           a new version of EN 301 549
@@ -719,7 +719,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         is expected that will closely align with the EAA. Once published, it
         will become the official technical standard for EAA compliance, and
         you'll need to ensure your sites and apps meet the updated requirements.
-      </Aside>
+      </AsideWithParagraph>
       <h2 id="next-steps">Next steps</h2>
       <p>
         The EAA introduces many new requirements, and its deadlines are fast

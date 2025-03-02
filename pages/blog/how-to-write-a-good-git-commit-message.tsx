@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import CodeSnippet from '../../components/CodeSnippet'
@@ -74,11 +74,11 @@ const BlogArticleHowToWriteAGoodGitCommitMessage = (
       state” would never be enough, but “Fix hover state of Button” could
       sufficiently summarize your change.
     </p>
-    <Aside>
+    <AsideWithParagraph>
       “Fix PR feedback” or any variations are never a good Git commit message.
       It doesn't describe what changes, and it isn't even a good motivation to
       make a change.
-    </Aside>
+    </AsideWithParagraph>
     <p>
       Sometimes the title is enough to describe a commit and the body can be
       omitted. This can be for commits that are so simple, that no additional
@@ -172,13 +172,13 @@ const BlogArticleHowToWriteAGoodGitCommitMessage = (
       title sufficiently describes the commit. Still, it's better to write a
       body too often than hardly ever.
     </p>
-    <Aside>
+    <AsideWithParagraph>
       Any context that you would write in your PR should be part of your commit
       messages in Git. If you forgot to add sufficient context in your initial
       commit, you can always amend or rebase it in later. The only thing you
       unfortunately can't put in a commit are screenshots (unless you upload
       them first).
-    </Aside>
+    </AsideWithParagraph>
     <h2 id="5-reference-everything">5. Reference everything</h2>
     <p>
       Include issue numbers or link to anything related at the bottom of the

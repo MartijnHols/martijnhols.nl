@@ -1,6 +1,7 @@
 /* global process */
 
 import makeBundleAnalyzer from '@next/bundle-analyzer'
+import createMDX from '@next/mdx'
 
 const withBundleAnalyzer = makeBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -15,6 +16,8 @@ if (!process.env.NEXT_PUBLIC_DEFAULT_LOCALE) {
 if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
 }
+
+const applyMdx = createMDX()
 
 // There's a bug in Safari where upgrade-insecure-requests prevents localhost
 // from working. See https://github.com/github/secure_headers/issues/348
@@ -34,7 +37,7 @@ const cspHeader = `
   .trim()
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withBundleAnalyzer({
+const nextConfig = {
   compress: process.env.COMPRESS === 'false' ? false : true,
   reactStrictMode: true,
   // Values that can be different per instance of the server
@@ -121,6 +124,7 @@ const nextConfig = withBundleAnalyzer({
       },
     ]
   },
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   webpack: (config, { isServer }) => {
     // Top-level await
     config.experiments = {
@@ -179,6 +183,6 @@ const nextConfig = withBundleAnalyzer({
 
     return config
   },
-})
+}
 
-export default nextConfig
+export default withBundleAnalyzer(applyMdx(nextConfig))

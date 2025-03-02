@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Abbreviation from '../../components/Abbreviation'
 import Annotation from '../../components/Annotation'
-import Aside from '../../components/Aside'
+import AsideWithParagraph from '../../components/AsideWithParagraph'
 import BlogArticle from '../../components/BlogArticle'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import Code from '../../components/Code'
@@ -118,7 +118,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
         sizes="(min-width: 768px) 650px, 100vw"
       />
     </Figure>
-    <Aside>
+    <AsideWithParagraph>
       Most front-end security advisories are boring (i.e. unimpactful). A large
       portion affects development tooling, and unless they can be{' '}
       <a href="https://github.com/advisories/GHSA-wr3j-pwj9-hqq6">
@@ -129,7 +129,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       vulnerabilities that actually matter for the front end. But since
       assessing the real impact of vulnerabilities is tricky, your safest bet is
       to resolve them all.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="deliberately-introduced-malicious-code">
       Deliberately introduced malicious code
@@ -201,7 +201,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       done.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       Earlier this year, the Linux package <Code>xz</Code> was{' '}
       <a href="https://arstechnica.com/security/2024/04/what-we-know-about-the-xz-utils-backdoor-that-almost-infected-the-world/">
         almost compromised by a backdoor
@@ -227,7 +227,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
         in
       </a>{' '}
       <a href="https://www.bleepingcomputer.com/tag/npm/">the npm ecosystem</a>)
-    </Aside>
+    </AsideWithParagraph>
     <h2 id="install-scripts">Install scripts</h2>
     <p>
       Install scripts are another often overlooked attack vector. These scripts
@@ -279,7 +279,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       them to your "start" script and in CI.
     </p>
 
-    <Aside>
+    <AsideWithParagraph>
       Running a <Code>npx</Code> script is equally as risky since they have full
       access to your machine. I like to run these scripts in a Docker container
       to minimize the security risk
@@ -292,7 +292,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
         docker run -v "$PWD":/usr/src/app -w /usr/src/app node:20 npx
         can-i-ignore-scripts
       </Code>
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="bundling-and-transpilation">Bundling and transpilation</h2>
 
@@ -348,11 +348,11 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
     </p>
     <p>We need better ways to determine trustworthiness.</p>
 
-    <Aside>
+    <AsideWithParagraph>
       Even if you were to check the trustworthiness of package managers when you
       first select a package, the maintainers of a package rarely stay the same
       forever. You would have to check again before every update.
-    </Aside>
+    </AsideWithParagraph>
 
     <h2 id="sub-dependencies">Sub-dependencies</h2>
 
@@ -432,11 +432,11 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       With these recommendations, you're much less likely to be affected.
     </p>
 
-    <Aside label="ps">
+    <AsideWithParagraph label="ps">
       Don't forget your CI tooling. For example, GitHub Actions automatically
       updates to the latest version of actions by default. These can inject
       nasty stuff into your builds as well, and their code is even less visible.
-    </Aside>
+    </AsideWithParagraph>
   </BlogArticle>
 )
 

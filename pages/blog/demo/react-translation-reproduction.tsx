@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import Annotation from '../../../components/Annotation'
-import Aside from '../../../components/Aside'
+import AsideWithParagraph from '../../../components/AsideWithParagraph'
 import Code from '../../../components/Code'
 import CodeSnippet from '../../../components/CodeSnippet'
 import Container from '../../../components/Container'
@@ -210,10 +210,10 @@ const ReactTranslationReproduction = () => {
           simulate how most machine translation tools work, including Google
           Translate inside Google Chrome.
         </p>
-        <Aside variant="xs">
+        <AsideWithParagraph variant="xs">
           You can't reproduce this as easily with a ternary since React will
           cleverly replace the TextNode's content for those if possible.
-        </Aside>
+        </AsideWithParagraph>
 
         <p>
           <Link href="/blog">More articles</Link>
