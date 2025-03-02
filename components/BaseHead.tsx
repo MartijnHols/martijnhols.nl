@@ -22,7 +22,7 @@ const BaseHead = ({
   <Head>
     <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
     {description && <meta name="description" content={description} />}
     <meta name="theme-color" content={theme.colors.black} />
     <meta property="og:type" content={type} />
