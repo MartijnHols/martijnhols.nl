@@ -21,6 +21,12 @@ import absoluteUrl from '../../utils/absoluteUrl'
 import openGraphImage from './assets/ogimage-blog.png'
 import RssFeedIcon from './assets/rss.svg'
 
+// This works fine so long as I don't have too many articles. As I publish more,
+// I will need to rewrite this to be server-side with pagination. Hopefully by
+// the time that's necessary, RSC will have a good styled components solution
+// (e.g. PigmentCSS).
+// I also want to make articles MDX-based at some point (mostly because it makes
+// it easier for AI to act as my editor), so I'll need to rewrite this anyway.
 const articles = [
   import('./license'),
   import('./how-to-detect-the-on-screen-keyboard-in-ios-safari'),

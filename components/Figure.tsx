@@ -1,7 +1,8 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentProps, ReactNode } from 'react'
+import { breakpoints } from '../theme'
 import CopyPasteOnly from './CopyPasteOnly'
-import Link from './Link'
 
 const StyledFigure = styled.figure`
   text-align: center;
@@ -9,61 +10,49 @@ const StyledFigure = styled.figure`
   // take care of it
   margin: 1.5em 0;
 `
-const ImageLink = styled(Link)`
+const ImageContainer = styled.div`
   > img {
     display: inline-block;
-    border: 7px solid var(--black);
+    border: var(--spacing1) solid var(--black);
     box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
       0 0 var(--yellow);
-    margin-bottom: 9px;
-    transition: all 120ms ease-out;
-  }
-
-  :hover > img {
-    box-shadow: -11px 11px 0 0px var(--yellow);
-    transform: translate(4px, -4px);
+    margin-bottom: var(--box-shadow-distance);
   }
 `
 const FigCaption = styled.figcaption`
-  font-size: 90%;
+  font-size: 85%;
+  margin-top: 0.25em;
+  color: var(--black300);
 `
 
-interface Props extends Omit<ComponentProps<typeof Link>, 'className'> {
-  caption: ReactNode
-  captionLink?: boolean
-  href: string
+export const floatRightTabletCss = css`
+  @media (min-width: ${breakpoints.TABLET}px) {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+  }
+`
+
+interface Props extends ComponentProps<typeof StyledFigure> {
+  caption?: ReactNode
   /** An Image */
   children: ReactNode
-  className?: string
 }
 
-const Figure = ({
-  children,
-  caption,
-  captionLink = true,
-  href,
-  className,
-  ...others
-}: Props) => (
-  <StyledFigure className={className}>
+const Figure = ({ children, caption, ...others }: Props) => (
+  <StyledFigure {...others}>
     <CopyPasteOnly>Picture:&nbsp;</CopyPasteOnly>
-    <ImageLink href={href} className="plain" {...others}>
-      {children}
-    </ImageLink>
-    <FigCaption>
-      <CopyPasteOnly>Caption:&nbsp;</CopyPasteOnly>
-      {captionLink ? (
-        <Link href={href} {...others}>
-          {caption}
-        </Link>
-      ) : (
-        caption
-      )}
-      <CopyPasteOnly>
-        <br />
-        <br />
-      </CopyPasteOnly>
-    </FigCaption>
+    <ImageContainer>{children}</ImageContainer>
+    {caption && (
+      <FigCaption>
+        <CopyPasteOnly>Caption:&nbsp;</CopyPasteOnly>
+        {caption}
+        <CopyPasteOnly>
+          <br />
+          <br />
+        </CopyPasteOnly>
+      </FigCaption>
+    )}
   </StyledFigure>
 )
 

@@ -272,8 +272,12 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
     </p>
 
     <Figure
-      caption="Neither form has been filled, but placeholders in one make that harder to tell."
-      href="/blog/demo/accessibility-placeholders"
+      caption={
+        <Link href="/blog/demo/accessibility-placeholders">
+          Neither form has been filled, but placeholders in one make that harder
+          to tell.
+        </Link>
+      }
     >
       <Image
         src={placeholdersImage}
@@ -312,10 +316,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       without sacrificing accessibility.
     </p>
 
-    <Figure
-      caption="Jumping through form fields with focus indicator"
-      href={focusIndicatorImage.src}
-    >
+    <Figure caption="Jumping through form fields with focus indicator">
       <Image
         src={focusIndicatorImage}
         alt="An animated GIF showing a modal with a form for creating a project in MoneyMonk (text in Dutch). The focus indicator moves through the fields, showing the user's current position. At the end, it loops back to the close button."
@@ -550,10 +551,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       necessary, using negative margins to make it appear visually equal.
     </p>
 
-    <Figure
-      caption="A side-by-side of a modal close button, showing its clickable area."
-      href={closeButtonClickableAreaImage.src}
-    >
+    <Figure caption="A side-by-side of a modal close button, showing its clickable area.">
       <Image
         src={closeButtonClickableAreaImage}
         alt="A side-by-side of a modal close button. Left side shows the button

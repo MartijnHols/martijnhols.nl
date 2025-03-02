@@ -71,8 +71,6 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
           </small>
         </div>
       }
-      captionLink={false}
-      href={dependencySecurityRisksImage.src}
     >
       <Image
         src={dependencySecurityRisksImage}
@@ -111,10 +109,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
       Monitoring and resolving these is the least you can do, but don't assume
       it's enough to keep your app secure.
     </p>
-    <Figure
-      caption="Average security advisories for a front-end project"
-      href={GithubSecurityAdvisories.src}
-    >
+    <Figure caption="Average security advisories for a front-end project">
       <Image
         src={GithubSecurityAdvisories}
         alt="A list of security advisories for a front-end project of various levels ranging from High to Low"
@@ -258,8 +253,6 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
           potential red flags.
         </>
       }
-      captionLink={false}
-      href={CanIIgnore.src}
     >
       <Image
         src={CanIIgnore}
@@ -303,10 +296,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
 
     <h2 id="bundling-and-transpilation">Bundling and transpilation</h2>
 
-    <ObfuscatedPackageFigure
-      caption="An obfuscated bundled package (TailwindCSS)"
-      href={BundledPackageCode.src}
-    >
+    <ObfuscatedPackageFigure caption="An obfuscated bundled package (TailwindCSS)">
       <Image
         src={BundledPackageCode}
         alt="Obfuscated JavaScript code of prettier-plugin-tailwindcss"

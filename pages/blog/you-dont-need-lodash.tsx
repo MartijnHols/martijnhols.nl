@@ -36,8 +36,9 @@ const GistYouDontNeedLodash = (props: ArticleStaticProps) => (
   <BlogArticle {...props}>
     <p>And I reckon you shouldn't use it.</p>
     <LodashFigure
-      caption="Lodash as it describes itself"
-      href="https://lodash.com/"
+      caption={
+        <Link href="https://lodash.com/">Lodash as it describes itself</Link>
+      }
     >
       <Image
         src={lodashImage}

@@ -57,10 +57,7 @@ const BlogArticleHowToWriteAGoodGitCommitMessage = (
       newline and is the remainder of the commit message. In a Git UI, these
       fields are usually separate and you won't have to manually add a newline.
     </p>
-    <Figure
-      caption="Git interfaces usually show separate fields for the title and body (Git Fork pictured)"
-      href={gitForkImage.src}
-    >
+    <Figure caption="Git interfaces usually show separate fields for the title and body (Git Fork pictured)">
       <Image
         src={gitForkImage}
         alt={`A Git UI (Git Fork) showing "Fix typo in commit message gist" in the title field, and an empty body field`}
@@ -122,8 +119,11 @@ const BlogArticleHowToWriteAGoodGitCommitMessage = (
       there's no good reason not to use them.
     </p>
     <Figure
-      caption="A very long commit message gets cut off in the GitHub commit view"
-      href="https://github.com/MartijnHols/martijnhols.nl/commit/807290a7b31d10424d05948f25ab650b26f93b7b"
+      caption={
+        <Link href="https://github.com/MartijnHols/martijnhols.nl/commit/807290a7b31d10424d05948f25ab650b26f93b7b">
+          A very long commit message gets cut off in the GitHub commit view
+        </Link>
+      }
     >
       <Image
         src={githubLongTitleImage}

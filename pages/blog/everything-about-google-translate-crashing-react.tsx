@@ -275,10 +275,7 @@ useEffect(() => {
       change your <i>Preferred languages</i> in the settings like so:
     </p>
 
-    <Figure
-      caption="Replace all preferred languages in the settings"
-      href={chromeLanguageSetupImage.src}
-    >
+    <Figure caption="Replace all preferred languages in the settings">
       <Image
         src={chromeLanguageSetupImage}
         alt={`An animated GIF showing Chrome "Preferred language" settings. The Dutch language is added, and all other languages are removed afterwards.`}
@@ -295,10 +292,7 @@ useEffect(() => {
       the translation icon in the address bar.
     </p>
 
-    <Figure
-      caption="Google Translate will immediately translate the page"
-      href={activateGoogleTranslateImage.src}
-    >
+    <Figure caption="Google Translate will immediately translate the page">
       <Image
         src={activateGoogleTranslateImage}
         alt="An animated GIF showing how Google Translate activation in Chrome."
@@ -373,7 +367,7 @@ useEffect(() => {
       and the component is rerendering, but the translated text is never updated
       to reflect the new value.
     </p>
-    <Figure caption="There are 4 lights!" href={lightsMemeImage.src}>
+    <Figure caption="There are 4 lights!">
       <Image
         src={lightsMemeImage}
         alt={`An animated GIF of Jean-Luc Picard (Star Trek) yelling "There are four lights!".`}
@@ -717,7 +711,6 @@ useEffect(() => {
           </Annotation>
         </>
       }
-      href={autoCardAnywhereImage.src}
     >
       <Image
         src={autoCardAnywhereImage}

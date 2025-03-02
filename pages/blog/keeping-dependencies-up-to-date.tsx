@@ -68,8 +68,11 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
     </p>
 
     <Figure
-      caption="Dependabot's profile on GitHub"
-      href="https://github.com/dependabot"
+      caption={
+        <Link href="https://github.com/dependabot">
+          Dependabot's profile on GitHub
+        </Link>
+      }
     >
       <Image
         src={dependabotImage}
@@ -120,9 +123,14 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
     </p>
 
     <Figure
-      caption="Put it in your calendar"
-      href={dependencyUpdatesIcal}
-      download="Dependency updates appointment.ics"
+      caption={
+        <Link
+          href={dependencyUpdatesIcal}
+          download="Dependency updates appointment.ics"
+        >
+          Put it in your calendar
+        </Link>
+      }
     >
       <Image
         src={dependencyUpdatesScheduledImage}
@@ -210,8 +218,6 @@ const SecurityImplicationsOfPackagesOnTheFrontendGist = (
           Source: <Link href="https://libyear.com/">libyear.com</Link>
         </>
       }
-      captionLink={false}
-      href="https://libyear.com/"
     >
       <Image
         src={libyearsCartoonImage}
