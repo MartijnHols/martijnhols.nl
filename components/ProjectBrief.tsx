@@ -25,6 +25,12 @@ const Container = styled(Panel)`
   @media (min-width: ${breakpoints.TABLET}px) {
     display: flex;
     gap: var(--spacing4);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: ${breakpoints.DESKTOP_LARGE}px) {
+    display: flex;
+    gap: var(--spacing4);
     // Offset the padding so the code text aligns with the rest of the text
     margin-left: calc(var(--spacing4) * -1);
     margin-right: calc(var(--spacing4) * -1);
@@ -98,12 +104,13 @@ const ProjectExplanation = styled.div`
 const ProjectAbout = styled.div`
   // Cancel out paragraph margin
   margin-top: -1.25em;
-  margin-bottom: 1.25em;
+  margin-bottom: -0.5em;
 `
 const Tech = styled.div`
   display: flex;
   gap: var(--spacing1);
   flex-wrap: wrap;
+  font-size: 0.8125em;
 `
 const ContactLinks = styled.div`
   margin-top: var(--spacing2);
