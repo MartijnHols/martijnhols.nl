@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         id: cache
         with:
           path: node_modules
@@ -34,7 +34,7 @@ jobs:
         id: week-number
         run: echo "value=$(date +%W)" >> $GITHUB_OUTPUT
       - name: Cache "yarn-cache"
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         if: steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -44,10 +44,10 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Save "node_modules" to cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: node_modules
-          key: ${{ steps.cache.outputs.primary-key }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
   typecheck:
     needs: [install]
     name: 'Typecheck'
@@ -58,11 +58,11 @@ jobs:
         with:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       - run: yarn typecheck
   lint:
     needs: [install]
@@ -74,11 +74,11 @@ jobs:
         with:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       - run: yarn lint
   build:
     needs: [install]
@@ -92,21 +92,21 @@ jobs:
       # Not only does this share the artifact with other jobs, this also improves build performance by reusing next cache
       - name: Check "build" in cache
         id: cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             .next
             public
           key: build-${{ github.run_number }}
           restore-keys: build
-          required: false
+          fail-on-cache-miss: false
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       - name: Load tags
         if: steps.cache.outputs.cache-hit != 'true'
         run: git fetch --prune --unshallow --tags
@@ -119,12 +119,12 @@ jobs:
         run: yarn build
       - name: Save "build" in cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             .next
             public
-          key: ${{ steps.cache.outputs.primary-key }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
 
   # TODO: Sentry release
 
@@ -136,19 +136,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Restore "build" from cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             .next
             public
           key: build-${{ github.run_number }}
-          required: true
+          fail-on-cache-miss: true
       - name: Restore "node_modules" from cache
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       # Docker build / push
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -166,7 +166,7 @@ jobs:
           name: dockerimage
           path: /tmp/dockerimage.tar
 
-  # TODO: Cypress
+  # TODO: ~~Cypress~~ playwright
 
   lhci-mobile:
     if: false # TODO: fixme
@@ -180,11 +180,11 @@ jobs:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -219,11 +219,11 @@ jobs:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: martijnhols/actions-cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          required: true
+          fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -246,8 +246,6 @@ jobs:
         with:
           name: lighthouse-desktop
           path: lighthouse
-
-  # TODO: Storybook
 
   deploy:
     needs: [
