@@ -93,11 +93,9 @@ jobs:
       - name: Load tags
         if: steps.cache.outputs.cache-hit != 'true'
         run: git fetch --prune --unshallow --tags
-      - run: |
-          echo "ENVIRONMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "VERSION=$(git describe --tags)" >> $GITHUB_ENV
+      - run: echo "ENVIRONMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
         if: steps.cache.outputs.cache-hit != 'true'
-      - name: 'Build martijnhols.nl@${{env.VERSION}} for ${{env.ENVIRONMENT_NAME}}'
+      - name: 'Build martijnhols.nl for ${{env.ENVIRONMENT_NAME}}'
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn build
       - name: Save "build" in cache
