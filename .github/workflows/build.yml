@@ -21,8 +21,8 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules
       - run: yarn --frozen-lockfile --prefer-offline
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Save "node_modules" to cache
@@ -44,7 +44,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       - run: yarn typecheck
   lint:
@@ -60,7 +60,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       - run: yarn lint
   build:
@@ -88,7 +88,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       - name: Load tags
         if: steps.cache.outputs.cache-hit != 'true'
@@ -128,7 +128,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       # Docker build / push
       - name: Set up QEMU
@@ -164,7 +164,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -203,7 +203,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
           fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v4
