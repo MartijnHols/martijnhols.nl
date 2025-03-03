@@ -19,6 +19,7 @@ const Container = styled.div`
       inset 0 0 0 2px var(--black),
       -4px 4px 0 0px var(--yellow);
   }
+  &[data-value='extra'],
   &[data-value='how-to'] {
     background: var(--white);
     color: var(--black);
@@ -42,7 +43,22 @@ interface Props {
 
 const Tag = ({ children, className }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-  if (children === BlogArticleTag.HowTo) {
+  if (children === BlogArticleTag.Extra) {
+    return (
+      <Tooltip content="Extras aren't as in-depth as the main articles and may not appeal to everyone.">
+        {({ props }) => (
+          <Container
+            {...props}
+            data-value={children.toLowerCase()}
+            className={className}
+          >
+            {children}
+          </Container>
+        )}
+      </Tooltip>
+    )
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
+  } else if (children === BlogArticleTag.HowTo) {
     return (
       <Tooltip content="How-tos are technical articles, often centered around code samples. These are likely only relevant for people who run into the challenges they cover.">
         {({ props }) => (

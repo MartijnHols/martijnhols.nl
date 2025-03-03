@@ -1,0 +1,130 @@
+import Image from 'next/image'
+import Aside from '../../components/Aside'
+import Figure from '../../components/Figure'
+import Annotation from '../../components/Annotation'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
+import githubActionsPipelineImage from './github-actions-pipeline.jpg'
+import openGraphImage from './ogimage.png'
+
+export const meta = {
+  slug: 'migrating-away-from-martijnhols-actions-cache',
+  title: 'Migrating away from martijnhols/actions-cache',
+  description:
+    'A short tale about me messing around with Github Action caching, my fork, Github pipeline longevity, and why and how to migrate away from it.',
+  openGraphImage: openGraphImage,
+  // image: accessibilityToolkitImage,
+  publishedAt: '2025-03-03',
+  tags: [BlogArticleTag.Extra, BlogArticleTag.CI_CD, BlogArticleTag.DX],
+}
+
+# Migrating away from martijnhols/actions-cache
+
+I was an early user of Github Actions, and an <Annotation annotation="It might have helped that working with TravisCI was frustrating, and at the time its future was unclear as they had just been acquired by a party which seemed to want to go in a different direction.">immediate fan</Annotation>. I implemented it in all my projects, both private and [public](https://github.com/WoWAnalyzer/WoWAnalyzer/blob/e436c5c78f6461e4bc12e4649e88a8c99d189c6e/.github/workflows/build.yml#L20), which alone lead to over 200 developers relying on pipelines I set up in one way, shape or form.
+
+A good Developer Experience is important to me. I want there to be as little friction as possible for all developers. An important part of that (in my opinion), is CI/CD. And in this case, the duration of pipelines. Too often we have to wait for a pipeline to complete before we can complete something. This can be frustrating and distracting, and a weight slowing you down.
+
+This is why I always do everything I can to minimize my pipeline durations.
+
+In comes Github Actions, which compared to alternatives is already leaps ahead. There are a number of reasons for this:
+
+- Even though it doesn't have the most powerful runners, it's easy enough to parallelize jobs, which in my experience often matters most.
+- It has an almost unlimited amount of runners ready to go at any time
+- It naturally has the best integration with Github. Not having to open or monitor an external system makes things easier (while Github having a monopoly isn't great, from a UX PoV it is)
+- It's free for open source projects
+- Actions are open source and easy to make your own
+- It's popular among open source developers, so there are actions for everything
+- It's config syntax is the <Annotation annotation="I'm still waiting for a CI that uses TypeScript for configuration, with type safety, being able to use references instead of copy-pasting, and loops. Declarative config sounds great in theory for its simplicity, but when it keeps growing (and you keep running into copy-paste issues), it quickly starts to suck.">least bad</Annotation> of all the CI/CD systems I've used
+
+Using Github Actions has its issues, especially now, years later, where they're constantly breaking older things, but it gets the job done. When you get the hang of it, it's pretty easy to set up jobs, to the point that I can go a bit nuts;
+
+<Figure caption="I went a bit nuts">
+  <Image
+    src={githubActionsPipelineImage}
+    alt="A Github Actions pipeline overview screenshot, showing many build steps being executing in 8m 3s total"
+  />
+</Figure>
+
+**This project is quite big, so I'm pretty proud of the pipeline only taking 8 minutes**, especially with E2E test execution, and especially since all of this usually takes 3 to 6 times as long in other projects.
+
+<Aside>
+  While the E2E test suite didn't cover every flow, it covered every page/form
+  and it did do special things like scanning QR codes and ensuring video call
+  integration (via Jitsi) was working correctly by calling a user that [was
+  started from within
+  Cypress](https://gist.github.com/saghul/179feba3df9f12ddf316decd0181b03e?permalink_comment_id=3730961#gistcomment-3730961).
+  I made many optimizations to the server and webapp to be able to achieve this
+  kind of performance in Cypress.
+</Aside>
+
+This was only possible at the time with [my fork](https://github.com/MartijnHols/actions-cache) of [Github's cache action](https://github.com/actions/cache), which allowed for big performance improvements.
+
+## The cache action
+
+The original cache action only supported one scenario; when the step is executed, it looks if there's a cache hit and restores that, and then <b>it automatically adds a second step</b> to the end of the job to save the file location to cache. This had several downsides:
+
+- It was impossible to use the cache to share data across jobs, and you needed to use the slow [artifact actions](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow#passing-data-between-jobs-in-a-workflow) for that in addition to your caching (so your job was compressing and uploading the data twice).
+- The cache action always compressed and uploaded the cache, even if it was unmodified.
+- The cache action always pulled data out of the cache, even if you could skip it entirely if you knew there was already an exact match (e.g. skip building if a build for the source already exists).
+
+My [fork](https://github.com/MartijnHols/actions-cache#readme) split the base cache action up in three separate parts:
+
+- `martijnhols/actions-cache/restore`: This action reads data from the cache and places it in at the provided path.
+- `martijnhols/actions-cache/save`: This action saves data at the provided path to the cache.
+- `martijnhols/actions-cache/check`: This action checks if an exact match is available in the cache without downloading it.
+
+This fixed all of the issues with the original cache action, allowing me to make the quickest possible pipelines (within this ecosystem). It also provides a cleaner way to setup caching, as these actions don't need to automatically add a second step to the end of the job (unlike the original cache action).
+
+Some examples usages were:
+
+- `martijnhols/actions-cache/check` before making a build, to skip it if the build already exists
+- `martijnhols/actions-cache/save` with `if: steps.cache.outputs.cache-hit != 'true'` to only save if there wasn't already a hit
+- `martijnhols/actions-cache/restore` to restore dependencies installed in a different job, without saving them again
+
+See [recipes](https://github.com/MartijnHols/actions-cache?tab=readme-ov-file#recipes) for other examples.
+
+This change provided a fix for many issues:
+
+- [Read only cache?](https://github.com/actions/cache/issues/350)
+- [Support for Read Only Cache / Configurable Cache Saving](https://github.com/actions/cache/issues/334)
+- [Make Cache Key Optional?](https://github.com/actions/cache/issues/210)
+- [Allow to skip the save post-step](https://github.com/actions/cache/pull/489)
+- [Configurable save cache on failure](https://github.com/actions/cache/issues/92)
+- [Add a check-only mode or action](https://github.com/actions/cache/issues/321)
+- [Avoid Post Cache-phase when key is already in cache](https://github.com/ScribeMD/docker-cache/issues/135)
+- [Feature request: option to update cache](https://github.com/actions/cache/issues/342)
+- [Support writing to the cache even on a cache hit](https://github.com/actions/cache/issues/171)
+- [and more](https://github.com/actions/cache/issues?q=label%3A%22area%3Agranular-control%22%20)
+
+In the end, Github woke up and [added this](https://github.com/actions/cache/pull/1035) two years after [my initial PR](https://github.com/actions/cache/pull/474) was completely ignored.
+
+## Breaking changes
+
+Over 4 years since my initial PR, I was [still using my own fork](https://github.com/MartijnHols/martijnhols.nl/blob/e2f0a8642565f0dff3a49d79045bb65fbcb80b21/.github/workflows/build.yml#L19) because it worked flawlessly and why change a winning team. But now, as Github has introduced [breaking changes](https://github.com/actions/cache/blob/d4323d4df104b026a6aa633fdb11d772146be0bf/README.md#%EF%B8%8F-important-changes) to their platform (a rewrite of their caching server), I've been forced to update all of my projects yet again.
+
+This is in my opinion the biggest downside to Github Actions; they're constantly breaking things. It's not a big deal for projects actively being maintained, although it does slow it down, but <b>when coming back to projects that haven't been updated in a while it's a real pain in the ass</b>.
+
+<Aside>
+  It makes little difference to the breaking change that this was a custom
+  action, as users of Github's cache action also need to update. The biggest
+  difference might be that Github can add deprecation warnings to their own
+  actions, even for users
+  [SHA-pinning](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-third-party-actions).
+</Aside>
+
+## Migration
+
+Migration back to Github's own cache action is fairly straightforward, as Github has implemented a similar structure. I reckon they support all features my fork supported.
+
+- martijnhols/actions-cache/restore@v3 -> actions/cache/restore@v4
+  - `required: true` -> `fail-on-cache-miss: true`
+  - `required: false` -> `fail-on-cache-miss: false` (default)
+  - `outputs.primary-key` -> `outputs.cache-primary-key`
+- martijnhols/actions-cache/save@v3 -> actions/cache/save@v4
+- martijnhols/actions-cache/check@v3 -> actions/cache/restore@v4 with `lookup-only: true`
+  - `outputs.primary-key` -> `outputs.cache-primary-key`
+
+I think that's it. Let me know if I forgot anything.
+
+The good news is, <b>Github's new cache architecture is a lot quicker</b>. Making this change reduced cache save time of an ~82 MB cache artifact from 2m 20s to 3s (↓97.86%)! This is a huge improvement, and I'm happy to see Github making performance improvements.
+
+**While I appreciate the performance boost, I'd still prefer fewer breaking changes in GitHub Actions.**

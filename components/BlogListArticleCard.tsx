@@ -42,7 +42,7 @@ const ArticleLink = styled(Link)`
     }
   }
 `
-const howToArticleLinkCss = css`
+const extraArticleLinkCss = css`
   max-width: 90%;
 `
 const Tags = styled.div`
@@ -71,7 +71,7 @@ const Article = styled(Panel)`
     margin-right: calc(var(--spacing4) * -1);
   }
 `
-const howToArticleCss = css`
+const extraArticleCss = css`
   padding: var(--spacing2);
   font-size: 90%;
 
@@ -113,12 +113,20 @@ const BlogListArticleCard = ({ article }: Props) => (
   <ArticleLink
     href={`/blog/${article.slug}`}
     className="plain"
-    css={article.tags.includes(BlogArticleTag.HowTo) && howToArticleLinkCss}
+    css={
+      (article.tags.includes(BlogArticleTag.Extra) ||
+        article.tags.includes(BlogArticleTag.HowTo)) &&
+      extraArticleLinkCss
+    }
   >
     <Article
       as="article"
       boxShadow={false}
-      css={article.tags.includes(BlogArticleTag.HowTo) && howToArticleCss}
+      css={
+        (article.tags.includes(BlogArticleTag.Extra) ||
+          article.tags.includes(BlogArticleTag.HowTo)) &&
+        extraArticleCss
+      }
     >
       {article.image && (
         <Image

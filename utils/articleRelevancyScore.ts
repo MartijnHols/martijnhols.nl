@@ -27,7 +27,10 @@ const articleRelevancyScore = (
   ) {
     score -= 100
   }
-  if (alternativeArticle.tags.includes(BlogArticleTag.HowTo)) {
+  if (
+    alternativeArticle.tags.includes(BlogArticleTag.Extra) ||
+    alternativeArticle.tags.includes(BlogArticleTag.HowTo)
+  ) {
     score -= 1
   }
   if (alternativeArticle.image) {

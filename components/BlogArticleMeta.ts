@@ -4,6 +4,7 @@ export const enum BlogArticleTag {
   // Types:
   Meta = 'meta',
   HowTo = 'how-to',
+  Extra = 'extra',
   /** @deprecated Just don't post "basics" articles */
   Basics = 'basics',
   // Tags:

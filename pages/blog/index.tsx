@@ -41,6 +41,7 @@ const articles = [
   import('./how-to-add-copy-paste-only-text-in-html-react'),
   import('./accessibility-essentials-every-front-end-developer-should-know'),
   import('./the-european-accessibility-act-for-websites-and-apps'),
+  import('./migrating-away-from-martijnhols-actions-cache'),
 ] as Promise<{ meta: BlogArticleMeta }>[]
 
 export const getArticles = async () =>
