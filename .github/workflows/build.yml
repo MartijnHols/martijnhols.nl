@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+          cache: 'yarn'
       - name: Restore "node_modules" from cache
         uses: actions/cache/restore@v4
         id: cache
@@ -22,24 +23,6 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}-${{ hashFiles('yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('patches') }}
-      - name: Get yarn cache directory path
-        if: steps.cache.outputs.cache-hit != 'true'
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-      # Use week number for automatically purging the cache every week. This is
-      # useful because caching yarn-cache would otherwise lead it to grow
-      # indefinitely since old dependencies are never purged.
-      - name: Get week number
-        if: steps.cache.outputs.cache-hit != 'true'
-        id: week-number
-        run: echo "value=$(date +%W)" >> $GITHUB_OUTPUT
-      - name: Cache "yarn-cache"
-        uses: actions/cache/restore@v4
-        if: steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-${{ steps.week-number.outputs.value }}-root-yarn-cache-${{ hashFiles('yarn.lock') }}
-          restore-keys: ${{ runner.os }}-${{ steps.week-number.outputs.value }}-root-yarn-cache-
       - run: yarn --frozen-lockfile --prefer-offline
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Save "node_modules" to cache
