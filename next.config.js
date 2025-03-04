@@ -2,6 +2,8 @@
 
 import makeBundleAnalyzer from '@next/bundle-analyzer'
 import createMDX from '@next/mdx'
+import remarkGfm from 'remark-gfm'
+import { visit } from 'unist-util-visit'
 
 const withBundleAnalyzer = makeBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -17,7 +19,54 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
   throw new Error('Missing required env var: PAGE_REVALIDATE_INTERVAL')
 }
 
-const applyMdx = createMDX()
+export function remarkTooltip() {
+  return (tree) => {
+    visit(tree, 'link', (node, index, parent) => {
+      if (!node.title) {
+        return
+      }
+
+      if (node.url === '/tooltip') {
+        // When the URL is /tooltip, replace it entirely with the tooltip
+        node.type = 'mdxJsxFlowElement'
+        node.name = 'Annotation'
+        node.attributes = [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'annotation',
+            value: node.title,
+          },
+        ]
+        return
+      }
+
+      if (parent.type === 'mdxJsxFlowElement' && parent.name === 'Annotation') {
+        return
+      }
+
+      // When it's a normal link, wrap the link in a tooltip
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { title, ...clone } = node
+
+      node.type = 'mdxJsxFlowElement'
+      node.name = 'Annotation'
+      node.attributes = [
+        {
+          type: 'mdxJsxAttribute',
+          name: 'annotation',
+          value: node.title,
+        },
+      ]
+      node.children = [clone]
+    })
+  }
+}
+
+const applyMdx = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm, remarkTooltip],
+  },
+})
 
 // There's a bug in Safari where upgrade-insecure-requests prevents localhost
 // from working. See https://github.com/github/secure_headers/issues/348

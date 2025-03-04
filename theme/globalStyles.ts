@@ -9,6 +9,7 @@ const globalStyles = [
       --black: ${theme.colors.black};
       --black400: ${theme.colors.black400};
       --black300: ${theme.colors.black300};
+      --black50: ${theme.colors.black50};
       --white: ${theme.colors.white};
 
       --spacing1: 0.4375rem;
@@ -28,9 +29,10 @@ const globalStyles = [
       scroll-padding-top: 2rem;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
+      font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       color: var(--black);
@@ -82,8 +84,8 @@ const globalStyles = [
 
     code,
     pre {
-      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+      font-family:
+        source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
       // Monospace fonts look bigger, so to make code blocks balanced, we need to
       // make the font-size smaller. Goal: 16px on 18px parent
       font-size: 0.8889em;
@@ -112,33 +114,85 @@ const globalStyles = [
       border-radius: 0;
     }
 
-    .content ul {
-      list-style: none;
+    .content {
+      ul {
+        list-style: none;
 
-      @media print {
-        list-style: square;
-      }
+        @media print {
+          list-style: square;
+        }
 
-      > li {
-        margin: 0.5em 0;
-        position: relative;
+        > li {
+          margin: 0.5em 0;
+          position: relative;
 
-        ::before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: 0.7em;
-          height: 4px;
-          width: 20px;
-          background: var(--black);
-          transform: skew(-15deg);
-          margin-left: -38px;
+          ::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0.7em;
+            height: 4px;
+            width: 20px;
+            background: var(--black);
+            transform: skew(-15deg);
+            margin-left: -38px;
+          }
+        }
+
+        .inverted & {
+          > li::before {
+            background: var(--white);
+          }
         }
       }
 
-      .inverted & {
-        > li::before {
-          background: var(--white);
+      table {
+        margin: 1.25em 0;
+        width: 100%;
+        // Using border-collapse separate allows us to simplify border-radius,
+        // which otherwise doesn't work well for tables.
+        border-collapse: separate;
+        border-spacing: 0;
+        --border-color: var(--black);
+        --border-width: 1px;
+        box-shadow: calc(var(--box-shadow-distance) * -1)
+          var(--box-shadow-distance) 0 0 var(--yellow);
+      }
+
+      thead th {
+        border: 0 solid var(--border-color);
+        background-color: var(--black);
+        color: var(--white);
+        border-top-width: var(--border-width);
+        border-bottom-width: var(--border-width);
+        border-left-width: var(--border-width);
+        padding: 0.25rem 0.75rem;
+        font-weight: 600;
+        text-align: left;
+        vertical-align: bottom;
+
+        :first-child {
+          padding-left: 0.75rem;
+        }
+        :last-child {
+          border-right-width: var(--border-width);
+          padding-right: 0.75rem;
+        }
+      }
+
+      tbody td {
+        border: 0 solid var(--border-color);
+        border-left-width: var(--border-width);
+        border-bottom-width: var(--border-width);
+        padding: 0.25rem 0.75rem;
+        background: var(--yellow50);
+
+        :first-child {
+          padding-left: 0.75rem;
+        }
+        :last-child {
+          border-right-width: var(--border-width);
+          padding-right: 0.75rem;
         }
       }
     }
