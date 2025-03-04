@@ -1,0 +1,269 @@
+import { css } from '@emotion/react'
+import Image from 'next/image'
+import Figure, { floatRightTabletCss } from '../../components/Figure'
+import Aside from '../../components/Aside'
+import Panel from '../../components/Panel'
+import Annotation from '../../components/Annotation'
+import MetricDifference from '../../components/MetricDifference'
+import { BlogArticleTag } from '../../components/BlogArticleMeta'
+import scalingUpImage from './docker-scaling-up.png'
+import hackernewsPostBumpedImage from './hackernews-post-bumped.png'
+import bladevpsSpecsImage from './bladevps-specs.png'
+import sysDedicatedServerImage from './sys-dedicated-server.png'
+
+export const meta = {
+  slug: 'self-hosting-nextjs-how-much-traffic-can-a-pre-rendered-site-really-handle',
+  title:
+    'Self-hosting Next.js: how much traffic can a pre-rendered site really handle?',
+  description:
+    'How much traffic can a self-hosted Next.js site handle? I ran load tests, uncovered surprising limits, and compared pre-rendering with SSR.',
+  // openGraphImage: openGraphImage,
+  // image: accessibilityToolkitImage,
+  // publishedAt: '2025-03-02',
+  tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
+}
+
+# Self-hosting Next.js: how much traffic can a pre-rendered site really handle?
+
+I've often said things like "_A pre-rendered site can easily serve hundreds of concurrent users_", because, well, I've never seen one fail.
+
+But how many can it _really_ handle? Could my site actually handle a traffic surge from landing on something like the [Hacker News frontpage](/tooltip "I don't really know how much traffic to expect from a top post, but Hacker News seems to have really large user base.")? How does it compare to server-side rendering? And is it actually worth jumping through hoops to avoid SSR?
+
+I looked around for hard data on Next.js performance, but solid numbers were surprisingly hard to find. So, I ran some tests on my own site, and the results weren't what I expected. And in perfect timing, my article on [Google Translate interfering with React](https://martijnhols.nl/blog/everything-about-google-translate-crashing-react#not-just-react) [hit](https://news.ycombinator.com/item?id=43023338) the Hacker News frontpage the very next day.
+
+Right after I discovered (spoiler alert) my site probably _couldn't_ handle it.
+
+## A pre-rendered site on a VPS
+
+The first thing I wanted to find out was whether my site could handle a surge in visitors from something like hitting the frontpage of Hacker News.
+
+To test this, I wrote a basic [k6](https://k6.io/) load testing script to measure the max requests per second my server could handle. The script was as simple as possible; it repeatedly requests a single page as many times as possible, while waiting for each request to complete. You can find the full test setup in the [addendum](#addendum).
+
+<Figure
+  caption="Specs of my BladeVPS from TransIP"
+  css={[
+    floatRightTabletCss,
+    css`
+      margin-top: 0;
+    `,
+  ]}
+>
+  <Image
+    src={bladevpsSpecsImage}
+    width={300}
+    alt={`Specs of the X4 BladeVPS; 2 shared vCPU's, 4 GB RAM, 150 GB SSD (Raid-Z), 5 TB pooled traffic at € 27,99 p.m. Button shows the Dutch word "Samenstellen"`}
+  />
+</Figure>
+
+Running this script, a single Next.js instance serving my fully pre-rendered [homepage](https://martijnhols.nl/) on a [BladeVPS](https://www.transip.nl/vps/bladevps/) from [TransIP](https://www.transip.nl/) (specs in the image) could handle **193 requests per second**, with <b>only 63% of the requests responding within 500ms</b>.
+
+One key thing to underline: **each request in the test is just a single call to the prerendered Next.js page**. No assets are requested. A real visitor would need <b>60+ additional requests</b>. That means as few as three simultaneous visitors could push the server dangerously close to its limit.
+
+This was far lower than I expected.
+
+<Aside>
+  Those 60 additional requests consist of various different assets. First, just
+  a single HTML and CSS file are needed to render the page. Then it loads
+  above-the-fold images, analytics (Plausible), and JavaScript for the
+  client-side app, at which point the page is fully interactive. After that,
+  low-priority assets load; lazy-loaded images, placeholder data for images
+  under the fold, and preloaded resources for potential navigation.
+</Aside>
+
+## Scaling up
+
+After seeing these disappointing results, I tried scaling up my Docker container (`docker compose up -d --scale main=2 main`). Instead of a single container with one Node.js process handling all requests, I now had one process per CPU core (2 cores total).
+
+<Figure caption="Scaling up the container of the site">
+  <Image
+    src={scalingUpImage}
+    alt="CLI showing the scaling up of a Docker container, with two identical containers running afterwards"
+  />
+</Figure>
+
+<Aside>
+  I use [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) in front of my
+  Docker containers. It's awesome. It automatically [load
+  balances](https://github.com/nginx-proxy/nginx-proxy/tree/main/docs#upstream-server-http-load-balancing-support)
+  if there are multiple containers listening to the same domain.
+</Aside>
+
+This barely helped. The VPS could now handle <b>275 requests per second</b> (<MetricDifference value={275} previous={193} />), but still with <b>only 76% of requests responding within 500ms</b>. Still nowhere near enough to handle a full-blown "[hug of death](/tooltip 'A hug of death is when a website goes viral on social media like Reddit or Hacker News, overwhelming the server until it goes down.')". And **I really don't want my website to go down**.
+
+I also tested other files to get a sense for how the server would handle the additional 60+ requests. Here's what I found:
+
+| File                                   | Requests per second                      | Bottleneck |
+| -------------------------------------- | ---------------------------------------- | ---------- |
+| Homepage (20.3 kB)                     | [275 RPS](/tooltip '76% within 500ms')   | CPU        |
+| Blog article (13.9 kB)                 | [440 RPS](/tooltip '75% within 500ms')   | CPU        |
+| Large JS chunk (46.8 kB)               | [203 RPS](/tooltip '21% within 500ms')   | CPU        |
+| Average JS chunk (6.1 kB)              | [833 RPS](/tooltip '82% within 500ms')   | CPU        |
+| Small JS chunk (745 B)                 | [1,961 RPS](/tooltip '99% within 500ms') | CPU        |
+| Image (17.7 kB)                        | [1,425 RPS](/tooltip '99% within 500ms') | CPU        |
+| Statically generated RSS-feed (2.4 kB) | [849 RPS](/tooltip '83% within 500ms')   | CPU        |
+
+<Aside>
+  One interesting thing to note; scaling only resulted in a{' '}
+  <MetricDifference value={275} previous={193} /> increase in RPS on the
+  homepage because{' '}
+  <b>Next.js already does basic multi-threading for GZIP compression</b>. This
+  means the original single container was already benefiting slightly from the
+  second CPU core even before scaling.
+</Aside>
+
+### A surprise traffic spike
+
+In perfect timing, the day after I found out my server probably couldn't handle a big _hug of death_, my article [Everything about Google Translate crashing React (and other web apps)](/blog/everything-about-google-translate-crashing-react) hit the Hacker News frontpage.
+
+<Figure caption="The post showed it was an hour old on the 14th, while the actual publication date was two days prior.">
+  <Image
+    src={hackernewsPostBumpedImage}
+    alt={`Screenshot of Hacker News showing the publication date "2025-02-12T08:58:01"`}
+  />
+</Figure>
+
+This came as a complete surprise, as **I had last posted the article two days earlier**. Turns out Hacker News can bump older posts straight to the frontpage for a second chance. I was thrilled my article (that I had spent a lot of time on) was getting attention, but it happening right after I realized my site might not be up to task was extra stressful.
+
+Luckily, the traffic wasn't as intense as I had expected from the Hacker News frontpage, and my VPS held out. But it made me wonder, how bad can a hug of death get? That's something I'll dig into in a future article, along with more stats on my own experience.
+
+## Finding a replacement
+
+Frustrated with the performance of my VPS, I went looking for a better solution.
+
+### Cloudflare
+
+The easy answer would be to put [Cloudflare](https://www.cloudflare.com/) in front of my server and let it cache the hell out of the static content. I've used this setup before; back when I ran [WoWAnalyzer](https://wowanalyzer.com/), a single server paired with Cloudflare effortlessly handled over 550,000 unique visitors in a month.
+
+It's a nice proposition; **with Cloudflare, my server would only need to handle the initial request**, while Cloudflare takes care of the other 60. Since my VPS can already handle 200 visitors per second, that would mean problem solved.
+
+But unfortunately, <b>Cloudflare isn't an option for me</b>. I care about (y)our privacy and I don't want Cloudflare sitting between my visitors and my site, logging every request and potentially tracking users across the web. Plus, in the current political climate, there are [other political concerns](https://berthub.eu/articles/posts/you-can-no-longer-base-your-government-and-society-on-us-clouds/).
+
+**I want to stick exclusively to EU-based services**.
+
+### Vercel
+
+Another obvious option would be [Vercel](https://vercel.com/) (or an EU equivalent). But honestly, that sounds like a nightmare to me. It's not cheap, the per-site pricing means I'd either be locked in forever or have to tear things down when stopping a project, and it has unpredictable limits with extra costs on every single thing they could think of to charge extra for. This turns going viral from a technical challenge into worrying about what the total of the next bill is going to be. **My current setup has a fixed cost, and I really like that.**
+
+<Aside>
+  I do pay for [Plausible](https://plausible.io/), which also has usage-based
+  pricing. But I don't mind paying for Plausible for three reasons: their
+  pricing steps are predictable and reasonable, they [don't charge for
+  occasional traffic
+  spikes](https://plausible.io/docs/subscription-plans#what-happens-if-i-go-over-my-monthly-page-views-limit),
+  and it's non-essential so I can drop them at any time. I _might_ try
+  self-hosting in the future to save some money, but then again the last time I
+  did that with [a similar analytics product](/tooltip "Matomo on WoWAnalyzer;
+  where my own app could easily handle over 550,000 unique visitors in a month,
+  Matomo struggled with ten times fewer."), I never got it to handle even a
+  fraction of the traffic that was thrown at it.
+</Aside>
+
+### Home server
+
+A home server would be the next best thing, but it isn't really an option for me. I don't have access to fiber to provide good response times, I don't want my IP to be public, my IP is dynamic, and my internet & power aren't as reliable as I would want a server's to be. This [may be a really good option for you](https://www.contraption.co/a-mini-data-center/) though, especially if [data integrity](/tooltip "The Mac Mini, and most consumer hardware, don't support ECC memory, which may lead to random issues and data corruption. But then the Mac Mini doesn't support RAID either. Servers typically always use ECC memory and a RAID.") is not important and you're open to using Cloudflare.
+
+### VPS
+
+There is probably a better VPS for the same or less money, but I don't want to spend time researching providers, figuring out if they're operated from the EU, and then paying just to test their servers. Besides, it's unlikely a different VPS would make a huge difference.
+
+### Dedicated server
+
+**With those constraints, I reckon a dedicated server is going to be hard to beat.** I know it's kinda overkill for this site, but it's not the only thing I use my server for. I need a good home for my projects and I want the barrier for launching something new to be as low as possible. A server that I can freely mess around with would be ideal. It eliminates a barrier to my creativity.
+
+Plus, it's a good skill to keep sharp.
+
+## Dedicated server
+
+For years, I rented a dedicated server from [**So You Start**](https://www.soyoustart.com/nl/), a budget brand of OVH, to host [WoWAnalyzer](https://wowanalyzer.com/). That server (in combination with Cloudflare) effortlessly handled over 550,000 unique visitors in a single month, processing about 75 million requests without breaking a sweat. So, I figured I'd give them another shot.
+
+Their servers are very affordable. While they use older OVH hardware (2+ year old), their value is excellent. After a quick comparison, I went with the cheapest option; [**36 euros per month**](/tooltip 'Not including the VAT which I can deduct.') for a [6 core/12 thread Intel Xeon-E 2136](https://eco.ovhcloud.com/nl/soyoustart/sys-1/) - only 8 euros more than the VPS used to be.
+
+<Figure caption="Full specs of the dedicated server">
+  <Image
+    src={sysDedicatedServerImage}
+    alt="Overview of the specs of the dedicated server. It shows a SYS-1, with an Intel Xeon-E 2136 processor, 32GB DDR4 ECC 2666Mhz memory, 2x 512GB SSD NVMe Soft RAID storage and 500Mbit/s unmetered public bandwidth."
+    style={{
+      maxWidth: '40em',
+    }}
+  />
+</Figure>
+
+**This upgrade made a _huge_ difference.**
+
+Running 12 instances (one per thread), the server can handle 2,330 requests per second (with 99% responding within 500ms) to the homepage.
+
+I also ran another round of tests on some other files to see how they performed:
+
+| File                                   | Requests per second | Difference                                         | Bottleneck |
+| -------------------------------------- | ------------------- | -------------------------------------------------- | ---------- |
+| Homepage (20.3 kB)                     | 2,330 RPS           | <MetricDifference value={2330} previous={275} />   | CPU        |
+| Blog article (13.9 kB)                 | 3,950 RPS           | <MetricDifference value={3950} previous={440} />   | CPU        |
+| Large JS chunk (46.8 kB)               | 1,249 RPS           | <MetricDifference value={1249} previous={203} />   | Network    |
+| Average JS chunk (6.1 kB)              | 7,627 RPS           | <MetricDifference value={7627} previous={833} />   | CPU        |
+| Small JS chunk (730 B)                 | 16,175 RPS          | <MetricDifference value={16175} previous={1961} /> | CPU        |
+| Image (17.7 kB)                        | 3,216 RPS           | <MetricDifference value={3216} previous={1425} />  | Network    |
+| Statically generated RSS-feed (2.4 kB) | 9,395 RPS           | <MetricDifference value={9395} previous={849} />   | CPU        |
+
+This time some files ran into network bottlenecks. This is because budget providers like So You Start usually come with lower bandwidth limits. In this case the max throughput of the server is 500 Mbps.
+
+**This is probably more than enough to handle anything real users can throw at it.**
+
+The average file size across all files is close to the size of the "Average JS chunk" (6.1 kB). Based on that, this server can support up to 7,600 requests per second. If we divide that by 60+ requests needed to load the homepage, we're looking at being able to handle a constant stream of over 125 visitors per second.
+
+And blog posts tend to require fewer requests than the homepage (due to there being fewer images), meaning this setup can probably handle even more.
+
+This is a setup I can rely on.
+
+## SSR performance
+
+Now that we have a solid baseline for static site performance, let's tackle the other big question: **how does server-side rendering (SSR) compare to pre-rendering?**
+
+A tricky part of benchmarking SSR is deciding **what to measure**. SSR pages often query databases (e.g. increment view count), call APIs (e.g. Algolia Search), or handling pagination. If we include that, the test would mostly reflect the overhead of that integration rather than SSR itself.
+
+To give SSR the best possible shot, **I'll focus purely on what happens when rendering a React page with some synchronous logic on the server** - with no additional API or database interactions.
+
+Each test case is a little different. The homepage simply renders the React component tree on the server. The blog article does a tiny bit of logic (calculating the related articles) before rendering. The RSS feed on the other hand, is dynamically generated using the `rss` library. Since SSR might affect each of these differently, I expect some variation in the results, making for an interesting comparison.
+
+Without further ado, the results:
+
+| File                                   | Requests per second                      | Difference                                        | Bottleneck |
+| -------------------------------------- | ---------------------------------------- | ------------------------------------------------- | ---------- |
+| Homepage (20.3 kB)                     | [271 RPS](/tooltip '74% within 500ms')   | <MetricDifference value={271} previous={2330} />  | CPU        |
+| Blog article (13.9 kB)                 | [884 RPS](/tooltip '97% within 500ms')   | <MetricDifference value={884} previous={3950} />  | CPU        |
+| Statically generated RSS-feed (2.3 kB) | [4,521 RPS](/tooltip '99% within 500ms') | <MetricDifference value={4521} previous={9395} /> | CPU        |
+
+I needed a few takes to process this one.
+
+At first glance, <b>271 RPS on the homepage doesn't seem _that_ bad</b>. Especially considering static assets (CSS, JS, images) are still static and their RPS will be largely unchanged.
+
+But it's a different story when you consider that **this is all a dedicated server, that is running nothing else, can handle**. It maxes out at <b>almost 90% fewer requests per second</b> than static generation, and if that wasn't bad enough, only 74% of the requests to the homepage responded within 500ms (the median response time was 1.51 seconds, while 1 in 10 took over 3 seconds).
+
+**SSR is very slow to boot.**
+
+For good measure, I ran the same test on the VPS to see how it would hold up:
+
+| File                                   | Requests per second                                                                                       | [Difference](/tooltip 'Relative to prerendering on the VPS.') | Bottleneck |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ---------- |
+| Homepage (20.3 kB)                     | [34 RPS](/tooltip '0% within 500ms (avg=4.6s min=349.3ms med=1.06s max=34.45s p(90)=16.04s p(95)=21.71s') | <MetricDifference value={34} previous={275} />                | CPU        |
+| Blog article (13.9 kB)                 | [95 RPS](/tooltip '69% within 500ms')                                                                     | <MetricDifference value={95} previous={440} />                | CPU        |
+| Statically generated RSS-feed (2.3 kB) | [490 RPS](/tooltip '75% within 500ms')                                                                    | <MetricDifference value={490} previous={849} />               | CPU        |
+
+Oof.
+
+The numbers make it clear; **using SSR on a page that you're hoping to get a lot of visitors on is just asking for trouble.**
+
+## Final thoughts
+
+This whole journey started with a simple question: _can my site handle a big traffic surge?_ I always assumed pre-rendering was enough for anything, but I'm glad I put that assumption to the test. Turns out, my original VPS wasn't nearly as resilient as I thought. Just three visitors per second could have pushed it over its limits. That wasn't what I expected.
+
+A dedicated server really is a massive upgrade over a VPS. And while it doesn’t have to cost much more, bandwidth limits can be a hidden bottleneck. No point spending extra on better CPU if your server's network can't keep up.
+
+At this point, I think my setup can probably handle more than I'll ever really need.
+
+One thing still bugs me though; I'm still just speculating here. I don't actually know for a fact how big a _hug of death_ can get. But that's something for another time; I'll cover that, and stats of my own experience landing on the Hacker News frontpage, in a future article.
+
+As for SSR, we now have hard numbers backing up the claim that pre-rendering scales far better.
+
+And I'm still curious how much further the server can be pushed. In another upcoming article, I'll test whether replacing the Next.js server with Nginx and optimizing compression makes a big difference. This should show us whether the Next.js server is efficient in the first place.
+
+Want to see those articles when they drop? Add my [RSS feed](/rss.xml) to your reader or follow me on [Twitter](https://twitter.com/MartijnHols), [BlueSky](https://bsky.app/profile/martijnhols.nl) or [LinkedIn](https://www.linkedin.com/in/martijnhols/ 'Mostly Dutch. May include other things such as job availability.').
