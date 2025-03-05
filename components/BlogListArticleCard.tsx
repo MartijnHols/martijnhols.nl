@@ -131,7 +131,7 @@ const BlogListArticleCard = ({ article }: Props) => (
       {article.image && (
         <Image
           src={article.image}
-          width={200}
+          width={180}
           height={180}
           style={{
             objectFit: 'contain',

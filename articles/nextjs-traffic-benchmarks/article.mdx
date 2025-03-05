@@ -9,6 +9,7 @@ import scalingUpImage from './docker-scaling-up.png'
 import hackernewsPostBumpedImage from './hackernews-post-bumped.png'
 import bladevpsSpecsImage from './bladevps-specs.png'
 import sysDedicatedServerImage from './sys-dedicated-server.png'
+import coverImage from './cover.png'
 
 export const meta = {
   slug: 'self-hosting-nextjs-how-much-traffic-can-a-pre-rendered-site-really-handle',
@@ -17,8 +18,8 @@ export const meta = {
   description:
     'How much traffic can a self-hosted Next.js site handle? I ran load tests, uncovered surprising limits, and compared pre-rendering with SSR.',
   // openGraphImage: openGraphImage,
-  // image: accessibilityToolkitImage,
-  // publishedAt: '2025-03-02',
+  image: coverImage,
+  publishedAt: '2025-03-05',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
 }
 
@@ -39,7 +40,6 @@ The first thing I wanted to find out was whether my site could handle a surge in
 To test this, I wrote a basic [k6](https://k6.io/) load testing script to measure the max requests per second my server could handle. The script was as simple as possible; it repeatedly requests a single page as many times as possible, while waiting for each request to complete. You can find the full test setup in the [addendum](#addendum).
 
 <Figure
-  caption="Specs of my BladeVPS from TransIP"
   css={[
     floatRightTabletCss,
     css`
@@ -48,25 +48,24 @@ To test this, I wrote a basic [k6](https://k6.io/) load testing script to measur
   ]}
 >
   <Image
-    src={bladevpsSpecsImage}
-    width={300}
-    alt={`Specs of the X4 BladeVPS; 2 shared vCPU's, 4 GB RAM, 150 GB SSD (Raid-Z), 5 TB pooled traffic at € 27,99 p.m. Button shows the Dutch word "Samenstellen"`}
+    src={coverImage}
+    width={200}
+    alt={`Sign saying: Slow down - speed limit - 193 RPS`}
+    style={{
+      background: 'var(--black)',
+    }}
   />
 </Figure>
 
-Running this script, a single Next.js instance serving my fully pre-rendered [homepage](https://martijnhols.nl/) on a [BladeVPS](https://www.transip.nl/vps/bladevps/) from [TransIP](https://www.transip.nl/) (specs in the image) could handle **193 requests per second**, with <b>only 63% of the requests responding within 500ms</b>.
+Running this script, a single Next.js instance serving my fully pre-rendered [homepage](https://martijnhols.nl/) on an [X4 BladeVPS](/tooltip "2 shared vCPU's, 4 GB RAM, 150 GB SSD (Raid-Z), 5 TB pooled traffic at € 27,99 p.m.") from [TransIP](https://www.transip.nl/) could handle **193 requests per second**, with <b>only 63% of the requests responding within 500ms</b>.
 
 One key thing to underline: **each request in the test is just a single call to the prerendered Next.js page**. No assets are requested. A real visitor would need <b>60+ additional requests</b>. That means as few as three simultaneous visitors could push the server dangerously close to its limit.
 
 This was far lower than I expected.
 
-{/* Ensure the image from the previous section doesn't cross this line */}
-
-<div style={{ clear: 'both' }}></div>
-
 ### The anatomy of a visit
 
-Before we continue testing the performance, let's take a look into the 60+ requests that happen when someone visits my site. This is a breakdown of the requests needed to load [my homepage](/):
+To understand why this site needs 60+ requests, let's take a look at all of the requests that happen when someone visits [my homepage](/):
 
 0. DNS lookup and SSL handshake.
 1. <b>Initial request</b> (1: 20.3 kB): The browser requests the HTML document.
@@ -91,7 +90,7 @@ With typically only a few images above-the-fold, the total so far is usually bet
 9. <b>Preloaded resources</b> (22: 136.1 kB): The browser preloads resources for
    potential navigation (to make them instant).
 
-The total ends up being [<b>63 requests and 434.5 kB</b>](/tooltip "At the time of writing this article; this may change due to modifications and optimizations to the page.").
+The total ends up being [<b>63 requests and 434.5 kB</b>](/tooltip 'At the time of writing this article; this may change due to modifications and optimizations to the page.').
 
 This shows **Next.js introduces a lot of extra requests and traffic** compared to a more standard server-rendered site, or a non-Next.js static site. While this gives me, as a developer, [full control over the user experience (UX)](/tooltip "Like providing extra little tidbits in tooltips like this one you're reading right now!") and an excellent developer experience (DX), it also means the user and server have to handle a lot more traffic. Then again, I don't think &lt;500 kB is too much traffic for a modern website, especially since the page is already usable after the first 100 kB.
 
