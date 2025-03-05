@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { HTMLAttributes, ReactNode } from 'react'
+import { HTMLAttributes, ReactElement, ReactNode } from 'react'
 import Tooltip from './Tooltip'
 
 const StyledTooltip = styled(Tooltip)`
@@ -18,7 +18,7 @@ interface Props
     'role' | 'children' | 'content'
   > {
   children: ReactNode
-  annotation: ReactNode
+  annotation: ReactElement | string
 }
 
 const Annotation = ({ children, annotation, ...others }: Props) => (
