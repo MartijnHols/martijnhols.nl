@@ -13,9 +13,8 @@ import coverImage from './cover.png'
 import openGraphImage from './ogimage.png'
 
 export const meta = {
-  slug: 'how-much-traffic-can-a-prerendered-nextjs-site-handle',
-  title:
-    'How much traffic can a prerendered Next.js site really handle?',
+  slug: 'how-much-traffic-can-a-pre-rendered-nextjs-site-handle',
+  title: 'How much traffic can a pre-rendered Next.js site really handle?',
   description:
     'How much traffic can a self-hosted Next.js site handle? I ran load tests, uncovered surprising limits, and compared pre-rendering with SSR.',
   openGraphImage: openGraphImage,
@@ -60,7 +59,7 @@ To test this, I wrote a basic [k6](https://k6.io/) load testing script to measur
 
 Running this script, a single Next.js instance serving my fully pre-rendered [homepage](https://martijnhols.nl/) on an [X4 BladeVPS](/tooltip "2 shared vCPU's, 4 GB RAM, 150 GB SSD (Raid-Z), 5 TB pooled traffic at € 27,99 p.m.") from [TransIP](https://www.transip.nl/) could handle **193 requests per second**, with <b>only 63% of the requests responding within 500ms</b>.
 
-One key thing to underline: **each request in the test is just a single call to the prerendered Next.js page**. No assets are requested. A real visitor would need <b>60+ additional requests</b>. That means as few as three simultaneous visitors could push the server dangerously close to its limit.
+One key thing to underline: **each request in the test is just a single call to the pre-rendered Next.js page**. No assets are requested. A real visitor would need <b>60+ additional requests</b>. That means as few as three simultaneous visitors could push the server dangerously close to its limit.
 
 This was far lower than I expected.
 
