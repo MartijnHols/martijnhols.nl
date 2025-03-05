@@ -61,18 +61,46 @@ One key thing to underline: **each request in the test is just a single call to 
 
 This was far lower than I expected.
 
-<Aside>
-  Those 60 additional requests consist of various different assets. First, just
-  a single HTML and CSS file are needed to render the page. Then it loads
-  above-the-fold images, analytics (Plausible), and JavaScript for the
-  client-side app, at which point the page is fully interactive. After that,
-  low-priority assets load; lazy-loaded images, placeholder data for images
-  under the fold, and preloaded resources for potential navigation.
-</Aside>
+{/* Ensure the image from the previous section doesn't cross this line */}
+
+<div style={{ clear: 'both' }}></div>
+
+### The anatomy of a visit
+
+Before we continue testing the performance, let's take a look into the 60+ requests that happen when someone visits my site. This is a breakdown of the requests needed to load [my homepage](/):
+
+0. DNS lookup and SSL handshake.
+1. <b>Initial request</b> (1: 20.3 kB): The browser requests the HTML document.
+2. <b>CSS</b> (1: 1.6 kB): The browser parses the HTML and requests the essential
+   CSS file.
+
+**At this point the page is fully styled and visible, and users can interact with most elements, even before JavaScript loads.** The main thing still missing are the:
+
+3. <b>Above-the-fold images</b> (5: 6.8 kB): The browser requests the images above
+   the fold.
+
+With typically only a few images above-the-fold, the total so far is usually between 50 kB and 100 kB. **This is the point where the visitor sees a complete page.** Since most interactive elements are implemented natively (with the platform), users can already do most interactions (e.g. navigating). The rest of the requests are "deferred"; they're low priority and do not block rendering. This includes the majority of the requests:
+
+4. <b>Analytics</b> (1: 2.5 kB): The browser requests the Plausible script.
+5. <b>JavaScript</b> (13: 176.8 kB): The browser requests the JavaScript needed for
+   the main page.
+6. <b>Lazy-loaded images</b> (1: 22.8 kB): The browser requests lazy-loaded images
+   that are (partly) above the fold.
+7. <b>Placeholder data</b> (17: 11.9 kB): The browser requests placeholder data for
+   images under the fold.
+8. <b>Favicons</b> (2: 52.2 kB): The browser requests favicons of various sizes.
+9. <b>Preloaded resources</b> (22: 136.1 kB): The browser preloads resources for
+   potential navigation (to make them instant).
+
+The total ends up being [<b>63 requests and 434.5 kB</b>](/tooltip "At the time of writing this article; this may change due to modifications and optimizations to the page.").
+
+This shows **Next.js introduces a lot of extra requests and traffic** compared to a more standard server-rendered site, or a non-Next.js static site. While this gives me, as a developer, [full control over the user experience (UX)](/tooltip "Like providing extra little tidbits in tooltips like this one you're reading right now!") and an excellent developer experience (DX), it also means the user and server have to handle a lot more traffic. Then again, I don't think &lt;500 kB is too much traffic for a modern website, especially since the page is already usable after the first 100 kB.
+
+[React Server Components](https://react.dev/reference/rsc/server-components) (RSC) could improve this <b>slightly</b> by removing [some of the client-side JavaScript](/tooltip "It doesn't eliminate that much traffic; the initial request is the same, the images are the same, the majority of the JavaScript (i.e. the framework) still needs to be loaded, placeholder data and favicons are still needed. The only data eliminated are most of my custom components and pages. By my estimation this could probably reduce the payload by only about 20%."). Unfortunately the platform [isn't very mature yet](https://www.joshwcomeau.com/blog/how-i-built-my-blog-v2/#app-router-vs-pages-router-16) and still has many issues. I'm willing to deal with this for the sake of optimal performance, but the main blocker is still its [lack of CSS-in-JS support](https://www.joshwcomeau.com/react/css-in-rsc/#the-crux-of-the-problem-4). As soon as that's fixed (i.e. [PigmentCSS](https://github.com/mui/pigment-css) is released), I'll be all over it.
 
 ## Scaling up
 
-After seeing these disappointing results, I tried scaling up my Docker container (`docker compose up -d --scale main=2 main`). Instead of a single container with one Node.js process handling all requests, I now had one process per CPU core (2 cores total).
+After seeing the disappointing performance of my VPS, I tried scaling up my Docker container (`docker compose up -d --scale main=2 main`). Instead of a single container with one Node.js process handling all requests, I now had one process per CPU core (2 cores total).
 
 <Figure caption="Scaling up the container of the site">
   <Image
