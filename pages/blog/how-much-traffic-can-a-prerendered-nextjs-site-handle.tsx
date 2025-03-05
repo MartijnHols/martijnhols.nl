@@ -1,3 +1,4 @@
+import Addendum from '../../articles/nextjs-traffic-benchmarks/addendum.mdx'
 import ArticleContent, {
   meta,
 } from '../../articles/nextjs-traffic-benchmarks/article.mdx'
@@ -12,17 +13,7 @@ export { meta }
 export const getStaticProps = makeArticleGetStaticProps(meta as BlogArticleMeta)
 
 const BlogArticleNextjsPerformance = (props: ArticleStaticProps) => (
-  <BlogArticle
-    {...props}
-    addendum={
-      <>
-        <h2 id="applicable-websites-and-apps">
-          Update February 6, 2025; Added scope
-        </h2>
-        <p>todo</p>
-      </>
-    }
-  >
+  <BlogArticle {...props} addendum={<Addendum />}>
     <ArticleContent />
   </BlogArticle>
 )

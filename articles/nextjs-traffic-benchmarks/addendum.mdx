@@ -1,0 +1,74 @@
+## Addendum
+
+I originally planned to include a deep dive into everything I used and all the findings from my tests, but since this article has already taken forever to write (I had to split it into three parts), I cut this short.
+
+The k6 script:
+
+```js
+import http from 'k6/http'
+import { check } from 'k6'
+
+const url = 'https://example.com'
+// VUs are set to the amount needed to achieve 99% on the <500ms response time
+// with a minimum of 200 to simulate a realistic peak amount of users.
+// More VUs does not always mean more RPS, but it can lead to slower responses.
+const vus = 200
+
+export const options = {
+  // Skip decompression to greatly reduce CPU usage. This prevents throttling on
+  // my i9 MBP, making tests more reliable.
+  discardResponseBodies: true,
+  scenarios: {
+    rps: {
+      executor: 'ramping-vus',
+      stages: [
+        // A quick ramp up to max VUs to simulate a sudden spike in traffic.
+        // "constant-vus" leads to connection errors (DDOS protection?), so this
+        // ramp up is a bit more robust and realistic.
+        { duration: '5s', target: vus },
+        { duration: '1m', target: vus },
+      ],
+      // Interrupt tests running longer than 1sec at the end of the test so that
+      // they don't skew the results.
+      gracefulStop: '1s',
+    },
+  },
+}
+
+export default function () {
+  const res = http.get(url, {
+    headers: {
+      'Accept-Encoding': 'br, gzip',
+      accept: 'image/webp',
+    },
+  })
+
+  check(res, {
+    'status is 200': (r) => r.status === 200,
+    'response time is below 500ms': (r) => r.timings.duration < 500,
+  })
+}
+```
+
+### Testing Environment & Findings
+
+- Tests were run on a top-specced **2019 Intel MacBook Pro**, connected via Ethernet (USB-C adapter), with ~760 Mbps download, exceeding the bandwidth of the dedicated server.
+- Network adapters can bottleneck performance during benchmarking. I made sure mine wasn't a limiting factor.
+- I let temperatures drop between tests to minimize any impact from throttling (prety sure it was insignificant).
+- I ended up running most tests at least three times (probably more) due to testing issues or changes to the script. The results were pretty consistent.
+- I focused on &lt;500ms response times because that's about the patience I can muster when I open a new site for the first time.
+- OVH claims ["burst available to absorb the occasional peak traffic”](https://www.ovhcloud.com/en/bare-metal/bandwidth/), but I saw no evidence of it existing.
+- I did compression and Nginx tests too with some interesting findings (it's not as significant as you may expect), but they didn't make the cut for this article. I'll share that later.
+- I did dive into the possible _hug of death_ traffic spike from Hacker News and Reddit, but had to cut it to focus this article and not make it too long. I'll share that later too (probably after this one but no promises).
+
+I tested the following files (the hashes may not exist anymore):
+
+- homepage: https://next.martijnhols.nl/
+- Blog article: The European Accessibility Act for websites and apps: https://next.martijnhols.nl/blog/the-european-accessibility-act-for-websites-and-apps
+- Large JS chunk: https://next.martijnhols.nl/_next/static/chunks/main-3e0600cd4aa10073.js
+- Average JS chunk: https://next.martijnhols.nl/_next/static/chunks/102-38160eae18c28218.js
+- Small JS chunk: https://next.martijnhols.nl/_next/static/tKviHia3kWxxoRr-Rb42G/_ssgManifest.js
+- Image: https://next.martijnhols.nl/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faccessibility-toolkit.80a1e3d7.png&w=384&q=75
+- Statically generated RSS-feed: https://next.martijnhols.nl/rss.xml
+
+**Please don't hit these URLs with your load tests.**
