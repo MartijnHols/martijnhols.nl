@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Aside from '../../components/Aside'
 import Figure from '../../components/Figure'
-import Annotation from '../../components/Annotation'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import githubActionsPipelineImage from './github-actions-pipeline.jpg'
 import openGraphImage from './ogimage.png'
@@ -19,7 +18,7 @@ export const meta = {
 
 # Migrating away from martijnhols/actions-cache
 
-I was an early user of Github Actions, and an <Annotation annotation="It might have helped that working with TravisCI was frustrating, and at the time its future was unclear as they had just been acquired by a party which seemed to want to go in a different direction.">immediate fan</Annotation>. I implemented it in all my projects, both private and [public](https://github.com/WoWAnalyzer/WoWAnalyzer/blob/e436c5c78f6461e4bc12e4649e88a8c99d189c6e/.github/workflows/build.yml#L20), which alone lead to over 200 developers relying on pipelines I set up in one way, shape or form.
+I was an early user of Github Actions, and an [immediate fan](/tooltip 'It might have helped that working with TravisCI was frustrating, and at the time its future was unclear as they had just been acquired by a party which seemed to want to go in a different direction.'). I implemented it in all my projects, both private and [public](https://github.com/WoWAnalyzer/WoWAnalyzer/blob/e436c5c78f6461e4bc12e4649e88a8c99d189c6e/.github/workflows/build.yml#L20), which alone lead to over 200 developers relying on pipelines I set up in one way, shape or form.
 
 A good Developer Experience is important to me. I want there to be as little friction as possible for all developers. An important part of that (in my opinion), is CI/CD. And in this case, the duration of pipelines. Too often we have to wait for a pipeline to complete before we can complete something. This can be frustrating and distracting, and a weight slowing you down.
 
@@ -33,7 +32,7 @@ In comes Github Actions, which compared to alternatives is already leaps ahead. 
 - It's free for open source projects
 - Actions are open source and easy to make your own
 - It's popular among open source developers, so there are actions for everything
-- It's config syntax is the <Annotation annotation="I'm still waiting for a CI that uses TypeScript for configuration, with type safety, being able to use references instead of copy-pasting, and loops. Declarative config sounds great in theory for its simplicity, but when it keeps growing (and you keep running into copy-paste issues), it quickly starts to suck.">least bad</Annotation> of all the CI/CD systems I've used
+- It's config syntax is the [least bad](/tooltip "I'm still waiting for a CI that uses TypeScript for configuration, with type safety, being able to use references instead of copy-pasting, and loops. Declarative config sounds great in theory for its simplicity, but when it keeps growing (and you keep running into copy-paste issues), it quickly starts to suck.") of all the CI/CD systems I've used
 
 Using Github Actions has its issues, especially now, years later, where they're constantly breaking older things, but it gets the job done. When you get the hang of it, it's pretty easy to set up jobs, to the point that I can go a bit nuts;
 
