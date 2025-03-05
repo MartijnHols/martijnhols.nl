@@ -1,7 +1,8 @@
 import type { MDXComponents } from 'mdx/types'
-import { ReactNode } from 'react'
+import { isValidElement, ReactNode } from 'react'
 import Annotation from './components/Annotation'
 import Code from './components/Code'
+import CodeSnippet, { PrismLanguages } from './components/CodeSnippet'
 import Link from './components/Link'
 
 const slugify = (text: string) =>
@@ -50,8 +51,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </Link>
       )
     },
+    pre: ({ children }) => {
+      if (
+        isValidElement<{ className?: string; children: string }>(children) &&
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+        (children.type as Function).name === 'code' &&
+        children.props.children
+      ) {
+        const language = children.props.className?.replace(
+          /language-/,
+          '',
+        ) as PrismLanguages
+        return (
+          <CodeSnippet language={language}>
+            {children.props.children}
+          </CodeSnippet>
+        )
+      }
+
+      return <pre>{children}</pre>
+    },
     code: ({ children }) => <Code>{children}</Code>,
-    // TODO: code snippet
     ...components,
   }
 }
