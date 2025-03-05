@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import * as theme from '.'
+import { breakpoints } from '.'
 
 const globalStyles = [
   css`
@@ -147,8 +148,8 @@ const globalStyles = [
       }
 
       table {
-        margin: 1.25em 0;
-        width: 100%;
+        margin: 1.25em calc(var(--spacing2) * -1);
+        width: calc(100% + var(--spacing2) * 2);
         // Using border-collapse separate allows us to simplify border-radius,
         // which otherwise doesn't work well for tables.
         border-collapse: separate;
@@ -157,6 +158,13 @@ const globalStyles = [
         --border-width: 1px;
         box-shadow: calc(var(--box-shadow-distance) * -1)
           var(--box-shadow-distance) 0 0 var(--yellow);
+        font-size: 0.75em;
+
+        @media (min-width: ${breakpoints.MOBILE_LARGE}px) {
+          margin: 1.25em 0;
+          width: 100%;
+          font-size: 1em;
+        }
       }
 
       thead th {

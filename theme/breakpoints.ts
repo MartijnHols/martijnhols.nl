@@ -2,6 +2,7 @@
 
 // min-width
 export const MOBILE = 0
+export const MOBILE_LARGE = 530
 export const TABLET = 768
 export const DESKTOP = 992
 export const DESKTOP_LARGE = 1300
