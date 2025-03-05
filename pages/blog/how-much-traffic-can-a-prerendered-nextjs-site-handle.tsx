@@ -11,9 +11,7 @@ import {
 export { meta }
 export const getStaticProps = makeArticleGetStaticProps(meta as BlogArticleMeta)
 
-const BlogArticleSelfHostingNextjsTrafficBenchmarks = (
-  props: ArticleStaticProps,
-) => (
+const BlogArticleNextjsPerformance = (props: ArticleStaticProps) => (
   <BlogArticle
     {...props}
     addendum={
@@ -29,4 +27,4 @@ const BlogArticleSelfHostingNextjsTrafficBenchmarks = (
   </BlogArticle>
 )
 
-export default BlogArticleSelfHostingNextjsTrafficBenchmarks
+export default BlogArticleNextjsPerformance

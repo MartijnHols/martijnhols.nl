@@ -19,9 +19,7 @@ export const enum BlogArticleTag {
   HTML = 'html',
   CSS = 'css',
   Git = 'git',
-  Stability = 'stability',
   Maintainability = 'maintainability',
-  // Standardisation = 'standardisation', use maintainability instead
   Performance = 'performance',
   Security = 'security',
   Accessibility = 'accessibility',
