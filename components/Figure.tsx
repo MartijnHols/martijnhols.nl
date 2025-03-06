@@ -22,7 +22,7 @@ const ImageContainer = styled.div`
 const FigCaption = styled.figcaption`
   font-size: 85%;
   margin-top: 0.25em;
-  color: var(--black300);
+  color: var(--black700);
 `
 
 export const floatRightTabletCss = css`

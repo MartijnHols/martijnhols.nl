@@ -8,9 +8,9 @@ const globalStyles = [
       --yellow: ${theme.colors.yellow};
       --yellow50: ${theme.colors.yellow50};
       --black: ${theme.colors.black};
-      --black400: ${theme.colors.black400};
       --black300: ${theme.colors.black300};
-      --black50: ${theme.colors.black50};
+      --black700: ${theme.colors.black700};
+      --black900: ${theme.colors.black900};
       --white: ${theme.colors.white};
 
       --spacing1: 0.4375rem;

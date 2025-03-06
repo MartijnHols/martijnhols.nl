@@ -5,7 +5,8 @@ import { breakpoints } from '../theme'
 import CopyPasteOnly from './CopyPasteOnly'
 
 const Container = styled.div`
-  border: 7px solid var(--black);
+  --border-color: var(--black);
+  border: 7px solid var(--border-color);
   background: var(--yellow50);
   border-left: 0;
   border-right: 0;
@@ -16,6 +17,11 @@ const Container = styled.div`
   box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance) 0
     0 var(--yellow);
   clear: both;
+
+  .inverted & {
+    background: var(--black300);
+    --border-color: var(--white);
+  }
 
   @media (min-width: ${breakpoints.TABLET}px) {
     font-size: 94.5%; // 1px smaller to very slightly de-emphasize
@@ -31,12 +37,13 @@ const Container = styled.div`
 `
 const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(({ variant }) => [
   css`
-    background: var(--black);
+    background: var(--border-color);
     color: var(--yellow50);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3px 5px;
+    padding: calc(var(--spacing1) / 2) var(--spacing1);
     letter-spacing: 2.5px;
     // Letter-spacing places letters to the left of the space they occupy.
     // This makes the letters appear centered.
@@ -49,14 +56,18 @@ const Label = styled.div<{ variant?: 'xs' | 'sm' | 'md' }>(({ variant }) => [
     // This is typically bad form, but this improves the layout of text when
     // it is copy-pasted, since I add this text back underneath
     user-select: none;
+
+    .inverted & {
+      color: var(--black);
+    }
   `,
   variant === 'sm' &&
     css`
       letter-spacing: 4px;
-      padding: var(--spacing1);
+      padding: calc(var(--spacing1) / 2) var(--spacing1);
       // Letter-spacing places letters to the left of the space they occupy.
       // This makes the letters appear centered.
-      padding-bottom: calc(var(--spacing1) / 2);
+      padding-bottom: calc(var(--spacing1) / 4);
     `,
   variant === 'md' &&
     css`
