@@ -1,3 +1,5 @@
+import Aside from '../../components/Aside'
+
 ## Addendum
 
 I originally planned to include a deep dive into everything I used and all the findings from my tests, but since this article has already taken forever to write (I had to split it into three parts), I cut this short.
@@ -61,7 +63,10 @@ export default function () {
 - I did compression and Nginx tests too with some interesting findings (it's not as significant as you may expect), but they didn't make the cut for this article. I'll share that later.
 - I did dive into the possible _hug of death_ traffic spike from Hacker News and Reddit, but had to cut it to focus this article and not make it too long. I'll share that later too (probably after this one but no promises).
 
-I tested the following files (the hashes may not exist anymore):
+<details>
+  <summary>Files tested</summary>
+
+I tested on the following files and URLs. The hashes may not exist anymore, but you can find similar files on this page.
 
 - homepage: https://next.martijnhols.nl/
 - Blog article: The European Accessibility Act for websites and apps: https://next.martijnhols.nl/blog/the-european-accessibility-act-for-websites-and-apps
@@ -72,3 +77,9 @@ I tested the following files (the hashes may not exist anymore):
 - Statically generated RSS-feed: https://next.martijnhols.nl/rss.xml
 
 **Please don't hit these URLs with your load tests.**
+
+  <Aside variant="sm">
+    `next` in this case stands for next (major) version, not Next.js. This entire
+    site runs on Next.js.
+  </Aside>
+</details>
