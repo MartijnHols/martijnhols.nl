@@ -34,7 +34,7 @@ const cspHeader = `
   font-src 'self';
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' https://www.startpage.com;
   frame-ancestors 'none';
   ${process.env.NODE_ENV === 'production' ? 'upgrade-insecure-requests;' : ''}
 `

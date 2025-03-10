@@ -29,6 +29,8 @@ export const enum BlogArticleTag {
   CI_CD = 'ci-cd',
   Testing = 'testing',
   I18n = 'i18n',
+  Privacy = 'privacy',
+  Cloud = 'cloud',
 }
 
 export const priorityTags = [

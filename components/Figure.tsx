@@ -11,7 +11,8 @@ const StyledFigure = styled.figure`
   margin: 1.5em 0;
 `
 const ImageContainer = styled.div`
-  > img {
+  > img,
+  .img {
     display: inline-block;
     border: var(--spacing1) solid var(--black);
     box-shadow: calc(var(--box-shadow-distance) * -1) var(--box-shadow-distance)
