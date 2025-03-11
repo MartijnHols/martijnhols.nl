@@ -20,6 +20,7 @@ if (!process.env.PAGE_REVALIDATE_INTERVAL) {
 
 const applyMdx = createMDX({
   options: {
+    jsxImportSource: '@emotion/react',
     remarkPlugins: [remarkGfm],
   },
 })

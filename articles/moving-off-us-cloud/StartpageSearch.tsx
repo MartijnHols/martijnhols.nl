@@ -36,16 +36,6 @@ const WayOverengineeredGlowAnimation = styled.div`
       // appearing to move left to right.
       background:
         linear-gradient(
-          -15deg,
-          var(--color1) 0%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 10%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 40%,
-          var(--color1) 50%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 60%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 90%,
-          var(--color1) 100%
-        ),
-        linear-gradient(
           -45deg,
           var(--color2) 0%,
           color-mix(in srgb, var(--color2) 0%, transparent) 10%,
@@ -57,6 +47,16 @@ const WayOverengineeredGlowAnimation = styled.div`
           color-mix(in srgb, var(--color2) 0%, transparent) 76%,
           color-mix(in srgb, var(--color2) 0%, transparent) 90%,
           var(--color2) 100%
+        ),
+        linear-gradient(
+          -15deg,
+          var(--color1) 0%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 10%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 40%,
+          var(--color1) 50%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 60%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 90%,
+          var(--color1) 100%
         );
       animation: ${glowAnimation} 7s infinite linear;
       filter: blur(5px);

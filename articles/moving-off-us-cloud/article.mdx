@@ -1,37 +1,36 @@
+import { css } from '@emotion/react'
 import Image from 'next/image'
 import Aside from '../../components/Aside'
 import Figure from '../../components/Figure'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import protonPassAutofillImage from './proton-pass-autofill.png'
 import StartpageSearch from './StartpageSearch'
-import { css } from '@emotion/react'
+import ProtonLogo from './proton-logo.svg'
 
 export const meta = {
-  slug: 'im-moving-my-business-off-us-cloud-services',
-  title: "I'm moving my business off US cloud services",
+  slug: 'im-moving-away-from-us-cloud-services',
+  title: "I'm moving away from US cloud services",
   description:
-    "I'm concerned about the privacy and continuity implications of US cloud services, so I'm moving my business off US cloud services. Here's how and why I did it.",
+    "I'm concerned about the privacy and continuity implications of US cloud services, so I'm moving away from US cloud services. Here's how and why I did it.",
   // openGraphImage: openGraphImage,
   // image: accessibilityToolkitImage,
-  publishedAt: '2025-03-10',
+  // publishedAt: '2025-03-10',
   tags: [BlogArticleTag.Privacy, BlogArticleTag.Cloud],
 }
 
-# I'm moving my business off US cloud services
+# I'm moving away from US cloud services
 
-I've been skeptical of using US clouds for some time now. Time and again, data-sharing agreements between the EU and the US get busted, showing there is just no legal compatibility between EU privacy rights and US spying laws. Every few years, it's [revealed](https://en.wikipedia.org/wiki/PRISM) that the US is [spying more](https://www.wired.com/story/congress-spy-powers-fisa-ndaa-trump-702/) than expected. While everyone in the EU kinda knows storing personal data on US clouds is [pretty much impossible to do legally](/tooltip "European laws are in place to make it legal, but US laws are such that it can't be legal. This is why previous data sharing laws were all busted. So while the current laws might make it seem like you're good ok, in practice you aren't really."), they figure that since everyone is doing it, even if it's not legal, then at least you'd be wrong with everyone else, so [that makes it less bad](https://blog.iusmentis.com/2025/01/17/mag-ik-ondertussen-data-in-de-cloud-zetten-als-die-fysiek-in-europa-blijft/). Soon, it may become [definitely illegal](https://noyb.eu/en/us-cloud-soon-illegal-trump-punches-first-hole-eu-us-data-deal).
+I've been skeptical of using US clouds for some time now. **Time and time again, data-sharing agreements between the EU and the US get busted**, showing there's just no legal compatibility between EU privacy rights and US spying laws. Every few years, it's [revealed](https://en.wikipedia.org/wiki/PRISM) that the US is [spying more](https://www.wired.com/story/congress-spy-powers-fisa-ndaa-trump-702/) than expected. While everyone in the EU kinda knows storing personal data on US clouds is [pretty much impossible to do legally](/tooltip "European laws are in place to make it legal, but US laws are such that it can't be legal. This is why previous data sharing laws were all busted. So while the current laws might make it seem like you're good ok, in practice you aren't really."), they figure that since everyone is doing it, even if it's not legal, then [at least you'd be wrong with everyone else, so that makes it less bad](https://blog.iusmentis.com/2025/01/17/mag-ik-ondertussen-data-in-de-cloud-zetten-als-die-fysiek-in-europa-blijft/). And soon, it may become [fully illegal](https://noyb.eu/en/us-cloud-soon-illegal-trump-punches-first-hole-eu-us-data-deal).
 
-But privacy isn't the only concern anymore. With the current political situation in the US, it's also starting to become clear that our entire digital infrastructure is at the mercy of US policies. [It is no longer safe to rely on US clouds for our governments and societies](https://berthub.eu/articles/posts/you-can-no-longer-base-your-government-and-society-on-us-clouds/), as the US can shut it down whenever they please. And it [doesn't matter](https://berthub.eu/articles/posts/servers-in-de-eu-eigen-sleutels-helpt-het/#wat-als-er-ruzie-is) whether the servers are in the EU.
+But privacy isn't the only concern anymore. With the current political situation in the US, it's also starting to become clear that **our entire digital infrastructure is at the mercy of US policies**. [It is no longer safe to rely on US clouds for our governments and societies](https://berthub.eu/articles/posts/you-can-no-longer-base-your-government-and-society-on-us-clouds/), as the US government can shut it down at will. And it [doesn't matter](https://berthub.eu/articles/posts/servers-in-de-eu-eigen-sleutels-helpt-het/#wat-als-er-ruzie-is) whether the servers are in the EU.
 
-This isn't just speculation. In 2019 GitHub started [blocking](https://www.zdnet.com/article/github-starts-blocking-developers-in-countries-facing-us-trade-sanctions/) individual developers due to US trade sanction. More recently, the US imposed new [sanctions on the International Criminal Court](https://www.theguardian.com/us-news/2025/feb/06/trump-sanction-icc) in The Netherlands. These sanctions make it illegal for US companies to provide services to affected persons, essentially cutting them off from US services. This is a huge problem for them; [the ICC fears being cut off from all of their evidence](https://www.theguardian.com/law/2025/jan/20/international-criminal-court-icc-braces-swift-trump-sanctions-over-israeli-arrest-warrants), and [it may even shut them down](https://www.justiceinfo.net/en/140499-can-the-icc-survive-the-u-s-sanctions-part-2.html#h-a-potential-threat-to-the-very-existence-of-the-court). This sets a dangerous precedent, and it's starting to appear more and more that the US government will use tech companies as a weapon.
+This isn't just speculation. In 2019 GitHub started [blocking](https://www.zdnet.com/article/github-starts-blocking-developers-in-countries-facing-us-trade-sanctions/) individual developers due to US trade sanctions. More recently, the US imposed new [sanctions on the International Criminal Court](https://www.theguardian.com/us-news/2025/feb/06/trump-sanction-icc) in The Netherlands. These sanctions make it illegal for US companies to provide services to affected persons, essentially cutting them off from US services. This is a huge problem for them; [the ICC fears being cut off from all of their evidence](https://www.theguardian.com/law/2025/jan/20/international-criminal-court-icc-braces-swift-trump-sanctions-over-israeli-arrest-warrants), and [it may even shut the ICC down](https://www.justiceinfo.net/en/140499-can-the-icc-survive-the-u-s-sanctions-part-2.html#h-a-potential-threat-to-the-very-existence-of-the-court). This sets a dangerous precedent, and it increasingly appears that the US government will use tech companies as a weapon.
 
-All things considered, it's high time to move away from US cloud services.
+All things considered, **it's high time to move away from US cloud services**. In this article, I'll break down how I'm migrating away, what I switched to, and the challenges along the way.
 
-In this article, I'll share my journey of moving my business off US cloud services. I'll cover the services I rely on, the alternatives I've chosen, and the challenges I've faced.
+## My dependencies
 
-## The dependency list
-
-Before I started, I did an inventory of US cloud services I rely on. I decided to focus on cloud services (and not software and hardware), as that's where the biggest risks are. My complete dependency list somewhat in order of reliance:
+Before starting, I made an inventory of the US cloud services I depend on. I decided to focus on cloud services (and not software and hardware), as that's where the biggest risks are. My [complete](/tooltip "It's not as long as you might expect, as I've been preferring European services for a while now. For example, this site is hosted on OVH, a big French cloud service.") dependency list roughly in order of reliance:
 
 - Microsoft Office 365
   - Mail
@@ -44,28 +43,43 @@ Before I started, I did an inventory of US cloud services I rely on. I decided t
 - Docker Hub
 - NPM
 
-This is limited to stuff I rely on for work. It doesn't include personal services (privately I also rely on WhatsApp for communication and iCloud for backups and notes).
+This list is focused on cloud services I use professionally, but I plan to migrate personal services as well (privately I also rely on WhatsApp for communication and iCloud for backups and notes).
 
 <Aside>
   While they're technically not cloud services, I also depend on online
-  platforms like Hacker News, Reddit, LinkedIn, Twitter, BlueSky and WhatsApp. I
-  use social media like Hacker News and Reddit to reach people and stay
-  informed, and LinkedIn, Twitter and BlueSky are ways for people to find and
-  follow me. A very important aspect of these platforms is that they're only as
-  good as the people on them. This makes most of them irreplaceable.
+  platforms like Hacker News, Reddit,
+  [LinkedIn](https://www.linkedin.com/in/martijnhols/),
+  [Twitter](https://x.com/MartijnHols) and
+  [BlueSky](https://bsky.app/profile/martijnhols.nl) and WhatsApp. I use social
+  media like Hacker News and Reddit to reach people and stay informed, and
+  LinkedIn, Twitter and BlueSky are ways for people to find and follow me. These
+  platforms are only as good as the people on them, making most of them
+  irreplaceable. Not because of their infrastructure, but because of their
+  communities.
 </Aside>
 
-## Replacing my US cloud dependencies
+## Replacing the dependencies
 
-Going off of the dependency list, I started replacing them one by one.
+With the list handy, I replaced each dependency.
 
 ### Goodbye Microsoft Office 365
 
 Microsoft 365 is my main dependency. It has all of my mail, including history that I'm legally required to save, my calendar, and most of my important files, which also includes many files I'm legally required to save. Losing access to these services would be a total nightmare.
 
-Additionally, I had long-standing usability issues with Microsoft 365, particularly with [OneDrive on Mac](It was constantly draining my battery and overheating my CPU.), which made the switch even more appealing.
+Additionally, I had long-standing usability issues with Microsoft 365, particularly with [OneDrive on Mac](/tooltip 'It was constantly draining my battery and overheating my CPU.'), which made the switch even more appealing.
 
 I went looking for an all-in-one solution; mail, calendar and drive, mostly because it's simpler, and I don't want to pay for everything separately. In the end, I settled on [Proton](https://proton.me/). I had heard of Proton Mail before as a privacy-focused highly-encrypted mail provider, but never really looked into it as I had no real need for that, and I figured it would come at the cost of usability and price. But **I was seriously impressed by how good Proton software is.** Their apps are really [well-made and very usable](/tooltip "What the right kind of excited language for something as boring as mail, calendar, and storage? I don't really miss anything, and in general the UX is good. At the very least on average it's better than Microsoft's. Of course I do have some things I miss, like being able to switch month/week in calendar with one click, a right-click context menus, a Mail iOS widget, or the calendar one showing future events like the native iOS one does. All minor things if you ask me. But since I'm listing issues, you should know searching through Mail is a bit limited (since the encryption thing makes server-side searching impossible). I personally don't mind, and I read that they're working on it. Speaking of them working on things; they're active on Reddit and seem to actively be listening to feedback. You should watch some of their interviews to get a feeling for the company - they seem pretty passionate and cool."). I actually have a better experience than I did using Microsoft's. I'm impressed by how they made everything work so well without sacrificing privacy in any way.
+
+<ProtonLogo
+  css={css`
+    width: 10em;
+    float: right;
+    margin-top: 0.5em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+  `}
+  aria-label="Proton logo"
+/>
 
 The [Proton Business Suite](https://proton.me/business/plans), which includes 1 TB for Mail, Calendar, VPN, Pass and Drive, is only 12.99 per month (the non-business variant is 9.99). And just like Microsoft 365, it has full-fledged support for teams.
 
@@ -73,15 +87,13 @@ Another thing that impressed me by Proton, is that switching from Microsoft 365 
 
 And yet another bonus: the Proton Business Plan includes a VPN. I only need one very occasionally, and every time I'm looking for a one time solution as my needs were never enough to subscribe to one, so this was a nice extra perk.
 
-After a few weeks of using it, **I highly recommend Proton as an alternative to Microsoft 365.**
-
 ### Replacing Bitwarden
 
 I was very hesitant to switch password managers. I'd used Bitwarden daily for over 4 years, and despite its usability issues, it had become a core part of my toolkit.
 
 But as I really wanted to ditch US cloud services, I looked into replacing it. After all, even though my vaults are encrypted, they're still hosted by Bitwarden and they can restrict my access as they see fit.
 
-Since Proton Pass came [bundled](/tooltip "There's a generous free tier too.") with the Proton Business Suite, it was the obvious place to start. When I saw [1Password users switching](https://www.youtube.com/watch?v=CBdDYurOMyg), I figured it had to be good. And it is! **It has all of the features I used in Bitwarden, and more.** The main new things I appreciate are sharing password via a link, and the return of the login dropdown in login forms. Oh I missed you so.
+The obvious place to start, was [Proton Pass](https://proton.me/pass), since it came [bundled](/tooltip "There's a generous free tier too.") with the Proton Business Suite. When I saw [1Password users switching](https://www.youtube.com/watch?v=CBdDYurOMyg), I figured it had to be good. And it is! **It has all of the features I used in Bitwarden, and more.** The main new things I appreciate are sharing password via a link, and the return of the login dropdown in login forms. Oh I missed you so.
 
 <Figure caption="The dropdown opens automatically, so I can confirm a login with a single click">
   <Image
@@ -90,8 +102,6 @@ Since Proton Pass came [bundled](/tooltip "There's a generous free tier too.") w
     alt='Shows a login form (Email or username and password) with an autofill overaly open with an option to login as "martijnhols"'
   />
 </Figure>
-[Caption: The dropdown opens automatically, so I can confirm a login with a
-single click]
 
 Migration was even easier than Mail; just export in Bitwarden and import in Proton Pass, and you're done. Even TOTP codes and secure notes transfer over seamlessly.
 
@@ -109,7 +119,7 @@ If you've tried alternative search engines, you know: Google search is really, r
 
 But I found it: [Startpage](https://www.startpage.com/)
 
-<Figure caption="Startpage interactive search">
+<Figure caption="Try for yourself">
   <div
     className="img"
     style={{
