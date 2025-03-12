@@ -43,6 +43,7 @@ const articles = [
   import('./the-european-accessibility-act-for-websites-and-apps'),
   import('./migrating-away-from-martijnhols-actions-cache'),
   import('./how-much-traffic-can-a-pre-rendered-nextjs-site-handle'),
+  import('./moving-away-from-us-cloud-services'),
 ] as Promise<{ meta: BlogArticleMeta }>[]
 
 export const getArticles = async () =>
