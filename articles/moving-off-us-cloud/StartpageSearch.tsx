@@ -2,6 +2,7 @@ import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import Head from 'next/head'
 import { useId } from 'react'
+import { breakpoints } from '../../theme'
 import StartpageLogo from './StartpageLogo.svg'
 import StartpageSearchIcon from './StartpageSearchIcon.svg'
 
@@ -15,12 +16,14 @@ const glowAnimation = keyframes`
   }
 `
 const WayOverengineeredGlowAnimation = styled.div`
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+
   @media (prefers-reduced-motion: no-preference) {
-    position: absolute;
     inset: -5px;
     border-radius: 2em;
     overflow: hidden;
-    z-index: -1;
 
     ::before {
       content: '';
@@ -139,15 +142,22 @@ const StartpageSearch = () => {
                 border-radius: 2em;
                 border: 1px solid #6573ff;
                 padding: 0.6317em 1em;
-                width: 32em;
                 color: #202945;
                 background: white;
                 padding-right: 3em;
                 font-size: 16px;
+                width: 16em;
 
                 :focus {
                   outline: none;
                   box-shadow: 0 0 2px 2px #6573ff;
+                }
+
+                @media (min-width: ${breakpoints.MOBILE_LARGE}px) {
+                  width: 28em;
+                }
+                @media (min-width: ${breakpoints.TABLET}px) {
+                  width: 32em;
                 }
               `}
             />
