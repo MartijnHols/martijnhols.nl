@@ -6,15 +6,16 @@ import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import protonPassAutofillImage from './proton-pass-autofill.png'
 import StartpageSearch from './StartpageSearch'
 import ProtonLogo from './proton-logo.svg'
+import coverImage from './cover.png'
 
 export const meta = {
   slug: 'moving-away-from-us-cloud-services',
   title: 'Moving away from US cloud services',
   description:
     "I'm concerned about the privacy and continuity implications of US cloud services, so I'm moving away from US cloud services. Here's how and why I did it.",
+  image: coverImage,
   // openGraphImage: openGraphImage,
-  // image: accessibilityToolkitImage,
-  // publishedAt: '2025-03-10',
+  // publishedAt: '2025-03-13',
   tags: [BlogArticleTag.Privacy, BlogArticleTag.Cloud],
 }
 
@@ -25,6 +26,17 @@ For years, using US clouds in the EU has been questionable. **Time and time agai
 But privacy isn't the only concern anymore. With the current political situation in the US, it's also starting to become clear that **our entire digital infrastructure is at the mercy of US policies**. [It is no longer safe to rely on US clouds for our governments and societies](https://berthub.eu/articles/posts/you-can-no-longer-base-your-government-and-society-on-us-clouds/), as the US government can shut it down at will. And it [doesn't matter](https://berthub.eu/articles/posts/servers-in-de-eu-eigen-sleutels-helpt-het/#wat-als-er-ruzie-is) whether the servers are in the EU.
 
 This isn't just speculation. In 2019 GitHub started [blocking](https://www.zdnet.com/article/github-starts-blocking-developers-in-countries-facing-us-trade-sanctions/) individual developers due to US trade sanctions. More recently, the US imposed new [sanctions on the International Criminal Court](https://www.theguardian.com/us-news/2025/feb/06/trump-sanction-icc) in The Netherlands. These sanctions make it illegal for US companies to provide services to affected persons, essentially cutting them off from US services. This is a huge problem for them; [the ICC fears being cut off from all of their evidence](https://www.theguardian.com/law/2025/jan/20/international-criminal-court-icc-braces-swift-trump-sanctions-over-israeli-arrest-warrants), and [it may even shut the ICC down](https://www.justiceinfo.net/en/140499-can-the-icc-survive-the-u-s-sanctions-part-2.html#h-a-potential-threat-to-the-very-existence-of-the-court). This sets a dangerous precedent, and it increasingly appears that the US government will use tech companies as a weapon.
+
+<Image
+  src={coverImage}
+  alt="Taking the exit with the US cloud"
+  css={css`
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    width: 10em;
+  `}
+/>
 
 All things considered, **it's high time to move away from US cloud services**. In this article, I'll break down how I'm migrating away, what I switched to, and the challenges along the way.
 
