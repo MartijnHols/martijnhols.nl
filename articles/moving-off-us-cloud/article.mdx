@@ -55,7 +55,7 @@ Before starting, I made an inventory of the US cloud services I depend on. I dec
 - Docker Hub
 - NPM
 
-This list is focused on cloud services I use professionally, but I plan to migrate personal services as well (privately I also rely on WhatsApp for communication and iCloud for backups and notes).
+This list is focused on cloud services I use professionally (for my business), but I plan to migrate personal services as well (privately I also rely on WhatsApp for communication and iCloud for backups and notes).
 
 <Aside>
   While they're technically not cloud services, I also depend on online
@@ -76,11 +76,11 @@ With the list handy, I replaced each dependency.
 
 ### Goodbye Microsoft Office 365
 
-Microsoft 365 is my main dependency. It has all of my mail, including history that I'm legally required to save, my calendar, and most of my important files, which also includes many files I'm legally required to save. Losing access to these services would be a total nightmare.
+Microsoft 365 was my most important dependency. It has all of my mail, including history that I'm legally required to save, my calendar, and most of my important files, which I'm legally required to keep long-term. Losing access to these services isn't an option.
 
-Additionally, I had long-standing usability issues with Microsoft 365, particularly with [OneDrive on Mac](/tooltip 'It was constantly draining my battery and overheating my CPU.'), which made the switch even more appealing.
+On top of that, I've had long-standing usability issues with Microsoft 365. Particularly OneDrive for Mac, which was constantly draining my battery and overheating my CPU, making the switch even more appealing.
 
-I went looking for an all-in-one solution; mail, calendar and drive, mostly because it's simpler, and I don't want to pay for everything separately. In the end, I settled on [Proton](https://proton.me/). I had heard of Proton Mail before as a privacy-focused highly-encrypted mail provider, but never really looked into it as I had no real need for that, and I figured it would come at the cost of usability and price. But **I was seriously impressed by how good Proton software is.** Their apps are really [well-made and very usable](/tooltip "What the right kind of excited language for something as boring as mail, calendar, and storage? I don't really miss anything, and in general the UX is good. At the very least on average it's better than Microsoft's. Of course I do have some things I miss, like being able to switch month/week in calendar with one click, a right-click context menus, a Mail iOS widget, or the calendar one showing future events like the native iOS one does. All minor things if you ask me. But since I'm listing issues, you should know searching through Mail is a bit limited (since the encryption thing makes server-side searching impossible). I personally don't mind, and I read that they're working on it. Speaking of them working on things; they're active on Reddit and seem to actively be listening to feedback. You should watch some of their interviews to get a feeling for the company - they seem pretty passionate and cool."). I actually have a better experience than I did using Microsoft's. I'm impressed by how they made everything work so well without sacrificing privacy in any way.
+I went looking for an all-in-one solution; mail, calendar, and storage, mostly because it's simpler, but I also don't want to pay for everything separately. In the end, I settled on [Proton](https://proton.me/). I had heard of Proton Mail before as a privacy-focused highly-encrypted mail provider, but never really looked into it as I had no real need for that, and I figured it would come at the cost of usability and price. But **I was seriously impressed by how good Proton software is.** Their apps are really [well-made and very usable](/tooltip "What's the right kind of excited language for something as boring as mail, calendar, and storage? I don't really miss anything, and in general the UX is good. At the very least on average it's better than Microsoft's. Of course I do have some things I miss, like being able to switch month/week in calendar with one click, a right-click context menus, a Mail iOS widget, or the calendar one showing future events like the native iOS one does. All minor things if you ask me. But since I'm listing issues, you should know searching through Mail is a bit limited (since the encryption thing makes server-side searching impossible). I personally don't mind. They're also actively improving things, something that's clear from their presence on Reddit and how they engage with user feedback. You should watch one of their interviews to get a feeling for the company - they seem pretty passionate and cool."). I actually have a better experience than I did using Microsoft's. I'm impressed by how they made everything work so well without sacrificing privacy in any way.
 
 <ProtonLogo
   css={css`
@@ -90,14 +90,14 @@ I went looking for an all-in-one solution; mail, calendar and drive, mostly beca
     margin-left: 1em;
     margin-bottom: 1em;
   `}
-  aria-label="Proton logo"
+  aria-hidden
 />
 
 The [Proton Business Suite](https://proton.me/business/plans), which includes 1 TB for Mail, Calendar, VPN, Pass and Drive, is only 12.99 per month (the non-business variant is 9.99). And just like Microsoft 365, it has full-fledged support for teams.
 
-Another thing that impressed me by Proton, is that switching from Microsoft 365 is [a breeze](https://www.washingtonpost.com/technology/2023/06/27/gmail-switch-proton-email/). Their [Easy Switch](https://proton.me/easyswitch) tool, handled all the data importing for me within a few clicks. All I had to do manually was update the DNS for my domains. And as a bonus, Proton allows setting up 15 custom email domains, so I can cancel all of my separate [email hosting](https://www.transip.nl/email-hosting/) and centralize all my mailboxes.
+Another thing that impressed me about Proton is [how easy](https://www.washingtonpost.com/technology/2023/06/27/gmail-switch-proton-email/) switching from Microsoft 365 was. Their [Easy Switch](https://proton.me/easyswitch) tool, handled all the data importing for me in just a few clicks. All I had to do manually was update the DNS for my domains. And as a bonus, Proton allows setting up 15 custom email domains, so I can cancel all of my separate [email hosting](https://www.transip.nl/email-hosting/) and centralize all my mailboxes.
 
-And yet another bonus: the Proton Business Plan includes a VPN. I only need one very occasionally, and every time I'm looking for a one time solution as my needs were never enough to subscribe to one, so this was a nice extra perk.
+Yet another bonus: the Proton Business Plan includes a VPN. I only need one very occasionally and my needs were never enough to subscribe to one, so this is a nice extra perk.
 
 ### Replacing Bitwarden
 
@@ -105,7 +105,7 @@ I was very hesitant to switch password managers. I'd used Bitwarden daily for ov
 
 But as I really wanted to ditch US cloud services, I looked into replacing it. After all, even though my vaults are encrypted, they're still hosted by Bitwarden and they can restrict my access as they see fit.
 
-The obvious place to start, was [Proton Pass](https://proton.me/pass), since it came [bundled](/tooltip "There's a generous free tier too.") with the Proton Business Suite. When I saw [1Password users switching](https://www.youtube.com/watch?v=CBdDYurOMyg), I figured it had to be good. And it is! **It has all of the features I used in Bitwarden, and more.** The main new things I appreciate are sharing password via a link, and the return of the login dropdown in login forms. Oh I missed you so.
+The obvious place to start was [Proton Pass](https://proton.me/pass), since it came [bundled](/tooltip "There's a generous free tier too.") with the Proton Business Suite. When I saw [1Password users switching](https://www.youtube.com/watch?v=CBdDYurOMyg), I figured it had to be good. Turns out, it really is! **It has all of the features I used in Bitwarden, and more.** The main new things I appreciate are sharing a password via a link, and the return of the login dropdown in login forms. Oh, I missed you so.
 
 <Figure caption="The dropdown opens automatically, so I can confirm a login with a single click">
   <Image
@@ -115,15 +115,15 @@ The obvious place to start, was [Proton Pass](https://proton.me/pass), since it 
   />
 </Figure>
 
-Migration was even easier than Mail; just export in Bitwarden and import in Proton Pass, and you're done. Even TOTP codes and secure notes transfer over seamlessly.
+Migration was even easier than mail; just export in Bitwarden and import in Proton Pass, and you're done. Even TOTP codes and secure notes transfer over seamlessly.
 
 ### The GitHub challenge
 
-I haven't migrated off GitHub yet. I'm deeply locked into GitHub, having [heavily customized](https://martijnhols.nl/blog/migrating-away-from-martijnhols-actions-cache) my [build pipelines](https://github.com/MartijnHols/martijnhols.nl/actions) to work within their platform.
+I'm deeply locked into GitHub, having [heavily customized](https://martijnhols.nl/blog/migrating-away-from-martijnhols-actions-cache) my [build pipelines](https://github.com/MartijnHols/martijnhols.nl/actions) to work within their platform. As a result, I haven't started migrating yet.
 
-GitHub only hosts my repositories and CI; I don't store any personal data on GitHub, nor do I use it to process it. I have copies of my repositories on my computer, plus occasional backups. The only real risk is if my Mac's SSD self-destructed at the exact same time, then I'd lose a few days of work.
+GitHub only hosts my repositories and CI; I don't store any personal data on GitHub, nor do I use it to process it. I have copies of my repositories on my computer, plus occasional backups. The only real risk is my Mac's SSD self-destructing at the exact same time; then I'd lose a few days of work.
 
-Still, I'm highly dependent on GitHub with my projects, but migrating will take time. I will find a new home for my private repositories eventually, but considering the impact, this will probably be the final thing I migrate, so I haven't really started looking into alternatives yet.
+Still, I rely on GitHub heavily for my projects, so migrating will take time. I'll find a new home for my repositories eventually, but considering the impact, this will probably be the last thing I migrate, so I haven't really explored alternatives yet.
 
 ### Escaping Google search (almost)
 
@@ -144,42 +144,42 @@ But I found it: [Startpage](https://www.startpage.com/)
 
 Startpage is a Dutch-owned search engine that promises "uncompromising" privacy. Despite that, **I was really surprised by how good its search results are.** Turns out that's because it's actually a Google proxy. Bummer.
 
-The privacy consequences of Startpage being a Google proxy are unclear, but it's still a a lot better than using plain Google. It doesn't remove the US cloud dependency though. Unfortunately, real European alternatives that don't make me want to switch back are scarce.
+It's unclear what Startpage's reliance on Google means for privacy, but it's still much better than using Google directly. It doesn't remove the US cloud dependency though. Unfortunately, real European alternatives that don't make me want to switch back are scarce.
 
 ### Disconnecting Cloudflare/Google DNS
 
-The promise of optimal DNS performance attracted me to the DNS servers of Cloudflare and Google. As part of this de-US-ing, I've opted to replace those with [Quad9](https://www.quad9.net/). Quad9 is a Swiss-based free DNS service focused on [security](/tooltip 'Its recommended DNS server includes blocking sites known to be serving malware, but you can also select one without this security feature.') and privacy.
+The promise of optimal DNS performance attracted me to the DNS servers of Cloudflare and Google, but this too comes with privacy issues and reliance on US infrastructure. As part of this de-US-ing, I've opted to replace those with [Quad9](https://www.quad9.net/). Quad9 is a free, Swiss-based DNS service focused on [security](/tooltip 'Its recommended DNS server includes blocking sites known to be serving malware, but you can also select one without this security feature.') and privacy.
 
 Switching to Quad9 is easy; just pop in these numbers in your router: https://www.quad9.net/service/service-addresses-and-features#rec or [install a provisioning profile on mobile](https://docs.quad9.net/)
 
 ### Ditching Docker Hub
 
-Docker Hub (a registry for Docker images) is essential to my CD pipeline; it stores the private images that my servers [automatically pull](https://github.com/containrrr/watchtower) to install new versions of my apps.
+Docker Hub (a registry for [Docker images](/tooltip "Docker images are like custom executables. These images contain everything needed to run a piece of software on any machine capable of running Docker.")) is essential to my [CD pipeline](/tooltip "Continuous Delivery pipelines; tooling that takes care of automatically deploying code that I commit."); it stores the private images that my servers [automatically pulls](https://github.com/containrrr/watchtower) to install new versions of my apps.
 
-I'm quite eager to switch off of Docker Hub. I haven't been fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shutdown Docker Cloud](https://old.reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause, because they misinterpreted their logs (they were counting [HTTP Head requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
+I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shut down Docker Cloud](https://old.reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause because they misinterpreted their logs (they were counting [HTTP Head requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
 
-Given my simple needs, self-hosting seems like the best option, so I'm probably going with [Harbor](https://goharbor.io/). But before I can set it up, I need to find a persistent storage solution for my servers. I've been putting this off as it hasn't really been essential [recently](/tooltip 'In other projects I used TransIP BigStorage for this. But since I switched to dedicated servers, I no longer use TransIP so I need something that works on other platforms as well.'). OVH or Scaleway Object Storage seem like good fits, but I need to do more research before finalizing a choice.
+Since my needs are simple, self-hosting seems like the best option. I'm probably going with [Harbor](https://goharbor.io/), but before I can set it up, I need to find a persistent storage solution for my servers. I've been putting this off as it hasn't really been essential [until now](/tooltip 'In other projects I used TransIP BigStorage for this. But since I switched to dedicated servers, I need something that works on other platforms as well.'). OVH or Scaleway Object Storage seem like good fits, but I need to do more research before finalizing a choice.
 
-My deadline for this migration is July 1st, as that's when my Docker plan expires. But I'll probably finish this in the next few weeks to get this migration off the US cloud over with.
+My deadline for this migration is July 1st, as that's when my Docker plan expires. But I'll probably finish this in the next few weeks to complete this migration away from the US cloud.
 
 ### NPM
 
-For NPM, a key challenge is the reliance on public packages. These are downloaded and installed in every build in CI, and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would make break most tooling. An alternative is needed.
+For NPM, a key challenge is the reliance on public [packages](/tooltip "Third-party libraries."). These are downloaded and installed in every build in CI, and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
 
-Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this may be because most (big) companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/) as a private registry and cache before. Setting it up should be fairly easy to do with a Docker image. But like the Docker registry, this requires setting up persistent storage first. Once storage is good to go, I'll set this up. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and I can get other people up to speed with them.
+Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/) as a private registry and cache before, and setting it up is fairly easy with a Docker image. Like the Docker registry, though, this requires setting up persistent storage first. Once that's ready, I'll set this up. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and I can get other people up to speed with them.
 
 ## Wrapping up
 
-Migrating off the US cloud is a lot easier than I expected. While there are some challenges left to tackle, migrating my main dependency (Microsoft 365) was done in an afternoon. This is mainly thanks to Proton, which turned out to be a surprisingly good alternative to Microsoft 365.
+**Migrating away from US cloud services was easier than I expected.** While there are some challenges left to tackle, migrating my most important dependency (Microsoft 365) was done in an afternoon. This is mostly due to Proton, which turned out to be a surprisingly good alternative to Microsoft 365.
 
-Other moves, like replacing Docker Hub and NPM, required a bit more planning. This was mostly because I hadn't solved persistent storage before—something I should have solved ages ago.
+Replacing Docker Hub and NPM required more planning. This was mostly because I hadn't set up persistent storage before—something I should have solved ages ago.
 
-Some things, like GitHub, will take longer, but it's on my list and seems within reach. It even seems fun to explore European alternatives. Or maybe I'll self-host something.
+Other services, such as GitHub, will take longer. But it's on my list and seems within reach. It even seems fun to explore European alternatives. Or maybe I'll self-host something.
 
-On the other side is Google Search, which still feels unbeatable. [Hopefully more alternatives will pop up](/tooltip "It's interesting how there are so many AI competitors, but so few on search engines. I suppose there's not a lot of money in search engines, but with AI already running crawlers, maybe they can double dip?"), but for now using a more privacy-focused proxy seems to be the only viable option.
+Google Search, on the other hand, still feels unbeatable. [Hopefully more alternatives will pop up](/tooltip "It's interesting how there are so many AI competitors, but so few on search engines. I suppose there's not a lot of money in search engines, but with AI already running crawlers, maybe they can double dip?"), but for now using a more privacy-focused proxy seems to be the only viable option.
 
-If you're thinking about reducing your reliance on US cloud services, now is a good time to make it so. It's getting harder to ignore the risks, both in terms of privacy and control over your own infrastructure. As my experience shows, some migrations may be a lot easier than you expect, while others can take more effort.
+If you're thinking about reducing your reliance on US cloud services, now is a good time to make it so. The risks, both in terms of privacy and control over your infrastructure, are getting harder to ignore. As my experience shows, some migrations may be a lot easier than you'd expect.
 
-If nothing else, at least be aware of the risks before signing up for _new_ US services. Consider European services instead.
+At the very least, think twice before signing up for _new_ US services. Consider European services instead.
 
 If you've gone through a similar transition, I'd love to hear what worked (or didn't work) for you.
