@@ -8,10 +8,10 @@ import StartpageSearchIcon from './StartpageSearchIcon.svg'
 // transform is much more performant than animating background-position
 const glowAnimation = keyframes`
   0% {
-    transform: translate(-25%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: translate(-25%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 `
 const WayOverengineeredGlowAnimation = styled.div`
@@ -25,9 +25,9 @@ const WayOverengineeredGlowAnimation = styled.div`
     ::before {
       content: '';
       position: absolute;
-      inset: 0;
-      transform: translate(0%, -50%);
-      width: 200%;
+      inset: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
       aspect-ratio: 1 / 1;
       --color1: #6677fb;
       --color2: #2bdccc;
@@ -37,28 +37,27 @@ const WayOverengineeredGlowAnimation = styled.div`
       background:
         linear-gradient(
           -45deg,
-          var(--color2) 0%,
           color-mix(in srgb, var(--color2) 0%, transparent) 10%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 23%,
-          var(--color2) 33%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 43%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 56%,
-          var(--color2) 66%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 76%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 90%,
-          var(--color2) 100%
+          var(--color2) 20%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 30%,
+          var(--color2) 40%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 50%,
+          var(--color2) 60%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 70%,
+          var(--color2) 80%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 90%
         ),
         linear-gradient(
           -15deg,
-          var(--color1) 0%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 10%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 0%,
+          var(--color1) 20%,
           color-mix(in srgb, var(--color1) 0%, transparent) 40%,
           var(--color1) 50%,
           color-mix(in srgb, var(--color1) 0%, transparent) 60%,
-          color-mix(in srgb, var(--color1) 0%, transparent) 90%,
-          var(--color1) 100%
+          var(--color1) 80%,
+          color-mix(in srgb, var(--color1) 0%, transparent) 100%
         );
-      animation: ${glowAnimation} 7s infinite linear;
+      animation: ${glowAnimation} 9s infinite linear;
       filter: blur(5px);
     }
     ::after {
