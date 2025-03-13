@@ -4,6 +4,7 @@ import Annotation from './components/Annotation'
 import Code from './components/Code'
 import CodeSnippet, { PrismLanguages } from './components/CodeSnippet'
 import Link from './components/Link'
+import Tooltip from './components/Tooltip'
 
 const slugify = (text: string) =>
   text
@@ -35,12 +36,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }
       if (title) {
         return (
-          <Annotation annotation={title}>
-            {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
-            <Link href={href!} {...props}>
-              {children}
-            </Link>
-          </Annotation>
+          <Tooltip content={title}>
+            {({
+              props: {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                role,
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                tabIndex,
+                ...tooltipProps
+              },
+            }) => (
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              <Link href={href!} {...tooltipProps} {...props}>
+                {children}
+              </Link>
+            )}
+          </Tooltip>
         )
       }
 
