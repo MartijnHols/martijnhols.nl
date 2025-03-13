@@ -13,10 +13,10 @@ export const meta = {
   slug: 'moving-away-from-us-cloud-services',
   title: 'Moving away from US cloud services',
   description:
-    "I'm concerned about the privacy and continuity implications of US cloud services, so I'm moving away from US cloud services. Here's how and why I did it.",
+    "Relying on US cloud services poses legal and political risks for EU users, so I'm moving away from US cloud services. Here's how and why I did it.",
   image: coverImage,
   openGraphImage: openGraphImage,
-  // publishedAt: '2025-03-13',
+  publishedAt: '2025-03-13',
   tags: [BlogArticleTag.Privacy, BlogArticleTag.Cloud],
 }
 
@@ -26,7 +26,9 @@ For years, using US clouds in the EU has been questionable. **Time and time agai
 
 But privacy isn't the only concern anymore. With the current political situation in the US, it's also starting to become clear that **our entire digital infrastructure is at the mercy of US policies**. [It is no longer safe to rely on US clouds for our governments and societies](https://berthub.eu/articles/posts/you-can-no-longer-base-your-government-and-society-on-us-clouds/), as the US government can shut it down at will. And it [doesn't matter](https://berthub.eu/articles/posts/servers-in-de-eu-eigen-sleutels-helpt-het/#wat-als-er-ruzie-is) whether the servers are in the EU.
 
-This isn't just speculation. In 2019 GitHub started [blocking](https://www.zdnet.com/article/github-starts-blocking-developers-in-countries-facing-us-trade-sanctions/) individual developers due to US trade sanctions. More recently, the US imposed new [sanctions on the International Criminal Court](https://www.theguardian.com/us-news/2025/feb/06/trump-sanction-icc) in The Netherlands. These sanctions make it illegal for US companies to provide services to affected persons, essentially cutting them off from US services. This is a huge problem for them; [the ICC fears being cut off from all of their evidence](https://www.theguardian.com/law/2025/jan/20/international-criminal-court-icc-braces-swift-trump-sanctions-over-israeli-arrest-warrants), and [it may even shut the ICC down](https://www.justiceinfo.net/en/140499-can-the-icc-survive-the-u-s-sanctions-part-2.html#h-a-potential-threat-to-the-very-existence-of-the-court). This sets a dangerous precedent, and it increasingly appears that the US government will use tech companies as a weapon.
+This isn't just speculation. In 2019 GitHub started [blocking](https://www.zdnet.com/article/github-starts-blocking-developers-in-countries-facing-us-trade-sanctions/) individual developers due to US trade sanctions. More recently, the US imposed new [sanctions on the International Criminal Court](https://www.theguardian.com/us-news/2025/feb/06/trump-sanction-icc) in The Netherlands. These sanctions make it illegal for US companies to provide services to [affected persons](/tooltip 'Who are from allied countries.'), essentially cutting them off from US services. This is a huge problem for them; [the ICC fears being cut off from all of their evidence](https://www.theguardian.com/law/2025/jan/20/international-criminal-court-icc-braces-swift-trump-sanctions-over-israeli-arrest-warrants), and [it may even shut the ICC down](https://www.justiceinfo.net/en/140499-can-the-icc-survive-the-u-s-sanctions-part-2.html#h-a-potential-threat-to-the-very-existence-of-the-court).
+
+This sets a dangerous precedent. It increasingly appears that the US government will use tech companies as a weapon.
 
 <Image
   src={coverImage}
@@ -155,7 +157,7 @@ Switching to Quad9 is easy; just pop in these numbers in your router: https://ww
 
 ### Ditching Docker Hub
 
-Docker Hub (a registry for [Docker images](/tooltip "Docker images are like custom executables. These images contain everything needed to run a piece of software on any machine capable of running Docker.")) is essential to my [CD pipeline](/tooltip "Continuous Delivery pipelines; tooling that takes care of automatically deploying code that I commit."); it stores the private images that my servers [automatically pulls](https://github.com/containrrr/watchtower) to install new versions of my apps.
+Docker Hub (a registry for [Docker images](/tooltip 'Docker images are like custom executables. These images contain everything needed to run a piece of software on any machine capable of running Docker.')) is essential to my [CD pipeline](/tooltip 'Continuous Delivery pipelines; tooling that takes care of automatically deploying code that I commit.'); it stores the private images that my servers [automatically pulls](https://github.com/containrrr/watchtower) to install new versions of my apps.
 
 I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shut down Docker Cloud](https://old.reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause because they misinterpreted their logs (they were counting [HTTP Head requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
 
@@ -165,7 +167,7 @@ My deadline for this migration is July 1st, as that's when my Docker plan expire
 
 ### NPM
 
-For NPM, a key challenge is the reliance on public [packages](/tooltip "Third-party libraries."). These are downloaded and installed in every build in CI, and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
+For NPM, a key challenge is the reliance on public [packages](/tooltip 'Third-party libraries.'). These are downloaded and installed in every build in CI, and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
 
 Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/) as a private registry and cache before, and setting it up is fairly easy with a Docker image. Like the Docker registry, though, this requires setting up persistent storage first. Once that's ready, I'll set this up. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and I can get other people up to speed with them.
 
