@@ -11,6 +11,7 @@ import AngleTop from './AngleTop'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import BlogArticleMeta from './BlogArticleMeta'
+import BlogArticleSocials from './BlogArticleSocials'
 import BlogRelatedArticles from './BlogRelatedArticles'
 import Container from './Container'
 import CopyPasteOnly from './CopyPasteOnly'
@@ -79,14 +80,29 @@ const ArticleMetadata = styled.div`
   flex-grow: 1;
   text-align: right;
 `
+const ArticleFooter = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing2);
+  margin-top: var(--spacing4);
+
+  @media (min-width: ${breakpoints.MOBILE_LARGE}px) {
+    flex-flow: row;
+  }
+`
 const Tags = styled.div`
+  margin-top: var(--spacing1);
+  flex: 1 0 auto;
   display: flex;
   gap: var(--spacing1);
   flex-wrap: wrap;
-  margin-top: var(--spacing4);
 `
 const StyledBlogMoreLikeThis = styled(BlogRelatedArticles)`
-  margin-top: 5em;
+  margin-top: 2em;
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    margin-top: 5em;
+  }
 `
 const Footer = styled.footer`
   background: var(--black);
@@ -120,6 +136,7 @@ const BlogArticle = ({
     republishedReason,
     updatedAt,
     tags,
+    socials,
   } = article
   const { pathname } = useRouter()
 
@@ -228,13 +245,18 @@ const BlogArticle = ({
 
           <div ref={intersectionObserverRef} />
 
-          <Tags>
-            {tags.map((tag) => (
-              <Link key={tag} href={`/blog?tag=${tag}`} className="plain">
-                <Tag>{tag}</Tag>
-              </Link>
-            ))}
-          </Tags>
+          <ArticleFooter>
+            <Tags>
+              {tags.map((tag) => (
+                <Link key={tag} href={`/blog?tag=${tag}`} className="plain">
+                  <Tag>{tag}</Tag>
+                </Link>
+              ))}
+            </Tags>
+            {socials && socials.length > 0 && (
+              <BlogArticleSocials socials={socials} />
+            )}
+          </ArticleFooter>
         </MainArticleContent>
 
         {addendum && (

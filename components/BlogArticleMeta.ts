@@ -58,6 +58,7 @@ export default interface BlogArticleMeta {
   republishedReason?: string
   updatedAt?: PublicationDate
   tags: BlogArticleTag[]
+  socials?: string[]
 }
 
 export type SerializableBlogArticleMeta = BlogArticleMeta & {
