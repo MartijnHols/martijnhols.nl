@@ -7,11 +7,13 @@ const globalStyles = [
     :root {
       --yellow: ${theme.colors.yellow};
       --yellow50: ${theme.colors.yellow50};
-      --black: ${theme.colors.black};
-      --black300: ${theme.colors.black300};
-      --black700: ${theme.colors.black700};
-      --black900: ${theme.colors.black900};
       --white: ${theme.colors.white};
+      --white200: ${theme.colors.white200};
+      --white400: ${theme.colors.white400};
+      --white500: ${theme.colors.white500};
+      --black700: ${theme.colors.black700};
+      --black800: ${theme.colors.black800};
+      --black: ${theme.colors.black};
 
       --spacing1: 0.4375rem;
       --spacing2: calc(var(--spacing1) * 2);

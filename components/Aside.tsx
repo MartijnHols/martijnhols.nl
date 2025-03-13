@@ -19,7 +19,7 @@ const Container = styled.div`
   clear: both;
 
   .inverted & {
-    background: var(--black300);
+    background: var(--black800);
     --border-color: var(--white);
   }
 
