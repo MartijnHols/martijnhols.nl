@@ -105,11 +105,7 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, {
       // WCAG 2.1/1.4.13 requires tooltips to not close when the tooltip is hovered
-      handleClose: safePolygon({
-        // Prevents an issue where hovering a second tooltip trigger when moving
-        // towards the tooltip would activate two tooltips.
-        blockPointerEvents: true,
-      }),
+      handleClose: safePolygon(),
     }),
     useFocus(context),
     useDismiss(context),
