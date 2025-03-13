@@ -18,6 +18,7 @@ const { meta, getStaticProps } = articleMeta({
     BlogArticleTag.CSS,
     BlogArticleTag.React,
   ],
+  socials: ['https://twitter.com/MartijnHols/status/1867310311029534793'],
 })
 export { meta, getStaticProps }
 

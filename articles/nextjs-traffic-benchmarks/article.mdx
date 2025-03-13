@@ -22,6 +22,13 @@ export const meta = {
   publishedAt: '2025-03-06',
   updatedAt: '2025-03-13',
   tags: [BlogArticleTag.Performance, BlogArticleTag.React],
+  socials: [
+    'https://twitter.com/MartijnHols/status/1897537630654402766',
+    'https://bsky.app/profile/martijnhols.nl/post/3ljov5pho622z',
+    'https://www.linkedin.com/posts/martijnhols_how-much-traffic-can-a-pre-rendered-nextjs-activity-7303334808443645952-hXJ1/',
+    'https://reddit.com/r/reactjs/comments/1j4pinc/how_much_traffic_can_a_prerendered_nextjs_site/',
+    'https://news.ycombinator.com/item?id=43277148',
+  ],
 }
 
 # Self-hosting Next.js: how much traffic can a pre-rendered site really handle?
@@ -70,25 +77,25 @@ To understand why this site needs 60+ requests, let's take a look at all of the 
 
 0. DNS lookup and SSL handshake.
 1. <b>Initial request</b> (1: 20.3 kB): The browser requests the HTML document.
-2. <b>CSS</b> (1: 1.6 kB): The browser parses the HTML and requests the essential
-   CSS file.
+2. <b>CSS</b> (1: 1.6 kB): The browser parses the HTML and requests the
+   essential CSS file.
 
 **At this point the page is fully styled and visible, and users can interact with most elements, even before JavaScript loads.** The main thing still missing are the:
 
-3. <b>Above-the-fold images</b> (5: 6.8 kB): The browser requests the images above
-   the fold.
+3. <b>Above-the-fold images</b> (5: 6.8 kB): The browser requests the images
+   above the fold.
 
 With typically only a few images above-the-fold, the total up to this point is usually between 50 kB and 100 kB. **This is when the visitor starts seeing a complete page.** As most interactive elements are implemented natively (with the platform), users can also already interact with the page (e.g. navigate around).
 
 The rest of the requests are "deferred"; they're low priority and do not block rendering. This includes the majority of the requests:
 
 4. <b>Analytics</b> (1: 2.5 kB): The browser requests the Plausible script.
-5. <b>JavaScript</b> (13: 176.8 kB): The browser requests the JavaScript needed for
-   the main page.
-6. <b>Lazy-loaded images</b> (1: 22.8 kB): The browser requests lazy-loaded images
-   that are (partly) above the fold.
-7. <b>Placeholder data</b> (17: 11.9 kB): The browser requests placeholder data for
-   images under the fold.
+5. <b>JavaScript</b> (13: 176.8 kB): The browser requests the JavaScript needed
+   for the main page.
+6. <b>Lazy-loaded images</b> (1: 22.8 kB): The browser requests lazy-loaded
+   images that are (partly) above the fold.
+7. <b>Placeholder data</b> (17: 11.9 kB): The browser requests placeholder data
+   for images under the fold.
 8. <b>Favicons</b> (2: 52.2 kB): The browser requests favicons of various sizes.
 9. <b>Preloaded resources</b> (22: 136.1 kB): The browser preloads resources for
    potential navigation (to make them instant).

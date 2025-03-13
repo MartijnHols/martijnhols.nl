@@ -45,6 +45,11 @@ const { meta, getStaticProps } = articleMeta({
     BlogArticleTag.MachineTranslation,
     BlogArticleTag.I18n,
   ],
+  socials: [
+    'https://twitter.com/MartijnHols/status/1795747536998965503',
+    'https://www.linkedin.com/posts/martijnhols_everything-about-google-translate-crashing-activity-7201495902014898177-6Ks8/',
+    'https://news.ycombinator.com/item?id=43023338',
+  ],
 })
 export { meta, getStaticProps }
 

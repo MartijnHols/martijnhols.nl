@@ -22,6 +22,12 @@ const { meta, getStaticProps } = articleMeta({
   publishedAt: '2025-01-30',
   updatedAt: '2025-02-07',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
+  socials: [
+    'https://twitter.com/MartijnHols/status/1885050749656150142',
+    'https://bsky.app/profile/martijnhols.nl/post/3lh2mj7wrw22e',
+    'https://www.linkedin.com/posts/martijnhols_the-european-accessibility-act-for-websites-activity-7292088309571280896--sV9/',
+    'https://reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/',
+  ],
 })
 export { meta, getStaticProps }
 
@@ -45,7 +51,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
               </Link>
             </>
             . Reddit user <i>vytah</i> correctly{' '}
-            <Link href="https://old.reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
+            <Link href="https://reddit.com/r/programming/comments/1ihe0z0/the_european_accessibility_act_for_websites_and/mb3bwoi/">
               pointed this out
             </Link>
             . I first added a quick fix to address this issue on February 6,

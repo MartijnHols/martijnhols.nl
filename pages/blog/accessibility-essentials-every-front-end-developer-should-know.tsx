@@ -27,6 +27,11 @@ const { meta, getStaticProps } = articleMeta({
   publishedAt: '2025-01-07',
   updatedAt: '2025-01-11',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
+  socials: [
+    'https://twitter.com/MartijnHols/status/1876537781096456332',
+    'https://www.linkedin.com/posts/martijnhols_accessibility-essentials-every-front-end-activity-7282352532461432832-Gwyv/',
+    'https://reddit.com/r/reactjs/comments/1hxcd2h/accessibility_essentials_every_react_developer/',
+  ],
 })
 export { meta, getStaticProps }
 
