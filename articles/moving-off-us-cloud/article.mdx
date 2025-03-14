@@ -17,7 +17,7 @@ export const meta = {
   image: coverImage,
   openGraphImage: openGraphImage,
   publishedAt: '2025-03-13',
-  updatedAt: '2025-03-13',
+  updatedAt: '2025-03-14',
   tags: [BlogArticleTag.Privacy, BlogArticleTag.Cloud],
   socials: [
     'https://twitter.com/MartijnHols/status/1900074554283688084',
@@ -169,7 +169,7 @@ Docker Hub (a registry for [Docker images](/tooltip 'Docker images are like cust
 
 I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shut down Docker Cloud](https://reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause because they misinterpreted their logs (they were counting [HTTP Head requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
 
-Since my needs are simple, self-hosting seems like the best option. I'm probably going with [Harbor](https://goharbor.io/), but before I can set it up, I need to find a persistent storage solution for my servers. I've been putting this off as it hasn't really been essential [until now](/tooltip 'In other projects I used TransIP BigStorage for this. But since I switched to dedicated servers, I need something that works on other platforms as well.'). OVH or Scaleway Object Storage seem like good fits, but I need to do more research before finalizing a choice.
+Since my needs are simple, self-hosting seems like the best option. I'm probably going with [Harbor](https://goharbor.io/), but before I can set it up, I need to find a persistent storage solution for my servers. I've been putting this off as it hasn't really been essential [until now](/tooltip 'In other projects I used TransIP BigStorage for this. But since I switched to dedicated servers, I need something that works on other platforms as well.'). ~~[OVH](/tooltip 'Upon further review, OVH Cloud Storage requires signing the Microsoft EULA and therefore its products "are subject to U.S. export jurisdiction".')~~ [Scaleway Object Storage](https://www.scaleway.com/en/object-storage/) seems like a good fit, but I need to do more research before finalizing a choice.
 
 My deadline for this migration is July 1st, as that's when my Docker plan expires. But I'll probably finish this in the next few weeks to complete this migration away from the US cloud.
 
