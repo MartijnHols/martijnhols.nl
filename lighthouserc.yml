@@ -4,7 +4,7 @@ ci:
     numberOfRuns: 1
     url:
       - http://localhost:3000/
-    puppeteerScript: warm-cache.js
+    puppeteerScript: warm-cache.cjs
   assert:
     preset: lighthouse:no-pwa
     assertions:
