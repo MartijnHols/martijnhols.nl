@@ -93,7 +93,7 @@ const nextConfig = {
     {
       source: '/hoi/script.js',
       destination:
-        'https://plausible.io/js/script.tagged-events.outbound-links.js',
+        'https://plausible.io/js/script.hash.outbound-links.tagged-events.js',
     },
     {
       source: '/hoi/event',

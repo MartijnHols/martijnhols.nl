@@ -31,6 +31,11 @@ export default function Document(props: Props) {
           src="/hoi/script.js"
           data-api="/hoi/event"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
+          }}
+        />
       </Head>
       <body>
         <Main />
