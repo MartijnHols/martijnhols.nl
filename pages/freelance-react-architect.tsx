@@ -58,8 +58,8 @@ const Page = () => (
               </li>
               <li>
                 <Link href="/blog?tag=security">Security</Link> (
-                <Link href="/blog?tag=dependencies">dependencies</Link> e.d.) en
-                performance
+                <Link href="/blog?tag=dependencies">dependencies</Link> e.d.) en{' '}
+                <Link href="/blog?tag=performance">performance</Link>
               </li>
               <li>
                 <Link href="/blog?tag=ux">UX</Link>,{' '}
@@ -67,10 +67,13 @@ const Page = () => (
                 <Link href="/blog?tag=machine-translation">i18n</Link>
               </li>
               <li>
-                Backend-integraties (hier komt mijn full-stack ervaring goed van
-                pas)
+                <Link href="/blog?tag=cloud">Backend</Link>-integraties (hier
+                komt mijn full-stack ervaring goed van pas)
               </li>
-              <li>CI/CD pipelines en DX</li>
+              <li>
+                <Link href="/blog?tag=ci-cd">CI/CD pipelines</Link> en{' '}
+                <Link href="/blog?tag=dx">DX</Link>
+              </li>
               <li>Stabiliteit en (E2E) testing</li>
             </ul>
             <p>
