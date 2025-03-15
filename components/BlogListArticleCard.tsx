@@ -132,11 +132,14 @@ const BlogListArticleCard = ({ article }: Props) => (
         <Image
           src={article.image}
           width={180}
-          height={180}
-          style={{
-            objectFit: 'contain',
-            objectPosition: 'top',
-          }}
+          css={css`
+            width: 180px;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+            object-position: top;
+            flex: 0 0 auto;
+          `}
           alt=""
         />
       )}
