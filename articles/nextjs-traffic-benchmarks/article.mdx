@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Figure, { floatRightTabletCss } from '../../components/Figure'
 import Aside from '../../components/Aside'
 import Panel from '../../components/Panel'
+import Link from '../../components/Link'
 import MetricDifference from '../../components/MetricDifference'
 import { BlogArticleTag } from '../../components/BlogArticleMeta'
 import scalingUpImage from './docker-scaling-up.png'
@@ -11,6 +12,7 @@ import bladevpsSpecsImage from './bladevps-specs.png'
 import sysDedicatedServerImage from './sys-dedicated-server.png'
 import coverImage from './cover.png'
 import openGraphImage from './ogimage.png'
+import vercelPriceSpikeImage from './vercel-price-spike.png'
 
 export const meta = {
   slug: 'how-much-traffic-can-a-pre-rendered-nextjs-site-handle',
@@ -20,7 +22,7 @@ export const meta = {
   openGraphImage: openGraphImage,
   image: coverImage,
   publishedAt: '2025-03-06',
-  updatedAt: '2025-03-13',
+  updatedAt: '2025-03-15',
   tags: [BlogArticleTag.Performance, BlogArticleTag.React],
   socials: [
     'https://twitter.com/MartijnHols/status/1897537630654402766',
@@ -58,7 +60,7 @@ To test this, I wrote a basic [k6](https://k6.io/) load testing script to measur
   <Image
     src={coverImage}
     width={200}
-    alt={`Sign saying: Slow down - speed limit - 193 RPS`}
+    alt="Sign saying: Slow down - speed limit - 193 RPS"
     style={{
       background: 'var(--black)',
     }}
@@ -178,7 +180,29 @@ But unfortunately, <b>Cloudflare isn't an option for me</b>. I care about (y)our
 
 ### Vercel
 
-Another obvious option would be [Vercel](https://vercel.com/) (or an EU equivalent). But honestly, that sounds like a nightmare to me. It's not cheap, the per-site pricing means I'd either be locked in forever or have to tear things down when stopping a project, and it has unpredictable limits with extra costs on every single thing they could think of to charge extra for. This turns going viral from a technical challenge into worrying about what the total of the next bill is going to be. **My current setup has a fixed cost, and I really like that.**
+Another obvious option would be [Vercel](https://vercel.com/) (or an EU equivalent). But honestly, that sounds like a nightmare to me. It's not cheap, the per-site pricing means I'd either be locked in forever or have to tear things down when stopping a project, and it has unpredictable limits with [extra costs](https://reddit.com/r/webdev/comments/1jbcxyk/netlify_cancelled_my_account_over_me_not_paying/) on every single thing they could think of to charge extra for. This turns going viral from a technical challenge into worrying about what the total of the next bill is going to be (which [could be over $100k!](https://reddit.com/r/webdev/comments/1b14bty/netlify_just_sent_me_a_104k_bill_for_a_simple/ 'This example shows Netlify, but this could happen with any usage-based pricing model.')). **My current setup has a fixed cost, and I really like that.**
+
+<Figure
+  caption={
+    <>
+      A{' '}
+      <Link href="https://twitter.com/zemotion/status/1798558292681343039">
+        tweet
+      </Link>{' '}
+      showing an unexpected <strong>$96,280</strong> price spike on Vercel.
+      There are many stories like this.
+    </>
+  }
+>
+  <Image
+    src={vercelPriceSpikeImage}
+    width={600}
+    alt={`Tweet of Jingna Zhang saying "So freaking speechless right now. Seen many @vercel functions stories but first time experiencing such discrepancy vs request logs like, this is cannot be real??" with a $96,280 bill.`}
+    style={{
+      background: 'var(--black)',
+    }}
+  />
+</Figure>
 
 <Aside>
   I do pay for [Plausible](https://plausible.io/), which also has usage-based
