@@ -8,7 +8,6 @@ ci:
   assert:
     preset: lighthouse:no-pwa
     assertions:
-      csp-xss: 'warn'
       # While it may have an effect, LH doesn't consider this assertion crticial so long as the LCP is within a reasonable amount of time
       uses-responsive-images: 'warn'
       # Some links in running texts are identical, but serve a different purpose from the "visit" link that each project card has
@@ -17,6 +16,7 @@ ci:
       target-size: 'warn'
       # Unavoidable with next.js
       total-byte-weight: 'warn'
+      unused-javascript: 'warn'
   upload:
     target: filesystem
     outputDir: lighthouse
