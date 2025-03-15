@@ -30,7 +30,8 @@ const Container = styled.div`
     bottom: auto;
     background: linear-gradient(
       to bottom right,
-      /* We need some margin to prevent a jagged edge */ transparent 49.5%,
+      // We need some margin to prevent a jagged edge
+      transparent 49.5%,
       var(--background) 50.5%
     );
   }
@@ -66,7 +67,8 @@ const BottomAngle = styled.div`
     width: 100%;
     background: linear-gradient(
       to bottom right,
-      /* We need some margin to prevent a jagged edge */ var(--background) 49.5%,
+      // We need some margin to prevent a jagged edge
+      var(--background) 49.5%,
       transparent 50.5%
     );
     z-index: 1;
@@ -88,7 +90,8 @@ const boxShadowAngleCss = css`
     bottom: calc(var(--angle-size) * -1);
     background: linear-gradient(
       to bottom right,
-      /* We need some margin to prevent a jagged edge */ var(--yellow) 49.5%,
+      // We need some margin to prevent a jagged edge
+      var(--yellow) 49.5%,
       transparent 50.5%
     );
   }

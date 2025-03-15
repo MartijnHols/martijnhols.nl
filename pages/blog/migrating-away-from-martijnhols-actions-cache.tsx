@@ -6,7 +6,8 @@ import {
   makeArticleGetStaticProps,
 } from '../../utils/articleMeta'
 
-export { meta }
+// Works around a bug in SWC where meta would be undefined
+export { meta } from '../../articles/actions-cache/article.mdx'
 export const getStaticProps = makeArticleGetStaticProps(meta as BlogArticleMeta)
 
 const BlogArticleMigratingAwayFromMartijnholsActionsCache = (

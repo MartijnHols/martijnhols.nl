@@ -1,9 +1,24 @@
-import { Html, Head, Main, NextScript, DocumentProps } from 'next/document'
+import {
+  DocumentHeadTags,
+  DocumentHeadTagsProps,
+  documentGetInitialProps,
+} from '@mui/material-nextjs/v15-pagesRouter'
+import {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentProps,
+  DocumentContext,
+} from 'next/document'
 
-export default function Document(props: DocumentProps) {
+interface Props extends DocumentProps, DocumentHeadTagsProps {}
+
+export default function Document(props: Props) {
   return (
     <Html lang={props.dangerousAsPath.startsWith('/blog') ? 'en' : 'nl'}>
       <Head>
+        <DocumentHeadTags {...props} />
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -24,3 +39,6 @@ export default function Document(props: DocumentProps) {
     </Html>
   )
 }
+
+Document.getInitialProps = (ctx: DocumentContext) =>
+  documentGetInitialProps(ctx)

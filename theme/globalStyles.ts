@@ -1,8 +1,10 @@
 import { css } from '@emotion/react'
 import * as theme from '.'
 import { breakpoints } from '.'
+import sanitizeCss from './sanitize'
 
 const globalStyles = [
+  sanitizeCss,
   css`
     :root {
       --yellow: ${theme.colors.yellow};

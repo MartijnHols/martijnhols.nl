@@ -46,6 +46,9 @@ const cspHeader = `
 const nextConfig = {
   compress: process.env.COMPRESS === 'false' ? false : true,
   reactStrictMode: true,
+  compiler: {
+    emotion: true,
+  },
   // Values that can be different per instance of the server
   serverRuntimeConfig: {
     pageRevalidateInterval:
