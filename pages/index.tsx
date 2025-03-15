@@ -14,7 +14,7 @@ import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
 import absoluteUrl from '../utils/absoluteUrl'
 import generateAll from '../utils/generateAll'
-import photo from './assets/martijn-hols.jpg'
+import photo from './assets/martijn-hols2.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-developer.png'
 
 export const getStaticProps: GetStaticProps = async () => {

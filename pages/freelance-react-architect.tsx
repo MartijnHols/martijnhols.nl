@@ -12,7 +12,7 @@ import PageWrapper from '../components/PageWrapper'
 import ProjectsSection from '../components/ProjectsSection'
 import TopBar from '../components/TopBar'
 import absoluteUrl from '../utils/absoluteUrl'
-import photo from './assets/martijn-hols.jpg'
+import photo from './assets/martijn-hols2.jpg'
 import openGraphImage from './assets/ogimage-freelance-react-architect.png'
 
 const AboutMeHeading = styled.h2`
