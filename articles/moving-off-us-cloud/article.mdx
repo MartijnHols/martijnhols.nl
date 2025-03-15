@@ -171,13 +171,13 @@ I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc
 
 Since my needs are simple, I initially considered self-hosting a Docker registry with a European S3-compatible backend, looking at ~~[OVH](/tooltip 'Upon further review, OVH Cloud Storage requires signing the Microsoft EULA and therefore its products "are subject to U.S. export jurisdiction".')~~ and [Scaleway Object Storage](https://www.scaleway.com/en/object-storage/). But the self-hosted Docker registries seemed to require too much complexity and it just didn't seem worth the overhead.
 
-Instead, I went with Scaleway Container Registry](https://www.scaleway.com/en/container-registry/). It's fully managed, straightforward to use, and keeps my images in the EU. In the end it took me only a few hours to setup and is set to cost me [less than €1 per month](/tooltip "The total cost depends on the amount of data pulled. Storage alone is less than €0.20 per month."). Can't beat that.
+Instead, I went with [Scaleway Container Registry](https://www.scaleway.com/en/container-registry/). It's fully managed, straightforward to use, and keeps my images in the EU. In the end it took me less than two hours to setup and will probably cost me [less than €1 per month](/tooltip "The total cost depends on the amount of data pulled – the amount of times I deploy an update. Storage alone is less than €0.20 per month."). Can't beat that.
 
 ### NPM
 
 For NPM (a Node package registry), a key challenge is the reliance on public [packages](/tooltip 'Third-party libraries.'). These are downloaded and installed in every CI build and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
 
-Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/)before as a private registry and cache, and setting it up should be fairly easy with a Docker image.
+Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/) before as a private registry and cache, and setting it up should be fairly easy with a Docker image.
 
 However, this requires setting up persistent storage first. I'll sort this out shortly after publishing this article. Once that's ready, I'll set up Verdaccio. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and others can use that registry to get started.
 
@@ -185,7 +185,7 @@ However, this requires setting up persistent storage first. I'll sort this out s
 
 **Migrating away from US cloud services was easier than I expected.** While there are still some challenges to tackle, migrating my most important dependency (Microsoft 365) took just an afternoon. This is mostly thanks to Proton, which turned out to be a surprisingly good alternative to Microsoft 365.
 
-Replacing Docker Hub required more research, mainly because I hadn't set up a custom registry or persistent storage before—something I should have solved ages ago.
+Replacing Docker Hub required more research, mainly because I hadn't set up a custom registry or persistent storage before – something I should have solved ages ago.
 
 Other services, such as GitHub, will take longer. But it's on my list and seems within reach. It even seems fun to explore European alternatives. Or maybe I'll self-host something.
 
