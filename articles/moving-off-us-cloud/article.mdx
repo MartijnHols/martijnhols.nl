@@ -17,7 +17,7 @@ export const meta = {
   image: coverImage,
   openGraphImage: openGraphImage,
   publishedAt: '2025-03-13',
-  updatedAt: '2025-03-14',
+  updatedAt: '2025-03-15',
   tags: [BlogArticleTag.Privacy, BlogArticleTag.Cloud],
   socials: [
     'https://twitter.com/MartijnHols/status/1900074554283688084',
@@ -165,25 +165,27 @@ Switching to Quad9 is easy; just pop in these numbers in your router: https://ww
 
 ### Ditching Docker Hub
 
-Docker Hub (a registry for [Docker images](/tooltip 'Docker images are like custom executables. These images contain everything needed to run a piece of software on any machine capable of running Docker.')) is essential to my [CD pipeline](/tooltip 'Continuous Delivery pipelines; tooling that takes care of automatically deploying code that I commit.'); it stores the private images that my servers [automatically pulls](https://github.com/containrrr/watchtower) to install new versions of my apps.
+Docker Hub (a registry for [Docker images](/tooltip 'Docker images are like custom executables. These images contain everything needed to run a piece of software on any machine capable of running Docker.')) is essential to my [CD pipeline](/tooltip 'Continuous Delivery pipelines; tooling that takes care of automatically deploying code that I commit.'); it stores the private images that my servers [automatically pull](https://github.com/containrrr/watchtower) to install new versions of my apps.
 
-I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shut down Docker Cloud](https://reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause because they misinterpreted their logs (they were counting [HTTP Head requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
+I'm quite eager to move away from Docker Hub. I haven't been a fan of Docker Inc. for a long time; they make it really obvious their focus is entirely on enterprise customers. Docker started going downhill when they [shut down Docker Cloud](https://reddit.com/r/docker/comments/85w2vd/docker_cloud_is_shutting_down/). Later, they even canceled my subscription based on their "fair use" clause because they misinterpreted their logs (they were counting [HTTP HEAD requests](https://github.com/containrrr/watchtower/discussions/668) as image pulls).
 
-Since my needs are simple, self-hosting seems like the best option. I'm probably going with [Harbor](https://goharbor.io/), but before I can set it up, I need to find a persistent storage solution for my servers. I've been putting this off as it hasn't really been essential [until now](/tooltip 'In other projects I used TransIP BigStorage for this. But since I switched to dedicated servers, I need something that works on other platforms as well.'). ~~[OVH](/tooltip 'Upon further review, OVH Cloud Storage requires signing the Microsoft EULA and therefore its products "are subject to U.S. export jurisdiction".')~~ [Scaleway Object Storage](https://www.scaleway.com/en/object-storage/) seems like a good fit, but I need to do more research before finalizing a choice.
+Since my needs are simple, I initially considered self-hosting a Docker registry with a European S3-compatible backend, looking at ~~[OVH](/tooltip 'Upon further review, OVH Cloud Storage requires signing the Microsoft EULA and therefore its products "are subject to U.S. export jurisdiction".')~~ and [Scaleway Object Storage](https://www.scaleway.com/en/object-storage/). But the self-hosted Docker registries seemed to require too much complexity and it just didn't seem worth the overhead.
 
-My deadline for this migration is July 1st, as that's when my Docker plan expires. But I'll probably finish this in the next few weeks to complete this migration away from the US cloud.
+Instead, I went with Scaleway Container Registry](https://www.scaleway.com/en/container-registry/). It's fully managed, straightforward to use, and keeps my images in the EU. In the end it took me only a few hours to setup and is set to cost me [less than €1 per month](/tooltip "The total cost depends on the amount of data pulled. Storage alone is less than €0.20 per month."). Can't beat that.
 
 ### NPM
 
-For NPM, a key challenge is the reliance on public [packages](/tooltip 'Third-party libraries.'). These are downloaded and installed in every build in CI, and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
+For NPM (a Node package registry), a key challenge is the reliance on public [packages](/tooltip 'Third-party libraries.'). These are downloaded and installed in every CI build and every time someone clones the project. While these are heavily cached, NPM becoming unavailable would break most tooling.
 
-Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/) as a private registry and cache before, and setting it up is fairly easy with a Docker image. Like the Docker registry, though, this requires setting up persistent storage first. Once that's ready, I'll set this up. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and I can get other people up to speed with them.
+Unfortunately I couldn't find any public European NPM mirrors (let me know if I missed any). I think this is because most large companies host their own private mirrors. I've used [Verdaccio](https://verdaccio.org/)before as a private registry and cache, and setting it up should be fairly easy with a Docker image.
+
+However, this requires setting up persistent storage first. I'll sort this out shortly after publishing this article. Once that's ready, I'll set up Verdaccio. That way, if NPM becomes unavailable, I'll still have access to the versions I've been using, and others can use that registry to get started.
 
 ## Wrapping up
 
-**Migrating away from US cloud services was easier than I expected.** While there are some challenges left to tackle, migrating my most important dependency (Microsoft 365) was done in an afternoon. This is mostly due to Proton, which turned out to be a surprisingly good alternative to Microsoft 365.
+**Migrating away from US cloud services was easier than I expected.** While there are still some challenges to tackle, migrating my most important dependency (Microsoft 365) took just an afternoon. This is mostly thanks to Proton, which turned out to be a surprisingly good alternative to Microsoft 365.
 
-Replacing Docker Hub and NPM required more planning. This was mostly because I hadn't set up persistent storage before—something I should have solved ages ago.
+Replacing Docker Hub required more research, mainly because I hadn't set up a custom registry or persistent storage before—something I should have solved ages ago.
 
 Other services, such as GitHub, will take longer. But it's on my list and seems within reach. It even seems fun to explore European alternatives. Or maybe I'll self-host something.
 
