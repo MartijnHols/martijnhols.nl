@@ -1,9 +1,11 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { breakpoints } from '../theme'
 import blueSkyLogoImage from './assets/Bluesky_Logo.svg?url'
 import hackerNewsLogoImage from './assets/hacker-news.svg?url'
 import linkedInLogoImage from './assets/linkedin.svg?url'
 import redditLogoImage from './assets/Reddit_Icon_2Color.svg?url'
+import rssFeedImage from './assets/rss.svg?url'
 import twitterLogoImage from './assets/twitter.svg?url'
 import SocialLink from './BlogArticleSocialsLink'
 
@@ -30,6 +32,22 @@ const SocialsLinks = styled.div`
   display: flex;
   gap: calc(var(--spacing1) * 1.5);
 `
+const RssFeedContainer = styled.div``
+const rssFeedContainerSeparatorCss = css`
+  padding-left: var(--spacing1);
+  position: relative;
+
+  ::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 1em;
+    background-color: var(--black);
+  }
+`
 
 interface Props {
   socials: string[]
@@ -37,7 +55,7 @@ interface Props {
 
 const BlogArticleSocials = ({ socials }: Props) => (
   <Socials>
-    <SocialsLabel>Feedback:</SocialsLabel>
+    {socials.length > 0 && <SocialsLabel>Feedback:</SocialsLabel>}
     <SocialsLinks>
       {socials.map((social) => {
         if (social.includes('reddit.com/')) {
@@ -93,6 +111,12 @@ const BlogArticleSocials = ({ socials }: Props) => (
 
         return null
       })}
+
+      <RssFeedContainer
+        css={socials.length > 0 && rssFeedContainerSeparatorCss}
+      >
+        <SocialLink href="/rss.xml" label="RSS Feed" logo={rssFeedImage} />
+      </RssFeedContainer>
     </SocialsLinks>
   </Socials>
 )

@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import AboutMeBriefPanel from '../../components/AboutMeBriefPanel'
 import AngleTop from '../../components/AngleTop'
+import RssFeedIcon from '../../components/assets/rss.svg'
 import BaseHead from '../../components/BaseHead'
 import BlogArticleMeta, {
   BlogArticleTag,
@@ -19,7 +20,6 @@ import TopBar from '../../components/TopBar'
 import { breakpoints } from '../../theme'
 import absoluteUrl from '../../utils/absoluteUrl'
 import openGraphImage from './assets/ogimage-blog.png'
-import RssFeedIcon from './assets/rss.svg'
 
 // This works fine so long as I don't have too many articles. As I publish more,
 // I will need to rewrite this to be server-side with pagination. Hopefully by
@@ -168,7 +168,15 @@ const BlogIndex = ({ articles }: Props) => {
           <ArticleListFooter>
             <StyledAboutMeBriefPanel />
             <Tooltip content="RSS Feed">
-              {({ props }) => (
+              {({
+                props: {
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                  role,
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                  tabIndex,
+                  ...props
+                },
+              }) => (
                 <StyledRssFeedLink
                   {...props}
                   href="/rss.xml"

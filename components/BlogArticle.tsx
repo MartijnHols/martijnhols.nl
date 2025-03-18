@@ -136,7 +136,7 @@ const BlogArticle = ({
     republishedReason,
     updatedAt,
     tags,
-    socials,
+    socials = [],
   } = article
   const { pathname } = useRouter()
 
@@ -253,9 +253,7 @@ const BlogArticle = ({
                 </Link>
               ))}
             </Tags>
-            {socials && socials.length > 0 && (
-              <BlogArticleSocials socials={socials} />
-            )}
+            <BlogArticleSocials socials={socials} />
           </ArticleFooter>
         </MainArticleContent>
 
