@@ -40,15 +40,18 @@ const WayOverengineeredGlowAnimation = styled.div`
       background:
         linear-gradient(
           -45deg,
-          color-mix(in srgb, var(--color2) 0%, transparent) 10%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 13%,
           var(--color2) 20%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 30%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 27%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 33%,
           var(--color2) 40%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 50%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 47%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 53%,
           var(--color2) 60%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 70%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 67%,
+          color-mix(in srgb, var(--color2) 0%, transparent) 73%,
           var(--color2) 80%,
-          color-mix(in srgb, var(--color2) 0%, transparent) 90%
+          color-mix(in srgb, var(--color2) 0%, transparent) 87%
         ),
         linear-gradient(
           -15deg,
