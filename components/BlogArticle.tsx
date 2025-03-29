@@ -5,12 +5,12 @@ import { useRouter } from 'next/router'
 import { ReactNode, useCallback, useRef, useState } from 'react'
 import { breakpoints } from '../theme'
 import absoluteUrl from '../utils/absoluteUrl'
-import getRelativeTimeStringDays from '../utils/getRelativeTimeStringDays'
 import AngleBottom from './AngleBottom'
 import AngleTop from './AngleTop'
 import Annotation from './Annotation'
 import BaseHead from './BaseHead'
 import BlogArticleMeta from './BlogArticleMeta'
+import BlogArticlePublicationDate from './BlogArticlePublicationDate'
 import BlogArticleSocials from './BlogArticleSocials'
 import BlogRelatedArticles from './BlogRelatedArticles'
 import Container from './Container'
@@ -19,7 +19,6 @@ import useIntersectionObserver from './IntersectionObserver'
 import Link from './Link'
 import PageWrapper from './PageWrapper'
 import PortalTarget from './PortalTarget'
-import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 import TopBar from './TopBar'
 
@@ -111,6 +110,12 @@ const Footer = styled.footer`
   padding-bottom: var(--spacing4);
 `
 
+export const articlePublicationDate = (date: string) =>
+  new Intl.DateTimeFormat('en', {
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(date))
+
 interface Props {
   article: BlogArticleMeta
   relatedArticles: BlogArticleMeta[]
@@ -164,11 +169,6 @@ const BlogArticle = ({
   )
 
   const shownPublishedAt = republishedAt ?? publishedAt
-  const isUpdatedAtDifferent =
-    shownPublishedAt &&
-    updatedAt &&
-    getRelativeTimeStringDays(new Date(updatedAt)) !==
-      getRelativeTimeStringDays(new Date(shownPublishedAt))
 
   return (
     <PageWrapper>
@@ -210,26 +210,14 @@ const BlogArticle = ({
                   <Annotation
                     annotation={`Originaly published at ${publishedAt}, republished ${republishedAt}. ${republishedReason ?? ''}`}
                   >
-                    Republished
-                  </Annotation>{' '}
-                  <RelativeDate date={republishedAt} />
+                    {articlePublicationDate(republishedAt)}
+                  </Annotation>
                 </>
               ) : (
                 <>
-                  Published{' '}
-                  {publishedAt ? <RelativeDate date={publishedAt} /> : 'N/A'}
-                </>
-              )}
-              {updatedAt && isUpdatedAtDifferent && (
-                <>
-                  ,{' '}
-                  <span
-                    css={css`
-                      white-space: nowrap;
-                    `}
-                  >
-                    updated <RelativeDate date={updatedAt} />
-                  </span>
+                  {publishedAt && (
+                    <BlogArticlePublicationDate date={publishedAt} />
+                  )}
                 </>
               )}
             </ArticleMetadata>

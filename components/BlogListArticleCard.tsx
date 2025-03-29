@@ -3,9 +3,9 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import { breakpoints } from '../theme'
 import { BlogArticleTag, SerializableBlogArticleMeta } from './BlogArticleMeta'
+import BlogArticlePublicationDate from './BlogArticlePublicationDate'
 import Link from './Link'
 import Panel from './Panel'
-import RelativeDate from './RelativeDate'
 import Tag from './Tag'
 
 const ArticleTitle = styled.h1`
@@ -154,8 +154,9 @@ const BlogListArticleCard = ({ article }: Props) => (
             ))}
           </Tags>
           <PublishedAt>
-            {article.republishedAt ? 'Republished' : 'Published'}{' '}
-            <RelativeDate date={article.republishedAt ?? article.publishedAt} />
+            <BlogArticlePublicationDate
+              date={article.republishedAt ?? article.publishedAt}
+            />
           </PublishedAt>
         </ArticleMetadata>
       </ArticleTextContainer>
