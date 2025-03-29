@@ -20,7 +20,7 @@ const { meta, getStaticProps } = articleMeta({
   openGraphImage: openGraphImage,
   image: euAccessibilityImage,
   publishedAt: '2025-01-30',
-  updatedAt: '2025-02-07',
+  updatedAt: '2025-03-29',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.UX],
   socials: [
     'https://twitter.com/MartijnHols/status/1885050749656150142',
@@ -61,6 +61,17 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           <p>
             This update remains because I believe in owning my mistakes and want
             to be transparent with returning visitors.
+          </p>
+          <h2 id="fix-full-compliance-date">
+            Update March 29, 2025; Fix existing products full compliance date
+          </h2>
+          <p>
+            The year full compliance is required was incorrectly stated as 2027.
+            This is actually{' '}
+            <Link href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#art_32">
+              in 2030
+            </Link>
+            .
           </p>
         </>
       }
@@ -693,7 +704,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
           <strong>June 28, 2025</strong>: All new developments must comply.
         </li>
         <li>
-          <strong>June 28, 2027</strong>: Existing services must comply.
+          <strong>June 28, 2030</strong>: Existing services must comply.
         </li>
       </ul>
       <p>
@@ -711,7 +722,7 @@ const BlogArticleEuropeanAccessibilityAct = (props: ArticleStaticProps) => {
         </li>
       </ul>
       <p>
-        By 2027, all applicable sites and apps must fully meet accessibility
+        By 2030, all applicable sites and apps must fully meet accessibility
         standards. These deadlines might seem far off, but they come with
         significant challenges, especially for large existing apps. Starting
         early will give you the time to assess, plan, and tackle accessibility
