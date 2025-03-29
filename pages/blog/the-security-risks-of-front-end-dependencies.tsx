@@ -138,7 +138,7 @@ const SecurityImplicationsOfDependenciesOnTheFrontendGist = (
 
     <p>
       The scariest kind of vulnerability is when malicious code is deliberately
-      added to a package—whether by a lone hacker, a group, or even
+      added to a package – whether by a lone hacker, a group, or even
       state-sponsored attackers. This turns an otherwise useful dependency into
       a{' '}
       <Link href="https://owasp.org/www-community/attacks/Trojan_Horse">

@@ -161,7 +161,7 @@ export default CopyPasteOnly
 </figure>
 `}</CodeSnippet>
     <p>
-      I use <Code>CopyPasteOnly</Code> extensively across this site—for asides,
+      I use <Code>CopyPasteOnly</Code> extensively across this site; for asides,
       code snippets, and image captions. See it in action by copying the text of
       this article and pasting it somewhere else.
     </p>

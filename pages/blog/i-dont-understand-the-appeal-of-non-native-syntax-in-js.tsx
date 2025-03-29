@@ -142,7 +142,7 @@ button {
       ("hasPendingChanges" is meant to be a variable) and{' '}
       <Code>{`<section class="admin-controls" *ngIf="hasAdminPrivileges">The content you are looking for is here.</section>`}</Code>{' '}
       for conditional rendering. But it goes completely bonkers when you dive
-      into all the classes and services that you need— even for basic things
+      into all the classes and services that you need, even for basic things
       like adding up values. I really don't think OOP is a good fit for
       JavaScript. I wonder if the reason they don't show a basic complete
       component in their{' '}
