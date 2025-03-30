@@ -48,6 +48,7 @@ const BaseHead = ({
     )}
     <meta name="twitter:site" content="@MartijnHols" />
     <meta name="twitter:creator" content="@MartijnHols" />
+    <meta name="fediverse:creator" content="@MartijnHols@mastodon.social" />
     <link rel="canonical" href={absoluteUrlProp} />
   </Head>
 )

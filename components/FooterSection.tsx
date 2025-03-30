@@ -32,7 +32,6 @@ const email = 'martijnhols.nl@martijnhols.nl'
 const phone = '0657946114'
 const linkedIn = 'https://www.linkedin.com/in/martijnhols/'
 const gitHub = 'https://github.com/MartijnHols'
-const twitter = 'https://twitter.com/MartijnHols'
 const kvk = '72214473'
 const btw = 'NL002216536B75'
 
@@ -67,13 +66,22 @@ const FooterSlice = () => (
         <Label>Social</Label>
         <Values>
           <Item>
-            <Link href={linkedIn}>LinkedIn</Link>
+            <Link href="/blog">Blog</Link>
           </Item>
           <Item>
-            <Link href={gitHub}>GitHub</Link>
+            <Link rel="me" href={linkedIn}>
+              LinkedIn
+            </Link>
           </Item>
           <Item>
-            <Link href={twitter}>Twitter</Link>
+            <Link rel="me" href={gitHub}>
+              GitHub
+            </Link>
+          </Item>
+          <Item>
+            <Link rel="me" href="https://mastodon.social/@MartijnHols">
+              Mastodon
+            </Link>
           </Item>
         </Values>
       </SocialRow>
