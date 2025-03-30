@@ -260,14 +260,7 @@ const BlogArticle = ({
 
       <AngleTop />
 
-      <Footer>
-        <Container className="inverted">
-          Feedback:{' '}
-          <a href="https://twitter.com/MartijnHols">
-            https://twitter.com/MartijnHols
-          </a>
-        </Container>
-      </Footer>
+      <Footer />
     </PageWrapper>
   )
 }

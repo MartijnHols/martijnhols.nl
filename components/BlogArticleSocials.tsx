@@ -4,6 +4,7 @@ import { breakpoints } from '../theme'
 import blueSkyLogoImage from './assets/Bluesky_Logo.svg?url'
 import hackerNewsLogoImage from './assets/hacker-news.svg?url'
 import linkedInLogoImage from './assets/linkedin.svg?url'
+import mastodonLogoImage from './assets/mastodon-logo.svg?url'
 import redditLogoImage from './assets/Reddit_Icon_2Color.svg?url'
 import rssFeedImage from './assets/rss.svg?url'
 import twitterLogoImage from './assets/twitter.svg?url'
@@ -75,6 +76,16 @@ const BlogArticleSocials = ({ socials }: Props) => (
               href={social}
               label="Hacker News"
               logo={hackerNewsLogoImage}
+            />
+          )
+        }
+        if (social.includes('mastodon.social/')) {
+          return (
+            <SocialLink
+              key={social}
+              href={social}
+              label="Mastodon"
+              logo={mastodonLogoImage}
             />
           )
         }

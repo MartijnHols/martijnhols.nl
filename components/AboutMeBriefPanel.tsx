@@ -6,7 +6,7 @@ import { breakpoints } from '../theme'
 import Annotation from './Annotation'
 import GithubLogoImage from './assets/github-mark-white.svg'
 import meSquaredImage from './assets/martijn-hols-sq.png'
-import TwitterLogoImage from './assets/twitter.svg'
+import MastodonLogoImage from './assets/mastodon-logo.svg'
 import Link from './Link'
 import Panel from './Panel'
 
@@ -110,13 +110,15 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
         React and TypeScript, empowering teams to build efficiently.
         <SocialContainer>
           <Link
-            href="https://twitter.com/MartijnHols"
-            aria-label="Twitter"
+            rel="me"
+            href="https://mastodon.social/@MartijnHols"
+            aria-label="Mastodon"
             className="plain"
           >
-            <TwitterLogoImage aria-hidden css={socialImageCss} />
+            <MastodonLogoImage aria-hidden css={socialImageCss} />
           </Link>
           <Link
+            rel="me"
             href="https://github.com/MartijnHols"
             aria-label="GitHub"
             className="plain"
