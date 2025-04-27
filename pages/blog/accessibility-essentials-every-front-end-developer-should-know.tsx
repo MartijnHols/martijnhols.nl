@@ -25,7 +25,7 @@ const { meta, getStaticProps } = articleMeta({
   openGraphImage: openGraphImage,
   image: accessibilityToolkitImage,
   publishedAt: '2025-01-07',
-  updatedAt: '2025-01-11',
+  updatedAt: '2025-04-27',
   tags: [BlogArticleTag.Accessibility, BlogArticleTag.React, BlogArticleTag.UX],
   socials: [
     'https://twitter.com/MartijnHols/status/1876537781096456332',
@@ -246,7 +246,7 @@ const BlogArticleAccessibilityEssentials = (props: ArticleStaticProps) => (
       omitting the <Code>for</Code> attribute and wrapping them together in a{' '}
       <Code>{`<label>`}</Code> element,{' '}
       <Link href="https://www.tpgi.com/should-form-labels-be-wrapped-or-separate/">
-        not all screen readers support this properly
+        implicit association is not supported by all voice control software
       </Link>
       . To ensure good support across all assistive technologies, it's best to
       always use the <Code>for</Code> attribute.
