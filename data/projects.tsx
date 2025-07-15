@@ -1,5 +1,6 @@
 import { StaticImageData } from 'next/image'
 import { ReactNode } from 'react'
+import Betrouwbaarheidsonderzoek from '../components/Betrouwbaarheidsonderzoek'
 import Link from '../components/Link'
 
 interface Project {
@@ -11,6 +12,7 @@ interface Project {
   url?: string
   sourceCodeHref?: string
   about: ReactNode
+  aside?: ReactNode
   tech: string[]
   highlighted: boolean
   placeholder: boolean
@@ -23,10 +25,10 @@ const projects: Project[] = [
     functionTitle: 'Freelance Senior Front-end Ontwikkelaar',
     about: (
       <p>
-        Voor de Nederlandse Politie werk ik aan de React app van het cluster
-        Basis Voorziening Identiteitsvaststelling (BVID). Deze app wordt o.a.
-        door de Politie gebruikt op honderden identificatie-zuilen door het
-        land. Meer informatie over de BVID{' '}
+        Voor de Nederlandse Politie heb ik gewerkt aan de Basis Voorziening
+        Identiteitsvaststelling app (BVID). Deze app wordt door de Politie, DJI
+        en Marechaussee gebruikt om personen te identificeren o.b.v. documenten
+        (e.g. paspoorten), vingerafdrukken en meer. Meer informatie over de BVID{' '}
         <Link
           href="https://magazines.defensie.nl/kmarmagazine/2015/07/11_hoe_werkt_dat_eigenlijk_7-2015"
           target="_self"
@@ -37,8 +39,9 @@ const projects: Project[] = [
         .
       </p>
     ),
+    aside: <Betrouwbaarheidsonderzoek />,
     startedYear: 2024,
-    endedYear: 'heden/12',
+    endedYear: '2025/12',
     tech: [
       'React',
       'TypeScript',

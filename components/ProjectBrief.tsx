@@ -125,6 +125,7 @@ interface Props {
   url?: string
   sourceCode?: string
   about: ReactNode
+  aside?: ReactNode
   tech: string[]
   highlighted?: boolean
   placeholder?: boolean
@@ -139,6 +140,7 @@ const ProjectBrief = ({
   url,
   sourceCode,
   about,
+  aside,
   tech,
   highlighted,
   placeholder,
@@ -207,6 +209,7 @@ const ProjectBrief = ({
                 </Fragment>
               ))}
             </Tech>
+            {aside}
             {(url ?? sourceCode) && (
               <ContactLinks>
                 {url && <Link href={url}>Bezoeken</Link>}

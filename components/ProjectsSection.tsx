@@ -49,6 +49,7 @@ const ProjectsSection = () => (
               started={project.startedYear}
               ended={endedYear}
               about={project.about}
+              aside={project.aside}
               tech={project.tech}
               highlighted={project.highlighted}
               placeholder={project.placeholder}

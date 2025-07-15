@@ -56,6 +56,10 @@ const globalStyles = [
 
     ::selection {
       background: var(--yellow);
+
+      .inverted & {
+        background-color: #bea500;
+      }
     }
 
     p,
