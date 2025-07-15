@@ -45,15 +45,15 @@ const Page = () => (
       <HeroSection
         kicker={<HeroKicker />}
         title="Freelance React Developer"
-        subText="✅ Hoogwaardige React-ontwikkeling met oog voor detail, een optimale gebruikerservaring en solide architectuur."
+        subText="✅ Freelance React ontwikkelaar met oog voor detail, een optimale gebruikerservaring en solide architectuur."
       />
       <ContentSection
         content={
           <>
             <AboutMeHeading>Over mij</AboutMeHeading>
             <p>
-              Ik ben een ervaren <strong>Freelance React Developer</strong> met
-              meer dan 20 jaar full-stack ervaring. Als Freelance React
+              Hoi! Ik ben een ervaren <strong>Freelance React Developer</strong>{' '}
+              met meer dan 20 jaar full-stack ervaring. Als Freelance React
               Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
               van opzet tot doorontwikkeling. Ik ben{' '}
               <strong>al ruim 8 jaar gespecialiseerd in React</strong> - zoveel
