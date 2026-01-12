@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Restore "node_modules" from cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         id: cache
         with:
           path: node_modules
@@ -28,7 +28,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Save "node_modules" to cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: node_modules
           key: ${{ steps.cache.outputs.cache-primary-key }}
@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
@@ -58,7 +58,7 @@ jobs:
         with:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
@@ -76,7 +76,7 @@ jobs:
       # Not only does this share the artifact with other jobs, this also improves build performance by reusing next cache
       - name: Check "build" in cache
         id: cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             .next
@@ -86,7 +86,7 @@ jobs:
           fail-on-cache-miss: false
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
@@ -101,7 +101,7 @@ jobs:
         run: yarn build
       - name: Save "build" in cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: |
             .next
@@ -118,7 +118,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Restore "build" from cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             .next
@@ -126,7 +126,7 @@ jobs:
           key: build-${{ github.run_number }}
           fail-on-cache-miss: true
       - name: Restore "node_modules" from cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
@@ -161,7 +161,7 @@ jobs:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
@@ -199,7 +199,7 @@ jobs:
           node-version: '20.x'
       - name: Restore "node_modules" from cache
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
