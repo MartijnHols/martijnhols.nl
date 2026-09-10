@@ -20,6 +20,7 @@
 # debug
 npm-debug.log*
 .pnpm-debug.log*
+.pnpm-store/
 
 # local env files
 .env*.local
