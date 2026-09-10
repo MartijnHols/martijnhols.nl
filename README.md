@@ -4,7 +4,9 @@ This is the source code of https://martijnhols.nl, the website for my personal c
 
 ## Installation
 
-Clone the repository and run `yarn` in the root to install the dependencies.
+Clone the repository, enable pnpm with `corepack enable`, and run `pnpm install`
+in the root to install the dependencies. The pnpm version is pinned in
+`package.json`.
 
 ## Folder structure
 

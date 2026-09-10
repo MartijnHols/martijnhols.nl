@@ -3,19 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.34.5",
   "scripts": {
-    "dev": "yarn start",
+    "dev": "pnpm start",
     "build": "next build",
     "start": "next dev",
-    "lint": "yarn --silent lint:code && yarn --silent lint:rest",
-    "lint:code": "yarn --silent lint:code:specific '**/*.{js,jsx,ts,tsx}'",
+    "lint": "pnpm --silent lint:code && pnpm --silent lint:rest",
+    "lint:code": "pnpm --silent lint:code:specific '**/*.{js,jsx,ts,tsx}'",
     "lint:code:specific": "CODE_STYLE=true eslint --format stylish --max-warnings 0",
-    "lint:code:specific:fix": "yarn lint:code:specific --fix",
-    "lint:rest": "yarn --silent lint:rest:specific '**/*.{json,md,css,graphql,yml}'",
+    "lint:code:specific:fix": "pnpm lint:code:specific --fix",
+    "lint:rest": "pnpm --silent lint:rest:specific '**/*.{json,md,css,graphql,yml,yaml}'",
     "lint:rest:specific": "prettier --check",
     "lint:rest:specific:fix": "prettier --write",
-    "lint:fix": "yarn --silent lint:code --fix && prettier --write '**/*.{json,md,css,graphql,yml}'",
-    "fix-all": "yarn && yarn lint:fix && yarn typecheck && yarn test",
+    "lint:fix": "pnpm --silent lint:code --fix && prettier --write '**/*.{json,md,css,graphql,yml,yaml}'",
+    "fix-all": "pnpm install && pnpm lint:fix && pnpm typecheck && pnpm test",
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
@@ -71,10 +72,10 @@
   },
   "lint-staged": {
     "!(*\\.generated)\\.{ts,tsx,js,jsx}": [
-      "yarn --silent lint:code:specific:fix"
+      "pnpm --silent lint:code:specific:fix"
     ],
-    "*.{json,md,css,scss,graphql,yml}": [
-      "yarn --silent lint:rest:specific:fix"
+    "*.{json,md,css,scss,graphql,yml,yaml}": [
+      "pnpm --silent lint:rest:specific:fix"
     ]
   }
 }

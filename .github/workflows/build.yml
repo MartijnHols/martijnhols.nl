@@ -17,14 +17,15 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node_modules
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
+          restore-keys: ${{ runner.os }}-pnpm-node_modules
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         if: steps.cache.outputs.cache-hit != 'true'
         with:
           node-version: '20.x'
-          cache: 'yarn'
-      - run: yarn --frozen-lockfile --prefer-offline
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile --prefer-offline
         if: steps.cache.outputs.cache-hit != 'true'
       - name: Save "node_modules" to cache
         if: steps.cache.outputs.cache-hit != 'true'
@@ -38,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: '20.x'
@@ -45,15 +47,16 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
-      - run: yarn typecheck
+      - run: pnpm typecheck
   lint:
     needs: [install]
     name: 'Lint'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: '20.x'
@@ -61,15 +64,16 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
-      - run: yarn lint
+      - run: pnpm lint
   build:
     needs: [install]
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: '20.x'
@@ -89,7 +93,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       - name: Load tags
         if: steps.cache.outputs.cache-hit != 'true'
@@ -98,7 +102,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
       - name: 'Build martijnhols.nl for ${{env.ENVIRONMENT_NAME}}'
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn build
+        run: pnpm build
       - name: Save "build" in cache
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v5
@@ -129,7 +133,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       # Docker build / push
       - name: Set up QEMU
@@ -156,6 +160,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: '20.x'
@@ -164,7 +169,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v6
@@ -176,12 +181,12 @@ jobs:
       - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
       - run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 1; done' || false
       - name: Collect results
-        run: yarn lhci collect
+        run: pnpm exec lhci collect
       - name: Assert results
-        run: yarn lhci assert
+        run: pnpm exec lhci assert
       - name: Store results
         if: always()
-        run: yarn lhci upload
+        run: pnpm exec lhci upload
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v5
@@ -194,6 +199,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v6
         with:
           node-version: '20.x'
@@ -202,7 +208,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       - name: Download artifact
         uses: actions/download-artifact@v6
@@ -214,12 +220,12 @@ jobs:
       - run: docker run -d -p 3000:3000 martijnhols/martijnhols.nl:${{ env.DOCKER_BUILD_TAG }}
       - run: timeout 300 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 1; done' || false
       - name: Collect results
-        run: yarn lhci collect --settings.preset="desktop"
+        run: pnpm exec lhci collect --settings.preset="desktop"
       - name: Assert results
-        run: yarn lhci assert
+        run: pnpm exec lhci assert
       - name: Store results
         if: always()
-        run: yarn lhci upload
+        run: pnpm exec lhci upload
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v5

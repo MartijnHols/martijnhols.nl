@@ -1,0 +1,9 @@
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+
+# CI copies node_modules from Ubuntu into the Alpine runtime image.
+supportedArchitectures:
+  libc:
+    - glibc
+    - musl
