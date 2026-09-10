@@ -97,8 +97,10 @@ const boxShadowAngleCss = css`
   }
 `
 
-interface Props
-  extends Omit<ComponentProps<typeof Container>, 'variant' | 'boxShadow'> {
+interface Props extends Omit<
+  ComponentProps<typeof Container>,
+  'variant' | 'boxShadow'
+> {
   children: ReactNode
   variant?: 'sm' | 'md'
   boxShadow?: boolean

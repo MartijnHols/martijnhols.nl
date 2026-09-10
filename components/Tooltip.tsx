@@ -44,10 +44,10 @@ const FloatingTooltip = styled.div`
     var(--white) 50%,
     transparent
   );
+  // If the tooltip is over a codeblock, the contrast shadows give it a small
+  // outline. They're meant to be invisible - just enough to separate it from
+  // the codeblock.
   filter: drop-shadow(-4px 4px 0 var(--yellow))
-    // If the tooltip is over a codeblock, these borders give the tooltip a
-    // small outline. They're meant to be invisible - just enough to separate
-    // the tooltip from the codeblock.
     drop-shadow(1px -1px 0 var(--contrast-background-color))
     drop-shadow(-1px 1px 0 var(--contrast-background-color));
   // Make it a similar width as the VSCode tooltip
@@ -70,8 +70,10 @@ type TriggerRenderer = (params: {
   }
 }) => ReactElement
 
-interface Props
-  extends Omit<HTMLAttributes<HTMLSpanElement>, 'children' | 'content'> {
+interface Props extends Omit<
+  HTMLAttributes<HTMLSpanElement>,
+  'children' | 'content'
+> {
   children: ReactNode | TriggerRenderer
   content: ReactNode
   role?: 'tooltip' | 'label'
@@ -123,6 +125,8 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
     tabIndex: 0,
     'aria-expanded': isTooltipOpen,
     ...getReferenceProps(),
+    // Floating UI's ref setters are standalone callbacks and do not use `this`.
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     ref: refs.setReference,
     ...others,
   }
@@ -146,6 +150,8 @@ const Tooltip = ({ children, content, role = 'tooltip', ...others }: Props) => {
       {isTooltipOpen && (
         <FloatingPortal root={portalTarget}>
           <FloatingTooltip
+            // Floating UI's ref setters do not use `this`.
+            // eslint-disable-next-line @typescript-eslint/unbound-method
             ref={refs.setFloating}
             style={floatingStyles}
             {...getFloatingProps()}

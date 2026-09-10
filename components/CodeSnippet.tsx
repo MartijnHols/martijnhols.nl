@@ -15,14 +15,7 @@ const PreformattedContainer = styled.pre`
 `
 
 export type PrismLanguages =
-  | 'tsx'
-  | 'css'
-  | 'markup'
-  | 'jsx'
-  | 'graphql'
-  | 'yaml'
-  | 'markdown'
-  | ''
+  'tsx' | 'css' | 'markup' | 'jsx' | 'graphql' | 'yaml' | 'markdown' | ''
 
 export const useHighlightTheme = () => ({
   ...themes.oneDark,

@@ -61,8 +61,10 @@ const Divider = styled.div`
   background: currentColor;
 `
 
-interface Props
-  extends Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'> {
+interface Props extends Omit<
+  ComponentProps<typeof Link>,
+  'href' | 'className' | 'children'
+> {
   inverted?: boolean
   hovering?: boolean
 }

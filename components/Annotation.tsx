@@ -12,11 +12,10 @@ const StyledTooltip = styled(Tooltip)`
   cursor: help;
 `
 
-interface Props
-  extends Omit<
-    HTMLAttributes<HTMLSpanElement>,
-    'role' | 'children' | 'content'
-  > {
+interface Props extends Omit<
+  HTMLAttributes<HTMLSpanElement>,
+  'role' | 'children' | 'content'
+> {
   children: ReactNode
   annotation: ReactElement | string
 }

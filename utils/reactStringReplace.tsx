@@ -1,26 +1,28 @@
 import { ReactElement } from 'react'
 
 /**
- * Replaces a part of a string with a React element. Stops after 1 match.
+ * Replaces a part of a string with a React element.
  */
 const reactStringReplace = (
   string: string,
-  searchValue: string,
-  replaceValue: ReactElement,
-) => {
-  const reactIndex = string.indexOf(searchValue)
-  if (reactIndex === -1) {
-    return string
+  replacements: Record<string, ReactElement>,
+): ReactElement => {
+  const existingKey = Object.keys(replacements).find((key) =>
+    string.includes(key),
+  )
+  if (!existingKey) {
+    return <>{string}</>
   }
 
-  const before = string.substring(0, reactIndex)
-  const after = string.substring(reactIndex + searchValue.length)
+  const index = string.indexOf(existingKey)
+  const before = string.substring(0, index)
+  const after = string.substring(index + existingKey.length)
 
   return (
     <>
-      {before}
-      {replaceValue}
-      {after}
+      {reactStringReplace(before, replacements)}
+      {replacements[existingKey]}
+      {reactStringReplace(after, replacements)}
     </>
   )
 }
