@@ -54,7 +54,7 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
             <>
               <p>
                 I recognized React's potential early on in its life and have
-                specialized in it for over 8 years, mastering its many
+                specialized in it for over 10 years, mastering its many
                 intricacies.
               </p>
               <p>
@@ -67,7 +67,7 @@ const AboutMeBriefPanel = ({ className, ...others }: Props) => (
             </>
           }
         >
-          8 years of experience in React
+          10 years of experience in React
         </Annotation>{' '}
         and{' '}
         <Annotation

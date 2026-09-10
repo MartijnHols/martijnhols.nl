@@ -33,7 +33,7 @@ const Page = () => (
   <PageWrapper>
     <BaseHead
       title="Martijn Hols: Freelance React Developer"
-      description="Met 20+ jaar full-stack ervaring, waarvan 8+ jaar gespecialiseerd in React, help ik teams met complexe front-end vraagstukken en architectuur. Laten we kennismaken!"
+      description="Met 20+ jaar full-stack ervaring, waarvan 10+ jaar gespecialiseerd in React, help ik teams met complexe front-end vraagstukken en architectuur. Laten we kennismaken!"
       absoluteUrl={absoluteUrl('/')}
       image={openGraphImage}
     />
@@ -56,7 +56,7 @@ const Page = () => (
               met meer dan 20 jaar full-stack ervaring. Als Freelance React
               Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
               van opzet tot doorontwikkeling. Ik ben{' '}
-              <strong>al ruim 8 jaar gespecialiseerd in React</strong> - zoveel
+              <strong>al ruim 10 jaar gespecialiseerd in React</strong> - zoveel
               diepgaande React-ervaring is zeldzaam! Ik kan veel betekenen voor
               jouw projecten en team.
             </p>

@@ -78,13 +78,13 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
       <UspPanel variant="sm">
         <UspPanelTitle>🧑‍💻 Architect-level ervaring</UspPanelTitle>
         <UspPanelText className="inverted">
-          8+ jaar{' '}
+          10+ jaar{' '}
           <Annotation
             annotation={
               <>
                 <p>
                   Ik zag al vroeg het potentieel van React en heb me er meer dan
-                  8 jaar in gespecialiseerd, waardoor ik de vele nuances en
+                  10 jaar in gespecialiseerd, waardoor ik de vele nuances en
                   complexiteiten volledig beheers.
                 </p>
                 <p>
