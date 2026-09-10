@@ -1,7 +1,16 @@
 import { css } from '@emotion/react'
 
 export const globalStyles = css`
-  a:not(.plain) {
+  button.link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  a:not(.plain),
+  button.link {
     --link-color: var(--black);
     color: var(--link-color);
     text-decoration: none;
@@ -27,7 +36,8 @@ export const globalStyles = css`
   }
 
   .inverted {
-    a {
+    a,
+    button.link {
       --link-color: var(--white);
 
       :hover {

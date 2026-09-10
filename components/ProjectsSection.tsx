@@ -43,8 +43,11 @@ const ProjectsSection = () => (
               key={`${project.company}-${project.functionTitle}-${project.endedYear ?? ''}`}
               functionTitle={project.functionTitle}
               companyName={project.company}
+              companyNameOnInteraction={project.companyOnInteraction}
               thumbnail={project.thumbnail}
+              thumbnailOnInteraction={project.thumbnailOnInteraction}
               url={project.url}
+              onVisit={project.onVisit}
               sourceCode={project.sourceCodeHref}
               started={project.startedYear}
               ended={endedYear}

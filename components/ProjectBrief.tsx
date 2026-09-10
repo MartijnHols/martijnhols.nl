@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, ReactNode, useState } from 'react'
 import { breakpoints } from '../theme'
 import ImageInfo from '../utils/ImageInfo'
 import CopyPasteOnly from './CopyPasteOnly'
@@ -57,8 +57,16 @@ const Header = styled.h3`
   margin-bottom: 0.5em;
 `
 const Title = styled.div`
+  display: grid;
   margin-top: 0;
   margin-bottom: 0.1em;
+`
+const TitleText = styled.span`
+  grid-area: 1 / 1;
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+  }
 `
 const Period = styled.div`
   @media (min-width: ${breakpoints.TABLET}px) {
@@ -98,6 +106,11 @@ const ThumbnailMobile = styled(Thumbnail)`
 const ThumbnailImage = styled(Image)`
   object-fit: contain;
 `
+const ThumbnailPlaceholder = styled.span`
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+`
 const ProjectExplanation = styled.div`
   flex: 1 1 auto;
 `
@@ -118,11 +131,14 @@ const ContactLinks = styled.div`
 
 interface Props {
   thumbnail?: ImageInfo
+  thumbnailOnInteraction?: boolean
   functionTitle: string
   companyName: string
+  companyNameOnInteraction?: string
   started?: number
   ended?: string
   url?: string
+  onVisit?: () => void
   sourceCode?: string
   about: ReactNode
   aside?: ReactNode
@@ -133,11 +149,14 @@ interface Props {
 
 const ProjectBrief = ({
   thumbnail,
+  thumbnailOnInteraction,
   functionTitle,
   companyName,
+  companyNameOnInteraction,
   started,
   ended,
   url,
+  onVisit,
   sourceCode,
   about,
   aside,
@@ -145,6 +164,32 @@ const ProjectBrief = ({
   highlighted,
   placeholder,
 }: Props) => {
+  const [hasInteracted, setHasInteracted] = useState(false)
+  const revealDetails =
+    (thumbnailOnInteraction || companyNameOnInteraction) && !hasInteracted
+      ? () => {
+          setHasInteracted(true)
+        }
+      : undefined
+  const displayedCompanyName =
+    hasInteracted && companyNameOnInteraction
+      ? companyNameOnInteraction
+      : companyName
+
+  // Keep image URLs out of the HTML and hydrated DOM until interaction.
+  const thumbnailContent =
+    thumbnail &&
+    (!thumbnailOnInteraction || hasInteracted ? (
+      <ThumbnailImage
+        src={thumbnail}
+        alt={thumbnail.alt ?? displayedCompanyName}
+        width={100}
+        height={100}
+      />
+    ) : (
+      <ThumbnailPlaceholder aria-hidden />
+    ))
+
   const formatPeriod = (
     started: string | undefined,
     ended: string | undefined,
@@ -166,37 +211,29 @@ const ProjectBrief = ({
       as="article"
       boxShadow={false}
       css={[highlighted && highlightedCss, placeholder && placeholderCss]}
+      onPointerEnter={revealDetails}
+      onPointerDown={revealDetails}
+      onFocus={revealDetails}
     >
       <div>
         <Period>{formatPeriod(String(started), ended)}</Period>
-        {thumbnail && (
-          <ThumbnailDesktop>
-            <ThumbnailImage
-              src={thumbnail}
-              alt={thumbnail.alt ?? companyName}
-              width={100}
-              height={100}
-            />
-          </ThumbnailDesktop>
-        )}
+        {thumbnail && <ThumbnailDesktop>{thumbnailContent}</ThumbnailDesktop>}
       </div>
       <div>
         <Header>
           <Title>
-            {functionTitle} @ {companyName}
+            {companyNameOnInteraction && (
+              <TitleText aria-hidden>
+                {functionTitle} @ {companyName}
+              </TitleText>
+            )}
+            <TitleText>
+              {functionTitle} @ {displayedCompanyName}
+            </TitleText>
           </Title>
         </Header>
         <Main>
-          {thumbnail && (
-            <ThumbnailMobile>
-              <ThumbnailImage
-                src={thumbnail}
-                alt={thumbnail.alt ?? companyName}
-                width={100}
-                height={100}
-              />
-            </ThumbnailMobile>
-          )}
+          {thumbnail && <ThumbnailMobile>{thumbnailContent}</ThumbnailMobile>}
           <ProjectExplanation>
             <ProjectAbout>{about}</ProjectAbout>
             <Tech>
@@ -210,10 +247,15 @@ const ProjectBrief = ({
               ))}
             </Tech>
             {aside}
-            {(url ?? sourceCode) && (
+            {(url ?? onVisit ?? sourceCode) && (
               <ContactLinks>
                 {url && <Link href={url}>Bezoeken</Link>}
-                {url && sourceCode && <span>{' | '}</span>}
+                {!url && onVisit && (
+                  <button type="button" className="link" onClick={onVisit}>
+                    Bezoeken
+                  </button>
+                )}
+                {(url ?? onVisit) && sourceCode && <span>{' | '}</span>}
                 {sourceCode && <Link href={sourceCode}>Broncode</Link>}
               </ContactLinks>
             )}

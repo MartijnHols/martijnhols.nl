@@ -5,11 +5,14 @@ import Link from '../components/Link'
 
 interface Project {
   company: string
+  companyOnInteraction?: string
   functionTitle: string
   startedYear: number
   endedYear?: string
   thumbnail: StaticImageData
+  thumbnailOnInteraction?: boolean
   url?: string
+  onVisit?: () => void
   sourceCodeHref?: string
   about: ReactNode
   aside?: ReactNode
@@ -21,27 +24,22 @@ interface Project {
 // Array is sorted by started date,
 const projects: Project[] = [
   {
-    company: 'HLLRecords',
+    company: 'Game-analyseplatform',
+    companyOnInteraction: 'HLLRecords',
     functionTitle: 'Oprichter / Full-stack Ontwikkelaar',
     about: (
       <>
         <p>
-          HLLRecords is een <strong>hobbyproject</strong> dat ik in 2025 ben
-          gestart vanuit mijn interesse in Hell Let Loose en mijn plezier in
-          productontwikkeling en data-analyse. Ik onderzoek graag speldata om
-          patronen te ontdekken, het spel beter te begrijpen en spelers te
-          vergelijken. In mijn vrije tijd ontwerp en ontwikkel ik het volledige
-          platform, van de React-interface tot de backend en database. Het
-          verzamelt spelgegevens van openbare communityscoreborden en maakt die
-          toegankelijk via spelersprofielen, ranglijsten en analyses.
+          Dit <strong>hobbyproject</strong> begon in 2025 vanuit mijn interesse
+          in het spel en mijn plezier in productontwikkeling en data-analyse. In
+          mijn vrije tijd ontwikkel ik het volledige platform, van
+          React-interface tot database, om speldata te verzamelen, analyseren,
+          patronen te ontdekken en spelers te vergelijken.
         </p>
         <p>
-          Het project begon met MariaDB, maar na problemen met
-          queryoptimalisatie ben ik overgestapt op PostgreSQL. Het was mijn
-          eerste serieuze kennismaking met die database, waar ik inmiddels met
-          veel plezier mee werk. HLLRecords heeft ook mijn interesse in
-          full-stack development opnieuw aangewakkerd, met TypeScript als basis
-          voor zowel frontend als backend.
+          Dit is mijn eerste project met PostgreSQL, waar ik graag mee werk. Het
+          wakkerde mijn interesse in full-stack development opnieuw aan, met
+          TypeScript voor frontend en backend.
         </p>
         <p>
           Inmiddels is de{' '}
@@ -49,19 +47,14 @@ const projects: Project[] = [
             PostgreSQL-database meer dan 1 TB groot, met meer dan 1,5 miljard
             rijen
           </strong>
-          . Die schaal bracht veel interessante performance-uitdagingen met zich
-          mee. Met queryoptimalisatie, caching, vooraf berekende statistieken en
-          achtergrondverwerking heb ik knelpunten opgelost in het verwerken en
-          opvragen van al die data. Ook heb ik de rendering van
-          React-componenten geoptimaliseerd, zodat de interface grote
-          hoeveelheden data vlot kan weergeven.
+          . Ik loste performanceknelpunten op met queryoptimalisatie, caching,
+          vooraf berekende statistieken en achtergrondverwerking. Ook
+          optimaliseerde ik de React-rendering voor grote hoeveelheden data.
         </p>
         <p>
-          Aanvankelijk heb ik het platform volledig zelf gecodeerd. Sinds enkele
-          maanden zet ik ook <strong>AI</strong> (Codex) in voor analyse,
-          optimalisatie en verdere ontwikkeling. Daarmee heb ik veel praktische
-          ervaring opgedaan in het effectief aansturen van AI bij complex
-          ontwikkelwerk en het beoordelen en controleren van de resultaten.
+          Ik codeerde het platform aanvankelijk volledig zelf. Sinds enkele
+          maanden zet ik ook <strong>AI</strong> (Codex) effectief in voor
+          analyse en doorontwikkeling, met kritische controle van de resultaten.
         </p>
       </>
     ),
@@ -86,8 +79,12 @@ const projects: Project[] = [
       'GitHub Actions',
       'Codex',
     ],
-    thumbnail: (await import('./assets/hllrecords.png')).default,
-    url: 'https://hllrecords.com/',
+    thumbnail: (await import('./assets/game-analyseplatform.png')).default,
+    thumbnailOnInteraction: true,
+    // Keep the project URL out of the rendered HTML to reduce search discovery.
+    onVisit: () => {
+      window.location.assign('https://hllrecords.com/')
+    },
     highlighted: true,
     placeholder: false,
   },
