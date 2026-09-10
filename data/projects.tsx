@@ -21,6 +21,137 @@ interface Project {
 // Array is sorted by started date,
 const projects: Project[] = [
   {
+    company: 'HLLRecords',
+    functionTitle: 'Oprichter / Full-stack Ontwikkelaar',
+    about: (
+      <>
+        <p>
+          HLLRecords is een <strong>hobbyproject</strong> dat ik in 2025 ben
+          gestart vanuit mijn interesse in Hell Let Loose en mijn plezier in
+          productontwikkeling en data-analyse. Ik onderzoek graag speldata om
+          patronen te ontdekken, het spel beter te begrijpen en spelers te
+          vergelijken. In mijn vrije tijd ontwerp en ontwikkel ik het volledige
+          platform, van de React-interface tot de backend en database. Het
+          verzamelt spelgegevens van openbare communityscoreborden en maakt die
+          toegankelijk via spelersprofielen, ranglijsten en analyses.
+        </p>
+        <p>
+          Het project begon met MariaDB, maar na problemen met
+          queryoptimalisatie ben ik overgestapt op PostgreSQL. Het was mijn
+          eerste serieuze kennismaking met die database, waar ik inmiddels met
+          veel plezier mee werk. HLLRecords heeft ook mijn interesse in
+          full-stack development opnieuw aangewakkerd, met TypeScript als basis
+          voor zowel frontend als backend.
+        </p>
+        <p>
+          Inmiddels is de{' '}
+          <strong>
+            PostgreSQL-database meer dan 1 TB groot, met meer dan 1,5 miljard
+            rijen
+          </strong>
+          . Die schaal bracht veel interessante performance-uitdagingen met zich
+          mee. Met queryoptimalisatie, caching, vooraf berekende statistieken en
+          achtergrondverwerking heb ik knelpunten opgelost in het verwerken en
+          opvragen van al die data. Ook heb ik de rendering van
+          React-componenten geoptimaliseerd, zodat de interface grote
+          hoeveelheden data vlot kan weergeven.
+        </p>
+        <p>
+          Aanvankelijk heb ik het platform volledig zelf gecodeerd. Sinds enkele
+          maanden zet ik ook <strong>AI</strong> (Codex) in voor analyse,
+          optimalisatie en verdere ontwikkeling. Daarmee heb ik veel praktische
+          ervaring opgedaan in het effectief aansturen van AI bij complex
+          ontwikkelwerk en het beoordelen en controleren van de resultaten.
+        </p>
+      </>
+    ),
+    startedYear: 2025,
+    endedYear: 'heden/01',
+    tech: [
+      'React',
+      'TypeScript',
+      'Next.js',
+      'Node.js',
+      'PostgreSQL',
+      'PgBouncer',
+      'Knex.js',
+      'Redis',
+      'BullMQ',
+      'Recharts',
+      'CSS Modules',
+      'Jest',
+      'Docker',
+      'Ubuntu Server',
+      'Dedicated serverbeheer',
+      'GitHub Actions',
+      'Codex',
+    ],
+    thumbnail: (await import('./assets/hllrecords.png')).default,
+    url: 'https://hllrecords.com/',
+    highlighted: true,
+    placeholder: false,
+  },
+  {
+    company: 'FM Group',
+    functionTitle: 'Freelance Front-end Developer',
+    about: (
+      <>
+        <p>
+          Als freelance front-end developer heb ik van september 2025 tot en met
+          31 augustus 2026 gewerkt aan de webshop van FM Group. Mijn
+          belangrijkste verantwoordelijkheid was het{' '}
+          <strong>herzien en moderniseren van de architectuur</strong>, zodat
+          het ontwikkelteam eenvoudiger met de code kan werken en de webshop
+          gemakkelijker kan onderhouden en uitbreiden.
+        </p>
+        <p>
+          Samen met het team heb ik de volledige productlijstpagina opnieuw
+          opgebouwd: de meest gebruikte en complexe pagina van de webshop.
+          Zoeken, filteren, productdetails bekijken en bestellen komen hier
+          samen, voor klanten van kleine zelfstandigen tot grote merken.
+        </p>
+        <p>
+          Ik koos bewust voor <strong>Redux Toolkit Query (RTK Query)</strong>{' '}
+          als basis voor het ophalen en cachen van data. Alle projecten
+          gebruikten al Redux. Met de moderne mogelijkheden van Redux Toolkit
+          kon ik daarop voortbouwen en een heldere, consistente structuur
+          neerzetten, zonder een nieuwe technologie te introduceren.
+        </p>
+        <p>
+          Ik heb de componenten herbouwd als zelfstandige, herbruikbare
+          componenten met duidelijke verantwoordelijkheden en veel minder
+          afhankelijkheid van globale state. State hield ik zo lokaal mogelijk;
+          globale state gebruikte ik alleen wanneer er geen geschikte lokale
+          oplossing was. Daardoor zijn onderdelen eenvoudiger te begrijpen, aan
+          te passen en opnieuw te gebruiken.
+        </p>
+      </>
+    ),
+    startedYear: 2025,
+    endedYear: '2026/08',
+    tech: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Redux',
+      'Redux Toolkit',
+      'RTK Query',
+      'React Router',
+      'React Hook Form',
+      'TanStack Virtual',
+      'Sass',
+      'CSS Modules',
+      'Jest',
+      'React Testing Library',
+      'pnpm',
+      'Azure DevOps',
+    ],
+    thumbnail: (await import('./assets/fmgroup.png')).default,
+    url: 'https://www.fmgroup.fm/',
+    highlighted: false,
+    placeholder: false,
+  },
+  {
     company: 'Politie',
     functionTitle: 'Freelance Senior Front-end Ontwikkelaar',
     about: (
