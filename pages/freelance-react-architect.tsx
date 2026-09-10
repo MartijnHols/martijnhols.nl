@@ -42,10 +42,11 @@ const Page = () => (
           <>
             <AboutMeHeading>Over mij</AboutMeHeading>
             <p>
-              Ik ben een ervaren <strong>Freelance React Architect</strong> met
-              meer dan 20 jaar full-stack ervaring. Als Freelance React
-              Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
-              van opzet tot doorontwikkeling. Ik ben{' '}
+              Ik help teams{' '}
+              <strong>React-applicaties opzetten en moderniseren</strong>, met
+              een heldere architectuur die ik ook zelf implementeer. Ik heb meer
+              dan 20 jaar full-stack ervaring met uiteenlopende projecten, van
+              opzet tot doorontwikkeling. Ik ben{' '}
               <strong>al ruim 8 jaar gespecialiseerd in React</strong> - zoveel
               diepgaande React-ervaring is zeldzaam! Ik kan veel betekenen voor
               jouw projecten en team.

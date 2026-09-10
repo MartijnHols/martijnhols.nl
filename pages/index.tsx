@@ -45,7 +45,7 @@ const Page = () => (
       <HeroSection
         kicker={<HeroKicker />}
         title="Freelance React Developer"
-        subText="✅ Freelance React ontwikkelaar met oog voor detail, een optimale gebruikerservaring en solide architectuur."
+        subText="✅ Gespecialiseerd in React-architectuur en het vereenvoudigen van complexe applicaties."
       />
       <ContentSection
         content={
@@ -61,11 +61,13 @@ const Page = () => (
               jouw projecten en team.
             </p>
             <p>
-              Bij de meeste opdrachten vervul ik de rol van{' '}
+              Mijn specialisme is{' '}
               <Link href="/freelance-react-architect">
-                <strong>React Architect</strong>
+                <strong>React-architectuur</strong>
               </Link>
-              . Ik richt me graag op technische uitdagingen, zoals:
+              . Het liefst werk ik aan technische keuzes, een heldere
+              projectstructuur en het terugdringen van complexiteit. Ik richt me
+              graag op technische uitdagingen, zoals:
             </p>
             <ul>
               <li>
