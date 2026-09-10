@@ -78,7 +78,7 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
       <UspPanel variant="sm">
         <UspPanelTitle>🧑‍💻 Architect-level ervaring</UspPanelTitle>
         <UspPanelText className="inverted">
-          10+ jaar{' '}
+          Meer dan 10 jaar{' '}
           <Annotation
             annotation={
               <>
@@ -98,15 +98,14 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
               </>
             }
           >
-            React-specialist
+            React
           </Annotation>{' '}
-          &amp;{' '}
+          ·{' '}
           <span
             css={css`
               white-space: nowrap;
             `}
           >
-            20+ jaar{' '}
             <Annotation
               annotation={
                 <>
@@ -145,9 +144,9 @@ const UspBar = (others: ComponentProps<typeof Container>) => (
                 </>
               }
             >
-              full-stack
+              Full-stack
             </Annotation>{' '}
-            ervaring.
+            sinds 2004
           </span>
         </UspPanelText>
       </UspPanel>
