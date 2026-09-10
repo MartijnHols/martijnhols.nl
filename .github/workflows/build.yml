@@ -172,7 +172,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: dockerimage
           path: /tmp
@@ -211,7 +211,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-node_modules-${{ hashFiles('pnpm-lock.yaml', 'pnpm-workspace.yaml', 'package.json') }}
           fail-on-cache-miss: true
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: dockerimage
           path: /tmp
@@ -260,7 +260,7 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: dockerimage
           path: /tmp
