@@ -633,13 +633,13 @@ const projects: Project[] = [
   },
   {
     company: 'MartijnHols',
-    functionTitle: 'Freelance React Developer / Architect',
+    functionTitle: 'Freelance React Developer en Architect',
     about: (
       <p>
-        Om beter vindbaar te worden als Freelance React Developer/React
-        Architect heb ik deze website opgezet. Uiteraard gemaakt in React, met
-        Next.js als framework en Prismic als CMS. Ondanks dat ik een techneut
-        ben en niet een designer, is het een eigen design.
+        Om beter vindbaar te worden als Freelance React Developer en Architect
+        heb ik deze website opgezet. Uiteraard gemaakt in React, met Next.js als
+        framework en Prismic als CMS. Ondanks dat ik een techneut ben en niet
+        een designer, is het een eigen design.
       </p>
     ),
     startedYear: 2018,
