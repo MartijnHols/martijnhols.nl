@@ -94,11 +94,25 @@ const IntroTitle = styled.h1`
 interface Props extends HTMLAttributes<HTMLHeadingElement> {
   children: string
   renderWord?: (word: string) => ReactNode
+  suffix?: ReactNode
 }
 
-const AnimatedH1 = ({ children, renderWord, ...others }: Props) => (
+const AnimatedH1 = ({
+  children,
+  renderWord,
+  suffix,
+  style,
+  ...others
+}: Props) => (
   // This is setup so the h1 has normal HTML to make it as readable as possible to search engines, and the animation is in pseudo elements.
-  <IntroTitle {...others}>
+  <IntroTitle
+    {...others}
+    style={{
+      // The last word's underline finishes after its slide-in animation.
+      ['--title-reveal-end' as string]: `calc(0.9s + ${children.split(' ').length - 1} * 0.12s)`,
+      ...style,
+    }}
+  >
     {children.split(' ').map((word, index) => (
       <Fragment key={`${word}-${index}`}>
         <Word
@@ -113,6 +127,7 @@ const AnimatedH1 = ({ children, renderWord, ...others }: Props) => (
         </Word>{' '}
       </Fragment>
     ))}
+    {suffix}
   </IntroTitle>
 )
 

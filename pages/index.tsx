@@ -45,6 +45,7 @@ const Page = () => (
       <HeroSection
         kicker={<HeroKicker />}
         title="Freelance React Developer"
+        titleNote="en Architect"
         subText="✅ Gespecialiseerd in React-architectuur en het vereenvoudigen van complexe applicaties."
       />
       <ContentSection

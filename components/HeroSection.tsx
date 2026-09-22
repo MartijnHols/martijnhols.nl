@@ -38,6 +38,41 @@ const Kicker = styled.div`
 const StyledAnimatedH1 = styled(AnimatedH1)`
   margin: 0;
 `
+const titleNoteReveal = keyframes`
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+`
+const TitleNote = styled.span`
+  display: block;
+  width: fit-content;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0.25em 0.5em;
+  color: var(--black);
+  background: var(--yellow);
+  font-size: max(1rem, 0.28em);
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${titleNoteReveal} 250ms ease-out both;
+    animation-delay: calc(var(--title-reveal-end) + 500ms);
+  }
+
+  @media (min-width: ${breakpoints.TABLET}px) {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+`
 const SubText = styled.div`
   font-weight: 500;
   ${theme.headings.h4}
@@ -105,15 +140,17 @@ const StyledReactLogo = styled(ReactLogo)`
 interface Props {
   kicker?: ReactNode
   title: string
+  titleNote?: string
   subText?: ReactNode
 }
 
-const HeroSection = ({ kicker, title, subText }: Props) => (
+const HeroSection = ({ kicker, title, titleNote, subText }: Props) => (
   <Section>
     <StyledContainer>
       <Intro>
         {kicker && <Kicker>{kicker}</Kicker>}
         <StyledAnimatedH1
+          suffix={titleNote && <TitleNote>{titleNote}</TitleNote>}
           renderWord={(word) =>
             word === 'React' ? (
               <>
