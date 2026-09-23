@@ -53,24 +53,24 @@ const Page = () => (
           <>
             <AboutMeHeading>Over mij</AboutMeHeading>
             <p>
-              Hoi! Ik ben een ervaren <strong>Freelance React Developer</strong>{' '}
-              met meer dan 20 jaar full-stack ervaring. Als Freelance React
-              Developer en Architect heb ik aan uiteenlopende projecten gewerkt,
-              van opzet tot doorontwikkeling. Ik ben{' '}
-              <strong>al ruim 10 jaar gespecialiseerd in React</strong> - zoveel
-              diepgaande React-ervaring is zeldzaam! Ik kan veel betekenen voor
-              jouw projecten en team.
+              Hoi! Ik ben een ervaren{' '}
+              <strong>Freelance Senior React Developer en Architect</strong>. Ik
+              ontwikkel sinds 2004 full-stack websites en applicaties en ben{' '}
+              <strong>al ruim 10 jaar gespecialiseerd in React</strong>. Sinds
+              2018 werk ik uitsluitend als zelfstandige aan React-opdrachten,
+              waarbij ik meerdere grote projecten heb opgezet en doorontwikkeld.
             </p>
             <p>
               Mijn specialisme is{' '}
               <Link href="/freelance-react-architect">
                 <strong>React-architectuur</strong>
               </Link>
-              . Het liefst werk ik aan technische keuzes, een heldere
-              projectstructuur en het terugdringen van complexiteit. Ik richt me
-              graag op technische uitdagingen, zoals:
+              . Ik werk graag aan technische keuzes, een heldere
+              projectstructuur en het vereenvoudigen van complexe applicaties.
+              Ik richt me graag op technische uitdagingen, zoals:
             </p>
             <ul>
+              <li>TypeScript en service workers</li>
               <li>
                 <Link href="/blog?tag=maintainability">Onderhoudbaarheid</Link>,
                 standaardisering en versimpeling
@@ -96,10 +96,14 @@ const Page = () => (
               <li>Stabiliteit en (E2E) testing</li>
             </ul>
             <p>
-              Met een focus op User Experience (UX) als Developer Experience
-              (DX) help ik zowel eindgebruikers als ontwikkelaars optimaal te
-              werken. Ik streef ernaar teams sterker te maken en zorg ervoor dat
-              projecten schaalbaar en toekomstbestendig zijn.
+              Daarnaast denk ik graag mee over het ontwerp van schermen en hoe
+              gebruikers ermee werken. Daarbij heb ik een focus op zowel User
+              Experience (UX) als Developer Experience (DX), zodat gebruikers en
+              ontwikkelaars optimaal kunnen werken met en aan het project.
+            </p>
+            <p>
+              Ik vind het belangrijk om kennis te delen, het team sterker te
+              maken en het project beter achter te laten dan ik het aantrof.
             </p>
             <p>
               Meer weten? Bekijk hieronder de{' '}
