@@ -32,7 +32,7 @@
     "@mui/material-nextjs": "^6.5.0",
     "@next/mdx": "^15.5.25",
     "concurrently": "^8.2.2",
-    "next": "^15.5.25",
+    "next": "^15.5.27",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
